@@ -6,8 +6,7 @@
   </el-container>
 </template>
 
-
-<style>    
+<style>
   .el-container{
     margin: 0 auto;
     width: 1160px;

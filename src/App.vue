@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <Nav></Nav>
+    <Banner></Banner>
     <Container/>
   </div>
 
@@ -11,11 +12,12 @@
 import HelloWorld from './components/HelloWorld.vue'
 import Nav from './components/Nav.vue'
 import Container from './components/Container.vue'
+import Banner from './components/Banner.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld,Nav,Container
+    HelloWorld, Nav, Container, Banner
   }
 }
 </script>

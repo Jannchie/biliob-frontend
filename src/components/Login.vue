@@ -3,28 +3,9 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        items: [{
-          name: "项目名称1",
-          currentDate: new Date(),
-        }, {
-          name: "项目名称2",
-          currentDate: new Date(),
-        }, {
-          name: "项目名称3",
-          currentDate: new Date(),
-        }, {
-          name: "项目名称4",
-          currentDate: new Date(),
-        }, {
-          name: "项目名称5",
-          currentDate: new Date(),
-        }]
-      };
-    }
-  }
+export default {
+}
+
 </script>
 
 <style>
@@ -48,4 +29,5 @@
     font-size: 13px;
     color: #999;
   }
+
 </style>
