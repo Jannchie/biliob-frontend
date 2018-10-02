@@ -20,10 +20,10 @@
           </div>
           <div class="item">
             <el-table :data="authorData.data" height="500px">
-              <el-table-column prop="datetime" label="日期">
-              </el-table-column>
+              <el-table-column prop="datetime" label="日期"></el-table-column>
               <el-table-column prop="fans" label="粉丝数"></el-table-column>
-              <!-- <el-table-column prop="archive" label="投稿数"></el-table-column> -->
+              <el-table-column prop="archive" label="视频投稿数"></el-table-column>
+              <el-table-column prop="article" label="专栏投稿数"></el-table-column>
             </el-table>
           </div>
         </div>
@@ -41,7 +41,7 @@ export default {
     }
   },
   mounted () {
-    this.axios.get('http://localhost:8081/author/' + this.$route.params.mid, {}).then((response) => {
+    this.axios.get('http://localhost:8081/author/' + this.$route.params.mid).then((response) => {
       this.authorData = response.data
       console.log(response.status)
     })
