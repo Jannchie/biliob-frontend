@@ -9,6 +9,6 @@
 <style>
   .el-container{
     margin: 0 auto;
-    width: 1160px;
+    width: 60%;
   }
 </style>

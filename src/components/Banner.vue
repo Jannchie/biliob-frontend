@@ -1,6 +1,5 @@
 <template>
-    <dir class="banner">
-        <img src="http://placehold.it/1920x188">
+    <dir class="banner" >
     </dir>
 </template>
 <script>
@@ -16,6 +15,7 @@ export default {
         top: 0px;
         margin: 0 0;
         padding: 0 0;
-        width: 100%;
+        background-image: url("http://placehold.it/1920x188");
+        height: 170px;
     }
 </style>
