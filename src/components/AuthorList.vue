@@ -4,12 +4,12 @@
       <el-card class="card">
         <div>
           <el-table :data="authorList.content">
-            <el-table-column label="头像" class="face" width="60%" height="5%">
+            <el-table-column label="头像" class="face" width="100%">
               <template slot-scope="scope">
                 <img class="face" :src="scope.row.face">
               </template>
             </el-table-column>
-            <el-table-column prop="mid" label="mid"></el-table-column>
+            <el-table-column prop="mid" label="mid" width="100%" ></el-table-column>
             <el-table-column prop="name" label="名称"></el-table-column>
             <el-table-column prop="official" label="认证"></el-table-column>
             <el-table-column label="操作" width="100%" >
@@ -65,8 +65,9 @@ export default {
 <style>
 .face{
    position: relative;
-   height: 100%;
-   width: 100%;
+   height: 60%;
+   width: 60%;
    align-content: center
 }
+
 </style>
