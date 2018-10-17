@@ -4,8 +4,8 @@
     <el-menu-item class="nav-item" index="/top">榜单</el-menu-item>
     <el-submenu index="3">
       <template slot="title">追踪</template>
-      <el-menu-item index="video">视频追踪</el-menu-item>
-      <el-menu-item index="author">UP主追踪</el-menu-item>
+      <el-menu-item index="/video">视频追踪</el-menu-item>
+      <el-menu-item index="/author">UP主追踪</el-menu-item>
     </el-submenu>
     <el-menu-item class="nav-item" index="/login" style="float:right"> 登录</el-menu-item>
     <el-menu-item class="nav-item" index="/test" style="float:right"> 测试用</el-menu-item>
