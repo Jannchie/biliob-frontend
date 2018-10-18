@@ -12,6 +12,7 @@ Vue.config.productionTip = false
 Vue.use(VueRouter)
 Vue.use(ElementUI)
 Vue.use(VueAxios, axios)
+Vue.prototype.apiurl = 'http://localhost:8081'
 
 const router = new VueRouter({
   routes

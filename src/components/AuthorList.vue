@@ -2,6 +2,9 @@
   <el-row style="margin:5px">
     <el-col :span="24">
       <el-card class="card">
+
+        <search-form placeholder="请输入标题或者aid" @getSearchValue="getSearchValue"></search-form>
+
         <div>
           <el-table :data="authorList.content">
             <el-table-column label="头像" class="face" width="100%">
@@ -23,7 +26,7 @@
         </div>
         <div class="block">
           <center>
-            <el-pagination layout="prev, pager, next" :total="totalElement" :page-size="12" v-on:current-change="changePage"></el-pagination>
+            <el-pagination layout="prev, pager, next" :total="authorList.totalElements" :page-size="authorList.size" v-on:current-change="changePage"></el-pagination>
           </center>
         </div>
       </el-card>
@@ -32,26 +35,42 @@
 </template>
 
 <script>
+import SearchForm from './SearchForm.vue'
 export default {
   name: 'authorList',
+  components: {SearchForm},
   data () {
     return {
-      'authorList': {},
-      'totalElement': 0
+      'authorList': Object,
+      'currentApiurl': String
     }
   },
   created () {
-    this.axios.get('http://localhost:8081/author?pageSize=12&page=0').then((response) => {
+    this.currentApiurl = this.apiurl + '/author?'
+    this.axios.get(this.currentApiurl).then((response) => {
       this.authorList = response.data
       this.face = response.data.content.face
-      this.totalElement = response.data.totalElements
     })
   },
   methods: {
     changePage (page) {
-      this.axios.get('http://localhost:8081/author?pageSize=12&page=' + (page - 1)).then((response) => {
+      this.axios.get(this.currentApiurl + '&page=' + (page - 1)).then((response) => {
         this.authorList = response.data
       })
+    },
+    getSearchValue (value) {
+      var n = Number(value)
+      if (!isNaN(n)) {
+        this.currentApiurl = this.apiurl + '/author?mid=' + value
+        this.axios.get(this.currentApiurl).then((response) => {
+          this.authorList = response.data
+        })
+      } else {
+        this.currentApiurl = this.apiurl + '/author?text=' + value
+        this.axios.get(this.currentApiurl).then((response) => {
+          this.authorList = response.data
+        })
+      }
     },
     handleEdit (index, row) {
       console.log(index, row)

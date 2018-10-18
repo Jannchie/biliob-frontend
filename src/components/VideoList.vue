@@ -3,16 +3,10 @@
     <el-col :span="24">
       <el-card class="card">
 
-        <form>
-          <el-input placeholder="请输入标题或者aid" prefix-icon="el-icon-search" v-model="a" style="width:30%">
-          </el-input>
-          <span>
-            <el-button type="primary" icon="el-icon-search"></el-button>
-          </span>
-        </form>
+        <search-form placeholder="请输入标题或者aid" @getSearchValue="getSearchValue"></search-form>
 
         <div>
-          <el-table :data="authorList.content">
+          <el-table :data="videoList.content">
             <el-table-column label="封面" class="face">
               <template slot-scope="scope">
                 <img class="face" :src="scope.row.pic">
@@ -35,7 +29,7 @@
         </div>
         <div class="block">
           <center>
-            <el-pagination layout="prev, pager, next" :total="totalElement" :page-size="12" v-on:current-change="changePage"></el-pagination>
+            <el-pagination layout="prev, pager, next" :total="videoList.totalElements" :page-size="videoList.size" v-on:current-change="changePage"></el-pagination>
           </center>
         </div>
       </el-card>
@@ -44,27 +38,43 @@
 </template>
 
 <script>
+import SearchForm from './SearchForm.vue'
 export default {
-  name: 'authorList',
+  components: {SearchForm},
+  name: 'videoList',
   data () {
     return {
-      'authorList': {},
-      'totalElement': 0
+      'videoList': {},
+      'currentApiurl': String
     }
   },
   created () {
-    this.axios.get('http://localhost:8081/video?pageSize=12&page=0').then((response) => {
-      this.authorList = response.data
+    this.currentApiurl = this.apiurl + '/video?'
+    this.axios.get(this.currentApiurl).then((response) => {
+      this.videoList = response.data
       this.face = response.data.content.pic
-      this.totalElement = response.data.totalElements
     })
   },
   methods: {
     changePage (page) {
-      this.axios.get('http://localhost:8081/video?pageSize=12&page=' + (page - 1)).then((response) => {
-        this.authorList = response.data
+      this.axios.get(this.currentApiurl + '&page=' + (page - 1)).then((response) => {
+        this.videoList = response.data
       })
     },
+    getSearchValue (value) {
+      if (!isNaN(Number(value))) {
+        this.currentApiurl = this.apiurl + '/video?mid=' + value
+        this.axios.get(this.currentApiurl).then((response) => {
+          this.videoList = response.data
+        })
+      } else {
+        this.currentApiurl = this.apiurl + '/video?text=' + value
+        this.axios.get(this.currentApiurl).then((response) => {
+          this.videoList = response.data
+        })
+      }
+    },
+
     handleEdit (index, row) {
       console.log(index, row)
       this.$router.push({
