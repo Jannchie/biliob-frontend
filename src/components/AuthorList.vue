@@ -3,7 +3,7 @@
     <el-col :span="24">
       <el-card class="card">
 
-        <search-form placeholder="请输入标题或者aid" @getSearchValue="getSearchValue"></search-form>
+        <search-form placeholder="请输入作者名或者uid" @getSearchValue="getSearchValue"></search-form>
 
         <div>
           <el-table :data="authorList.content">

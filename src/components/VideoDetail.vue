@@ -4,10 +4,10 @@
       <el-card class="card">
         <div slot="header">
           <div height="100px" style="overflow:auto;">
-            <div style="float:left">
-              <img v-bind:src="videoData.pic" width="78px" height="49px" />
+            <div style="float:left;padding-right:20px">
+              <img v-bind:src="videoData.pic" style="height:70px"/>
             </div>
-            <div style="float:left;padding-left:20px">
+            <div style="float:left;max-width:85%">
               <h1 style="display:inline">
                 {{ videoData.title}}
               </h1>

@@ -1,9 +1,10 @@
 <template>
   <el-row style="margin:5px">
     <el-col :span="24">
+
       <el-card class="card">
 
-        <search-form placeholder="请输入标题或者aid" @getSearchValue="getSearchValue"></search-form>
+        <search-form placeholder="请输入标题、分区或者av号" @getSearchValue="getSearchValue"></search-form>
 
         <div>
           <el-table :data="videoList.content">
@@ -63,7 +64,7 @@ export default {
     },
     getSearchValue (value) {
       if (!isNaN(Number(value))) {
-        this.currentApiurl = this.apiurl + '/video?mid=' + value
+        this.currentApiurl = this.apiurl + '/video?aid=' + value
         this.axios.get(this.currentApiurl).then((response) => {
           this.videoList = response.data
         })
