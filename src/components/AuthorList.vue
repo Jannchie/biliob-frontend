@@ -12,21 +12,20 @@
                 <img class="face" :src="scope.row.face">
               </template>
             </el-table-column>
-            <el-table-column prop="mid" label="mid" width="100%" ></el-table-column>
+            <el-table-column prop="mid" label="mid" width="100%"></el-table-column>
             <el-table-column prop="name" label="名称"></el-table-column>
             <el-table-column prop="official" label="认证"></el-table-column>
-            <el-table-column label="操作" width="100%" >
+            <el-table-column label="操作" width="100%">
               <template slot-scope="scope">
-                <el-button
-                  size="mini"
-                  @click="handleEdit(scope.$index, scope.row)">详情</el-button>
+                <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">详情</el-button>
               </template>
             </el-table-column>
           </el-table>
         </div>
         <div class="block">
           <center>
-            <el-pagination layout="prev, pager, next" :total="authorList.totalElements" :page-size="authorList.size" v-on:current-change="changePage"></el-pagination>
+            <el-pagination layout="prev, pager, next" :total="authorList.totalElements" :page-size="authorList.size"
+              v-on:current-change="changePage"></el-pagination>
           </center>
         </div>
       </el-card>
@@ -38,7 +37,9 @@
 import SearchForm from './SearchForm.vue'
 export default {
   name: 'authorList',
-  components: {SearchForm},
+  components: {
+    SearchForm
+  },
   data () {
     return {
       'authorList': Object,
@@ -74,7 +75,9 @@ export default {
     },
     handleEdit (index, row) {
       console.log(index, row)
-      this.$router.push({path: '/author/' + row.mid})
+      this.$router.push({
+        path: '/author/' + row.mid
+      })
     }
   }
 }
@@ -82,11 +85,12 @@ export default {
 </script>
 
 <style>
-.face{
-   position: relative;
-   height: 60%;
-   width: 60%;
-   align-content: center
-}
+  .face {
+    position: relative;
+    height: 60%;
+    width: 60%;
+    align-content: center;
+    border-radius: 4px;
+  }
 
 </style>

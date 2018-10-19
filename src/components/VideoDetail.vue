@@ -5,7 +5,7 @@
         <div slot="header">
           <div height="100px" style="overflow:auto;">
             <div style="float:left;padding-right:20px">
-              <img v-bind:src="videoData.pic" style="height:70px"/>
+              <img class="video-img" v-bind:src="videoData.pic"/>
             </div>
             <div style="float:left;max-width:85%">
               <h1 style="display:inline">
@@ -57,4 +57,8 @@ export default {
 </script>
 
 <style>
+.video-img{
+  height:70px;
+  border-radius: 4px;
+}
 </style>

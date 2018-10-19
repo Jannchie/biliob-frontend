@@ -92,7 +92,8 @@ export default {
     position: relative;
     height: 60%;
     width: 60%;
-    align-content: center
+    align-content: center;
+    border-radius: 4px;
   }
 
   .el-table td {
