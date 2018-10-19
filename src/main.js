@@ -6,9 +6,13 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueRouter from 'vue-router'
 import routes from './router'
-
+import ECharts from 'vue-echarts/components/ECharts'
+// import ECharts modules manually to reduce bundle size
+// import 'echarts/lib/chart/bar'
+// import 'echarts/lib/component/tooltip'
+require('echarts')
+Vue.component('chart', ECharts)
 Vue.config.productionTip = false
-
 Vue.use(VueRouter)
 Vue.use(ElementUI)
 Vue.use(VueAxios, axios)

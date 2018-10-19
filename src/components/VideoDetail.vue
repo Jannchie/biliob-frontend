@@ -5,7 +5,7 @@
         <div slot="header">
           <div height="100px" style="overflow:auto;">
             <div style="float:left;padding-right:20px">
-              <img class="video-img" v-bind:src="videoData.pic"/>
+              <img class="video-img" v-bind:src="videoData.pic" />
             </div>
             <div style="float:left;max-width:85%">
               <h1 style="display:inline">
@@ -18,19 +18,8 @@
         </div>
         <div class='card-holder'>
           <div>
-            <img src="http://placehold.it/1088x300" style="max-width:100%">
-          </div>
-          <div class="item">
-            <el-table :data="videoData.data" height="500px">
-              <el-table-column prop="datetime" label="日期"></el-table-column>
-              <el-table-column prop="view" label="播放"></el-table-column>
-              <el-table-column prop="coin" label="硬币"></el-table-column>
-              <el-table-column prop="favorite" label="收藏"></el-table-column>
-              <el-table-column prop="share" label="分享"></el-table-column>
-              <el-table-column prop="danmaku" label="弹幕"></el-table-column>
-              <el-table-column prop="like" label="好评"></el-table-column>
-              <el-table-column prop="dislike" label="差评"></el-table-column>
-            </el-table>
+            <!-- <img src="http://placehold.it/1088x300" style="max-width:100%"> -->
+            <chart theme="light" :auto-resize="true" :options="mainGraph" style="width:100%;height:500px"></chart>
           </div>
         </div>
       </el-card>
@@ -39,17 +28,20 @@
 </template>
 
 <script>
+import drawMaingraph from '../charts/video-main.js'
 export default {
-  name: 'v',
+  name: 'videlDetail',
   data () {
     return {
-      'videoData': {}
+      'videoData': {},
+      'mainGraph': {}
     }
   },
+  methods: {},
   mounted () {
     this.axios.get('http://localhost:8081/video/' + this.$route.params.aid).then((response) => {
       this.videoData = response.data
-      console.log(response.status)
+      this.mainGraph = drawMaingraph(this.videoData)
     })
   }
 }
@@ -57,8 +49,8 @@ export default {
 </script>
 
 <style>
-.video-img{
-  height:70px;
-  border-radius: 4px;
-}
+  .video-img {
+    height: 70px;
+    border-radius: 4px;
+  }
 </style>
