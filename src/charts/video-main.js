@@ -1,20 +1,4 @@
 function drawGraph (data) {
-  let view = []
-  let danmaku = []
-  let favorite = []
-  let coin = []
-  let like = []
-  let dislike = []
-  let share = []
-  data.data.forEach(d => {
-    view.push([d['datetime'], d['view']])
-    danmaku.push([d['datetime'], d['danmaku']])
-    favorite.push([d['datetime'], d['favorite']])
-    coin.push([d['datetime'], d['coin']])
-    share.push([d['datetime'], d['share']])
-    like.push([d['datetime'], d['like']])
-    dislike.push([d['datetime'], d['dislike']])
-  })
   let graph = {
     title: {
       left: 'center',
@@ -22,7 +6,7 @@ function drawGraph (data) {
       text: data.title
     },
     legend: {
-      data: ['播放量', '弹幕数', '收藏数', '硬币数', '分享数', '点赞数', '差评数'],
+      data: ['播放', '弹幕', '收藏', '分享', '硬币', '点赞', '差评'],
       bottom: '5px'
     },
     tooltip: {
@@ -57,47 +41,65 @@ function drawGraph (data) {
         show: true
       }
     }],
+    dataset: {
+      source: data.data
+    },
     series: [{
-      name: '播放量',
-      data: view,
+      type: 'line',
+      dimensions: ['datetime', 'view'],
+      name: '播放',
+      smoothMonotone: 'x',
       smooth: true,
       showSymbol: false,
-      yAxisIndex: 1,
-      type: 'line'
+      yAxisIndex: 1
     }, {
-      name: '弹幕数',
+      type: 'line',
+      dimensions: ['datetime', 'danmaku'],
+      name: '弹幕',
+      smoothMonotone: 'x',
       smooth: true,
-      data: danmaku,
       showSymbol: false,
-      type: 'line'
+      yAxisIndex: 0
     }, {
-      name: '收藏数',
+      type: 'line',
+      dimensions: ['datetime', 'coin'],
+      name: '硬币',
+      smoothMonotone: 'x',
       smooth: true,
-      data: favorite,
       showSymbol: false,
-      type: 'line'
+      yAxisIndex: 0
     }, {
-      name: '硬币数',
+      type: 'line',
+      dimensions: ['datetime', 'favorite'],
+      name: '收藏',
+      smoothMonotone: 'x',
       smooth: true,
-      data: coin,
       showSymbol: false,
-      type: 'line'
+      yAxisIndex: 0
     }, {
-      name: '点赞数',
+      type: 'line',
+      dimensions: ['datetime', 'share'],
+      name: '分享',
+      smoothMonotone: 'x',
       smooth: true,
-      data: like,
       showSymbol: false,
-      type: 'line'
+      yAxisIndex: 0
     }, {
-      name: '差评数',
-      data: dislike,
+      type: 'line',
+      dimensions: ['datetime', 'like'],
+      name: '点赞',
+      smoothMonotone: 'x',
+      smooth: true,
       showSymbol: false,
-      type: 'line'
+      yAxisIndex: 0
     }, {
-      name: '分享数',
-      data: share,
+      type: 'line',
+      dimensions: ['datetime', 'dislike'],
+      name: '差评',
+      smoothMonotone: 'x',
+      smooth: true,
       showSymbol: false,
-      type: 'line'
+      yAxisIndex: 0
     }]
   }
   return graph

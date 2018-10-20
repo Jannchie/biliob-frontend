@@ -18,8 +18,8 @@
         </div>
         <div class='card-holder'>
           <div>
-            <!-- <img src="http://placehold.it/1088x300" style="max-width:100%"> -->
             <chart theme="light" :auto-resize="true" :options="mainGraph" style="width:100%;height:500px"></chart>
+            <chart theme="light" :auto-resize="true" :options="likeRateGraph" style="width:100%;height:500px"></chart>
           </div>
         </div>
       </el-card>
@@ -28,20 +28,23 @@
 </template>
 
 <script>
-import drawMaingraph from '../charts/video-main.js'
+import drawMainGraph from '../charts/video-main.js'
+import drawLikeRateGraph from '../charts/video-likerate.js'
 export default {
   name: 'videlDetail',
   data () {
     return {
-      'videoData': {},
-      'mainGraph': {}
+      'mainGraph': Object,
+      'likeRateGraph': Object,
+      'videoData': Object
     }
   },
   methods: {},
   mounted () {
     this.axios.get('http://localhost:8081/video/' + this.$route.params.aid).then((response) => {
       this.videoData = response.data
-      this.mainGraph = drawMaingraph(this.videoData)
+      this.mainGraph = drawMainGraph(response.data)
+      this.likeRateGraph = drawLikeRateGraph(response.data)
     })
   }
 }
