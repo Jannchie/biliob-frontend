@@ -1,6 +1,6 @@
 <template>
   <el-menu :default-active="$route.path" vue-router='true' id="nav" class="el-menu-demo" mode="horizontal" router>
-    <el-menu-item class="nav-item" index="/"> Bilibili观测者 </el-menu-item>
+    <el-menu-item class="nav-item" index="/"> BiliOB观测站 </el-menu-item>
     <el-menu-item class="nav-item" index="/top">榜单</el-menu-item>
     <el-submenu index="3">
       <template slot="title">追踪</template>
@@ -30,7 +30,7 @@ export default {
   }
 
   #nav {
-    padding: 0 20%;
+    padding: 0 15%;
     border-bottom-width: 0;
     z-index: 2;
     /* background-color: #ffffff56; */

@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import SearchForm from '../components/SearchForm.vue'
+import SearchForm from '../../components/SearchForm.vue'
 export default {
   components: {
     SearchForm
@@ -74,7 +74,7 @@ export default {
     handleEdit (index, row) {
       console.log(index, row)
       this.$router.push({
-        path: '/video/' + row.aid
+        path: '/author/' + row.mid + '/video/' + row.aid
       })
     }
   }
