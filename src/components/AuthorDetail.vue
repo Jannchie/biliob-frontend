@@ -18,6 +18,7 @@
           <div>
             <!-- <img src="http://placehold.it/1088x300"> -->
             <chart theme="light" :auto-resize="true" :options="fans" style="width:100%;height:500px"></chart>
+            <chart theme="light" :auto-resize="true" :options="fansRate" style="width:100%;height:500px"></chart>
           </div>
           <div class="item">
             <el-table :data="authorData.data" height="500px">
@@ -35,17 +36,20 @@
 
 <script>
 import drawfansGraph from '../charts/author-fans.js'
+import drawfansRateGraph from '../charts/author-fans-rate.js'
 export default {
   name: 'ra',
   data () {
     return {
       'authorData': {},
-      'fans': {}
+      'fans': {},
+      'fansRate': {}
     }
   },
   mounted () {
     this.axios.get('http://localhost:8081/author/' + this.$route.params.mid).then((response) => {
       this.authorData = response.data
+      this.fansRate = drawfansRateGraph(response.data)
       this.fans = drawfansGraph(response.data)
     })
   }

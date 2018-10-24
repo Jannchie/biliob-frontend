@@ -17,11 +17,11 @@ function drawGraph (data) {
   let graph = {
     title: {
       left: 'center',
-      subtext: '粉丝数变化趋势',
-      text: data.name
+      subtext: '粉丝增长变化趋势'
+      // text: data.name
     },
     legend: {
-      data: ['粉丝数'],
+      data: ['粉丝增量'],
       bottom: '5px'
     },
     tooltip: {
@@ -30,6 +30,18 @@ function drawGraph (data) {
         type: 'cross'
       }
     },
+    grid: {
+      bottom: '120px'
+    },
+    dataZoom: [{
+      type: 'inside',
+      filterMode: 'weakFilter'
+    }, {
+      handleSize: '100%',
+      handleStyle: {
+      },
+      bottom: '50px'
+    }],
     xAxis: {
       type: 'time',
       splitLine: {
@@ -52,12 +64,11 @@ function drawGraph (data) {
         show: true
       }
     }],
-    series: [ {
+    series: [{
       name: '粉丝增量',
       data: fansRate,
       smooth: true,
       showSymbol: false,
-      yAxisIndex: 1,
       type: 'line',
       areaStyle: {}
     }]

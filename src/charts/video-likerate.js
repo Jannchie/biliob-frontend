@@ -3,21 +3,18 @@ function drawGraph (data) {
     title: [{
       left: 'center',
       subtext: '好评率'
-      // text: data.title
     }, {
       left: '25%',
       top: 'center',
       textAlign: 'center',
       text: '点赞/差评',
       color: '#123151'
-      // text: data.title
     }, {
       left: '75%',
       top: 'center',
       textAlign: 'center',
       text: '点赞/播放',
       color: '#123151'
-      // text: data.title
     }],
     tooltip: {
       trigger: 'item',

@@ -1,6 +1,6 @@
 <template>
-  <el-row style="margin:5px">
-    <el-col :span="24">
+  <el-row style="margin:5px" :gutter="20">
+    <el-col :span="16" class="main">
       <el-card class="card">
         <div slot="header">
           <div height="100px" style="overflow:auto;">
@@ -21,6 +21,25 @@
             <chart theme="light" :auto-resize="true" :options="mainGraph" style="width:100%;height:500px"></chart>
             <chart theme="light" :auto-resize="true" :options="likeRateGraph" style="width:100%;height:500px"></chart>
           </div>
+        </div>
+      </el-card>
+    </el-col>
+    <el-col :span="8" class='slider'>
+      <el-card>
+        <div>
+          <h2>作者信息</h2>
+        </div>
+      </el-card>
+      <br>
+      <el-card>
+        <div>
+          <h2>作者其他视频</h2>
+        </div>
+      </el-card>
+      <br>
+      <el-card>
+        <div>
+          <h2>其他推荐视频</h2>
         </div>
       </el-card>
     </el-col>
@@ -56,4 +75,5 @@ export default {
     height: 70px;
     border-radius: 4px;
   }
+
 </style>

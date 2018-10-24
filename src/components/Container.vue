@@ -1,14 +1,24 @@
 <template>
   <el-container>
-    <el-main style="padding: 20px 10px;">
-      <router-view></router-view>
-    </el-main>
+    <el-row>
+      <el-col :sm="{span:18,offset:3}" :xs="24">
+        <el-main>
+          <router-view></router-view>
+        </el-main>
+      </el-col>
+    </el-row>
+    <el-footer>
+      footer
+    </el-footer>
   </el-container>
 </template>
 
 <style>
-  .el-container{
-    margin: 0 auto;
-    width: 60%;
+  .el-footer{
+    width:100%;
+    background-color: #f5f5f5;
+    padding: 0;
+    margin: 0;
+    height: 100px;
   }
 </style>

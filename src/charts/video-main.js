@@ -9,11 +9,23 @@ function drawGraph (data) {
       data: ['播放', '弹幕', '收藏', '分享', '硬币', '点赞', '差评'],
       bottom: '5px'
     },
+    dataZoom: [{
+      type: 'inside',
+      filterMode: 'weakFilter'
+    }, {
+      handleSize: '100%',
+      handleStyle: {
+      },
+      bottom: '50px'
+    }],
     tooltip: {
       trigger: 'axis',
       axisPointer: {
         type: 'cross'
       }
+    },
+    grid: {
+      bottom: '120px'
     },
     xAxis: {
       type: 'time',
@@ -42,7 +54,7 @@ function drawGraph (data) {
       }
     }],
     dataset: {
-      source: data.data
+      source: data.data.reverse()
     },
     series: [{
       type: 'line',

@@ -14,6 +14,18 @@ function drawGraph (data) {
       data: ['粉丝数'],
       bottom: '5px'
     },
+    grid: {
+      bottom: '120px'
+    },
+    dataZoom: [{
+      type: 'inside',
+      filterMode: 'weakFilter'
+    }, {
+      handleSize: '100%',
+      handleStyle: {
+      },
+      bottom: '50px'
+    }],
     tooltip: {
       trigger: 'axis',
       axisPointer: {
@@ -44,7 +56,7 @@ function drawGraph (data) {
     }],
     series: [{
       name: '粉丝数',
-      data: fans,
+      data: fans.reverse(),
       smooth: true,
       showSymbol: false,
       type: 'line'
