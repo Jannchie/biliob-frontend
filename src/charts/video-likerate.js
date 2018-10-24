@@ -26,8 +26,8 @@ function drawGraph (data) {
       radius: ['50%', '70%'],
       center: ['25%', '50%'],
       data: [
-        {value: data.data[0].like, name: '点赞'},
-        {value: data.data[0].dislike, name: '差评'}
+        {value: data.data[data.data.length - 1].like, name: '点赞'},
+        {value: data.data[data.data.length - 1].dislike, name: '差评'}
       ]
     }, {
       type: 'pie',

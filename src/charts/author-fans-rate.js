@@ -1,3 +1,4 @@
+var moment = require('moment')
 function drawGraph (data) {
   let fansRate = []
   fansRate.push([data.data[data.data.length - 1]['datetime'], data.data[data.data.length - 2]['fans'] - data.data[data.data.length - 1]['fans']])
@@ -50,9 +51,7 @@ function drawGraph (data) {
       axisPointer: {
         label: {
           formatter: function (params) {
-            let date = new Date(params.value)
-            return '日期：' + (date.getFullYear()) + '-' + (date.getMonth() + 1) + '-' + date.getUTCDate() + ' ' +
-              date.getHours() + ':' + date.getMinutes()
+            return '日期：' + moment(params.value).utcOffset(0).format('YYYY-MM-DD HH:mm')
           }
         }
       }

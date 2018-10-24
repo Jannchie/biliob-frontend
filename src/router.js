@@ -4,6 +4,7 @@ import Author from './views/Author.vue'
 import Video from './views/Video.vue'
 import AuthorList from './views/AuthorList.vue'
 import VideoList from './views/VideoList.vue'
+import NotFound from './views/NotFound.vue'
 const routes = [{
   path: '/',
   component: home
@@ -23,13 +24,13 @@ const routes = [{
   path: '/author',
   component: AuthorList
 },
-{
-  path: '/video/:aid',
-  component: Video
-},
+// {
+//   path: '/video/:aid',
+//   component: Video
+// },
 {
   path: '/video',
   component: VideoList
-}
+}, {path: '*', component: NotFound}
 ]
 export default routes

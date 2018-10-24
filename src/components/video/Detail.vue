@@ -41,6 +41,15 @@ export default {
       this.mainGraph = drawMainGraph(response.data)
       this.likeRateGraph = drawLikeRateGraph(response.data)
     })
+  },
+  watch: {
+    '$route.params.aid': function (val, o) {
+      this.axios.get(this.apiurl + '/video/' + this.$route.params.aid).then((response) => {
+        this.videoData = response.data
+        this.mainGraph = drawMainGraph(response.data)
+        this.likeRateGraph = drawLikeRateGraph(response.data)
+      })
+    }
   }
 }
 </script>

@@ -20,7 +20,7 @@ export default {
   data () {
     return {
       'authorData': {},
-      'fans': 0
+      'fans': null
     }
   },
   mounted () {
