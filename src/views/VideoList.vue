@@ -8,10 +8,10 @@
 </template>
 
 <script>
-import MainLayout from '../components/MainLayout.vue'
-import VideoListMain from '../components/video_list/Main.vue'
-import VideoListAside from '../components/video_list/Aside.vue'
-import VideoListTable from '../components/video_list/Table.vue'
+import MainLayout from '../components/common/MainLayout.vue'
+import VideoListMain from '../components/main/VideoList.vue'
+import VideoListAside from '../components/aside/VideoListAside.vue'
+import VideoListTable from '../components/main/VideoListTable.vue'
 export default {
   components: {MainLayout, VideoListMain, VideoListAside, VideoListTable},
   name: 'videoList'

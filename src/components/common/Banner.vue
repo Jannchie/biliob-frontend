@@ -1,6 +1,6 @@
 <template>
-    <dir class="banner" >
-    </dir>
+    <v-parallax height="188px" class="banner" src="http://placehold.it/1920x188">
+    </v-parallax>
 </template>
 <script>
 export default {

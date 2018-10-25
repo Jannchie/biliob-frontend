@@ -1,5 +1,5 @@
-import home from './components/Home.vue'
-import login from './components/Login.vue'
+import home from './views/Home.vue'
+import login from './views/Login.vue'
 import Author from './views/Author.vue'
 import Video from './views/Video.vue'
 import AuthorList from './views/AuthorList.vue'

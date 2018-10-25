@@ -1,5 +1,5 @@
 <template>
-  <el-card class="card">
+  <v-card class="card">
     <div slot="header">
       <div height="100px" style="overflow:auto;">
         <div style="float:left;padding-right:20px">
@@ -20,7 +20,7 @@
         <chart theme="light" :auto-resize="true" :options="likeRateGraph" style="width:100%;height:500px"></chart>
       </div>
     </div>
-  </el-card>
+  </v-card>
 </template>
 
 <script>

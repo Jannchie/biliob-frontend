@@ -1,27 +1,30 @@
 <template>
-  <el-card>
+  <div style="background-color:#F8F8F8">
     <div>
       <search-form slot="search" placeholder="请输入标题、分区或者av号" @getSearchValue="getSearchValue"></search-form>
-      <el-table :data="videoList.content">
-        <el-table-column label="封面" class="face" width="140px">
-          <template slot-scope="scope">
-            <img class="face" :src="scope.row.pic">
-          </template>
-        </el-table-column>
-        <el-table-column prop="aid" label="aid" width="100%"></el-table-column>
-        <el-table-column prop="title" label="标题" width="450%"></el-table-column>
-        <el-table-column prop="author" label="作者">
-          <template slot-scope="scope">
-            <a :href="'/#/author/' + scope.row.mid">{{scope.row.author}}</a>
-          </template>
-        </el-table-column>
-        <el-table-column prop="channel" label="分区" width="100%"></el-table-column>
-        <el-table-column label="操作" width="100%">
-          <template slot-scope="scope">
-            <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">详情</el-button>
-          </template>
-        </el-table-column>
-      </el-table>
+      <v-card flat class="video-cards" ripple :to="'/author/'+eachVideo.mid+'/video/'+eachVideo.aid" v-for="eachVideo in videoList.content"
+        :key="eachVideo.aid">
+        <div style="padding:5px;display:flex">
+          <div>
+            <v-responsive :aspect-ratio="16/9">
+              <v-img style="border-radius:5px;width:120px;height:90px" :src="eachVideo.pic" :lazy-src="eachVideo.pic" />
+            </v-responsive>
+          </div>
+          <div style="float:left;margin:0 10px">
+            <div class="caption font-weight-bold">
+              {{eachVideo.title}}
+            </div>
+            <div class="caption subtext">
+              <v-icon small>mdi-account-box</v-icon>{{eachVideo.author}}
+              <v-icon small>mdi-book</v-icon>{{eachVideo.channel}}
+              <p>
+
+                <v-chip small color="green" label outline>追踪中</v-chip>
+              </p>
+            </div>
+          </div>
+        </div>
+      </v-card>
     </div>
     <div class="block">
       <center>
@@ -29,11 +32,12 @@
           v-on:current-change="changePage"></el-pagination>
       </center>
     </div>
-  </el-card>
+  </div>
 </template>
 
 <script>
-import SearchForm from '../../components/SearchForm.vue'
+import SearchForm from '../common/SearchForm.vue'
+
 export default {
   components: {
     SearchForm
@@ -71,7 +75,7 @@ export default {
         })
       }
     },
-    handleEdit (index, row) {
+    handleChoosed (index, row) {
       console.log(index, row)
       this.$router.push({
         path: '/author/' + row.mid + '/video/' + row.aid
@@ -95,9 +99,19 @@ export default {
     padding: 2px 0
   }
 
-  a {
-    color: #606266;
-    text-decoration: none;
+  p {
+    position: absolute;
+    bottom: 0px;
+    margin-bottom: 5px
+  }
+
+  .video-cards {
+    margin: 10px 2px;
+    height: 100px;
+  }
+
+  .subtext {
+    color: #444444
   }
 
 </style>

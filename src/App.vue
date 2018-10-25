@@ -1,28 +1,32 @@
 <template>
   <div id="app">
-    <Nav></Nav>
-    <Banner></Banner>
-    <Container/>
+    <v-app>
+      <nav-bar></nav-bar>
+      <Banner></Banner>
+      <Container />
+    </v-app>
   </div>
 
 </template>
 
 <script>
-
-import Nav from './components/Nav.vue'
-import Container from './components/Container.vue'
-import Banner from './components/Banner.vue'
+import NavBar from './components/common/NavBar.vue'
+import Container from './components/common/Container.vue'
+import Banner from './components/common/Banner.vue'
 
 export default {
   name: 'app',
   components: {
-    Nav, Container, Banner
+    NavBar,
+    Container,
+    Banner
   }
 }
+
 </script>
 
 <style>
-
-.el-table td{padding: 2px 0}
-
+  .el-table td {
+    padding: 2px 0
+  }
 </style>

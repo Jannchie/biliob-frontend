@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import SearchForm from '../SearchForm.vue'
+import SearchForm from '../common/SearchForm.vue'
 export default {
   name: 'authorList',
   components: {

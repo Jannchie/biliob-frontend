@@ -1,5 +1,5 @@
 <template>
-  <div class="list-main">
+  <div class="author-list-main">
     <slot name="table"></slot>
   </div>
 </template>

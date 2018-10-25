@@ -6,6 +6,5 @@
 
 <script>
 export default {
-  components: {},
-  name: 'videoList'
+  components: {}
 }

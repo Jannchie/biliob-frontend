@@ -8,10 +8,10 @@
 </template>
 
 <script>
-import MainLayout from '../components/MainLayout.vue'
-import AuthorListMain from '../components/author_list/Main.vue'
-import AuthorListAside from '../components/author_list/Aside.vue'
-import AuthorListTable from '../components/author_list/Table.vue'
+import MainLayout from '../components/common/MainLayout.vue'
+import AuthorListMain from '../components/main/AuthorList.vue'
+import AuthorListAside from '../components/aside/AuthorListAside.vue'
+import AuthorListTable from '../components/main/AuthorListTable.vue'
 export default {
   name: 'authorList',
   components: {

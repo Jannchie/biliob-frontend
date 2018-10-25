@@ -12,10 +12,10 @@
 </template>
 
 <script>
-import MainLayout from '../components/MainLayout.vue'
+import MainLayout from '../components/common/MainLayout.vue'
 import DetailMain from '../components/DetailMain.vue'
-import VideoAside from '../components/video/Aside.vue'
-import VideoDetail from '../components/video/Detail.vue'
+import VideoAside from '../components/aside/VideoAside.vue'
+import VideoDetail from '../components/main/VideoDetail.vue'
 import AuthorInfo from '../components/aside/AuthorInfo.vue'
 import OtherVideo from '../components/aside/OtherVideo.vue'
 import Recommand from '../components/aside/recommand.vue'
