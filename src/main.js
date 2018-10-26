@@ -2,13 +2,9 @@ import Vue from 'vue'
 import App from './App.vue'
 import {
   Button,
-  Input,
   Table,
-  Form,
   TableColumn,
-  Card,
-  Submenu,
-  Pagination
+  Card
 } from 'element-ui'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
@@ -38,9 +34,12 @@ import {
   VCard,
   VList,
   VParallax,
+  VAvatar,
   VResponsive,
+  VForm,
   VImg,
   VChip,
+  VTextField,
   VPagination
 } from 'vuetify'
 
@@ -48,11 +47,14 @@ Vue.use(Vuetify, {
   components: {
     VApp,
     VResponsive,
+    VForm,
+    VTextField,
     VChip,
     VBtn,
     VImg,
     VIcon,
     VParallax,
+    VAvatar,
     VToolbar,
     VCard,
     VSubheader,
@@ -70,16 +72,12 @@ Vue.component('chart', ECharts)
 Vue.config.productionTip = false
 Vue.use(VueRouter)
 Vue.use(Button)
-Vue.use(Submenu)
 Vue.use(TableColumn)
-Vue.use(Input)
 Vue.use(Table)
-Vue.use(Form)
 Vue.use(Card)
-Vue.use(Pagination)
 
 Vue.use(VueAxios, axios)
-Vue.prototype.apiurl = 'http://101.200.42.40:8081'
+Vue.prototype.apiurl = 'http://localhost:8081'
 
 const router = new VueRouter({
   routes
