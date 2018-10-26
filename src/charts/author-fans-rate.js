@@ -32,6 +32,8 @@ function drawGraph (data) {
       }
     },
     grid: {
+      left: '50px',
+      right: '10px',
       bottom: '120px'
     },
     dataZoom: [{

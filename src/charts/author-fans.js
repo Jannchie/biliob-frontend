@@ -17,7 +17,9 @@ function drawGraph (data) {
       bottom: '5px'
     },
     grid: {
-      bottom: '120px'
+      bottom: '120px',
+      right: '10px',
+      left: '50px'
     },
     dataZoom: [{
       type: 'inside',
@@ -52,7 +54,10 @@ function drawGraph (data) {
       min: 'dataMin',
       splitLine: {
         show: true
-      }
+      },
+      axisLabel: { formatter: function (params) {
+        if (params > 10000) { return Math.round((params / 10000)) + '万' }
+      }}
     }],
     series: [{
       name: '粉丝数',

@@ -27,7 +27,9 @@ function drawGraph (data) {
       }
     },
     grid: {
-      bottom: '120px'
+      bottom: '120px',
+      left: '40px',
+      right: '60px'
     },
     xAxis: {
       type: 'time',
@@ -46,12 +48,18 @@ function drawGraph (data) {
       type: 'value',
       splitLine: {
         show: true
-      }
+      },
+      axisLabel: { formatter: function (params) {
+        if (params > 10000) { return Math.round((params / 10000)) + '万' }
+      }}
     }, {
       type: 'value',
       splitLine: {
         show: true
-      }
+      },
+      axisLabel: { formatter: function (params) {
+        if (params > 10000) { return Math.round((params / 10000)) + '万' }
+      }}
     }],
     dataset: {
       source: data.data.reverse()
