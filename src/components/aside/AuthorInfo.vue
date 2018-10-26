@@ -1,19 +1,18 @@
 <template>
-    <el-card>
+    <v-card>
         <div  style="display:flex">
-
         <img class="author-face" :src="authorData.face">
         <div>
             <span>{{authorData.name}}</span>
             <span>{{authorData.level}}</span>
             <span>{{authorData.sex}}</span>
             <br>
-            <span>{{authorData.official}}</span>
-            <br>
             <span>粉丝数:{{fans}}</span>
+            <br>
+            <span>{{authorData.official}}</span>
         </div>
         </div>
-    </el-card>
+    </v-card>
 </template>
 <script>
 export default {

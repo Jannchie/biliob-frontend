@@ -1,5 +1,5 @@
 <template>
-    <v-parallax height="188px" class="banner" src="http://placehold.it/1920x188">
+    <v-parallax height="188px" class="banner">
     </v-parallax>
 </template>
 <script>
@@ -15,7 +15,7 @@ export default {
         top: 0px;
         margin: 0 0;
         padding: 0 0;
-        background-image: url("http://placehold.it/1920x188");
+        background-image: url("../../assets/tempbanner.jpg");
         height: 170px;
     }
 </style>

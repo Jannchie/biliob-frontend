@@ -1,25 +1,19 @@
 <template>
-  <el-card class="card">
-    <div slot="header">
-      <div style="float:left">
-      <img v-bind:src="authorData.face" class="face-img" width="49px" height="49px"/>
-      </div>
-      <div height="60px" style="overflow:auto;padding-left:20px">
-        <h1 style="display:inline">
-          {{ authorData.name}}
-        </h1>
-        <br>
-        mid:{{ $route.params.mid }}
+  <v-card class="card">
+    <div>
+
+      <div>
+      <v-img v-bind:src="authorData.face" class="face-img"/>
       </div>
     </div>
     <div class='card-holder'>
       <div>
         <!-- <img src="http://placehold.it/1088x300"> -->
-        <chart theme="light" :auto-resize="true" :options="fans" style="width:100%;height:500px"></chart>
-        <chart theme="light" :auto-resize="true" :options="fansRate" style="width:100%;height:500px"></chart>
+        <chart theme="light" :auto-resize="true" :options="fans" style="width:100%;height:50vh;"></chart>
+        <chart theme="light" :auto-resize="true" :options="fansRate" style="width:100%;height:50vh;"></chart>
       </div>
     </div>
-  </el-card>
+  </v-card>
 </template>
 
 <script>
@@ -47,6 +41,7 @@ export default {
 
 <style>
 .face-img{
-  border-radius: 25px;
+  width: 100%;
+  height:250px
 }
 </style>

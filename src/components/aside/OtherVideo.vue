@@ -1,5 +1,5 @@
 <template>
-  <el-card>
+  <v-card>
     <el-table :data="otherVideo" style="width: 100%">
       <el-table-column label="该作者的其他视频">
         <template slot-scope="scope">
@@ -7,7 +7,7 @@
         </template>
       </el-table-column>
     </el-table>
-  </el-card>
+  </v-card>
 </template>
 <script>
 export default {

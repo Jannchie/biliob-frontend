@@ -1,7 +1,7 @@
 <template>
-  <el-card class="card">
+  <v-card class="card">
     hahaha
-  </el-card>
+  </v-card>
 </template>
 
 <script>

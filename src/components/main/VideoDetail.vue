@@ -16,8 +16,8 @@
     </div>
     <div class='card-holder'>
       <div>
-        <chart theme="light" :auto-resize="true" :options="mainGraph" style="width:100%;height:500px"></chart>
-        <chart theme="light" :auto-resize="true" :options="likeRateGraph" style="width:100%;height:500px"></chart>
+        <chart theme="light" id="chart-1" :auto-resize="true" :options="mainGraph" style="width:100%;height:50vh;" ></chart>
+        <chart theme="light" :auto-resize="true" :options="likeRateGraph" style="width:100%;height:50vmin;"></chart>
       </div>
     </div>
   </v-card>
@@ -26,6 +26,7 @@
 <script>
 import drawMainGraph from '../../charts/video-main.js'
 import drawLikeRateGraph from '../../charts/video-likerate.js'
+
 export default {
   data () {
     return {
@@ -42,6 +43,7 @@ export default {
       this.likeRateGraph = drawLikeRateGraph(response.data)
     })
   },
+
   watch: {
     '$route.params.aid': function (val, o) {
       this.axios.get(this.apiurl + '/video/' + this.$route.params.aid).then((response) => {
@@ -58,5 +60,8 @@ export default {
   .video-img {
     height: 70px;
     border-radius: 4px;
+  }
+  .v-card {
+    padding: 0px
   }
 </style>

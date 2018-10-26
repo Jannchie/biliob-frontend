@@ -1,7 +1,7 @@
 <template>
-    <el-card>
+    <v-card>
         <h2>倾情推荐</h2>
-    </el-card>
+    </v-card>
 </template>
 <script>
 export default {
