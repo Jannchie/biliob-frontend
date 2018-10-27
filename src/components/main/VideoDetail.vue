@@ -16,7 +16,7 @@
     </div>
     <div class='card-holder'>
       <div>
-        <chart theme="light" id="chart-1" :auto-resize="true" :options="mainGraph" style="width:100%;height:50vh;" ></chart>
+        <chart theme="light" id="chart-1" :auto-resize="true" :options="mainGraph" style="width:100%;height:80vmin;" ></chart>
         <chart theme="light" :auto-resize="true" :options="likeRateGraph" style="width:100%;height:50vmin;"></chart>
       </div>
     </div>

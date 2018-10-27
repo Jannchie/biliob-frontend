@@ -1,5 +1,6 @@
 import home from './views/Home.vue'
-import login from './views/Login.vue'
+import Login from './views/Login.vue'
+import Signin from './views/Signin.vue'
 import Author from './views/Author.vue'
 import Video from './views/Video.vue'
 import AuthorList from './views/AuthorList.vue'
@@ -8,10 +9,6 @@ import NotFound from './views/NotFound.vue'
 const routes = [{
   path: '/',
   component: home
-},
-{
-  path: '/login',
-  component: login
 },
 {
   path: '/author/:mid',
@@ -24,10 +21,14 @@ const routes = [{
   path: '/author',
   component: AuthorList
 },
-// {
-//   path: '/video/:aid',
-//   component: Video
-// },
+{
+  path: '/login',
+  component: Login
+},
+{
+  path: '/signin',
+  component: Signin
+},
 {
   path: '/video',
   component: VideoList

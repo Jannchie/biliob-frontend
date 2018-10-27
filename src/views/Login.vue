@@ -1,11 +1,42 @@
 <template>
-  <div></div>
+  <v-card>
+    <v-card-title>
+      <div>
+        <h3 class="headline mb-1">登录</h3>
+        <div>这是一个第三方网站，账号信息和B站并不通用， <br>新用户请点击注册按钮注册一个账号。</div>
+      </div>
+    </v-card-title>
+    <v-card-actions >
+      <v-form v-model="valid" style="width:100%">
+        <v-text-field v-model="name" :rules="nameRules" label="用户名" required></v-text-field>
+        <v-text-field
+            :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
+            :type="show ? 'text' : 'password'"
+            name="input"
+            label="密码"
+            hint="至少6个字符"
+            class="input-group--focused"
+            @click:append="show = !show"
+          ></v-text-field>
+        <center>
+          <v-btn color="primary" :disabled="!valid" @click="submit">登录</v-btn>
+          <v-btn to="/signin">注册</v-btn>
+        </center>
+      </v-form>
+    </v-card-actions>
+  </v-card>
 </template>
-
 <script>
 export default {
+  data () {
+    return {
+      name: null,
+      password: null,
+      valid: null,
+      show: null
+    }
+  }
 }
-
 </script>
 
 <style>

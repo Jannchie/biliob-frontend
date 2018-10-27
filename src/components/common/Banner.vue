@@ -1,5 +1,5 @@
 <template>
-    <v-parallax height="188px" class="banner">
+    <v-parallax height="188px" class="banner hidden-lg-and-down">
     </v-parallax>
 </template>
 <script>

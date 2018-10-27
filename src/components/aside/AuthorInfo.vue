@@ -1,5 +1,5 @@
 <template>
-    <v-card>
+    <v-card ripple :to="'/author/'+authorData.mid">
         <div  style="display:flex">
         <img class="author-face" :src="authorData.face">
         <div>

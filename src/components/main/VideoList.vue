@@ -3,7 +3,7 @@
     <div style="background-color:#F8F8F8">
       <div>
         <v-search-form slot="search" @getSearchValue="getSearchValue" hint="请输入标题、分区或者av号"></v-search-form>
-        <v-card class="video-cards" ripple :to="'/author/'+eachVideo.mid+'/video/'+eachVideo.aid" v-for="eachVideo in videoList.content"
+        <v-card class="video-cards" ripple :href="'#/author/'+eachVideo.mid+'/video/'+eachVideo.aid" v-for="eachVideo in videoList.content"
           :key="eachVideo.aid">
           <div style="padding:5px;display:flex">
             <div>

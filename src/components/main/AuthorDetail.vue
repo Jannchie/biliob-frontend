@@ -9,8 +9,8 @@
     <div class='card-holder'>
       <div>
         <!-- <img src="http://placehold.it/1088x300"> -->
-        <chart theme="light" :auto-resize="true" :options="fans" style="width:100%;height:50vh;"></chart>
-        <chart theme="light" :auto-resize="true" :options="fansRate" style="width:100%;height:50vh;"></chart>
+        <chart theme="light" :auto-resize="true" :options="fans" style="width:100%;height:80vmin;"></chart>
+        <chart theme="light" :auto-resize="true" :options="fansRate" style="width:100%;height:80vmin;"></chart>
       </div>
     </div>
   </v-card>
