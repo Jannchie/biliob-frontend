@@ -8,12 +8,13 @@
     </v-card-title>
     <v-card-actions >
       <v-form v-model="valid" style="width:100%">
-        <v-text-field v-model="name" :rules="nameRules" label="用户名" required></v-text-field>
+        <v-text-field v-model="name" browser-autocomplete="username" label="用户名" required></v-text-field>
         <v-text-field
             :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
             :type="show ? 'text' : 'password'"
             name="input"
             label="密码"
+            browser-autocomplete="current-password"
             hint="至少6个字符"
             class="input-group--focused"
             @click:append="show = !show"
@@ -34,6 +35,11 @@ export default {
       password: null,
       valid: null,
       show: null
+    }
+  },
+  methods: {
+    submit () {
+      this.axios()
     }
   }
 }

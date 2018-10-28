@@ -1,32 +1,28 @@
 <template>
   <v-card>
+    <div>
+      <v-alert :value="alertSuccess" type="success" transition="scale-transition">
+        恭喜你！注册成功！
+      </v-alert>
+      <v-alert :value="alertError" type="error" transition="scale-transition">
+        抱歉！{{errorMsg}}!
+      </v-alert>
+    </div>
+
     <v-card-title>
       <div>
         <h3 class="headline mb-1">注册</h3>
         <div>这是一个第三方网站，账号信息和B站并不通用， <br>这是一个个人项目，所以账号的这个账号仅可用于该站点。</div>
       </div>
     </v-card-title>
-    <v-card-actions >
+    <v-card-actions>
       <v-form v-model="valid" style="width:100%">
-        <v-text-field v-model="name" :rules="[rules.required]" label="请输入用户名"></v-text-field>
-        <v-text-field
-            :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
-            :type="show ? 'text' : 'password'"
-            label="请输入密码"
-            :rules="[rules.required]"
-            @click:append="show = !show"
-            hint="至少6个字符"
-            v-model="password"
-          ></v-text-field>
-        <v-text-field
-            :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
-            :type="show ? 'text' : 'password'"
-            :rules="[rules.required, rules.min,rules.passwdMatch]"
-            name="input"
-            label="请再输入一次密码呗"
-            hint="至少6个字符"
-            @click:append="show = !show"
-          ></v-text-field>
+        <v-text-field v-model="name" :rules="[rules.required]" browser-autocomplete="username" label="请输入用户名"></v-text-field>
+        <v-text-field :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'" :type="show ? 'text' : 'password'" label="请输入密码"
+          value="" browser-autocomplete="new-password" :rules="[rules.required]" @click:append="show = !show" hint="至少6个字符"
+          v-model="password"></v-text-field>
+        <v-text-field :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'" :type="show ? 'text' : 'password'" :rules="[rules.required, rules.min,rules.passwdMatch]"
+          value="" name="input" label="请再输入一次密码呗" browser-autocomplete="new-password" hint="至少6个字符" @click:append="show = !show"></v-text-field>
         <center>
           <v-btn color="primary" :disabled="!valid" @click="submit">注册</v-btn>
         </center>
@@ -38,10 +34,13 @@
 export default {
   data () {
     return {
-      name: null,
-      password: null,
+      name: '',
+      password: '',
       valid: false,
       show: null,
+      alertSuccess: false,
+      alertError: false,
+      errorMsg: '',
       rules: {
         required: value => !!value || '你必须让我知道这个字段的值',
         min: v => v.length >= 6 || '这么短小的话，也太不安全了吧',
@@ -57,11 +56,16 @@ export default {
         name: this.name,
         password: this.password
       }).then((response) => {
-        this.videoList = response.data
+        this.alertSuccess = true
+        // TODO:等待几秒后登陆然后跳转
+      }).catch(error => {
+        this.alertError = true
+        this.errorMsg = error.response.data.msg
       })
     }
   }
 }
+
 </script>
 
 <style>

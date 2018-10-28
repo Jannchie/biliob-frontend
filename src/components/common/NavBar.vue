@@ -24,7 +24,7 @@
     </v-bottom-nav>
     <v-navigation-drawer v-model="drawer" absolute temporary>
       <v-list>
-        <v-list-tile style="background-color:#FFFFFF" v-if="login">
+        <v-list-tile style="background-color:#FFFFFF" v-if="logined">
           <v-list-tile-avatar>
             <v-icon>mdi-account</v-icon>
           </v-list-tile-avatar>
@@ -39,7 +39,7 @@
           </v-list-tile-action>
         </v-list-tile>
 
-        <v-list-tile ripple to="/login" v-if="!login">
+        <v-list-tile ripple to="/login" v-if="!logined">
           <v-list-tile-avatar>
             <v-icon>mdi-login</v-icon>
           </v-list-tile-avatar>
@@ -51,7 +51,7 @@
 
       </v-list>
 
-      <v-list v-if="login">
+      <v-list v-if="logined">
         <v-divider></v-divider>
           <v-list-tile ripple to="/faq">
           <v-list-tile-avatar>
@@ -77,7 +77,7 @@
 
       <v-list>
         <v-divider></v-divider>
-          <v-list-tile ripple to="/faq" v-if="!login">
+          <v-list-tile ripple to="/faq" v-if="!logined">
           <v-list-tile-avatar>
             <v-icon>mdi-alpha-f-box</v-icon>
           </v-list-tile-avatar>
@@ -87,7 +87,7 @@
           </v-list-tile-content>
         </v-list-tile>
         <v-divider></v-divider>
-          <v-list-tile ripple to="/faq" v-if="!login">
+          <v-list-tile ripple to="/faq" v-if="!logined">
           <v-list-tile-avatar>
             <v-icon>mdi-alpha-a-box</v-icon>
           </v-list-tile-avatar>
