@@ -1,25 +1,5 @@
 <template>
-  <el-row>
-    <el-col :span="10">
-      <el-card style="margin:5px " class="top-card">
-      </el-card>
-    </el-col>
-    <el-col :span="14">
-      <el-row>
-        <el-col :span="8" v-for="(item, index) in items" :key="index">
-          <el-card class="small-card" style="margin:5px">
-            <div>
-              <span class="card-title">{{item.name}}</span>
-              <div>
-                <time class="time">{{ item.currentDate }}</time>
-                <el-button type="text" class="card-button">详情</el-button>
-              </div>
-            </div>
-          </el-card>
-        </el-col>
-      </el-row>
-    </el-col>
-  </el-row>
+<div>首屏</div>
 </template>
 
 <script>

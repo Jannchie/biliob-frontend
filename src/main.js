@@ -1,9 +1,5 @@
 import Vue from 'vue'
 import App from './App.vue'
-import {
-  Table,
-  TableColumn
-} from 'element-ui'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueRouter from 'vue-router'
@@ -33,8 +29,8 @@ import {
   VList,
   VParallax,
   VAvatar,
-  VResponsive,
   VDivider,
+  VResponsive,
   VForm,
   VImg,
   VChip,
@@ -71,15 +67,19 @@ Vue.use(Vuetify, {
 Vue.component('chart', ECharts)
 Vue.config.productionTip = false
 Vue.use(VueRouter)
-Vue.use(TableColumn)
-Vue.use(Table)
 
 Vue.use(VueAxios, axios)
 Vue.prototype.apiurl = 'http://localhost:8081'
 // Vue.prototype.apiurl = 'http://101.200.42.40:8081'
 
 const router = new VueRouter({
-  routes
+  routes,
+  scrollBehavior (to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    }
+    return {x: 0, y: 0}
+  }
 })
 
 new Vue({

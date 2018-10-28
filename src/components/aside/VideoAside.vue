@@ -16,4 +16,7 @@ export default {
   .el-card{
     margin-top: 20px
   }
+  .aside-card{
+    margin-top: 5px
+  }
 </style>
