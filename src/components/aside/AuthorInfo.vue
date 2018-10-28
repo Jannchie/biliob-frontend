@@ -1,18 +1,20 @@
 <template>
-    <v-card>
-        <div  style="display:flex">
-        <img class="author-face" :src="authorData.face">
-        <div>
-            <span>{{authorData.name}}</span>
-            <span>{{authorData.level}}</span>
-            <span>{{authorData.sex}}</span>
-            <br>
-            <span>粉丝数:{{fans}}</span>
-            <br>
-            <span>{{authorData.official}}</span>
-        </div>
-        </div>
-    </v-card>
+  <v-card class="aside-card">
+    <v-card-text>
+    <div style="display:flex">
+      <img class="author-face" :src="authorData.face">
+      <div>
+        <span>{{authorData.name}}</span>
+        <span>Lv:{{authorData.level}}</span>
+        <span>{{authorData.sex}}</span>
+        <br>
+        <span>粉丝数:{{fans}}</span>
+        <br>
+        <span>{{authorData.official}}</span>
+      </div>
+    </div>
+    </v-card-text>
+  </v-card>
 </template>
 <script>
 export default {
@@ -29,12 +31,13 @@ export default {
     })
   }
 }
+
 </script>
 
 <style>
-.author-face{
-    height:60px;
+  .author-face {
+    height: 60px;
     border-radius: 30px;
     margin-right: 20px;
-}
+  }
 </style>
