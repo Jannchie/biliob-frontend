@@ -39,7 +39,7 @@
           </v-list-tile-action>
         </v-list-tile>
 
-        <v-list-tile ripple to="/login" v-if="!logined">
+        <v-list-tile ripple @click.stop="toLogin" v-if="!logined">
           <v-list-tile-avatar>
             <v-icon>mdi-login</v-icon>
           </v-list-tile-avatar>
@@ -52,7 +52,7 @@
 
       <v-list v-if="logined">
         <v-divider></v-divider>
-          <v-list-tile ripple to="/faq">
+          <v-list-tile ripple @click.stop="toFavoriteAuthor">
           <v-list-tile-avatar>
             <v-icon>mdi-face</v-icon>
           </v-list-tile-avatar>
@@ -62,7 +62,7 @@
           </v-list-tile-content>
         </v-list-tile>
         <v-divider></v-divider>
-          <v-list-tile ripple to="/faq">
+          <v-list-tile ripple @click.stop="toFavoriteVideo">
           <v-list-tile-avatar>
             <v-icon>mdi-star</v-icon>
           </v-list-tile-avatar>
@@ -153,6 +153,18 @@ export default {
     toAuthor () {
       this.$store.commit('toAuthor')
       this.$router.push('/author')
+    },
+    toLogin () {
+      this.$store.commit('toLogin')
+      this.$router.push('/login')
+    },
+    toFavoriteVideo () {
+      this.$store.commit('toFavoriteVideo')
+      this.$router.push('/user/video')
+    },
+    toFavoriteAuthor () {
+      this.$store.commit('toFavoriteAuthor')
+      this.$router.push('/user/author')
     }
   }
 }

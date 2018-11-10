@@ -4,6 +4,8 @@ import Signin from './views/Signin.vue'
 import Author from './views/Author.vue'
 import Video from './views/Video.vue'
 import AuthorList from './views/AuthorList.vue'
+import FavoriteAuthorList from './views/FavoriteAuthorList.vue'
+import FavoriteVideoList from './views/FavoriteVideoList.vue'
 import VideoList from './views/VideoList.vue'
 import NotFound from './views/NotFound.vue'
 const routes = [{
@@ -28,10 +30,18 @@ const routes = [{
 {
   path: '/signin',
   component: Signin
-},
-{
+}, {
   path: '/video',
   component: VideoList
-}, {path: '*', component: NotFound}
+}, {
+  path: '/user/author',
+  component: FavoriteAuthorList
+}, {
+  path: '/user/video',
+  component: FavoriteVideoList
+}, {
+  path: '*',
+  component: NotFound
+}
 ]
 export default routes
