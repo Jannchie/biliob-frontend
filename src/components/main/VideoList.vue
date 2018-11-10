@@ -53,7 +53,7 @@ export default {
     }
   },
   created () {
-    this.currentApiurl = this.apiurl + '/video'
+    this.currentApiurl = '/video'
     this.axios.get(this.currentApiurl).then((response) => {
       this.videoList = response.data
       this.face = response.data.content.pic
@@ -62,12 +62,12 @@ export default {
   methods: {
     getSearchValue (value) {
       if (!isNaN(Number(value))) {
-        this.currentApiurl = this.apiurl + '/video?aid=' + value
+        this.currentApiurl = '/video?aid=' + value
         this.axios.get(this.currentApiurl).then((response) => {
           this.videoList = response.data
         })
       } else {
-        this.currentApiurl = this.apiurl + '/video?text=' + value
+        this.currentApiurl = '/video?text=' + value
         this.axios.get(this.currentApiurl).then((response) => {
           this.videoList = response.data
         })

@@ -12,7 +12,7 @@
     <v-card-title>
       <div>
         <h3 class="headline mb-1">注册</h3>
-        <div>这是一个第三方网站，账号信息和B站并不通用， <br>这是一个个人项目，所以账号的这个账号仅可用于该站点。</div>
+        <div>这是一个第三方网站，账号信息和B站并不通用。 <br>登录后可以自主添加视频追踪，还能够实现关注UP主和收藏视频的功能（现在也许正在施工中、逃。</div>
       </div>
     </v-card-title>
     <v-card-actions>
@@ -52,12 +52,16 @@ export default {
   },
   methods: {
     submit () {
-      this.axios.post(this.apiurl + '/user', {
+      this.axios.post('/user', {
         name: this.name,
         password: this.password
       }).then((response) => {
         this.alertSuccess = true
-        // TODO:等待几秒后登陆然后跳转
+        this.alertError = false
+        this.logined = true
+        setTimeout(() => {
+          this.$router.push('/login')
+        }, 2000)
       }).catch(error => {
         this.alertError = true
         this.errorMsg = error.response.data.msg

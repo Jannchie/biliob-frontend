@@ -1,5 +1,10 @@
 <template>
   <v-card>
+    <div>
+      <v-alert :value="showAlert" :type="type" transition="scale-transition">
+        {{msg}}
+      </v-alert>
+    </div>
     <v-card-title>
       <div>
         <h3 class="headline mb-1">登录</h3>
@@ -8,12 +13,14 @@
     </v-card-title>
     <v-card-actions >
       <v-form v-model="valid" style="width:100%">
-        <v-text-field v-model="name" browser-autocomplete="username" label="用户名" required></v-text-field>
+        <v-text-field :rules="[rules.required]" v-model="name" browser-autocomplete="username" label="用户名" required></v-text-field>
         <v-text-field
             :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
             :type="show ? 'text' : 'password'"
             name="input"
             label="密码"
+            :rules="[rules.required,rules.min]"
+            v-model="password"
             browser-autocomplete="current-password"
             hint="至少6个字符"
             class="input-group--focused"
@@ -31,15 +38,34 @@
 export default {
   data () {
     return {
-      name: null,
-      password: null,
+      name: '',
+      password: '',
       valid: null,
-      show: null
+      show: null,
+      msg: '',
+      showAlert: false,
+      type: 'success',
+      rules: {
+        required: value => !!value || '你必须让我知道这个字段的值',
+        min: v => v.length >= 6 || '这么短小的话，也太不安全了吧'
+      }
     }
   },
   methods: {
     submit () {
-      this.axios()
+      this.axios.post(`${this.apiurl}/login`, {name: this.name, password: this.password}).then(response => {
+        this.msg = response.data.msg
+        this.type = 'success'
+        this.showAlert = true
+        setTimeout(() => {
+          this.$store.commit('login')
+          this.$router.push('/video')
+        }, 2000)
+      }).catch(error => {
+        this.showAlert = true
+        this.type = 'error'
+        this.msg = error.response.data.msg
+      })
     }
   }
 }

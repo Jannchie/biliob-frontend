@@ -29,7 +29,7 @@ export default {
     }
   },
   mounted () {
-    this.axios.get(this.apiurl + '/author/' + this.$route.params.mid).then((response) => {
+    this.axios.get('/author/' + this.$route.params.mid).then((response) => {
       this.authorData = response.data
       this.fansRate = drawfansRateGraph(response.data)
       this.fans = drawfansGraph(response.data)

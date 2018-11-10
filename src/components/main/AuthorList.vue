@@ -55,7 +55,7 @@ export default {
     }
   },
   created () {
-    this.currentApiurl = this.apiurl + '/author'
+    this.currentApiurl = '/author'
     this.axios.get(this.currentApiurl).then((response) => {
       this.authorList = response.data
       this.face = response.data.content.pic
@@ -64,12 +64,12 @@ export default {
   methods: {
     getSearchValue (value) {
       if (!isNaN(Number(value))) {
-        this.currentApiurl = this.apiurl + '/author?aid=' + value
+        this.currentApiurl = '/author?aid=' + value
         this.axios.get(this.currentApiurl).then((response) => {
           this.authorList = response.data
         })
       } else {
-        this.currentApiurl = this.apiurl + '/author?text=' + value
+        this.currentApiurl = '/author?text=' + value
         this.axios.get(this.currentApiurl).then((response) => {
           this.authorList = response.data
         })

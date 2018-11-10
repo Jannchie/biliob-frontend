@@ -25,6 +25,7 @@ import {
   VNavigationDrawer,
   VSubheader,
   VBottomNav,
+  VDialog,
   VCard,
   VList,
   VParallax,
@@ -38,6 +39,7 @@ import {
   VTextField,
   VPagination
 } from 'vuetify'
+import Vuex from 'vuex'
 
 Vue.use(Vuetify, {
   components: {
@@ -48,6 +50,7 @@ Vue.use(Vuetify, {
     VTextField,
     VChip,
     VDivider,
+    VDialog,
     VBtn,
     VImg,
     VIcon,
@@ -69,10 +72,44 @@ Vue.use(Vuetify, {
 Vue.component('chart', ECharts)
 Vue.config.productionTip = false
 Vue.use(VueRouter)
-
+// 让ajax携带cookie
+axios.defaults.withCredentials = true
+// 开发环境和生产环境下调用不同API
+axios.defaults.baseURL = process.env.API_ROOT
+// 始终传输json
+axios.defaults.headers = {'Content-Type': 'application/json'}
 Vue.use(VueAxios, axios)
-Vue.prototype.apiurl = 'http://localhost:8081'
-// Vue.prototype.apiurl = 'http://101.200.42.40:8081'
+// Vue.prototype.apiurl = 'http://101.200.42.40/api'
+Vue.prototype.apiurl = 'http://127.0.0.1:8081/api'
+Vue.use(Vuex)
+const store = new Vuex.Store({
+  state: {
+    logined: false,
+    currentPage: ''
+  },
+  mutations: {
+    login (state) {
+      state.logined = true
+    },
+    logout (state) {
+      state.logined = false
+    },
+    toVideo (state) {
+      state.currentPage = 'video'
+    },
+    toAuthor (state) {
+      state.currentPage = 'author'
+    }
+  },
+  getters: {
+    getLoginState: state => {
+      return state.logined
+    },
+    getCurrentPage: state => {
+      return state.currentPage
+    }
+  }
+})
 
 const router = new VueRouter({
   routes,
@@ -86,5 +123,6 @@ const router = new VueRouter({
 
 new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount('#app')
