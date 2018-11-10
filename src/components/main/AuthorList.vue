@@ -2,7 +2,7 @@
   <div class="author-list-main">
     <div style="background-color:#F8F8F8">
       <div>
-        <v-search-form slot="search" @getSearchValue="getSearchValue" hint="请输入标题、分区或者av号"></v-search-form>
+        <v-search-form slot="search" @getSearchValue="getSearchValue" hint="请输入UP主名称，或者uid"></v-search-form>
         <v-card class="author-cards" ripple :to="'/author/'+eachAuthor.mid" v-for="eachAuthor in authorList.content"
           :key="eachAuthor.mid">
           <div style="padding:5px;display:flex">
@@ -19,7 +19,7 @@
                   <v-icon v-if="eachAuthor.sex === '保密'" color="purple" small>mdi-gender-male-female</v-icon>
               </div>
               <div v-if="eachAuthor.official !== ''" class="caption subtext author-info">
-                <v-icon small>mdi-flash</v-icon>{{eachAuthor.official}}
+                <v-icon color="#FBC02D" small>mdi-flash</v-icon>{{eachAuthor.official}}
               </div>
             </div>
             <div style="color:green" v-if="eachAuthor.focus === true" class="trace-state caption subtext">
@@ -55,7 +55,7 @@ export default {
     }
   },
   created () {
-    this.currentApiurl = this.apiurl + '/author'
+    this.currentApiurl = '/author'
     this.axios.get(this.currentApiurl).then((response) => {
       this.authorList = response.data
       this.face = response.data.content.pic
@@ -64,12 +64,12 @@ export default {
   methods: {
     getSearchValue (value) {
       if (!isNaN(Number(value))) {
-        this.currentApiurl = this.apiurl + '/author?aid=' + value
+        this.currentApiurl = '/author?aid=' + value
         this.axios.get(this.currentApiurl).then((response) => {
           this.authorList = response.data
         })
       } else {
-        this.currentApiurl = this.apiurl + '/author?text=' + value
+        this.currentApiurl = '/author?text=' + value
         this.axios.get(this.currentApiurl).then((response) => {
           this.authorList = response.data
         })

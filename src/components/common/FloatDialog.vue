@@ -1,0 +1,114 @@
+<template>
+  <v-dialog v-model="dialog" width="500">
+    <float-btn @getType="getType" slot="activator"></float-btn>
+    <v-card>
+      <v-alert :value="showAlert" :type="alertType" transition="scale-transition">
+        {{msg}}
+      </v-alert>
+      <v-card-title class="headline" primary-title>
+        {{title}}
+      </v-card-title>
+      <v-form>
+        <v-card-text>
+          <v-text-field required v-model="ID" :rules="[rules.required,rules.isNumber]" :label="label"></v-text-field>
+        </v-card-text>
+        <v-divider></v-divider>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="primary" v-model="valid" flat @click="submit">
+            确认添加
+          </v-btn>
+        </v-card-actions>
+      </v-form>
+    </v-card>
+  </v-dialog>
+</template>
+<script>
+import FloatBtn from './FloatBtn.vue'
+export default {
+  components: {
+    FloatBtn
+  },
+  data () {
+    return {
+      dialog: false,
+      type: '',
+      valid: false,
+      title: '这个绿色的按钮还没有做内容，点击视频或者作者的菜单这个按钮会发生变化',
+      label: '',
+      alertType: 'success',
+      ID: null,
+      showAlert: false,
+      msg: '',
+      url: '',
+      idType: '',
+      rules: {
+        required: value => !!value || '至少要告诉我你要观测什么视频吧',
+        isNumber: value => {
+          if (!isNaN(value)) {
+            return true
+          } else {
+            return '至少请输入一串数字啊'
+          }
+        }
+      }
+    }
+  },
+  methods: {
+    getType (t) {
+      this.type = t
+      this.dialog = true
+      switch (t) {
+        case 'video':
+          this.title = '观测新的视频'
+          this.label = '请输入AV号'
+          this.url = `/video`
+          break
+        case 'author':
+          this.title = '观测新的UP主'
+          this.label = '请输入UP主ID(数字)'
+          this.url = `/author`
+          break
+      }
+    },
+    submit () {
+      switch (this.type) {
+        case 'video':
+          this.axios.post(this.url,
+            Number(this.ID)
+          )
+            .then((response) => {
+              this.msg = response.data.msg
+              this.alertType = 'success'
+              this.showAlert = true
+              setTimeout(() => { this.showAlert = false }, 1500)
+            })
+            .catch((error) => {
+              this.msg = error.response.data.msg
+              this.alertType = 'error'
+              this.showAlert = true
+              setTimeout(() => { this.showAlert = false }, 1500)
+            })
+          break
+        case 'author':
+          this.axios.post(
+            this.url, Number(this.ID))
+            .then((response) => {
+              this.msg = response.data.msg
+              this.alertType = 'success'
+              this.showAlert = true
+              setTimeout(() => { this.showAlert = false }, 1500)
+            })
+            .catch((error) => {
+              this.msg = error.response.data.msg
+              this.alertType = 'error'
+              this.showAlert = true
+              setTimeout(() => { this.showAlert = false }, 1500)
+            })
+          break
+      }
+    }
+  }
+}
+
+</script>

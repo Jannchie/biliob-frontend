@@ -3,7 +3,7 @@
     <div style="background-color:#F8F8F8">
       <div>
         <v-search-form slot="search" @getSearchValue="getSearchValue" hint="请输入标题、分区或者av号"></v-search-form>
-        <v-card class="video-cards" ripple :to="'/author/'+eachVideo.mid+'/video/'+eachVideo.aid" v-for="eachVideo in videoList.content"
+        <v-card class="video-cards" ripple :href="'#/author/'+eachVideo.mid+'/video/'+eachVideo.aid" v-for="eachVideo in videoList.content"
           :key="eachVideo.aid">
           <div style="padding:5px;display:flex">
             <div>
@@ -53,7 +53,7 @@ export default {
     }
   },
   created () {
-    this.currentApiurl = this.apiurl + '/video'
+    this.currentApiurl = '/video'
     this.axios.get(this.currentApiurl).then((response) => {
       this.videoList = response.data
       this.face = response.data.content.pic
@@ -62,12 +62,12 @@ export default {
   methods: {
     getSearchValue (value) {
       if (!isNaN(Number(value))) {
-        this.currentApiurl = this.apiurl + '/video?aid=' + value
+        this.currentApiurl = '/video?aid=' + value
         this.axios.get(this.currentApiurl).then((response) => {
           this.videoList = response.data
         })
       } else {
-        this.currentApiurl = this.apiurl + '/video?text=' + value
+        this.currentApiurl = '/video?text=' + value
         this.axios.get(this.currentApiurl).then((response) => {
           this.videoList = response.data
         })

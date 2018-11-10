@@ -16,7 +16,7 @@
     </div>
     <div class='card-holder'>
       <div>
-        <chart theme="light" id="chart-1" :auto-resize="true" :options="mainGraph" style="width:100%;height:50vh;" ></chart>
+        <chart theme="light" id="chart-1" :auto-resize="true" :options="mainGraph" style="width:100%;height:80vmin;" ></chart>
         <chart theme="light" :auto-resize="true" :options="likeRateGraph" style="width:100%;height:50vmin;"></chart>
       </div>
     </div>
@@ -37,7 +37,7 @@ export default {
   },
   methods: {},
   mounted () {
-    this.axios.get(this.apiurl + '/video/' + this.$route.params.aid).then((response) => {
+    this.axios.get('/video/' + this.$route.params.aid).then((response) => {
       this.videoData = response.data
       this.mainGraph = drawMainGraph(response.data)
       this.likeRateGraph = drawLikeRateGraph(response.data)
@@ -46,7 +46,7 @@ export default {
 
   watch: {
     '$route.params.aid': function (val, o) {
-      this.axios.get(this.apiurl + '/video/' + this.$route.params.aid).then((response) => {
+      this.axios.get('/video/' + this.$route.params.aid).then((response) => {
         this.videoData = response.data
         this.mainGraph = drawMainGraph(response.data)
         this.likeRateGraph = drawLikeRateGraph(response.data)
