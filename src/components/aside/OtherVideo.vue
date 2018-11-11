@@ -28,14 +28,14 @@ export default {
     }
   },
   mounted () {
-    this.axios.get(`${this.apiurl}/author/${this.$route.params.mid}/video/${this.$route.params.aid}`).then((
+    this.axios.get(`/author/${this.$route.params.mid}/video/${this.$route.params.aid}`).then((
       response) => {
       this.otherVideo = response.data.content
     })
   },
   watch: {
     '$route.params.aid': function () {
-      this.axios.get(`${this.apiurl}/author/${this.$route.params.mid}/video/${this.$route.params.aid}`).then((
+      this.axios.get(`/author/${this.$route.params.mid}/video/${this.$route.params.aid}`).then((
         response) => {
         this.otherVideo = response.data.content
       })

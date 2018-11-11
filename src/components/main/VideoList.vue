@@ -91,7 +91,7 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
   .face {
     position: relative;
     height: 60%;
@@ -117,7 +117,8 @@ export default {
   }
 
   .video-title {
-    max-width: 50vw;
+    font-size: 15px;
+    max-width: 50vmin;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;

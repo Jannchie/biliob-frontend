@@ -14,9 +14,7 @@
             <div style="margin-left:10px;width:100%">
               <div class="font-weight-bold author-title">
                 {{eachAuthor.name}}
-                  <v-icon v-if="eachAuthor.sex === '男'" color="blue" small>mdi-gender-male</v-icon>
-                  <v-icon v-if="eachAuthor.sex === '女'" color="pink" small>mdi-gender-female</v-icon>
-                  <v-icon v-if="eachAuthor.sex === '保密'" color="purple" small>mdi-gender-male-female</v-icon>
+                <sex-icon :sex="eachAuthor.sex"></sex-icon>
               </div>
               <div v-if="eachAuthor.official !== ''" class="caption subtext author-info">
                 <v-icon color="#FBC02D" small>mdi-flash</v-icon>{{eachAuthor.official}}
@@ -42,9 +40,10 @@
 
 <script>
 import VSearchForm from '../common/VSearchForm.vue'
+import SexIcon from '../common/SexIcon.vue'
 export default {
   components: {
-    VSearchForm
+    VSearchForm, SexIcon
   },
   name: 'authorList',
   data () {

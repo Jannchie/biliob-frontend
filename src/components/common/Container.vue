@@ -7,11 +7,3 @@
     </v-layout>
   </v-container>
 </template>
-
-<style scoped>
-  .container {
-    margin: 0px;
-    padding: 26px 5px;
-  }
-
-</style>
