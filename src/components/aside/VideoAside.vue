@@ -12,11 +12,8 @@ export default {
 }
 </script>
 
-<style>
-  .el-card{
-    margin-top: 20px
-  }
+<style scoped>
   .aside-card{
-    margin-top: 5px
+    margin-bottom: 5px
   }
 </style>

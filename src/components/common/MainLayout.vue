@@ -1,10 +1,10 @@
 <template>
   <v-container grid-list-md>
     <v-layout v-bind="binding">
-      <v-flex lg9 md12>
+      <v-flex lg8 md12>
         <slot name="main-cards"></slot>
       </v-flex>
-      <v-flex lg3 md12>
+      <v-flex lg4 md12>
         <slot name="aside-cards"></slot>
       </v-flex>
     </v-layout>

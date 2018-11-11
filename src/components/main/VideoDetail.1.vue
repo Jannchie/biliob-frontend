@@ -14,12 +14,10 @@
         </div>
       </div>
     </div>
-    <div class='card-holder'>
-      <div>
+    <v-card-text  class='card-holder'>
         <chart theme="light" id="chart-1" :auto-resize="true" :options="mainGraph" style="width:100%;height:80vmin;" ></chart>
         <chart theme="light" :auto-resize="true" :options="likeRateGraph" style="width:100%;height:50vmin;"></chart>
-      </div>
-    </div>
+    </v-card-text >
   </v-card>
 </template>
 

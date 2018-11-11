@@ -112,7 +112,7 @@ export default {
     }
   },
   mounted () {
-    this.axios.get(`${this.apiurl}/user`).then((response) => {
+    this.axios.get(`/user`).then((response) => {
       this.logined = true
       this.$store.commit('login')
       this.name = response.data.name
@@ -124,7 +124,7 @@ export default {
   },
   watch: {
     logined: function () {
-      this.axios.get(`${this.apiurl}/user`).then((response) => {
+      this.axios.get(`/user`).then((response) => {
         this.$store.commit('login')
         this.name = response.data.name
         this.role = response.data.role
