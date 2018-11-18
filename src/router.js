@@ -8,6 +8,7 @@ import FavoriteAuthorList from './views/FavoriteAuthorList.vue'
 import FavoriteVideoList from './views/FavoriteVideoList.vue'
 import VideoList from './views/VideoList.vue'
 import NotFound from './views/NotFound.vue'
+import Log from './views/Log.vue'
 const routes = [{
   path: '/',
   component: home
@@ -39,6 +40,9 @@ const routes = [{
 }, {
   path: '/user/video',
   component: FavoriteVideoList
+}, {
+  path: '/log',
+  component: Log
 }, {
   path: '*',
   component: NotFound

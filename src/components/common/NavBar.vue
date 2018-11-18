@@ -52,7 +52,7 @@
 
       <v-list v-if="logined">
         <v-divider></v-divider>
-          <v-list-tile ripple @click.stop="toFavoriteAuthor">
+        <v-list-tile ripple @click.stop="toFavoriteAuthor">
           <v-list-tile-avatar>
             <v-icon>mdi-face</v-icon>
           </v-list-tile-avatar>
@@ -62,7 +62,7 @@
           </v-list-tile-content>
         </v-list-tile>
         <v-divider></v-divider>
-          <v-list-tile ripple @click.stop="toFavoriteVideo">
+        <v-list-tile ripple @click.stop="toFavoriteVideo">
           <v-list-tile-avatar>
             <v-icon>mdi-star</v-icon>
           </v-list-tile-avatar>
@@ -76,7 +76,7 @@
 
       <v-list>
         <v-divider></v-divider>
-          <v-list-tile ripple to="/faq">
+        <v-list-tile ripple to="/faq">
           <v-list-tile-avatar>
             <v-icon>mdi-alpha-f-box</v-icon>
           </v-list-tile-avatar>
@@ -86,15 +86,29 @@
           </v-list-tile-content>
         </v-list-tile>
         <v-divider></v-divider>
-          <v-list-tile ripple to="/about">
+
+        <v-list-tile ripple to="/about">
           <v-list-tile-avatar>
             <v-icon>mdi-alpha-a-box</v-icon>
           </v-list-tile-avatar>
+
           <v-list-tile-content>
             <v-list-tile-title>关于</v-list-tile-title>
             <v-list-tile-sub-title>一些你不感兴趣的事</v-list-tile-sub-title>
           </v-list-tile-content>
         </v-list-tile>
+
+        <v-list-tile ripple  @click.stop="toLog">
+          <v-list-tile-avatar>
+            <v-icon>mdi-alpha-l-box</v-icon>
+          </v-list-tile-avatar>
+
+          <v-list-tile-content>
+            <v-list-tile-title>开发日志</v-list-tile-title>
+            <v-list-tile-sub-title>快来看看全新的功能</v-list-tile-sub-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
         <v-divider></v-divider>
       </v-list>
     </v-navigation-drawer>
@@ -135,7 +149,7 @@ export default {
   },
   computed: {
     logined: {
-    // getter
+      // getter
       get: function () {
         return this.$store.getters.getLoginState
       },
@@ -165,9 +179,14 @@ export default {
     toFavoriteAuthor () {
       this.$store.commit('toFavoriteAuthor')
       this.$router.push('/user/author')
+    },
+    toLog () {
+      this.$store.commit('toLog')
+      this.$router.push('/log')
     }
   }
 }
+
 </script>
 <style>
 
