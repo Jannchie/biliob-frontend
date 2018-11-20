@@ -27,6 +27,8 @@ export default {
           return 'mdi-cloud'
         case 'milestone':
           return 'mdi-flag'
+        case 'fix':
+          return 'mdi-bug'
         default:
           break
       }
@@ -39,6 +41,8 @@ export default {
           return 'blue'
         case 'milestone':
           return 'green'
+        case 'fix':
+          return 'red'
         default:
           break
       }
@@ -65,8 +69,13 @@ export default {
         }, {
           title: '架构更新',
           date: '2018-11-10',
-          text: '正式启用域名，使用CDN缓存，使用Ngnix反向代理。',
+          text: '正式启用域名，使用CDN缓存，使用Ngnix反向代理。\n',
           type: 'structure'
+        }, {
+          title: '错误修复',
+          date: '2018-11-20',
+          text: '修复了关注UP主呈现错误的Bug。\n',
+          type: 'fix'
         }
       ]
     }
