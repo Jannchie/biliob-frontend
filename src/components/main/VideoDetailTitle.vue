@@ -31,11 +31,12 @@ export default {
 
 <style scoped>
   .video-img {
-    height: 94px;
+    height: 96px;
     border-radius: 4px;
   }
 
   .v-card {
+    height: 96px;
     padding: 0px
   }
 
