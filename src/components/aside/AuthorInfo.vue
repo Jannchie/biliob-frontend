@@ -1,8 +1,8 @@
 <template>
-  <v-card>
+  <v-card >
     <v-card-text>
     <div style="display:flex">
-      <img class="author-face" :src="authorData.face">
+      <img class="author-face" :src="authorData.face"  ripple @click.stop="toAuthor">
       <div>
         <span>{{authorData.name}}</span>
         <level-icon :level="authorData.level"></level-icon>
@@ -35,6 +35,12 @@ export default {
       this.authorData.face = this.authorData.face.slice(5)
       this.fans = response.data.data[0].fans
     })
+  },
+  methods: {
+    toAuthor () {
+      this.$store.commit('toAuthor')
+      this.$router.push(`/author/${this.authorData.mid}`)
+    }
   }
 }
 
