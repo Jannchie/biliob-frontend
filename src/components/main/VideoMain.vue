@@ -28,6 +28,7 @@ export default {
   mounted () {
     this.axios.get('/video/' + this.$route.params.aid).then((response) => {
       this.videoData = response.data
+      this.videoData.pic = this.videoData.pic.slice(5)
       this.mainGraph = drawMainGraph(response.data)
       this.likeRateGraph = drawLikeRateGraph(response.data)
     })
@@ -37,6 +38,7 @@ export default {
     '$route.params.aid': function (val, o) {
       this.axios.get('/video/' + this.$route.params.aid).then((response) => {
         this.videoData = response.data
+        this.videoData.pic = this.videoData.pic.slice(5)
         this.mainGraph = drawMainGraph(response.data)
         this.likeRateGraph = drawLikeRateGraph(response.data)
       })

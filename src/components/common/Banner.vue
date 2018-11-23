@@ -15,7 +15,7 @@ export default {
         top: 0px;
         margin: 0 0;
         padding: 0 0;
-        background-image: url("http://placehold.it/1920x300");
+        background-image: url("//placehold.it/1920x300");
         height: 170px;
     }
 </style>
