@@ -4,16 +4,11 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueRouter from 'vue-router'
 import routes from './router'
-import ECharts from 'vue-echarts/components/ECharts'
-// import ECharts modules manually to reduce bundle size
-import 'echarts/lib/component/tooltip'
-import 'echarts/lib/component/title'
-import 'echarts/lib/component/dataZoom'
-import 'echarts/lib/chart/line'
-import 'echarts/lib/chart/pie'
+
 // import '@fortawesome/fontawesome-free/css/all.css' // Ensure you are using css-loader
 import '@mdi/font/css/materialdesignicons.css' // Ensure you are using css-loader
 import 'vuetify/src/stylus/app.styl'
+
 import {
   Vuetify,
   VApp,
@@ -41,6 +36,15 @@ import {
   VPagination
 } from 'vuetify'
 import Vuex from 'vuex'
+
+import ECharts from 'vue-echarts/components/ECharts'
+// import ECharts modules manually to reduce bundle size
+import 'echarts/lib/component/tooltip'
+import 'echarts/lib/component/title'
+import 'echarts/lib/component/dataZoom'
+import 'echarts/lib/chart/line'
+import 'echarts/lib/chart/pie'
+Vue.component('chart', ECharts)
 
 Vue.use(Vuetify, {
   components: {
@@ -70,8 +74,6 @@ Vue.use(Vuetify, {
   },
   iconfont: 'mdi'
 })
-
-Vue.component('chart', ECharts)
 Vue.config.productionTip = false
 Vue.use(VueRouter)
 // 让ajax携带cookie
@@ -81,8 +83,6 @@ axios.defaults.baseURL = process.env.API_ROOT
 // 始终传输json
 axios.defaults.headers = {'Content-Type': 'application/json'}
 Vue.use(VueAxios, axios)
-// Vue.prototype.apiurl = 'http://101.200.42.40/api'
-Vue.prototype.apiurl = 'http://127.0.0.1:8081/api'
 Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
