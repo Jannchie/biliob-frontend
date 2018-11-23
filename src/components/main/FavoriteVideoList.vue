@@ -8,7 +8,7 @@
           <div style="padding:5px;display:flex">
             <div>
               <v-responsive :aspect-ratio="16/9">
-                <v-img style="border-radius:5px;width:120px;height:80px" :src="eachVideo.pic" :lazy-src="eachVideo.pic" />
+                <v-img style="border-radius:5px;width:120px;height:80px" :src="eachVideo.pic.slice(5)" :lazy-src="eachVideo.pic.slice(5)" />
               </v-responsive>
             </div>
             <div style="margin-left:10px;width:100%">

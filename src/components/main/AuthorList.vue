@@ -8,7 +8,7 @@
           <div style="padding:5px;display:flex">
             <div>
               <v-responsive :aspect-ratio="16/9">
-                <img style="border-radius:40px;width:80px;height:80px" :src="eachAuthor.face" :lazy-src="eachAuthor.pic" />
+                <img style="border-radius:40px;width:80px;height:80px" :src="eachAuthor.face.slice(5)" />
               </v-responsive>
             </div>
             <div style="margin-left:10px;width:100%">
@@ -57,7 +57,6 @@ export default {
     this.currentApiurl = '/author'
     this.axios.get(this.currentApiurl).then((response) => {
       this.authorList = response.data
-      this.face = response.data.content.pic
     })
   },
   methods: {

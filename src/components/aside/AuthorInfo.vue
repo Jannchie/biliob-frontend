@@ -32,6 +32,7 @@ export default {
   mounted () {
     this.axios.get('/author/' + this.$route.params.mid).then((response) => {
       this.authorData = response.data
+      this.authorData.face = this.authorData.face.slice(5)
       this.fans = response.data.data[0].fans
     })
   }
