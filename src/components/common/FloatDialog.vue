@@ -9,15 +9,19 @@
         {{title}}
       </v-card-title>
       <v-form>
+          <v-card-text v-if="type==='else'">
+            如果遇到了任何问题，或者有什么意见或者建议，请联系我：jannchie@gmail.com
+          </v-card-text>
         <v-card-text>
-          <v-text-field required v-model="ID" :rules="[rules.required,rules.isNumber]" :label="label"></v-text-field>
+          <v-text-field v-if="type!='else'" required v-model="ID" :rules="[rules.required,rules.isNumber]" :label="label"></v-text-field>
         </v-card-text>
-        <v-divider></v-divider>
+        <v-divider v-if="type!='else'"></v-divider>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="primary" v-model="valid" flat @click="submit">
+          <v-btn color="primary" v-model="valid" flat @click="submit" v-if="type!='else'">
             确认添加
           </v-btn>
+
         </v-card-actions>
       </v-form>
     </v-card>
@@ -67,6 +71,9 @@ export default {
           this.title = '观测新的UP主'
           this.label = '请输入UP主ID(数字)'
           this.url = `/author`
+          break
+        case 'else':
+          this.title = 'Jannchie见齐 维护'
           break
       }
     },
