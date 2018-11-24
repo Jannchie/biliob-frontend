@@ -46,10 +46,10 @@ export default {
       alertError: false,
       errorMsg: '',
       rules: {
-        required: value => !!value || '你必须让我知道这个字段的值',
-        min: v => v.length >= 6 || '这么短小的话，也太不安全了吧',
+        required: value => !!value || '求求你告诉我吧o(╥﹏╥)o',
+        min: v => v.length >= 6 || '这么短小的话，也太不安全了吧Σ(⊙▽⊙"a',
         passwdMatch: (v) => {
-          return (v === this.password) || '貌似两次输入不一致..手速太快了？'
+          return (v === this.password) || '貌似两次输入不一致..手速太快了？罒ω罒'
         }
       }
     }
