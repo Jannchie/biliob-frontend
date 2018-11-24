@@ -38,7 +38,6 @@ export default {
   },
   methods: {
     toAuthor () {
-      this.$store.commit('toAuthor')
       this.$router.push(`/author/${this.authorData.mid}`)
     }
   }

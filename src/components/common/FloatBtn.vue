@@ -21,8 +21,7 @@
 <script>
 export default {
   data: () => ({
-    fab: false,
-    hidden: false
+    fab: false
   }),
 
   computed: {

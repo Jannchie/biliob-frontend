@@ -16,6 +16,9 @@ export default {
   name: 'authorList',
   components: {
     MainLayout, DetailMain, AuthorAside, AuthorDetail
+  },
+  mounted () {
+    this.$store.commit('toAuthor')
   }
 }
 

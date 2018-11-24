@@ -11,6 +11,9 @@ import FavoriteVideoListMain from '../components/main/FavoriteVideoList.vue'
 import VideoListAside from '../components/aside/VideoListAside.vue'
 export default {
   components: {MainLayout, FavoriteVideoListMain, VideoListAside},
-  name: 'videoList'
+  name: 'videoList',
+  mounted () {
+    this.$store.commit('toVideo')
+  }
 }
 </script>

@@ -54,6 +54,9 @@ export default {
       }
     }
   },
+  mounted () {
+    this.$store.commit('toElse')
+  },
   methods: {
     submit () {
       this.axios.post('/user', {

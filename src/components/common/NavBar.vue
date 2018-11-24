@@ -161,27 +161,21 @@ export default {
   },
   methods: {
     toVideo () {
-      this.$store.commit('toVideo')
       this.$router.push('/video')
     },
     toAuthor () {
-      this.$store.commit('toAuthor')
       this.$router.push('/author')
     },
     toLogin () {
-      this.$store.commit('toLogin')
       this.$router.push('/login')
     },
     toFavoriteVideo () {
-      this.$store.commit('toFavoriteVideo')
       this.$router.push('/user/video')
     },
     toFavoriteAuthor () {
-      this.$store.commit('toFavoriteAuthor')
       this.$router.push('/user/author')
     },
     toLog () {
-      this.$store.commit('toLog')
       this.$router.push('/log')
     }
   }

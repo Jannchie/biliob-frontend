@@ -21,6 +21,9 @@ export default {
   name: 'authorList',
   components: {
     MainLayout, DetailMain, VideoAside, VideoMain, AuthorInfo, OtherVideo, Recommand
+  },
+  mounted () {
+    this.$store.commit('toVideo')
   }
 }
 </script>

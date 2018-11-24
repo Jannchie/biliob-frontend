@@ -41,14 +41,13 @@ export default {
       showAlert: false,
       msg: '',
       url: '',
-      idType: '',
       rules: {
-        required: value => !!value || '至少要告诉我你要观测什么视频吧',
+        required: value => !!value || '告诉我要观测什么吧=（づ￣3￣）づ╭❤～',
         isNumber: value => {
           if (!isNaN(value)) {
             return true
           } else {
-            return '至少请输入一串数字啊'
+            return '请输入一串数字嘛Ծ‸Ծ'
           }
         }
       }

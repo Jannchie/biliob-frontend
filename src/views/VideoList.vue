@@ -11,6 +11,9 @@ import VideoListMain from '../components/main/VideoList.vue'
 import VideoListAside from '../components/aside/VideoListAside.vue'
 export default {
   components: {MainLayout, VideoListMain, VideoListAside},
-  name: 'videoList'
+  name: 'videoList',
+  mounted () {
+    this.$store.commit('toVideo')
+  }
 }
 </script>

@@ -101,6 +101,9 @@ const store = new Vuex.Store({
     },
     toAuthor (state) {
       state.currentPage = 'author'
+    },
+    toElse (state) {
+      state.currentPage = 'else'
     }
   },
   getters: {
