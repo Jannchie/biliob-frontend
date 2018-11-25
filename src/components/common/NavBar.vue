@@ -1,5 +1,5 @@
 <template>
-  <nav>
+  <nav >
     <v-toolbar class="toolbar">
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title>BiliOB观测者</v-toolbar-title>
@@ -8,16 +8,7 @@
         <v-btn flat @click.stop="toAuthor">UP主追踪</v-btn>
       </v-toolbar-items>
     </v-toolbar>
-    <v-bottom-nav app :active.sync="bottomNav" :value="true" color="rgba(255, 255, 255)" class="hidden-lg-and-up">
-      <v-btn color="teal" flat value="video" @click.stop="toVideo">
-        <span>视频追踪</span>
-        <v-icon>mdi-video</v-icon>
-      </v-btn>
-      <v-btn color="teal" flat value="up" @click.stop="toAuthor">
-        <span>UP主追踪</span>
-        <v-icon>mdi-account-search</v-icon>
-      </v-btn>
-    </v-bottom-nav>
+
     <v-navigation-drawer v-model="drawer" absolute temporary>
       <v-list>
         <v-list-tile style="background-color:#FFFFFF" v-if="logined">
@@ -108,6 +99,16 @@
         <v-divider></v-divider>
       </v-list>
     </v-navigation-drawer>
+        <v-bottom-nav app :active.sync="bottomNav"  :value="bottomNavShow" class="hidden-lg-and-up">
+      <v-btn color="teal" flat value="video" @click.stop="toVideo">
+        <span>视频追踪</span>
+        <v-icon>mdi-video</v-icon>
+      </v-btn>
+      <v-btn color="teal" flat value="up" @click.stop="toAuthor">
+        <span>UP主追踪</span>
+        <v-icon>mdi-account-search</v-icon>
+      </v-btn>
+    </v-bottom-nav>
   </nav>
 </template>
 <script>
@@ -118,8 +119,13 @@ export default {
       bottomNav: null,
       drawer: null,
       name: '',
-      role: ''
+      role: '',
+      bottomNavShow: true,
+      offsetTop: 0
     }
+  },
+  created () {
+    window.addEventListener('scroll', this.onScroll, true)
   },
   mounted () {
     this.axios.get(`/user`).then((response) => {
@@ -173,6 +179,14 @@ export default {
     },
     toLog () {
       this.$router.push('/log')
+    },
+    onScroll (e) {
+      if (this.offsetTop - window.pageYOffset < 0) {
+        this.bottomNavShow = false
+      } else {
+        this.bottomNavShow = true
+      }
+      this.offsetTop = window.pageYOffset
     }
   }
 }
