@@ -5,12 +5,14 @@
       <Banner></Banner>
       <float-dialog></float-dialog>
       <Container />
+      <biliob-footer />
     </v-app>
   </div>
 
 </template>
 
 <script>
+import BiliobFooter from './components/common/BiliobFooter.vue'
 import NavBar from './components/common/NavBar.vue'
 import Container from './components/common/Container.vue'
 import Banner from './components/common/Banner.vue'
@@ -22,7 +24,8 @@ export default {
     NavBar,
     Container,
     Banner,
-    FloatDialog
+    FloatDialog,
+    BiliobFooter
   }
 }
 

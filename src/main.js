@@ -33,7 +33,8 @@ import {
   VImg,
   VChip,
   VTextField,
-  VPagination
+  VPagination,
+  VFooter
 } from 'vuetify'
 import Vuex from 'vuex'
 
@@ -70,7 +71,8 @@ Vue.use(Vuetify, {
     VNavigationDrawer,
     VList,
     VBottomNav,
-    VPagination
+    VPagination,
+    VFooter
   },
   iconfont: 'mdi'
 })

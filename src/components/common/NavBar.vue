@@ -7,10 +7,6 @@
         <v-btn flat @click.stop="toVideo">视频追踪</v-btn>
         <v-btn flat @click.stop="toAuthor">UP主追踪</v-btn>
       </v-toolbar-items>
-      <v-spacer></v-spacer>
-      <v-toolbar-items class="hidden-md-and-down">
-        <v-btn flat href="#/">登陆之类的</v-btn>
-      </v-toolbar-items>
     </v-toolbar>
     <v-bottom-nav app :active.sync="bottomNav" :value="true" color="rgba(255, 255, 255)" class="hidden-lg-and-up">
       <v-btn color="teal" flat value="video" @click.stop="toVideo">
