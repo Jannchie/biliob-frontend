@@ -1,8 +1,8 @@
-var moment = require("moment");
+var format = require("date-fns/format");
+var { convertDateToUTC } = require("./util/convertDateToUTC");
 
 function drawGraph(data) {
   let fans = [];
-
   data.data.forEach(d => {
     fans.push([d["datetime"], d["fans"]]);
   });
@@ -48,9 +48,10 @@ function drawGraph(data) {
           formatter: function(params) {
             return (
               "日期：" +
-              moment(params.value)
-                .utcOffset(0)
-                .format("YYYY-MM-DD HH:mm")
+              format(
+                convertDateToUTC(new Date(params.value)),
+                "YYYY-MM-DD HH:mm"
+              )
             );
           }
         }

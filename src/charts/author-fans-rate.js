@@ -1,21 +1,29 @@
-var moment = require("moment");
+var format = require("date-fns/format");
+var { convertDateToUTC } = require("./util/convertDateToUTC");
 function drawGraph(data) {
+  var _data = data.data;
+  for (let index = 0; index < _data.length; index++) {
+    _data[index].datetime = format(
+      convertDateToUTC(new Date(_data[index].datetime)),
+      "YYYY-MM-DD"
+    );
+  }
+
   let fansRate = [];
   fansRate.push([
-    data.data[data.data.length - 1]["datetime"],
-    data.data[data.data.length - 2]["fans"] -
-      data.data[data.data.length - 1]["fans"]
+    _data[_data.length - 1]["datetime"],
+    _data[_data.length - 2]["fans"] - _data[_data.length - 1]["fans"]
   ]);
-  var lastDate = data.data[data.data.length - 1]["datetime"];
+  var lastDate = _data[_data.length - 1]["datetime"];
   let f = 0;
-  for (let i = data.data.length - 2; i >= 0; i--) {
-    if (new Date(data.data[i]["datetime"]) > new Date(lastDate) || i === 0) {
-      f += data.data[i]["fans"] - data.data[i + 1]["fans"];
-      fansRate.push([data.data[i]["datetime"], f]);
+  for (let i = _data.length - 2; i >= 0; i--) {
+    if (new Date(_data[i]["datetime"]) > new Date(lastDate) || i === 0) {
+      f += _data[i]["fans"] - _data[i + 1]["fans"];
+      fansRate.push([_data[i]["datetime"], f]);
       lastDate = new Date(lastDate).setDate(new Date(lastDate).getDate() + 1);
       f = 0;
     } else {
-      f += data.data[i]["fans"] - data.data[i + 1]["fans"];
+      f += _data[i]["fans"] - _data[i + 1]["fans"];
     }
   }
 
@@ -61,9 +69,7 @@ function drawGraph(data) {
           formatter: function(params) {
             return (
               "日期：" +
-              moment(params.value)
-                .utcOffset(0)
-                .format("YYYY-MM-DD HH:mm")
+              format(convertDateToUTC(new Date(params.value)), "YYYY-MM-DD")
             );
           }
         }
@@ -72,7 +78,13 @@ function drawGraph(data) {
     yAxis: [
       {
         type: "value",
-        min: "dataMin",
+        min: function(value) {
+          if (value.min > 0) {
+            return 0;
+          } else {
+            return value.min;
+          }
+        },
         splitLine: {
           show: true
         }
@@ -84,7 +96,7 @@ function drawGraph(data) {
         data: fansRate,
         smooth: true,
         showSymbol: false,
-        type: "line",
+        type: "bar",
         areaStyle: {}
       }
     ]

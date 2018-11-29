@@ -1,8 +1,10 @@
-var moment = require("moment");
+var parse = require("date-fns/parse");
+var format = require("date-fns/format");
+var { convertDateToUTC } = require("./util/convertDateToUTC");
 
 function drawGraph(data) {
   var datedelta =
-    moment(data.data[data.data.length - 1].datetime) - moment(data.datetime);
+    parse(data.data[data.data.length - 1].datetime) - parse(data.datetime);
   if (datedelta < 60 * 60 * 24 * 30 * 1000) {
     data.data.push({
       view: 0,
@@ -12,9 +14,10 @@ function drawGraph(data) {
       share: 0,
       favorite: 0,
       coin: 0,
-      datetime: moment(data.datetime)
-        .utcOffset(0)
-        .format("YYYY-MM-DD HH:mm")
+      datetime: format(
+        convertDateToUTC(new Date(data.datetime)),
+        "YYYY-MM-DD HH:mm"
+      )
     });
   }
   let graph = {
@@ -45,7 +48,7 @@ function drawGraph(data) {
       }
     },
     grid: {
-      top: "25vmax",
+      top: "27vmax",
       bottom: "70vmax",
       left: "40px",
       right: "60px"
@@ -60,9 +63,10 @@ function drawGraph(data) {
           formatter: function(params) {
             return (
               "日期：" +
-              moment(params.value)
-                .utcOffset(0)
-                .format("YYYY-MM-DD HH:mm")
+              format(
+                convertDateToUTC(new Date(params.value)),
+                "YYYY-MM-DD HH:mm"
+              )
             );
           }
         }
@@ -71,6 +75,8 @@ function drawGraph(data) {
     yAxis: [
       {
         type: "value",
+        name: "其他指标",
+        min: "dataMin",
         splitLine: {
           show: false
         },
@@ -84,9 +90,11 @@ function drawGraph(data) {
       },
       {
         type: "value",
+        name: "播放量",
         splitLine: {
           show: false
         },
+        min: "dataMin",
         axisLabel: {
           formatter: function(params) {
             if (params > 10000) {
@@ -97,7 +105,9 @@ function drawGraph(data) {
       }
     ],
     dataset: {
-      source: data.data.reverse()
+      source: data.data.sort((a, b) => {
+        return new Date(b.datetime) - new Date(a.datetime);
+      })
     },
     series: [
       {
