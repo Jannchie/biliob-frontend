@@ -1,16 +1,16 @@
 import Vue from "vue";
 import Router from "vue-router";
-import home from "./views/Home.vue";
-import Login from "./views/Login.vue";
-import Signin from "./views/Signin.vue";
-import Author from "./views/Author.vue";
-import Video from "./views/Video.vue";
-import AuthorList from "./views/AuthorList.vue";
-import FavoriteAuthorList from "./views/FavoriteAuthorList.vue";
-import FavoriteVideoList from "./views/FavoriteVideoList.vue";
-import VideoList from "./views/VideoList.vue";
-import NotFound from "./views/NotFound.vue";
-import Log from "./views/Log.vue";
+const home = () => import("./views/Home.vue");
+const Author = () => import("./views/Author.vue");
+const Video = () => import("./views/Video.vue");
+const AuthorList = () => import("./views/AuthorList.vue");
+const FavoriteAuthorList = () => import("./views/FavoriteAuthorList.vue");
+const FavoriteVideoList = () => import("./views/FavoriteVideoList.vue");
+const VideoList = () => import("./views/VideoList.vue");
+const Log = () => import("./views/Log.vue");
+const Login = () => import("./views/Login.vue");
+const Signin = () => import("./views/Signin.vue");
+const NotFound = () => import("./views/NotFound.vue");
 
 Vue.use(Router);
 
