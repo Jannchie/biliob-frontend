@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  props: { likeRateGraph: {} },
+  props: { likeRateGraph: Object() },
   data() {
     return {
       videoData: {}
