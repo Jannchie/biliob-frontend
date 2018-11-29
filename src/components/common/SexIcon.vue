@@ -1,13 +1,12 @@
 <template>
   <span>
-    <v-icon v-if="sex === '男'" color="blue" small>mdi-gender-male</v-icon>
-    <v-icon v-if="sex === '女'" color="pink" small>mdi-gender-female</v-icon>
-    <v-icon v-if="sex === '保密'" color="purple" small>mdi-gender-male-female</v-icon>
+    <VIcon v-if="sex === '男'" color="blue" small>mdi-gender-male</VIcon>
+    <VIcon v-if="sex === '女'" color="pink" small>mdi-gender-female</VIcon>
+    <VIcon v-if="sex === '保密'" color="purple" small>mdi-gender-male-female</VIcon>
   </span>
 </template>
 <script>
 export default {
-  props: ['sex']
-}
-
+  props: { sex: String("") }
+};
 </script>

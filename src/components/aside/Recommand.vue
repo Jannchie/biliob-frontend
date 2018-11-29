@@ -1,15 +1,9 @@
 <template>
-    <v-card>
-        <v-card-title style="padding-bottom:0px">
-            <h4>倾情推荐</h4>
-        </v-card-title>
-        <v-card-text>
-            这里可能会蹦出来一些广告（站长的视频）
-        </v-card-text>
-    </v-card>
+  <VCard>
+    <VCardTitle style="padding-bottom:0px"> <h4>倾情推荐</h4> </VCardTitle>
+    <VCardText> 这里可能会蹦出来一些广告（站长的视频） </VCardText>
+  </VCard>
 </template>
 <script>
-export default {
-
-}
+export default {};
 </script>

@@ -1,98 +1,99 @@
 <template>
-  <v-layout v-bind="binding" justify-center>
-    <v-flex lg5 md12>
-      <v-card>
+  <VLayout v-bind="binding" justify-center>
+    <VFlex lg5 md12>
+      <VCard>
         <div>
-          <v-alert :value="showAlert" :type="type" transition="scale-transition">
+          <VAlert :value="showAlert" :type="type" transition="scale-transition">
             {{msg}}
-          </v-alert>
+          </VAlert>
         </div>
-        <v-card-title>
+        <VCardTitle>
           <div>
             <h3 class="headline mb-1">登录</h3>
             <div>这是一个第三方网站，账号信息和B站并不通用， <br>新用户请点击注册按钮注册一个账号。</div>
           </div>
-        </v-card-title>
-        <v-card-actions>
-          <v-form v-model="valid" style="width:100%">
-            <v-text-field :rules="[rules.required]" v-model="name" browser-autocomplete="username" label="用户名" required></v-text-field>
-            <v-text-field :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'" :type="show ? 'text' : 'password'" name="input"
-              label="密码" :rules="[rules.required,rules.min]" v-model="password" browser-autocomplete="current-password"
-              hint="至少6个字符" class="input-group--focused" @click:append="show = !show"></v-text-field>
-            <center>
-              <v-btn color="primary" :disabled="!valid" @click="submit">登录</v-btn>
-              <v-btn to="/signin">注册</v-btn>
-            </center>
-          </v-form>
-        </v-card-actions>
-      </v-card>
-    </v-flex>
-  </v-layout>
+        </VCardTitle>
+        <VCardActions>
+          <VForm v-model="valid" style="width:100%">
+            <VTextField v-model="name" :rules="[rules.required]" browser-autocomplete="username" label="用户名" required></VTextField>
+            <VTextField v-model="password" :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'" :type="show ? 'text' : 'password'"
+              name="input" label="密码" :rules="[rules.required,rules.min]" browser-autocomplete="current-password"
+              hint="至少6个字符" class="input-group--focused" @click:append="show = !show"></VTextField>
+            <Center>
+              <VBtn color="primary" :disabled="!valid" @click="submit">登录</VBtn>
+              <VBtn to="/signin">注册</VBtn>
+            </Center>
+          </VForm>
+        </VCardActions>
+      </VCard>
+    </VFlex>
+  </VLayout>
 </template>
 <script>
 export default {
-  data () {
+  data() {
     return {
-      name: '',
-      password: '',
+      name: "",
+      password: "",
       valid: null,
       show: null,
-      msg: '',
+      msg: "",
       showAlert: false,
-      type: 'success',
+      type: "success",
       rules: {
-        required: value => !!value || '求求你告诉我吧o(╥﹏╥)o',
-        min: v => v.length >= 6 || '这么短小的嘛OωO'
+        required: value => !!value || "求求你告诉我吧o(╥﹏╥)o",
+        min: v => v.length >= 6 || "这么短小的嘛OωO"
       }
-    }
+    };
   },
-  mounted () {
-    this.$store.commit('toElse')
+  mounted() {
+    this.$store.commit("toElse");
   },
   methods: {
-    submit () {
-      this.axios.post(`/login`, {
-        name: this.name,
-        password: this.password
-      }).then(response => {
-        this.msg = response.data.msg
-        this.type = 'success'
-        this.showAlert = true
-        setTimeout(() => {
-          this.$store.commit('login')
-          this.$router.push('/video')
-        }, 2000)
-      }).catch(error => {
-        this.showAlert = true
-        this.type = 'error'
-        this.msg = error.response.data.msg
-      })
+    submit() {
+      this.axios
+        .post(`/login`, {
+          name: this.name,
+          password: this.password
+        })
+        .then(response => {
+          this.msg = response.data.msg;
+          this.type = "success";
+          this.showAlert = true;
+          setTimeout(() => {
+            this.$store.commit("login");
+            this.$router.push("/video");
+          }, 2000);
+        })
+        .catch(error => {
+          this.showAlert = true;
+          this.type = "error";
+          this.msg = error.response.data.msg;
+        });
     }
   }
-}
-
+};
 </script>
 
 <style>
-  .small-card {
-    height: 100px;
-  }
+.small-card {
+  height: 100px;
+}
 
-  .top-card {
-    height: 212px;
-  }
+.top-card {
+  height: 212px;
+}
 
-  .card-button {
-    float: right;
-  }
+.card-button {
+  float: right;
+}
 
-  .card-title {
-    font-size: 18px;
-  }
+.card-title {
+  font-size: 18px;
+}
 
-  .time {
-    font-size: 13px;
-    color: #999;
-  }
-
+.time {
+  font-size: 13px;
+  color: #999;
+}
 </style>

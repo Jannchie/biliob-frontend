@@ -1,19 +1,19 @@
 <template>
- <main-layout>
-   <video-list-main slot="main-cards"></video-list-main>
-   <video-list-aside slot="aside-cards"></video-list-aside>
- </main-layout>
+  <MainLayout>
+    <VideoListMain slot="main-cards"></VideoListMain>
+    <VideoListAside slot="aside-cards"></VideoListAside>
+  </MainLayout>
 </template>
 
 <script>
-import MainLayout from '../components/common/MainLayout.vue'
-import VideoListMain from '../components/main/VideoList.vue'
-import VideoListAside from '../components/aside/VideoListAside.vue'
+import MainLayout from "../components/common/MainLayout.vue";
+import VideoListMain from "../components/main/VideoList.vue";
+import VideoListAside from "../components/aside/VideoListAside.vue";
 export default {
-  components: {MainLayout, VideoListMain, VideoListAside},
-  name: 'videoList',
-  mounted () {
-    this.$store.commit('toVideo')
+  name: "VideoList",
+  components: { MainLayout, VideoListMain, VideoListAside },
+  mounted() {
+    this.$store.commit("toVideo");
   }
-}
+};
 </script>

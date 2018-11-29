@@ -1,9 +1,7 @@
 <template>
-  <div>
-    <slot name="detail"></slot>
-  </div>
+  <div><slot name="detail"></slot></div>
 </template>
 
 <script>
-export default {
-}
+export default {};
+</script>
