@@ -17,7 +17,23 @@ import drawLikeRateGraph from "../../charts/video-likerate.js";
 import VideoDetailTitle from "../main/VideoDetailTitle.vue";
 import VideoDetailMainGraph from "../main/VideoDetailMainGraph.vue";
 import VideoDetailLikeRateGraph from "../main/VideoDetailLikeRateGraph.vue";
-
+var deepCopy = function(o) {
+  if (o instanceof Array) {
+    var n = [];
+    for (let i = 0; i < o.length; ++i) {
+      n[i] = deepCopy(o[i]);
+    }
+    return n;
+  } else if (o instanceof Object) {
+    var no = {};
+    for (let i in o) {
+      no[i] = deepCopy(o[i]);
+    }
+    return no;
+  } else {
+    return o;
+  }
+};
 export default {
   components: {
     VideoDetailTitle,
@@ -37,8 +53,8 @@ export default {
       this.axios.get("/video/" + this.$route.params.aid).then(response => {
         this.videoData = response.data;
         this.videoData.pic = this.videoData.pic.slice(5);
-        this.mainGraph = drawMainGraph(response.data);
-        this.likeRateGraph = drawLikeRateGraph(response.data);
+        this.mainGraph = drawMainGraph(deepCopy(response.data));
+        this.likeRateGraph = drawLikeRateGraph(deepCopy(response.data));
       });
     }
   },
@@ -46,8 +62,8 @@ export default {
     this.axios.get("/video/" + this.$route.params.aid).then(response => {
       this.videoData = response.data;
       this.videoData.pic = this.videoData.pic.slice(5);
-      this.mainGraph = drawMainGraph(response.data);
-      this.likeRateGraph = drawLikeRateGraph(response.data);
+      this.mainGraph = drawMainGraph(deepCopy(response.data));
+      this.likeRateGraph = drawLikeRateGraph(deepCopy(response.data));
     });
   },
   methods: {}
