@@ -1,35 +1,14 @@
 <template>
-  <nav>
+  <nav >
     <VToolbar class="toolbar">
-      <VToolbarSideIcon
-        @click.stop="drawer = !drawer;"
-      ></VToolbarSideIcon>
+      <VToolbarSideIcon @click.stop="drawer = !drawer"></VToolbarSideIcon>
       <VToolbarTitle>BiliOB观测者</VToolbarTitle>
       <VToolbarItems class="hidden-md-and-down">
         <VBtn flat @click.stop="toVideo">视频追踪</VBtn>
         <VBtn flat @click.stop="toAuthor">UP主追踪</VBtn>
       </VToolbarItems>
-      <VSpacer></VSpacer>
-      <VToolbarItems class="hidden-md-and-down">
-        <VBtn flat href="/">登陆之类的</VBtn>
-      </VToolbarItems>
     </VToolbar>
-    <VBottomNav
-      app
-      :active.sync="bottomNav"
-      :value="true"
-      color="rgba(255, 255, 255)"
-      class="hidden-lg-and-up"
-    >
-      <VBtn color="teal" flat value="video" @click.stop="toVideo">
-        <span>视频追踪</span>
-        <VIcon>mdi-video</VIcon>
-      </VBtn>
-      <VBtn color="teal" flat value="up" @click.stop="toAuthor">
-        <span>UP主追踪</span>
-        <VIcon>mdi-account-search</VIcon>
-      </VBtn>
-    </VBottomNav>
+
     <VNavigationDrawer v-model="drawer" absolute temporary>
       <VList>
         <VListTile v-if="logined" style="background-color:#FFFFFF">
@@ -37,8 +16,8 @@
             <VIcon>mdi-account</VIcon>
           </VListTileAvatar>
           <VListTileContent>
-            <VListTileTitle>{{ name }}</VListTileTitle>
-            <VListTileSubTitle>{{ role }}</VListTileSubTitle>
+            <VListTileTitle>{{name}}</VListTileTitle>
+            <VListTileSubTitle>{{role}}</VListTileSubTitle>
           </VListTileContent>
           <VListTileAction>
             <VBtn icon ripple>
@@ -65,7 +44,6 @@
             <VListTileSubTitle>查看我关注的UP主</VListTileSubTitle>
           </VListTileContent>
         </VListTile>
-        <VDivider></VDivider>
         <VListTile ripple @click.stop="toFavoriteVideo">
           <VListTileAvatar> <VIcon>mdi-star</VIcon> </VListTileAvatar>
           <VListTileContent>
@@ -80,29 +58,28 @@
         <VDivider></VDivider>
         <VListTile ripple to="/faq">
           <VListTileAvatar>
-            <VIcon>mdi-alpha-f-box</VIcon>
+            <VIcon>mdi-help-circle-outline</VIcon>
           </VListTileAvatar>
           <VListTileContent>
             <VListTileTitle>FA♂Q</VListTileTitle>
-            <VListTileSubTitle>聊聊想让你知道的事</VListTileSubTitle>
+            <VListTileSubTitle>施工中</VListTileSubTitle>
           </VListTileContent>
         </VListTile>
-        <VDivider></VDivider>
 
         <VListTile ripple to="/about">
           <VListTileAvatar>
-            <VIcon>mdi-alpha-a-box</VIcon>
+            <VIcon>mdi-information-outline</VIcon>
           </VListTileAvatar>
 
           <VListTileContent>
             <VListTileTitle>关于</VListTileTitle>
-            <VListTileSubTitle>一些你不感兴趣的事</VListTileSubTitle>
+            <VListTileSubTitle>施工中</VListTileSubTitle>
           </VListTileContent>
         </VListTile>
 
         <VListTile ripple @click.stop="toLog">
           <VListTileAvatar>
-            <VIcon>mdi-alpha-l-box</VIcon>
+            <VIcon>mdi-developer-board</VIcon>
           </VListTileAvatar>
 
           <VListTileContent>
@@ -114,6 +91,16 @@
         <VDivider></VDivider>
       </VList>
     </VNavigationDrawer>
+        <VBottomNav app :active.sync="bottomNav"  :value="bottomNavShow" class="hidden-lg-and-up">
+      <VBtn color="teal" flat value="video" @click.stop="toVideo">
+        <span>视频追踪</span>
+        <VIcon>mdi-video</VIcon>
+      </VBtn>
+      <VBtn color="teal" flat value="up" @click.stop="toAuthor">
+        <span>UP主追踪</span>
+        <VIcon>mdi-account-search</VIcon>
+      </VBtn>
+    </VBottomNav>
   </nav>
 </template>
 <script>
@@ -124,7 +111,9 @@ export default {
       bottomNav: null,
       drawer: null,
       name: "",
-      role: ""
+      role: "",
+      bottomNavShow: true,
+      offsetTop: 0
     };
   },
   computed: {
@@ -152,6 +141,9 @@ export default {
           this.$store.commit("logout");
         });
     }
+  },
+  created() {
+    window.addEventListener("scroll", this.onScroll, true);
   },
   mounted() {
     this.axios
@@ -185,6 +177,14 @@ export default {
     },
     toLog() {
       this.$router.push("/log");
+    },
+    onScroll() {
+      if (this.offsetTop - window.pageYOffset < 0) {
+        this.bottomNavShow = false;
+      } else {
+        this.bottomNavShow = true;
+      }
+      this.offsetTop = window.pageYOffset;
     }
   }
 };

@@ -31,8 +31,8 @@ function drawGraph(data) {
         radius: ["50%", "70%"],
         center: ["25%", "50%"],
         data: [
-          { value: data.data[data.data.length - 1].like, name: "点赞" },
-          { value: data.data[data.data.length - 1].dislike, name: "差评" }
+          { value: data.data[0].like, name: "点赞" },
+          { value: data.data[0].dislike, name: "差评" }
         ]
       },
       {
@@ -41,8 +41,8 @@ function drawGraph(data) {
         radius: ["50%", "70%"],
         center: ["75%", "50%"],
         data: [
-          { value: data.data[data.data.length - 1].like, name: "点赞" },
-          { value: data.data[data.data.length - 1].view, name: "播放" }
+          { value: data.data[0].like, name: "点赞" },
+          { value: data.data[0].view, name: "播放" }
         ]
       }
     ]
