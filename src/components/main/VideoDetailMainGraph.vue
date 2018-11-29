@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  props: ["mainGraph"]
+  props: { mainGraph: Object() }
 };
 </script>
 
