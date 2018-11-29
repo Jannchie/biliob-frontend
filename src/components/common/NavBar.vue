@@ -44,7 +44,6 @@
             <VListTileSubTitle>查看我关注的UP主</VListTileSubTitle>
           </VListTileContent>
         </VListTile>
-        <VDivider></VDivider>
         <VListTile ripple @click.stop="toFavoriteVideo">
           <VListTileAvatar> <VIcon>mdi-star</VIcon> </VListTileAvatar>
           <VListTileContent>
@@ -59,29 +58,28 @@
         <VDivider></VDivider>
         <VListTile ripple to="/faq">
           <VListTileAvatar>
-            <VIcon>mdi-alpha-f-box</VIcon>
+            <VIcon>mdi-help-circle-outline</VIcon>
           </VListTileAvatar>
           <VListTileContent>
             <VListTileTitle>FA♂Q</VListTileTitle>
-            <VListTileSubTitle>聊聊想让你知道的事</VListTileSubTitle>
+            <VListTileSubTitle>施工中</VListTileSubTitle>
           </VListTileContent>
         </VListTile>
-        <VDivider></VDivider>
 
         <VListTile ripple to="/about">
           <VListTileAvatar>
-            <VIcon>mdi-alpha-a-box</VIcon>
+            <VIcon>mdi-information-outline</VIcon>
           </VListTileAvatar>
 
           <VListTileContent>
             <VListTileTitle>关于</VListTileTitle>
-            <VListTileSubTitle>一些你不感兴趣的事</VListTileSubTitle>
+            <VListTileSubTitle>施工中</VListTileSubTitle>
           </VListTileContent>
         </VListTile>
 
         <VListTile ripple @click.stop="toLog">
           <VListTileAvatar>
-            <VIcon>mdi-alpha-l-box</VIcon>
+            <VIcon>mdi-developer-board</VIcon>
           </VListTileAvatar>
 
           <VListTileContent>
