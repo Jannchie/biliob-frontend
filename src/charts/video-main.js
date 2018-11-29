@@ -20,6 +20,9 @@ function drawGraph(data) {
       )
     });
   }
+  data.data.sort((a, b) => {
+    return new Date(a.datetime) - new Date(b.datetime);
+  });
   let graph = {
     title: {
       left: "center",
@@ -29,6 +32,9 @@ function drawGraph(data) {
     legend: {
       data: ["播放", "弹幕", "收藏", "分享", "硬币", "点赞", "差评"],
       bottom: "5px"
+    },
+    dataset: {
+      source: data.data
     },
     dataZoom: [
       {
@@ -104,11 +110,7 @@ function drawGraph(data) {
         }
       }
     ],
-    dataset: {
-      source: data.data.sort((a, b) => {
-        return new Date(b.datetime) - new Date(a.datetime);
-      })
-    },
+
     series: [
       {
         type: "line",
