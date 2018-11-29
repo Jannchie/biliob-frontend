@@ -1,76 +1,77 @@
 <template>
-  <v-card class="aside-card">
-    <v-card-title style="padding-bottom:0px" column fill-height>
+  <VCard class="aside-card">
+    <VCardTitle style="padding-bottom:0px" column fill-height>
       <h4>UP主其他已追踪视频</h4>
-    </v-card-title>
-    <v-card-text  class="video-list" column>
-    </v-card-text>
-      <v-list  two-line>
+    </VCardTitle>
+    <VCardText  class="video-list" column>
+    </VCardText>
+      <VList  two-line>
         <template v-for="eachVideo in otherVideo">
-          <v-divider :key="eachVideo.title"></v-divider>
-          <v-list-tile style="width: 100%" :to="'/author/'+eachVideo.mid+'/video/'+eachVideo.aid" :key="eachVideo.aid" ripple>
-            <v-list-tile-content>
-              <v-list-tile-title>
+          <VDivider :key="eachVideo.title"></VDivider>
+          <VListTile :key="eachVideo.aid" style="width: 100%" :to="'/author/'+eachVideo.mid+'/video/'+eachVideo.aid" ripple>
+            <VListTileContent>
+              <VListTileTitle>
                 {{eachVideo.title}}
-              </v-list-tile-title>
-              <v-list-tile-sub-title class="caption subtext">分区：{{eachVideo.channel}}</v-list-tile-sub-title>
-            </v-list-tile-content>
-          </v-list-tile>
+              </VListTileTitle>
+              <VListTileSubTitle class="caption subtext">分区：{{eachVideo.channel}}</VListTileSubTitle>
+            </VListTileContent>
+          </VListTile>
         </template>
-      </v-list>
-  </v-card>
+      </VList>
+  </VCard>
 </template>
 <script>
 export default {
-  data () {
+  data() {
     return {
       otherVideo: []
-    }
-  },
-  mounted () {
-    this.axios.get(`/author/${this.$route.params.mid}/video/${this.$route.params.aid}`).then((
-      response) => {
-      this.otherVideo = response.data.content
-    })
+    };
   },
   watch: {
-    '$route.params.aid': function () {
-      this.axios.get(`/author/${this.$route.params.mid}/video/${this.$route.params.aid}`).then((
-        response) => {
-        this.otherVideo = response.data.content
-      })
+    "$route.params.aid": function() {
+      this.axios
+        .get(
+          `/author/${this.$route.params.mid}/video/${this.$route.params.aid}`
+        )
+        .then(response => {
+          this.otherVideo = response.data.content;
+        });
     }
   },
+  mounted() {
+    this.axios
+      .get(`/author/${this.$route.params.mid}/video/${this.$route.params.aid}`)
+      .then(response => {
+        this.otherVideo = response.data.content;
+      });
+  },
   methods: {
-    c () {
-      return 0
+    c() {
+      return 0;
     }
   }
-}
-
+};
 </script>
 <style>
-  .link {
-    color: slategray;
-    text-decoration: none;
+.link {
+  color: slategray;
+  text-decoration: none;
+}
 
-  }
+.link:hover {
+  color: rgb(62, 123, 184);
+}
 
-  .link:hover {
-    color: rgb(62, 123, 184)
-  }
+.aside-card {
+  margin-top: 5px;
+}
 
-  .aside-card {
-    margin-top: 5px
-  }
+.video-list {
+  padding-bottom: 0px;
+  padding-top: 0px;
+}
 
-  .video-list{
-    padding-bottom: 0px;
-    padding-top: 0px
-  }
-
-  .subtext {
-    color: #444444
-  }
-
+.subtext {
+  color: #444444;
+}
 </style>

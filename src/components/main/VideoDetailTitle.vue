@@ -1,51 +1,49 @@
 <template>
-  <v-card>
+  <VCard>
     <div>
       <div style="display:flex">
         <div>
           <img class="video-img" style="vertical-align: bottom" :src="pic" />
         </div>
-        <v-card-text style="width:55%">
+        <VCardText style="width:55%">
           <div class="font-weight-bold video-title">
             {{title}}
           </div>
           <br>
           aid:{{ $route.params.aid }}
-        </v-card-text>
+        </VCardText>
       </div>
     </div>
-  </v-card>
+  </VCard>
 </template>
 
 <script>
 export default {
-  data () {
+  props: { title: String(""), pic: String("") },
+  data() {
     return {
-      'name': {}
-    }
-  },
-  props: ['title', 'pic']
-}
-
+      name: {}
+    };
+  }
+};
 </script>
 
 <style scoped>
-  .video-img {
-    height: 96px;
-    border-radius: 4px;
-  }
+.video-img {
+  height: 96px;
+  border-radius: 4px;
+}
 
-  .v-card {
-    height: 96px;
-    padding: 0px
-  }
+.v-card {
+  height: 96px;
+  padding: 0px;
+}
 
-  .video-title {
-    max-width: 50vmin;
-    font-size: 16px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
-
+.video-title {
+  max-width: 50vmin;
+  font-size: 16px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 </style>

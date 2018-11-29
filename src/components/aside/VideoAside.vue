@@ -9,11 +9,11 @@
 <script>
 export default {
   components: {}
-}
+};
 </script>
 
 <style scoped>
-  .aside-card{
-    margin-bottom: 5px
-  }
+.aside-card {
+  margin-bottom: 5px;
+}
 </style>
