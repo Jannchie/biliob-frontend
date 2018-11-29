@@ -1,36 +1,33 @@
 <template>
   <div id="app">
-    <v-app>
-      <nav-bar></nav-bar>
+    <VApp>
+      <NavBar></NavBar>
       <Banner></Banner>
-      <float-dialog></float-dialog>
+      <FloatDialog></FloatDialog>
       <Container />
-    </v-app>
+    </VApp>
   </div>
-
 </template>
 
 <script>
-import NavBar from './components/common/NavBar.vue'
-import Container from './components/common/Container.vue'
-import Banner from './components/common/Banner.vue'
-import FloatDialog from './components/common/FloatDialog.vue'
+import NavBar from "./components/common/NavBar.vue";
+import Container from "./components/common/Container.vue";
+import Banner from "./components/common/Banner.vue";
+import FloatDialog from "./components/common/FloatDialog.vue";
 
 export default {
-  name: 'app',
+  name: "App",
   components: {
     NavBar,
     Container,
     Banner,
     FloatDialog
   }
-}
-
+};
 </script>
 
 <style>
-  .el-table td {
-    padding: 2px 0
-  }
-
+.el-table td {
+  padding: 2px 0;
+}
 </style>

@@ -1,187 +1,191 @@
 <template>
   <nav>
-    <v-toolbar class="toolbar">
-      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title>BiliOB观测者</v-toolbar-title>
-      <v-toolbar-items class="hidden-md-and-down">
-        <v-btn flat @click.stop="toVideo">视频追踪</v-btn>
-        <v-btn flat @click.stop="toAuthor">UP主追踪</v-btn>
-      </v-toolbar-items>
-      <v-spacer></v-spacer>
-      <v-toolbar-items class="hidden-md-and-down">
-        <v-btn flat href="#/">登陆之类的</v-btn>
-      </v-toolbar-items>
-    </v-toolbar>
-    <v-bottom-nav app :active.sync="bottomNav" :value="true" color="rgba(255, 255, 255)" class="hidden-lg-and-up">
-      <v-btn color="teal" flat value="video" @click.stop="toVideo">
+    <VToolbar class="toolbar">
+      <VToolbarSideIcon
+        @click.stop="drawer = !drawer;"
+      ></VToolbarSideIcon>
+      <VToolbarTitle>BiliOB观测者</VToolbarTitle>
+      <VToolbarItems class="hidden-md-and-down">
+        <VBtn flat @click.stop="toVideo">视频追踪</VBtn>
+        <VBtn flat @click.stop="toAuthor">UP主追踪</VBtn>
+      </VToolbarItems>
+      <VSpacer></VSpacer>
+      <VToolbarItems class="hidden-md-and-down">
+        <VBtn flat href="/">登陆之类的</VBtn>
+      </VToolbarItems>
+    </VToolbar>
+    <VBottomNav
+      app
+      :active.sync="bottomNav"
+      :value="true"
+      color="rgba(255, 255, 255)"
+      class="hidden-lg-and-up"
+    >
+      <VBtn color="teal" flat value="video" @click.stop="toVideo">
         <span>视频追踪</span>
-        <v-icon>mdi-video</v-icon>
-      </v-btn>
-      <v-btn color="teal" flat value="up" @click.stop="toAuthor">
+        <VIcon>mdi-video</VIcon>
+      </VBtn>
+      <VBtn color="teal" flat value="up" @click.stop="toAuthor">
         <span>UP主追踪</span>
-        <v-icon>mdi-account-search</v-icon>
-      </v-btn>
-    </v-bottom-nav>
-    <v-navigation-drawer v-model="drawer" absolute temporary>
-      <v-list>
-        <v-list-tile style="background-color:#FFFFFF" v-if="logined">
-          <v-list-tile-avatar>
-            <v-icon>mdi-account</v-icon>
-          </v-list-tile-avatar>
-          <v-list-tile-content>
-            <v-list-tile-title>{{name}}</v-list-tile-title>
-            <v-list-tile-sub-title>{{role}}</v-list-tile-sub-title>
-          </v-list-tile-content>
-          <v-list-tile-action>
-            <v-btn icon ripple>
-              <v-icon color="grey lighten-1">mdi-settings</v-icon>
-            </v-btn>
-          </v-list-tile-action>
-        </v-list-tile>
+        <VIcon>mdi-account-search</VIcon>
+      </VBtn>
+    </VBottomNav>
+    <VNavigationDrawer v-model="drawer" absolute temporary>
+      <VList>
+        <VListTile v-if="logined" style="background-color:#FFFFFF">
+          <VListTileAvatar>
+            <VIcon>mdi-account</VIcon>
+          </VListTileAvatar>
+          <VListTileContent>
+            <VListTileTitle>{{ name }}</VListTileTitle>
+            <VListTileSubTitle>{{ role }}</VListTileSubTitle>
+          </VListTileContent>
+          <VListTileAction>
+            <VBtn icon ripple>
+              <VIcon color="grey lighten-1">mdi-settings</VIcon>
+            </VBtn>
+          </VListTileAction>
+        </VListTile>
 
-        <v-list-tile ripple @click.stop="toLogin" v-if="!logined">
-          <v-list-tile-avatar>
-            <v-icon>mdi-login</v-icon>
-          </v-list-tile-avatar>
-          <v-list-tile-content>
-            <v-list-tile-title>登录</v-list-tile-title>
-            <v-list-tile-sub-title>或者注册？</v-list-tile-sub-title>
-          </v-list-tile-content>
-        </v-list-tile>
-      </v-list>
+        <VListTile v-if="!logined" ripple @click.stop="toLogin">
+          <VListTileAvatar> <VIcon>mdi-login</VIcon> </VListTileAvatar>
+          <VListTileContent>
+            <VListTileTitle>登录</VListTileTitle>
+            <VListTileSubTitle>或者注册？</VListTileSubTitle>
+          </VListTileContent>
+        </VListTile>
+      </VList>
 
-      <v-list v-if="logined">
-        <v-divider></v-divider>
-        <v-list-tile ripple @click.stop="toFavoriteAuthor">
-          <v-list-tile-avatar>
-            <v-icon>mdi-face</v-icon>
-          </v-list-tile-avatar>
-          <v-list-tile-content>
-            <v-list-tile-title>我的关注</v-list-tile-title>
-            <v-list-tile-sub-title>查看我关注的UP主</v-list-tile-sub-title>
-          </v-list-tile-content>
-        </v-list-tile>
-        <v-divider></v-divider>
-        <v-list-tile ripple @click.stop="toFavoriteVideo">
-          <v-list-tile-avatar>
-            <v-icon>mdi-star</v-icon>
-          </v-list-tile-avatar>
-          <v-list-tile-content>
-            <v-list-tile-title>我的收藏</v-list-tile-title>
-            <v-list-tile-sub-title>查看我关注的视频</v-list-tile-sub-title>
-          </v-list-tile-content>
-        </v-list-tile>
-        <v-divider></v-divider>
-      </v-list>
+      <VList v-if="logined">
+        <VDivider></VDivider>
+        <VListTile ripple @click.stop="toFavoriteAuthor">
+          <VListTileAvatar> <VIcon>mdi-face</VIcon> </VListTileAvatar>
+          <VListTileContent>
+            <VListTileTitle>我的关注</VListTileTitle>
+            <VListTileSubTitle>查看我关注的UP主</VListTileSubTitle>
+          </VListTileContent>
+        </VListTile>
+        <VDivider></VDivider>
+        <VListTile ripple @click.stop="toFavoriteVideo">
+          <VListTileAvatar> <VIcon>mdi-star</VIcon> </VListTileAvatar>
+          <VListTileContent>
+            <VListTileTitle>我的收藏</VListTileTitle>
+            <VListTileSubTitle>查看我关注的视频</VListTileSubTitle>
+          </VListTileContent>
+        </VListTile>
+        <VDivider></VDivider>
+      </VList>
 
-      <v-list>
-        <v-divider></v-divider>
-        <v-list-tile ripple to="/faq">
-          <v-list-tile-avatar>
-            <v-icon>mdi-alpha-f-box</v-icon>
-          </v-list-tile-avatar>
-          <v-list-tile-content>
-            <v-list-tile-title>FA♂Q</v-list-tile-title>
-            <v-list-tile-sub-title>聊聊想让你知道的事</v-list-tile-sub-title>
-          </v-list-tile-content>
-        </v-list-tile>
-        <v-divider></v-divider>
+      <VList>
+        <VDivider></VDivider>
+        <VListTile ripple to="/faq">
+          <VListTileAvatar>
+            <VIcon>mdi-alpha-f-box</VIcon>
+          </VListTileAvatar>
+          <VListTileContent>
+            <VListTileTitle>FA♂Q</VListTileTitle>
+            <VListTileSubTitle>聊聊想让你知道的事</VListTileSubTitle>
+          </VListTileContent>
+        </VListTile>
+        <VDivider></VDivider>
 
-        <v-list-tile ripple to="/about">
-          <v-list-tile-avatar>
-            <v-icon>mdi-alpha-a-box</v-icon>
-          </v-list-tile-avatar>
+        <VListTile ripple to="/about">
+          <VListTileAvatar>
+            <VIcon>mdi-alpha-a-box</VIcon>
+          </VListTileAvatar>
 
-          <v-list-tile-content>
-            <v-list-tile-title>关于</v-list-tile-title>
-            <v-list-tile-sub-title>一些你不感兴趣的事</v-list-tile-sub-title>
-          </v-list-tile-content>
-        </v-list-tile>
+          <VListTileContent>
+            <VListTileTitle>关于</VListTileTitle>
+            <VListTileSubTitle>一些你不感兴趣的事</VListTileSubTitle>
+          </VListTileContent>
+        </VListTile>
 
-        <v-list-tile ripple  @click.stop="toLog">
-          <v-list-tile-avatar>
-            <v-icon>mdi-alpha-l-box</v-icon>
-          </v-list-tile-avatar>
+        <VListTile ripple @click.stop="toLog">
+          <VListTileAvatar>
+            <VIcon>mdi-alpha-l-box</VIcon>
+          </VListTileAvatar>
 
-          <v-list-tile-content>
-            <v-list-tile-title>开发日志</v-list-tile-title>
-            <v-list-tile-sub-title>快来看看全新的功能</v-list-tile-sub-title>
-          </v-list-tile-content>
-        </v-list-tile>
+          <VListTileContent>
+            <VListTileTitle>开发日志</VListTileTitle>
+            <VListTileSubTitle>快来看看全新的功能</VListTileSubTitle>
+          </VListTileContent>
+        </VListTile>
 
-        <v-divider></v-divider>
-      </v-list>
-    </v-navigation-drawer>
+        <VDivider></VDivider>
+      </VList>
+    </VNavigationDrawer>
   </nav>
 </template>
 <script>
 export default {
-  name: 'nav-bar',
-  data () {
+  name: "NavBar",
+  data() {
     return {
       bottomNav: null,
       drawer: null,
-      name: '',
-      role: ''
-    }
-  },
-  mounted () {
-    this.axios.get(`/user`).then((response) => {
-      this.logined = true
-      this.$store.commit('login')
-      this.name = response.data.name
-      this.role = response.data.role
-    }).catch(e => {
-      this.$store.commit('logout')
-      this.logined = false
-    })
-  },
-  watch: {
-    logined: function () {
-      this.axios.get(`/user`).then((response) => {
-        this.$store.commit('login')
-        this.name = response.data.name
-        this.role = response.data.role
-      }).catch(e => {
-        this.$store.commit('logout')
-      })
-    }
+      name: "",
+      role: ""
+    };
   },
   computed: {
     logined: {
       // getter
-      get: function () {
-        return this.$store.getters.getLoginState
+      get: function() {
+        return this.$store.getters.getLoginState;
       },
       // setter
-      set: function (newValue) {
-        this.$store.commit('logout')
+      set: function() {
+        this.$store.commit("logout");
       }
     }
   },
+  watch: {
+    logined: function() {
+      this.axios
+        .get(`/user`)
+        .then(response => {
+          this.$store.commit("login");
+          this.name = response.data.name;
+          this.role = response.data.role;
+        })
+        .catch(() => {
+          this.$store.commit("logout");
+        });
+    }
+  },
+  mounted() {
+    this.axios
+      .get(`/user`)
+      .then(response => {
+        this.logined = true;
+        this.$store.commit("login");
+        this.name = response.data.name;
+        this.role = response.data.role;
+      })
+      .catch(() => {
+        this.$store.commit("logout");
+        this.logined = false;
+      });
+  },
   methods: {
-    toVideo () {
-      this.$router.push('/video')
+    toVideo() {
+      this.$router.push("/video");
     },
-    toAuthor () {
-      this.$router.push('/author')
+    toAuthor() {
+      this.$router.push("/author");
     },
-    toLogin () {
-      this.$router.push('/login')
+    toLogin() {
+      this.$router.push("/login");
     },
-    toFavoriteVideo () {
-      this.$router.push('/user/video')
+    toFavoriteVideo() {
+      this.$router.push("/user/video");
     },
-    toFavoriteAuthor () {
-      this.$router.push('/user/author')
+    toFavoriteAuthor() {
+      this.$router.push("/user/author");
     },
-    toLog () {
-      this.$router.push('/log')
+    toLog() {
+      this.$router.push("/log");
     }
   }
-}
-
+};
 </script>
-<style>
-
-</style>

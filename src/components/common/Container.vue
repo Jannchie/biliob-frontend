@@ -1,9 +1,7 @@
 <template>
-  <v-container justify-center>
-    <v-layout justify-center>
-      <v-flex lg10 md12>
-        <router-view></router-view>
-      </v-flex>
-    </v-layout>
-  </v-container>
+  <VContainer justify-center>
+    <VLayout justify-center>
+      <VFlex lg10 md12><RouterView /></VFlex>
+    </VLayout>
+  </VContainer>
 </template>

@@ -1,25 +1,27 @@
 <template>
- <main-layout>
-   <detail-main slot="main-cards">
-    <author-detail slot="detail"></author-detail>
-   </detail-main>
-   <author-aside slot="aside-cards"></author-aside>
- </main-layout>
+  <MainLayout>
+    <DetailMain slot="main-cards">
+      <AuthorDetail slot="detail"></AuthorDetail>
+    </DetailMain>
+    <AuthorAside slot="aside-cards"></AuthorAside>
+  </MainLayout>
 </template>
 
 <script>
-import MainLayout from '../components/common/MainLayout.vue'
-import DetailMain from '../components/DetailMain.vue'
-import AuthorAside from '../components/aside/AuthorDetailAside.vue'
-import AuthorDetail from '../components/main/AuthorDetail.vue'
+import MainLayout from "../components/common/MainLayout.vue";
+import DetailMain from "../components/DetailMain.vue";
+import AuthorAside from "../components/aside/AuthorDetailAside.vue";
+import AuthorDetail from "../components/main/AuthorDetail.vue";
 export default {
-  name: 'authorList',
+  name: "AuthorList",
   components: {
-    MainLayout, DetailMain, AuthorAside, AuthorDetail
+    MainLayout,
+    DetailMain,
+    AuthorAside,
+    AuthorDetail
   },
-  mounted () {
-    this.$store.commit('toAuthor')
+  mounted() {
+    this.$store.commit("toAuthor");
   }
-}
-
+};
 </script>

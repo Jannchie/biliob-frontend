@@ -1,6 +1,12 @@
 .DS_Store
-node_modules/
-/dist/
+node_modules
+/dist
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -12,4 +18,4 @@ yarn-error.log*
 *.ntvs*
 *.njsproj
 *.sln
-src/assets/c694a5cc0761ffb2965a0a87954ede38d7e5770c.png
+*.sw*
