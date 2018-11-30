@@ -1,5 +1,5 @@
 <template>
-  <VParallax height="188px" class="banner hidden-lg-and-down"> </VParallax>
+  <img height="188px" class="banner hidden-lg-and-down"/>
 </template>
 <script>
 export default {
@@ -14,7 +14,6 @@ export default {
   top: 0px;
   margin: 0 0;
   padding: 0 0;
-  background-image: url("//placehold.it/1920x300");
-  height: 170px;
+  background-image: url("//placehold.it/1920x188");
 }
 </style>
