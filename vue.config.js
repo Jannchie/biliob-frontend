@@ -17,10 +17,9 @@ module.exports = {
     ]
   },
   pwa: {
-    themeColor: "#393C3C"
+    themeColor: "#383e44",
+    name: "BiliOB观测者",
+    msTileColor: "#383e44"
   },
-  transpileDependencies: [/\bvue-echarts\b/, /\bresize-detector\b/],
-  chainWebpack: config => {
-    config.entry("index").add("babel-polyfill");
-  }
+  transpileDependencies: [/\bvue-echarts\b/, /\bresize-detector\b/]
 };
