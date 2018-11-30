@@ -1,4 +1,5 @@
-# temp
+[![Build Status](https://www.travis-ci.org/Jannchie/biliob-frontend.svg?branch=master)](https://www.travis-ci.org/Jannchie/biliob-frontend)
+# biliob-frontend
 
 ## Project setup
 ```
