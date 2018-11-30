@@ -1,6 +1,6 @@
 {
-  "name": "temp",
-  "short_name": "temp",
+  "name": "BilioOB观测者",
+  "short_name": "BilioOB",
   "icons": [
     {
       "src": "./img/icons/android-chrome-192x192.png",
@@ -15,6 +15,6 @@
   ],
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#4DBA87"
+  "background_color": "#383e44",
+  "theme_color": "#383e44"
 }

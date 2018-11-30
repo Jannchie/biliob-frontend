@@ -4,7 +4,7 @@
       <div>
         <VSearchForm slot="search" hint="请输入标题、分区或者av号" @getSearchValue="getSearchValue"></VSearchForm>
         <VCard v-for="eachVideo in videoList.content" :key="eachVideo.aid" class="video-cards" ripple
-          :href="'/author/'+eachVideo.mid+'/video/'+eachVideo.aid">
+          :to="'/author/'+eachVideo.mid+'/video/'+eachVideo.aid">
           <div style="padding:5px;display:flex">
             <div>
               <VResponsive :aspect-ratio="16/9">

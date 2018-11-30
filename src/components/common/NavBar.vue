@@ -1,11 +1,11 @@
 <template>
   <nav >
-    <VToolbar class="toolbar">
-      <VToolbarSideIcon @click.stop="drawer = !drawer"></VToolbarSideIcon>
-      <VToolbarTitle>BiliOB观测者</VToolbarTitle>
+    <VToolbar class="toolbar" dense>
+      <VToolbarSideIcon class="toolbar-item" dark @click.stop="drawer = !drawer"></VToolbarSideIcon>
+      <VToolbarTitle class="toolbar-title"><img class="logo" src="../../../public/img/icons/android-chrome-192x192.png"> BiliOB观测者</VToolbarTitle>
       <VToolbarItems class="hidden-md-and-down">
-        <VBtn flat @click.stop="toVideo">视频追踪</VBtn>
-        <VBtn flat @click.stop="toAuthor">UP主追踪</VBtn>
+        <VBtn class="toolbar-item" flat dark @click.stop="toVideo">视频追踪</VBtn>
+        <VBtn class="toolbar-item" flat dark @click.stop="toAuthor">UP主追踪</VBtn>
       </VToolbarItems>
     </VToolbar>
 
@@ -189,3 +189,26 @@ export default {
   }
 };
 </script>
+<style scoped>
+.toolbar {
+  z-index: 1;
+  background-color: #383e44;
+  background: -webkit-linear-gradient(#383e44, rgb(44, 44, 44));
+  background: -o-linear-gradient(#383e44, rgb(44, 44, 44));
+  background: -moz-linear-gradient(#383e44, rgb(44, 44, 44));
+  background: linear-gradient(#383e44, rgb(44, 44, 44));
+  color: #ffffff;
+}
+
+.logo {
+  width: 32px;
+  vertical-align: bottom;
+}
+
+.v-list__tile__sub-title {
+  font-weight: 400;
+}
+.v-list__tile__title {
+  font-weight: 400;
+}
+</style>
