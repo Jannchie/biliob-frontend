@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "babel-polyfill": "^6.26.0",
     "date-fns": "^1.29.0",
     "register-service-worker": "^1.5.2",
     "vue": "^2.5.17",
@@ -30,6 +29,7 @@
     "@vue/eslint-config-prettier": "^4.0.0",
     "@vue/test-utils": "^1.0.0-beta.20",
     "babel-eslint": "^10.0.1",
+    "babel-polyfill": "^6.26.0",
     "chai": "^4.1.2",
     "compression-webpack-plugin": "^2.0.0",
     "eslint": "^5.8.0",
