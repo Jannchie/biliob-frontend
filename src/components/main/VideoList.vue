@@ -20,12 +20,7 @@
                 <VIcon small>mdi-book</VIcon>{{eachVideo.channel}}
               </div>
             </div>
-            <div v-if="eachVideo.focus === true" style="color:green" class="trace-state caption subtext">
-              <VIcon color="green" small>mdi-eye</VIcon> 观测中
-            </div>
-            <div v-if="eachVideo.focus === false" style="color:#FF5722" class="trace-state caption subtext">
-              <VIcon color="#FF5722" small>mdi-eye-off</VIcon> 不再观测
-            </div>
+            <ObserveStatus class="observe-status" :object="eachVideo"></ObserveStatus>
           </div>
         </VCard>
       </div>
@@ -40,10 +35,12 @@
 
 <script>
 import VSearchForm from "../common/VSearchForm.vue";
+import ObserveStatus from "../common/ObserveStatus.vue";
 export default {
   name: "VideoList",
   components: {
-    VSearchForm
+    VSearchForm,
+    ObserveStatus
   },
   data() {
     return {
@@ -128,7 +125,7 @@ p {
   color: #444444;
 }
 
-.trace-state {
+.observe-status {
   position: absolute;
   bottom: 5px;
   right: 5px;

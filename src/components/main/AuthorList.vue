@@ -20,12 +20,7 @@
                 <VIcon color="#FBC02D" small>mdi-flash</VIcon>{{eachAuthor.official}}
               </div>
             </div>
-            <div v-if="eachAuthor.focus === true" style="color:green" class="trace-state caption subtext">
-              <VIcon color="green" small>mdi-eye</VIcon> 观测中
-            </div>
-            <div v-if="eachAuthor.focus === false" style="color:#FF5722" class="trace-state caption subtext">
-              <VIcon color="#FF5722" small>mdi-eye-off</VIcon> 不再观测
-            </div>
+            <ObserveStatus class="observe-status" :object="eachAuthor"></ObserveStatus>
           </div>
         </VCard>
       </div>
@@ -40,12 +35,14 @@
 
 <script>
 import VSearchForm from "../common/VSearchForm.vue";
+import ObserveStatus from "../common/ObserveStatus.vue";
 import SexIcon from "../common/SexIcon.vue";
 export default {
   name: "AuthorList",
   components: {
     VSearchForm,
-    SexIcon
+    SexIcon,
+    ObserveStatus
   },
   data() {
     return {
@@ -128,7 +125,7 @@ p {
   color: #444444;
 }
 
-.trace-state {
+.observe-status {
   position: absolute;
   bottom: 5px;
   right: 5px;
