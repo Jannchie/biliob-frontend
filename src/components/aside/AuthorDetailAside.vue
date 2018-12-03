@@ -1,11 +1,14 @@
 <template>
-  <VCard class="aside-card">
-    这里理应存放一些作者的详细信息
-  </VCard>
+  <div>
+    <slot v-if="logined" name="author-operation"></slot>
+  </div>
 </template>
 
 <script>
 export default {
-  components: {}
+  components: {},
+  data() {
+    return { logined: this.$store.getters.getLoginState };
+  }
 };
 </script>
