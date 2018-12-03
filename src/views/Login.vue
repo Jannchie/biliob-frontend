@@ -60,8 +60,16 @@ export default {
           this.msg = response.data.msg;
           this.type = "success";
           this.showAlert = true;
+          this.$store.commit("login");
+          this.$store.commit(
+            "setFavoriteVideo",
+            response.data.data.favoriteAid
+          );
+          this.$store.commit(
+            "setFavoriteAuthor",
+            response.data.data.favoriteMid
+          );
           setTimeout(() => {
-            this.$store.commit("login");
             this.$router.push("/video");
           }, 2000);
         })

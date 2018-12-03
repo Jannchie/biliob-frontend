@@ -136,6 +136,8 @@ export default {
           this.$store.commit("login");
           this.name = response.data.name;
           this.role = response.data.role;
+          this.$store.commit("setFavoriteVideo", response.data.favoriteAid);
+          this.$store.commit("setFavoriteAuthor", response.data.favoriteMid);
         })
         .catch(() => {
           this.$store.commit("logout");
@@ -153,8 +155,11 @@ export default {
         this.$store.commit("login");
         this.name = response.data.name;
         this.role = response.data.role;
+        this.$store.commit("setFavoriteVideo", response.data.favoriteAid);
+        this.$store.commit("setFavoriteAuthor", response.data.favoriteMid);
       })
-      .catch(() => {
+      .catch(error => {
+        console.log(error);
         this.$store.commit("logout");
         this.logined = false;
       });
