@@ -7,7 +7,7 @@ function interpolation(data) {
       (new Date(data[index].datetime) - new Date(data[index + 1].datetime)) /
         (24 * 60 * 60 * 1000)
     );
-    if (days === 1) {
+    if (days <= 1) {
       new_data.push(data[index]);
     } else {
       let deltaFans = data[index].fans - data[index + 1].fans;
@@ -16,9 +16,8 @@ function interpolation(data) {
       let offset = 0;
       while (days >= 1) {
         days--;
-        console.log(fans);
         new_data.push({
-          fans: -fans * offset + cFans,
+          fans: Math.round(-fans * offset + cFans),
           datetime:
             new Date(data[index].datetime).getTime() -
             24 * 60 * 60 * 1000 * offset
@@ -40,10 +39,7 @@ function drawGraph(data) {
   }
 
   let fansRate = [];
-  fansRate.push([
-    data[data.length - 1]["datetime"],
-    data[data.length - 2]["fans"] - data[data.length - 1]["fans"]
-  ]);
+  fansRate.push([data[data.length - 1]["datetime"], 0]);
   var lastDate = data[data.length - 1]["datetime"];
   let f = 0;
   for (let i = data.length - 2; i >= 0; i--) {
