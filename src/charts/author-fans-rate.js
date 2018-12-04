@@ -1,29 +1,59 @@
 var format = require("date-fns/format");
 var { convertDateToUTC } = require("./util/convertDateToUTC");
+function interpolation(data) {
+  let new_data = [];
+  for (let index = 0; index < data.length - 1; index++) {
+    let days = Math.round(
+      (new Date(data[index].datetime) - new Date(data[index + 1].datetime)) /
+        (24 * 60 * 60 * 1000)
+    );
+    if (days === 1) {
+      new_data.push(data[index]);
+    } else {
+      let deltaFans = data[index].fans - data[index + 1].fans;
+      let cFans = data[index].fans;
+      let fans = deltaFans / days;
+      let offset = 0;
+      while (days >= 1) {
+        days--;
+        console.log(fans);
+        new_data.push({
+          fans: -fans * offset + cFans,
+          datetime:
+            new Date(data[index].datetime).getTime() -
+            24 * 60 * 60 * 1000 * offset
+        });
+        offset++;
+      }
+    }
+  }
+  return new_data;
+}
 function drawGraph(data) {
-  var _data = data.data;
-  for (let index = 0; index < _data.length; index++) {
-    _data[index].datetime = format(
-      convertDateToUTC(new Date(_data[index].datetime)),
+  data = data.data;
+  data = interpolation(data);
+  for (let index = 0; index < data.length; index++) {
+    data[index].datetime = format(
+      convertDateToUTC(new Date(data[index].datetime)),
       "YYYY-MM-DD"
     );
   }
 
   let fansRate = [];
   fansRate.push([
-    _data[_data.length - 1]["datetime"],
-    _data[_data.length - 2]["fans"] - _data[_data.length - 1]["fans"]
+    data[data.length - 1]["datetime"],
+    data[data.length - 2]["fans"] - data[data.length - 1]["fans"]
   ]);
-  var lastDate = _data[_data.length - 1]["datetime"];
+  var lastDate = data[data.length - 1]["datetime"];
   let f = 0;
-  for (let i = _data.length - 2; i >= 0; i--) {
-    if (new Date(_data[i]["datetime"]) > new Date(lastDate) || i === 0) {
-      f += _data[i]["fans"] - _data[i + 1]["fans"];
-      fansRate.push([_data[i]["datetime"], f]);
+  for (let i = data.length - 2; i >= 0; i--) {
+    if (new Date(data[i]["datetime"]) > new Date(lastDate) || i === 0) {
+      f += data[i]["fans"] - data[i + 1]["fans"];
+      fansRate.push([data[i]["datetime"], f]);
       lastDate = new Date(lastDate).setDate(new Date(lastDate).getDate() + 1);
       f = 0;
     } else {
-      f += _data[i]["fans"] - _data[i + 1]["fans"];
+      f += data[i]["fans"] - data[i + 1]["fans"];
     }
   }
 
