@@ -6,6 +6,7 @@
       <VToolbarItems class="hidden-md-and-down">
         <VBtn class="toolbar-item" flat dark @click.stop="toVideo">视频追踪</VBtn>
         <VBtn class="toolbar-item" flat dark @click.stop="toAuthor">UP主追踪</VBtn>
+        <VBtn class="toolbar-item" flat dark @click.stop="toRank">排行榜</VBtn>
       </VToolbarItems>
     </VToolbar>
 
@@ -92,13 +93,17 @@
       </VList>
     </VNavigationDrawer>
         <VBottomNav app :active.sync="bottomNav"  :value="bottomNavShow" class="hidden-lg-and-up">
-      <VBtn color="teal" flat value="video" @click.stop="toVideo">
+      <VBtn color="red" flat value="video" @click.stop="toVideo">
         <span>视频追踪</span>
         <VIcon>mdi-video</VIcon>
       </VBtn>
-      <VBtn color="teal" flat value="up" @click.stop="toAuthor">
+      <VBtn color="indigo" flat value="up" @click.stop="toAuthor">
         <span>UP主追踪</span>
         <VIcon>mdi-account-search</VIcon>
+      </VBtn>
+      <VBtn color="teal" flat value="rank" @click.stop="toRank">
+        <span>排行榜</span>
+        <VIcon>mdi-chart-bar</VIcon>
       </VBtn>
     </VBottomNav>
   </nav>
@@ -158,8 +163,7 @@ export default {
         this.$store.commit("setFavoriteVideo", response.data.favoriteAid);
         this.$store.commit("setFavoriteAuthor", response.data.favoriteMid);
       })
-      .catch(error => {
-        console.log(error);
+      .catch(() => {
         this.$store.commit("logout");
         this.logined = false;
       });
@@ -173,6 +177,9 @@ export default {
     },
     toLogin() {
       this.$router.push("/login");
+    },
+    toRank() {
+      this.$router.push("/rank");
     },
     toFavoriteVideo() {
       this.$router.push("/user/video");

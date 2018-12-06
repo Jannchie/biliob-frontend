@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
-const home = () => import("./views/Home.vue");
+const Home = () => import("./views/Home.vue");
+const Rank = () => import("./views/Rank.vue");
 const Author = () => import("./views/Author.vue");
 const Video = () => import("./views/Video.vue");
 const AuthorList = () => import("./views/AuthorList.vue");
@@ -20,7 +21,11 @@ export default new Router({
   routes: [
     {
       path: "/",
-      component: home
+      component: Home
+    },
+    {
+      path: "/rank",
+      component: Rank
     },
     {
       path: "/author/:mid",
