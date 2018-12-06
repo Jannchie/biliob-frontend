@@ -1,12 +1,12 @@
 var format = require("date-fns/format");
 var { convertDateToUTC } = require("./util/convertDateToUTC");
 
-function drawGraph(data) {
+function drawChart(data) {
   let fans = [];
   data.data.forEach(d => {
     fans.push([d["datetime"], d["fans"]]);
   });
-  let graph = {
+  let Chart = {
     title: {
       left: "center",
       subtext: "粉丝数变化趋势",
@@ -83,6 +83,6 @@ function drawGraph(data) {
       }
     ]
   };
-  return graph;
+  return Chart;
 }
-export default drawGraph;
+export default drawChart;

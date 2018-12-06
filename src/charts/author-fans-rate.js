@@ -28,7 +28,7 @@ function interpolation(data) {
   }
   return new_data;
 }
-function drawGraph(data) {
+function drawChart(data) {
   data = data.data;
   data = interpolation(data);
   for (let index = 0; index < data.length; index++) {
@@ -53,7 +53,7 @@ function drawGraph(data) {
     }
   }
 
-  let graph = {
+  let Chart = {
     title: {
       left: "center",
       subtext: "粉丝增长变化趋势"
@@ -127,6 +127,6 @@ function drawGraph(data) {
       }
     ]
   };
-  return graph;
+  return Chart;
 }
-export default drawGraph;
+export default drawChart;
