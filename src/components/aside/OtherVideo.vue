@@ -22,32 +22,12 @@
 </template>
 <script>
 export default {
-  data() {
-    return {
-      otherVideo: []
-    };
+  props: {
+    otherVideo: Object()
   },
   watch: {
-    "$route.params.aid": function() {
-      this.axios
-        .get(
-          `/author/${this.$route.params.mid}/video/${this.$route.params.aid}`
-        )
-        .then(response => {
-          this.otherVideo = response.data.content;
-        });
-    }
-  },
-  mounted() {
-    this.axios
-      .get(`/author/${this.$route.params.mid}/video/${this.$route.params.aid}`)
-      .then(response => {
-        this.otherVideo = response.data.content;
-      });
-  },
-  methods: {
-    c() {
-      return 0;
+    otherVideo: function(val) {
+      this.otherVideo = val;
     }
   }
 };
