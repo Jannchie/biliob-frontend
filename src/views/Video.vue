@@ -1,7 +1,7 @@
 <template>
   <MainLayout>
     <VideoMain slot="main-cards">
-      <VideoDetailTitle slot="title" :title="videoData.title" :pic="videoData.pic"></VideoDetailTitle>
+      <VideoDetailTitle slot="title" :title="videoData.title" :aid="videoData.aid" :pic="videoData.pic"></VideoDetailTitle>
       <VideoDetailMainChart slot="main" :main-chart="mainChart"></VideoDetailMainChart>
       <VideoDetailLikeRateChart slot="like-rate" :like-rate-chart="likeRateChart" ></VideoDetailLikeRateChart>
     </VideoMain>

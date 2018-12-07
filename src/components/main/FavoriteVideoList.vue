@@ -31,20 +31,7 @@
                 <VIcon small>mdi-book</VIcon>{{ eachVideo.channel }}
               </div>
             </div>
-            <div
-              v-if="eachVideo.focus === true"
-              style="color:green"
-              class="trace-state caption subtext"
-            >
-              <VIcon color="green" small>mdi-eye</VIcon> 观测中
-            </div>
-            <div
-              v-if="eachVideo.focus === false"
-              style="color:#FF5722"
-              class="trace-state caption subtext"
-            >
-              <VIcon color="#FF5722" small>mdi-eye-off</VIcon> 不再观测
-            </div>
+            <ObserveStatus class="observe-status" :object="eachAuthor"></ObserveStatus>
           </div>
         </VCard>
       </div>
@@ -64,9 +51,9 @@
 </template>
 
 <script>
+import ObserveStatus from "../common/ObserveStatus.vue";
 export default {
-  name: "VideoList",
-  components: {},
+  components: { ObserveStatus },
   data() {
     return {
       videoList: {},

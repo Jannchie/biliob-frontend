@@ -1,25 +1,26 @@
 <template>
   <VCard>
-    <div>
-      <div style="display:flex">
-        <div>
-          <img class="video-img" style="vertical-align: bottom" :src="pic" />
-        </div>
-        <VCardText style="width:55%">
-          <div class="font-weight-bold video-title">
-            {{title}}
-          </div>
-          <br>
-          aid:{{ $route.params.aid }}
-        </VCardText>
+    <div style="display:flex">
+      <div>
+        <img class="video-img" style="vertical-align: bottom" :src="pic" />
       </div>
+      <VCardText style="width:55%">
+        <div class="font-weight-bold video-title">
+          {{title}}
+        </div>
+        <br>
+        aid:{{ $route.params.aid }}
+      </VCardText>
+      <FavoriteBtn :aid="aid" class="favorite-btn"></FavoriteBtn>
     </div>
   </VCard>
 </template>
 
 <script>
+import FavoriteBtn from "../common/FavoriteBtn.vue";
 export default {
-  props: { title: String(""), pic: String("") },
+  components: { FavoriteBtn },
+  props: { title: String(), pic: String(), aid: Number() },
   data() {
     return {
       name: {}
@@ -45,5 +46,10 @@ export default {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+.favorite-btn {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
 }
 </style>

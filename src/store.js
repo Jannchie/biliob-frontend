@@ -56,6 +56,9 @@ export default new Vuex.Store({
     },
     getFavoriteAuthor: state => {
       return state.favoriteMid;
+    },
+    getFavoriteVideo: state => {
+      return state.favoriteAid;
     }
   }
 });
