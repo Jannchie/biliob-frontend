@@ -72,7 +72,7 @@ function drawChart(data) {
     grid: {
       left: "50px",
       right: "10px",
-      bottom: "120px"
+      bottom: "90px"
     },
     dataZoom: [
       {
@@ -82,7 +82,7 @@ function drawChart(data) {
       {
         handleSize: "100%",
         handleStyle: {},
-        bottom: "50px"
+        bottom: "20px"
       }
     ],
     xAxis: {

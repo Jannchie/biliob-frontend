@@ -13,7 +13,7 @@
         <br>
         <span>{{authorData.official}}</span>
       </div>
-      <FocusBtn :author-data="authorData" class="focus-btn"></FocusBtn>
+      <FocusBtn v-if="$store.getters.getLoginState" :author-data="authorData" class="focus-btn"></FocusBtn>
       </div>
     </div>
     </VCardText>
@@ -29,20 +29,22 @@ export default {
     LevelIcon,
     FocusBtn
   },
+  props: {
+    authorData: Object()
+  },
   data() {
     return {
-      authorData: {},
       fans: null,
       focus: false,
       mid: Number()
     };
   },
-  mounted() {
-    this.axios.get("/author/" + this.$route.params.mid).then(response => {
-      this.authorData = response.data;
+  watch: {
+    authorData: function(val) {
+      this.authorData = val;
       this.authorData.face = this.authorData.face.slice(5);
-      this.fans = response.data.data[0].fans;
-    });
+      this.fans = val.data.data[0].fans;
+    }
   },
   methods: {
     toAuthor() {

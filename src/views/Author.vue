@@ -1,12 +1,13 @@
 <template>
   <MainLayout>
     <AuthorMain slot="main-cards">
-        <AuthorDetailChannel slot="channel" :channels="authorData.channels"></AuthorDetailChannel>
+        <!-- <AuthorDetailChannel slot="channel" :channels="authorData.channels"></AuthorDetailChannel> -->
         <AuthorDetailFansChart slot="fans" :author-data="authorData"></AuthorDetailFansChart>
         <AuthorDetailFansRateChart slot="fans-rate" :author-data="authorData"></AuthorDetailFansRateChart>
     </AuthorMain>
     <AuthorAside slot="aside-cards">
       <AuthorOperation slot="author-operation" :author-data="authorData"></AuthorOperation>
+      <AuthorVideo slot="author-video" :author-top-video="authorTopVideo"></AuthorVideo>
     </AuthorAside>
   </MainLayout>
 </template>
@@ -18,7 +19,8 @@ import AuthorDetailFansRateChart from "../components/main/AuthorDetailFansRateCh
 import MainLayout from "../components/common/MainLayout.vue";
 import AuthorAside from "../components/aside/AuthorDetailAside.vue";
 import AuthorOperation from "../components/aside/AuthorOperation.vue";
-import AuthorDetailChannel from "../components/main/AuthorDetailChannel.vue";
+import AuthorVideo from "../components/aside/AuthorVideo.vue";
+// import AuthorDetailChannel from "../components/main/AuthorDetailChannel.vue";
 export default {
   name: "AuthorList",
   components: {
@@ -28,17 +30,22 @@ export default {
     AuthorDetailFansChart,
     AuthorDetailFansRateChart,
     AuthorOperation,
-    AuthorDetailChannel
+    AuthorVideo
+    // AuthorDetailChannel
   },
   data() {
     return {
-      authorData: Object()
+      authorData: Object(),
+      authorTopVideo: Object()
     };
   },
   mounted() {
     this.$store.commit("toAuthor");
     this.axios.get("/author/" + this.$route.params.mid).then(response => {
       this.authorData = response.data;
+    });
+    this.axios.get(`/author/${this.$route.params.mid}/video`).then(response => {
+      this.authorTopVideo = response.data;
     });
   }
 };

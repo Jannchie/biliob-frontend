@@ -1,7 +1,7 @@
 <template>
   <VCard class="card">
     <VCardText  class='card-holder'>
-        <Chart theme="light" :auto-resize="true" :options="fans" style="width:100%;height:74vmin;"></Chart>
+        <Chart class="chart" theme="light" :auto-resize="true" :options="fans" ></Chart>
     </VCardText >
   </VCard>
 </template>
@@ -44,5 +44,20 @@ export default {
 .video-img {
   height: 70px;
   border-radius: 4px;
+}
+.chart {
+  width: 100%;
+}
+
+@media only screen and (min-width: 1029px) {
+  .chart {
+    height: 20vmax;
+  }
+}
+
+@media only screen and (max-width: 1029px) {
+  .chart {
+    height: 74vmin;
+  }
 }
 </style>

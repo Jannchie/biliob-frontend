@@ -39,9 +39,9 @@ export default {
     height: 20vmax;
   }
 }
-@media only screen and (min-width: 1029px) {
+@media only screen and (max-width: 1029px) {
   #channel-chart {
-    height: 20vmax;
+    height: 45vmax;
   }
 }
 </style>

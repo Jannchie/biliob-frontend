@@ -17,7 +17,7 @@ function drawChart(data) {
       bottom: "5px"
     },
     grid: {
-      bottom: "120px",
+      bottom: "90px",
       right: "10px",
       left: "50px"
     },
@@ -29,7 +29,7 @@ function drawChart(data) {
       {
         handleSize: "100%",
         handleStyle: {},
-        bottom: "50px"
+        bottom: "20px"
       }
     ],
     tooltip: {
