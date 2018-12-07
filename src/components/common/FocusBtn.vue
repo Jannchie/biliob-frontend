@@ -20,13 +20,14 @@ export default {
       disabled: false
     };
   },
-  mounted() {
-    var favoriteAuthor = this.$store.getters.getFavoriteAuthor;
-    this.authorData.mid;
-    if (favoriteAuthor.indexOf(this.authorData.mid) != -1) {
-      this.focus = true;
-    } else {
-      this.focus = false;
+  watch: {
+    authorData() {
+      var favoriteAuthor = this.$store.getters.getFavoriteAuthor;
+      if (favoriteAuthor.indexOf(this.authorData.mid) != -1) {
+        this.focus = true;
+      } else {
+        this.focus = false;
+      }
     }
   },
   methods: {
@@ -37,6 +38,7 @@ export default {
           this.disabled = true;
           this.show = true;
           this.text = response.data.msg;
+          this.$store.commit("addFavoriteAuthor", this.authorData.mid);
           setTimeout(() => {
             this.disabled = false;
             this.show = false;
@@ -60,6 +62,7 @@ export default {
         .then(response => {
           this.show = true;
           this.text = response.data.msg;
+          this.$store.commit("removeFavoriteAuthor", this.authorData.mid);
           setTimeout(() => {
             this.show = false;
           }, 2000);
