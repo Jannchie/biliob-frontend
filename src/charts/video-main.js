@@ -2,7 +2,7 @@ var parse = require("date-fns/parse");
 var format = require("date-fns/format");
 var { convertDateToUTC } = require("./util/convertDateToUTC");
 
-function drawGraph(data) {
+function drawChart(data) {
   var datedelta =
     parse(data.data[data.data.length - 1].datetime) - parse(data.datetime);
   if (datedelta < 60 * 60 * 24 * 30 * 1000) {
@@ -23,7 +23,7 @@ function drawGraph(data) {
   data.data.sort((a, b) => {
     return new Date(a.datetime) - new Date(b.datetime);
   });
-  let graph = {
+  let Chart = {
     title: {
       left: "center",
       top: "-5px",
@@ -170,6 +170,6 @@ function drawGraph(data) {
       }
     ]
   };
-  return graph;
+  return Chart;
 }
-export default drawGraph;
+export default drawChart;

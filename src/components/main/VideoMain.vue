@@ -4,19 +4,19 @@
       :title="videoData.title"
       :pic="videoData.pic"
     ></VideoDetailTitle>
-    <VideoDetailMainGraph :main-graph="mainGraph"></VideoDetailMainGraph>
-    <VideoDetailLikeRateGraph
-      :like-rate-graph="likeRateGraph"
-    ></VideoDetailLikeRateGraph>
+    <VideoDetailMainChart :main-chart="mainChart"></VideoDetailMainChart>
+    <VideoDetailLikeRateChart
+      :like-rate-chart="likeRateChart"
+    ></VideoDetailLikeRateChart>
   </div>
 </template>
 
 <script>
-import drawMainGraph from "../../charts/video-main.js";
-import drawLikeRateGraph from "../../charts/video-likerate.js";
+import drawMainChart from "../../charts/video-main.js";
+import drawLikeRateChart from "../../charts/video-likerate.js";
 import VideoDetailTitle from "../main/VideoDetailTitle.vue";
-import VideoDetailMainGraph from "../main/VideoDetailMainGraph.vue";
-import VideoDetailLikeRateGraph from "../main/VideoDetailLikeRateGraph.vue";
+import VideoDetailMainChart from "../main/VideoDetailMainChart.vue";
+import VideoDetailLikeRateChart from "../main/VideoDetailLikeRateChart.vue";
 var deepCopy = function(o) {
   if (o instanceof Array) {
     var n = [];
@@ -37,13 +37,13 @@ var deepCopy = function(o) {
 export default {
   components: {
     VideoDetailTitle,
-    VideoDetailMainGraph,
-    VideoDetailLikeRateGraph
+    VideoDetailMainChart,
+    VideoDetailLikeRateChart
   },
   data() {
     return {
-      mainGraph: {},
-      likeRateGraph: {},
+      mainChart: {},
+      likeRateChart: {},
       videoData: {}
     };
   },
@@ -53,8 +53,8 @@ export default {
       this.axios.get("/video/" + this.$route.params.aid).then(response => {
         this.videoData = response.data;
         this.videoData.pic = this.videoData.pic.slice(5);
-        this.mainGraph = drawMainGraph(deepCopy(response.data));
-        this.likeRateGraph = drawLikeRateGraph(deepCopy(response.data));
+        this.mainChart = drawMainChart(deepCopy(response.data));
+        this.likeRateChart = drawLikeRateChart(deepCopy(response.data));
       });
     }
   },
@@ -62,8 +62,8 @@ export default {
     this.axios.get("/video/" + this.$route.params.aid).then(response => {
       this.videoData = response.data;
       this.videoData.pic = this.videoData.pic.slice(5);
-      this.mainGraph = drawMainGraph(deepCopy(response.data));
-      this.likeRateGraph = drawLikeRateGraph(deepCopy(response.data));
+      this.mainChart = drawMainChart(deepCopy(response.data));
+      this.likeRateChart = drawLikeRateChart(deepCopy(response.data));
     });
   },
   methods: {}

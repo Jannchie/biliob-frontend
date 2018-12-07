@@ -1,19 +1,14 @@
 <template>
   <VCard class="card">
     <VCardText  class='card-holder'>
-        <Chart id="chart-1" theme="light" :auto-resize="true" :options="likeRateGraph" style="width:100%;height:20vmax;" ></Chart>
+        <Chart id="chart-1" theme="light" :auto-resize="true" :options="mainChart" style="width:100%;height:25vmax;" ></Chart>
     </VCardText >
   </VCard>
 </template>
 
 <script>
 export default {
-  props: { likeRateGraph: Object() },
-  data() {
-    return {
-      videoData: {}
-    };
-  }
+  props: { mainChart: Object() }
 };
 </script>
 
