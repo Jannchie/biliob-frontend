@@ -24,11 +24,6 @@
           </div>
         </VCard>
       </div>
-      <div class="block">
-        <div class="text-xs-center">
-          <VPagination v-model="currentPage" light ripple total-visible="5" :length="videoList.totalPages"></VPagination>
-        </div>
-      </div>
     </div>
   </div>
 </template>
@@ -44,17 +39,34 @@ export default {
   },
   data() {
     return {
-      videoList: {},
-      currentApiurl: String,
-      currentPage: 1
+      videoList: [],
+      currentApiurl: String(),
+      currentPage: 0,
+      text: String()
     };
   },
   watch: {
+    text: function() {
+      this.currentPage = 0;
+      this.axios
+        .get(
+          this.currentApiurl +
+            "?page=" +
+            this.currentPage +
+            "&text=" +
+            this.text
+        )
+        .then(response => {
+          this.videoList.content = response.data.content;
+        });
+    },
     currentPage: function changePage(page) {
       this.axios
-        .get(this.currentApiurl + "?page=" + (page - 1))
+        .get(this.currentApiurl + "?page=" + page + "&text=" + this.text)
         .then(response => {
-          this.videoList = response.data;
+          response.data.content.forEach(e => {
+            this.videoList.content.push(e);
+          });
         });
     }
   },
@@ -64,20 +76,22 @@ export default {
       this.videoList = response.data;
       this.face = response.data.content.pic;
     });
+    window.addEventListener("scroll", this.onScroll, true);
   },
   methods: {
-    getSearchValue(value) {
-      if (!isNaN(Number(value))) {
-        this.currentApiurl = "/video?aid=" + value;
-        this.axios.get(this.currentApiurl).then(response => {
-          this.videoList = response.data;
-        });
-      } else {
-        this.currentApiurl = "/video?text=" + value;
-        this.axios.get(this.currentApiurl).then(response => {
-          this.videoList = response.data;
-        });
+    onScroll() {
+      var scrollTop =
+        document.documentElement.scrollTop || document.body.scrollTop;
+      var windowHeight =
+        document.documentElement.clientHeight || document.body.clientHeight;
+      var scrollHeight =
+        document.documentElement.scrollHeight || document.body.scrollHeight;
+      if (scrollTop + windowHeight == scrollHeight) {
+        this.currentPage += 1;
       }
+    },
+    getSearchValue(value) {
+      this.text = value;
     },
     handleChoosed(index, row) {
       this.$router.push({
