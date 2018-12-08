@@ -1,7 +1,7 @@
 <template>
  <MainLayout>
    <AuthorListMain slot="main-cards"></AuthorListMain>
-   <AuthorListAside slot="aside-cards"></AuthorListAside>
+   <AuthorListAside slot="aside-cards" class="hidden-lg-and-down"></AuthorListAside>
  </MainLayout>
 </template>
 

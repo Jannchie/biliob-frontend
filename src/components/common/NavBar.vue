@@ -2,7 +2,9 @@
   <nav >
     <VToolbar class="toolbar" dense>
       <VToolbarSideIcon class="toolbar-item" dark @click.stop="drawer = !drawer"></VToolbarSideIcon>
-      <VToolbarTitle class="toolbar-title"><img class="logo" src="../../../public/img/icons/android-chrome-192x192.png"> BiliOB观测者</VToolbarTitle>
+      <VBtn class="toolbar-item" flat dark @click.stop="toHomepage">
+        <VToolbarTitle class="toolbar-title"><img class="logo" src="../../../public/img/icons/android-chrome-192x192.png"> BiliOB观测者</VToolbarTitle>
+      </VBtn>
       <VToolbarItems class="hidden-md-and-down">
         <VBtn class="toolbar-item" flat dark @click.stop="toVideo">视频追踪</VBtn>
         <VBtn class="toolbar-item" flat dark @click.stop="toAuthor">UP主追踪</VBtn>
@@ -182,6 +184,9 @@ export default {
     },
     toLog() {
       this.$router.push("/log");
+    },
+    toHomepage() {
+      this.$router.push("/");
     },
     onScroll() {
       if (this.offsetTop - window.pageYOffset < 0) {
