@@ -67,7 +67,7 @@ function drawChart(data) {
         axisLabel: {
           formatter: function(params) {
             if (params > 10000) {
-              return Math.round(params / 10000) + "万";
+              return Math.round(params / 1000) / 10.0 + "万";
             }
           }
         }
