@@ -1,14 +1,16 @@
 <template>
-  <div id="float-btn">
+  <div id="float-btn" 
+  class="drag"
+  >
     <VFabTransition>
       <VBtn
         :key="activeFab.icon"
         v-model="fab"
         :color="activeFab.color"
-        right
         dark
         fab
         fixed
+        right
         bottom
         @click.stop="clickFab"
       >
@@ -20,6 +22,21 @@
 </template>
 <script>
 export default {
+  directives: {
+    drag(el) {
+      el.onmousedown = function(e) {
+        var disx = e.pageX - el.offsetLeft;
+        var disy = e.pageY - el.offsetTop;
+        document.onmousemove = function(e) {
+          el.style.left = e.pageX - disx + "px";
+          el.style.top = e.pageY - disy + "px";
+        };
+        document.onmouseup = function() {
+          document.onmousemove = document.onmouseup = null;
+        };
+      };
+    }
+  },
   data: () => ({
     fab: false
   }),
@@ -54,5 +71,10 @@ export default {
 }
 #float-btn .v-btn--floating {
   margin: 0 0 16px 20px;
+}
+.drag {
+  position: absolute;
+  left: 0px;
+  ztop: 0px;
 }
 </style>
