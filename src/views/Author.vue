@@ -7,6 +7,7 @@
     </AuthorMain>
     <AuthorAside slot="aside-cards">
       <AuthorOperation slot="author-operation" :author-data="authorData"></AuthorOperation>
+      <AuthorToSpace slot="author-to-space" :mid="authorData.mid"></AuthorToSpace>
       <AuthorVideo slot="author-video" :author-top-video="authorTopVideo"></AuthorVideo>
     </AuthorAside>
   </MainLayout>
@@ -20,6 +21,7 @@ import MainLayout from "../components/common/MainLayout.vue";
 import AuthorAside from "../components/aside/AuthorDetailAside.vue";
 import AuthorOperation from "../components/aside/AuthorOperation.vue";
 import AuthorVideo from "../components/aside/AuthorVideo.vue";
+import AuthorToSpace from "../components/aside/AuthorToSpace.vue";
 // import AuthorDetailChannel from "../components/main/AuthorDetailChannel.vue";
 export default {
   name: "AuthorList",
@@ -30,7 +32,8 @@ export default {
     AuthorDetailFansChart,
     AuthorDetailFansRateChart,
     AuthorOperation,
-    AuthorVideo
+    AuthorVideo,
+    AuthorToSpace
     // AuthorDetailChannel
   },
   data() {
