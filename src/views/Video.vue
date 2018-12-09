@@ -8,6 +8,7 @@
     <VideoAside slot="aside-cards">
       <AuthorOperation slot="author-operation" :author-data="authorData"></AuthorOperation>
       <OtherVideo slot="other-video" :other-video="otherVideo"></OtherVideo>
+      <VideoToBilibili slot="video-to-bilibili" :aid="videoData.aid"></VideoToBilibili>
       <Recommand slot="recommand"></Recommand>
     </VideoAside>
   </MainLayout>
@@ -22,6 +23,7 @@ import VideoMain from "../components/main/VideoMain.vue";
 import AuthorOperation from "../components/aside/AuthorOperation.vue";
 import OtherVideo from "../components/aside/OtherVideo.vue";
 import Recommand from "../components/aside/Recommand.vue";
+import VideoToBilibili from "../components/aside/VideoToBilibili.vue";
 import drawMainChart from "../charts/video-main.js";
 import drawLikeRateChart from "../charts/video-likerate.js";
 var deepCopy = function(o) {
@@ -52,7 +54,8 @@ export default {
     VideoMain,
     AuthorOperation,
     OtherVideo,
-    Recommand
+    Recommand,
+    VideoToBilibili
   },
   data() {
     return {
