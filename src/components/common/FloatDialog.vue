@@ -21,7 +21,6 @@
           <VBtn v-if="type!='else'" v-model="valid" color="primary" flat @click="submit">
             确认添加
           </VBtn>
-
         </VCardActions>
       </VForm>
     </VCard>

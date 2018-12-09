@@ -1,7 +1,9 @@
 <template>
  <MainLayout>
    <AuthorListMain slot="main-cards"></AuthorListMain>
-   <AuthorListAside slot="aside-cards" class="hidden-lg-and-down"></AuthorListAside>
+   <AuthorListAside slot="aside-cards" class="hidden-lg-and-down">
+     <OtherLink slot="link"></OtherLink>
+   </AuthorListAside>
  </MainLayout>
 </template>
 
@@ -9,12 +11,14 @@
 import MainLayout from "../components/common/MainLayout.vue";
 import AuthorListMain from "../components/main/AuthorList.vue";
 import AuthorListAside from "../components/aside/AuthorListAside.vue";
+import OtherLink from "../components/aside/OtherLink.vue";
 export default {
   name: "AuthorList",
   components: {
     MainLayout,
     AuthorListMain,
-    AuthorListAside
+    AuthorListAside,
+    OtherLink
   },
   mounted() {
     this.$store.commit("toAuthor");
