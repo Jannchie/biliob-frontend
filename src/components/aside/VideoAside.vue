@@ -1,6 +1,7 @@
 <template>
   <div>
-    <slot name="author-info"></slot>
+    <slot name="author-operation"></slot>
+    <slot name="video-to-bilibili"></slot>
     <slot name="other-video"></slot>
     <slot name="recommand"></slot>
   </div>

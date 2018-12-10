@@ -1,5 +1,5 @@
-function drawGraph(data) {
-  let graph = {
+function drawChart(data) {
+  let Chart = {
     title: [
       {
         left: "center",
@@ -47,6 +47,6 @@ function drawGraph(data) {
       }
     ]
   };
-  return graph;
+  return Chart;
 }
-export default drawGraph;
+export default drawChart;

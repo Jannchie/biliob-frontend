@@ -1,6 +1,8 @@
 <template>
   <div>
-    <slot v-if="logined" name="author-operation"></slot>
+    <slot name="author-operation"></slot>
+    <slot name="author-to-space"></slot>
+    <slot name="author-video"></slot>
   </div>
 </template>
 

@@ -14,16 +14,22 @@ export default new Vuex.Store({
     setFavoriteVideo(state, aidList) {
       state.favoriteAid = aidList;
     },
+    addFavoriteVideo(state, aid) {
+      state.favoriteAid.push(aid);
+    },
+    addFavoriteAuthor(state, mid) {
+      state.favoriteMid.push(mid);
+    },
     removeFavoriteVideo(state, aid) {
       let index = state.favoriteAid.indexOf(aid);
-      status.favoriteAid.splice(index, 1);
+      state.favoriteAid.splice(index, 1);
     },
     setFavoriteAuthor(state, midList) {
       state.favoriteMid = midList;
     },
     removeFavoriteAuthor(state, mid) {
       let index = state.favoriteMid.indexOf(mid);
-      status.favoriteAid.splice(index, 1);
+      state.favoriteMid.splice(index, 1);
     },
     login(state) {
       state.logined = true;
@@ -50,6 +56,9 @@ export default new Vuex.Store({
     },
     getFavoriteAuthor: state => {
       return state.favoriteMid;
+    },
+    getFavoriteVideo: state => {
+      return state.favoriteAid;
     }
   }
 });

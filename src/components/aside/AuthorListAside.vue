@@ -1,4 +1,5 @@
 <template>
+<div>
   <VCard class="card">
     <VCardText>
       <h4>数据说明</h4>
@@ -8,9 +9,16 @@
         统计频率为每日一次。<br>
     </VCardText>
   </VCard>
+  <slot name="link"></slot>
+</div>
 </template>
 <script>
 export default {
   components: {}
 };
 </script>
+<style scoped>
+.v-card {
+  margin-bottom: 5px;
+}
+</style>

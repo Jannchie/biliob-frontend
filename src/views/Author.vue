@@ -1,31 +1,55 @@
 <template>
   <MainLayout>
-    <DetailMain slot="main-cards">
-      <AuthorDetail slot="detail"></AuthorDetail>
-    </DetailMain>
+    <AuthorMain slot="main-cards">
+        <!-- <AuthorDetailChannel slot="channel" :channels="authorData.channels"></AuthorDetailChannel> -->
+        <AuthorDetailFansChart slot="fans" :author-data="authorData"></AuthorDetailFansChart>
+        <AuthorDetailFansRateChart slot="fans-rate" :author-data="authorData"></AuthorDetailFansRateChart>
+    </AuthorMain>
     <AuthorAside slot="aside-cards">
-      <AuthorOperation slot="author-operation"></AuthorOperation>
+      <AuthorOperation slot="author-operation" :author-data="authorData"></AuthorOperation>
+      <AuthorToSpace slot="author-to-space" :mid="authorData.mid"></AuthorToSpace>
+      <AuthorVideo slot="author-video" :author-top-video="authorTopVideo"></AuthorVideo>
     </AuthorAside>
   </MainLayout>
 </template>
 
 <script>
+import AuthorMain from "../components/main/AuthorMain.vue";
+import AuthorDetailFansChart from "../components/main/AuthorDetailFansChart.vue";
+import AuthorDetailFansRateChart from "../components/main/AuthorDetailFansRateChart.vue";
 import MainLayout from "../components/common/MainLayout.vue";
-import DetailMain from "../components/DetailMain.vue";
 import AuthorAside from "../components/aside/AuthorDetailAside.vue";
-import AuthorDetail from "../components/main/AuthorDetail.vue";
 import AuthorOperation from "../components/aside/AuthorOperation.vue";
+import AuthorVideo from "../components/aside/AuthorVideo.vue";
+import AuthorToSpace from "../components/aside/AuthorToSpace.vue";
+// import AuthorDetailChannel from "../components/main/AuthorDetailChannel.vue";
 export default {
   name: "AuthorList",
   components: {
+    AuthorMain,
     MainLayout,
-    DetailMain,
     AuthorAside,
-    AuthorDetail,
-    AuthorOperation
+    AuthorDetailFansChart,
+    AuthorDetailFansRateChart,
+    AuthorOperation,
+    AuthorVideo,
+    AuthorToSpace
+    // AuthorDetailChannel
+  },
+  data() {
+    return {
+      authorData: Object(),
+      authorTopVideo: Object()
+    };
   },
   mounted() {
     this.$store.commit("toAuthor");
+    this.axios.get("/author/" + this.$route.params.mid).then(response => {
+      this.authorData = response.data;
+    });
+    this.axios.get(`/author/${this.$route.params.mid}/video`).then(response => {
+      this.authorTopVideo = response.data;
+    });
   }
 };
 </script>
