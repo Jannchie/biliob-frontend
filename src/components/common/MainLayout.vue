@@ -1,5 +1,5 @@
 <template>
-  <VContainer grid-list-md>
+  <VContainer class="main-container" grid-list-md>
     <VLayout v-bind="binding">
       <VFlex lg8 md12>
         <slot name="main-cards"></slot>
@@ -10,7 +10,6 @@
     </VLayout>
   </VContainer>
 </template>
-
 <script>
 export default {
   computed: {
@@ -23,7 +22,9 @@ export default {
 };
 </script>
 <style scoped>
-.container {
-  padding: 0px;
+@media only screen and (max-width: 1029px) {
+  .main-container {
+    padding: 16px 0;
+  }
 }
 </style>

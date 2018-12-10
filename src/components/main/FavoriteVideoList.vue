@@ -1,6 +1,6 @@
 <template>
   <div class="video-list-main">
-    <div style="background-color:#F8F8F8">
+    <div>
       <div>
         <VSearchForm slot="search" hint="请输入标题、分区或者av号" @getSearchValue="getSearchValue"></VSearchForm>
         <VCard v-for="eachVideo in videoList.content" :key="eachVideo.aid" class="video-cards" ripple
