@@ -110,6 +110,7 @@ export default {
     };
   },
   mounted() {
+    this.$store.commit("toElse");
     this.axios.get("/bangumi").then(response => {
       this.bangumiData = response.data.content;
       this.bangumiData.forEach(element => {

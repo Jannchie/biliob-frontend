@@ -1,5 +1,5 @@
 <template>
-  <VContainer class="main-container" justify-center>
+  <VContainer style="padding: 0px 0px;" grid-list-md justify-center>
     <VLayout justify-center>
       <VFlex lg8 md12>
         <RouterView/>
@@ -7,8 +7,3 @@
     </VLayout>
   </VContainer>
 </template>
-<style scoped>
-.main-container {
-  padding: 16px 0;
-}
-</style>

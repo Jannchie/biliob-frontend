@@ -1,5 +1,5 @@
 <template>
-  <VContainer class="main-container" grid-list-md>
+  <!-- <VContainer class="main-container" grid-list-md> -->
     <VLayout v-bind="binding">
       <VFlex lg8 md12>
         <slot name="main-cards"></slot>
@@ -8,7 +8,7 @@
         <slot name="aside-cards"></slot>
       </VFlex>
     </VLayout>
-  </VContainer>
+  <!-- </VContainer> -->
 </template>
 <script>
 export default {
