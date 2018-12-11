@@ -10,6 +10,10 @@
         jannchie@gmail.com
       </span><br>
       <span>
+        <a href="https://jq.qq.com/?_wv=1027&k=593vDCo"> <VIcon style="vertical-align: middle">mdi-qqchat</VIcon>Chie的魔法后花园</a>
+      </span>
+      <br>
+      <span>
         <a href="https://www.vultr.com/?ref=7540103"> <VIcon style="vertical-align: middle">mdi-link-variant</VIcon>服务器提供商Vultr</a>
       </span>
       <br>
