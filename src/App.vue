@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <VApp>
+      <BottomNav />
       <NavBar></NavBar>
       <Banner></Banner>
       <FloatDialog></FloatDialog>
@@ -12,6 +13,7 @@
 
 <script>
 import BiliobFooter from "./components/common/BiliobFooter.vue";
+import BottomNav from "./components/common/BottomNav.vue";
 import NavBar from "./components/common/NavBar.vue";
 import Container from "./components/common/Container.vue";
 import Banner from "./components/common/Banner.vue";
@@ -24,7 +26,8 @@ export default {
     Container,
     Banner,
     FloatDialog,
-    BiliobFooter
+    BiliobFooter,
+    BottomNav
   }
 };
 </script>

@@ -1,9 +1,10 @@
 <template>
-  <nav >
+  <nav>
     <VToolbar class="toolbar" dense>
       <VToolbarSideIcon class="toolbar-item" dark @click.stop="drawer = !drawer"></VToolbarSideIcon>
       <VBtn class="toolbar-item" flat dark @click.stop="toHomepage">
-        <VToolbarTitle class="toolbar-title"><img class="logo" src="../../../public/img/icons/android-chrome-192x192.png"> BiliOB观测者</VToolbarTitle>
+        <VToolbarTitle class="toolbar-title"><img class="logo" src="../../../public/img/icons/android-chrome-192x192.png">
+          BiliOB观测者</VToolbarTitle>
       </VBtn>
       <VToolbarItems class="hidden-md-and-down">
         <VBtn class="toolbar-item" flat dark @click.stop="toVideo">视频追踪</VBtn>
@@ -30,7 +31,9 @@
         </VListTile>
 
         <VListTile v-if="!logined" ripple @click.stop="toLogin">
-          <VListTileAvatar> <VIcon>mdi-login</VIcon> </VListTileAvatar>
+          <VListTileAvatar>
+            <VIcon>mdi-login</VIcon>
+          </VListTileAvatar>
           <VListTileContent>
             <VListTileTitle>登录</VListTileTitle>
             <VListTileSubTitle>或者注册？</VListTileSubTitle>
@@ -41,14 +44,18 @@
       <VList v-if="logined">
         <VDivider></VDivider>
         <VListTile ripple @click.stop="toFavoriteAuthor">
-          <VListTileAvatar> <VIcon>mdi-face</VIcon> </VListTileAvatar>
+          <VListTileAvatar>
+            <VIcon>mdi-face</VIcon>
+          </VListTileAvatar>
           <VListTileContent>
             <VListTileTitle>我的关注</VListTileTitle>
             <VListTileSubTitle>查看我关注的UP主</VListTileSubTitle>
           </VListTileContent>
         </VListTile>
         <VListTile ripple @click.stop="toFavoriteVideo">
-          <VListTileAvatar> <VIcon>mdi-star</VIcon> </VListTileAvatar>
+          <VListTileAvatar>
+            <VIcon>mdi-star</VIcon>
+          </VListTileAvatar>
           <VListTileContent>
             <VListTileTitle>我的收藏</VListTileTitle>
             <VListTileSubTitle>查看我关注的视频</VListTileSubTitle>
@@ -94,20 +101,6 @@
         <VDivider></VDivider>
       </VList>
     </VNavigationDrawer>
-        <VBottomNav app :active.sync="bottomNav"  :value="bottomNavShow" class="hidden-lg-and-up">
-      <VBtn color="red" flat value="video" @click.stop="toVideo">
-        <span>视频追踪</span>
-        <VIcon>mdi-video</VIcon>
-      </VBtn>
-      <VBtn color="indigo" flat value="up" @click.stop="toAuthor">
-        <span>UP主追踪</span>
-        <VIcon>mdi-account-search</VIcon>
-      </VBtn>
-      <VBtn color="teal" flat value="rank" @click.stop="toRank">
-        <span>排行榜</span>
-        <VIcon>mdi-chart-bar</VIcon>
-      </VBtn>
-    </VBottomNav>
   </nav>
 </template>
 <script>
@@ -151,9 +144,7 @@ export default {
         });
     }
   },
-  created() {
-    window.addEventListener("scroll", this.onScroll, true);
-  },
+
   mounted() {
     this.axios
       .get(`/user`)
@@ -225,6 +216,7 @@ export default {
 .v-list__tile__sub-title {
   font-weight: 400;
 }
+
 .v-list__tile__title {
   font-weight: 400;
 }

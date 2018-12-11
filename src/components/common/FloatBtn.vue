@@ -3,15 +3,14 @@
   class="drag"
   >
     <VFabTransition>
-      <VBtn
-        :key="activeFab.icon"
+      <VBtn :key="activeFab.icon"
         v-model="fab"
+        class="float-botton"
         :color="activeFab.color"
         dark
         fab
         fixed
         right
-        bottom
         @click.stop="clickFab"
       >
         <VIcon>{{ activeFab.icon }}</VIcon>
@@ -75,6 +74,8 @@ export default {
 .drag {
   position: absolute;
   left: 0px;
-  ztop: 0px;
+}
+.float-botton {
+  bottom: 48px;
 }
 </style>
