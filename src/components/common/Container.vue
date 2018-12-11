@@ -8,4 +8,7 @@
   </VContainer>
 </template>
 <style scoped>
+.main-container {
+  padding: 16px 0;
+}
 </style>
