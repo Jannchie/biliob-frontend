@@ -11,7 +11,7 @@
                 <img style="border-radius:40px;width:80px;height:80px" :src="eachAuthor.face.slice(5)" />
               </VResponsive>
             </div>
-            <div style="margin-left:10px;width:100%">
+            <div style="margin-left:10px;overflow:hidden">
               <div class="font-weight-bold author-title">
                 {{eachAuthor.name}}
                 <SexIcon :sex="eachAuthor.sex"></SexIcon>
@@ -129,7 +129,6 @@ p {
 }
 
 .author-title {
-  max-width: 50vw;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
