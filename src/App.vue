@@ -5,7 +5,7 @@
       <NavBar></NavBar>
       <Banner></Banner>
       <FloatDialog></FloatDialog>
-      <Container />
+      <Container/>
       <BiliobFooter />
     </VApp>
   </div>

@@ -3,7 +3,7 @@
     <AuthorMain slot="main-cards">
         <!-- <AuthorDetailChannel slot="channel" :channels="authorData.channels"></AuthorDetailChannel> -->
         <AuthorDetailFansChart slot="fans" :author-data="authorData"></AuthorDetailFansChart>
-        <AuthorDetailFansRateChart slot="fans-rate" :author-data="authorData"></AuthorDetailFansRateChart>
+        <AuthorDetailFansRateChart slot="fans-rate" :fans-rate="authorData"></AuthorDetailFansRateChart>
     </AuthorMain>
     <AuthorAside slot="aside-cards">
       <AuthorOperation slot="author-operation" :author-data="authorData"></AuthorOperation>

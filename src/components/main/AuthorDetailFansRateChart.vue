@@ -1,7 +1,7 @@
 <template>
   <VCard class="card">
     <VCardText  class='card-holder'>
-        <Chart class="chart" theme="light" :auto-resize="true" :options="fansRate"></Chart>
+        <Chart class="chart" theme="light" :auto-resize="true" :options="chartOptions"></Chart>
     </VCardText>
   </VCard>
 </template>
@@ -26,15 +26,15 @@ var deepCopy = function(o) {
   }
 };
 export default {
-  props: { authorData: Object() },
+  props: { fansRate: Object() },
   data() {
     return {
-      fansRate: Object()
+      chartOptions: Object()
     };
   },
   watch: {
-    authorData: function(val) {
-      this.fansRate = drawFansRateChart(deepCopy(val));
+    fansRate: function(val) {
+      this.chartOptions = drawFansRateChart(deepCopy(val));
     }
   }
 };

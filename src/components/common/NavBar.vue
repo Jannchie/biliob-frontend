@@ -83,7 +83,7 @@
 
           <VListTileContent>
             <VListTileTitle>关于</VListTileTitle>
-            <VListTileSubTitle>施工中</VListTileSubTitle>
+            <VListTileSubTitle>我觉得你对这些肯定不感兴趣</VListTileSubTitle>
           </VListTileContent>
         </VListTile>
 

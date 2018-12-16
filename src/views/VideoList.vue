@@ -1,7 +1,7 @@
 <template>
   <MainLayout>
     <VideoListMain slot="main-cards"></VideoListMain>
-    <VideoListAside slot="aside-cards" class="hidden-lg-and-down">
+    <VideoListAside slot="aside-cards">
       <OtherLink slot="link"></OtherLink>
     </VideoListAside>
   </MainLayout>
