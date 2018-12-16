@@ -1,14 +1,14 @@
 <template>
-    <VBottomNav :color="transparent" :active.sync="bottomNav" shift app :value="bottomNavShow" class="hidden-lg-and-up">
-      <VBtn color="red" flat value="video" @click.stop="toVideo">
+    <VBottomNav color="white" :active.sync="bottomNav" shift app :value="bottomNavShow" class="hidden-lg-and-up">
+      <VBtn color="red" :ripple="false" flat value="video" @click.stop="toVideo">
         <span>视频追踪</span>
         <VIcon>mdi-video</VIcon>
       </VBtn>
-      <VBtn color="indigo" flat value="up" @click.stop="toAuthor">
+      <VBtn color="indigo" :ripple="false" flat value="up" @click.stop="toAuthor">
         <span>UP主追踪</span>
         <VIcon>mdi-account-search</VIcon>
       </VBtn>
-      <VBtn color="teal" flat value="rank" @click.stop="toRank">
+      <VBtn color="teal" :ripple="false" flat value="rank" @click.stop="toRank">
         <span>排行榜</span>
         <VIcon>mdi-chart-bar</VIcon>
       </VBtn>

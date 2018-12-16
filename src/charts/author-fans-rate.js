@@ -29,6 +29,7 @@ function interpolation(data) {
   return new_data;
 }
 function drawChart(data) {
+  console.log(data);
   data = data.data;
   data = interpolation(data);
   for (let index = 0; index < data.length; index++) {

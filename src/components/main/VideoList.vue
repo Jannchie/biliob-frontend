@@ -11,8 +11,8 @@
                 <VImg style="border-radius:5px;width:120px;height:80px" :src="eachVideo.pic.slice(5)" :lazy-src="eachVideo.pic.slice(5)" />
               </VResponsive>
             </div>
-            <div style="margin-left:10px;width:100%">
-              <div class="font-weight-bold video-title">
+            <div style="margin-left:10px;overflow:hidden">
+              <div class="font-weight-bold video-title text-no-wrap text-truncate">
                 {{eachVideo.title}}
               </div>
               <div class="caption subtext video-info">
@@ -129,10 +129,6 @@ p {
 
 .video-title {
   font-size: 15px;
-  max-width: 50vmin;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 }
 
 .subtext {

@@ -4,8 +4,8 @@
       <div>
         <img class="video-img" style="vertical-align: bottom" :src="pic" />
       </div>
-      <VCardText style="width:55%">
-        <div class="font-weight-bold video-title">
+      <VCardText style="overflow:hidden">
+        <div class="font-weight-bold video-title ">
           {{title}}
         </div>
         <br>
