@@ -1,5 +1,7 @@
 <template>
-  <img height="188px" class="banner hidden-lg-and-down"/>
+<div class="banner hidden-lg-and-down">
+  <img height="188px"/>
+</div>
 </template>
 <script>
 export default {

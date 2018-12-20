@@ -1,7 +1,7 @@
 <template>
 <VCard>
     <VCardText>
-        <VBtn block color="#ff7fac" :href="url"  target="_blank"><VIcon>mdi-video</VIcon>&nbsp;前往B站播放页面</VBtn>
+        <VBtn block color="#ff7fac" flat :href="url"  target="_blank"><VIcon>mdi-video</VIcon>&nbsp;前往B站播放页面</VBtn>
     </VCardText>
 </VCard>
 </template>
