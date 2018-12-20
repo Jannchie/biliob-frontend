@@ -12,6 +12,10 @@
         <span>排行榜</span>
         <VIcon>mdi-chart-bar</VIcon>
       </VBtn>
+      <VBtn color="green" :ripple="false" flat value="event" @click.stop="toEvent">
+        <span>事件</span>
+        <VIcon>mdi-calendar-search</VIcon>
+      </VBtn>
     </VBottomNav>
 </template>
 <script>
@@ -34,6 +38,9 @@ export default {
     },
     toRank() {
       this.$router.push("/rank");
+    },
+    toEvent() {
+      this.$router.push("/event");
     },
     onScroll() {
       if (this.offsetTop - window.pageYOffset < 0) {
