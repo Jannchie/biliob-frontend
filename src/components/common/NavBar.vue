@@ -6,10 +6,11 @@
         <VToolbarTitle class="toolbar-title"><img class="logo" src="../../../public/img/icons/android-chrome-192x192.png">
           BiliOB观测者</VToolbarTitle>
       </VBtn>
-      <VToolbarItems class="hidden-md-and-down">
+      <VToolbarItems class="hidden-lg-and-down">
         <VBtn class="toolbar-item" flat dark @click.stop="toVideo">视频追踪</VBtn>
         <VBtn class="toolbar-item" flat dark @click.stop="toAuthor">UP主追踪</VBtn>
         <VBtn class="toolbar-item" flat dark @click.stop="toRank">排行榜</VBtn>
+        <VBtn class="toolbar-item" flat dark @click.stop="toEvent">事件</VBtn>
       </VToolbarItems>
     </VToolbar>
 
@@ -179,6 +180,9 @@ export default {
     },
     toFavoriteAuthor() {
       this.$router.push("/user/author");
+    },
+    toEvent() {
+      this.$router.push("/event");
     },
     toLog() {
       this.$router.push("/log");

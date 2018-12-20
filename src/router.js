@@ -13,6 +13,7 @@ const Login = () => import("./views/Login.vue");
 const Signin = () => import("./views/Signin.vue");
 const NotFound = () => import("./views/NotFound.vue");
 const About = () => import("./views/About.vue");
+const Occurrence = () => import("./views/Event.vue");
 
 Vue.use(Router);
 
@@ -27,6 +28,10 @@ export default new Router({
     {
       path: "/rank",
       component: Rank
+    },
+    {
+      path: "/event",
+      component: Occurrence
     },
     {
       path: "/author/:mid",
