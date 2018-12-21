@@ -11,6 +11,12 @@ import VueAxios from "vue-axios";
 import VueRouter from "vue-router";
 import Vuex from "vuex";
 Vue.config.productionTip = false;
+router.afterEach(function(to) {
+  if (window.ga) {
+    window.ga("set", "page", to.fullPath); // 你可能想根据请求参数添加其他参数，可以修改这里的 to.fullPath
+    window.ga("send", "pageview");
+  }
+});
 Vue.use(VueRouter);
 axios.defaults.withCredentials = true;
 axios.defaults.baseURL = process.env.VUE_APP_API_ROOT;
