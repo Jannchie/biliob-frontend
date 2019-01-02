@@ -61,6 +61,9 @@ export default {
           this.type = "success";
           this.showAlert = true;
           this.$store.commit("login");
+          this.$store.commit("setUserName", response.data.data.name);
+          this.$store.commit("setRole", response.data.data.role);
+          this.$store.commit("setCredit", response.data.data.credit);
           this.$store.commit(
             "setFavoriteVideo",
             response.data.data.favoriteAid
@@ -70,7 +73,7 @@ export default {
             response.data.data.favoriteMid
           );
           setTimeout(() => {
-            this.$router.push("/video");
+            window.location.href = process.env.VUE_APP_API_ROOT;
           }, 2000);
         })
         .catch(error => {

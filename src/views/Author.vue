@@ -50,6 +50,11 @@ export default {
     this.axios.get(`/author/${this.$route.params.mid}/video`).then(response => {
       this.authorTopVideo = response.data;
     });
+    this.axios
+      .get(`/author/${this.$route.params.mid}/video?sort=1`)
+      .then(response => {
+        this.authorTopVideo = response.data;
+      });
   }
 };
 </script>
