@@ -16,8 +16,8 @@
                 {{eachVideo.title}}
               </div>
               <div class="caption subtext video-info">
-                <VIcon small>mdi-account-box</VIcon>{{eachVideo.author}}
-                <VIcon small>mdi-book</VIcon>{{eachVideo.channel}}
+                <VIcon small>mdi-account-box-outline</VIcon>{{eachVideo.author}}
+                <VIcon small>mdi-bookmark-outline</VIcon>{{eachVideo.channel}}
               </div>
             </div>
             <ObserveStatus class="observe-status" :object="eachVideo"></ObserveStatus>
@@ -128,10 +128,6 @@ p {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-}
-
-.subtext {
-  color: #444444;
 }
 
 .observe-status {

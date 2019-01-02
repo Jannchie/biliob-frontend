@@ -17,7 +17,7 @@
                 {{eachAuthor.name}}
                 <SexIcon :sex="eachAuthor.sex"></SexIcon>
               </div>
-              <div v-if="eachAuthor.official !== ''" class="caption subtext author-info">
+              <div v-if="eachAuthor.official !== ''" class="caption  author-info">
                 <VIcon color="#FBC02D" small>mdi-flash</VIcon>{{eachAuthor.official}}
               </div>
             </div>
@@ -134,10 +134,6 @@ p {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-}
-
-.subtext {
-  color: #444444;
 }
 
 .observe-status {

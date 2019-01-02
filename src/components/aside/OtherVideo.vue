@@ -38,10 +38,6 @@ export default {
   text-decoration: none;
 }
 
-.link:hover {
-  color: rgb(62, 123, 184);
-}
-
 .aside-card {
   margin-top: 5px;
 }
@@ -49,9 +45,5 @@ export default {
 .video-list {
   padding-bottom: 0px;
   padding-top: 0px;
-}
-
-.subtext {
-  color: #444444;
 }
 </style>

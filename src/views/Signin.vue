@@ -135,6 +135,5 @@ export default {
 
 .time {
   font-size: 13px;
-  color: #999;
 }
 </style>

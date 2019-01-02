@@ -1,6 +1,6 @@
 <template>
   <div>
-      <VBtn v-if="!focus" color="grey lighten-1" flat icon depressed @click.stop="addFocus"><VIcon>mdi-heart</VIcon><span></span></VBtn>
+      <VBtn v-if="!focus" color="grey lighten-1" flat icon depressed @click.stop="addFocus"><VIcon>mdi-heart-outline</VIcon><span></span></VBtn>
       <VBtn v-if="focus" color="red lighten-1" flat icon depressed @click.stop="removeFocus"><VIcon>mdi-heart</VIcon></VBtn>
   </div>
 </template>

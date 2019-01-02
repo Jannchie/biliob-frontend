@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <VApp>
+    <VApp :dark="dark">
       <BottomNav />
-      <NavBar></NavBar>
+      <NavBar @darkMode="darkMode"></NavBar>
       <Banner></Banner>
       <FloatDialog></FloatDialog>
       <Container/>
@@ -28,6 +28,16 @@ export default {
     FloatDialog,
     BiliobFooter,
     BottomNav
+  },
+  data() {
+    return {
+      dark: false
+    };
+  },
+  methods: {
+    darkMode() {
+      this.dark = !this.dark;
+    }
   }
 };
 </script>
