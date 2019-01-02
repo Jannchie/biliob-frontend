@@ -34,12 +34,7 @@ export default {
 </script>
 <style>
 .link {
-  color: slategray;
   text-decoration: none;
-}
-
-.link:hover {
-  color: rgb(62, 123, 184);
 }
 
 .aside-card {
@@ -49,9 +44,5 @@ export default {
 .video-list {
   padding-bottom: 0px;
   padding-top: 0px;
-}
-
-.subtext {
-  color: #444444;
 }
 </style>

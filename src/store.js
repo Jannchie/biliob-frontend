@@ -6,11 +6,15 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     logined: false,
+    dark: false,
     currentPage: "",
     favoriteAid: [],
     favoriteMid: []
   },
   mutations: {
+    setDark(state, dark) {
+      state.dark = dark;
+    },
     setFavoriteVideo(state, aidList) {
       state.favoriteAid = aidList;
     },
@@ -59,6 +63,9 @@ export default new Vuex.Store({
     },
     getFavoriteVideo: state => {
       return state.favoriteAid;
+    },
+    getDark: state => {
+      return state.dark;
     }
   }
 });

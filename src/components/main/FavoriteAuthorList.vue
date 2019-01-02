@@ -134,10 +134,6 @@ p {
   text-overflow: ellipsis;
 }
 
-.subtext {
-  color: #444444;
-}
-
 .observe-status {
   position: absolute;
   bottom: 5px;

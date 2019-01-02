@@ -29,7 +29,7 @@ function drawChart(data) {
       name: {
         textStyle: {
           color: "#fff",
-          backgroundColor: "#999",
+          backgroundColor: "#CCC",
           borderRadius: 3,
           padding: [3, 5]
         }
