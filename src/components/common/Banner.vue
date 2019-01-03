@@ -1,5 +1,5 @@
 <template>
-<div class="banner hidden-lg-and-down">
+<div class="banner hidden-md-and-down">
   <img height="188px"/>
 </div>
 </template>
@@ -16,6 +16,7 @@ export default {
   top: 0px;
   margin: 0 0;
   padding: 0 0;
-  background-image: url("//placehold.it/1920x188");
+  background-image: url("../../../public/img/banner.png");
+  background-position: center;
 }
 </style>
