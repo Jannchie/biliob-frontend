@@ -3,7 +3,7 @@
   <VFlex lg6 md12>
   <VCard class="channel-card">
     <VCardText  class='card-holder'>
-        <Chart id="channel-chart" theme="light" :auto-resize="true" :options="channelChart" style="width:100%;" ></Chart>
+        <Chart id="channel-chart" :theme="theme" :auto-resize="true" :options="channelChart" style="width:100%;" ></Chart>
     </VCardText >
   </VCard>
   </VFlex>
@@ -17,12 +17,32 @@ export default {
   props: { channels: Object() },
   data() {
     return {
-      channelChart: Object()
+      channelChart: Object(),
+      theme: "light"
     };
   },
+  computed: {
+    isDark() {
+      return this.$store.state.dark;
+    }
+  },
   watch: {
+    isDark(val) {
+      if (val) {
+        this.theme = "dark";
+      } else {
+        this.theme = "light";
+      }
+    },
     channels: function(val) {
       this.channelChart = drawChannelChart(val);
+    }
+  },
+  mounted() {
+    if (this.$store.state.dark) {
+      this.theme = "dark";
+    } else {
+      this.theme = "light";
     }
   }
 };

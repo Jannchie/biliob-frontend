@@ -1,7 +1,7 @@
 <template>
   <VCard class="card">
     <VCardText  class='card-holder'>
-        <Chart class="chart" theme="light" :auto-resize="true" :options="siteOptions" style="width:100%;" ></Chart>
+        <Chart class="chart" :theme="theme" :auto-resize="true" :options="siteOptions" style="width:100%;" ></Chart>
     </VCardText >
   </VCard>
 </template>
@@ -12,13 +12,33 @@ export default {
   props: { siteData: Object() },
   data() {
     return {
-      siteOptions: Object()
+      siteOptions: Object(),
+      theme: "light"
     };
   },
+  computed: {
+    isDark() {
+      return this.$store.state.dark;
+    }
+  },
   watch: {
+    isDark(val) {
+      if (val) {
+        this.theme = "dark";
+      } else {
+        this.theme = "light";
+      }
+    },
     siteData: function(val) {
       this.siteData = val;
       this.siteOptions = drawSitePlay(val);
+    }
+  },
+  mounted() {
+    if (this.$store.state.dark) {
+      this.theme = "dark";
+    } else {
+      this.theme = "light";
     }
   }
 };

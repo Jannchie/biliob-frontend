@@ -21,8 +21,8 @@ export default new Vuex.Store({
     setRole(state, role) {
       state.role = role;
     },
-    setDark(state, dark) {
-      state.dark = dark;
+    setDark(state) {
+      state.dark = !state.dark;
     },
     setCredit(state, credit) {
       state.credit = credit;
