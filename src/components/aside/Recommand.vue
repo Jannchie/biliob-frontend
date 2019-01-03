@@ -1,8 +1,8 @@
 <template>
   <VCard :href="'https://www.bilibili.com/av'+ads.aid">
-    <VCardMedia>
+    <VResponsive>
       <VImg :src="ads.pic" aspect-ratio="2.75"></VImg>
-    </VCardMedia>
+    </VResponsive>
     <VCardText>
       <h3>
         {{ads.title}}

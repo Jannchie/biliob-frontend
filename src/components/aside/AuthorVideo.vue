@@ -9,11 +9,14 @@
         <template v-for="eachVideo in authorTopVideo.content">
           <VDivider :key="eachVideo.title"></VDivider>
           <VListTile :key="eachVideo.aid" style="width: 100%" :to="'/author/'+eachVideo.mid+'/video/'+eachVideo.aid" ripple>
+            <VListTileAvatar :key="eachVideo.title" tile>
+              <VImg :src="eachVideo.pic"/>
+            </VListTileAvatar>
             <VListTileContent>
               <VListTileTitle>
                 {{eachVideo.title}}
               </VListTileTitle>
-              <VListTileSubTitle class="caption subtext">分区：{{eachVideo.channel}} 投稿时间：{{eachVideo.datetime}}</VListTileSubTitle>
+              <VListTileSubTitle class="caption subtext">分区：{{eachVideo.channel}} 投稿时间：{{dateToStr(eachVideo.datetime)}}</VListTileSubTitle>
             </VListTileContent>
           </VListTile>
         </template>
@@ -21,6 +24,8 @@
   </VCard>
 </template>
 <script>
+var format = require("date-fns/format");
+var { convertDateToUTC } = require("../../charts/util/convertDateToUTC");
 export default {
   props: {
     title: String(),
@@ -29,6 +34,11 @@ export default {
   watch: {
     authorTopVideo: function(val) {
       this.authorTopVideo = val;
+    }
+  },
+  methods: {
+    dateToStr(d) {
+      return format(convertDateToUTC(new Date(d)), "YYYY-MM-DD HH:mm");
     }
   }
 };

@@ -7,7 +7,7 @@
     </VideoMain>
     <VideoAside slot="aside-cards">
       <AuthorOperation slot="author-operation" :author-data="authorData"></AuthorOperation>
-      <OtherVideo slot="other-video" :other-video="otherVideo"></OtherVideo>
+      <AuthorVideo slot="other-video" title="UP主其他已追踪视频" :author-top-video="otherVideo"></AuthorVideo>
       <VideoToBilibili slot="video-to-bilibili" :aid="videoData.aid"></VideoToBilibili>
       <Recommand slot="recommand"></Recommand>
     </VideoAside>
@@ -21,7 +21,7 @@ import MainLayout from "../components/common/MainLayout.vue";
 import VideoAside from "../components/aside/VideoAside.vue";
 import VideoMain from "../components/main/VideoMain.vue";
 import AuthorOperation from "../components/aside/AuthorOperation.vue";
-import OtherVideo from "../components/aside/OtherVideo.vue";
+import AuthorVideo from "../components/aside/AuthorVideo.vue";
 import Recommand from "../components/aside/Recommand.vue";
 import VideoToBilibili from "../components/aside/VideoToBilibili.vue";
 import drawMainChart from "../charts/video-main.js";
@@ -53,7 +53,7 @@ export default {
     VideoAside,
     VideoMain,
     AuthorOperation,
-    OtherVideo,
+    AuthorVideo,
     Recommand,
     VideoToBilibili
   },
@@ -83,7 +83,7 @@ export default {
           `/author/${this.$route.params.mid}/video/${this.$route.params.aid}`
         )
         .then(response => {
-          this.otherVideo = response.data.content;
+          this.otherVideo = response.data;
         });
     }
   },
@@ -101,7 +101,7 @@ export default {
     this.axios
       .get(`/author/${this.$route.params.mid}/video/${this.$route.params.aid}`)
       .then(response => {
-        this.otherVideo = response.data.content;
+        this.otherVideo = response.data;
       });
   }
 };
