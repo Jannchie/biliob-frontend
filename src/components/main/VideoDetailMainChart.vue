@@ -1,14 +1,40 @@
 <template>
   <VCard class="card">
     <VCardText  class='card-holder'>
-        <Chart id="chart-1" theme="light" :auto-resize="true" :options="mainChart" style="width:100%;height:25vmax;" ></Chart>
+        <Chart id="chart-1" :theme="theme" :auto-resize="true" :options="mainChart" style="width:100%;height:25vmax;" ></Chart>
     </VCardText >
   </VCard>
 </template>
 
 <script>
 export default {
-  props: { mainChart: Object() }
+  props: { mainChart: Object() },
+  data() {
+    return {
+      theme: "light"
+    };
+  },
+  computed: {
+    isDark() {
+      return this.$store.state.dark;
+    }
+  },
+  watch: {
+    isDark(val) {
+      if (val) {
+        this.theme = "dark";
+      } else {
+        this.theme = "light";
+      }
+    }
+  },
+  mounted() {
+    if (this.$store.state.dark) {
+      this.theme = "dark";
+    } else {
+      this.theme = "light";
+    }
+  }
 };
 </script>
 

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <VApp>
+    <VApp :dark="dark">
       <BottomNav />
       <NavBar></NavBar>
       <Banner></Banner>
@@ -28,6 +28,11 @@ export default {
     FloatDialog,
     BiliobFooter,
     BottomNav
+  },
+  computed: {
+    dark() {
+      return this.$store.state.dark;
+    }
   }
 };
 </script>

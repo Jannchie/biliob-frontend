@@ -1,24 +1,23 @@
 <template>
   <nav>
     <VToolbar class="toolbar" dense>
-      <VToolbarSideIcon class="toolbar-item" dark @click.stop="drawer = !drawer"></VToolbarSideIcon>
+      <VToolbarSideIcon class="toolbar-item" dark @click.stop="drawer = !drawer"><VIcon>mdi-menu</VIcon></VToolbarSideIcon>
       <VBtn class="toolbar-item" flat dark @click.stop="toHomepage">
         <VToolbarTitle class="toolbar-title"><img class="logo" src="../../../public/img/icons/android-chrome-192x192.png">
           BiliOB观测者</VToolbarTitle>
       </VBtn>
-      <VToolbarItems class="hidden-lg-and-down">
-        <VBtn class="toolbar-item" flat dark @click.stop="toVideo">视频追踪</VBtn>
-        <VBtn class="toolbar-item" flat dark @click.stop="toAuthor">UP主追踪</VBtn>
-        <VBtn class="toolbar-item" flat dark @click.stop="toRank">排行榜</VBtn>
-        <VBtn class="toolbar-item" flat dark @click.stop="toEvent">事件</VBtn>
+      <VToolbarItems class="hidden-md-and-down">
+        <VBtn class="toolbar-item" flat dark @click.stop="toVideo"><VIcon>mdi-video-outline</VIcon>视频追踪</VBtn>
+        <VBtn class="toolbar-item" flat dark @click.stop="toAuthor"><VIcon>mdi-account-outline</VIcon>UP主追踪</VBtn>
+        <VBtn class="toolbar-item" flat dark @click.stop="toRank"><VIcon>mdi-chart-histogram</VIcon>排行榜</VBtn>
       </VToolbarItems>
     </VToolbar>
-
     <VNavigationDrawer v-model="drawer" absolute temporary>
+    <!-- <img src="../../../public/img/aside-bright.png"> -->
       <VList>
-        <VListTile v-if="logined" style="background-color:#FFFFFF">
+        <VListTile v-if="logined">
           <VListTileAvatar>
-            <VIcon>mdi-account</VIcon>
+            <VIcon large>mdi-account-circle-outline</VIcon>
           </VListTileAvatar>
           <VListTileContent>
             <VListTileTitle>{{name}}</VListTileTitle>
@@ -33,7 +32,7 @@
 
         <VListTile v-if="!logined" ripple @click.stop="toLogin">
           <VListTileAvatar>
-            <VIcon>mdi-login</VIcon>
+            <VIcon>mdi-login-variant</VIcon>
           </VListTileAvatar>
           <VListTileContent>
             <VListTileTitle>登录</VListTileTitle>
@@ -46,7 +45,7 @@
         <VDivider></VDivider>
         <VListTile ripple @click.stop="toFavoriteAuthor">
           <VListTileAvatar>
-            <VIcon>mdi-face</VIcon>
+            <VIcon>mdi-account-heart</VIcon>
           </VListTileAvatar>
           <VListTileContent>
             <VListTileTitle>我的关注</VListTileTitle>
@@ -64,10 +63,24 @@
         </VListTile>
         <VDivider></VDivider>
       </VList>
-
       <VList>
         <VDivider></VDivider>
-        <VListTile ripple to="/faq">
+
+        <VListTile ripple @click.stop="toEvent">
+          <VListTileAvatar>
+            <VIcon>mdi-bulletin-board</VIcon>
+          </VListTileAvatar>
+          <VListTileContent>
+            <VListTileTitle>B站事件</VListTileTitle>
+            <VListTileSubTitle>一分钟，我要看到所有的资料</VListTileSubTitle>
+          </VListTileContent>
+        </VListTile>
+        <VDivider></VDivider>
+
+      </VList>
+      <VList>
+        <VDivider></VDivider>
+        <VListTile ripple @click.stop="toFaq">
           <VListTileAvatar>
             <VIcon>mdi-help-circle-outline</VIcon>
           </VListTileAvatar>
@@ -77,7 +90,7 @@
           </VListTileContent>
         </VListTile>
 
-        <VListTile ripple to="/about">
+        <VListTile ripple @click.stop="toAbout">
           <VListTileAvatar>
             <VIcon>mdi-information-outline</VIcon>
           </VListTileAvatar>
@@ -99,7 +112,23 @@
           </VListTileContent>
         </VListTile>
 
+
         <VDivider></VDivider>
+      </VList>
+      <VList>
+        <VDivider></VDivider>
+
+        <VListTile ripple @click.stop="darkMode">
+          <VListTileAvatar>
+            <VIcon>mdi-weather-night</VIcon>
+          </VListTileAvatar>
+          <VListTileContent>
+            <VListTileTitle>夜间模式</VListTileTitle>
+            <VListTileSubTitle>Deep ♂ Dark ♂ Fantasy</VListTileSubTitle>
+          </VListTileContent>
+        </VListTile>
+        <VDivider></VDivider>
+
       </VList>
     </VNavigationDrawer>
   </nav>
@@ -111,8 +140,6 @@ export default {
     return {
       bottomNav: null,
       drawer: null,
-      name: "",
-      role: "",
       bottomNavShow: true,
       offsetTop: 0
     };
@@ -127,33 +154,35 @@ export default {
       set: function() {
         this.$store.commit("logout");
       }
+    },
+    name: {
+      get: function() {
+        return this.$store.getters.getUserName;
+      },
+      set: function() {}
+    },
+    role: {
+      get: function() {
+        return this.$store.getters.getRole;
+      },
+      set: function() {}
+    },
+    credit: {
+      get: function() {
+        return this.$store.getters.getCredit;
+      },
+      set: function() {}
     }
   },
-  watch: {
-    logined: function() {
-      this.axios
-        .get(`/user`)
-        .then(response => {
-          this.$store.commit("login");
-          this.name = response.data.name;
-          this.role = response.data.role;
-          this.$store.commit("setFavoriteVideo", response.data.favoriteAid);
-          this.$store.commit("setFavoriteAuthor", response.data.favoriteMid);
-        })
-        .catch(() => {
-          this.$store.commit("logout");
-        });
-    }
-  },
-
-  mounted() {
+  created() {
     this.axios
       .get(`/user`)
       .then(response => {
         this.logined = true;
         this.$store.commit("login");
-        this.name = response.data.name;
-        this.role = response.data.role;
+        this.$store.commit("setRole", response.data.role);
+        this.$store.commit("setCredit", response.data.credit);
+        this.$store.commit("setUserName", response.data.name);
         this.$store.commit("setFavoriteVideo", response.data.favoriteAid);
         this.$store.commit("setFavoriteAuthor", response.data.favoriteMid);
       })
@@ -190,6 +219,12 @@ export default {
     toHomepage() {
       this.$router.push("/");
     },
+    toAbout() {
+      this.$router.push("/about");
+    },
+    toFaq() {
+      this.$router.push("/faq");
+    },
     onScroll() {
       if (this.offsetTop - window.pageYOffset < 0) {
         this.bottomNavShow = false;
@@ -197,6 +232,9 @@ export default {
         this.bottomNavShow = true;
       }
       this.offsetTop = window.pageYOffset;
+    },
+    darkMode() {
+      this.$store.commit("setDark");
     }
   }
 };
@@ -204,11 +242,7 @@ export default {
 <style scoped>
 .toolbar {
   z-index: 1;
-  background-color: #383e44;
-  background: -webkit-linear-gradient(#383e44, rgb(44, 44, 44));
-  background: -o-linear-gradient(#383e44, rgb(44, 44, 44));
-  background: -moz-linear-gradient(#383e44, rgb(44, 44, 44));
-  background: linear-gradient(#383e44, rgb(44, 44, 44));
+  background-color: #444;
   color: #ffffff;
 }
 

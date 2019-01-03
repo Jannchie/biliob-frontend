@@ -1,7 +1,7 @@
 <template>
   <VCard class="card">
     <VCardText  class='card-holder'>
-        <Chart class="chart" theme="light" :auto-resize="true" :options="chartOptions"></Chart>
+        <Chart class="chart" :theme="theme" :auto-resize="true" :options="chartOptions"></Chart>
     </VCardText>
   </VCard>
 </template>
@@ -29,12 +29,32 @@ export default {
   props: { fansRate: Object() },
   data() {
     return {
-      chartOptions: Object()
+      chartOptions: Object(),
+      theme: "light"
     };
   },
+  computed: {
+    isDark() {
+      return this.$store.state.dark;
+    }
+  },
   watch: {
+    isDark(val) {
+      if (val) {
+        this.theme = "dark";
+      } else {
+        this.theme = "light";
+      }
+    },
     fansRate: function(val) {
       this.chartOptions = drawFansRateChart(deepCopy(val));
+    }
+  },
+  mounted() {
+    if (this.$store.state.dark) {
+      this.theme = "dark";
+    } else {
+      this.theme = "light";
     }
   }
 };

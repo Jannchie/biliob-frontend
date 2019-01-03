@@ -1,7 +1,7 @@
 <template>
 <VCard>
     <VCardText>
-        <VBtn block flat color="#ff7fac" :href="url"  target="_blank"><VIcon>mdi-home</VIcon>&nbsp;前往UP主的个人空间</VBtn>
+        <VBtn block flat color="#ff7fac" :href="url"  target="_blank"><VIcon>mdi-home-outline</VIcon>&nbsp;前往UP主的个人空间</VBtn>
     </VCardText>
 </VCard>
 </template>

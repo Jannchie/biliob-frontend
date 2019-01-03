@@ -1,7 +1,7 @@
 <template>
   <div>
     <VBtn v-if="!focus" small icon depressed color="grey lighten-1" flat @click.stop="addFocus">
-      <VIcon>mdi-star</VIcon>
+      <VIcon>mdi-star-outline</VIcon>
     </VBtn>
     <VBtn v-if="focus" small icon depressed color="orange darken-2" flat @click.stop="removeFocus">
       <VIcon>mdi-star</VIcon>

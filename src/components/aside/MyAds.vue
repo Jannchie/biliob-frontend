@@ -1,23 +1,25 @@
 <template>
 <VCard>
+    <VCardMedia>
+    </VCardMedia>
     <VCardText>
-        <VBtn block color="#ff7fac" flat :href="url"  target="_blank"><VIcon>mdi-video-outline</VIcon>&nbsp;前往B站播放页面</VBtn>
+        广告标题
     </VCardText>
 </VCard>
 </template>
 <script>
 export default {
   props: {
-    aid: Number()
+    mid: Number()
   },
   computed: {
     url: function() {
-      return `https://www.bilibili.com/av${this.aid}`;
+      return `https://space.bilibili.com/${this.mid}`;
     }
   },
   watch: {
-    aid: function(val) {
-      this.aid = val;
+    mid: function(val) {
+      this.mid = val;
     }
   }
 };

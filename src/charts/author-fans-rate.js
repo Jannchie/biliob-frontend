@@ -67,7 +67,11 @@ function drawChart(data) {
     tooltip: {
       trigger: "axis",
       axisPointer: {
-        type: "cross"
+        label: {
+          formatter: function(params) {
+            return Math.round(params.value);
+          }
+        }
       }
     },
     grid: {

@@ -1,7 +1,7 @@
 <template>
   <VCard class="card">
     <VCardText  class='card-holder'>
-        <Chart id="chart-1" theme="light" :auto-resize="true" :options="likeRateChart" style="width:100%;height:20vmax;" ></Chart>
+        <Chart id="chart-1" :theme="theme" :auto-resize="true" :options="likeRateChart" style="width:100%;height:20vmax;" ></Chart>
     </VCardText >
   </VCard>
 </template>
@@ -11,8 +11,30 @@ export default {
   props: { likeRateChart: Object() },
   data() {
     return {
-      videoData: {}
+      videoData: {},
+      theme: "light"
     };
+  },
+  computed: {
+    isDark() {
+      return this.$store.state.dark;
+    }
+  },
+  watch: {
+    isDark(val) {
+      if (val) {
+        this.theme = "dark";
+      } else {
+        this.theme = "light";
+      }
+    }
+  },
+  mounted() {
+    if (this.$store.state.dark) {
+      this.theme = "dark";
+    } else {
+      this.theme = "light";
+    }
   }
 };
 </script>

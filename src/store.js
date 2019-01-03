@@ -6,11 +6,27 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     logined: false,
-    currentPage: "",
+    userName: String(),
+    role: String(),
+    credit: Number(),
+    dark: false,
+    currentPage: String(),
     favoriteAid: [],
     favoriteMid: []
   },
   mutations: {
+    setUserName(state, userName) {
+      state.userName = userName;
+    },
+    setRole(state, role) {
+      state.role = role;
+    },
+    setDark(state) {
+      state.dark = !state.dark;
+    },
+    setCredit(state, credit) {
+      state.credit = credit;
+    },
     setFavoriteVideo(state, aidList) {
       state.favoriteAid = aidList;
     },
@@ -48,6 +64,15 @@ export default new Vuex.Store({
     }
   },
   getters: {
+    getUserName: state => {
+      return state.userName;
+    },
+    getRole: state => {
+      return state.role;
+    },
+    getCredit: state => {
+      return state.credit;
+    },
     getLoginState: state => {
       return state.logined;
     },
@@ -59,6 +84,9 @@ export default new Vuex.Store({
     },
     getFavoriteVideo: state => {
       return state.favoriteAid;
+    },
+    getDark: state => {
+      return state.dark;
     }
   }
 });

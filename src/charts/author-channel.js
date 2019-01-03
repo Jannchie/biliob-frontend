@@ -28,8 +28,6 @@ function drawChart(data) {
       // shape: 'circle',
       name: {
         textStyle: {
-          color: "#fff",
-          backgroundColor: "#999",
           borderRadius: 3,
           padding: [3, 5]
         }
