@@ -2,7 +2,7 @@
   <div id="app">
     <VApp :dark="dark">
       <BottomNav />
-      <NavBar @darkMode="darkMode"></NavBar>
+      <NavBar></NavBar>
       <Banner></Banner>
       <FloatDialog></FloatDialog>
       <Container/>
@@ -29,14 +29,9 @@ export default {
     BiliobFooter,
     BottomNav
   },
-  data() {
-    return {
-      dark: false
-    };
-  },
-  methods: {
-    darkMode() {
-      this.dark = !this.dark;
+  computed: {
+    dark() {
+      return this.$store.state.dark;
     }
   }
 };

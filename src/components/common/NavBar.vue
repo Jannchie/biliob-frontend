@@ -80,7 +80,7 @@
       </VList>
       <VList>
         <VDivider></VDivider>
-        <VListTile ripple to="/faq">
+        <VListTile ripple @click.stop="toFaq">
           <VListTileAvatar>
             <VIcon>mdi-help-circle-outline</VIcon>
           </VListTileAvatar>
@@ -90,7 +90,7 @@
           </VListTileContent>
         </VListTile>
 
-        <VListTile ripple to="/about">
+        <VListTile ripple @click.stop="toAbout">
           <VListTileAvatar>
             <VIcon>mdi-information-outline</VIcon>
           </VListTileAvatar>
@@ -124,7 +124,7 @@
           </VListTileAvatar>
           <VListTileContent>
             <VListTileTitle>夜间模式</VListTileTitle>
-            <VListTileSubTitle>Deep♂Dark♂Fantasy</VListTileSubTitle>
+            <VListTileSubTitle>Deep ♂ Dark ♂ Fantasy</VListTileSubTitle>
           </VListTileContent>
         </VListTile>
         <VDivider></VDivider>
@@ -219,6 +219,12 @@ export default {
     toHomepage() {
       this.$router.push("/");
     },
+    toAbout() {
+      this.$router.push("/about");
+    },
+    toFaq() {
+      this.$router.push("/faq");
+    },
     onScroll() {
       if (this.offsetTop - window.pageYOffset < 0) {
         this.bottomNavShow = false;
@@ -229,7 +235,6 @@ export default {
     },
     darkMode() {
       this.$store.commit("setDark");
-      this.$emit("darkMode");
     }
   }
 };
