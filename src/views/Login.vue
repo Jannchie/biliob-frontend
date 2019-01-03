@@ -73,7 +73,7 @@ export default {
             response.data.data.favoriteMid
           );
           setTimeout(() => {
-            window.location.href = process.env.VUE_APP_API_ROOT;
+            window.location.href = "https://www.biliob.com";
           }, 2000);
         })
         .catch(error => {
