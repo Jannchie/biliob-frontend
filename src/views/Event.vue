@@ -67,7 +67,7 @@ export default {
         case "I级减少":
           return "mdi-emoticon-sad";
         default:
-          return "green";
+          return "mdi-thumb-down";
       }
     }
   }

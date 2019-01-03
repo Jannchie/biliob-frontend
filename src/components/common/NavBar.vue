@@ -63,7 +63,21 @@
         </VListTile>
         <VDivider></VDivider>
       </VList>
+      <VList>
+        <VDivider></VDivider>
 
+        <VListTile ripple @click.stop="toEvent">
+          <VListTileAvatar>
+            <VIcon>mdi-bulletin-board</VIcon>
+          </VListTileAvatar>
+          <VListTileContent>
+            <VListTileTitle>B站事件</VListTileTitle>
+            <VListTileSubTitle>一分钟，我要看到所有的资料</VListTileSubTitle>
+          </VListTileContent>
+        </VListTile>
+        <VDivider></VDivider>
+
+      </VList>
       <VList>
         <VDivider></VDivider>
         <VListTile ripple to="/faq">
@@ -97,6 +111,13 @@
             <VListTileSubTitle>快来看看全新的功能</VListTileSubTitle>
           </VListTileContent>
         </VListTile>
+
+
+        <VDivider></VDivider>
+      </VList>
+      <VList>
+        <VDivider></VDivider>
+
         <VListTile ripple @click.stop="darkMode">
           <VListTileAvatar>
             <VIcon>mdi-weather-night</VIcon>
@@ -106,8 +127,8 @@
             <VListTileSubTitle>Deep♂Dark♂Fantasy</VListTileSubTitle>
           </VListTileContent>
         </VListTile>
-
         <VDivider></VDivider>
+
       </VList>
     </VNavigationDrawer>
   </nav>
@@ -207,6 +228,7 @@ export default {
       this.offsetTop = window.pageYOffset;
     },
     darkMode() {
+      this.$store.commit("setDark");
       this.$emit("darkMode");
     }
   }
