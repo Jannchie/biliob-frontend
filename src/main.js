@@ -1,8 +1,9 @@
 import "babel-polyfill";
+import "@mdi/font/css/materialdesignicons.css"; // Ensure you are using css-loader
 import Vue from "vue";
 import "./plugins/vuetify";
 import "./echarts";
-import App from "./App.vue";
+const App = () => import("./App.vue");
 import router from "./router";
 import store from "./store";
 import "./registerServiceWorker";
