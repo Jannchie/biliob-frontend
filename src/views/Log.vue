@@ -1,6 +1,6 @@
 <template>
   <VTimeline dense>
-     <VTimelineItem v-for="eachPost in timelinePost.reverse()" :key="eachPost.title" fill-dot :color="getColor(eachPost.type)" :icon="getIcon(eachPost.type)" :small="isSmall(eachPost.type)">
+     <VTimelineItem v-for="eachPost in timelinePost" :key="eachPost.title" fill-dot :color="getColor(eachPost.type)" :icon="getIcon(eachPost.type)" :small="isSmall(eachPost.type)">
           <VLayout pt-3>
             <VFlex>
               <strong>{{eachPost.title}}</strong><br>
@@ -20,14 +20,14 @@ export default {
           title: "里程碑-项目启动",
           date: "2018-08-03",
           text:
-            "初始化了前后端工程，标志着该项目正式启动。\n这里记录了项目的所有进度。\n希望我能够把这个项目坚持下去。",
+            "初始化了前后端工程，标志着该项目正式启动。这里记录了项目的所有进度。希望我能够把这个项目坚持下去。",
           type: "milestone"
         },
         {
           title: "综合更新-数据可视化、注册登录 var.0.1.0",
           date: "2018-10-26",
           text:
-            "完成了基本的数据可视化，完成了注册登录模块，使用Vuetify完全地重构了前端的代码。\n总体来说，现在能够更加合理地统一手机端和PC端的UI风格，可能现在还比较简陋，我会不断添加新的功能和美化界面的。",
+            "完成了基本的数据可视化，完成了注册登录模块，使用Vuetify完全地重构了前端的代码。总体来说，现在能够更加合理地统一手机端和PC端的UI风格，可能现在还比较简陋，我会不断添加新的功能和美化界面的。",
           type: "mix"
         },
         {
@@ -41,20 +41,20 @@ export default {
           title: "架构更新-采用CDN、Nginx反向代理",
           date: "2018-11-10",
           text:
-            "使用CDN缓存，使用Ngnix反向代理。\n现在不会暴露某些不该暴露的端口了。如果存在一些安全方面的漏洞，希望大佬能够邮件我报告问题。",
+            "使用CDN缓存，使用Ngnix反向代理。现在不会暴露某些不该暴露的端口了。如果存在一些安全方面的漏洞，希望大佬能够邮件我报告问题。",
           type: "structure"
         },
         {
           title: "错误修复-关注UP主列表 var.0.1.1",
           date: "2018-11-20",
           text:
-            "修复了关注UP主呈现错误的Bug。之前的关注UP主读取的是关注视频的列表，是个非常愚蠢的错误，而且居然没有人给我报告这个问题，看来用这网站的人真的很少_(:з」∠)_\n",
+            "修复了关注UP主呈现错误的Bug。之前的关注UP主读取的是关注视频的列表，是个非常愚蠢的错误，而且居然没有人给我报告这个问题，看来用这网站的人真的很少_(:з」∠)_",
           type: "fix"
         },
         {
           title: "里程碑-获得域名",
           date: "2018-11-20",
-          text: '现在可以通过"www.biliob.com"这个网址进入这个网站了。\n',
+          text: '现在可以通过"www.biliob.com"这个网址进入这个网站了。',
           type: "milestone"
         },
         {
@@ -68,7 +68,7 @@ export default {
           title: "架构更新-后端自动部署",
           date: "2018-11-22",
           text:
-            "使用Jenkins对后端进行持续集成。经过一段时间的摸索，我终于良好地实现自动部署了。\n现在配置文件也获得了更新，使用环境变量存储敏感信息，使用更为简洁的yaml配置文件，并且github上不再缺失配置文件了。",
+            "使用Jenkins对后端进行持续集成。经过一段时间的摸索，我终于良好地实现自动部署了。现在配置文件也获得了更新，使用环境变量存储敏感信息，使用更为简洁的yaml配置文件，并且github上不再缺失配置文件了。",
           type: "structure"
         },
         {
@@ -181,6 +181,7 @@ export default {
   },
   mounted() {
     this.$store.commit("toElse");
+    this.timelinePost.reverse();
   },
   methods: {
     isSmall: function(type) {

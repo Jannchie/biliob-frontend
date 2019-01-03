@@ -22,6 +22,13 @@ export default {
         this.backgroundStyle = "banner hidden-md-and-down";
       }
     }
+  },
+  mounted() {
+    if (this.$store.state.dark) {
+      this.backgroundStyle = "banner-dark hidden-md-and-down";
+    } else {
+      this.backgroundStyle = "banner hidden-md-and-down";
+    }
   }
 };
 </script>
