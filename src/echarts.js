@@ -1,5 +1,5 @@
 import Vue from "vue";
-import ECharts from "vue-echarts/components/ECharts";
+const ECharts = () => import("vue-echarts/components/ECharts");
 import "echarts/lib/component/tooltip";
 import "echarts/lib/component/title";
 import "echarts/lib/component/dataZoom";
