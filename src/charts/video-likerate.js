@@ -9,8 +9,7 @@ function drawChart(data) {
         left: "50%",
         top: "center",
         textAlign: "center",
-        text: "点赞/播放",
-        color: "#123151"
+        text: "点赞/播放"
       }
     ],
     tooltip: {
