@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <VToolbar class="toolbar" dense>
+    <VToolbar style="background-color: #444" class="toolbar" dense>
       <VToolbarSideIcon class="toolbar-item" dark @click.stop="drawer = !drawer"><VIcon>mdi-menu</VIcon></VToolbarSideIcon>
       <VBtn class="toolbar-item" flat dark @click.stop="toHomepage">
         <VToolbarTitle class="toolbar-title"><img class="logo" src="../../../public/img/icons/android-chrome-192x192.png">
