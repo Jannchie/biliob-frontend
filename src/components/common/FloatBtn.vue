@@ -44,7 +44,10 @@ export default {
     activeFab() {
       switch (this.currentPage) {
         case "author":
-          return { color: "indigo", icon: "mdi-account-plus" };
+          return {
+            color: "indigo lighten-2",
+            icon: "mdi-account-plus-outline"
+          };
         case "video":
           return { color: "red", icon: "mdi-video-plus" };
         default:

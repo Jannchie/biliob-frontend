@@ -29,10 +29,6 @@ function drawChart(data) {
       top: "-5px",
       subtext: "各项指标总量"
     },
-    legend: {
-      data: ["播放", "弹幕", "收藏", "分享", "硬币", "点赞", "差评"],
-      bottom: "5px"
-    },
     dataset: {
       source: data.data
     },
@@ -50,7 +46,12 @@ function drawChart(data) {
     tooltip: {
       trigger: "axis",
       axisPointer: {
-        type: "cross"
+        type: "cross",
+        label: {
+          formatter: function(params) {
+            return Math.round(params.value);
+          }
+        }
       }
     },
     grid: {
@@ -89,7 +90,7 @@ function drawChart(data) {
         axisLabel: {
           formatter: function(params) {
             if (params > 10000) {
-              return Math.round(params / 10000) + "万";
+              return Math.round(params / 100) / 100.0 + "万";
             }
           }
         }
@@ -104,7 +105,7 @@ function drawChart(data) {
         axisLabel: {
           formatter: function(params) {
             if (params > 10000) {
-              return Math.round(params / 10000) + "万";
+              return Math.round(params / 100) / 100.0 + "万";
             }
           }
         }
@@ -156,14 +157,6 @@ function drawChart(data) {
         type: "line",
         dimensions: ["datetime", "like"],
         name: "点赞",
-        smooth: true,
-        showSymbol: false,
-        yAxisIndex: 0
-      },
-      {
-        type: "line",
-        dimensions: ["datetime", "dislike"],
-        name: "差评",
         smooth: true,
         showSymbol: false,
         yAxisIndex: 0

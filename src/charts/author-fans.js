@@ -35,7 +35,12 @@ function drawChart(data) {
     tooltip: {
       trigger: "axis",
       axisPointer: {
-        type: "cross"
+        type: "cross",
+        label: {
+          formatter: function(params) {
+            return Math.round(params.value);
+          }
+        }
       }
     },
     xAxis: {
@@ -67,7 +72,7 @@ function drawChart(data) {
         axisLabel: {
           formatter: function(params) {
             if (params > 10000) {
-              return Math.round(params / 1000) / 10.0 + "万";
+              return Math.round(params / 100) / 100.0 + "万";
             }
           }
         }

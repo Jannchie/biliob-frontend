@@ -1,7 +1,7 @@
 <template>
   <VCard class="aside-card">
     <VCardTitle style="padding-bottom:0px" column fill-height>
-      <h4>UP主热门已追踪视频</h4>
+      <h4>{{title}}</h4>
     </VCardTitle>
     <VCardText  class="video-list" column>
     </VCardText>
@@ -13,7 +13,7 @@
               <VListTileTitle>
                 {{eachVideo.title}}
               </VListTileTitle>
-              <VListTileSubTitle class="caption subtext">分区：{{eachVideo.channel}}</VListTileSubTitle>
+              <VListTileSubTitle class="caption subtext">分区：{{eachVideo.channel}} 投稿时间：{{eachVideo.datetime}}</VListTileSubTitle>
             </VListTileContent>
           </VListTile>
         </template>
@@ -23,6 +23,7 @@
 <script>
 export default {
   props: {
+    title: String(),
     authorTopVideo: Object()
   },
   watch: {
@@ -34,12 +35,7 @@ export default {
 </script>
 <style>
 .link {
-  color: slategray;
   text-decoration: none;
-}
-
-.link:hover {
-  color: rgb(62, 123, 184);
 }
 
 .aside-card {
@@ -49,9 +45,5 @@ export default {
 .video-list {
   padding-bottom: 0px;
   padding-top: 0px;
-}
-
-.subtext {
-  color: #444444;
 }
 </style>
