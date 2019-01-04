@@ -13,9 +13,8 @@
       </VToolbarItems>
     </VToolbar>
     <VNavigationDrawer v-model="drawer" absolute temporary>
-    <!-- <img src="../../../public/img/aside-bright.png"> -->
-      <VList>
-        <VListTile v-if="logined">
+      <VList style="padding:0">
+        <VListTile  v-if="logined" class="user-info-content" :class="backgroundStyle">
           <VListTileAvatar>
             <VIcon large>mdi-account-circle-outline</VIcon>
           </VListTileAvatar>
@@ -29,6 +28,8 @@
             </VBtn>
           </VListTileAction>
         </VListTile>
+      </VList>
+      <VList>
 
         <VListTile v-if="!logined" ripple @click.stop="toLogin">
           <VListTileAvatar>
@@ -141,7 +142,9 @@ export default {
       bottomNav: null,
       drawer: null,
       bottomNavShow: true,
-      offsetTop: 0
+      offsetTop: 0,
+      imgSrc: String(),
+      backgroundStyle: String()
     };
   },
   computed: {
@@ -172,9 +175,31 @@ export default {
         return this.$store.getters.getCredit;
       },
       set: function() {}
+    },
+    isDark() {
+      if (this.$store.state.dark) {
+        return true;
+      } else {
+        return false;
+      }
     }
   },
+  watch: {
+    isDark(isDark) {
+      if (isDark) {
+        this.backgroundStyle = "aside-pic-dark";
+      } else {
+        this.backgroundStyle = "aside-pic";
+      }
+    }
+  },
+
   created() {
+    if (this.$store.state.dark) {
+      this.backgroundStyle = "aside-pic-dark";
+    } else {
+      this.backgroundStyle = "aside-pic";
+    }
     this.axios
       .get(`/user`)
       .then(response => {
@@ -257,5 +282,29 @@ export default {
 
 .v-list__tile__title {
   font-weight: 400;
+}
+
+.aside-pic {
+  position: relative;
+  left: 0px;
+  top: 0px;
+  height: 180px;
+  margin: 0 0;
+  padding: 0 0;
+  background-image: url("../../../public/img/aside-bright.png");
+  background-position: center;
+}
+.aside-pic-dark {
+  position: relative;
+  left: 0px;
+  height: 180px;
+  top: 0px;
+  margin: 0 0;
+  padding: 0 0;
+  background-image: url("../../../public/img/aside-bright.png");
+  background-position: center;
+}
+.user-info-content {
+  padding-top: 140px;
 }
 </style>
