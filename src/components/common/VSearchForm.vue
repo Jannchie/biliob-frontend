@@ -12,12 +12,25 @@ export default {
     return {
       label: this.hint,
       valid: false,
-      searchText: ""
+      searchText: "",
+      flag: false
     };
   },
   watch: {
     searchText: function() {
-      this.$emit("getSearchValue", this.searchText);
+      if (!this.flag) {
+        this.flag = true;
+        setTimeout(() => {
+          this.$emit("getSearchValue", this.searchText);
+          this.flag = false;
+        }, 2500);
+      } else {
+        setTimeout(() => {
+          if (this.flag == false) {
+            this.$emit("getSearchValue", this.searchText);
+          }
+        }, 2500);
+      }
     }
   }
 };
