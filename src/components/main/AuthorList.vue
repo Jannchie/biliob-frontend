@@ -4,7 +4,7 @@
       <div>
         <VSearchForm slot="search" hint="请输入UP主名称，或者uid" @getSearchValue="getSearchValue"></VSearchForm>
 
-        <VCard v-for="eachAuthor in authorList.content" :key="eachAuthor.mid" class="author-cards" ripple
+        <VCard v-for="eachAuthor in authorList.content" :key="eachAuthor.mid"  class="author-cards" ripple
           :to="'/author/'+eachAuthor.mid">
           <div style="padding:5px;display:flex">
             <div>

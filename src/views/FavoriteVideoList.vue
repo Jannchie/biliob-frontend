@@ -1,8 +1,8 @@
 <template>
- <MainLayout>
-   <FavoriteVideoListMain slot="main-cards"></FavoriteVideoListMain>
-   <VideoListAside slot="aside-cards"></VideoListAside>
- </MainLayout>
+  <MainLayout>
+    <FavoriteVideoListMain slot="main-cards"></FavoriteVideoListMain>
+    <VideoListAside slot="aside-cards"></VideoListAside>
+  </MainLayout>
 </template>
 
 <script>

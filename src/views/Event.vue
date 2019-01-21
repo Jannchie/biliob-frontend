@@ -1,21 +1,41 @@
 <template>
-    <div>
-        <VTimeline class="timeline" dense>
-            <VTimelineItem v-for="(eachEvent,index) in eventData" 
-                :key="index" fill-dot :color="getColor(eachEvent.type)" :icon="getIcon(eachEvent.type)">
-                <VLayout pt-3>
-                    <VFlex>
-                        <strong>{{eachEvent.type}}</strong>&nbsp;
-                        {{eachEvent.date}}<br>
-                        
-                        <div class="caption mb-2"><strong class="caption mb-1">{{eachEvent.author}}</strong>&nbsp;粉丝数变动率：{{eachEvent.rate}}</div>
-                        <div v-if="eachEvent.cause.title != null" class="caption mb-2  text-no-wrap text-truncate">可能原因：发布视频<br>{{eachEvent.cause.title}}</div>
-                        
-                    </VFlex>
-                </VLayout>
-            </VTimelineItem>
-        </VTimeline>
-    </div>
+  <div>
+    <VCard>
+      <v-card-title>title</v-card-title>
+      <v-card-text>text</v-card-text>
+      <v-card-media>media</v-card-media>
+    </VCard>
+    <VTimeline class="timeline" dense>
+      <VTimelineItem
+        v-for="(eachEvent,index) in eventData"
+        :key="index"
+        fill-dot
+        :color="getColor(eachEvent.type)"
+        :icon="getIcon(eachEvent.type)"
+      >
+        <VLayout pt-3>
+          <VFlex>
+            <strong>{{eachEvent.type}}</strong>
+            &nbsp;
+            {{eachEvent.date}}
+            <br>
+
+            <div class="caption mb-2">
+              <strong class="caption mb-1">{{eachEvent.author}}</strong>
+              &nbsp;粉丝数变动率：{{eachEvent.rate}}
+            </div>
+            <div
+              v-if="eachEvent.cause.title != null"
+              class="caption mb-2 text-no-wrap text-truncate"
+            >可能原因：发布视频
+              <br>
+              {{eachEvent.cause.title}}
+            </div>
+          </VFlex>
+        </VLayout>
+      </VTimelineItem>
+    </VTimeline>
+  </div>
 </template>
 <script>
 var format = require("date-fns/format");
