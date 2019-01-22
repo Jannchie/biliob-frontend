@@ -58,6 +58,36 @@
       absolute
       temporary
     >
+      <div
+        v-if="logined"
+        class="check-in"
+      >
+        <VBtn
+          v-if="checked"
+          ripple
+          flat
+          primary
+          dark
+          small
+        >
+          <VIcon left>
+            mdi-check-circle-outline
+          </VIcon>已签到
+        </VBtn>
+        <VBtn
+          v-else-if="!checked"
+          small
+          ripple
+          dark
+          flat
+          primary
+          @click.stop="checkIn"
+        >
+          <VIcon left>
+            mdi-checkbox-blank-circle-outline
+          </VIcon>签到
+        </VBtn>
+      </div>
       <VList style="padding:0">
         <VListTile
           v-if="logined"
@@ -70,19 +100,21 @@
             </VIcon>
           </VListTileAvatar>
           <VListTileContent>
-            <VListTileTitle>{{ name }}</VListTileTitle>
-            <VListTileSubTitle>{{ role }}</VListTileSubTitle>
+            <VListTileTitle class="title">{{ name }}</VListTileTitle>
+            <VListTileSubTitle>
+              <div style="display:flex;">
+                <ExpBadget
+                  class="badget"
+                  :exp="exp"
+                />
+                <CreditBadget
+                  class="badget"
+                  :credit="credit"
+                />
+              </div>
+            </VListTileSubTitle>
           </VListTileContent>
-          <VListTileAction>
-            <VBtn
-              icon
-              ripple
-            >
-              <VIcon color="grey lighten-1">
-                mdi-settings
-              </VIcon>
-            </VBtn>
-          </VListTileAction>
+          <!-- <VListTileAction class="setting" /> -->
         </VListTile>
       </VList>
       <VList>
@@ -189,7 +221,6 @@
           </VListTileContent>
         </VListTile>
 
-
         <VDivider />
       </VList>
       <VList>
@@ -213,8 +244,12 @@
   </nav>
 </template>
 <script>
+import CreditBadget from "./CreditBadget.vue";
+import ExpBadget from "./ExpBadget.vue";
+
 export default {
   name: "NavBar",
+  components: { CreditBadget, ExpBadget },
   data() {
     return {
       bottomNav: null,
@@ -254,12 +289,21 @@ export default {
       },
       set: function() {}
     },
+    exp: {
+      get: function() {
+        return this.$store.getters.getExp;
+      },
+      set: function() {}
+    },
     isDark() {
       if (this.$store.state.dark) {
         return true;
       } else {
         return false;
       }
+    },
+    checked() {
+      return this.$store.getters.getCheckStatus;
     }
   },
   watch: {
@@ -285,9 +329,13 @@ export default {
         this.$store.commit("login");
         this.$store.commit("setRole", response.data.role);
         this.$store.commit("setCredit", response.data.credit);
+        this.$store.commit("setExp", response.data.exp);
         this.$store.commit("setUserName", response.data.name);
         this.$store.commit("setFavoriteVideo", response.data.favoriteAid);
         this.$store.commit("setFavoriteAuthor", response.data.favoriteMid);
+        this.axios.get(`/user/check-in`).then(response => {
+          this.$store.commit("checkIn", response.data.status);
+        });
       })
       .catch(() => {
         this.$store.commit("logout");
@@ -338,6 +386,19 @@ export default {
     },
     darkMode() {
       this.$store.commit("setDark");
+    },
+    checkIn() {
+      this.axios
+        .post("/user/check-in")
+        .then(response => {
+          alert(response.data.msg);
+          if (response.data.code == 1) {
+            this.$store.commit("setCredit", response.data.data.credit);
+            this.$store.commit("setExp", response.data.data.exp);
+            this.$store.commit("checkIn", true);
+          }
+        })
+        .catch(e => e.data.msg);
     }
   }
 };
@@ -346,7 +407,7 @@ export default {
 .toolbar {
   z-index: 1;
   background-color: #444;
-  color: #ffffff;
+  color: #fff;
 }
 
 .logo {
@@ -372,6 +433,7 @@ export default {
   background-image: url("../../../public/img/aside-bright.png");
   background-position: center;
 }
+
 .aside-pic-dark {
   position: relative;
   left: 0px;
@@ -382,7 +444,19 @@ export default {
   background-image: url("../../../public/img/aside-bright.png");
   background-position: center;
 }
+
 .user-info-content {
   padding-top: 140px;
+}
+
+.check-in {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  z-index: 10;
+}
+
+.badget {
+  margin-right: 4px;
 }
 </style>

@@ -1,8 +1,5 @@
 <template>
-  <VLayout
-    v-bind="binding"
-    justify-center
-  >
+  <VLayout justify-center>
     <VFlex
       lg5
       md12
