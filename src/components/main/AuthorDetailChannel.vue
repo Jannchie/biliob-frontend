@@ -1,13 +1,22 @@
 <template>
   <VLayout>
-  <VFlex lg6 md12>
-  <VCard class="channel-card">
-    <VCardText  class='card-holder'>
-        <Chart id="channel-chart" :theme="theme" :auto-resize="true" :options="channelChart" style="width:100%;" ></Chart>
-    </VCardText >
-  </VCard>
-  </VFlex>
-</VLayout>
+    <VFlex
+      lg6
+      md12
+    >
+      <VCard class="channel-card">
+        <VCardText class="card-holder">
+          <Chart
+            id="channel-chart"
+            :theme="theme"
+            :auto-resize="true"
+            :options="channelChart"
+            style="width:100%;"
+          />
+        </VCardText>
+      </VCard>
+    </VFlex>
+  </VLayout>
 </template>
 
 <script>

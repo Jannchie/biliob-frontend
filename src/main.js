@@ -21,7 +21,9 @@ router.afterEach(function(to) {
 Vue.use(VueRouter);
 axios.defaults.withCredentials = true;
 axios.defaults.baseURL = process.env.VUE_APP_API_ROOT;
-axios.defaults.headers = { "Content-Type": "application/json" };
+axios.defaults.headers = {
+  "Content-Type": "application/json"
+};
 Vue.use(VueAxios, axios);
 Vue.use(Vuex);
 Vue.config.productionTip = false;

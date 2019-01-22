@@ -1,8 +1,8 @@
 <template>
- <MainLayout>
-   <FavoriteAuthorListMain slot="main-cards"></FavoriteAuthorListMain>
-   <AuthorListAside slot="aside-cards"></AuthorListAside>
- </MainLayout>
+  <MainLayout>
+    <FavoriteAuthorListMain slot="main-cards"/>
+    <AuthorListAside slot="aside-cards"/>
+  </MainLayout>
 </template>
 
 <script>

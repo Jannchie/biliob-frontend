@@ -1,8 +1,8 @@
 <template>
   <div>
-    <slot name="title"></slot>
-    <slot name="main"></slot>
-    <slot name="like-rate"></slot>
+    <slot name="title" />
+    <slot name="main" />
+    <slot name="like-rate" />
   </div>
 </template>
 

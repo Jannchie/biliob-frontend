@@ -1,15 +1,36 @@
 <template>
   <MainLayout>
     <VideoMain slot="main-cards">
-      <VideoDetailTitle slot="title" :title="videoData.title" :aid="videoData.aid" :pic="videoData.pic"></VideoDetailTitle>
-      <VideoDetailMainChart slot="main" :main-chart="mainChart"></VideoDetailMainChart>
-      <VideoDetailLikeRateChart slot="like-rate" :like-rate-chart="likeRateChart" ></VideoDetailLikeRateChart>
+      <VideoDetailTitle
+        slot="title"
+        :title="videoData.title"
+        :aid="videoData.aid"
+        :pic="videoData.pic"
+      />
+      <VideoDetailMainChart
+        slot="main"
+        :main-chart="mainChart" 
+      />
+      <VideoDetailLikeRateChart
+        slot="like-rate"
+        :like-rate-chart="likeRateChart"
+      />
     </VideoMain>
     <VideoAside slot="aside-cards">
-      <AuthorOperation slot="author-operation" :author-data="authorData"></AuthorOperation>
-      <AuthorVideo slot="other-video" title="UP主其他已追踪视频" :author-top-video="otherVideo"></AuthorVideo>
-      <VideoToBilibili slot="video-to-bilibili" :aid="videoData.aid"></VideoToBilibili>
-      <Recommand slot="recommand"></Recommand>
+      <AuthorOperation
+        slot="author-operation"
+        :author-data="authorData" 
+      />
+      <AuthorVideo
+        slot="other-video"
+        title="UP主其他已追踪视频"
+        :author-top-video="otherVideo" 
+      />
+      <VideoToBilibili
+        slot="video-to-bilibili"
+        :aid="videoData.aid" 
+      />
+      <Recommand slot="recommand" />
     </VideoAside>
   </MainLayout>
 </template>

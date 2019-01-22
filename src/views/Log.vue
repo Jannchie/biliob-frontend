@@ -1,5 +1,8 @@
 <template>
-  <VTimeline class="timeline" dense>
+  <VTimeline
+    class="timeline"
+    dense
+  >
     <VSlideYTransition group>
       <VTimelineItem
         v-for="eachPost in timelinePost"
@@ -10,11 +13,19 @@
       >
         <VLayout pt-3>
           <VFlex>
-            <strong>{{eachPost.title}}</strong>
+            <strong>{{ eachPost.title }}</strong>
             <br>
-            <strong class="caption mb-1">{{eachPost.date}}</strong>
+            <strong class="caption mb-1">
+              {{ eachPost.date }}
+            </strong>
             <div class="caption mb-2">
-              <li v-for="eachLine in eachPost.text" :key="eachLine" type="circle">{{eachLine}}</li>
+              <li
+                v-for="eachLine in eachPost.text"
+                :key="eachLine"
+                type="circle"
+              >
+                {{ eachLine }}
+              </li>
             </div>
           </VFlex>
         </VLayout>

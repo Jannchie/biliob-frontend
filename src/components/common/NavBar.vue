@@ -1,37 +1,96 @@
 <template>
   <nav>
-    <VToolbar style="background-color: #444" class="toolbar" dense>
-      <VToolbarSideIcon class="toolbar-item" dark @click.stop="drawer = !drawer"><VIcon>mdi-menu</VIcon></VToolbarSideIcon>
-      <VBtn class="toolbar-item" flat dark @click.stop="toHomepage">
-        <VToolbarTitle class="toolbar-title"><img class="logo" src="../../../public/img/icons/android-chrome-192x192.png">
-          BiliOB观测者</VToolbarTitle>
+    <VToolbar
+      style="background-color: #444"
+      class="toolbar"
+      dense
+    >
+      <VToolbarSideIcon
+        class="toolbar-item"
+        dark
+        @click.stop="drawer = !drawer"
+      >
+        <VIcon>mdi-menu</VIcon>
+      </VToolbarSideIcon>
+      <VBtn
+        class="toolbar-item"
+        flat
+        dark
+        @click.stop="toHomepage"
+      >
+        <VToolbarTitle class="toolbar-title">
+          <img
+            class="logo"
+            src="../../../public/img/icons/android-chrome-192x192.png"
+          >
+          BiliOB观测者
+        </VToolbarTitle>
       </VBtn>
       <VToolbarItems class="hidden-md-and-down">
-        <VBtn class="toolbar-item" flat dark @click.stop="toVideo"><VIcon>mdi-video-outline</VIcon>视频追踪</VBtn>
-        <VBtn class="toolbar-item" flat dark @click.stop="toAuthor"><VIcon>mdi-account-outline</VIcon>UP主追踪</VBtn>
-        <VBtn class="toolbar-item" flat dark @click.stop="toRank"><VIcon>mdi-chart-histogram</VIcon>排行榜</VBtn>
+        <VBtn
+          class="toolbar-item"
+          flat
+          dark
+          @click.stop="toVideo"
+        >
+          <VIcon>mdi-video-outline</VIcon>视频追踪
+        </VBtn>
+        <VBtn
+          class="toolbar-item"
+          flat
+          dark
+          @click.stop="toAuthor"
+        >
+          <VIcon>mdi-account-outline</VIcon>UP主追踪
+        </VBtn>
+        <VBtn
+          class="toolbar-item"
+          flat
+          dark
+          @click.stop="toRank"
+        >
+          <VIcon>mdi-chart-histogram</VIcon>排行榜
+        </VBtn>
       </VToolbarItems>
     </VToolbar>
-    <VNavigationDrawer v-model="drawer" absolute temporary>
+    <VNavigationDrawer
+      v-model="drawer"
+      absolute
+      temporary
+    >
       <VList style="padding:0">
-        <VListTile  v-if="logined" class="user-info-content" :class="backgroundStyle">
+        <VListTile
+          v-if="logined"
+          class="user-info-content"
+          :class="backgroundStyle"
+        >
           <VListTileAvatar>
-            <VIcon large>mdi-account-circle-outline</VIcon>
+            <VIcon large>
+              mdi-account-circle-outline
+            </VIcon>
           </VListTileAvatar>
           <VListTileContent>
-            <VListTileTitle>{{name}}</VListTileTitle>
-            <VListTileSubTitle>{{role}}</VListTileSubTitle>
+            <VListTileTitle>{{ name }}</VListTileTitle>
+            <VListTileSubTitle>{{ role }}</VListTileSubTitle>
           </VListTileContent>
           <VListTileAction>
-            <VBtn icon ripple>
-              <VIcon color="grey lighten-1">mdi-settings</VIcon>
+            <VBtn
+              icon
+              ripple
+            >
+              <VIcon color="grey lighten-1">
+                mdi-settings
+              </VIcon>
             </VBtn>
           </VListTileAction>
         </VListTile>
       </VList>
       <VList>
-
-        <VListTile v-if="!logined" ripple @click.stop="toLogin">
+        <VListTile
+          v-if="!logined"
+          ripple
+          @click.stop="toLogin"
+        >
           <VListTileAvatar>
             <VIcon>mdi-login-variant</VIcon>
           </VListTileAvatar>
@@ -43,8 +102,11 @@
       </VList>
 
       <VList v-if="logined">
-        <VDivider></VDivider>
-        <VListTile ripple @click.stop="toFavoriteAuthor">
+        <VDivider />
+        <VListTile
+          ripple
+          @click.stop="toFavoriteAuthor"
+        >
           <VListTileAvatar>
             <VIcon>mdi-account-heart</VIcon>
           </VListTileAvatar>
@@ -53,7 +115,10 @@
             <VListTileSubTitle>查看我关注的UP主</VListTileSubTitle>
           </VListTileContent>
         </VListTile>
-        <VListTile ripple @click.stop="toFavoriteVideo">
+        <VListTile
+          ripple
+          @click.stop="toFavoriteVideo"
+        >
           <VListTileAvatar>
             <VIcon>mdi-star</VIcon>
           </VListTileAvatar>
@@ -62,12 +127,15 @@
             <VListTileSubTitle>查看我关注的视频</VListTileSubTitle>
           </VListTileContent>
         </VListTile>
-        <VDivider></VDivider>
+        <VDivider />
       </VList>
       <VList>
-        <VDivider></VDivider>
+        <VDivider />
 
-        <VListTile ripple @click.stop="toEvent">
+        <VListTile
+          ripple
+          @click.stop="toEvent"
+        >
           <VListTileAvatar>
             <VIcon>mdi-bulletin-board</VIcon>
           </VListTileAvatar>
@@ -76,12 +144,14 @@
             <VListTileSubTitle>一分钟，我要看到所有的资料</VListTileSubTitle>
           </VListTileContent>
         </VListTile>
-        <VDivider></VDivider>
-
+        <VDivider />
       </VList>
       <VList>
-        <VDivider></VDivider>
-        <VListTile ripple @click.stop="toFaq">
+        <VDivider />
+        <VListTile
+          ripple
+          @click.stop="toFaq"
+        >
           <VListTileAvatar>
             <VIcon>mdi-help-circle-outline</VIcon>
           </VListTileAvatar>
@@ -91,7 +161,10 @@
           </VListTileContent>
         </VListTile>
 
-        <VListTile ripple @click.stop="toAbout">
+        <VListTile
+          ripple
+          @click.stop="toAbout"
+        >
           <VListTileAvatar>
             <VIcon>mdi-information-outline</VIcon>
           </VListTileAvatar>
@@ -102,7 +175,10 @@
           </VListTileContent>
         </VListTile>
 
-        <VListTile ripple @click.stop="toLog">
+        <VListTile
+          ripple
+          @click.stop="toLog"
+        >
           <VListTileAvatar>
             <VIcon>mdi-developer-board</VIcon>
           </VListTileAvatar>
@@ -114,12 +190,15 @@
         </VListTile>
 
 
-        <VDivider></VDivider>
+        <VDivider />
       </VList>
       <VList>
-        <VDivider></VDivider>
+        <VDivider />
 
-        <VListTile ripple @click.stop="darkMode">
+        <VListTile
+          ripple
+          @click.stop="darkMode"
+        >
           <VListTileAvatar>
             <VIcon>mdi-weather-night</VIcon>
           </VListTileAvatar>
@@ -128,8 +207,7 @@
             <VListTileSubTitle>Deep ♂ Dark ♂ Fantasy</VListTileSubTitle>
           </VListTileContent>
         </VListTile>
-        <VDivider></VDivider>
-
+        <VDivider />
       </VList>
     </VNavigationDrawer>
   </nav>

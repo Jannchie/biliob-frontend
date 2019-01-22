@@ -2,16 +2,23 @@
   <VCard>
     <div style="display:flex">
       <div>
-        <img class="video-img" style="vertical-align: bottom" :src="pic" />
+        <img
+          class="video-img"
+          style="vertical-align: bottom"
+          :src="pic"
+        >
       </div>
       <VCardText style="overflow:hidden">
         <div class="font-weight-bold video-title ">
-          {{title}}
+          {{ title }}
         </div>
         <br>
         aid:{{ $route.params.aid }}
       </VCardText>
-      <FavoriteBtn :aid="aid" class="favorite-btn"></FavoriteBtn>
+      <FavoriteBtn
+        :aid="aid"
+        class="favorite-btn"
+      />
     </div>
   </VCard>
 </template>

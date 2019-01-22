@@ -1,6 +1,6 @@
 <template>
   <div>
-    <SiteChart :site-data="siteData"></SiteChart>
+    <SiteChart :site-data="siteData" />
   </div>
 </template>
 <script>

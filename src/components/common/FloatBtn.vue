@@ -1,9 +1,11 @@
 <template>
-  <div id="float-btn" 
-  class="drag"
+  <div
+    id="float-btn" 
+    class="drag"
   >
     <VFabTransition>
-      <VBtn :key="activeFab.icon"
+      <VBtn
+        :key="activeFab.icon"
         v-model="fab"
         class="float-botton"
         :color="activeFab.color"

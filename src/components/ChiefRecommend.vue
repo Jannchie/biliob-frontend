@@ -1,5 +1,5 @@
 <template>
-<div>首屏</div>
+  <div>首屏</div>
 </template>
 
 <script>

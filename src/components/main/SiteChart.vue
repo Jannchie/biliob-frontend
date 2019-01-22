@@ -1,8 +1,14 @@
 <template>
   <VCard class="card">
-    <VCardText  class='card-holder'>
-        <Chart class="chart" :theme="theme" :auto-resize="true" :options="siteOptions" style="width:100%;" ></Chart>
-    </VCardText >
+    <VCardText class="card-holder">
+      <Chart
+        class="chart"
+        :theme="theme"
+        :auto-resize="true"
+        :options="siteOptions"
+        style="width:100%;"
+      />
+    </VCardText>
   </VCard>
 </template>
 

@@ -1,24 +1,49 @@
 <template>
-  <VDialog v-model="dialog" width="500">
-    <FloatBtn slot="activator" @getType="getType"></FloatBtn>
+  <VDialog
+    v-model="dialog"
+    width="500"
+  >
+    <FloatBtn
+      slot="activator"
+      @getType="getType"
+    />
     <VCard>
-      <VAlert :value="showAlert" :type="alertType" transition="scale-transition">
-        {{msg}}
+      <VAlert
+        :value="showAlert"
+        :type="alertType"
+        transition="scale-transition"
+      >
+        {{ msg }}
       </VAlert>
-      <VCardTitle class="headline" primary-title>
-        {{title}}
+      <VCardTitle
+        class="headline"
+        primary-title
+      >
+        {{ title }}
       </VCardTitle>
       <VForm>
-          <VCardText v-if="type==='else'">
-            如果遇到了任何问题，或者有什么意见或者建议，请联系我：jannchie@gmail.com
-          </VCardText>
-        <VCardText>
-          <VTextField v-if="type!='else'" v-model="ID" required :rules="[rules.required,rules.isNumber]" :label="label"></VTextField>
+        <VCardText v-if="type==='else'">
+          如果遇到了任何问题，或者有什么意见或者建议，请联系我：jannchie@gmail.com
         </VCardText>
-        <VDivider v-if="type!='else'"></VDivider>
+        <VCardText>
+          <VTextField
+            v-if="type!='else'"
+            v-model="ID"
+            required
+            :rules="[rules.required,rules.isNumber]"
+            :label="label"
+          />
+        </VCardText>
+        <VDivider v-if="type!='else'" />
         <VCardActions>
-          <VSpacer></VSpacer>
-          <VBtn v-if="type!='else'" v-model="valid" color="primary" flat @click="submit">
+          <VSpacer />
+          <VBtn
+            v-if="type!='else'"
+            v-model="valid"
+            color="primary"
+            flat
+            @click="submit"
+          >
             确认添加
           </VBtn>
         </VCardActions>

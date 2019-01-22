@@ -1,9 +1,9 @@
 <template>
   <div>
     <VCard>
-      <v-card-title>title</v-card-title>
-      <v-card-text>text</v-card-text>
-      <v-card-media>media</v-card-media>
+      <VCardTitle>title</VCardTitle>
+      <VCardText>text</VCardText>
+      <VCardMedia>media</VCardMedia>
     </VCard>
     <VTimeline class="timeline" dense>
       <VTimelineItem

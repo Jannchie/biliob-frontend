@@ -2,18 +2,34 @@
   <MainLayout>
     <AuthorMain slot="main-cards">
       <!-- <AuthorDetailChannel slot="channel" :channels="authorData.channels"></AuthorDetailChannel> -->
-      <AuthorDetailFansChart slot="fans" :author-data="authorData"></AuthorDetailFansChart>
-      <AuthorDetailFansRateChart slot="fans-rate" :fans-rate="authorData"></AuthorDetailFansRateChart>
+      <AuthorDetailFansChart
+        slot="fans"
+        :author-data="authorData"
+      />
+      <AuthorDetailFansRateChart
+        slot="fans-rate"
+        :fans-rate="authorData"
+      />
     </AuthorMain>
     <AuthorAside slot="aside-cards">
-      <AuthorOperation slot="author-operation" :author-data="authorData"></AuthorOperation>
-      <AuthorToSpace slot="author-to-space" :mid="authorData.mid"></AuthorToSpace>
+      <AuthorOperation
+        slot="author-operation"
+        :author-data="authorData"
+      />
+      <AuthorToSpace
+        slot="author-to-space"
+        :mid="authorData.mid"
+      />
       <AuthorVideo
         slot="author-latest-video"
         title="UP主最新发布视频"
         :author-top-video="authorLatestVideo"
-      ></AuthorVideo>
-      <AuthorVideo slot="author-video" title="UP主播放最高视频" :author-top-video="authorTopVideo"></AuthorVideo>
+      />
+      <AuthorVideo
+        slot="author-video"
+        title="UP主播放最高视频"
+        :author-top-video="authorTopVideo"
+      />
     </AuthorAside>
   </MainLayout>
 </template>

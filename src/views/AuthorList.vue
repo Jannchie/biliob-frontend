@@ -1,8 +1,8 @@
 <template>
   <MainLayout>
-    <AuthorListMain slot="main-cards"></AuthorListMain>
+    <AuthorListMain slot="main-cards" />
     <AuthorListAside slot="aside-cards">
-      <OtherLink slot="link"></OtherLink>
+      <OtherLink slot="link" />
     </AuthorListAside>
   </MainLayout>
 </template>

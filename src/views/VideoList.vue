@@ -1,8 +1,8 @@
 <template>
   <MainLayout>
-    <VideoListMain slot="main-cards"></VideoListMain>
+    <VideoListMain slot="main-cards" />
     <VideoListAside slot="aside-cards">
-      <OtherLink slot="link"></OtherLink>
+      <OtherLink slot="link" />
     </VideoListAside>
   </MainLayout>
 </template>

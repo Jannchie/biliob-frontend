@@ -1,12 +1,21 @@
 <template>
-    <VLayout v-bind="binding">
-      <VFlex lg8 md12>
-        <slot name="main-cards"></slot>
-      </VFlex>
-      <VFlex lg4 md12>
-        <slot name="aside-cards" class=" hidden-lg-and-down"></slot>
-      </VFlex>
-    </VLayout>
+  <VLayout v-bind="binding">
+    <VFlex
+      lg8
+      md12
+    >
+      <slot name="main-cards" />
+    </VFlex>
+    <VFlex
+      lg4
+      md12
+    >
+      <slot
+        name="aside-cards"
+        class=" hidden-lg-and-down"
+      />
+    </VFlex>
+  </VLayout>
 </template>
 <script>
 export default {

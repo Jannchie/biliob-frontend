@@ -1,7 +1,7 @@
 <template>
-<div :class="backgroundStyle">
-  <img height="188px"/>
-</div>
+  <div :class="backgroundStyle">
+    <img height="188px">
+  </div>
 </template>
 <script>
 export default {
