@@ -1,6 +1,13 @@
 <template>
   <VForm v-model="valid">
-    <VTextField v-model="searchText" solo append-icon="mdi-magnify" clearable label="搜索" :hint="hint"></VTextField>
+    <VTextField
+      v-model="searchText"
+      solo
+      append-icon="mdi-magnify"
+      clearable
+      label="搜索"
+      :hint="hint"
+    />
   </VForm>
 </template>
 <script>

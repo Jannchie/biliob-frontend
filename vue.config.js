@@ -5,7 +5,7 @@ module.exports = {
   productionSourceMap: true,
 
   // 简单Gzip
-  lintOnSave: undefined,
+  lintOnSave: false,
   configureWebpack: {
     plugins: [
       new CompressionWebpackPlugin({
@@ -17,9 +17,9 @@ module.exports = {
     ]
   },
   pwa: {
-    themeColor: "#383e44",
+    themeColor: "#444",
     name: "BiliOB观测者",
-    msTileColor: "#383e44"
+    msTileColor: "#444"
   },
   transpileDependencies: [/\bvue-echarts\b/, /\bresize-detector\b/]
 };

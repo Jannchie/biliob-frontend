@@ -1,19 +1,30 @@
 <template>
   <MainLayout>
     <div slot="main-cards">
-      <VTabs fixed-tabscentered grow>
+      <VTabs
+        fixed-tabscentered
+        grow
+      >
         <VTab :key="1">
-          <VIcon style="margin-right:10px;">mdi-heart</VIcon>
+          <VIcon style="margin-right:10px;">
+            mdi-heart
+          </VIcon>
           涨粉
         </VTab>
         <VTab :key="2">
-          <VIcon style="margin-right:10px;">mdi-heart-broken</VIcon>掉粉
+          <VIcon style="margin-right:10px;">
+            mdi-heart-broken
+          </VIcon>掉粉
         </VTab>
         <VTab :key="3">
-          <VIcon style="margin-right:10px;">mdi-video-vintage</VIcon>番剧
+          <VIcon style="margin-right:10px;">
+            mdi-video-vintage
+          </VIcon>番剧
         </VTab>
         <VTab :key="4">
-          <VIcon style="margin-right:10px;">mdi-rabbit</VIcon>国创
+          <VIcon style="margin-right:10px;">
+            mdi-rabbit
+          </VIcon>国创
         </VTab>
 
         <VTabItem :key="1">
@@ -25,15 +36,26 @@
           >
             <VCardText>
               <div class="item-info">
-                <h2 style="width:50px;" class="text-center">{{ index+1 }}</h2>
+                <h2
+                  style="width:50px;"
+                  class="text-center"
+                >
+                  {{ index+1 }}
+                </h2>
                 <img
                   style="border-radius:25px;height:50px;margin:0 20px"
                   :src="eachAuthor.face.slice(5)"
                 >
-                <div style="flex-basis:100%">{{eachAuthor.name}}</div>
-                <VChip label color="red" text-color="white">
+                <div style="flex-basis:100%">
+                  {{ eachAuthor.name }}
+                </div>
+                <VChip
+                  label
+                  color="red"
+                  text-color="white"
+                >
                   <VIcon>mdi-menu-up</VIcon>
-                  {{eachAuthor.cRate}}
+                  {{ eachAuthor.cRate }}
                 </VChip>
               </div>
             </VCardText>
@@ -49,15 +71,26 @@
           >
             <VCardText>
               <div class="item-info">
-                <h2 style="width:50px;" class="text-center">{{ index+1 }}</h2>
+                <h2
+                  style="width:50px;"
+                  class="text-center"
+                >
+                  {{ index+1 }}
+                </h2>
                 <img
                   style="border-radius:25px;height:50px;margin:0 20px"
                   :src="eachAuthor.face.slice(5)"
                 >
-                <div style="flex-basis:100%">{{eachAuthor.name}}</div>
-                <VChip label color="green" text-color="white">
+                <div style="flex-basis:100%">
+                  {{ eachAuthor.name }}
+                </div>
+                <VChip
+                  label
+                  color="green"
+                  text-color="white"
+                >
                   <VIcon>mdi-menu-down</VIcon>
-                  {{-eachAuthor.cRate}}
+                  {{ -eachAuthor.cRate }}
                 </VChip>
               </div>
             </VCardText>
@@ -65,26 +98,39 @@
         </VTabItem>
 
         <VTabItem :key="3">
-          <VCard v-for="(eachBangumi,index) in bangumiData" :key="eachBangumi.mid" flat>
+          <VCard
+            v-for="(eachBangumi,index) in bangumiData"
+            :key="eachBangumi.mid"
+            flat
+          >
             <VCardText>
               <div class="item-info">
-                <h2 style="width:50px;" class="text-center">{{ index+1 }}</h2>
+                <h2
+                  style="width:50px;"
+                  class="text-center"
+                >
+                  {{ index+1 }}
+                </h2>
                 <img
                   style="border-radius:3px;width:50px;height:50px;margin:0 8px"
                   :src="eachBangumi.squareCover"
                 >
                 <div style="flex-basis:80%;font-size:14px">
-                  <b>{{eachBangumi.title}}</b>
+                  <b>{{ eachBangumi.title }}</b>
                   <br>
                   <VChip
                     v-for="eachTag in eachBangumi.tag"
                     :key="eachTag"
                     small
                     class="hidden-lg-and-down"
-                  >{{eachTag}}</VChip>
+                  >
+                    {{ eachTag }}
+                  </VChip>
                 </div>
                 <div style="text-align:center;font-size:12px;width:60px">
-                  <h3 style="font-size:14px">{{eachBangumi.currentPts}}</h3>综合得分
+                  <h3 style="font-size:14px">
+                    {{ eachBangumi.currentPts }}
+                  </h3>综合得分
                 </div>
               </div>
             </VCardText>
@@ -92,26 +138,39 @@
         </VTabItem>
 
         <VTabItem :key="4">
-          <VCard v-for="(eachDonghua,index) in donghuaData" :key="eachDonghua.mid" flat>
+          <VCard
+            v-for="(eachDonghua,index) in donghuaData"
+            :key="eachDonghua.mid"
+            flat
+          >
             <VCardText>
               <div class="item-info">
-                <h2 style="width:50px;" class="text-center">{{ index+1 }}</h2>
+                <h2
+                  style="width:50px;"
+                  class="text-center"
+                >
+                  {{ index+1 }}
+                </h2>
                 <img
                   style="border-radius:3px;width:50px;height:50px;margin:0 8px"
                   :src="eachDonghua.squareCover"
                 >
                 <div style="flex-basis:80%;font-size:14px">
-                  <b>{{eachDonghua.title}}</b>
+                  <b>{{ eachDonghua.title }}</b>
                   <br>
                   <VChip
                     v-for="eachTag in eachDonghua.tag"
                     :key="eachTag"
                     small
                     class="hidden-lg-and-down"
-                  >{{eachTag}}</VChip>
+                  >
+                    {{ eachTag }}
+                  </VChip>
                 </div>
                 <div style="text-align:center;font-size:12px;width:60px">
-                  <h3 style="font-size:14px">{{eachDonghua.currentPts}}</h3>综合得分
+                  <h3 style="font-size:14px">
+                    {{ eachDonghua.currentPts }}
+                  </h3>综合得分
                 </div>
               </div>
             </VCardText>
@@ -121,13 +180,16 @@
     </div>
     <div slot="aside-cards">
       <VCard class="aside-cards">
-        <VCardTitle class="title">排行榜说明</VCardTitle>
-        <VCardText>本排行榜数据每日更新一次。
+        <VCardTitle class="title">
+          排行榜说明
+        </VCardTitle>
+        <VCardText>
+          本排行榜数据每日更新一次。
           <br>其中涨粉、掉粉排行仅包括所有正在观测的UP主数据。具体数字为一日粉丝变动数，仅供参考。
           <br>国创番剧排行榜数据摘录自B站。
         </VCardText>
       </VCard>
-      <OtherLink class="aside-cards"></OtherLink>
+      <OtherLink class="aside-cards" />
     </div>
   </MainLayout>
 </template>

@@ -1,5 +1,6 @@
 var format = require("date-fns/format");
 var { convertDateToUTC } = require("./util/convertDateToUTC");
+
 function interpolation(data) {
   let new_data = [];
   for (let index = 0; index < data.length - 1; index++) {
@@ -28,6 +29,7 @@ function interpolation(data) {
   }
   return new_data;
 }
+
 function drawChart(data) {
   console.log(data);
   data = data.data;

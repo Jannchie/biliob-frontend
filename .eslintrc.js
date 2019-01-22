@@ -7,7 +7,8 @@ module.exports = {
 
   rules: {
     "no-console": "off",
-    "no-debugger": "off"
+    "no-debugger": "off",
+    "vue/component-name-in-template-casing": "warn"
   },
 
   parserOptions: {

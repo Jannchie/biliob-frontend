@@ -2,25 +2,45 @@
   <div class="video-list-main">
     <div>
       <div>
-        <VSearchForm slot="search" hint="请输入标题、分区或者av号" @getSearchValue="getSearchValue"></VSearchForm>
-        <VCard v-for="eachVideo in videoList.content" :key="eachVideo.aid" class="video-cards" ripple
-          :to="'/author/'+eachVideo.mid+'/video/'+eachVideo.aid">
+        <VSearchForm
+          slot="search"
+          hint="请输入标题、分区或者av号"
+          @getSearchValue="getSearchValue"
+        />
+        <VCard
+          v-for="eachVideo in videoList.content"
+          :key="eachVideo.aid"
+          class="video-cards"
+          ripple
+          :to="'/author/'+eachVideo.mid+'/video/'+eachVideo.aid"
+        >
           <div style="padding:5px;display:flex">
             <div>
               <VResponsive :aspect-ratio="16/9">
-                <VImg style="border-radius:5px;width:120px;height:80px" :src="eachVideo.pic.slice(5)" :lazy-src="eachVideo.pic.slice(5)" />
+                <VImg
+                  style="border-radius:5px;width:120px;height:80px"
+                  :src="eachVideo.pic.slice(5)"
+                  :lazy-src="eachVideo.pic.slice(5)"
+                />
               </VResponsive>
             </div>
             <div style="margin-left:10px;overflow:hidden">
               <div class="font-weight-bold video-title text-no-wrap text-truncate">
-                {{eachVideo.title}}
+                {{ eachVideo.title }}
               </div>
               <div class="caption subtext video-info">
-                <VIcon small>mdi-account-box-outline</VIcon>{{eachVideo.author}}
-                <VIcon small>mdi-bookmark-outline</VIcon>{{eachVideo.channel}}
+                <VIcon small>
+                  mdi-account-box-outline
+                </VIcon>{{ eachVideo.author }}
+                <VIcon small>
+                  mdi-bookmark-outline
+                </VIcon>{{ eachVideo.channel }}
               </div>
             </div>
-            <ObserveStatus class="observe-status" :object="eachVideo"></ObserveStatus>
+            <ObserveStatus
+              class="observe-status"
+              :object="eachVideo"
+            />
           </div>
         </VCard>
       </div>

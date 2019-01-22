@@ -1,9 +1,9 @@
 <template>
   <div>
-    <slot name="author-operation"></slot>
-    <slot name="video-to-bilibili"></slot>
-    <slot name="other-video"></slot>
-    <slot name="recommand"></slot>
+    <slot name="author-operation" />
+    <slot name="video-to-bilibili" />
+    <slot name="other-video" />
+    <slot name="recommand" />
   </div>
 </template>
 

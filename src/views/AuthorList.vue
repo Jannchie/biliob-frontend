@@ -1,10 +1,10 @@
 <template>
- <MainLayout>
-   <AuthorListMain slot="main-cards"></AuthorListMain>
-   <AuthorListAside slot="aside-cards">
-     <OtherLink slot="link"></OtherLink>
-   </AuthorListAside>
- </MainLayout>
+  <MainLayout>
+    <AuthorListMain slot="main-cards" />
+    <AuthorListAside slot="aside-cards">
+      <OtherLink slot="link" />
+    </AuthorListAside>
+  </MainLayout>
 </template>
 
 <script>

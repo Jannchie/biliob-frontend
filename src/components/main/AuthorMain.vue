@@ -1,8 +1,8 @@
 <template>
   <div>
-    <slot name="channel"/>
-    <slot name="fans"/>
-    <slot name="fans-rate"/>
+    <slot name="channel" />
+    <slot name="fans" />
+    <slot name="fans-rate" />
   </div>
 </template>
 

@@ -2,10 +2,10 @@
   <div id="app">
     <VApp :dark="dark">
       <BottomNav />
-      <NavBar></NavBar>
-      <Banner></Banner>
-      <FloatDialog></FloatDialog>
-      <Container/>
+      <NavBar />
+      <Banner />
+      <FloatDialog />
+      <Container />
       <BiliobFooter />
     </VApp>
   </div>

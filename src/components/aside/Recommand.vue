@@ -1,17 +1,31 @@
 <template>
   <VCard :href="'https://www.bilibili.com/av'+ads.aid">
     <VResponsive>
-      <VImg :src="ads.pic" aspect-ratio="2.75"></VImg>
+      <VImg
+        :src="ads.pic"
+        aspect-ratio="2.75"
+      />
     </VResponsive>
     <VCardText>
       <h3>
-        {{ads.title}}
+        {{ ads.title }}
       </h3>
       <div class="sub-text">
-        <VIcon small>mdi-bookmark-outline</VIcon>{{ads.channel}}<VIcon small>mdi-account-box-outline</VIcon>{{ads.author}}
+        <VIcon small>
+          mdi-bookmark-outline
+        </VIcon>{{ ads.channel }}<VIcon small>
+          mdi-account-box-outline
+        </VIcon>{{ ads.author }}
       </div>
     </VCardText>
-    <VChip small color="#FF7FAC" class="ad-chip" dark>站长倾情推荐</VChip>
+    <VChip
+      small
+      color="#FF7FAC"
+      class="ad-chip"
+      dark
+    >
+      站长倾情推荐
+    </VChip>
   </VCard>
 </template>
 <script>

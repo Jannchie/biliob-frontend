@@ -1,21 +1,30 @@
 <template>
-  <VCard >
+  <VCard>
     <VCardText>
-    <div style="display:flex">
-              <img class="author-face" :src="authorData.face"  ripple @click.stop="toAuthor">
-      <div>
-      <div>
-        <span>{{authorData.name}}</span>
-        <LevelIcon :level="authorData.level"></LevelIcon>
-        <SexIcon :sex="authorData.sex"></SexIcon>
-        <br>
-        <span>粉丝数:{{fans}}</span>
-        <br>
-        <span>{{authorData.official}}</span>
+      <div style="display:flex">
+        <img
+          class="author-face"
+          :src="authorData.face"
+          ripple
+          @click.stop="toAuthor"
+        >
+        <div>
+          <div>
+            <span>{{ authorData.name }}</span>
+            <LevelIcon :level="authorData.level" />
+            <SexIcon :sex="authorData.sex" />
+            <br>
+            <span>粉丝数:{{ fans }}</span>
+            <br>
+            <span>{{ authorData.official }}</span>
+          </div>
+          <FocusBtn
+            v-if="$store.getters.getLoginState"
+            :author-data="authorData"
+            class="focus-btn"
+          />
+        </div>
       </div>
-      <FocusBtn v-if="$store.getters.getLoginState" :author-data="authorData" class="focus-btn"></FocusBtn>
-      </div>
-    </div>
     </VCardText>
   </VCard>
 </template>

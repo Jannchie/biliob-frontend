@@ -6,9 +6,11 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     logined: false,
+    checked: false,
     userName: String(),
     role: String(),
     credit: Number(),
+    exp: Number(),
     dark: false,
     currentPage: String(),
     favoriteAid: [],
@@ -26,6 +28,9 @@ export default new Vuex.Store({
     },
     setCredit(state, credit) {
       state.credit = credit;
+    },
+    setExp(state, exp) {
+      state.exp = exp;
     },
     setFavoriteVideo(state, aidList) {
       state.favoriteAid = aidList;
@@ -61,6 +66,9 @@ export default new Vuex.Store({
     },
     toElse(state) {
       state.currentPage = "else";
+    },
+    checkIn(state, checkStatus) {
+      state.checked = checkStatus;
     }
   },
   getters: {
@@ -72,6 +80,9 @@ export default new Vuex.Store({
     },
     getCredit: state => {
       return state.credit;
+    },
+    getExp: state => {
+      return state.exp;
     },
     getLoginState: state => {
       return state.logined;
@@ -87,6 +98,9 @@ export default new Vuex.Store({
     },
     getDark: state => {
       return state.dark;
+    },
+    getCheckStatus: state => {
+      return state.checked;
     }
   }
 });

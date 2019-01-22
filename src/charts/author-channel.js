@@ -13,7 +13,10 @@ function drawChart(data) {
     }
   });
   data.forEach(e => {
-    indicator.push({ name: e.name, max: max });
+    indicator.push({
+      name: e.name,
+      max: max
+    });
   });
 
   let option = {

@@ -1,37 +1,128 @@
 <template>
   <nav>
-    <VToolbar style="background-color: #444" class="toolbar" dense>
-      <VToolbarSideIcon class="toolbar-item" dark @click.stop="drawer = !drawer"><VIcon>mdi-menu</VIcon></VToolbarSideIcon>
-      <VBtn class="toolbar-item" flat dark @click.stop="toHomepage">
-        <VToolbarTitle class="toolbar-title"><img class="logo" src="../../../public/img/icons/android-chrome-192x192.png">
-          BiliOB观测者</VToolbarTitle>
+    <VToolbar
+      style="background-color: #444"
+      class="toolbar"
+      dense
+    >
+      <VToolbarSideIcon
+        class="toolbar-item"
+        dark
+        @click.stop="drawer = !drawer"
+      >
+        <VIcon>mdi-menu</VIcon>
+      </VToolbarSideIcon>
+      <VBtn
+        class="toolbar-item"
+        flat
+        dark
+        @click.stop="toHomepage"
+      >
+        <VToolbarTitle class="toolbar-title">
+          <img
+            class="logo"
+            src="../../../public/img/icons/android-chrome-192x192.png"
+          >
+          BiliOB观测者
+        </VToolbarTitle>
       </VBtn>
       <VToolbarItems class="hidden-md-and-down">
-        <VBtn class="toolbar-item" flat dark @click.stop="toVideo"><VIcon>mdi-video-outline</VIcon>视频追踪</VBtn>
-        <VBtn class="toolbar-item" flat dark @click.stop="toAuthor"><VIcon>mdi-account-outline</VIcon>UP主追踪</VBtn>
-        <VBtn class="toolbar-item" flat dark @click.stop="toRank"><VIcon>mdi-chart-histogram</VIcon>排行榜</VBtn>
+        <VBtn
+          class="toolbar-item"
+          flat
+          dark
+          @click.stop="toVideo"
+        >
+          <VIcon>mdi-video-outline</VIcon>视频追踪
+        </VBtn>
+        <VBtn
+          class="toolbar-item"
+          flat
+          dark
+          @click.stop="toAuthor"
+        >
+          <VIcon>mdi-account-outline</VIcon>UP主追踪
+        </VBtn>
+        <VBtn
+          class="toolbar-item"
+          flat
+          dark
+          @click.stop="toRank"
+        >
+          <VIcon>mdi-chart-histogram</VIcon>排行榜
+        </VBtn>
       </VToolbarItems>
     </VToolbar>
-    <VNavigationDrawer v-model="drawer" absolute temporary>
+    <VNavigationDrawer
+      v-model="drawer"
+      absolute
+      temporary
+    >
+      <div
+        v-if="logined"
+        class="check-in"
+      >
+        <VBtn
+          v-if="checked"
+          ripple
+          flat
+          primary
+          dark
+          small
+        >
+          <VIcon left>
+            mdi-check-circle-outline
+          </VIcon>已签到
+        </VBtn>
+        <VBtn
+          v-else-if="!checked"
+          small
+          ripple
+          dark
+          flat
+          primary
+          @click.stop="checkIn"
+        >
+          <VIcon left>
+            mdi-checkbox-blank-circle-outline
+          </VIcon>签到
+        </VBtn>
+      </div>
       <VList style="padding:0">
-        <VListTile  v-if="logined" class="user-info-content" :class="backgroundStyle">
+        <VListTile
+          v-if="logined"
+          class="user-info-content"
+          :class="backgroundStyle"
+        >
           <VListTileAvatar>
-            <VIcon large>mdi-account-circle-outline</VIcon>
+            <VIcon large>
+              mdi-account-circle-outline
+            </VIcon>
           </VListTileAvatar>
           <VListTileContent>
-            <VListTileTitle>{{name}}</VListTileTitle>
-            <VListTileSubTitle>{{role}}</VListTileSubTitle>
+            <VListTileTitle class="title">{{ name }}</VListTileTitle>
+            <VListTileSubTitle>
+              <div style="display:flex;">
+                <ExpBadget
+                  class="badget"
+                  :exp="exp"
+                />
+                <CreditBadget
+                  class="badget"
+                  :credit="credit"
+                />
+              </div>
+            </VListTileSubTitle>
           </VListTileContent>
-          <VListTileAction>
-            <VBtn icon ripple>
-              <VIcon color="grey lighten-1">mdi-settings</VIcon>
-            </VBtn>
-          </VListTileAction>
+          <!-- <VListTileAction class="setting" /> -->
         </VListTile>
       </VList>
       <VList>
-
-        <VListTile v-if="!logined" ripple @click.stop="toLogin">
+        <VListTile
+          v-if="!logined"
+          ripple
+          @click.stop="toLogin"
+        >
           <VListTileAvatar>
             <VIcon>mdi-login-variant</VIcon>
           </VListTileAvatar>
@@ -43,8 +134,11 @@
       </VList>
 
       <VList v-if="logined">
-        <VDivider></VDivider>
-        <VListTile ripple @click.stop="toFavoriteAuthor">
+        <VDivider />
+        <VListTile
+          ripple
+          @click.stop="toFavoriteAuthor"
+        >
           <VListTileAvatar>
             <VIcon>mdi-account-heart</VIcon>
           </VListTileAvatar>
@@ -53,7 +147,10 @@
             <VListTileSubTitle>查看我关注的UP主</VListTileSubTitle>
           </VListTileContent>
         </VListTile>
-        <VListTile ripple @click.stop="toFavoriteVideo">
+        <VListTile
+          ripple
+          @click.stop="toFavoriteVideo"
+        >
           <VListTileAvatar>
             <VIcon>mdi-star</VIcon>
           </VListTileAvatar>
@@ -62,12 +159,15 @@
             <VListTileSubTitle>查看我关注的视频</VListTileSubTitle>
           </VListTileContent>
         </VListTile>
-        <VDivider></VDivider>
+        <VDivider />
       </VList>
       <VList>
-        <VDivider></VDivider>
+        <VDivider />
 
-        <VListTile ripple @click.stop="toEvent">
+        <VListTile
+          ripple
+          @click.stop="toEvent"
+        >
           <VListTileAvatar>
             <VIcon>mdi-bulletin-board</VIcon>
           </VListTileAvatar>
@@ -76,12 +176,14 @@
             <VListTileSubTitle>一分钟，我要看到所有的资料</VListTileSubTitle>
           </VListTileContent>
         </VListTile>
-        <VDivider></VDivider>
-
+        <VDivider />
       </VList>
       <VList>
-        <VDivider></VDivider>
-        <VListTile ripple @click.stop="toFaq">
+        <VDivider />
+        <VListTile
+          ripple
+          @click.stop="toFaq"
+        >
           <VListTileAvatar>
             <VIcon>mdi-help-circle-outline</VIcon>
           </VListTileAvatar>
@@ -91,7 +193,10 @@
           </VListTileContent>
         </VListTile>
 
-        <VListTile ripple @click.stop="toAbout">
+        <VListTile
+          ripple
+          @click.stop="toAbout"
+        >
           <VListTileAvatar>
             <VIcon>mdi-information-outline</VIcon>
           </VListTileAvatar>
@@ -102,7 +207,10 @@
           </VListTileContent>
         </VListTile>
 
-        <VListTile ripple @click.stop="toLog">
+        <VListTile
+          ripple
+          @click.stop="toLog"
+        >
           <VListTileAvatar>
             <VIcon>mdi-developer-board</VIcon>
           </VListTileAvatar>
@@ -113,13 +221,15 @@
           </VListTileContent>
         </VListTile>
 
-
-        <VDivider></VDivider>
+        <VDivider />
       </VList>
       <VList>
-        <VDivider></VDivider>
+        <VDivider />
 
-        <VListTile ripple @click.stop="darkMode">
+        <VListTile
+          ripple
+          @click.stop="darkMode"
+        >
           <VListTileAvatar>
             <VIcon>mdi-weather-night</VIcon>
           </VListTileAvatar>
@@ -128,15 +238,18 @@
             <VListTileSubTitle>Deep ♂ Dark ♂ Fantasy</VListTileSubTitle>
           </VListTileContent>
         </VListTile>
-        <VDivider></VDivider>
-
+        <VDivider />
       </VList>
     </VNavigationDrawer>
   </nav>
 </template>
 <script>
+import CreditBadget from "./CreditBadget.vue";
+import ExpBadget from "./ExpBadget.vue";
+
 export default {
   name: "NavBar",
+  components: { CreditBadget, ExpBadget },
   data() {
     return {
       bottomNav: null,
@@ -176,12 +289,21 @@ export default {
       },
       set: function() {}
     },
+    exp: {
+      get: function() {
+        return this.$store.getters.getExp;
+      },
+      set: function() {}
+    },
     isDark() {
       if (this.$store.state.dark) {
         return true;
       } else {
         return false;
       }
+    },
+    checked() {
+      return this.$store.getters.getCheckStatus;
     }
   },
   watch: {
@@ -207,9 +329,13 @@ export default {
         this.$store.commit("login");
         this.$store.commit("setRole", response.data.role);
         this.$store.commit("setCredit", response.data.credit);
+        this.$store.commit("setExp", response.data.exp);
         this.$store.commit("setUserName", response.data.name);
         this.$store.commit("setFavoriteVideo", response.data.favoriteAid);
         this.$store.commit("setFavoriteAuthor", response.data.favoriteMid);
+        this.axios.get(`/user/check-in`).then(response => {
+          this.$store.commit("checkIn", response.data.status);
+        });
       })
       .catch(() => {
         this.$store.commit("logout");
@@ -260,6 +386,19 @@ export default {
     },
     darkMode() {
       this.$store.commit("setDark");
+    },
+    checkIn() {
+      this.axios
+        .post("/user/check-in")
+        .then(response => {
+          alert(response.data.msg);
+          if (response.data.code == 1) {
+            this.$store.commit("setCredit", response.data.data.credit);
+            this.$store.commit("setExp", response.data.data.exp);
+            this.$store.commit("checkIn", true);
+          }
+        })
+        .catch(e => e.data.msg);
     }
   }
 };
@@ -268,7 +407,7 @@ export default {
 .toolbar {
   z-index: 1;
   background-color: #444;
-  color: #ffffff;
+  color: #fff;
 }
 
 .logo {
@@ -294,6 +433,7 @@ export default {
   background-image: url("../../../public/img/aside-bright.png");
   background-position: center;
 }
+
 .aside-pic-dark {
   position: relative;
   left: 0px;
@@ -304,7 +444,19 @@ export default {
   background-image: url("../../../public/img/aside-bright.png");
   background-position: center;
 }
+
 .user-info-content {
   padding-top: 140px;
+}
+
+.check-in {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  z-index: 10;
+}
+
+.badget {
+  margin-right: 4px;
 }
 </style>
