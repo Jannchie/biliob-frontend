@@ -1,10 +1,5 @@
 <template>
   <div>
-    <VCard>
-      <VCardTitle>title</VCardTitle>
-      <VCardText>text</VCardText>
-      <VCardMedia>media</VCardMedia>
-    </VCard>
     <VTimeline class="timeline" dense>
       <VTimelineItem
         v-for="(eachEvent,index) in eventData"
