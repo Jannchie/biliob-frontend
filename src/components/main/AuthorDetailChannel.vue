@@ -5,15 +5,13 @@
       md12
     >
       <VCard class="channel-card">
-        <VCardText class="card-holder">
-          <Chart
-            id="channel-chart"
-            :theme="theme"
-            :auto-resize="true"
-            :options="channelChart"
-            style="width:100%;"
-          />
-        </VCardText>
+        <Chart
+          id="channel-chart"
+          :theme="theme"
+          :auto-resize="true"
+          :options="channelChart"
+          style="width:100%;"
+        />
       </VCard>
     </VFlex>
   </VLayout>

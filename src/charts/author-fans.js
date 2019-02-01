@@ -18,8 +18,8 @@ function drawChart(data) {
     },
     grid: {
       bottom: "90px",
-      right: "10px",
-      left: "50px"
+      right: "60px",
+      left: "60px"
     },
     dataZoom: [
       {
