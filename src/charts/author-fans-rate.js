@@ -2,6 +2,7 @@ var format = require("date-fns/format");
 var { convertDateToUTC } = require("./util/convertDateToUTC");
 
 function interpolation(data) {
+  data = data.sort((a, b) => a.datetime - b.datetime);
   let new_data = [];
   for (let index = 0; index < data.length - 1; index++) {
     let days = Math.round(
@@ -55,7 +56,12 @@ function drawChart(data) {
       f += data[i]["fans"] - data[i + 1]["fans"];
     }
   }
-
+  if (
+    fansRate[fansRate.length - 2].datetime ==
+    fansRate[fansRate.length - 1].datetime
+  ) {
+    fansRate.splice(fansRate.length - 2, 1);
+  }
   let Chart = {
     title: {
       left: "center",
@@ -77,8 +83,8 @@ function drawChart(data) {
       }
     },
     grid: {
-      left: "50px",
-      right: "10px",
+      left: "60px",
+      right: "60px",
       bottom: "90px"
     },
     dataZoom: [
@@ -127,7 +133,7 @@ function drawChart(data) {
       {
         name: "粉丝增量",
         data: fansRate,
-        smooth: true,
+        smooth: false,
         showSymbol: false,
         type: "bar",
         areaStyle: {}

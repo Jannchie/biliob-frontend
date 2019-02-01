@@ -1,14 +1,12 @@
 <template>
   <VCard class="card">
-    <VCardText class="card-holder">
-      <Chart
-        id="chart-1"
-        :theme="theme"
-        :auto-resize="true"
-        :options="likeRateChart"
-        style="width:100%;height:20vmax;"
-      />
-    </VCardText>
+    <Chart
+      id="chart-1"
+      :theme="theme"
+      :auto-resize="true"
+      :options="likeRateChart"
+      style="width:100%;height:20vmax;"
+    />
   </VCard>
 </template>
 

@@ -2,8 +2,8 @@ function drawChart(data) {
   let Chart = {
     title: [
       {
-        left: "center",
-        subtext: "好评率"
+        left: "center"
+        // subtext: "好评率"
       },
       {
         left: "50%",
@@ -23,8 +23,14 @@ function drawChart(data) {
         radius: ["50%", "70%"],
         center: ["50%", "50%"],
         data: [
-          { value: data.data[0].like, name: "点赞" },
-          { value: data.data[0].view, name: "播放" }
+          {
+            value: data.data[0].like,
+            name: "点赞"
+          },
+          {
+            value: data.data[0].view,
+            name: "播放"
+          }
         ]
       }
     ]

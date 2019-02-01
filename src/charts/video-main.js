@@ -51,9 +51,9 @@ function drawChart(data) {
       }
     },
     grid: {
-      top: "27vmax",
-      bottom: "70vmax",
-      left: "40px",
+      top: "26vmax",
+      bottom: "68vmax",
+      left: "60px",
       right: "60px"
     },
     xAxis: {
@@ -113,7 +113,7 @@ function drawChart(data) {
         type: "line",
         dimensions: ["datetime", "view"],
         name: "播放",
-        smooth: true,
+        smooth: false,
         showSymbol: false,
         yAxisIndex: 1
       },
@@ -121,7 +121,7 @@ function drawChart(data) {
         type: "line",
         dimensions: ["datetime", "danmaku"],
         name: "弹幕",
-        smooth: true,
+        smooth: false,
         showSymbol: false,
         yAxisIndex: 0
       },
@@ -129,7 +129,7 @@ function drawChart(data) {
         type: "line",
         dimensions: ["datetime", "coin"],
         name: "硬币",
-        smooth: true,
+        smooth: false,
         showSymbol: false,
         yAxisIndex: 0
       },
@@ -137,7 +137,7 @@ function drawChart(data) {
         type: "line",
         dimensions: ["datetime", "favorite"],
         name: "收藏",
-        smooth: true,
+        smooth: false,
         showSymbol: false,
         yAxisIndex: 0
       },
@@ -145,7 +145,7 @@ function drawChart(data) {
         type: "line",
         dimensions: ["datetime", "share"],
         name: "分享",
-        smooth: true,
+        smooth: false,
         showSymbol: false,
         yAxisIndex: 0
       },
@@ -153,7 +153,7 @@ function drawChart(data) {
         type: "line",
         dimensions: ["datetime", "like"],
         name: "点赞",
-        smooth: true,
+        smooth: false,
         showSymbol: false,
         yAxisIndex: 0
       }
