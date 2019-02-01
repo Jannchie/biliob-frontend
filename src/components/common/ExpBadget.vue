@@ -2,13 +2,13 @@
   <span style="display:flex;font-size:8px">
     <div
       :class="deepColor"
-      style="border-radius:3px 0 0 5px;padding:1px 5px;color:#fff"
+      style="border-radius:3px 0 0 3px;padding:1px 5px;color:#fff"
     >
       {{ name }}
     </div>
     <div
       :class="lightColor "
-      style="border-radius:0 5px 5px 0;padding:1px 5px;"
+      style="border-radius:0 3px 3px 0;padding:1px 5px;"
     >
       {{exp}}
     </div>
@@ -22,38 +22,34 @@ export default {
   computed: {
     color() {
       let v = this.exp;
-      if (v < 50) {
+      if (v < 100) {
         return "green";
-      } else if (v < 100) {
-        return "teal";
-      } else if (v < 150) {
-        return "teal";
+      } else if (v < 200) {
+        return "blue";
       } else if (v < 300) {
-        return "blue";
+        return "indigo";
       } else if (v < 500) {
-        return "blue";
+        return "purple";
       } else if (v < 1000) {
-        return "deep-purple";
+        return "pink";
       } else {
         return "red";
       }
     },
     name() {
       let v = this.exp;
-      if (v < 50) {
-        return "初心観測者";
-      } else if (v < 100) {
-        return "见习観測者";
-      } else if (v < 150) {
-        return "孤独的観測者";
+      if (v < 100) {
+        return "寻踪觅迹的初心者";
+      } else if (v < 200) {
+        return "沉浮信海的彷徨者";
       } else if (v < 300) {
-        return "孤独的観測者";
+        return "本心不渝的追寻者";
       } else if (v < 500) {
-        return "孤独的観測者";
+        return "洞悉法度的观想者";
       } else if (v < 1000) {
-        return "孤独的観測者";
+        return "与天同行的观测者";
       } else {
-        return "与天同行的観測者";
+        return "观测站的管理员";
       }
     },
     deepColor() {
