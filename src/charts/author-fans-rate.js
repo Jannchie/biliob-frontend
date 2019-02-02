@@ -2,11 +2,16 @@ var format = require("date-fns/format");
 var { convertDateToUTC } = require("./util/convertDateToUTC");
 
 function interpolation(data) {
-  data = data.sort((a, b) => a.datetime - b.datetime);
   let new_data = [];
+  data.forEach(e => {
+    if (typeof e.datetime == "string") {
+      e.datetime = e.datetime.replace("+0000", "");
+    }
+  });
   for (let index = 0; index < data.length - 1; index++) {
     let days = Math.round(
-      (new Date(data[index].datetime) - new Date(data[index + 1].datetime)) /
+      (new Date(data[index].datetime).getTime() -
+        new Date(data[index + 1].datetime).getTime()) /
         (24 * 60 * 60 * 1000)
     );
     if (days <= 1) {
@@ -32,7 +37,6 @@ function interpolation(data) {
 }
 
 function drawChart(data) {
-  console.log(data);
   data = data.data;
   data = interpolation(data);
   for (let index = 0; index < data.length; index++) {

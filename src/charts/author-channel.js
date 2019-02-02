@@ -2,7 +2,6 @@
 // var { convertDateToUTC } = require("./util/convertDateToUTC");
 
 function drawChart(data) {
-  console.log(data);
   var max = 0;
   var indicator = [];
   var value = [];
