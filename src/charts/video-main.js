@@ -17,6 +17,7 @@ function drawChart(data) {
       datetime: format(new Date(data.datetime), "YYYY-MM-DD HH:mm")
     });
   }
+
   data.data.sort((a, b) => {
     return new Date(a.datetime) - new Date(b.datetime);
   });

@@ -2,7 +2,6 @@ var format = require("date-fns/format");
 var { convertDateToUTC } = require("./util/convertDateToUTC");
 
 function drawChart(data) {
-  console.log(data);
   var xData = [];
   var yData = [];
   data.forEach(e => {
