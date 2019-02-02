@@ -56,11 +56,13 @@ function drawChart(data) {
       f += data[i]["fans"] - data[i + 1]["fans"];
     }
   }
-  if (
-    fansRate[fansRate.length - 2].datetime ==
-    fansRate[fansRate.length - 1].datetime
-  ) {
-    fansRate.splice(fansRate.length - 2, 1);
+  if (fansRate[fansRate.length - 2][0] == fansRate[fansRate.length - 1][0]) {
+    fansRate[fansRate.length - 1][0] = format(
+      new Date().setDate(
+        new Date(fansRate[fansRate.length - 1][0]).getDate() + 1
+      ),
+      "YYYY-MM-DD"
+    );
   }
   let Chart = {
     title: {
