@@ -46,6 +46,13 @@
             />
           </div>
         </VCard>
+        <VBtn
+          block
+          outline
+          color="blue darken-2"
+          :disabled="nextBtnDisabled"
+          @click.stop="next"
+        >{{nextBtnText}}</VBtn>
       </div>
     </div>
   </div>
@@ -67,7 +74,9 @@ export default {
       authorList: [],
       currentApiurl: String(),
       currentPage: 0,
-      text: String()
+      text: String(),
+      nextBtnText: "请给我更多...",
+      nextBtnDisabled: false
     };
   },
   watch: {
@@ -89,6 +98,11 @@ export default {
       this.axios
         .get(this.currentApiurl + "?page=" + page + "&text=" + this.text)
         .then(response => {
+          // 判断是否为最后一页
+          if (response.data.last) {
+            this.nextBtnText = "没有更多了";
+            this.nextBtnDisabled = true;
+          }
           response.data.content.forEach(e => {
             this.authorList.content.push(e);
           });
@@ -99,6 +113,11 @@ export default {
     this.currentApiurl = "/user/author";
     this.axios.get(this.currentApiurl).then(response => {
       this.authorList = response.data;
+      // 判断是否为最后一页
+      if (response.data.last) {
+        this.nextBtnText = "没有更多了";
+        this.nextBtnDisabled = true;
+      }
     });
     window.addEventListener("scroll", this.onScroll, true);
   },
@@ -111,8 +130,11 @@ export default {
       var scrollHeight =
         document.documentElement.scrollHeight || document.body.scrollHeight;
       if (scrollTop + windowHeight == scrollHeight) {
-        this.currentPage += 1;
+        // this.currentPage += 1;
       }
+    },
+    next() {
+      this.currentPage += 1;
     },
     getSearchValue(value) {
       this.text = value;
