@@ -26,11 +26,11 @@ export default {
         return "green";
       } else if (v < 200) {
         return "blue";
-      } else if (v < 640) {
-        return "indigo";
       } else if (v < 1280) {
-        return "purple";
+        return "indigo";
       } else if (v < 2560) {
+        return "purple";
+      } else if (v < 5120) {
         return "pink";
       } else {
         return "red";
@@ -42,11 +42,11 @@ export default {
         return "寻踪觅迹的初心者";
       } else if (v < 200) {
         return "沉浮信海的彷徨者";
-      } else if (v < 640) {
-        return "本心不渝的追寻者";
       } else if (v < 1280) {
-        return "洞悉法度的观想者";
+        return "本心不渝的追寻者";
       } else if (v < 2560) {
+        return "洞悉法度的观想者";
+      } else if (v < 5120) {
         return "与天同行的观测者";
       } else {
         return "观测站的管理员";
