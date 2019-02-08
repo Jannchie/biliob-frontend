@@ -189,7 +189,7 @@
           </VListTileAvatar>
           <VListTileContent>
             <VListTileTitle>FA♂Q</VListTileTitle>
-            <VListTileSubTitle>施工中</VListTileSubTitle>
+            <VListTileSubTitle>你们问，我来答</VListTileSubTitle>
           </VListTileContent>
         </VListTile>
 
@@ -203,7 +203,7 @@
 
           <VListTileContent>
             <VListTileTitle>关于</VListTileTitle>
-            <VListTileSubTitle>我觉得你对这些肯定不感兴趣</VListTileSubTitle>
+            <VListTileSubTitle>你对这些肯定不感兴趣</VListTileSubTitle>
           </VListTileContent>
         </VListTile>
 
