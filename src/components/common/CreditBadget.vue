@@ -25,9 +25,9 @@ export default {
       if (v < 50) {
         return "blue-grey";
       } else if (v < 100) {
-        return "blue";
+        return "green";
       } else if (v < 200) {
-        return "orange";
+        return "blue";
       } else if (v < 300) {
         return "indigo";
       } else if (v < 500) {
