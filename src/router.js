@@ -14,6 +14,7 @@ const Signin = () => import("./views/Signin.vue");
 const NotFound = () => import("./views/NotFound.vue");
 const About = () => import("./views/About.vue");
 const Occurrence = () => import("./views/Event.vue");
+const FAQ = () => import("./views/FAQ.vue");
 
 Vue.use(Router);
 
@@ -70,6 +71,10 @@ export default new Router({
       component: Log
     },
     {
+      path: "/faq",
+      component: FAQ
+    },
+    {
       path: "/about",
       component: About
     },
@@ -82,6 +87,9 @@ export default new Router({
     if (savedPosition) {
       return savedPosition;
     }
-    return { x: 0, y: 0 };
+    return {
+      x: 0,
+      y: 0
+    };
   }
 });
