@@ -7,6 +7,7 @@
       clearable
       label="搜索"
       :hint="hint"
+      @submit.native.prevent=""
     />
   </VForm>
 </template>
