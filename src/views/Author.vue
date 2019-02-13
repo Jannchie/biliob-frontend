@@ -1,6 +1,10 @@
 <template>
   <MainLayout>
     <AuthorMain slot="main-cards">
+      <AuthorDetailRank
+        slot="rank"
+        v-bind="authorData.rank"
+      ></AuthorDetailRank>
       <!-- <AuthorDetailChannel slot="channel" :channels="authorData.channels"></AuthorDetailChannel> -->
       <AuthorDetailFansChart
         slot="fans"
@@ -36,6 +40,7 @@
 
 <script>
 import AuthorMain from "../components/main/AuthorMain.vue";
+import AuthorDetailRank from "../components/main/AuthorDetailRank.vue";
 import AuthorDetailFansChart from "../components/main/AuthorDetailFansChart.vue";
 import AuthorDetailFansRateChart from "../components/main/AuthorDetailFansRateChart.vue";
 import MainLayout from "../components/common/MainLayout.vue";
@@ -50,6 +55,7 @@ export default {
     AuthorMain,
     MainLayout,
     AuthorAside,
+    AuthorDetailRank,
     AuthorDetailFansChart,
     AuthorDetailFansRateChart,
     AuthorOperation,
