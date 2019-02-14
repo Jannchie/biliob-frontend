@@ -38,10 +38,10 @@
       style="display:flex;justify-content:space-between"
     >
       <div>
-        此排行仅包括已经观测UP主，仅供参考。
+        仅包括已经观测UP主
       </div>
       <div>
-        最后更新日期时间：{{format(updateTime)}}
+        {{format(updateTime)}}
       </div>
     </VCardText>
   </VCard>
