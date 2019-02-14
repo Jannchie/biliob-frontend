@@ -7,9 +7,13 @@
         :aid="videoData.aid"
         :pic="videoData.pic"
       />
+      <VideoDetailRank
+        slot="rank"
+        v-bind="videoData.rank"
+      ></VideoDetailRank>
       <VideoDetailMainChart
         slot="main"
-        :main-chart="mainChart" 
+        :main-chart="mainChart"
       />
       <VideoDetailLikeRateChart
         slot="like-rate"
@@ -19,16 +23,16 @@
     <VideoAside slot="aside-cards">
       <AuthorOperation
         slot="author-operation"
-        :author-data="authorData" 
+        :author-data="authorData"
       />
       <AuthorVideo
         slot="other-video"
         title="UP主其他已追踪视频"
-        :author-top-video="otherVideo" 
+        :author-top-video="otherVideo"
       />
       <VideoToBilibili
         slot="video-to-bilibili"
-        :aid="videoData.aid" 
+        :aid="videoData.aid"
       />
       <Recommand slot="recommand" />
     </VideoAside>
@@ -36,6 +40,7 @@
 </template>
 <script>
 import VideoDetailTitle from "../components/main/VideoDetailTitle.vue";
+import VideoDetailRank from "../components/main/VideoDetailRank.vue";
 import VideoDetailMainChart from "../components/main/VideoDetailMainChart.vue";
 import VideoDetailLikeRateChart from "../components/main/VideoDetailLikeRateChart.vue";
 import MainLayout from "../components/common/MainLayout.vue";
@@ -69,6 +74,7 @@ export default {
   components: {
     MainLayout,
     VideoDetailTitle,
+    VideoDetailRank,
     VideoDetailMainChart,
     VideoDetailLikeRateChart,
     VideoAside,
