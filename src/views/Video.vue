@@ -39,8 +39,8 @@
   </MainLayout>
 </template>
 <script>
-import VideoDetailTitle from "../components/main/VideoDetailTitle.vue";
 import VideoDetailRank from "../components/main/VideoDetailRank.vue";
+import VideoDetailTitle from "../components/main/VideoDetailTitle.vue";
 import VideoDetailMainChart from "../components/main/VideoDetailMainChart.vue";
 import VideoDetailLikeRateChart from "../components/main/VideoDetailLikeRateChart.vue";
 import MainLayout from "../components/common/MainLayout.vue";
@@ -73,8 +73,8 @@ export default {
   name: "AuthorList",
   components: {
     MainLayout,
-    VideoDetailTitle,
     VideoDetailRank,
+    VideoDetailTitle,
     VideoDetailMainChart,
     VideoDetailLikeRateChart,
     VideoAside,

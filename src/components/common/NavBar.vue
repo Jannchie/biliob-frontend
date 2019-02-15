@@ -225,16 +225,15 @@
       </VList>
       <VList>
         <VDivider />
-
         <VListTile
           ripple
           @click.stop="darkMode"
         >
           <VListTileAvatar>
-            <VIcon>mdi-weather-night</VIcon>
+            <VIcon>{{darkModeIcon}}</VIcon>
           </VListTileAvatar>
           <VListTileContent>
-            <VListTileTitle>夜间模式</VListTileTitle>
+            <VListTileTitle>{{darkModeText}}</VListTileTitle>
             <VListTileSubTitle>Deep ♂ Dark ♂ Fantasy</VListTileSubTitle>
           </VListTileContent>
         </VListTile>
@@ -257,7 +256,9 @@ export default {
       bottomNavShow: true,
       offsetTop: 0,
       imgSrc: String(),
-      backgroundStyle: String()
+      backgroundStyle: String(),
+      darkModeText: String(),
+      darkModeIcon: String()
     };
   },
   computed: {
@@ -310,17 +311,25 @@ export default {
     isDark(isDark) {
       if (isDark) {
         this.backgroundStyle = "aside-pic-dark";
+        this.darkModeIcon = "mdi-weather-sunny";
+        this.darkModeText = "日间模式";
       } else {
         this.backgroundStyle = "aside-pic";
+        this.darkModeIcon = "mdi-weather-night";
+        this.darkModeText = "夜间模式";
       }
     }
   },
 
   created() {
     if (this.$store.state.dark) {
+      this.darkModeIcon = "mdi-weather-sunny";
+      this.darkModeText = "日间模式";
       this.backgroundStyle = "aside-pic-dark";
     } else {
       this.backgroundStyle = "aside-pic";
+      this.darkModeText = "夜间模式";
+      this.darkModeIcon = "mdi-weather-night";
     }
     this.axios
       .get(`/user`)
@@ -341,6 +350,9 @@ export default {
         this.$store.commit("logout");
         this.logined = false;
       });
+    if (this.$cookies.get("dark")) {
+      this.$store.commit("setDark");
+    }
   },
   methods: {
     toVideo() {
@@ -386,6 +398,7 @@ export default {
     },
     darkMode() {
       this.$store.commit("setDark");
+      this.$cookies.set("dark", true);
     },
     checkIn() {
       this.axios

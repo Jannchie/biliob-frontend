@@ -2,11 +2,6 @@
   <div class="video-list-main">
     <div>
       <div>
-        <VSearchForm
-          slot="search"
-          hint="请输入标题、分区或者av号"
-          @getSearchValue="getSearchValue"
-        />
         <VCard
           v-for="eachVideo in videoList.content"
           :key="eachVideo.aid"
@@ -56,12 +51,10 @@
 </template>
 
 <script>
-import VSearchForm from "../common/VSearchForm.vue";
 import ObserveStatus from "../common/ObserveStatus.vue";
 export default {
   name: "VideoList",
   components: {
-    VSearchForm,
     ObserveStatus
   },
   data() {
