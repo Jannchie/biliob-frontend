@@ -350,7 +350,6 @@ export default {
         this.$store.commit("logout");
         this.logined = false;
       });
-    console.log(this.$cookies.get("dark"));
     if (this.$cookies.get("dark")) {
       this.$store.commit("setDark");
     }
