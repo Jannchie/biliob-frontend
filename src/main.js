@@ -12,13 +12,21 @@ import VueAxios from "vue-axios";
 import VueRouter from "vue-router";
 import Vuex from "vuex";
 Vue.config.productionTip = false;
+
+// 在vue-router中使用google analytics
 router.afterEach(function(to) {
   if (window.ga) {
-    window.ga("set", "page", to.fullPath); // 你可能想根据请求参数添加其他参数，可以修改这里的 to.fullPath
+    window.ga("set", "page", to.fullPath);
     window.ga("send", "pageview");
   }
 });
 Vue.use(VueRouter);
+
+// 使用vue-cookies
+import VueCookies from "vue-cookies";
+Vue.use(VueCookies);
+
+// 使用axios
 axios.defaults.withCredentials = true;
 axios.defaults.baseURL = process.env.VUE_APP_API_ROOT;
 axios.defaults.headers = {
