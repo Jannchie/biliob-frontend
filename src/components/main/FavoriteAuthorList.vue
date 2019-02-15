@@ -2,11 +2,6 @@
   <div class="author-list-main">
     <div>
       <div>
-        <VSearchForm
-          slot="search"
-          hint="请输入UP主名称，或者uid"
-          @getSearchValue="getSearchValue"
-        />
         <VCard
           v-for="eachAuthor in authorList.content"
           :key="eachAuthor.mid"
@@ -59,13 +54,11 @@
 </template>
 
 <script>
-import VSearchForm from "../common/VSearchForm.vue";
 import ObserveStatus from "../common/ObserveStatus.vue";
 import SexIcon from "../common/SexIcon.vue";
 export default {
   name: "AuthorList",
   components: {
-    VSearchForm,
     SexIcon,
     ObserveStatus
   },

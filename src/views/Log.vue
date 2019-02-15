@@ -346,6 +346,16 @@ export default {
             { text: "修改了日志结构", type: "beautify" }
           ],
           type: "ordinary"
+        },
+        {
+          title: "功能更新",
+          version: "ver.0.3.9",
+          date: "2019-02-14",
+          list: [
+            { text: "修复了一个样式错误", type: "fix" },
+            { text: "添加了视频的排名显示", type: "feature" }
+          ],
+          type: "ordinary"
         }
       ]
     };
