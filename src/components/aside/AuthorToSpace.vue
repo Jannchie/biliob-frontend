@@ -1,20 +1,15 @@
 <template>
   <VCard>
     <VCardText>
-      <VBtn
-        block
-        flat
-        color="#ff7fac"
-        :href="url"
-        target="_blank"
-      >
-        <VIcon>mdi-home-outline</VIcon>&nbsp;前往UP主的个人空间
-      </VBtn>
+      <AuthorButtomSheet :mid="mid"></AuthorButtomSheet>
     </VCardText>
   </VCard>
 </template>
 <script>
+import AuthorButtomSheet from "../common/AuthorButtomSheet.vue";
+
 export default {
+  components: { AuthorButtomSheet },
   props: {
     mid: Number()
   },

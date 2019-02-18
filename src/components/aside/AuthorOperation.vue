@@ -63,7 +63,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .author-face {
   height: 62px;
   border-radius: 30px;
