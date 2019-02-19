@@ -59,21 +59,23 @@
             class="headline blue lighten-1 font-weight-black white--text"
             primary-title
           >
-            是否要立即刷新作者信息？
+            立即刷新作者信息？
           </VCardTitle>
           <VCardText>
             立即刷新需要<span class="font-weight-black red--text">消耗5积分</span>。
             <br>
-            立即刷新需要数秒至数分钟的操作时间，请稍后刷新页面获取最新的数据！
+            立即刷新需要数秒至数分钟的操作时间
+            <br>
+            请稍后刷新页面获取最新的数据！
           </VCardText>
           <VDivider></VDivider>
-          <VCardActions>
+          <VCardActions :value="!showAlert">
             <VSpacer></VSpacer>
             <VBtn
-              color="
-            primary"
+              color="primary"
               flat
               outline
+              :disabled="showAlert"
               @click="refresh"
             >
               LET's DO IT!
@@ -82,7 +84,7 @@
         </VCard>
       </VDialog>
       <VListTile
-        :href="`https://connect.qq.com/widget/shareqq/index.html?url=https://www.biliob.com${this.$route.path}&sharesource=qzone&title=biliob观测者:${this.name}的历史数据&pics=https:${this.pic}&summary=这个UP主牛逼坏了&desc=快来围观这个UP主的数据变化吧~`"
+        :href="`https://connect.qq.com/widget/shareqq/index.html?url=https://www.biliob.com${this.$route.path}&sharesource=qzone&title=biliob观测者:${this.name}的历史数据&pics=https:${this.pic}&summary=快来围观这个UP主的数据变化吧~&desc=这个UP主牛逼坏了`"
         target="_blank"
         class="light-blue--text lighten-2 text--lighten-2"
         @click="sheet = false"
@@ -92,7 +94,10 @@
             <VIcon class="light-blue white--text lighten-2 text--lighten-2">mdi-qqchat</VIcon>
           </VAvatar>
         </VListTileAvatar>
-        <VListTileTitle>分享给QQ好友</VListTileTitle>
+        <VListTileContent>
+          <VListTileTitle>分享到QQ群或QQ好友</VListTileTitle>
+          <VListTileSubTitle>建议使用电脑端操作</VListTileSubTitle>
+        </VListTileContent>
       </VListTile>
     </VList>
   </VBottomSheet>
@@ -126,7 +131,7 @@ export default {
         .then(response => {
           this.showAlert = true;
           this.alertType = "success";
-          this.alertMsg = `成功发起立即刷新请求！当前积分：${
+          this.alertMsg = `操作成功！当前积分：${
             response.data.data.credit
           }(-5)，当前经验：${response.data.data.exp}(+5)`;
           this.$store.commit("setCredit", response.data.data.credit);
@@ -134,12 +139,16 @@ export default {
           setTimeout(() => {
             this.sheet = false;
             this.dialog = false;
+            this.showAlert = false;
           }, 2000);
         })
-        .catch(e => {
+        .catch(() => {
           this.showAlert = true;
           this.alertType = "error";
-          this.alertMsg = e.response.data.msg;
+          this.alertMsg = "请检查登录状态或积分余额！";
+          setTimeout(() => {
+            this.showAlert = false;
+          }, 2000);
         });
     }
   }
@@ -154,5 +163,7 @@ export default {
 }
 .v-alert {
   margin: 0px;
+  position: absolute;
+  width: 100%;
 }
 </style>
