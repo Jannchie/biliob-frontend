@@ -25,7 +25,7 @@ export default {
   data() {
     return {
       channelChart: Object(),
-      theme: "light"
+      theme: "colorful"
     };
   },
   computed: {
@@ -36,9 +36,9 @@ export default {
   watch: {
     isDark(val) {
       if (val) {
-        this.theme = "dark";
+        this.theme = "mydark";
       } else {
-        this.theme = "light";
+        this.theme = "colorful";
       }
     },
     channels: function(val) {
@@ -47,9 +47,9 @@ export default {
   },
   mounted() {
     if (this.$store.state.dark) {
-      this.theme = "dark";
+      this.theme = "mydark";
     } else {
-      this.theme = "light";
+      this.theme = "colorful";
     }
   }
 };

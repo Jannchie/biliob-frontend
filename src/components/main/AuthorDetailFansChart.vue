@@ -33,7 +33,7 @@ export default {
   data() {
     return {
       fans: Object(),
-      theme: "light"
+      theme: "colorful"
     };
   },
   computed: {
@@ -47,17 +47,17 @@ export default {
     },
     isDark(val) {
       if (val) {
-        this.theme = "dark";
+        this.theme = "mydark";
       } else {
-        this.theme = "light";
+        this.theme = "colorful";
       }
     }
   },
   mounted() {
     if (this.$store.state.dark) {
-      this.theme = "dark";
+      this.theme = "mydark";
     } else {
-      this.theme = "light";
+      this.theme = "colorful";
     }
   }
 };
