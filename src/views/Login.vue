@@ -9,7 +9,7 @@
           <VAlert
             :value="showAlert"
             :type="type"
-            transition="scale-transition"
+            transition="slide-y-transition"
           >
             {{ msg }}
           </VAlert>

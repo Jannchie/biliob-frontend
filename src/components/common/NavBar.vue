@@ -350,7 +350,7 @@ export default {
         this.$store.commit("logout");
         this.logined = false;
       });
-    if (this.$cookies.get("dark")) {
+    if (this.$cookies.get("dark") == "true") {
       this.$store.commit("setDark");
     }
   },
@@ -398,7 +398,8 @@ export default {
     },
     darkMode() {
       this.$store.commit("setDark");
-      this.$cookies.set("dark", true);
+      this.$cookies.set("dark", this.$store.getters.getDark);
+      console.log(this.$store.getters.getDark);
     },
     checkIn() {
       this.axios
