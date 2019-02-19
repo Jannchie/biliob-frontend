@@ -22,7 +22,9 @@ function drawChart(data) {
     title: {
       text: "投稿分区分布"
     },
-    tooltip: {},
+    tooltip: {
+      confine: true
+    },
     legend: {
       data: ["投稿分布"]
     },

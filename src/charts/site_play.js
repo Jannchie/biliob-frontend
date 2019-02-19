@@ -16,7 +16,11 @@ function drawChart(data) {
     tooltip: {
       trigger: "axis",
       axisPointer: {
-        type: "cross"
+        type: "cross",
+        label: {
+          precision: 0
+        },
+        backgroundColor: "rgba(50,50,50,0.7)"
       }
     },
     grid: {

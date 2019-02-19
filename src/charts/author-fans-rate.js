@@ -80,6 +80,7 @@ function drawChart(data) {
     },
     tooltip: {
       trigger: "axis",
+      confine: true,
       axisPointer: {
         label: {
           formatter: function(params) {
@@ -90,7 +91,7 @@ function drawChart(data) {
     },
     grid: {
       left: "60px",
-      right: "60px",
+      right: "40px",
       bottom: "90px"
     },
     dataZoom: [
@@ -106,9 +107,6 @@ function drawChart(data) {
     ],
     xAxis: {
       type: "time",
-      splitLine: {
-        show: true
-      },
       axisPointer: {
         label: {
           formatter: function(params) {

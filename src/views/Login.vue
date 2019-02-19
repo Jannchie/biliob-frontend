@@ -144,4 +144,9 @@ export default {
 .time {
   font-size: 13px;
 }
+.v-alert {
+  margin: 0px;
+  position: absolute;
+  width: 100%;
+}
 </style>

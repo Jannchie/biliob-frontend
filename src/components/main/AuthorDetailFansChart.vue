@@ -1,11 +1,13 @@
 <template>
   <VCard class="card">
-    <Chart
-      class="chart"
-      :theme="theme"
-      :auto-resize="true"
-      :options="fans"
-    />
+    <VResponsive :aspect-ratio="8/5">
+      <Chart
+        class="chart"
+        :theme="theme"
+        :auto-resize="true"
+        :options="fans"
+      />
+    </VResponsive>
   </VCard>
 </template>
 
@@ -70,17 +72,6 @@ export default {
 }
 .chart {
   width: 100%;
-}
-
-@media only screen and (min-width: 1029px) {
-  .chart {
-    height: 20vmax;
-  }
-}
-
-@media only screen and (max-width: 1029px) {
-  .chart {
-    height: 74vmin;
-  }
+  height: 100%;
 }
 </style>

@@ -9,8 +9,7 @@ function drawChart(data) {
   let Chart = {
     title: {
       left: "center",
-      subtext: "粉丝数变化趋势",
-      text: data.name
+      subtext: "粉丝数变化趋势"
     },
     legend: {
       data: ["粉丝数"],
@@ -18,8 +17,9 @@ function drawChart(data) {
     },
     grid: {
       bottom: "90px",
-      right: "60px",
-      left: "60px"
+      right: "40px",
+      left: "60px",
+      top: "50px"
     },
     dataZoom: [
       {
@@ -34,6 +34,7 @@ function drawChart(data) {
     ],
     tooltip: {
       trigger: "axis",
+      confine: true,
       axisPointer: {
         label: {
           formatter: function(params) {
@@ -44,9 +45,6 @@ function drawChart(data) {
     },
     xAxis: {
       type: "time",
-      splitLine: {
-        show: true
-      },
       axisPointer: {
         label: {
           formatter: function(params) {
@@ -65,15 +63,15 @@ function drawChart(data) {
       {
         type: "value",
         min: "dataMin",
-        splitLine: {
-          show: true
-        },
         axisLabel: {
           formatter: function(params) {
             if (params > 10000) {
               return Math.round(params / 100) / 100.0 + "万";
             }
           }
+        },
+        splitLine: {
+          show: true
         }
       }
     ],
