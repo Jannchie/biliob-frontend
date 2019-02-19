@@ -2,9 +2,9 @@
   <div id="app">
     <VApp :dark="dark">
       <BottomNav />
+      <FloatDialog />
       <NavBar />
       <Banner />
-      <FloatDialog />
       <Container />
       <BiliobFooter />
     </VApp>
@@ -40,5 +40,9 @@ export default {
 <style>
 .el-table td {
   padding: 2px 0;
+}
+#app {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 </style>

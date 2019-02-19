@@ -7,9 +7,13 @@
         :aid="videoData.aid"
         :pic="videoData.pic"
       />
+      <VideoDetailRank
+        slot="rank"
+        v-bind="videoData.rank"
+      ></VideoDetailRank>
       <VideoDetailMainChart
         slot="main"
-        :main-chart="mainChart" 
+        :main-chart="mainChart"
       />
       <VideoDetailLikeRateChart
         slot="like-rate"
@@ -17,34 +21,37 @@
       />
     </VideoMain>
     <VideoAside slot="aside-cards">
-      <AuthorOperation
+      <AuthorInfo
         slot="author-operation"
-        :author-data="authorData" 
+        :author-data="authorData"
       />
       <AuthorVideo
         slot="other-video"
         title="UP主其他已追踪视频"
-        :author-top-video="otherVideo" 
+        :author-top-video="otherVideo"
       />
-      <VideoToBilibili
+      <VideoOperation
         slot="video-to-bilibili"
-        :aid="videoData.aid" 
+        :aid="videoData.aid"
+        :pic="videoData.pic"
+        :title="videoData.title"
       />
       <Recommand slot="recommand" />
     </VideoAside>
   </MainLayout>
 </template>
 <script>
+import VideoDetailRank from "../components/main/VideoDetailRank.vue";
 import VideoDetailTitle from "../components/main/VideoDetailTitle.vue";
 import VideoDetailMainChart from "../components/main/VideoDetailMainChart.vue";
 import VideoDetailLikeRateChart from "../components/main/VideoDetailLikeRateChart.vue";
 import MainLayout from "../components/common/MainLayout.vue";
 import VideoAside from "../components/aside/VideoAside.vue";
 import VideoMain from "../components/main/VideoMain.vue";
-import AuthorOperation from "../components/aside/AuthorOperation.vue";
+import AuthorInfo from "../components/aside/AuthorInfo.vue";
 import AuthorVideo from "../components/aside/AuthorVideo.vue";
 import Recommand from "../components/aside/Recommand.vue";
-import VideoToBilibili from "../components/aside/VideoToBilibili.vue";
+import VideoOperation from "../components/aside/VideoOperation.vue";
 import drawMainChart from "../charts/video-main.js";
 import drawLikeRateChart from "../charts/video-likerate.js";
 var deepCopy = function(o) {
@@ -68,15 +75,16 @@ export default {
   name: "AuthorList",
   components: {
     MainLayout,
+    VideoDetailRank,
     VideoDetailTitle,
     VideoDetailMainChart,
     VideoDetailLikeRateChart,
     VideoAside,
     VideoMain,
-    AuthorOperation,
+    AuthorInfo,
     AuthorVideo,
     Recommand,
-    VideoToBilibili
+    VideoOperation
   },
   data() {
     return {

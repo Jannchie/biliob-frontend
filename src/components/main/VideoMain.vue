@@ -1,6 +1,7 @@
 <template>
   <div>
     <slot name="title" />
+    <slot name="rank" />
     <slot name="main" />
     <slot name="like-rate" />
   </div>

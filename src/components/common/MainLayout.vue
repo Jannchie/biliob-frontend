@@ -10,10 +10,7 @@
       lg4
       md12
     >
-      <slot
-        name="aside-cards"
-        class=" hidden-lg-and-down"
-      />
+      <slot name="aside-cards" />
     </VFlex>
   </VLayout>
 </template>
@@ -28,10 +25,15 @@ export default {
   }
 };
 </script>
-<style scoped>
+<style>
 @media only screen and (max-width: 1029px) {
   .main-container {
     padding: 16px 0;
+  }
+}
+@media only screen and (min-width: 960px) {
+  .container {
+    max-width: 1500px;
   }
 }
 </style>
