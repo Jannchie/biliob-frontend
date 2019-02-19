@@ -1,10 +1,9 @@
-<template>
+.<template>
   <VBottomSheet v-model="sheet">
 
     <VBtn
       slot="activator"
       color="pink lighten-2"
-      class=""
       flat
       block
       dark
@@ -22,10 +21,10 @@
       >
         <VListTileAvatar>
           <VAvatar size="32px">
-            <VIcon class="pink white--text lighten-2 text--lighten-2">mdi-home</VIcon>
+            <VIcon class="pink white--text lighten-2 text--lighten-2">mdi-video</VIcon>
           </VAvatar>
         </VListTileAvatar>
-        <VListTileTitle>前往UP主的个人空间</VListTileTitle>
+        <VListTileTitle>前往视频播放页面</VListTileTitle>
       </VListTile>
       <VDialog
         v-model="dialog"
@@ -82,7 +81,7 @@
         </VCard>
       </VDialog>
       <VListTile
-        :href="`https://connect.qq.com/widget/shareqq/index.html?url=https://www.biliob.com${this.$route.path}&sharesource=qzone&title=biliob观测者:${this.name}的历史数据&pics=https:${this.pic}&summary=这个UP主牛逼坏了&desc=快来围观这个UP主的数据变化吧~`"
+        :href="`https://connect.qq.com/widget/shareqq/index.html?url=www.biliob.com${this.$route.path}&sharesource=qzone&title=biliob观测者:视频《${this.title}》的历史数据&pics=https:${this.pic}&summary=这个视频的数据螺旋起飞~&desc=快来围观这个UP主的数据变化吧~`"
         target="_blank"
         class="light-blue--text lighten-2 text--lighten-2"
         @click="sheet = false"
@@ -100,9 +99,9 @@
 <script>
 export default {
   props: {
-    mid: Number(),
+    aid: Number(),
     pic: String(),
-    name: String()
+    title: String()
   },
   data: () => ({
     sheet: false,
@@ -113,7 +112,7 @@ export default {
   }),
   computed: {
     url: function() {
-      return `https://space.bilibili.com/${this.mid}`;
+      return `https://www.bilibili.com/av${this.aid}`;
     }
   },
   methods: {
@@ -122,13 +121,13 @@ export default {
     },
     refresh() {
       this.axios
-        .put(`/user/author/${this.mid}/data`)
+        .put(`/user/video/${this.aid}/data`)
         .then(response => {
           this.showAlert = true;
           this.alertType = "success";
           this.alertMsg = `成功发起立即刷新请求！当前积分：${
             response.data.data.credit
-          }(-5)，当前经验：${response.data.data.exp}(+5)`;
+          }(-1)，当前经验：${response.data.data.exp}(+1)`;
           this.$store.commit("setCredit", response.data.data.credit);
           this.$store.commit("setExp", response.data.data.exp);
           setTimeout(() => {
