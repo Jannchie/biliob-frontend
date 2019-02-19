@@ -21,7 +21,7 @@
       />
     </VideoMain>
     <VideoAside slot="aside-cards">
-      <AuthorOperation
+      <AuthorInfo
         slot="author-operation"
         :author-data="authorData"
       />
@@ -30,9 +30,11 @@
         title="UP主其他已追踪视频"
         :author-top-video="otherVideo"
       />
-      <VideoToBilibili
+      <VideoOperation
         slot="video-to-bilibili"
         :aid="videoData.aid"
+        :pic="videoData.pic"
+        :title="videoData.title"
       />
       <Recommand slot="recommand" />
     </VideoAside>
@@ -46,10 +48,10 @@ import VideoDetailLikeRateChart from "../components/main/VideoDetailLikeRateChar
 import MainLayout from "../components/common/MainLayout.vue";
 import VideoAside from "../components/aside/VideoAside.vue";
 import VideoMain from "../components/main/VideoMain.vue";
-import AuthorOperation from "../components/aside/AuthorOperation.vue";
+import AuthorInfo from "../components/aside/AuthorInfo.vue";
 import AuthorVideo from "../components/aside/AuthorVideo.vue";
 import Recommand from "../components/aside/Recommand.vue";
-import VideoToBilibili from "../components/aside/VideoToBilibili.vue";
+import VideoOperation from "../components/aside/VideoOperation.vue";
 import drawMainChart from "../charts/video-main.js";
 import drawLikeRateChart from "../charts/video-likerate.js";
 var deepCopy = function(o) {
@@ -79,10 +81,10 @@ export default {
     VideoDetailLikeRateChart,
     VideoAside,
     VideoMain,
-    AuthorOperation,
+    AuthorInfo,
     AuthorVideo,
     Recommand,
-    VideoToBilibili
+    VideoOperation
   },
   data() {
     return {
