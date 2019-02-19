@@ -1,33 +1,23 @@
 <template>
   <VCard>
     <VCardText>
-      <AuthorButtomSheet
+      <AuthorBottomSheet
         :name="name"
         :pic="pic"
         :mid="mid"
-      ></AuthorButtomSheet>
+      ></AuthorBottomSheet>
     </VCardText>
   </VCard>
 </template>
 <script>
-import AuthorButtomSheet from "../common/AuthorButtomSheet.vue";
+import AuthorBottomSheet from "../common/AuthorBottomSheet.vue";
 
 export default {
-  components: { AuthorButtomSheet },
+  components: { AuthorBottomSheet },
   props: {
     mid: Number(),
     pic: String(),
     name: String()
-  },
-  computed: {
-    url: function() {
-      return `https://space.bilibili.com/${this.mid}`;
-    }
-  },
-  watch: {
-    mid: function(val) {
-      this.mid = val;
-    }
   }
 };
 </script>

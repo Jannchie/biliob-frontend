@@ -1,19 +1,19 @@
 <template>
   <VCard>
     <VCardText>
-      <VideoButtomSheet
+      <VideoBottomSheet
         :title="title"
         :pic="pic"
         :aid="aid"
-      ></VideoButtomSheet>
+      ></VideoBottomSheet>
     </VCardText>
   </VCard>
 </template>
 <script>
-import VideoButtomSheet from "../common/VideoButtomSheet.vue";
+import VideoBottomSheet from "../common/VideoBottomSheet.vue";
 
 export default {
-  components: { VideoButtomSheet },
+  components: { VideoBottomSheet },
   props: {
     aid: Number(),
     pic: String(),
