@@ -16,13 +16,15 @@
       />
     </AuthorMain>
     <AuthorAside slot="aside-cards">
-      <AuthorOperation
+      <AuthorInfo
         slot="author-operation"
         :author-data="authorData"
       />
-      <AuthorToSpace
+      <AuthorOperation
         slot="author-to-space"
         :mid="authorData.mid"
+        :name="authorData.name"
+        :pic="authorData.face"
       />
       <AuthorVideo
         slot="author-latest-video"
@@ -45,9 +47,9 @@ import AuthorDetailFansChart from "../components/main/AuthorDetailFansChart.vue"
 import AuthorDetailFansRateChart from "../components/main/AuthorDetailFansRateChart.vue";
 import MainLayout from "../components/common/MainLayout.vue";
 import AuthorAside from "../components/aside/AuthorDetailAside.vue";
-import AuthorOperation from "../components/aside/AuthorOperation.vue";
+import AuthorInfo from "../components/aside/AuthorInfo.vue";
 import AuthorVideo from "../components/aside/AuthorVideo.vue";
-import AuthorToSpace from "../components/aside/AuthorToSpace.vue";
+import AuthorOperation from "../components/aside/AuthorOperation.vue";
 // import AuthorDetailChannel from "../components/main/AuthorDetailChannel.vue";
 export default {
   name: "AuthorList",
@@ -58,9 +60,9 @@ export default {
     AuthorDetailRank,
     AuthorDetailFansChart,
     AuthorDetailFansRateChart,
-    AuthorOperation,
+    AuthorInfo,
     AuthorVideo,
-    AuthorToSpace
+    AuthorOperation
     // AuthorDetailChannel
   },
   data() {

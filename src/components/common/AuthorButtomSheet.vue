@@ -3,7 +3,8 @@
 
     <VBtn
       slot="activator"
-      color="pink"
+      color="pink lighten-2"
+      class=""
       flat
       block
       dark
@@ -12,15 +13,16 @@
     </VBtn>
 
     <VList two-line>
-      <VSubheader>操作</VSubheader>
+      <VSubheader>更多操作</VSubheader>
       <VListTile
         :href="url"
         target="_blank"
+        class="pink--text lighten-2 text--lighten-2"
         @click="sheet = false"
       >
         <VListTileAvatar>
           <VAvatar size="32px">
-            <VIcon>mdi-home</VIcon>
+            <VIcon class="pink white--text lighten-2 text--lighten-2">mdi-home</VIcon>
           </VAvatar>
         </VListTileAvatar>
         <VListTileTitle>前往UP主的个人空间</VListTileTitle>
@@ -32,25 +34,37 @@
         <VListTile
           slot="activator"
           style="width:100%"
+          class="blue--text lighten-2 text--lighten-2"
           @click="dialog = true"
         >
           <VListTileAvatar>
             <VAvatar size="32px">
-              <VIcon>mdi-refresh</VIcon>
+              <VIcon class="blue white--text lighten-2 text--lighten-2">mdi-refresh</VIcon>
             </VAvatar>
           </VListTileAvatar>
-          <VListTileTitle>立即刷新作者数据</VListTileTitle>
-          <VListTileSubTitle>需要消耗积分：5</VListTileSubTitle>
+          <VListTileContent>
+            <VListTileTitle>立即刷新作者数据</VListTileTitle>
+            <VListTileSubTitle>需要消耗积分：5</VListTileSubTitle>
+          </VListTileContent>
         </VListTile>
         <VCard>
+          <VAlert
+            :value="showAlert"
+            :type="alertType"
+            transition="slide-y-transition"
+          >
+            {{ alertMsg }}
+          </VAlert>
           <VCardTitle
-            class="headline grey lighten-2 font-weight-black"
+            class="headline blue lighten-1 font-weight-black white--text"
             primary-title
           >
             是否要立即刷新作者信息？
           </VCardTitle>
           <VCardText>
-            立即刷新需要消耗5积分
+            立即刷新需要<span class="font-weight-black red--text">消耗5积分</span>。
+            <br>
+            立即刷新需要数秒至数分钟的操作时间，请稍后刷新页面获取最新的数据！
           </VCardText>
           <VDivider></VDivider>
           <VCardActions>
@@ -59,25 +73,43 @@
               color="
             primary"
               flat
+              outline
               @click="refresh"
             >
-              确定
+              LET's DO IT!
             </VBtn>
           </VCardActions>
         </VCard>
       </VDialog>
+      <VListTile
+        :href="`https://connect.qq.com/widget/shareqq/index.html?url=${this.$route.url}&sharesource=qzone&title=biliob观测者:${this.name}的历史数据&pics=https:${this.pic}&summary=这个UP主牛逼坏了&desc=快来围观这个UP主的数据变化吧~`"
+        target="_blank"
+        class="light-blue--text lighten-2 text--lighten-2"
+        @click="sheet = false"
+      >
+        <VListTileAvatar>
+          <VAvatar size="32px">
+            <VIcon class="light-blue white--text lighten-2 text--lighten-2">mdi-qqchat</VIcon>
+          </VAvatar>
+        </VListTileAvatar>
+        <VListTileTitle>分享给QQ好友</VListTileTitle>
+      </VListTile>
     </VList>
   </VBottomSheet>
 </template>
 <script>
 export default {
   props: {
-    mid: Number()
+    mid: Number(),
+    pic: String(),
+    name: String()
   },
   data: () => ({
     sheet: false,
     dialog: false,
-    tiles: [{ img: "google.png", title: "Google+" }]
+    alertType: "error",
+    alertMsg: String(),
+    showAlert: false
   }),
   computed: {
     url: function() {
@@ -89,9 +121,26 @@ export default {
       this.sheet = false;
     },
     refresh() {
-      this.dialog = false;
-      this.sheet = false;
-      this.axios.put(`/user/author/${this.mid}/data`);
+      this.axios
+        .put(`/user/author/${this.mid}/data`)
+        .then(response => {
+          this.showAlert = true;
+          this.alertType = "success";
+          this.alertMsg = `成功发起立即刷新请求！当前积分：${
+            response.data.data.credit
+          }(-5)，当前经验：${response.data.data.exp}(+5)`;
+          this.$store.commit("setCredit", response.data.data.credit);
+          this.$store.commit("setExp", response.data.data.exp);
+          setTimeout(() => {
+            this.sheet = false;
+            this.dialog = false;
+          }, 2000);
+        })
+        .catch(e => {
+          this.showAlert = true;
+          this.alertType = "error";
+          this.alertMsg = e.response.data.msg;
+        });
     }
   }
 };
@@ -102,5 +151,8 @@ export default {
 }
 .v-dialog__container {
   width: 100%;
+}
+.v-alert {
+  margin: 0px;
 }
 </style>

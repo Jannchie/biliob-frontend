@@ -21,7 +21,7 @@
       />
     </VideoMain>
     <VideoAside slot="aside-cards">
-      <AuthorOperation
+      <AuthorInfo
         slot="author-operation"
         :author-data="authorData"
       />
@@ -46,7 +46,7 @@ import VideoDetailLikeRateChart from "../components/main/VideoDetailLikeRateChar
 import MainLayout from "../components/common/MainLayout.vue";
 import VideoAside from "../components/aside/VideoAside.vue";
 import VideoMain from "../components/main/VideoMain.vue";
-import AuthorOperation from "../components/aside/AuthorOperation.vue";
+import AuthorInfo from "../components/aside/AuthorInfo.vue";
 import AuthorVideo from "../components/aside/AuthorVideo.vue";
 import Recommand from "../components/aside/Recommand.vue";
 import VideoToBilibili from "../components/aside/VideoToBilibili.vue";
@@ -79,7 +79,7 @@ export default {
     VideoDetailLikeRateChart,
     VideoAside,
     VideoMain,
-    AuthorOperation,
+    AuthorInfo,
     AuthorVideo,
     Recommand,
     VideoToBilibili

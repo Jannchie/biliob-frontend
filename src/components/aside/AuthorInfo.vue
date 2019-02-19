@@ -9,38 +9,51 @@
           @click.stop="toAuthor"
         >
         <div>
-          <span>{{ authorData.name }}</span>
-          <LevelIcon :level="authorData.level" />
-          <SexIcon :sex="authorData.sex" />
-          <br>
-          <span>粉丝数:{{ fans }}</span>
-          <br>
-          <span>{{ authorData.official }}</span>
+          <div>
+            <span>{{ authorData.name }}</span>
+            <LevelIcon :level="authorData.level" />
+            <SexIcon :sex="authorData.sex" />
+            <br>
+            <span>粉丝数:{{ fans }}</span>
+            <br>
+            <span>{{ authorData.official }}</span>
+          </div>
+          <FocusBtn
+            v-if="$store.getters.getLoginState"
+            :author-data="authorData"
+            class="focus-btn"
+          />
         </div>
       </div>
     </VCardText>
   </VCard>
 </template>
 <script>
+import FocusBtn from "../common/FocusBtn.vue";
 import SexIcon from "../common/SexIcon.vue";
 import LevelIcon from "../common/LevelIcon.vue";
 export default {
   components: {
     SexIcon,
-    LevelIcon
+    LevelIcon,
+    FocusBtn
+  },
+  props: {
+    authorData: Object()
   },
   data() {
     return {
-      authorData: {},
-      fans: null
+      fans: null,
+      focus: false,
+      mid: Number()
     };
   },
-  mounted() {
-    this.axios.get("/author/" + this.$route.params.mid).then(response => {
-      this.authorData = response.data;
+  watch: {
+    authorData: function(val) {
+      this.authorData = val;
       this.authorData.face = this.authorData.face.slice(5);
-      this.fans = response.data.data[0].fans;
-    });
+      this.fans = val.data[0].fans;
+    }
   },
   methods: {
     toAuthor() {
@@ -50,10 +63,19 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .author-face {
   height: 62px;
   border-radius: 30px;
   margin-right: 20px;
+}
+.focus-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.v-card {
+  margin-bottom: 5px;
 }
 </style>
