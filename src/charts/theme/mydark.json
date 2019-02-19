@@ -409,6 +409,9 @@
     },
     "tooltip": {
         "axisPointer": {
+            "label": {
+                "color": "#222"
+            },
             "lineStyle": {
                 "color": "#eeeeee",
                 "width": "1"
