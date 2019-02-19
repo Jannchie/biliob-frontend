@@ -366,6 +366,30 @@ export default {
             { text: "记住上次离开时是否为夜间模式", type: "feature" }
           ],
           type: "unimportant"
+        },
+        {
+          title: "引入Redis",
+          version: "ver.0.4.0",
+          date: "2019-02-18",
+          list: [
+            { text: "使用Redis进行缓存", type: "cloud" },
+            { text: "依赖Redis可以进行很多骚操作", type: "cloud" }
+          ],
+          type: "important"
+        },
+        {
+          title: "更多操作",
+          version: "ver.0.4.1",
+          date: "2019-02-19",
+          list: [
+            { text: "为了愉快地分享，使用history路由", type: "cloud" },
+            { text: "修复无法回到日间模式的Bug", type: "fix" },
+            { text: "添加了作者、视频的底部列表", type: "feature" },
+            { text: "底部列表添加了分享功能", type: "feature" },
+            { text: "底部列表添加了刷新功能", type: "feature" },
+            { text: "现在消耗积分可以立即刷新数据", type: "feature" }
+          ],
+          type: "ordinary"
         }
       ]
     };
@@ -399,15 +423,15 @@ export default {
     getListIcon: function(type) {
       switch (type) {
         case "feature":
-          return "mdi-lightbulb-on-outline";
+          return "mdi-lightbulb-on";
         case "fix":
-          return "mdi-bug-outline";
+          return "mdi-bug";
         case "beautify":
-          return "mdi-flower-outline";
+          return "mdi-flower";
         case "stone":
           return "mdi-rocket";
         case "cloud":
-          return "mdi-cloud-outline";
+          return "mdi-cloud";
         default:
           break;
       }
