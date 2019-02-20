@@ -1,12 +1,14 @@
 <template>
   <VCard class="card">
-    <Chart
-      id="chart-1"
-      :theme="theme"
-      :auto-resize="true"
-      :options="mainChart"
-      style="width:100%;height:25vmax;"
-    />
+    <VResponsive :aspect-ratio="16/9">
+      <Chart
+        id="chart-1"
+        :theme="theme"
+        :auto-resize="true"
+        :options="mainChart"
+        style="width:100%;height:100%"
+      />
+    </VResponsive>
   </VCard>
 </template>
 

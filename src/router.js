@@ -27,6 +27,10 @@ export default new Router({
       component: Home
     },
     {
+      path: "/index.html",
+      component: Home
+    },
+    {
       path: "/rank",
       component: Rank
     },

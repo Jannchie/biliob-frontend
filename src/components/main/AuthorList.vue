@@ -7,46 +7,48 @@
           hint="请输入UP主名称，或者uid"
           @getSearchValue="getSearchValue"
         />
+        <VSlideYTransition group>
 
-        <VCard
-          v-for="eachAuthor in authorList.content"
-          :key="eachAuthor.mid"
-          class="author-cards"
-          ripple
-          :to="'/author/'+eachAuthor.mid"
-        >
-          <div style="padding:5px;display:flex">
-            <div>
-              <VResponsive :aspect-ratio="16/9">
-                <img
-                  style="border-radius:40px;width:80px;height:80px"
-                  :src="eachAuthor.face.slice(5)"
-                >
-              </VResponsive>
-            </div>
-            <div style="margin-left:10px;width:100%">
-              <div class="font-weight-bold author-title">
-                {{ eachAuthor.name }}
-                <SexIcon :sex="eachAuthor.sex" />
+          <VCard
+            v-for="eachAuthor in authorList.content"
+            :key="eachAuthor.mid"
+            class="author-cards"
+            ripple
+            :to="'/author/'+eachAuthor.mid"
+          >
+            <div style="padding:5px;display:flex">
+              <div>
+                <VResponsive :aspect-ratio="16/9">
+                  <img
+                    style="border-radius:40px;width:80px;height:80px"
+                    :src="eachAuthor.face.slice(5)"
+                  >
+                </VResponsive>
               </div>
-              <div
-                v-if="eachAuthor.official !== ''"
-                class="caption  author-info"
-              >
-                <VIcon
-                  color="#FBC02D"
-                  small
+              <div style="margin-left:10px;width:100%">
+                <div class="font-weight-bold author-title">
+                  {{ eachAuthor.name }}
+                  <SexIcon :sex="eachAuthor.sex" />
+                </div>
+                <div
+                  v-if="eachAuthor.official !== ''"
+                  class="caption  author-info"
                 >
-                  mdi-flash
-                </VIcon>{{ eachAuthor.official }}
+                  <VIcon
+                    color="#FBC02D"
+                    small
+                  >
+                    mdi-flash
+                  </VIcon>{{ eachAuthor.official }}
+                </div>
               </div>
+              <ObserveStatus
+                class="observe-status"
+                :object="eachAuthor"
+              />
             </div>
-            <ObserveStatus
-              class="observe-status"
-              :object="eachAuthor"
-            />
-          </div>
-        </VCard>
+          </VCard>
+        </VSlideYTransition>
         <VBtn
           block
           outline

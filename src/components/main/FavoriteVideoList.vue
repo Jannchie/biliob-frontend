@@ -2,42 +2,45 @@
   <div class="video-list-main">
     <div>
       <div>
-        <VCard
-          v-for="eachVideo in videoList.content"
-          :key="eachVideo.aid"
-          class="video-cards"
-          ripple
-          :to="'/author/'+eachVideo.mid+'/video/'+eachVideo.aid"
-        >
-          <div style="padding:5px;display:flex">
-            <div>
-              <VResponsive :aspect-ratio="16/9">
-                <VImg
-                  style="border-radius:5px;width:120px;height:80px"
-                  :src="eachVideo.pic.slice(5)"
-                  :lazy-src="eachVideo.pic.slice(5)"
-                />
-              </VResponsive>
-            </div>
-            <div style="margin-left:10px;width:100%">
-              <div class="font-weight-bold video-title">
-                {{ eachVideo.title }}
+        <VSlideYTransition group>
+          <VCard
+            v-for="eachVideo in videoList.content"
+            :key="eachVideo.aid"
+            class="video-cards"
+            ripple
+            :to="'/author/'+eachVideo.mid+'/video/'+eachVideo.aid"
+          >
+            <div style="padding:5px;display:flex">
+              <div>
+                <VResponsive :aspect-ratio="16/9">
+                  <VImg
+                    style="border-radius:5px;width:120px;height:80px"
+                    :src="eachVideo.pic.slice(5)"
+                    :lazy-src="eachVideo.pic.slice(5)"
+                  />
+                </VResponsive>
               </div>
-              <div class="caption subtext video-info">
-                <VIcon small>
-                  mdi-account-box-outline
-                </VIcon>{{ eachVideo.author }}
-                <VIcon small>
-                  mdi-bookmark-outline
-                </VIcon>{{ eachVideo.channel }}
+              <div style="margin-left:10px;overflow:hidden">
+                <div class="font-weight-bold video-title text-no-wrap text-truncate">
+                  {{ eachVideo.title }}
+                </div>
+                <div class="caption subtext video-info">
+                  <VIcon small>
+                    mdi-account-box-outline
+                  </VIcon>{{ eachVideo.author }}
+                  <VIcon small>
+                    mdi-bookmark-outline
+                  </VIcon>{{ eachVideo.channel }}
+                </div>
               </div>
+              <ObserveStatus
+                class="observe-status"
+                :object="eachVideo"
+              />
             </div>
-            <ObserveStatus
-              class="observe-status"
-              :object="eachVideo"
-            />
-          </div>
-        </VCard>
+          </VCard>
+        </VSlideYTransition>
+
         <VBtn
           block
           outline
@@ -159,10 +162,6 @@ p {
 
 .video-title {
   font-size: 15px;
-  max-width: 50vmin;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 }
 
 .observe-status {

@@ -1,11 +1,10 @@
 var format = require("date-fns/format");
-var { convertDateToUTC } = require("./util/convertDateToUTC");
 
 function drawChart(data) {
   var xData = [];
   var yData = [];
   data.forEach(e => {
-    xData.unshift(format(convertDateToUTC(new Date(e.datetime)), "HH:mm"));
+    xData.unshift(format(new Date(e.datetime.replace("+0000", "")), "HH:mm"));
     yData.unshift(e.playOnline);
   });
   var option = {
@@ -16,7 +15,11 @@ function drawChart(data) {
     tooltip: {
       trigger: "axis",
       axisPointer: {
-        type: "cross"
+        type: "cross",
+        label: {
+          precision: 0
+        },
+        backgroundColor: "rgba(50,50,50,0.7)"
       }
     },
     grid: {

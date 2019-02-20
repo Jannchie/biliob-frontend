@@ -399,7 +399,6 @@ export default {
     darkMode() {
       this.$store.commit("setDark");
       this.$cookies.set("dark", this.$store.getters.getDark);
-      console.log(this.$store.getters.getDark);
     },
     checkIn() {
       this.axios
@@ -445,7 +444,6 @@ export default {
   margin: 0 0;
   padding: 0 0;
   background-image: url("../../../public/img/aside-bright.png");
-  background-position: center;
 }
 
 .aside-pic-dark {
@@ -455,8 +453,7 @@ export default {
   top: 0px;
   margin: 0 0;
   padding: 0 0;
-  background-image: url("../../../public/img/aside-bright.png");
-  background-position: center;
+  background-image: url("../../../public/img/aside-dark.png");
 }
 
 .user-info-content {

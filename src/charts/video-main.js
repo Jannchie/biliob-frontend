@@ -38,10 +38,11 @@ function drawChart(data) {
       {
         handleSize: "100%",
         handleStyle: {},
-        bottom: "5vmax"
+        bottom: "10px"
       }
     ],
     tooltip: {
+      confine: true,
       trigger: "axis",
       axisPointer: {
         label: {
@@ -52,8 +53,8 @@ function drawChart(data) {
       }
     },
     grid: {
-      top: "26vmax",
-      bottom: "68vmax",
+      top: "50px",
+      bottom: "80px",
       left: "60px",
       right: "60px"
     },
