@@ -142,8 +142,7 @@ export default {
             this.showAlert = false;
           }, 2000);
         })
-        .catch(e => {
-          console.log(e);
+        .catch(() => {
           this.showAlert = true;
           this.alertType = "error";
           this.alertMsg = "请检查登录状态或积分余额！";
