@@ -390,6 +390,18 @@ export default {
             { text: "现在消耗积分可以立即刷新数据", type: "feature" }
           ],
           type: "ordinary"
+        },
+        {
+          title: "美化",
+          version: "ver.0.4.2",
+          date: "2019-02-20",
+          list: [
+            { text: "美化了图表主题", type: "beautify" },
+            { text: "美化了部分动画效果", type: "beautify" },
+            { text: "美化了导航栏图片", type: "beautify" },
+            { text: "修复了一系列不合法日期的问题", type: "fix" }
+          ],
+          type: "ordinary"
         }
       ]
     };
