@@ -399,7 +399,6 @@ export default {
     darkMode() {
       this.$store.commit("setDark");
       this.$cookies.set("dark", this.$store.getters.getDark);
-      console.log(this.$store.getters.getDark);
     },
     checkIn() {
       this.axios

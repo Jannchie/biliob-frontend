@@ -66,7 +66,7 @@
         仅包括已经观测的视频
       </div>
       <div>
-        {{format(updateTime)}}
+        {{formatedDate}}
       </div>
     </VCardText>
   </VCard>
@@ -93,10 +93,19 @@ export default {
     dCoinRank: Number(),
     dShareRank: Number()
   },
+  computed: {
+    formatedDate() {
+      if (this.updateTime != undefined) {
+        return format(
+          convertDateToUTC(new Date(this.updateTime.replace("+0000", ""))),
+          "YYYY-MM-DD HH:MM:SS"
+        );
+      } else {
+        return "载入更新时间中";
+      }
+    }
+  },
   methods: {
-    format(date) {
-      return format(convertDateToUTC(new Date(date)), "YYYY-MM-DD HH:MM:SS");
-    },
     beautify(val) {
       if (val === -1) {
         return "-";
