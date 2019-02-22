@@ -15,7 +15,7 @@
         slot="main"
         :main-chart="mainChart"
       />
-      <VideoDetailLikeRateChart
+      <VideoDetailPieChart
         slot="like-rate"
         :like-rate-chart="likeRateChart"
       />
@@ -44,7 +44,7 @@
 import VideoDetailRank from "../components/main/VideoDetailRank.vue";
 import VideoDetailTitle from "../components/main/VideoDetailTitle.vue";
 import VideoDetailMainChart from "../components/main/VideoDetailMainChart.vue";
-import VideoDetailLikeRateChart from "../components/main/VideoDetailLikeRateChart.vue";
+import VideoDetailPieChart from "../components/main/VideoDetailPieChart.vue";
 import MainLayout from "../components/common/MainLayout.vue";
 import VideoAside from "../components/aside/VideoAside.vue";
 import VideoMain from "../components/main/VideoMain.vue";
@@ -53,7 +53,7 @@ import AuthorVideo from "../components/aside/AuthorVideo.vue";
 import Recommand from "../components/aside/Recommand.vue";
 import VideoOperation from "../components/aside/VideoOperation.vue";
 import drawMainChart from "../charts/video-main.js";
-import drawLikeRateChart from "../charts/video-likerate.js";
+import drawVideoPieChart from "../charts/video-pie.js";
 var deepCopy = function(o) {
   if (o instanceof Array) {
     var n = [];
@@ -78,7 +78,7 @@ export default {
     VideoDetailRank,
     VideoDetailTitle,
     VideoDetailMainChart,
-    VideoDetailLikeRateChart,
+    VideoDetailPieChart,
     VideoAside,
     VideoMain,
     AuthorInfo,
@@ -105,7 +105,7 @@ export default {
         this.videoData = response.data;
         this.videoData.pic = this.videoData.pic.slice(5);
         this.mainChart = drawMainChart(deepCopy(response.data));
-        this.likeRateChart = drawLikeRateChart(deepCopy(response.data));
+        this.likeRateChart = drawVideoPieChart(deepCopy(response.data));
       });
       this.axios
         .get(
@@ -125,7 +125,7 @@ export default {
       this.videoData = response.data;
       this.videoData.pic = this.videoData.pic.slice(5);
       this.mainChart = drawMainChart(deepCopy(response.data));
-      this.likeRateChart = drawLikeRateChart(deepCopy(response.data));
+      this.likeRateChart = drawVideoPieChart(deepCopy(response.data));
     });
     this.axios
       .get(`/author/${this.$route.params.mid}/video/${this.$route.params.aid}`)
