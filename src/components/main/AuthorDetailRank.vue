@@ -11,7 +11,9 @@
           </div>
           <ChevronBudget :value="dFansRank"></ChevronBudget>
         </div>
-        <VDivider vertical></VDivider>
+        <div>
+          <VDivider vertical></VDivider>
+        </div>
         <div style="flex-grow: 1;text-align:center">
           <div class="rank-title subheading font-weight-bold grey--text text--darken-2">
             播放量排名
@@ -21,7 +23,9 @@
           </div>
           <ChevronBudget :value="dArchiveViewRank"></ChevronBudget>
         </div>
-        <VDivider vertical></VDivider>
+        <div>
+          <VDivider vertical></VDivider>
+        </div>
         <div style="flex-grow: 1;text-align:center">
           <div class="rank-title subheading font-weight-bold grey--text text--darken-2">
             专栏阅读排名

@@ -402,6 +402,23 @@ export default {
             { text: "修复了一系列不合法日期的问题", type: "fix" }
           ],
           type: "ordinary"
+        },
+        {
+          title: "图表优化",
+          version: "ver.0.4.3",
+          date: "2019-02-22",
+          list: [
+            { text: "美化了首页图表", type: "beautify" },
+            { text: "重新设计视频饼图", type: "feature" }
+          ],
+          type: "ordinary"
+        },
+        {
+          title: "强行观测",
+          version: "ver.0.4.4",
+          date: "2019-02-23",
+          list: [{ text: "添加了强行观测的功能", type: "feature" }],
+          type: "ordinary"
         }
       ]
     };

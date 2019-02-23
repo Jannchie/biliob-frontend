@@ -44,7 +44,8 @@ function drawChart(data) {
     series: [
       {
         data: yData,
-        type: "line"
+        type: "line",
+        symbolSize: 6
       }
     ]
   };
