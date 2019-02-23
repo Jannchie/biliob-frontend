@@ -1,6 +1,9 @@
 <template>
   <div>
-    <VTimeline class="timeline" dense>
+    <VTimeline
+      class="timeline"
+      dense
+    >
       <VTimelineItem
         v-for="(eachEvent,index) in eventData"
         :key="index"
