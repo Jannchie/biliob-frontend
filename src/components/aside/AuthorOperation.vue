@@ -5,6 +5,7 @@
         :name="name"
         :pic="pic"
         :mid="mid"
+        :force-focus="forceFocus"
       ></AuthorBottomSheet>
     </VCardText>
   </VCard>
@@ -17,7 +18,8 @@ export default {
   props: {
     mid: Number(),
     pic: String(),
-    name: String()
+    name: String(),
+    forceFocus: Boolean()
   }
 };
 </script>

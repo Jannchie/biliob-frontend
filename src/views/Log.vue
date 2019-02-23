@@ -412,6 +412,13 @@ export default {
             { text: "重新设计视频饼图", type: "feature" }
           ],
           type: "ordinary"
+        },
+        {
+          title: "强行观测",
+          version: "ver.0.4.4",
+          date: "2019-02-23",
+          list: [{ text: "添加了强行观测的功能", type: "feature" }],
+          type: "ordinary"
         }
       ]
     };

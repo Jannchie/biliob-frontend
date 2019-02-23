@@ -27,62 +27,6 @@
         </VListTileAvatar>
         <VListTileTitle>前往UP主的个人空间</VListTileTitle>
       </VListTile>
-      <VDialog
-        v-model="dialog"
-        width="500px"
-      >
-        <VListTile
-          slot="activator"
-          style="width:100%"
-          class="blue--text lighten-2 text--lighten-2"
-          @click="dialog = true"
-        >
-          <VListTileAvatar>
-            <VAvatar size="32px">
-              <VIcon class="blue white--text lighten-2 text--lighten-2">mdi-refresh</VIcon>
-            </VAvatar>
-          </VListTileAvatar>
-          <VListTileContent>
-            <VListTileTitle>立即刷新作者数据</VListTileTitle>
-            <VListTileSubTitle>需要消耗积分：5</VListTileSubTitle>
-          </VListTileContent>
-        </VListTile>
-        <VCard>
-          <VAlert
-            :value="showAlert"
-            :type="alertType"
-            transition="slide-y-transition"
-          >
-            {{ alertMsg }}
-          </VAlert>
-          <VCardTitle
-            class="headline blue lighten-1 font-weight-black white--text"
-            primary-title
-          >
-            立即刷新作者信息？
-          </VCardTitle>
-          <VCardText>
-            立即刷新需要<span class="font-weight-black red--text">消耗5积分</span>。
-            <br>
-            立即刷新需要数秒至数分钟的操作时间
-            <br>
-            请稍后刷新页面获取最新的数据！
-          </VCardText>
-          <VDivider></VDivider>
-          <VCardActions :value="!showAlert">
-            <VSpacer></VSpacer>
-            <VBtn
-              color="primary"
-              flat
-              outline
-              :disabled="showAlert"
-              @click="refresh"
-            >
-              LET's DO IT!
-            </VBtn>
-          </VCardActions>
-        </VCard>
-      </VDialog>
       <VListTile
         :href="`https://connect.qq.com/widget/shareqq/index.html?url=https://www.biliob.com${this.$route.path}&sharesource=qzone&title=biliob观测者:${this.name}的历史数据&pics=https:${this.pic}&summary=快来围观这个UP主的数据变化吧~&desc=这个UP主牛逼坏了`"
         target="_blank"
@@ -99,15 +43,55 @@
           <VListTileSubTitle>建议使用电脑端操作</VListTileSubTitle>
         </VListTileContent>
       </VListTile>
+
+      <BottomSheetTile
+        color="blue"
+        :pic="pic"
+        :name="name"
+        icon="mdi-refresh"
+        tile-title="立即刷新作者数据"
+        tile-sub-title="需要消耗积分：5"
+        :request-url="`/user/author/${mid}/data`"
+      >
+        <VCardText slot="card-text">
+          立即刷新需要<span class="font-weight-black red--text">消耗5积分</span>。
+          <br>
+          立即刷新需要数秒至数分钟的操作时间
+          <br>
+          请稍后刷新页面获取最新的数据！
+        </VCardText>
+      </BottomSheetTile>
+
+      <BottomSheetTile
+        v-if="!forceFocus"
+        color="red"
+        :pic="pic"
+        :name="name"
+        icon="mdi-refresh"
+        tile-title="强行观测该作者"
+        tile-sub-title="需要消耗积分：200"
+        :request-url="`/user/author/${mid}/status?forceFocus=true`"
+      >
+        <VCardText slot="card-text">
+          强行观测需要<span class="font-weight-black red--text">消耗200积分</span>。
+          <br>
+          打破取消爬取机制，保持数据每日更新。
+          <br>
+          目前强行观测后只有管理员能取消操作。
+        </VCardText>
+      </BottomSheetTile>
     </VList>
   </VBottomSheet>
 </template>
 <script>
+import BottomSheetTile from "../common/BottomSheetTile.vue";
 export default {
+  components: { BottomSheetTile },
   props: {
     mid: Number(),
     pic: String(),
-    name: String()
+    name: String(),
+    forceFocus: Boolean()
   },
   data: () => ({
     sheet: false,
@@ -124,32 +108,6 @@ export default {
   methods: {
     toAuthorSpace() {
       this.sheet = false;
-    },
-    refresh() {
-      this.axios
-        .put(`/user/author/${this.mid}/data`)
-        .then(response => {
-          this.showAlert = true;
-          this.alertType = "success";
-          this.alertMsg = `操作成功！当前积分：${
-            response.data.data.credit
-          }(-5)，当前经验：${response.data.data.exp}(+5)`;
-          this.$store.commit("setCredit", response.data.data.credit);
-          this.$store.commit("setExp", response.data.data.exp);
-          setTimeout(() => {
-            this.sheet = false;
-            this.dialog = false;
-            this.showAlert = false;
-          }, 2000);
-        })
-        .catch(() => {
-          this.showAlert = true;
-          this.alertType = "error";
-          this.alertMsg = "请检查登录状态或积分余额！";
-          setTimeout(() => {
-            this.showAlert = false;
-          }, 2000);
-        });
     }
   }
 };
