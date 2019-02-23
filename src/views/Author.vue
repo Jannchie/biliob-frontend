@@ -25,6 +25,7 @@
         :mid="authorData.mid"
         :name="authorData.name"
         :pic="authorData.face"
+        :force-focus="authorData.forceFocus"
       />
       <AuthorVideo
         slot="author-latest-video"
@@ -76,6 +77,9 @@ export default {
     this.$store.commit("toAuthor");
     this.axios.get("/author/" + this.$route.params.mid).then(response => {
       this.authorData = response.data;
+      if (this.authorData.forceFocus != true) {
+        this.authorData.forceFocus == false;
+      }
     });
     this.axios.get(`/author/${this.$route.params.mid}/video`).then(response => {
       this.authorTopVideo = response.data;
