@@ -67,7 +67,7 @@
         color="red"
         :pic="pic"
         :name="name"
-        icon="mdi-refresh"
+        icon="mdi-eye"
         tile-title="强行观测该作者"
         tile-sub-title="需要消耗积分：200"
         :request-url="`/user/author/${mid}/status?forceFocus=true`"
