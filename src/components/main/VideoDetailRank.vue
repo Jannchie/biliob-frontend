@@ -4,39 +4,51 @@
       <div class="rank-container">
         <div class="item">
           <div class="rank-title subheading font-weight-bold grey--text text--darken-2">
-            播放数排名
+            播放数
           </div>
           <div class="display-1 font-weight-black blue--text text--darken-3">
             {{beautify(cViewRank)}}
           </div>
           <ChevronBudget :value="dViewRank"></ChevronBudget>
         </div>
+        <div>
+          <VDivider vertical></VDivider>
+        </div>
         <div class="item">
           <div class="rank-title subheading font-weight-bold grey--text text--darken-2">
-            点赞数排名
+            点赞数
           </div>
           <div class="display-1 font-weight-black blue--text text--darken-3">
             {{beautify(cLikeRank)}}
           </div>
           <ChevronBudget :value="dLikeRank"></ChevronBudget>
         </div>
+        <div>
+          <VDivider vertical></VDivider>
+        </div>
         <div class="item">
           <div class="rank-title subheading font-weight-bold grey--text text--darken-2">
-            硬币数排名
+            硬币数
           </div>
           <div class="display-1 font-weight-black blue--text text--darken-3">
             {{beautify(cCoinRank)}}
           </div>
           <ChevronBudget :value="dCoinRank"></ChevronBudget>
         </div>
+        <div>
+          <VDivider vertical></VDivider>
+        </div>
         <div class="item">
           <div class="rank-title subheading font-weight-bold grey--text text--darken-2">
-            弹幕数排名
+            弹幕数
           </div>
           <div class="display-1 font-weight-black blue--text text--darken-3">
             {{beautify(cDanmakuRank)}}
           </div>
           <ChevronBudget :value="dDanmakuRank"></ChevronBudget>
+        </div>
+        <div>
+          <VDivider vertical></VDivider>
         </div>
         <div class="item">
           <div class="rank-title subheading font-weight-bold grey--text text--darken-2">
@@ -47,9 +59,12 @@
           </div>
           <ChevronBudget :value="dFavoriteRank"></ChevronBudget>
         </div>
+        <div>
+          <VDivider vertical></VDivider>
+        </div>
         <div class="item">
           <div class="rank-title subheading font-weight-bold grey--text text--darken-2">
-            分享数排名
+            分享数
           </div>
           <div class="display-1 font-weight-black blue--text text--darken-3">
             {{beautify(cShareRank)}}
