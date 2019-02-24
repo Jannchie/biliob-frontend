@@ -3,7 +3,7 @@
     <VCardText style="display:flex">
       <div class="index-div">
         <div :class="`${color}--text text--lighten-2`">RANK</div>
-        <h1 :class="`display-2 font-weight-black ${color}--text text--lighten-1`">{{formatedIndex}}</h1>
+        <h1 :class="`display-2 font-weight-black ${color}--text text--darken-2`">{{formatedIndex}}</h1>
       </div>
       <div style="display:flex;flex-direction:column">
         <div
@@ -50,11 +50,11 @@ export default {
       if (v < 100) {
         return "green";
       } else if (v < 200) {
-        return "blue";
+        return "teal";
       } else if (v < 1280) {
-        return "indigo";
+        return "blue";
       } else if (v < 2560) {
-        return "purple";
+        return "deep-orange";
       } else if (v < 5120) {
         return "pink";
       } else {

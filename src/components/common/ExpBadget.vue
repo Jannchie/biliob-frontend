@@ -25,11 +25,11 @@ export default {
       if (v < 100) {
         return "green";
       } else if (v < 200) {
-        return "blue";
+        return "teal";
       } else if (v < 1280) {
-        return "indigo";
+        return "blue";
       } else if (v < 2560) {
-        return "purple";
+        return "deep-orange";
       } else if (v < 5120) {
         return "pink";
       } else {
