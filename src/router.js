@@ -15,6 +15,7 @@ const NotFound = () => import("./views/NotFound.vue");
 const About = () => import("./views/About.vue");
 const Occurrence = () => import("./views/Event.vue");
 const FAQ = () => import("./views/FAQ.vue");
+const UserRank = () => import("./views/UserRank.vue");
 
 Vue.use(Router);
 
@@ -81,6 +82,10 @@ export default new Router({
     {
       path: "/about",
       component: About
+    },
+    {
+      path: "/rank/user",
+      component: UserRank
     },
     {
       path: "*",

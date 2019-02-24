@@ -239,6 +239,22 @@
         </VListTile>
         <VDivider />
       </VList>
+      <VList>
+        <VDivider />
+        <VListTile
+          ripple
+          @click.stop="toUserRank"
+        >
+          <VListTileAvatar>
+            <VIcon>mdi-view-list</VIcon>
+          </VListTileAvatar>
+          <VListTileContent>
+            <VListTileTitle>观测者排行</VListTileTitle>
+            <VListTileSubTitle>站内积分榜</VListTileSubTitle>
+          </VListTileContent>
+        </VListTile>
+        <VDivider />
+      </VList>
     </VNavigationDrawer>
   </nav>
 </template>
@@ -387,6 +403,9 @@ export default {
     },
     toFaq() {
       this.$router.push("/faq");
+    },
+    toUserRank() {
+      this.$router.push("/rank/user");
     },
     onScroll() {
       if (this.offsetTop - window.pageYOffset < 0) {
