@@ -9,7 +9,8 @@ function drawChart(data) {
   let Chart = {
     title: {
       left: "center",
-      subtext: "粉丝数变化趋势"
+      subtext: "粉丝数变化趋势",
+      text: data.name
     },
     legend: {
       data: ["粉丝数"],
