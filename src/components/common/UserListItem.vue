@@ -12,7 +12,7 @@
         >
           <span :class="`title font-weight-black ${color}--text`">{{name}}</span>
           <RoleBadget :role="role" />
-          <div :class="`subheading font-weight-black ${color}--text text--darken-4`">
+          <div :class="`subheading font-weight-black ${color}--text text--darken-2`">
             <span>EXP </span>{{exp}}
           </div>
         </div>
@@ -21,7 +21,7 @@
 
       <div
         style="z-index:1"
-        :class="`${color}--text text--lighten-5 display-1 font-weight-black title-div`"
+        :class="`${color}--text text--lighten-2 display-1 font-weight-black title-div`"
       >{{title}}</div>
     </VCardText>
   </VCard>
@@ -103,6 +103,7 @@ export default {
 }
 .title-div {
   position: absolute;
+  opacity: 0.2;
   right: 16px;
   bottom: 16px;
   z-index: 2;
