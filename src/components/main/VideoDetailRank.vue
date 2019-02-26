@@ -2,11 +2,12 @@
   <VCard>
     <VCardText style="height:100%">
       <div class="rank-container">
+
         <div class="item">
           <div class="rank-title subheading font-weight-bold grey--text text--darken-2">
-            播放数
+            播放数排名
           </div>
-          <div class="display-1 font-weight-black blue--text text--darken-3">
+          <div class="title font-weight-black blue--text text--darken-3">
             {{beautify(cViewRank)}}
           </div>
           <ChevronBudget :value="dViewRank"></ChevronBudget>
@@ -16,9 +17,9 @@
         </div>
         <div class="item">
           <div class="rank-title subheading font-weight-bold grey--text text--darken-2">
-            点赞数
+            点赞数排名
           </div>
-          <div class="display-1 font-weight-black blue--text text--darken-3">
+          <div class="title font-weight-black blue--text text--darken-3">
             {{beautify(cLikeRank)}}
           </div>
           <ChevronBudget :value="dLikeRank"></ChevronBudget>
@@ -28,21 +29,21 @@
         </div>
         <div class="item">
           <div class="rank-title subheading font-weight-bold grey--text text--darken-2">
-            硬币数
+            硬币数排名
           </div>
-          <div class="display-1 font-weight-black blue--text text--darken-3">
+          <div class="title font-weight-black blue--text text--darken-3">
             {{beautify(cCoinRank)}}
           </div>
           <ChevronBudget :value="dCoinRank"></ChevronBudget>
         </div>
-        <div>
+        <div class="special-divider">
           <VDivider vertical></VDivider>
         </div>
         <div class="item">
           <div class="rank-title subheading font-weight-bold grey--text text--darken-2">
-            弹幕数
+            弹幕数排名
           </div>
-          <div class="display-1 font-weight-black blue--text text--darken-3">
+          <div class="title font-weight-black blue--text text--darken-3">
             {{beautify(cDanmakuRank)}}
           </div>
           <ChevronBudget :value="dDanmakuRank"></ChevronBudget>
@@ -52,9 +53,9 @@
         </div>
         <div class="item">
           <div class="rank-title subheading font-weight-bold grey--text text--darken-2">
-            收藏数
+            收藏数排名
           </div>
-          <div class="display-1 font-weight-black blue--text text--darken-3">
+          <div class="title font-weight-black blue--text text--darken-3">
             {{beautify(cFavoriteRank)}}
           </div>
           <ChevronBudget :value="dFavoriteRank"></ChevronBudget>
@@ -64,9 +65,9 @@
         </div>
         <div class="item">
           <div class="rank-title subheading font-weight-bold grey--text text--darken-2">
-            分享数
+            分享数排名
           </div>
-          <div class="display-1 font-weight-black blue--text text--darken-3">
+          <div class="title font-weight-black blue--text text--darken-3">
             {{beautify(cShareRank)}}
           </div>
           <ChevronBudget :value="dShareRank"></ChevronBudget>
@@ -144,11 +145,14 @@ export default {
   flex-grow: 1;
   text-align: center;
 }
-@media only screen and (max-width: 1029px) {
+@media only screen and (max-width: 1800px) {
   .item {
     flex-grow: 1;
     text-align: center;
     flex-basis: 33%;
+  }
+  .special-divider {
+    display: none;
   }
 }
 </style>
