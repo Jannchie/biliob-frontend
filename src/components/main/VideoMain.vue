@@ -13,6 +13,9 @@
       <slot name="like-rate" />
     </VSlideYTransition>
     <VSlideYTransition>
+      <slot name="danmaku-switch" />
+    </VSlideYTransition>
+    <VSlideYTransition>
       <slot name="danmaku-density" />
     </VSlideYTransition>
     <VSlideYTransition>

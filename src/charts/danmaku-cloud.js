@@ -1,6 +1,5 @@
 function drawChart(data) {
   var d = [];
-  console.log(data);
   for (const key in data) {
     d.push({
       name: key,
@@ -43,7 +42,7 @@ function drawChart(data) {
 
         // Text size range which the value in data will be mapped to.
         // Default to have minimum 12px and maximum 60px size.
-        sizeRange: [16, 68],
+        sizeRange: [16, 62],
 
         rotationRange: [0, 0],
         rotationStep: 45,

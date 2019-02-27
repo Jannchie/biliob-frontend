@@ -29,6 +29,21 @@
         slot="danmaku-cloud"
         :options="wordCloudOptions"
       />
+      <VCard
+        v-if="hasDanmakuAggregate"
+        slot="danmaku-switch"
+      >
+        <VCardActions>
+          <VSelect
+            v-model="defaultPage"
+            solo
+            prepend-inner-icon="mdi-video-outline"
+            :items="pageItems"
+            :messages="`选择分P 更新时间${danmakuUpdateTime}`"
+            @change="pageChange"
+          ></VSelect>
+        </VCardActions>
+      </VCard>
     </VideoMain>
     <VideoAside slot="aside-cards">
       <AuthorInfo
@@ -109,7 +124,10 @@ export default {
       wordCloudOptions: Object(),
       otherVideo: Object(),
       danmakuDensityOptions: Object(),
-      hasDanmakuAggregate: false
+      hasDanmakuAggregate: false,
+      pageItems: Array(),
+      danmakuUpdateTime: String(),
+      defaultPage: String()
     };
   },
   watch: {
@@ -121,6 +139,9 @@ export default {
     this.getDataFromAid();
   },
   methods: {
+    pageChange(val) {
+      this.redrawDanmakuCharts(val);
+    },
     getVideoData(response) {
       this.videoData = response.data;
       this.videoData.pic = this.videoData.pic.slice(5);
@@ -129,13 +150,17 @@ export default {
       this.drawDanmakuCloud = drawVideoPieChart(deepCopy(response.data));
       if (response.data.hasOwnProperty("danmakuAggregate")) {
         this.hasDanmakuAggregate = true;
-        this.wordCloudOptions = drawDanmakuCloud(
-          response.data.danmakuAggregate[1]["word_frequency"]
-        );
-        this.danmakuDensityOptions = drawDanmakuDensity(
-          response.data.danmakuAggregate[1]["danmaku_density"],
-          response.data.danmakuAggregate[1]["duration"]
-        );
+        this.redrawDanmakuCharts(1);
+        this.danmakuUpdateTime = response.data.danmakuAggregate.updateTime;
+        for (let eachPage in response.data.danmakuAggregate) {
+          this.pageItems.push({
+            text: `P${eachPage}: ${
+              response.data.danmakuAggregate[eachPage]["p_name"]
+            }`,
+            value: eachPage
+          });
+          this.defaultPage = this.pageItems[0];
+        }
       } else {
         this.hasDanmakuAggregate = false;
       }
@@ -155,6 +180,15 @@ export default {
         .then(response => {
           this.otherVideo = response.data;
         });
+    },
+    redrawDanmakuCharts(page) {
+      this.wordCloudOptions = drawDanmakuCloud(
+        this.videoData.danmakuAggregate[page]["word_frequency"]
+      );
+      this.danmakuDensityOptions = drawDanmakuDensity(
+        this.videoData.danmakuAggregate[page]["danmaku_density"],
+        this.videoData.danmakuAggregate[page]["duration"]
+      );
     }
   }
 };
