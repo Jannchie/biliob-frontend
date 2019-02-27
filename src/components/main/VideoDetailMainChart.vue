@@ -2,7 +2,6 @@
   <VCard class="card">
     <VResponsive :aspect-ratio="16/9">
       <Chart
-        id="chart-1"
         :theme="theme"
         :auto-resize="true"
         :options="mainChart"

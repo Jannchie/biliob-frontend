@@ -1,10 +1,10 @@
 <template>
   <VCard class="card">
-    <VResponsive :aspect-ratio="18/9">
+    <VResponsive :aspect-ratio="aspectRatio">
       <Chart
         :theme="theme"
         :auto-resize="true"
-        :options="likeRateChart"
+        :options="options"
         style="width:100%;height:100%;"
       />
     </VResponsive>
@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  props: { likeRateChart: Object() },
+  props: { options: Object(), aspectRatio: { type: Number, default: 2 } },
   data() {
     return {
       videoData: {},

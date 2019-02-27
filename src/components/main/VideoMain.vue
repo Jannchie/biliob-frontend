@@ -1,9 +1,23 @@
 <template>
   <div>
-    <slot name="title" />
-    <slot name="rank" />
-    <slot name="main" />
-    <slot name="like-rate" />
+    <VSlideYTransition>
+      <slot name="title" />
+    </VSlideYTransition>
+    <VSlideYTransition>
+      <slot name="rank" />
+    </VSlideYTransition>
+    <VSlideYTransition>
+      <slot name="main" />
+    </VSlideYTransition>
+    <VSlideYTransition>
+      <slot name="like-rate" />
+    </VSlideYTransition>
+    <VSlideYTransition>
+      <slot name="danmaku-density" />
+    </VSlideYTransition>
+    <VSlideYTransition>
+      <slot name="danmaku-cloud" />
+    </VSlideYTransition>
   </div>
 </template>
 
