@@ -4,7 +4,7 @@
       <Chart
         :theme="theme"
         :auto-resize="true"
-        :options="likeRateChart"
+        :options="options"
         style="width:100%;height:100%;"
       />
     </VResponsive>
@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  props: { likeRateChart: Object() },
+  props: { options: Object() },
   data() {
     return {
       videoData: {},
