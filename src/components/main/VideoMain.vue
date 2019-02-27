@@ -13,7 +13,7 @@
       <slot name="like-rate" />
     </VSlideYTransition>
     <VSlideYTransition>
-      <slot name="danmaku-frequency" />
+      <slot name="danmaku-density" />
     </VSlideYTransition>
     <VSlideYTransition>
       <slot name="danmaku-cloud" />

@@ -15,6 +15,11 @@
         slot="main"
         :main-chart="mainChart"
       />
+      <DetailCharts
+        v-if="hasDanmakuAggregate"
+        slot="danmaku-density"
+        :options="danmakuDensityOptions"
+      />
       <VideoDetailPieChart
         slot="like-rate"
         :like-rate-chart="likeRateChart"
@@ -61,6 +66,7 @@ import VideoOperation from "../components/aside/VideoOperation.vue";
 import drawMainChart from "../charts/video-main.js";
 import drawVideoPieChart from "../charts/video-pie.js";
 import drawDanmakuCloud from "../charts/danmaku-cloud.js";
+import drawDanmakuDensity from "../charts/danmaku-density.js";
 var deepCopy = function(o) {
   if (o instanceof Array) {
     var n = [];
@@ -102,6 +108,7 @@ export default {
       likeRateChart: Object(),
       wordCloudOptions: Object(),
       otherVideo: Object(),
+      danmakuDensityOptions: Object(),
       hasDanmakuAggregate: false
     };
   },
@@ -124,6 +131,10 @@ export default {
         this.hasDanmakuAggregate = true;
         this.wordCloudOptions = drawDanmakuCloud(
           response.data.danmakuAggregate[1]["word_frequency"]
+        );
+        this.danmakuDensityOptions = drawDanmakuDensity(
+          response.data.danmakuAggregate[1]["danmaku_density"],
+          response.data.danmakuAggregate[1]["duration"]
         );
       } else {
         this.hasDanmakuAggregate = false;

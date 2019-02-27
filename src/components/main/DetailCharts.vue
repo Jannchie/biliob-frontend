@@ -1,6 +1,6 @@
 <template>
   <VCard class="card">
-    <VResponsive :aspect-ratio="18/9">
+    <VResponsive :aspect-ratio="aspectRatio">
       <Chart
         :theme="theme"
         :auto-resize="true"
@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  props: { options: Object() },
+  props: { options: Object(), aspectRatio: { type: Number, default: 2 } },
   data() {
     return {
       videoData: {},
