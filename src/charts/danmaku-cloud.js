@@ -43,9 +43,9 @@ function drawChart(data) {
 
         // Text size range which the value in data will be mapped to.
         // Default to have minimum 12px and maximum 60px size.
-        sizeRange: [16, 76],
+        sizeRange: [16, 68],
 
-        rotationRange: [-20, 20],
+        rotationRange: [0, 0],
         rotationStep: 45,
 
         gridSize: 8,
