@@ -39,7 +39,7 @@
             solo
             prepend-inner-icon="mdi-video-outline"
             :items="pageItems"
-            :messages="`<span>选择分P</span><span style='float: right'>更新时间: ${danmakuUpdatetime}</span>`"
+            :messages="`<span>选择分P</span><span style='float: right'>更新时间: ${danmakuUpdateTime}</span>`"
             @change="pageChange"
           ></VSelect>
         </VCardActions>
@@ -100,7 +100,7 @@ var deepCopy = function(o) {
   }
 };
 export default {
-  name: "AuthorList",
+  name: "VideoDetail",
   components: {
     MainLayout,
     VideoDetailRank,
@@ -126,7 +126,7 @@ export default {
       danmakuDensityOptions: Object(),
       hasDanmakuAggregate: false,
       pageItems: Array(),
-      danmakuUpdateTime: String(),
+      danmakuUpdateTime: "未记录",
       defaultPage: String()
     };
   },
@@ -151,13 +151,9 @@ export default {
       if (response.data.hasOwnProperty("danmakuAggregate")) {
         this.hasDanmakuAggregate = true;
         this.redrawDanmakuCharts(1);
-        this.danmakuUpdateTime = response.data.danmakuAggregate.updateTime;
         for (let eachPage in response.data.danmakuAggregate) {
           if (eachPage == "updatetime") {
-            this.danmakuUpdatetime = response.data.danmakuAggregate.updatetime;
-            if (this.danmakuUpdateTime == undefined) {
-              this.danmakuUpdateTime = "未记录";
-            }
+            this.danmakuUpdateTime = response.data.danmakuAggregate.updatetime;
             continue;
           }
           this.pageItems.push({
