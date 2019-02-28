@@ -31,7 +31,8 @@ function drawChart(data) {
           },
           {
             value: data.data[0].danmaku,
-            name: "弹幕"
+            name: "弹幕",
+            selected: true
           }
         ]
       },
@@ -52,7 +53,8 @@ function drawChart(data) {
           },
           {
             value: data.data[0].coin,
-            name: "硬币"
+            name: "硬币",
+            selected: true
           }
         ]
       },
@@ -74,7 +76,8 @@ function drawChart(data) {
           },
           {
             value: data.data[0].favorite,
-            name: "收藏"
+            name: "收藏",
+            selected: true
           }
         ]
       },
@@ -95,7 +98,8 @@ function drawChart(data) {
           },
           {
             value: data.data[0].share,
-            name: "分享"
+            name: "分享",
+            selected: true
           }
         ]
       },
@@ -116,7 +120,8 @@ function drawChart(data) {
           },
           {
             value: data.data[0].like,
-            name: "点赞"
+            name: "点赞",
+            selected: true
           }
         ]
       },
@@ -133,15 +138,18 @@ function drawChart(data) {
         data: [
           {
             value: data.data[0].like,
-            name: "点赞"
+            name: "点赞",
+            selected: true
           },
           {
             value: data.data[0].coin,
-            name: "硬币"
+            name: "硬币",
+            selected: true
           },
           {
             value: data.data[0].favorite,
-            name: "收藏"
+            name: "收藏",
+            selected: true
           }
         ]
       }
