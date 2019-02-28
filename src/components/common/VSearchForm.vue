@@ -1,5 +1,8 @@
 <template>
-  <VForm v-model="valid">
+  <VForm
+    v-model="valid"
+    @submit.native.prevent="submit"
+  >
     <VTextField
       v-model="searchText"
       solo
@@ -7,7 +10,6 @@
       clearable
       label="搜索"
       :hint="hint"
-      @submit.native.prevent=""
     />
   </VForm>
 </template>
@@ -29,16 +31,21 @@ export default {
       if (!this.flag) {
         this.flag = true;
         setTimeout(() => {
-          this.$emit("getSearchValue", this.searchText);
+          this.$emit("getSearchValue", this.searchText.toLowerCase());
           this.flag = false;
         }, 2500);
       } else {
         setTimeout(() => {
           if (this.flag == false) {
-            this.$emit("getSearchValue", this.searchText);
+            this.$emit("getSearchValue", this.searchText.toLowerCase());
           }
         }, 2500);
       }
+    }
+  },
+  methods: {
+    submit() {
+      this.$emit("getSearchValue", this.searchText.toLowerCase());
     }
   }
 };
