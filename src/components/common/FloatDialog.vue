@@ -66,9 +66,9 @@ export default {
         "这个绿色的按钮还没有做内容，点击视频或者作者的菜单这个按钮会发生变化",
       label: "",
       alertType: "success",
-      ID: null,
       showAlert: false,
       msg: "",
+      ID: "",
       url: "",
       rules: {
         required: value => !!value || "告诉我要观测什么吧=（づ￣3￣）づ╭❤～",
@@ -81,6 +81,20 @@ export default {
         }
       }
     };
+  },
+  computed: {
+    UID() {
+      if (this.ID == "UID:") return 0;
+      return this.ID;
+    }
+  },
+  watch: {
+    ID() {
+      setTimeout(() => {
+        this.ID = this.ID.replace("UID:", "");
+        this.ID = this.ID.replace("AV", "");
+      }, 500);
+    }
   },
   methods: {
     getType(t) {
@@ -102,6 +116,7 @@ export default {
           break;
       }
     },
+
     submit() {
       switch (this.type) {
         case "video":

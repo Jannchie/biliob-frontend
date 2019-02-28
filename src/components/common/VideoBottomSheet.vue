@@ -26,6 +26,26 @@
         </VListTileAvatar>
         <VListTileTitle>前往视频播放页面</VListTileTitle>
       </VListTile>
+
+      <BottomSheetTile
+        v-if="!forceFocus"
+        color="red"
+        :pic="pic"
+        :name="name"
+        icon="mdi-eye"
+        tile-title="更新视频弹幕统计"
+        tile-sub-title="需要消耗积分：10"
+        :request-url="`/user/video/${aid}/danmaku`"
+      >
+        <VCardText slot="card-text">
+          更新视频弹幕统计<span class="font-weight-black red--text">消耗10积分</span>。
+          <br>
+          能够根据关键词生成词云。
+          <br>
+          能够分析弹幕密度。
+        </VCardText>
+      </BottomSheetTile>
+
       <VDialog
         key="dialog"
         v-model="dialog"
@@ -83,8 +103,9 @@
           </VCardActions>
         </VCard>
       </VDialog>
+
       <VListTile
-        :href="`https://connect.qq.com/widget/shareqq/index.html?url=www.biliob.com${this.$route.path}&sharesource=qzone&title=biliob观测者:视频《${this.title}》的历史数据&pics=https:${this.pic}&summary=快来围观这个视频的数据变化吧~&desc=`"
+        :href="`https://connect.qq.com/widget/shareqq/index.html?url=www.biliob.com${$route.path}&sharesource=qzone&title=biliob观测者:视频《${title}》的历史数据&pics=https:${pic}&summary=快来围观这个视频的数据变化吧~&desc=`"
         target="_blank"
         class="light-blue--text lighten-2 text--lighten-2"
         @click="sheet = false"
@@ -103,7 +124,9 @@
   </VBottomSheet>
 </template>
 <script>
+import BottomSheetTile from "./BottomSheetTile.vue";
 export default {
+  components: { BottomSheetTile },
   props: {
     aid: Number(),
     pic: String(),
