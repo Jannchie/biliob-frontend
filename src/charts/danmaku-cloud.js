@@ -1,11 +1,33 @@
 function drawChart(data) {
   var d = [];
+  var sum = 0;
+  var count = 0;
   for (const key in data) {
+    sum += data[key];
+    count += 1;
     d.push({
       name: key,
       value: data[key]
     });
   }
+  let avg = sum / count;
+  var maxSize = 64;
+  if (avg <= 0.06) {
+    maxSize = 92;
+  } else if (avg <= 0.07) {
+    maxSize = 88;
+  } else if (avg <= 0.08) {
+    maxSize = 84;
+  } else if (avg <= 0.09) {
+    maxSize = 80;
+  } else if (avg <= 0.1) {
+    maxSize = 76;
+  } else if (avg <= 0.11) {
+    maxSize = 72;
+  } else if (avg <= 0.12) {
+    maxSize = 68;
+  }
+
   let options = {
     title: [{}],
     tooltip: {
@@ -18,47 +40,32 @@ function drawChart(data) {
         name: "关键词",
         type: "wordCloud",
 
-        // The shape of the "cloud" to draw. Can be any polar equation represented as a
-        // callback function, or a keyword present. Available presents are circle (default),
-        // cardioid (apple or heart shape curve, the most known polar equation), diamond (
-        // alias of square), triangle-forward, triangle, (alias of triangle-upright, pentagon, and star.
-
-        shape: "circle",
-
-        // A silhouette image which the white area will be excluded from drawing texts.
-        // The shape option will continue to apply as the shape of the cloud to grow.
-
-        // maskImage: maskImage,
-
-        // Folllowing left/top/width/height/right/bottom are used for positioning the word cloud
-        // Default to be put in the center and has 75% x 80% size.
+        // 使用矩形
+        shape: function shapeSquare(theta) {
+          return Math.min(
+            1 / Math.abs(Math.cos(theta)),
+            1 / Math.abs(Math.sin(theta))
+          );
+        },
 
         left: "center",
         top: "center",
         width: "90%",
-        height: "80%",
+        height: "90%",
         right: null,
         bottom: null,
-
-        // Text size range which the value in data will be mapped to.
-        // Default to have minimum 12px and maximum 60px size.
-        sizeRange: [16, 62],
-
+        sizeRange: [16, maxSize],
         rotationRange: [0, 0],
         rotationStep: 45,
-
         gridSize: 8,
-
         drawOutOfBound: false,
 
-        // Global text style
         textStyle: {
           normal: {
             fontWeight: "bold"
           }
         },
 
-        // Data is an array. Each array item must have name and value property.
         data: d
       }
     ]
