@@ -32,7 +32,7 @@ function drawChart(data, duration) {
   var tick = duration / 50;
   var x = [];
   for (let i = 0; i < 50; i++) {
-    x.push(formatSeconds(tick * i + 0.5 * tick));
+    x.push(tick * i);
   }
   let Chart = {
     title: {
@@ -46,14 +46,7 @@ function drawChart(data, duration) {
     },
     tooltip: {
       trigger: "axis",
-      confine: true,
-      axisPointer: {
-        label: {
-          formatter: function(params) {
-            return formatSeconds(params.value);
-          }
-        }
-      }
+      confine: true
     },
     grid: {
       left: "60px",
@@ -62,10 +55,18 @@ function drawChart(data, duration) {
     xAxis: {
       type: "category",
       data: x,
+      axisLabel: {
+        formatter: v => formatSeconds(v)
+      },
       axisPointer: {
         label: {
           formatter: function(params) {
-            return "时间：" + params.value;
+            return (
+              "时间：" +
+              formatSeconds(params.value) +
+              "~" +
+              formatSeconds(Number(params.value) + tick)
+            );
           }
         }
       }

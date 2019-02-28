@@ -39,7 +39,7 @@
             solo
             prepend-inner-icon="mdi-video-outline"
             :items="pageItems"
-            :messages="`选择分P 更新时间${danmakuUpdateTime}`"
+            :messages="`<span>选择分P</span><span style='float: right'>更新时间: ${danmakuUpdatetime}</span>`"
             @change="pageChange"
           ></VSelect>
         </VCardActions>
@@ -153,6 +153,13 @@ export default {
         this.redrawDanmakuCharts(1);
         this.danmakuUpdateTime = response.data.danmakuAggregate.updateTime;
         for (let eachPage in response.data.danmakuAggregate) {
+          if (eachPage == "updatetime") {
+            this.danmakuUpdatetime = response.data.danmakuAggregate.updatetime;
+            if (this.danmakuUpdateTime == undefined) {
+              this.danmakuUpdateTime = "未记录";
+            }
+            continue;
+          }
           this.pageItems.push({
             text: `P${eachPage}: ${
               response.data.danmakuAggregate[eachPage]["p_name"]

@@ -1,10 +1,24 @@
 <template>
-  <VLayout v-bind="binding" justify-center>
-    <VFlex lg5 md12>
+  <VLayout
+    v-bind="binding"
+    justify-center
+  >
+    <VFlex
+      lg5
+      md12
+    >
       <VCard>
         <div>
-          <VAlert :value="alertSuccess" type="success" transition="scale-transition">恭喜你！注册成功！</VAlert>
-          <VAlert :value="alertError" type="error" transition="scale-transition">抱歉！{{ errorMsg }}!</VAlert>
+          <VAlert
+            :value="alertSuccess"
+            type="success"
+            transition="scale-transition"
+          >恭喜你！注册成功！</VAlert>
+          <VAlert
+            :value="alertError"
+            type="error"
+            transition="scale-transition"
+          >抱歉！{{ errorMsg }}!</VAlert>
         </div>
 
         <VCardTitle>
@@ -16,7 +30,10 @@
           </div>
         </VCardTitle>
         <VCardActions>
-          <VForm v-model="valid" style="width:100%">
+          <VForm
+            v-model="valid"
+            style="width:100%"
+          >
             <VTextField
               v-model="name"
               :rules="[rules.required]"
@@ -46,7 +63,11 @@
               @click:append="show = !show;"
             />
             <Center>
-              <VBtn color="primary" :disabled="!valid" @click="submit">注册</VBtn>
+              <VBtn
+                color="primary"
+                :disabled="!valid"
+                @click="submit"
+              >注册</VBtn>
             </Center>
           </VForm>
         </VCardActions>
