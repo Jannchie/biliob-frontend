@@ -22,14 +22,14 @@
               {{ eachPost.date }}
             </strong>
             <div class="caption mb-2">
-              <li
+              <div
                 v-for="eachLine in eachPost.list"
                 :key="eachLine.text"
                 type="circle"
               >
                 <VIcon small>{{getListIcon(eachLine.type)}}</VIcon>
                 {{ eachLine.text }}
-              </li>
+              </div>
             </div>
           </VFlex>
         </VLayout>
@@ -260,7 +260,7 @@ export default {
             { text: "加入了私货广告卡片", type: "feature" },
             { text: "现在日志的最上面能看到最新的变化", type: "feature" }
           ],
-          type: "ordinary"
+          type: "important"
         },
         {
           title: "界面美化",
@@ -419,6 +419,24 @@ export default {
           date: "2019-02-23",
           list: [{ text: "添加了强行观测的功能", type: "feature" }],
           type: "ordinary"
+        },
+        {
+          title: "观测者排行",
+          version: "ver.0.4.5",
+          date: "2019-02-26",
+          list: [{ text: "添加了观测者排行榜", type: "feature" }],
+          type: "ordinary"
+        },
+        {
+          title: "弹幕追踪",
+          version: "ver.0.5.0",
+          date: "2019-02-28",
+          list: [
+            { text: "添加弹幕追踪功能", type: "feature" },
+            { text: "能够通过弹幕生成词云", type: "feature" },
+            { text: "能够判断弹幕密度", type: "feature" }
+          ],
+          type: "important"
         }
       ]
     };
@@ -440,11 +458,11 @@ export default {
         case "holyshit":
           return "mdi-nuke";
         case "important":
-          return "mdi-flag";
+          return "mdi-chess-queen";
         case "ordinary":
-          return "mdi-desk-lamp";
+          return "mdi-chess-rook";
         case "unimportant":
-          return "mdi-coffee";
+          return "mdi-chess-pawn";
         default:
           break;
       }

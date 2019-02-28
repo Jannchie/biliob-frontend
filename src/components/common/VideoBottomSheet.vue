@@ -28,11 +28,10 @@
       </VListTile>
 
       <BottomSheetTile
-        v-if="!forceFocus"
-        color="red"
+        color="orange"
         :pic="pic"
-        :name="name"
-        icon="mdi-eye"
+        :name="title"
+        icon="mdi-message-bulleted"
         tile-title="更新视频弹幕统计"
         tile-sub-title="需要消耗积分：10"
         :request-url="`/user/video/${aid}/danmaku`"
