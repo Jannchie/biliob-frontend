@@ -2,42 +2,38 @@ var format = require("date-fns/format");
 var { convertDateToUTC } = require("./util/convertDateToUTC");
 
 function interpolation(data) {
-  let new_data = [];
-  var lDate = "";
-  data.forEach(e => {
-    if (typeof e.datetime == "string") {
-      e.datetime = e.datetime.replace("+0000", "");
-    }
+  data = data.sort((a, b) => {
+    return new Date(a.datetime) - new Date(b.datetime);
   });
-  for (let index = 0; index < data.length - 1; index++) {
-    let days = Math.round(
-      (new Date(data[index].datetime).getTime() -
-        new Date(data[index + 1].datetime).getTime()) /
-        (24 * 60 * 60 * 1000)
-    );
-    if (days < 1 && format(data[index].datetime, "YYYY-MM-DD") != lDate) {
-      lDate = format(data[index].datetime, "YYYY-MM-DD");
-      new_data.push(data[index]);
-    } else {
-      let deltaFans = data[index].fans - data[index + 1].fans;
-      let cFans = data[index].fans;
-      let fans = deltaFans / days;
-      let offset = 0;
-      while (days >= 1) {
-        days--;
+  let new_data = [];
+  // var l_date = "";
+  var c_datetime = new Date(data[0].datetime.replace("+0000", ""));
+  var c_fans = data[0].fans;
+  for (let index = 1; index < data.length; index++) {
+    var n_datetime = new Date(data[index].datetime.replace("+0000", ""));
+    var n_fans = data[index].fans;
+    var linear_int = date => {
+      return Math.round(
+        ((n_fans - c_fans) / (n_datetime - c_datetime)) *
+          (new Date(date).getTime() - c_datetime) +
+          c_fans
+      );
+    };
+    if (c_datetime.getDate() != n_datetime.getDate()) {
+      var temp_date = new Date(c_datetime.getTime());
+      while (temp_date.getDate() != n_datetime.getDate()) {
+        temp_date = new Date(temp_date.getTime() + 86400000);
         new_data.push({
-          fans: Math.round(-fans * offset + cFans),
-          datetime:
-            new Date(data[index].datetime).getTime() -
-            24 * 60 * 60 * 1000 * offset
+          datetime: format(temp_date, "YYYY-MM-DD"),
+          fans: linear_int(format(temp_date, "YYYY-MM-DD"))
         });
-        offset++;
       }
+      c_datetime = n_datetime;
+      c_fans = n_fans;
     }
   }
-  new_data.shift();
   console.log(new_data);
-  return new_data;
+  return new_data.reverse();
 }
 
 function drawChart(data) {
