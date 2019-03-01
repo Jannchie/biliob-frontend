@@ -3,6 +3,7 @@ var { convertDateToUTC } = require("./util/convertDateToUTC");
 
 function interpolation(data) {
   let new_data = [];
+  var lDate = "";
   data.forEach(e => {
     if (typeof e.datetime == "string") {
       e.datetime = e.datetime.replace("+0000", "");
@@ -14,7 +15,8 @@ function interpolation(data) {
         new Date(data[index + 1].datetime).getTime()) /
         (24 * 60 * 60 * 1000)
     );
-    if (days <= 1) {
+    if (days < 1 && format(data[index].datetime, "YYYY-MM-DD") != lDate) {
+      lDate = format(data[index].datetime, "YYYY-MM-DD");
       new_data.push(data[index]);
     } else {
       let deltaFans = data[index].fans - data[index + 1].fans;
@@ -33,6 +35,8 @@ function interpolation(data) {
       }
     }
   }
+  new_data.shift();
+  console.log(new_data);
   return new_data;
 }
 
