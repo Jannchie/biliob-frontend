@@ -16,6 +16,7 @@ function drawChart(data) {
     series: [
       {
         type: "pie",
+        selectedOffset: 1,
         name: "弹幕率（弹幕数:百次播放）",
         radius: ["25%", "30%"],
         center: ["50%", "25%"],
@@ -27,6 +28,7 @@ function drawChart(data) {
         data: [
           {
             value: data.data[0].view / 100,
+            selected: true,
             name: "百次播放"
           },
           {
@@ -38,6 +40,7 @@ function drawChart(data) {
       },
       {
         type: "pie",
+        selectedOffset: 1,
         name: "硬币率（硬币数:百次播放）",
         radius: ["25%", "30%"],
         center: ["75%", "25%"],
@@ -49,6 +52,7 @@ function drawChart(data) {
         data: [
           {
             value: data.data[0].view / 100,
+            selected: true,
             name: "百次播放"
           },
           {
@@ -61,6 +65,7 @@ function drawChart(data) {
 
       {
         type: "pie",
+        selectedOffset: 1,
         name: "收藏率（收藏数:百次播放）",
         radius: ["25%", "30%"],
         center: ["75%", "75%"],
@@ -72,6 +77,7 @@ function drawChart(data) {
         data: [
           {
             value: data.data[0].view / 100,
+            selected: true,
             name: "百次播放"
           },
           {
@@ -83,6 +89,7 @@ function drawChart(data) {
       },
       {
         type: "pie",
+        selectedOffset: 1,
         name: "分享率（分享数:百次播放）",
         radius: ["25%", "30%"],
         center: ["50%", "75%"],
@@ -94,6 +101,7 @@ function drawChart(data) {
         data: [
           {
             value: data.data[0].view / 100,
+            selected: true,
             name: "百次播放"
           },
           {
@@ -105,6 +113,7 @@ function drawChart(data) {
       },
       {
         type: "pie",
+        selectedOffset: 1,
         name: "点赞率（点赞数:百次播放）",
         radius: ["25%", "30%"],
         center: ["25%", "75%"],
@@ -116,6 +125,7 @@ function drawChart(data) {
         data: [
           {
             value: data.data[0].view / 100,
+            selected: true,
             name: "百次播放"
           },
           {
@@ -127,6 +137,7 @@ function drawChart(data) {
       },
       {
         type: "pie",
+        selectedOffset: 1,
         name: "三维(点赞：硬币：收藏)",
         radius: ["25%", "30%"],
         center: ["25%", "25%"],
