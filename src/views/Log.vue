@@ -437,6 +437,17 @@ export default {
             { text: "能够判断弹幕密度", type: "feature" }
           ],
           type: "important"
+        },
+        {
+          title: "优化与修复",
+          version: "ver.0.5.1",
+          date: "2019-03-01",
+          list: [
+            { text: "修复了粉丝增速显示异常的问题", type: "fix" },
+            { text: "使用百分比表示后列作者排名", type: "feature" },
+            { text: "美化了图表效果", type: "beautify" }
+          ],
+          type: "ordinary"
         }
       ]
     };
