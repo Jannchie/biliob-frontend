@@ -52,7 +52,7 @@ export default {
     authorData: function(val) {
       this.authorData = val;
       this.authorData.face = this.authorData.face.slice(5);
-      this.fans = val.data[0].fans;
+      this.fans = val.cFans;
     }
   },
   methods: {
