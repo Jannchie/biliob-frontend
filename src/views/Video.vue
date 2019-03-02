@@ -170,9 +170,11 @@ export default {
     },
     getDataFromAid() {
       this.$store.commit("toVideo");
-      this.axios.get("/author/" + this.$route.params.mid).then(response => {
-        this.authorData = response.data;
-      });
+      this.axios
+        .get("/author/" + this.$route.params.mid + "/info")
+        .then(response => {
+          this.authorData = response.data;
+        });
       this.axios.get("/video/" + this.$route.params.aid).then(response => {
         this.getVideoData(response);
       });
