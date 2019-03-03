@@ -95,7 +95,7 @@ export default {
         return "";
       }
       if (this.articleViewRank <= 200 && this.articleViewRank != -1) {
-        return `Top ${this.pArticleViewRank}`;
+        return `Top ${this.articleViewRank}`;
       } else {
         return this.beautify(this.pArticleViewRank);
       }

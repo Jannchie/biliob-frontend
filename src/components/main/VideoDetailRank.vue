@@ -8,7 +8,7 @@
             播放数排名
           </div>
           <div class="title font-weight-black blue--text text--darken-3">
-            {{beautify(cViewRank)}}
+            {{viewInfo}}
           </div>
           <ChevronBudget :value="dViewRank"></ChevronBudget>
         </div>
@@ -20,7 +20,7 @@
             点赞数排名
           </div>
           <div class="title font-weight-black blue--text text--darken-3">
-            {{beautify(cLikeRank)}}
+            {{likeInfo}}
           </div>
           <ChevronBudget :value="dLikeRank"></ChevronBudget>
         </div>
@@ -32,7 +32,7 @@
             硬币数排名
           </div>
           <div class="title font-weight-black blue--text text--darken-3">
-            {{beautify(cCoinRank)}}
+            {{coinInfo}}
           </div>
           <ChevronBudget :value="dCoinRank"></ChevronBudget>
         </div>
@@ -44,7 +44,7 @@
             弹幕数排名
           </div>
           <div class="title font-weight-black blue--text text--darken-3">
-            {{beautify(cDanmakuRank)}}
+            {{danmakuInfo}}
           </div>
           <ChevronBudget :value="dDanmakuRank"></ChevronBudget>
         </div>
@@ -56,7 +56,7 @@
             收藏数排名
           </div>
           <div class="title font-weight-black blue--text text--darken-3">
-            {{beautify(cFavoriteRank)}}
+            {{favoriteInfo}}
           </div>
           <ChevronBudget :value="dFavoriteRank"></ChevronBudget>
         </div>
@@ -68,7 +68,7 @@
             分享数排名
           </div>
           <div class="title font-weight-black blue--text text--darken-3">
-            {{beautify(cShareRank)}}
+            {{shareInfo}}
           </div>
           <ChevronBudget :value="dShareRank"></ChevronBudget>
         </div>
@@ -107,7 +107,13 @@ export default {
     dDanmakuRank: Number(),
     dFavoriteRank: Number(),
     dCoinRank: Number(),
-    dShareRank: Number()
+    dShareRank: Number(),
+    pViewRank: Number(),
+    pLikeRank: Number(),
+    pDanmakuRank: Number(),
+    pFavoriteRank: Number(),
+    pCoinRank: Number(),
+    pShareRank: Number()
   },
   computed: {
     formatedDate() {
@@ -119,6 +125,66 @@ export default {
       } else {
         return "载入更新时间中";
       }
+    },
+    viewInfo() {
+      if (this.cViewRank == undefined) {
+        return "";
+      }
+      if (this.cViewRank <= 200 && this.cViewRank != -1) {
+        return `Top ${this.cViewRank}`;
+      } else {
+        return this.beautify(this.pViewRank);
+      }
+    },
+    danmakuInfo() {
+      if (this.cDanmakuRank == undefined) {
+        return "";
+      }
+      if (this.cDanmakuRank <= 200 && this.cDanmakuRank != -1) {
+        return `Top ${this.cDanmakuRank}`;
+      } else {
+        return this.beautify(this.pDanmakuRank);
+      }
+    },
+    shareInfo() {
+      if (this.cShareRank == undefined) {
+        return "";
+      }
+      if (this.cShareRank <= 200 && this.cShareRank != -1) {
+        return `Top ${this.cShareRank}`;
+      } else {
+        return this.beautify(this.pShareRank);
+      }
+    },
+    favoriteInfo() {
+      if (this.cFavoriteRank == undefined) {
+        return "";
+      }
+      if (this.cFavoriteRank <= 200 && this.cFavoriteRank != -1) {
+        return `Top ${this.cFavoriteRank}`;
+      } else {
+        return this.beautify(this.pFavoriteRank);
+      }
+    },
+    likeInfo() {
+      if (this.cLikeRank == undefined) {
+        return "";
+      }
+      if (this.cLikeRank <= 200 && this.cLikeRank != -1) {
+        return `Top ${this.cLikeRank}`;
+      } else {
+        return this.beautify(this.pLikeRank);
+      }
+    },
+    coinInfo() {
+      if (this.cCoinRank == undefined) {
+        return "";
+      }
+      if (this.cCoinRank <= 200 && this.cCoinRank != -1) {
+        return `Top ${this.cCoinRank}`;
+      } else {
+        return this.beautify(this.pCoinRank);
+      }
     }
   },
   methods: {
@@ -126,7 +192,7 @@ export default {
       if (val === -1) {
         return "-";
       } else {
-        return val;
+        return `前${val}%`;
       }
     }
   }
