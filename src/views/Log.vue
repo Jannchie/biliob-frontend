@@ -38,7 +38,7 @@
   </VTimeline>
 </template>
 <script>
-import log from "../assets/log.json";
+import log from "../../static/log.json";
 
 export default {
   data() {

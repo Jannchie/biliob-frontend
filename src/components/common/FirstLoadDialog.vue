@@ -64,12 +64,16 @@
   </VDialog>
 </template>
 <script>
-import log from "../../assets/log.json";
+import log from "../../../static/log.json";
+
 export default {
   data() {
-    return { show: false, log: log.pop() };
+    return { show: Boolean(), log: Object() };
   },
   mounted() {
+    this.show = false;
+    this.log = log[log.length - 1];
+
     if (this.$cookies.get("ver") != this.log.version) {
       this.show = true;
       this.$cookies.set("ver", this.log.version, Infinity);

@@ -1,7 +1,5 @@
 var format = require("date-fns/format");
-var {
-  convertDateToUTC
-} = require("./util/convertDateToUTC");
+var { convertDateToUTC } = require("./util/convertDateToUTC");
 
 function interpolation(data) {
   data = data.sort((a, b) => {
@@ -17,8 +15,8 @@ function interpolation(data) {
     var linear_int = date => {
       return Math.round(
         ((n_fans - c_fans) / (n_datetime - c_datetime)) *
-        (new Date(date).getTime() - c_datetime) +
-        c_fans
+          (new Date(date).getTime() - c_datetime) +
+          c_fans
       );
     };
     if (c_datetime.getDate() != n_datetime.getDate()) {
@@ -34,7 +32,6 @@ function interpolation(data) {
       c_fans = n_fans;
     }
   }
-  console.log(new_data);
   return new_data.reverse();
 }
 
@@ -85,7 +82,7 @@ function drawChart(data) {
       confine: true,
       axisPointer: {
         label: {
-          formatter: function (params) {
+          formatter: function(params) {
             return Math.round(params.value);
           }
         }
@@ -96,7 +93,8 @@ function drawChart(data) {
       right: "40px",
       bottom: "90px"
     },
-    dataZoom: [{
+    dataZoom: [
+      {
         type: "inside",
         filterMode: "weakFilter"
       },
@@ -110,7 +108,7 @@ function drawChart(data) {
       type: "time",
       axisPointer: {
         label: {
-          formatter: function (params) {
+          formatter: function(params) {
             return (
               "日期：" +
               format(convertDateToUTC(new Date(params.value)), "YYYY-MM-DD")
@@ -119,27 +117,31 @@ function drawChart(data) {
         }
       }
     },
-    yAxis: [{
-      type: "value",
-      min: function (value) {
-        if (value.min > 0) {
-          return 0;
-        } else {
-          return value.min;
+    yAxis: [
+      {
+        type: "value",
+        min: function(value) {
+          if (value.min > 0) {
+            return 0;
+          } else {
+            return value.min;
+          }
+        },
+        splitLine: {
+          show: true
         }
-      },
-      splitLine: {
-        show: true
       }
-    }],
-    series: [{
-      name: "粉丝增量",
-      data: fansRate,
-      smooth: false,
-      showSymbol: false,
-      type: "bar",
-      areaStyle: {}
-    }]
+    ],
+    series: [
+      {
+        name: "粉丝增量",
+        data: fansRate,
+        smooth: false,
+        showSymbol: false,
+        type: "bar",
+        areaStyle: {}
+      }
+    ]
   };
   return Chart;
 }
