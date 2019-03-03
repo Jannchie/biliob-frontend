@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <VApp :dark="dark">
+      <FirstLoadDialog />
       <BottomNav />
       <FloatDialog />
       <NavBar />
@@ -12,6 +13,7 @@
 </template>
 
 <script>
+import FirstLoadDialog from "./components/common/FirstLoadDialog.vue";
 import BiliobFooter from "./components/common/BiliobFooter.vue";
 import BottomNav from "./components/common/BottomNav.vue";
 import NavBar from "./components/common/NavBar.vue";
@@ -23,6 +25,7 @@ export default {
   name: "App",
   components: {
     NavBar,
+    FirstLoadDialog,
     Container,
     Banner,
     FloatDialog,

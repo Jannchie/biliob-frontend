@@ -57,7 +57,7 @@ function drawChart(data) {
         sizeRange: [16, maxSize],
         rotationRange: [0, 0],
         rotationStep: 45,
-        gridSize: 8,
+        gridSize: 32,
         drawOutOfBound: false,
 
         textStyle: {
