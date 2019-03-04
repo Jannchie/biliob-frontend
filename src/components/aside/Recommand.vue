@@ -48,4 +48,7 @@ export default {
   position: absolute;
   top: 5px;
 }
+.v-card {
+  margin-bottom: 5px;
+}
 </style>

@@ -734,5 +734,20 @@
       }
     ],
     "type": "important"
+  },
+  {
+    "title": "添加新功能",
+    "version": "ver.2.1.1",
+    "date": "2019-03-04",
+    "list": [{
+        "text": "美化了弹幕云的显示",
+        "type": "beautify"
+      },
+      {
+        "text": "在多个页面增加了友情链接模块",
+        "type": "feature"
+      }
+    ],
+    "type": "unimportant"
   }
 ]
