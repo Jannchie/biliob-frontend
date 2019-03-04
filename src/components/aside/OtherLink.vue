@@ -80,7 +80,7 @@
         >
           <VIcon style="vertical-align: middle;margin-right:5px">
             mdi-language-python-text
-          </VIcon>激情赞助 上海蔚文印务科技有限公司
+          </VIcon>激情赞助 蔚文印刷
         </a><br>
       </span>
       <br>
@@ -108,7 +108,9 @@ a:hover {
   text-align: center;
   text-justify: auto;
 }
-
+.v-card {
+  margin-bottom: 5px;
+}
 .box {
   vertical-align: middle;
   margin-right: 5px;

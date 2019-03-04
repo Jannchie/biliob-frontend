@@ -37,6 +37,7 @@
         title="UP主播放最高视频"
         :author-top-video="authorTopVideo"
       />
+      <OtherLink slot="other-link" />
     </AuthorAside>
   </MainLayout>
 </template>
@@ -51,12 +52,14 @@ import AuthorAside from "../components/aside/AuthorDetailAside.vue";
 import AuthorInfo from "../components/aside/AuthorInfo.vue";
 import AuthorVideo from "../components/aside/AuthorVideo.vue";
 import AuthorOperation from "../components/aside/AuthorOperation.vue";
+import OtherLink from "../components/aside/OtherLink.vue";
 // import AuthorDetailChannel from "../components/main/AuthorDetailChannel.vue";
 export default {
   name: "AuthorList",
   components: {
     AuthorMain,
     MainLayout,
+    OtherLink,
     AuthorAside,
     AuthorDetailRank,
     AuthorDetailFansChart,

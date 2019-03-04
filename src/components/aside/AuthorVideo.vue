@@ -65,7 +65,7 @@ export default {
 }
 
 .aside-card {
-  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .video-list {

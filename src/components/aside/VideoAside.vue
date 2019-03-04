@@ -4,6 +4,7 @@
     <slot name="video-to-bilibili" />
     <slot name="other-video" />
     <slot name="recommand" />
+    <slot name="other-link" />
   </div>
 </template>
 

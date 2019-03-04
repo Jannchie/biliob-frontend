@@ -62,6 +62,7 @@
         :title="videoData.title"
       />
       <Recommand slot="recommand" />
+      <OtherLink slot="other-link" />
     </VideoAside>
   </MainLayout>
 </template>
@@ -73,6 +74,7 @@ import VideoDetailPieChart from "../components/main/VideoDetailPieChart.vue";
 import DetailCharts from "../components/main/DetailCharts.vue";
 import MainLayout from "../components/common/MainLayout.vue";
 import VideoAside from "../components/aside/VideoAside.vue";
+import OtherLink from "../components/aside/OtherLink.vue";
 import VideoMain from "../components/main/VideoMain.vue";
 import AuthorInfo from "../components/aside/AuthorInfo.vue";
 import AuthorVideo from "../components/aside/AuthorVideo.vue";
@@ -103,6 +105,7 @@ export default {
   name: "VideoDetail",
   components: {
     MainLayout,
+    OtherLink,
     VideoDetailRank,
     VideoDetailTitle,
     VideoDetailMainChart,
