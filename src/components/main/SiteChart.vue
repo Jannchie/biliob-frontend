@@ -1,14 +1,14 @@
 <template>
   <VCard class="card">
-    <VCardText class="card-holder">
+    <VResponsive :aspect-ratio="16/6">
       <Chart
         class="chart"
         :theme="theme"
         :auto-resize="true"
         :options="siteOptions"
-        style="width:100%;"
+        style="width:100%;height:100%"
       />
-    </VCardText>
+    </VResponsive>
   </VCard>
 </template>
 
