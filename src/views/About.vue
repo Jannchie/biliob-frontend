@@ -23,7 +23,7 @@
           <li>图表库使用了Echart.js。由百度开源。</li>
           <li>
             前端UI组件库采用的是Vuetify.js，由歪果仁维护。
-            这个前端UI组件库的设计语言采用Martial Design。
+            这个前端UI组件库的设计语言采用Material Design。
             是一种谷歌公司推出的移动端优先的设计语言。
           </li>
           <br>
@@ -41,11 +41,17 @@
             存取爬虫爬取的结构奇葩的数据或许用这样的非关系数据库更好。
           </li>
           <br>
+          <h4>缓存</h4>
+          <li>
+            缓存数据库采用的是Redis。
+            Redis还用于分布式爬虫的消息队列。
+          </li>
+          <br>
           <h4>持续集成</h4>
           <li>后端持续集成目前采用的是Jenkins。前端目前使用Travis-CI。</li>
           <br>
           <h4>其他支持</h4>
-          <li>服务器由阿里云提供支持，使用了CDN内容分发网络服务。</li>
+          <li>服务器由阿里云、腾讯云提供支持，使用了CDN内容分发网络服务。</li>
         </VCardText>
       </VCard>
       <VCard>
@@ -59,3 +65,8 @@
     </div>
   </div>
 </template>
+<style scoped>
+.v-card {
+  margin-bottom: 5px;
+}
+</style>

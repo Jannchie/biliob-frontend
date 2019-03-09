@@ -765,6 +765,12 @@
     }, {
       "text": "点击事件卡片跳转到相应UP主或视频页面",
       "type": "feature"
+    }, {
+      "text": "添加了\"显示更多\"的功能",
+      "type": "feature"
+    }, {
+      "text": "更新关于页面",
+      "type": "fix"
     }],
     "type": "important"
   }
