@@ -54,8 +54,8 @@
               </div>
             </div>
           </VCardTitle>
-          <VDivider></VDivider>
-          <VCardText @click.stop="toVideo(eachData.mid,eachData.cause.aid)">
+          <VDivider v-if="eachData['cause'] != undefined"></VDivider>
+          <VCardText v-if="eachData['cause'] != undefined" @click.stop="toVideo(eachData.mid,eachData.cause.aid)">
             <div style="display:flex;">
               <img
                 :src="eachData.cause.pic"
@@ -75,6 +75,11 @@
             </div>
           </VCardText>
         </VCard>
+        <NextBtn
+          key="-1"
+          :api-url="apiUrl"
+          @getMoreData="getMoreData"
+        ></NextBtn>
       </VSlideYTransition>
     </div>
     <div slot="aside-cards">
@@ -87,7 +92,6 @@
           此页面展示了粉丝数发生剧烈波动的UP主。<br>
           由于<span class="text--darken-2 red--text">发布视频</span>、<span class="text--darken-2 blue--text">抽奖开奖</span>、<span class="text--darken-2 green--text">石锤锤爆</span>等原因，UP主的粉丝数可能发生剧烈变化，而这种剧烈变化是观测者们喜闻乐见的。<br>
           BiliOB观测者将这些剧烈波动记录下来，并集中进行展示。
-
         </VCardText>
         <VDivider></VDivider>
         <VCardText class="caption">
@@ -117,22 +121,35 @@
 <script>
 import MainLayout from "../components/common/MainLayout.vue";
 import MyBadget from "../components/common/MyBadget.vue";
+import NextBtn from "../components/common/NextBtn.vue";
 import OtherLink from "../components/aside/OtherLink.vue";
 
 export default {
-  components: { MainLayout, MyBadget, OtherLink },
+  components: { MainLayout, MyBadget, OtherLink, NextBtn },
   data() {
     return {
-      fansVariationData: Object()
+      fansVariationData: Object(),
+      last: Boolean(),
+      page: Number(),
+      apiUrl: String()
     };
   },
   mounted() {
     this.$store.commit("toElse");
     this.axios.get("/event/fans-variation").then(response => {
       this.fansVariationData = response.data.content;
+      this.last = response.data.last;
+      this.page = response.data.number;
+      this.apiUrl = `/event/fans-variation?page=${this.page + 1}`;
     });
   },
   methods: {
+    getMoreData(content, number) {
+      this.apiUrl = `/event/fans-variation?page=${number + 1}`;
+      content.forEach(e => {
+        this.fansVariationData.push(e);
+      });
+    },
     toAuthor(mid) {
       this.$router.push(`/author/${mid}`);
     },
