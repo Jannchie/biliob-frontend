@@ -55,7 +55,10 @@
             </div>
           </VCardTitle>
           <VDivider v-if="eachData['cause'] != undefined"></VDivider>
-          <VCardText v-if="eachData['cause'] != undefined" @click.stop="toVideo(eachData.mid,eachData.cause.aid)">
+          <VCardText
+            v-if="eachData['cause'] != undefined"
+            @click.stop="toVideo(eachData.mid,eachData.cause.aid)"
+          >
             <div style="display:flex;">
               <img
                 :src="eachData.cause.pic"
@@ -96,9 +99,9 @@
         <VDivider></VDivider>
         <VCardText class="caption">
           一共有这样几种可能：
-          <li> <span class="text--darken-2 red--text">大量涨粉</span>: 日涨粉数超过上周平均的25倍</li>
-          <li> <span class="text--darken-2 red--text">史诗级涨粉</span>: 日涨粉数超过上周平均的50倍</li>
-          <li> <span class="text--darken-2 red--text">传说级涨粉</span>: 日涨粉数超过上周平均的100倍</li>
+          <li> <span class="text--darken-2 red--text">大量涨粉</span>: 日涨粉数超上周平均的25倍</li>
+          <li> <span class="text--darken-2 red--text">史诗级涨粉</span>: 日涨粉数超10W或超上周平均的50倍</li>
+          <li> <span class="text--darken-2 red--text">传说级涨粉</span>: 日涨粉数超20W或超上周平均的100倍</li>
           <li> <span class="text--darken-2 green--text">急转直下</span>: 上升轨道中的UP主突然掉粉</li>
           <li> <span class="text--darken-2 green--text">大量掉粉</span>: 每日掉粉数突破5K</li>
           <li> <span class="text--darken-2 green--text">雪崩级掉粉</span>: 每日掉粉数突破2W</li>

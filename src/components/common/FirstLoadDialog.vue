@@ -47,17 +47,7 @@
           </div>
         </div>
       </VCardText>
-      <VDivider></VDivider>
-      <VCardText class="caption">
-        <h3>公告</h3>
-        因技术原因，这几日网站常常崩溃导致无法访问。
-        <br>
-        因此给所有在2019-03-04之前注册了的观测者汇入<span class="green--text font-weight-black">50积分</span>
-        <br>
-        积分可以于一系列耗费计算资源或存储空间的操作，比如弹幕分析、刷新数据等。
-        <br>
-        积分只有用户自身与管理员可见。消耗积分可以获得经验值。
-      </VCardText>
+
       <VDivider></VDivider>
 
       <VCardActions>
