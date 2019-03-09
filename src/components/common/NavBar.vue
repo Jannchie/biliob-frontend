@@ -172,7 +172,7 @@
             <VIcon>mdi-bulletin-board</VIcon>
           </VListTileAvatar>
           <VListTileContent>
-            <VListTileTitle>B站事件</VListTileTitle>
+            <VListTileTitle>UP主粉丝波动数情报</VListTileTitle>
             <VListTileSubTitle>一分钟，我要看到所有的资料</VListTileSubTitle>
           </VListTileContent>
         </VListTile>

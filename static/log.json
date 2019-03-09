@@ -749,5 +749,23 @@
       }
     ],
     "type": "unimportant"
+  }, {
+    "title": "重构B站事件页面",
+    "version": "ver.2.2.0",
+    "date": "2019-03-09",
+    "list": [{
+      "text": "事件页面更名为UP主粉丝波动数情报",
+      "type": "beautify"
+    }, {
+      "text": "优化事件分类及算法",
+      "type": "feature"
+    }, {
+      "text": "增加事件信息显示",
+      "type": "feature"
+    }, {
+      "text": "点击事件卡片跳转到相应UP主或视频页面",
+      "type": "feature"
+    }],
+    "type": "important"
   }
 ]
