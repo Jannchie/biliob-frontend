@@ -8,10 +8,10 @@
           ripple
           class="event-card"
         >
-          <div :class="`float-info display-3 font-weight-black ${getColor(eachData.info)}--text`">
-            {{eachData.info}}
-          </div>
           <VCardTitle @click.stop="toAuthor(eachData.mid)">
+            <div :class="`float-info display-3 font-weight-black ${getColor(eachData.info)}--text`">
+              {{eachData.info}}
+            </div>
             <div
               style="display:flex;"
               class="text-no-wrap"
@@ -190,7 +190,7 @@ export default {
 }
 .float-info {
   position: absolute;
-  left: 70px;
+  right: 20px;
   opacity: 0.15;
 }
 .video-pic {
