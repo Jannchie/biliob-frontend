@@ -1,6 +1,3 @@
-// var format = require("date-fns/format");
-// var { convertDateToUTC } = require("./util/convertDateToUTC");
-
 function drawChart(data) {
   var max = 0;
   var indicator = [];
