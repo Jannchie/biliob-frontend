@@ -24,7 +24,7 @@ function drawChart(data) {
       }
     },
     grid: {
-      bottom: "20px",
+      bottom: "30px",
       right: "10px",
       left: "50px"
     },
