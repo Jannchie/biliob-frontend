@@ -1,7 +1,7 @@
 <template>
   <MainLayout>
-    <FavoriteAuthorListMain slot="main-cards"/>
-    <AuthorListAside slot="aside-cards"/>
+    <FavoriteAuthorListMain slot="main-cards" />
+    <AuthorListAside slot="aside-cards" />
   </MainLayout>
 </template>
 

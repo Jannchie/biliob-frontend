@@ -773,5 +773,27 @@
       "type": "fix"
     }],
     "type": "important"
+  },
+  {
+    "title": "修修补补",
+    "version": "ver.2.2.1",
+    "date": "2019-03-14",
+    "list": [{
+        "text": "美化粉丝波动页面",
+        "type": "beautify"
+      },
+      {
+        "text": "修复部分粉丝波动错误",
+        "type": "fix"
+      },
+      {
+        "text": "修复在ios环境下粉丝变动显示异常的错误",
+        "type": "fix"
+      }, {
+        "text": "修复在ios环境下首页日期显示异常的错误",
+        "type": "fix"
+      }
+    ],
+    "type": "unimportant"
   }
 ]

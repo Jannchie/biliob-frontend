@@ -1,14 +1,14 @@
 <template>
   <VCard class="card">
-    <VCardText class="card-holder">
+    <VResponsive :aspect-ratio="aspectRatio">
       <Chart
         class="chart"
         :theme="theme"
         :auto-resize="true"
         :options="siteOptions"
-        style="width:100%;"
+        style="width:100%;height:100%"
       />
-    </VCardText>
+    </VResponsive>
   </VCard>
 </template>
 
@@ -25,6 +25,13 @@ export default {
   computed: {
     isDark() {
       return this.$store.state.dark;
+    },
+    aspectRatio() {
+      if (document.body.clientWidth <= 600) {
+        return 5 / 3;
+      } else {
+        return 8 / 3;
+      }
     }
   },
   watch: {
