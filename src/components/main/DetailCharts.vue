@@ -35,6 +35,9 @@ export default {
     }
   },
   mounted() {
+    if (document.body.clientWidth <= 768) {
+      this.aspectRatio = 5 / 3;
+    }
     if (this.$store.state.dark) {
       this.theme = "mydark";
     } else {
