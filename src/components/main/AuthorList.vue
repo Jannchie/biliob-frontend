@@ -10,18 +10,17 @@
         <VCard style="margin-bottom:5px">
           <VTabs fixed-tabs>
             <VTab @click="sortChange(0)">
-              粉丝数排序
+              粉丝总数
             </VTab>
             <VTab @click="sortChange(1)">
-              播放总量排序
+              播放总量
             </VTab>
             <VTab @click="sortChange(2)">
-              专栏阅读量排序
+              专栏阅读
             </VTab>
           </VTabs>
         </VCard>
         <VSlideYTransition group>
-
           <VCard
             v-for="eachAuthor in authorList.content"
             :key="eachAuthor.mid"
