@@ -1,5 +1,19 @@
 <template>
   <nav>
+    <VSnackbar
+      v-model="snackbar"
+      :timeout="3000"
+      top
+    >
+      {{ snackbarText }}
+      <VBtn
+        color="pink"
+        flat
+        @click="snackbar = false"
+      >
+        Close
+      </VBtn>
+    </VSnackbar>
     <VToolbar
       style="background-color: #444"
       class="toolbar"
@@ -256,6 +270,7 @@
         <VDivider />
       </VList>
     </VNavigationDrawer>
+
   </nav>
 </template>
 <script>
@@ -269,6 +284,8 @@ export default {
     return {
       bottomNav: null,
       drawer: null,
+      snackbar: false,
+      snackbarText: String(),
       bottomNavShow: true,
       offsetTop: 0,
       imgSrc: String(),
@@ -423,7 +440,8 @@ export default {
       this.axios
         .post("/user/check-in")
         .then(response => {
-          alert(response.data.msg);
+          this.snackbarText = response.data.msg;
+          this.snackbar = true;
           if (response.data.code == 1) {
             this.$store.commit("setCredit", response.data.data.credit);
             this.$store.commit("setExp", response.data.data.exp);

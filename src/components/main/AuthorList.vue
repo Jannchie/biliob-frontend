@@ -7,8 +7,20 @@
           hint="请输入UP主名称，或者uid"
           @getSearchValue="getSearchValue"
         />
+        <VCard style="margin-bottom:5px">
+          <VTabs fixed-tabs>
+            <VTab @click="sortChange(0)">
+              粉丝总数
+            </VTab>
+            <VTab @click="sortChange(1)">
+              播放总量
+            </VTab>
+            <VTab @click="sortChange(2)">
+              专栏阅读
+            </VTab>
+          </VTabs>
+        </VCard>
         <VSlideYTransition group>
-
           <VCard
             v-for="eachAuthor in authorList.content"
             :key="eachAuthor.mid"
@@ -74,12 +86,14 @@ export default {
   },
   data() {
     return {
+      sort: 0,
       authorList: [],
       currentApiurl: String(),
       currentPage: 0,
       text: String(),
       nextBtnText: "请给我更多...",
-      nextBtnDisabled: false
+      nextBtnDisabled: false,
+      requestUrl: String()
     };
   },
   watch: {
@@ -91,7 +105,9 @@ export default {
             "?page=" +
             this.currentPage +
             "&text=" +
-            this.text
+            this.text +
+            "&sort=" +
+            this.sort
         )
         .then(response => {
           this.authorList.content = response.data.content;
@@ -99,7 +115,11 @@ export default {
     },
     currentPage: function changePage(page) {
       this.axios
-        .get(this.currentApiurl + "?page=" + page + "&text=" + this.text)
+        .get(
+          `${this.currentApiurl}?page=${page}&text=${this.text}&sort=${
+            this.sort
+          }`
+        )
         .then(response => {
           // 判断是否为最后一页
           if (response.data.last) {
@@ -115,16 +135,19 @@ export default {
   created() {
     this.currentApiurl = "/author";
     this.axios.get(this.currentApiurl).then(response => {
+      this.refreshList(response);
+    });
+  },
+  methods: {
+    refreshList(response) {
+      this.authorList = [];
       // 判断是否为最后一页
       if (response.data.last) {
         this.nextBtnText = "没有更多了";
         this.nextBtnDisabled = true;
       }
       this.authorList = response.data;
-    });
-    window.addEventListener("scroll", this.onScroll, true);
-  },
-  methods: {
+    },
     onScroll() {
       var scrollTop =
         document.documentElement.scrollTop || document.body.scrollTop;
@@ -146,6 +169,19 @@ export default {
       this.$router.push({
         path: "/author/" + row.mid + "/author/" + row.aid
       });
+    },
+    sortChange(sort) {
+      this.sort = sort;
+      this.currentPage = 0;
+      this.axios
+        .get(
+          `${this.currentApiurl}?page=${this.currentPage}&text=${
+            this.text
+          }&sort=${this.sort}`
+        )
+        .then(response => {
+          this.refreshList(response);
+        });
     }
   }
 };

@@ -162,6 +162,7 @@ p {
 
 .video-title {
   font-size: 15px;
+  
 }
 
 .observe-status {
