@@ -1,16 +1,21 @@
 <template>
   <div>
+    <!-- <AuthorVersusCard
+      :a-mid="122879"
+      :b-mid="777536"
+    /> -->
     <SiteChart :site-data="siteData" />
-    <DetailCharts :options="onlineOptions"></DetailCharts>
+    <!-- <DetailCharts :options="onlineOptions"></DetailCharts> -->
   </div>
 </template>
 <script>
+// import AuthorVersusCard from "../components/main/AuthorVersusCard.vue";
 import SiteChart from "../components/main/SiteChart.vue";
-import DetailCharts from "../components/main/DetailCharts.vue";
-import getOnlineOptions from "../charts/online.js";
+// import DetailCharts from "../components/main/DetailCharts.vue";
+// import getOnlineOptions from "../charts/online.js";
 
 export default {
-  components: { SiteChart, DetailCharts },
+  components: { SiteChart },
   data() {
     return {
       siteData: Object(),
@@ -22,9 +27,9 @@ export default {
     this.axios.get(`/site`).then(response => {
       this.siteData = response.data;
     });
-    this.axios.get(`/video/online`).then(response => {
-      this.onlineOptions = getOnlineOptions(response.data);
-    });
+    // this.axios.get(`/video/online`).then(response => {
+    //   this.onlineOptions = getOnlineOptions(response.data);
+    // });
   }
 };
 </script>

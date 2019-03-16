@@ -795,5 +795,18 @@
       }
     ],
     "type": "unimportant"
+  },
+  {
+    "title": "更多排序",
+    "version": "ver.2.2.2",
+    "date": "2019-03-16",
+    "list": [{
+      "text": "以更多方式排序UP主与视频列表",
+      "type": "feature"
+    }, {
+      "text": "美化签到提示",
+      "type": "beautify"
+    }],
+    "type": "unimportant"
   }
 ]
