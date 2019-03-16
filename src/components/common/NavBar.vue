@@ -2,7 +2,7 @@
   <nav>
     <VSnackbar
       v-model="snackbar"
-      timeout="3000"
+      :timeout="3000"
       top
     >
       {{ snackbarText }}
