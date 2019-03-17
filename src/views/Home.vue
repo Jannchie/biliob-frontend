@@ -1,21 +1,21 @@
 <template>
   <div>
-    <!-- <AuthorVersusCard
+    <AuthorVersusCard
       :a-mid="122879"
       :b-mid="777536"
-    /> -->
+    />
     <SiteChart :site-data="siteData" />
     <!-- <DetailCharts :options="onlineOptions"></DetailCharts> -->
   </div>
 </template>
 <script>
-// import AuthorVersusCard from "../components/main/AuthorVersusCard.vue";
+import AuthorVersusCard from "../components/main/AuthorVersusCard.vue";
 import SiteChart from "../components/main/SiteChart.vue";
 // import DetailCharts from "../components/main/DetailCharts.vue";
 // import getOnlineOptions from "../charts/online.js";
 
 export default {
-  components: { SiteChart },
+  components: { SiteChart, AuthorVersusCard },
   data() {
     return {
       siteData: Object(),

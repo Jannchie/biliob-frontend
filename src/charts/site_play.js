@@ -4,7 +4,6 @@ function drawChart(data) {
   var xData = [];
   var yData = [];
   data.forEach(e => {
-    console.log(e.datetime);
     xData.unshift(format(new Date(e.datetime.replace(/-/g, "/")), "HH:mm"));
     yData.unshift(e.playOnline);
   });
