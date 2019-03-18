@@ -105,8 +105,6 @@ function drawChart(data) {
     },
     series: series
   };
-  console.log(series);
-
   return Chart;
 }
 export default drawChart;
