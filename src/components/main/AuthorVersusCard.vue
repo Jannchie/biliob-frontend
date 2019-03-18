@@ -6,17 +6,23 @@
           class="competitor-div"
           style="flex-direction:row-reverse"
         >
-          <VAvatar style="margin-left: 10px">
+          <VAvatar
+            style="margin-left: 10px"
+            @click.stop="jumpToAuthorPage(aMid)"
+          >
             <img :src="aFace">
           </VAvatar>
-          <div style="text-align:end">
-            <div class="hidden-md-and-down">
+          <div
+            style="text-align:end"
+            class="hidden-lg-and-down"
+          >
+            <div>
               {{aName}}
             </div>
-            <div class="caption hidden-md-and-down">{{aOfficial}}</div>
+            <div class="caption">{{aOfficial}}</div>
           </div>
           <div
-            class="r-fans-counter-mobile  hidden-md-and-up"
+            class="r-fans-counter-mobile hidden-md-and-up"
             style="align-items: center;"
           >
             <div class="caption">粉丝数</div>
@@ -28,7 +34,7 @@
             <div class="caption">万</div>
           </div>
           <div
-            class="r-fans-counter display-1 hidden-sm-and-down"
+            class="r-fans-counter title hidden-sm-and-down"
             style="align-items: center;"
           >
             <VOdometer
@@ -48,14 +54,17 @@
           </div>
         </div>
         <VCardText class="competitor-div">
-          <VAvatar style="margin-right: 10px">
+          <VAvatar
+            style="margin-right: 10px"
+            @click.stop="jumpToAuthorPage(bMid)"
+          >
             <img :src="bFace">
           </VAvatar>
-          <div>
-            <div class="hidden-md-and-down">
+          <div class="hidden-lg-and-down">
+            <div>
               {{bName}}
             </div>
-            <div class="caption hidden-md-and-down">{{bOfficial}}</div>
+            <div class="caption">{{bOfficial}}</div>
           </div>
           <div
             class="l-fans-counter-mobile hidden-md-and-up"
@@ -70,7 +79,7 @@
             <div class="caption">万</div>
           </div>
           <div
-            class="l-fans-counter display-1 hidden-sm-and-down"
+            class="l-fans-counter title hidden-sm-and-down"
             style="align-items: center;"
           >
             <VOdometer
@@ -132,6 +141,9 @@ export default {
         this.bFans = response.data.cFans;
         this.bFace = response.data.face;
       });
+    },
+    jumpToAuthorPage(mid) {
+      this.$router.push(`/author/${mid}`);
     }
   }
 };
