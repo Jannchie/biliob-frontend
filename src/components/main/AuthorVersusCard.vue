@@ -1,6 +1,7 @@
 <template>
   <div style="display: flex;margin-bottom:5px; flex-wrap: wrap">
     <VCard class="versus-card">
+
       <div style="display: flex">
         <VCardText style="display: flex; flex-direction:row-reverse">
           <VAvatar style="margin-left: 10px">
@@ -18,8 +19,9 @@
           <div class="title font-weight-black red--text text--darken-2">
             VS
           </div>
-          <div class="caption">
-            △{{aFans-bFans}}
+          <div>
+            <span>△</span>
+            <VOdometer :value="deltaFans"></VOdometer>
           </div>
         </div>
         <VCardText style="display: flex;">
@@ -38,7 +40,10 @@
   </div>
 </template>
 <script>
+import VOdometer from "../common/VOdometer.vue";
+
 export default {
+  components: { VOdometer },
   props: {
     aMid: Number(),
     bMid: Number()
@@ -55,19 +60,34 @@ export default {
       bFace: Number()
     };
   },
+  computed: {
+    deltaFans() {
+      if (this.aFans !== 0 && this.bFans !== 0) {
+        return this.aFans - this.bFans;
+      } else {
+        return 0;
+      }
+    }
+  },
   mounted() {
-    this.axios.get(`/author/${this.aMid}/info`).then(response => {
-      this.aName = response.data.name;
-      this.aOfficial = response.data.official;
-      this.aFans = response.data.cFans;
-      this.aFace = response.data.face;
-    });
-    this.axios.get(`/author/${this.bMid}/info`).then(response => {
-      this.bName = response.data.name;
-      this.bOfficial = response.data.official;
-      this.bFans = response.data.cFans;
-      this.bFace = response.data.face;
-    });
+    this.refresh();
+    setInterval(this.refresh, 10000);
+  },
+  methods: {
+    refresh() {
+      this.axios.get(`/author/${this.aMid}/info`).then(response => {
+        this.aName = response.data.name;
+        this.aOfficial = response.data.official;
+        this.aFans = response.data.cFans;
+        this.aFace = response.data.face;
+      });
+      this.axios.get(`/author/${this.bMid}/info`).then(response => {
+        this.bName = response.data.name;
+        this.bOfficial = response.data.official;
+        this.bFans = response.data.cFans;
+        this.bFace = response.data.face;
+      });
+    }
   }
 };
 </script>
