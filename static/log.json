@@ -808,5 +808,17 @@
       "type": "beautify"
     }],
     "type": "unimportant"
+  }, {
+    "title": "首页粉丝数榜首争夺",
+    "version": "ver.2.3.0",
+    "date": "2019-03-18",
+    "list": [{
+      "text": "引入odometer滚动数字效果",
+      "type": "beautify"
+    }, {
+      "text": "添加首页粉丝数榜首争夺卡片",
+      "type": "feature"
+    }],
+    "type": "important"
   }
 ]

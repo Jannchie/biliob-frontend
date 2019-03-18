@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  props: { options: Object(), aspectRatio: { type: Number, default: 2 } },
+  props: { options: Object() },
   data() {
     return {
       videoData: {},
@@ -23,6 +23,13 @@ export default {
   computed: {
     isDark() {
       return this.$store.state.dark;
+    },
+    aspectRatio() {
+      if (document.body.clientWidth > 768) {
+        return 2;
+      } else {
+        return 5 / 3;
+      }
     }
   },
   watch: {
@@ -34,9 +41,10 @@ export default {
       }
     }
   },
+
   mounted() {
-    if (document.body.clientWidth <= 768) {
-      this.aspectRatio = 5 / 3;
+    if (document.body.clientWidth > 768) {
+      this.aspectRatio = 2;
     }
     if (this.$store.state.dark) {
       this.theme = "mydark";
