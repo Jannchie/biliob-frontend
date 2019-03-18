@@ -1,17 +1,41 @@
 <template>
   <div style="display: flex;margin-bottom:5px; flex-wrap: wrap">
     <VCard class="versus-card">
-
       <div style="display: flex">
-        <VCardText style="display: flex; flex-direction:row-reverse">
+        <VCardText
+          class="competitor-div"
+          style="flex-direction:row-reverse"
+        >
           <VAvatar style="margin-left: 10px">
             <img :src="aFace">
           </VAvatar>
           <div style="text-align:end">
-            <div>
+            <div class="hidden-md-and-down">
               {{aName}}
             </div>
             <div class="caption hidden-md-and-down">{{aOfficial}}</div>
+          </div>
+          <div
+            class="r-fans-counter-mobile  hidden-md-and-up"
+            style="align-items: center;"
+          >
+            <div class="caption">粉丝数</div>
+            <VOdometer
+              class="font-weight-black body-2"
+              :value="aFans/10000"
+              format="(ddd).d"
+            >{{aFans/10000}}</VOdometer>
+            <div class="caption">万</div>
+          </div>
+          <div
+            class="r-fans-counter display-1 hidden-sm-and-down"
+            style="align-items: center;"
+          >
+            <VOdometer
+              class="font-weight-light blue--text text--darken-1"
+              :value="aFans"
+              format="(,ddd).d"
+            ></VOdometer>
           </div>
         </VCardText>
         <div class="center-info">
@@ -20,19 +44,40 @@
             VS
           </div>
           <div>
-            <span>△</span>
             <VOdometer :value="deltaFans"></VOdometer>
           </div>
         </div>
-        <VCardText style="display: flex;">
+        <VCardText class="competitor-div">
           <VAvatar style="margin-right: 10px">
             <img :src="bFace">
           </VAvatar>
           <div>
-            <div>
+            <div class="hidden-md-and-down">
               {{bName}}
             </div>
             <div class="caption hidden-md-and-down">{{bOfficial}}</div>
+          </div>
+          <div
+            class="l-fans-counter-mobile hidden-md-and-up"
+            style="align-items: center;"
+          >
+            <div class="caption">粉丝数</div>
+            <VOdometer
+              class="font-weight-black body-2"
+              :value="bFans/10000"
+              format="(ddd).d"
+            >{{aFans/10000}}</VOdometer>
+            <div class="caption">万</div>
+          </div>
+          <div
+            class="l-fans-counter display-1 hidden-sm-and-down"
+            style="align-items: center;"
+          >
+            <VOdometer
+              class="font-weight-light blue--text text--darken-1"
+              :value="bFans"
+              format="(,ddd).d"
+            ></VOdometer>
           </div>
         </VCardText>
       </div>
@@ -103,5 +148,30 @@ export default {
   flex-direction: column;
   flex-shrink: 0;
   padding: 0 5px;
+}
+.competitor-div {
+  display: flex;
+  padding: 16px 5px;
+  align-items: center;
+}
+.r-fans-counter-mobile {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+.r-fans-counter {
+  display: flex;
+  margin: auto;
+}
+
+.l-fans-counter {
+  display: flex;
+  margin: auto;
+}
+
+.l-fans-counter-mobile {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
 }
 </style>
