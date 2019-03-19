@@ -39,13 +39,11 @@
           >
             <div style="padding:5px;display:flex">
               <div>
-                <VResponsive :aspect-ratio="16/9">
-                  <VImg
-                    style="border-radius:5px;width:120px;height:80px"
-                    :src="eachVideo.pic.slice(5)"
-                    :lazy-src="eachVideo.pic.slice(5)"
-                  />
-                </VResponsive>
+                <VImg
+                  style="border-radius:5px;width:120px;height:80px"
+                  :src="eachVideo.pic.replace('http:','')"
+                  :lazy-src="eachVideo.pic.replace('http:','')"
+                />
               </div>
               <div style="margin-left:10px;overflow:hidden">
                 <div class="font-weight-bold video-title text-no-wrap text-truncate">
@@ -148,7 +146,6 @@ export default {
   methods: {
     refreshList(response) {
       this.videoList = response.data;
-      this.face = response.data.content.pic;
       // 判断是否为最后一页
       if (response.data.last) {
         this.nextBtnText = "没有更多了";
