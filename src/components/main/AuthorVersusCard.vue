@@ -19,7 +19,7 @@
             style="text-align:end"
             class="hidden-lg-and-down"
           >
-            <div>
+            <div class="competitor-title">
               {{aTitle}}
             </div>
             <div>
@@ -66,7 +66,7 @@
             />
           </VAvatar>
           <div class="hidden-lg-and-down">
-            <div>
+            <div class="competitor-title">
               {{bTitle}}
             </div>
             <div>
@@ -198,5 +198,8 @@ export default {
   display: flex;
   flex-direction: column;
   margin: auto;
+}
+.competitor-title {
+  font-weight: 900;
 }
 </style>
