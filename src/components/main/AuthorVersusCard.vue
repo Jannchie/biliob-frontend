@@ -10,12 +10,18 @@
             style="margin-left: 10px"
             @click.stop="jumpToAuthorPage(aMid)"
           >
-            <img :src="aFace">
+            <VImg
+              :src="aFace.replace('http:','')"
+              :lazy-src="aFace.replace('http:','')"
+            />
           </VAvatar>
           <div
             style="text-align:end"
             class="hidden-lg-and-down"
           >
+            <div>
+              {{aTitle}}
+            </div>
             <div>
               {{aName}}
             </div>
@@ -26,11 +32,7 @@
             style="align-items: center;"
           >
             <div class="caption">粉丝数</div>
-            <VOdometer
-              class="font-weight-black body-2"
-              :value="aFans/10000"
-              format="(ddd).d"
-            >{{aFans/10000}}</VOdometer>
+            <div class="font-weight-black body-2 blue--text text--darken-1">{{(aFans/10000).toFixed(2)}}</div>
             <div class="caption">万</div>
           </div>
           <div
@@ -45,7 +47,7 @@
           </div>
         </VCardText>
         <div class="center-info">
-          <div class="caption font-weight-black">粉丝数榜首争夺</div>
+          <div class="caption font-weight-black">{{title}}</div>
           <div class="title font-weight-black red--text text--darken-2">
             VS
           </div>
@@ -58,9 +60,15 @@
             style="margin-right: 10px"
             @click.stop="jumpToAuthorPage(bMid)"
           >
-            <img :src="bFace">
+            <VImg
+              :src="bFace.replace('http:','')"
+              :lazy-src="bFace.replace('http:','')"
+            />
           </VAvatar>
           <div class="hidden-lg-and-down">
+            <div>
+              {{bTitle}}
+            </div>
             <div>
               {{bName}}
             </div>
@@ -71,11 +79,7 @@
             style="align-items: center;"
           >
             <div class="caption">粉丝数</div>
-            <VOdometer
-              class="font-weight-black body-2"
-              :value="bFans/10000"
-              format="(ddd).d"
-            >{{aFans/10000}}</VOdometer>
+            <div class="font-weight-black body-2 blue--text text--darken-1">{{(bFans/10000).toFixed(2)}}</div>
             <div class="caption">万</div>
           </div>
           <div
@@ -100,18 +104,21 @@ export default {
   components: { VOdometer },
   props: {
     aMid: Number(),
-    bMid: Number()
+    bMid: Number(),
+    aTitle: String(),
+    bTitle: String(),
+    title: String()
   },
   data() {
     return {
       aOfficial: String(),
       aName: String(),
       aFans: Number(),
-      aFace: Number(),
+      aFace: String(),
       bOfficial: String(),
       bName: String(),
       bFans: Number(),
-      bFace: Number()
+      bFace: String()
     };
   },
   computed: {
@@ -123,24 +130,30 @@ export default {
       }
     }
   },
-  mounted() {
-    this.refresh();
-    setInterval(this.refresh, 10000);
+  watch: {
+    aMid() {
+      this.refresh();
+      setInterval(this.refresh, 10000);
+    }
   },
   methods: {
     refresh() {
-      this.axios.get(`/author/${this.aMid}/info`).then(response => {
-        this.aName = response.data.name;
-        this.aOfficial = response.data.official;
-        this.aFans = response.data.cFans;
-        this.aFace = response.data.face;
-      });
-      this.axios.get(`/author/${this.bMid}/info`).then(response => {
-        this.bName = response.data.name;
-        this.bOfficial = response.data.official;
-        this.bFans = response.data.cFans;
-        this.bFace = response.data.face;
-      });
+      if (this.aMid != 0) {
+        this.axios.get(`/author/${this.aMid}/info`).then(response => {
+          this.aName = response.data.name;
+          this.aOfficial = response.data.official;
+          this.aFans = response.data.cFans;
+          this.aFace = response.data.face;
+        });
+      }
+      if (this.bMid != 0) {
+        this.axios.get(`/author/${this.bMid}/info`).then(response => {
+          this.bName = response.data.name;
+          this.bOfficial = response.data.official;
+          this.bFans = response.data.cFans;
+          this.bFace = response.data.face;
+        });
+      }
     },
     jumpToAuthorPage(mid) {
       this.$router.push(`/author/${mid}`);
