@@ -17,8 +17,8 @@ export default {
     value: { type: Number, default: () => 0 },
     theme: { type: String, default: () => "default" },
     format: { type: String, default: () => "(,ddd)" },
-    duration: { type: Number, default: () => 5000 },
-    className: { type: String, default: () => "odometer" },
+    duration: { type: Number, default: () => 500 },
+    className: { type: String, default: () => "v-odometer" },
     animation: { type: String, default: () => "" },
     formatFunction: { type: Function, default: val => val }
   },
@@ -48,3 +48,13 @@ export default {
   }
 };
 </script>
+<style>
+.odometer.odometer-animating-up .odometer-ribbon-inner,
+.odometer.odometer-animating-down.odometer-animating .odometer-ribbon-inner {
+  -webkit-transition-duration: 1s !important;
+  -moz-transition-duration: 1s !important;
+  -ms-transition-duration: 1s !important;
+  -o-transition-duration: 1s !important;
+  transition-duration: 1s !important;
+}
+</style>
