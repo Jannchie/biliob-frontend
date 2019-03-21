@@ -30,12 +30,11 @@
           >
             <div style="padding:5px;display:flex">
               <div>
-                <VResponsive :aspect-ratio="16/9">
-                  <img
-                    style="border-radius:40px;width:80px;height:80px"
-                    :src="eachAuthor.face.slice(5)"
-                  >
-                </VResponsive>
+                <VImg
+                  style="border-radius:40px;width:80px;height:80px"
+                  :src="eachAuthor.face.replace('http:','')"
+                  :lazy-src="eachAuthor.face.replace('http:','')"
+                />
               </div>
               <div style="margin-left:10px;width:100%">
                 <div class="font-weight-bold author-title">
@@ -140,13 +139,12 @@ export default {
   },
   methods: {
     refreshList(response) {
-      this.authorList = [];
+      this.authorList = response.data;
       // 判断是否为最后一页
       if (response.data.last) {
         this.nextBtnText = "没有更多了";
         this.nextBtnDisabled = true;
       }
-      this.authorList = response.data;
     },
     onScroll() {
       var scrollTop =

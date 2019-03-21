@@ -34,7 +34,7 @@
         small
       >
         mdi-eye-off
-      </VIcon> 不再观测
+      </VIcon> 保守观测
     </div>
   </div>
 </template>
