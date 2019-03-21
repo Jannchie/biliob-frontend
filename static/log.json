@@ -841,6 +841,14 @@
         "text": "美化首页实时粉丝卡片样式",
         "type": "beautify"
       }, {
+        "text": "懒加载部分图片以优化使用体验",
+        "type": "beautify"
+      },
+      {
+        "text": "修复了Edge浏览器下列表图片无法显示的BUG",
+        "type": "fix"
+      },
+      {
         "text": "更新后端依赖版本，提高开发效率和安全性",
         "type": "stone"
       },
