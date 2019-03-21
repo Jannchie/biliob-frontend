@@ -687,12 +687,19 @@
         "type": "feature"
       },
       {
+        "text": "引入结巴分词进行文本统计",
+        "type": "feature"
+      }, {
         "text": "能够通过弹幕生成词云",
         "type": "feature"
       },
       {
         "text": "能够判断弹幕密度",
         "type": "feature"
+      },
+      {
+        "text": "爬虫子系统完全分布式化",
+        "type": "stone"
       }
     ],
     "type": "holyshit"
@@ -749,7 +756,8 @@
       }
     ],
     "type": "unimportant"
-  }, {
+  },
+  {
     "title": "重构B站事件页面",
     "version": "ver.2.2.0",
     "date": "2019-03-09",
@@ -808,7 +816,8 @@
       "type": "beautify"
     }],
     "type": "unimportant"
-  }, {
+  },
+  {
     "title": "首页粉丝数榜首争夺",
     "version": "ver.2.3.0",
     "date": "2019-03-18",
@@ -819,6 +828,27 @@
       "text": "添加首页粉丝数榜首争夺卡片",
       "type": "feature"
     }],
+    "type": "important"
+  },
+  {
+    "title": "后端更新",
+    "version": "ver.3.0.0",
+    "date": "2019-03-21",
+    "list": [{
+        "text": "优化首页实时粉丝卡片动画效率",
+        "type": "beautify"
+      }, {
+        "text": "美化首页实时粉丝卡片样式",
+        "type": "beautify"
+      }, {
+        "text": "更新后端依赖版本，提高开发效率和安全性",
+        "type": "stone"
+      },
+      {
+        "text": "使用事务保证积分操作原子性",
+        "type": "stone"
+      }
+    ],
     "type": "important"
   }
 ]
