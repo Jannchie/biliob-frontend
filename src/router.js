@@ -16,6 +16,8 @@ const About = () => import("./views/About.vue");
 const Occurrence = () => import("./views/Event.vue");
 const FAQ = () => import("./views/FAQ.vue");
 const UserRank = () => import("./views/UserRank.vue");
+const UserRecord = () => import("./views/UserRecord.vue");
+const Test = () => import("./views/Test.vue");
 
 Vue.use(Router);
 
@@ -86,6 +88,14 @@ export default new Router({
     {
       path: "/rank/user",
       component: UserRank
+    },
+    {
+      path: "/user/record",
+      component: UserRecord
+    },
+    {
+      path: "/test",
+      component: Test
     },
     {
       path: "*",

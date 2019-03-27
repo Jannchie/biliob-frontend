@@ -83,6 +83,7 @@
           primary
           dark
           small
+          :loading="checkInLoading"
         >
           <VIcon left>
             mdi-check-circle-outline
@@ -95,6 +96,7 @@
           dark
           flat
           primary
+          :loading="checkInLoading"
           @click.stop="checkIn"
         >
           <VIcon left>
@@ -102,19 +104,26 @@
           </VIcon>签到
         </VBtn>
       </div>
-      <VList style="padding:0">
+
+      <VList
+        class="user-info-content"
+        style="padding:0"
+      >
         <VListTile
           v-if="logined"
-          class="user-info-content"
           :class="backgroundStyle"
+          style="padding-bottom:-20px"
         >
+
+        </VListTile>
+        <VListTile v-if="logined">
           <VListTileAvatar>
             <VIcon large>
-              mdi-account-circle-outline
+              mdi-home
             </VIcon>
           </VListTileAvatar>
           <VListTileContent>
-            <VListTileTitle class="title">{{ name }}</VListTileTitle>
+            <VListTileTitle class="title font-weight-medium">{{ name }}</VListTileTitle>
             <VListTileSubTitle>
               <div style="display:flex;">
                 <ExpBadget
@@ -128,7 +137,6 @@
               </div>
             </VListTileSubTitle>
           </VListTileContent>
-          <!-- <VListTileAction class="setting" /> -->
         </VListTile>
       </VList>
       <VList>
@@ -171,6 +179,18 @@
           <VListTileContent>
             <VListTileTitle>我的收藏</VListTileTitle>
             <VListTileSubTitle>查看我关注的视频</VListTileSubTitle>
+          </VListTileContent>
+        </VListTile>
+        <VListTile
+          ripple
+          @click.stop="toRecord"
+        >
+          <VListTileAvatar>
+            <VIcon>mdi-notebook</VIcon>
+          </VListTileAvatar>
+          <VListTileContent>
+            <VListTileTitle>操作记录</VListTileTitle>
+            <VListTileSubTitle>身为观测者的观察日记</VListTileSubTitle>
           </VListTileContent>
         </VListTile>
         <VDivider />
@@ -291,7 +311,8 @@ export default {
       imgSrc: String(),
       backgroundStyle: String(),
       darkModeText: String(),
-      darkModeIcon: String()
+      darkModeIcon: String(),
+      checkInLoading: true
     };
   },
   computed: {
@@ -377,6 +398,7 @@ export default {
         this.$store.commit("setFavoriteAuthor", response.data.favoriteMid);
         this.axios.get(`/user/check-in`).then(response => {
           this.$store.commit("checkIn", response.data.status);
+          this.checkInLoading = false;
         });
       })
       .catch(() => {
@@ -424,6 +446,12 @@ export default {
     toUserRank() {
       this.$router.push("/rank/user");
     },
+    toRecord() {
+      this.$router.push("/user/record");
+    },
+    toUser() {
+      this.$router.push("/user");
+    },
     onScroll() {
       if (this.offsetTop - window.pageYOffset < 0) {
         this.bottomNavShow = false;
@@ -446,6 +474,7 @@ export default {
             this.$store.commit("setCredit", response.data.data.credit);
             this.$store.commit("setExp", response.data.data.exp);
             this.$store.commit("checkIn", true);
+            this.checkInLoading = false;
           }
         })
         .catch(e => e.data.msg);
