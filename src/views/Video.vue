@@ -153,8 +153,9 @@ export default {
       this.drawDanmakuCloud = drawVideoPieChart(deepCopy(response.data));
       if (response.data.hasOwnProperty("danmakuAggregate")) {
         this.hasDanmakuAggregate = true;
-        this.redrawDanmakuCharts(1);
+        let pagelist = [];
         for (let eachPage in response.data.danmakuAggregate) {
+          pagelist.push(eachPage);
           if (eachPage == "updatetime") {
             this.danmakuUpdateTime = response.data.danmakuAggregate.updatetime;
             continue;
@@ -167,6 +168,7 @@ export default {
           });
           this.defaultPage = this.pageItems[0];
         }
+        this.redrawDanmakuCharts(pagelist[0]);
       } else {
         this.hasDanmakuAggregate = false;
       }
@@ -190,9 +192,13 @@ export default {
         });
     },
     redrawDanmakuCharts(page) {
-      this.wordCloudOptions = drawDanmakuCloud(
-        this.videoData.danmakuAggregate[page]["word_frequency"]
-      );
+      if (
+        this.videoData.danmakuAggregate[page].hasOwnProperty("word_frequency")
+      ) {
+        this.wordCloudOptions = drawDanmakuCloud(
+          this.videoData.danmakuAggregate[page]["word_frequency"]
+        );
+      }
       this.danmakuDensityOptions = drawDanmakuDensity(
         this.videoData.danmakuAggregate[page]["danmaku_density"],
         this.videoData.danmakuAggregate[page]["duration"]
