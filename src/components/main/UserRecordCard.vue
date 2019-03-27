@@ -5,6 +5,7 @@
     :pagination.sync="pageInfo"
     disable-initial-sort
     :loading="loading"
+    no-results-text="目前没有数据"
     rows-per-page-text="每页条数"
     class="elevation-1"
     style="white-space: nowrap"
