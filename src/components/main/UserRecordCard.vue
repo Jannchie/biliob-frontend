@@ -4,9 +4,11 @@
     :items="userRecordData"
     :pagination.sync="pageInfo"
     disable-initial-sort
-    expand
+    :loading="loading"
+    no-results-text="目前没有数据"
     rows-per-page-text="每页条数"
     class="elevation-1"
+    style="white-space: nowrap"
   >
     <template
       slot="items"
@@ -31,16 +33,22 @@ export default {
   props: { userRecordData: Object() },
   data() {
     return {
+      loading: true,
       pageInfo: {
         rowsPerPage: 25 // -1 for All
       },
       headers: [
-        { text: "内容", value: "message", width: "300" },
+        { text: "内容", value: "message" },
         { text: "时间", value: "datetime" },
-        { text: "积分", value: "credit", width: "50" },
+        { text: "积分", value: "credit" },
         { text: "状态", value: "executed" }
       ]
     };
+  },
+  watch: {
+    userRecordData() {
+      this.loading = false;
+    }
   },
   methods: {
     getExecuteStatusColor(status) {
