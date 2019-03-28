@@ -21,17 +21,13 @@
     },
     "line": {
         "itemStyle": {
-            "normal": {
-                "borderWidth": "5"
-            }
+            "borderWidth": "3"
         },
         "lineStyle": {
-            "normal": {
-                "width": "3"
-            }
+            "width": "3"
         },
-        "symbolSize": "10",
-        "symbol": "circle",
+        "symbolSize": "8",
+        "symbol": "emptyCircle",
         "smooth": false
     },
     "radar": {
