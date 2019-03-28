@@ -1,6 +1,6 @@
 {
-  "name": "BilioOB观测者",
-  "short_name": "BilioOB",
+  "name": "BiliOB观测者",
+  "short_name": "BiliOB",
   "icons": [{
       "src": "./img/icons/android-chrome-192x192.png",
       "sizes": "192x192",
@@ -14,6 +14,6 @@
   ],
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#383e44",
-  "theme_color": "#383e44"
+  "background_color": "#444",
+  "theme_color": "#444"
 }
