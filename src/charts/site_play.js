@@ -43,9 +43,11 @@ function drawChart(data) {
     },
     series: [
       {
+        itemStyle: {
+          borderWidth: 3
+        },
         data: yData,
-        type: "line",
-        symbolSize: 6
+        type: "line"
       }
     ]
   };
