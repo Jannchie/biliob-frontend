@@ -877,5 +877,23 @@
       }
     ],
     "type": "important"
+  }, {
+    "title": "优化用户体验",
+    "version": "ver.3.1.1",
+    "date": "2019-03-29",
+    "list": [{
+        "text": "美化了图表主题",
+        "type": "beautify"
+      },
+      {
+        "text": "添加了图表载入动画",
+        "type": "beautify"
+      },
+      {
+        "text": "优化载入效果",
+        "type": "beautify"
+      }
+    ],
+    "type": "unimportant"
   }
 ]

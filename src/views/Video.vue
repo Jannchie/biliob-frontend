@@ -11,18 +11,18 @@
         slot="rank"
         v-bind="videoData.rank"
       ></VideoDetailRank>
-      <VideoDetailMainChart
+      <DetailCharts
         slot="main"
-        :main-chart="mainChart"
+        :options="mainChart"
       />
       <DetailCharts
         v-if="hasDanmakuAggregate"
         slot="danmaku-density"
         :options="danmakuDensityOptions"
       />
-      <VideoDetailPieChart
+      <DetailCharts
         slot="like-rate"
-        :like-rate-chart="likeRateChart"
+        :options="likeRateChart"
       />
       <DetailCharts
         v-if="hasDanmakuAggregate"
@@ -69,8 +69,6 @@
 <script>
 import VideoDetailRank from "../components/main/VideoDetailRank.vue";
 import VideoDetailTitle from "../components/main/VideoDetailTitle.vue";
-import VideoDetailMainChart from "../components/main/VideoDetailMainChart.vue";
-import VideoDetailPieChart from "../components/main/VideoDetailPieChart.vue";
 import DetailCharts from "../components/main/DetailCharts.vue";
 import MainLayout from "../components/common/MainLayout.vue";
 import VideoAside from "../components/aside/VideoAside.vue";
@@ -108,8 +106,6 @@ export default {
     OtherLink,
     VideoDetailRank,
     VideoDetailTitle,
-    VideoDetailMainChart,
-    VideoDetailPieChart,
     VideoAside,
     DetailCharts,
     VideoMain,
