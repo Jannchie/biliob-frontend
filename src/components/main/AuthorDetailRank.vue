@@ -1,12 +1,12 @@
 <template>
   <VCard>
-    <VCardText style="height:100%">
+    <VCardText>
       <div class="rank-container">
         <div style="flex-grow: 1;text-align:center">
           <div class="rank-title subheading font-weight-bold grey--text text--darken-2">
             粉丝数排名
           </div>
-          <div class="title font-weight-black blue--text text--darken-3">
+          <div class="rank-value title font-weight-black blue--text text--darken-3">
             {{fansInfo}}
           </div>
           <ChevronBudget :value="dFansRank"></ChevronBudget>
@@ -18,7 +18,7 @@
           <div class="rank-title subheading font-weight-bold grey--text text--darken-2">
             播放量排名
           </div>
-          <div class="title font-weight-black blue--text text--darken-3">
+          <div class="rank-value title font-weight-black blue--text text--darken-3">
             {{archiveInfo}}
           </div>
           <ChevronBudget :value="dArchiveViewRank"></ChevronBudget>
@@ -30,7 +30,7 @@
           <div class="rank-title subheading font-weight-bold grey--text text--darken-2">
             专栏阅读排名
           </div>
-          <div class="title font-weight-black blue--text text--darken-3">
+          <div class="rank-value title font-weight-black blue--text text--darken-3">
             {{articleInfo}}
           </div>
           <ChevronBudget :value="dArticleViewRank"></ChevronBudget>
@@ -38,7 +38,7 @@
       </div>
     </VCardText>
     <VCardText
-      class="caption grey--text"
+      class="caption grey--text pt-0"
       style="display:flex;justify-content:space-between"
     >
       <div>
@@ -130,5 +130,8 @@ export default {
   align-items: stretch;
   justify-content: center;
   height: 100%;
+}
+.rank-value {
+  height: 20px;
 }
 </style>
