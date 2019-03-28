@@ -6,13 +6,13 @@
         v-bind="authorData.rank"
       ></AuthorDetailRank>
       <!-- <AuthorDetailChannel slot="channel" :channels="authorData.channels"></AuthorDetailChannel> -->
-      <AuthorDetailFansChart
+      <DetailCharts
         slot="fans"
-        :author-data="authorData"
+        :options="authorFansOptions"
       />
-      <AuthorDetailFansRateChart
+      <DetailCharts
         slot="fans-rate"
-        :fans-rate="authorData"
+        :options="authorFansRateOptions"
       />
     </AuthorMain>
     <AuthorAside slot="aside-cards">
@@ -45,41 +45,62 @@
 <script>
 import AuthorMain from "../components/main/AuthorMain.vue";
 import AuthorDetailRank from "../components/main/AuthorDetailRank.vue";
-import AuthorDetailFansChart from "../components/main/AuthorDetailFansChart.vue";
-import AuthorDetailFansRateChart from "../components/main/AuthorDetailFansRateChart.vue";
 import MainLayout from "../components/common/MainLayout.vue";
 import AuthorAside from "../components/aside/AuthorDetailAside.vue";
 import AuthorInfo from "../components/aside/AuthorInfo.vue";
 import AuthorVideo from "../components/aside/AuthorVideo.vue";
 import AuthorOperation from "../components/aside/AuthorOperation.vue";
+import DetailCharts from "../components/main/DetailCharts.vue";
 import OtherLink from "../components/aside/OtherLink.vue";
+import drawFansChart from "../charts/author-fans.js";
+import drawFansRateChart from "../charts/author-fans-rate.js";
 // import AuthorDetailChannel from "../components/main/AuthorDetailChannel.vue";
+var deepCopy = function(o) {
+  if (o instanceof Array) {
+    var n = [];
+    for (let i = 0; i < o.length; ++i) {
+      n[i] = deepCopy(o[i]);
+    }
+    return n;
+  } else if (o instanceof Object) {
+    var no = {};
+    for (let i in o) {
+      no[i] = deepCopy(o[i]);
+    }
+    return no;
+  } else {
+    return o;
+  }
+};
 export default {
-  name: "AuthorList",
+  name: "Author",
   components: {
     AuthorMain,
     MainLayout,
     OtherLink,
     AuthorAside,
     AuthorDetailRank,
-    AuthorDetailFansChart,
-    AuthorDetailFansRateChart,
     AuthorInfo,
     AuthorVideo,
-    AuthorOperation
+    AuthorOperation,
+    DetailCharts
     // AuthorDetailChannel
   },
   data() {
     return {
       authorData: Object(),
       authorTopVideo: Object(),
-      authorLatestVideo: Object()
+      authorLatestVideo: Object(),
+      authorFansOptions: Object(),
+      authorFansRateOptions: Object()
     };
   },
   mounted() {
     this.$store.commit("toAuthor");
     this.axios.get("/author/" + this.$route.params.mid).then(response => {
       this.authorData = response.data;
+      this.authorFansOptions = drawFansChart(deepCopy(this.authorData));
+      this.authorFansRateOptions = drawFansRateChart(deepCopy(this.authorData));
       if (this.authorData.forceFocus != true) {
         this.authorData.forceFocus == false;
       }

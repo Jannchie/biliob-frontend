@@ -1,7 +1,16 @@
 <template>
   <VCard class="card">
     <VResponsive :aspect-ratio="aspectRatio">
+      <div></div>
+      <VProgressCircular
+        v-show="loading"
+        :size="50"
+        color="primary"
+        indeterminate
+        class="progress-circular"
+      ></VProgressCircular>
       <Chart
+        v-show="!loading"
         :theme="theme"
         :auto-resize="true"
         :options="options"
@@ -13,7 +22,17 @@
 
 <script>
 export default {
-  props: { options: Object() },
+  props: {
+    options: {
+      type: Object,
+      default: function() {
+        return {
+          a: 1
+        };
+      },
+      required: true
+    }
+  },
   data() {
     return {
       videoData: {},
@@ -30,6 +49,13 @@ export default {
       } else {
         return 5 / 3;
       }
+    },
+    loading() {
+      if (this.options.series == undefined) {
+        return true;
+      } else {
+        return false;
+      }
     }
   },
   watch: {
@@ -41,7 +67,6 @@ export default {
       }
     }
   },
-
   mounted() {
     if (this.$store.state.dark) {
       this.theme = "mydark";
@@ -56,5 +81,12 @@ export default {
 .video-img {
   height: 70px;
   border-radius: 4px;
+}
+.progress-circular {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -25px;
+  margin-top: -25px;
 }
 </style>
