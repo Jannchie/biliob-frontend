@@ -1,8 +1,10 @@
-[{
+[
+  {
     "title": "里程碑-项目启动",
     "version": "ver.0.0.0",
     "date": "2018-08-03",
-    "list": [{
+    "list": [
+      {
         "text": "初始化了前后端工程",
         "type": "stone"
       },
@@ -17,7 +19,8 @@
     "title": "综合更新",
     "version": "ver.0.1.0",
     "date": "2018-10-26",
-    "list": [{
+    "list": [
+      {
         "text": "完成了基本的数据可视化",
         "type": "feature"
       },
@@ -44,7 +47,8 @@
     "title": "里程碑-首次公开",
     "version": "ver.0.2.0",
     "date": "2018-10-28",
-    "list": [{
+    "list": [
+      {
         "text": "收获了首批用户",
         "type": "stone"
       },
@@ -63,7 +67,8 @@
     "title": "架构更新",
     "version": "ver.0.3.0",
     "date": "2018-11-10",
-    "list": [{
+    "list": [
+      {
         "text": "使用CDN缓存，减少了带宽压力",
         "type": "cloud"
       },
@@ -82,27 +87,32 @@
     "title": "错误修复",
     "version": "ver.0.3.1",
     "date": "2018-11-20",
-    "list": [{
-      "text": "修复了关注UP主呈现错误的Bug",
-      "type": "fix"
-    }],
+    "list": [
+      {
+        "text": "修复了关注UP主呈现错误的Bug",
+        "type": "fix"
+      }
+    ],
     "type": "unimportant"
   },
   {
     "version": "ver.0.3.2",
     "title": "里程碑-获得域名",
     "date": "2018-11-20",
-    "list": [{
-      "text": "可以通过\"www.biliob.com\"进入这个网站了",
-      "type": "cloud"
-    }],
+    "list": [
+      {
+        "text": "可以通过\"www.biliob.com\"进入这个网站了",
+        "type": "cloud"
+      }
+    ],
     "type": "unimportant"
   },
   {
     "title": "美化页面",
     "version": "ver.0.3.3",
     "date": "2018-11-21",
-    "list": [{
+    "list": [
+      {
         "text": "添加了一个简单的小图标",
         "type": "beautify"
       },
@@ -117,7 +127,8 @@
     "title": "架构更新",
     "version": "ver.0.4.0",
     "date": "2018-11-22",
-    "list": [{
+    "list": [
+      {
         "text": "使用Jenkins对后端进行持续集成",
         "type": "cloud"
       },
@@ -148,7 +159,8 @@
     "title": "架构更新",
     "version": "ver.0.5.0",
     "date": "2018-11-23",
-    "list": [{
+    "list": [
+      {
         "text": "采用HTTPS传输数据，更加安全",
         "type": "cloud"
       },
@@ -179,7 +191,8 @@
     "title": "功能更新",
     "version": "ver.0.6.0",
     "date": "2018-11-24",
-    "list": [{
+    "list": [
+      {
         "text": "萌化了系统提示(*^▽^*)",
         "type": "beautify"
       },
@@ -206,7 +219,8 @@
     "title": "综合更新",
     "version": "ver.0.7.0",
     "date": "2018-11-29",
-    "list": [{
+    "list": [
+      {
         "text": "最后使用了代码拆分的技术，减少首屏加载时间",
         "type": "feature"
       },
@@ -237,7 +251,8 @@
     "title": "功能更新",
     "version": "ver.0.7.1",
     "date": "2018-12-07",
-    "list": [{
+    "list": [
+      {
         "text": "可以更方便地关注UP主和收藏视频了",
         "type": "feature"
       },
@@ -256,17 +271,20 @@
     "title": "功能更新-首页",
     "version": "ver.0.7.1",
     "date": "2018-12-08",
-    "list": [{
-      "text": "在首页增加了近24小时以来的在线人数图表",
-      "type": "feature"
-    }],
+    "list": [
+      {
+        "text": "在首页增加了近24小时以来的在线人数图表",
+        "type": "feature"
+      }
+    ],
     "type": "unimportant"
   },
   {
     "title": "修复错误-列表",
     "version": "ver.0.7.2",
     "date": "2018-12-09",
-    "list": [{
+    "list": [
+      {
         "text": "修复了翻页错误的问题",
         "type": "fix"
       },
@@ -285,7 +303,8 @@
     "title": "美化页面",
     "version": "ver.0.7.3",
     "date": "2018-12-09",
-    "list": [{
+    "list": [
+      {
         "text": "现在关注按钮和收藏按钮更加美观了",
         "type": "beautify"
       },
@@ -308,27 +327,32 @@
     "title": "功能更新",
     "version": "ver.0.8.0",
     "date": "2018-12-11",
-    "list": [{
-      "text": "添加了排行榜页面",
-      "type": "feature"
-    }],
+    "list": [
+      {
+        "text": "添加了排行榜页面",
+        "type": "feature"
+      }
+    ],
     "type": "important"
   },
   {
     "title": "功能更新",
     "version": "ver.0.8.1",
     "date": "2018-12-16",
-    "list": [{
-      "text": "添加了关于页面",
-      "type": "feature"
-    }],
+    "list": [
+      {
+        "text": "添加了关于页面",
+        "type": "feature"
+      }
+    ],
     "type": "unimportant"
   },
   {
     "title": "功能更新",
     "version": "ver.0.9.0",
     "date": "2018-12-21",
-    "list": [{
+    "list": [
+      {
         "text": "添加事件页面",
         "type": "feature"
       },
@@ -343,17 +367,20 @@
     "title": "架构更新-Google Analysis",
     "version": "ver.0.9.1",
     "date": "2018-12-26",
-    "list": [{
-      "text": "嵌入Google Analysis对站点进行分析",
-      "type": "cloud"
-    }],
+    "list": [
+      {
+        "text": "嵌入Google Analysis对站点进行分析",
+        "type": "cloud"
+      }
+    ],
     "type": "unimportant"
   },
   {
     "title": "综合更新",
     "version": "ver.1.0.0",
     "date": "2019-01-03",
-    "list": [{
+    "list": [
+      {
         "text": "替换了许多图标，使得整体更为美观",
         "type": "beautify"
       },
@@ -396,17 +423,20 @@
     "title": "界面美化",
     "version": "ver.1.0.1",
     "date": "2019-01-05",
-    "list": [{
-      "text": "添加了侧边栏主题站娘图片的显示",
-      "type": "beautify"
-    }],
+    "list": [
+      {
+        "text": "添加了侧边栏主题站娘图片的显示",
+        "type": "beautify"
+      }
+    ],
     "type": "unimportant"
   },
   {
     "title": "界面美化",
     "version": "ver.1.0.2",
     "date": "2019-01-11",
-    "list": [{
+    "list": [
+      {
         "text": "修正了日志页面的时间错误",
         "type": "fix"
       },
@@ -429,7 +459,8 @@
     "title": "修复错误",
     "version": "ver.1.0.3",
     "date": "2019-01-12",
-    "list": [{
+    "list": [
+      {
         "text": "修复了排行榜总是滞后一天的BUG",
         "type": "fix"
       },
@@ -444,7 +475,8 @@
     "title": "功能更新",
     "version": "ver.1.1.0",
     "date": "2019-01-22",
-    "list": [{
+    "list": [
+      {
         "text": "增加了签到功能",
         "type": "feature"
       },
@@ -459,7 +491,8 @@
     "title": "综合更新",
     "version": "ver.1.2.0",
     "date": "2019-02-01",
-    "list": [{
+    "list": [
+      {
         "text": "修复了多个图表显示错误",
         "type": "fix"
       },
@@ -490,7 +523,8 @@
     "title": "修复错误",
     "version": "ver.1.2.1",
     "date": "2019-02-01",
-    "list": [{
+    "list": [
+      {
         "text": "粉丝变化率图表在IE11也能兼容了",
         "type": "feature"
       },
@@ -505,7 +539,8 @@
     "title": "功能更新",
     "version": "ver.1.2.2",
     "date": "2019-02-08",
-    "list": [{
+    "list": [
+      {
         "text": "添加了FAQ页面",
         "type": "feature"
       },
@@ -524,7 +559,8 @@
     "title": "功能更新",
     "version": "ver.1.3.0",
     "date": "2019-02-13",
-    "list": [{
+    "list": [
+      {
         "text": "修复了搜索刷新问题",
         "type": "fix"
       },
@@ -543,7 +579,8 @@
     "title": "功能更新",
     "version": "ver.1.4.0",
     "date": "2019-02-14",
-    "list": [{
+    "list": [
+      {
         "text": "修复了一个样式错误",
         "type": "fix"
       },
@@ -558,7 +595,8 @@
     "title": "夜间模式更新",
     "version": "ver.1.4.1",
     "date": "2019-02-14",
-    "list": [{
+    "list": [
+      {
         "text": "夜间模式图标会变化了",
         "type": "beautify"
       },
@@ -573,7 +611,8 @@
     "title": "引入Redis",
     "version": "ver.1.5.0",
     "date": "2019-02-18",
-    "list": [{
+    "list": [
+      {
         "text": "使用Redis进行缓存",
         "type": "cloud"
       },
@@ -588,7 +627,8 @@
     "title": "更多操作",
     "version": "ver.1.6.0",
     "date": "2019-02-19",
-    "list": [{
+    "list": [
+      {
         "text": "为了愉快地分享，使用history路由",
         "type": "cloud"
       },
@@ -619,7 +659,8 @@
     "title": "美化",
     "version": "ver.1.6.1",
     "date": "2019-02-20",
-    "list": [{
+    "list": [
+      {
         "text": "美化了图表主题",
         "type": "beautify"
       },
@@ -642,7 +683,8 @@
     "title": "图表优化",
     "version": "ver.1.6.2",
     "date": "2019-02-22",
-    "list": [{
+    "list": [
+      {
         "text": "美化了首页图表",
         "type": "beautify"
       },
@@ -657,17 +699,20 @@
     "title": "强行观测",
     "version": "ver.1.7.0",
     "date": "2019-02-23",
-    "list": [{
-      "text": "添加了强行观测的功能",
-      "type": "feature"
-    }],
+    "list": [
+      {
+        "text": "添加了强行观测的功能",
+        "type": "feature"
+      }
+    ],
     "type": "important"
   },
   {
     "title": "观测者排行",
     "version": "ver.1.8.0",
     "date": "2019-02-26",
-    "list": [{
+    "list": [
+      {
         "text": "添加了观测者排行榜",
         "type": "feature"
       },
@@ -682,14 +727,16 @@
     "title": "弹幕追踪",
     "version": "ver.2.0.0",
     "date": "2019-02-28",
-    "list": [{
+    "list": [
+      {
         "text": "添加弹幕追踪功能",
         "type": "feature"
       },
       {
         "text": "引入结巴分词进行文本统计",
         "type": "feature"
-      }, {
+      },
+      {
         "text": "能够通过弹幕生成词云",
         "type": "feature"
       },
@@ -708,7 +755,8 @@
     "title": "优化与修复",
     "version": "ver.2.0.1",
     "date": "2019-03-01",
-    "list": [{
+    "list": [
+      {
         "text": "修复了粉丝增速显示异常的问题",
         "type": "fix"
       },
@@ -727,7 +775,8 @@
     "title": "添加新功能",
     "version": "ver.2.1.0",
     "date": "2019-03-03",
-    "list": [{
+    "list": [
+      {
         "text": "添加了更多友情链接",
         "type": "feature"
       },
@@ -746,7 +795,8 @@
     "title": "添加新功能",
     "version": "ver.2.1.1",
     "date": "2019-03-04",
-    "list": [{
+    "list": [
+      {
         "text": "美化了弹幕云的显示",
         "type": "beautify"
       },
@@ -761,32 +811,40 @@
     "title": "重构B站事件页面",
     "version": "ver.2.2.0",
     "date": "2019-03-09",
-    "list": [{
-      "text": "事件页面更名为UP主粉丝波动数情报",
-      "type": "beautify"
-    }, {
-      "text": "优化事件分类及算法",
-      "type": "feature"
-    }, {
-      "text": "增加事件信息显示",
-      "type": "feature"
-    }, {
-      "text": "点击事件卡片跳转到相应UP主或视频页面",
-      "type": "feature"
-    }, {
-      "text": "添加了\"显示更多\"的功能",
-      "type": "feature"
-    }, {
-      "text": "更新关于页面",
-      "type": "fix"
-    }],
+    "list": [
+      {
+        "text": "事件页面更名为UP主粉丝波动数情报",
+        "type": "beautify"
+      },
+      {
+        "text": "优化事件分类及算法",
+        "type": "feature"
+      },
+      {
+        "text": "增加事件信息显示",
+        "type": "feature"
+      },
+      {
+        "text": "点击事件卡片跳转到相应UP主或视频页面",
+        "type": "feature"
+      },
+      {
+        "text": "添加了\"显示更多\"的功能",
+        "type": "feature"
+      },
+      {
+        "text": "更新关于页面",
+        "type": "fix"
+      }
+    ],
     "type": "important"
   },
   {
     "title": "修修补补",
     "version": "ver.2.2.1",
     "date": "2019-03-14",
-    "list": [{
+    "list": [
+      {
         "text": "美化粉丝波动页面",
         "type": "beautify"
       },
@@ -797,7 +855,8 @@
       {
         "text": "修复在ios环境下粉丝变动显示异常的错误",
         "type": "fix"
-      }, {
+      },
+      {
         "text": "修复在ios环境下首页日期显示异常的错误",
         "type": "fix"
       }
@@ -808,39 +867,48 @@
     "title": "更多排序",
     "version": "ver.2.2.2",
     "date": "2019-03-16",
-    "list": [{
-      "text": "以更多方式排序UP主与视频列表",
-      "type": "feature"
-    }, {
-      "text": "美化签到提示",
-      "type": "beautify"
-    }],
+    "list": [
+      {
+        "text": "以更多方式排序UP主与视频列表",
+        "type": "feature"
+      },
+      {
+        "text": "美化签到提示",
+        "type": "beautify"
+      }
+    ],
     "type": "unimportant"
   },
   {
     "title": "首页粉丝数榜首争夺",
     "version": "ver.2.3.0",
     "date": "2019-03-18",
-    "list": [{
-      "text": "引入odometer滚动数字效果",
-      "type": "beautify"
-    }, {
-      "text": "添加首页粉丝数榜首争夺卡片",
-      "type": "feature"
-    }],
+    "list": [
+      {
+        "text": "引入odometer滚动数字效果",
+        "type": "beautify"
+      },
+      {
+        "text": "添加首页粉丝数榜首争夺卡片",
+        "type": "feature"
+      }
+    ],
     "type": "important"
   },
   {
     "title": "后端更新",
     "version": "ver.3.0.0",
     "date": "2019-03-21",
-    "list": [{
+    "list": [
+      {
         "text": "优化首页实时粉丝卡片动画效率",
         "type": "beautify"
-      }, {
+      },
+      {
         "text": "美化首页实时粉丝卡片样式",
         "type": "beautify"
-      }, {
+      },
+      {
         "text": "懒加载部分图片以优化使用体验",
         "type": "beautify"
       },
@@ -863,7 +931,8 @@
     "title": "用户记录",
     "version": "ver.3.1.0",
     "date": "2019-03-27",
-    "list": [{
+    "list": [
+      {
         "text": "现在可以记录用户的操作了",
         "type": "feature"
       },
@@ -877,11 +946,13 @@
       }
     ],
     "type": "important"
-  }, {
+  },
+  {
     "title": "优化用户体验",
     "version": "ver.3.1.1",
     "date": "2019-03-29",
-    "list": [{
+    "list": [
+      {
         "text": "美化了图表主题",
         "type": "beautify"
       },
@@ -892,6 +963,18 @@
       {
         "text": "优化载入效果",
         "type": "beautify"
+      }
+    ],
+    "type": "unimportant"
+  },
+  {
+    "title": "修复错误",
+    "version": "ver.3.1.2",
+    "date": "2019-03-31",
+    "list": [
+      {
+        "text": "修复了一些样式错误",
+        "type": "fix"
       }
     ],
     "type": "unimportant"

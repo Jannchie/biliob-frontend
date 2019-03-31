@@ -69,7 +69,7 @@
     </VToolbar>
     <VNavigationDrawer
       v-model="drawer"
-      absolute
+      fixed
       temporary
     >
       <div
@@ -289,8 +289,13 @@
         </VListTile>
         <VDivider />
       </VList>
+      <!-- <div
+        :hidden="egg"
+        style="position:absolute ;bottom:16px"
+      >
+        你发现了彩蛋
+      </div> -->
     </VNavigationDrawer>
-
   </nav>
 </template>
 <script>
@@ -302,8 +307,9 @@ export default {
   components: { CreditBadget, ExpBadget },
   data() {
     return {
+      egg: false,
       bottomNav: null,
-      drawer: null,
+      drawer: false,
       snackbar: false,
       snackbarText: String(),
       bottomNavShow: true,
@@ -451,14 +457,6 @@ export default {
     },
     toUser() {
       this.$router.push("/user");
-    },
-    onScroll() {
-      if (this.offsetTop - window.pageYOffset < 0) {
-        this.bottomNavShow = false;
-      } else {
-        this.bottomNavShow = true;
-      }
-      this.offsetTop = window.pageYOffset;
     },
     darkMode() {
       this.$store.commit("setDark");
