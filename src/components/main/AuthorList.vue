@@ -26,14 +26,14 @@
             :key="eachAuthor.mid"
             class="author-cards"
             ripple
-            :to="'/author/'+eachAuthor.mid"
+            :to="'/author/' + eachAuthor.mid"
           >
             <div style="padding:5px;display:flex">
               <div>
                 <VImg
                   style="border-radius:40px;width:80px;height:80px"
-                  :src="eachAuthor.face.replace('http:','')"
-                  :lazy-src="eachAuthor.face.replace('http:','')"
+                  :src="eachAuthor.face.replace('http:', '')"
+                  :lazy-src="eachAuthor.face.replace('http:', '')"
                 />
               </div>
               <div style="margin-left:10px;width:100%">
@@ -49,8 +49,7 @@
                     color="#FBC02D"
                     small
                   >
-                    mdi-flash
-                  </VIcon>{{ eachAuthor.official }}
+                    mdi-flash </VIcon>{{ eachAuthor.official }}
                 </div>
               </div>
               <ObserveStatus
@@ -66,7 +65,7 @@
           color="blue darken-2"
           :disabled="nextBtnDisabled"
           @click.stop="next"
-        >{{nextBtnText}}</VBtn>
+        >{{ nextBtnText }}</VBtn>
       </div>
     </div>
   </div>

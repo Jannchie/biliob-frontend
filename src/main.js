@@ -1,4 +1,5 @@
 import "babel-polyfill";
+// import "@fortawesome/fontawesome-free/css/all.css";
 import "@mdi/font/css/materialdesignicons.css"; // Ensure you are using css-loader
 import Vue from "vue";
 import "./plugins/vuetify";
