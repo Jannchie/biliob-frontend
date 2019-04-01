@@ -18,6 +18,7 @@ const FAQ = () => import("./views/FAQ.vue");
 const UserRank = () => import("./views/UserRank.vue");
 const UserRecord = () => import("./views/UserRecord.vue");
 const Test = () => import("./views/Test.vue");
+const Android = () => import("./views/Android.vue");
 
 Vue.use(Router);
 
@@ -100,6 +101,10 @@ export default new Router({
     {
       path: "*",
       component: NotFound
+    },
+    {
+      path: "/download/android",
+      component: Android
     }
   ],
   scrollBehavior(to, from, savedPosition) {

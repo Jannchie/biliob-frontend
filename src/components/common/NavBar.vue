@@ -156,7 +156,6 @@
       </VList>
 
       <VList v-if="logined">
-        <VDivider />
         <VListTile
           ripple
           @click.stop="toFavoriteAuthor"
@@ -193,11 +192,8 @@
             <VListTileSubTitle>身为观测者的观察日记</VListTileSubTitle>
           </VListTileContent>
         </VListTile>
-        <VDivider />
       </VList>
       <VList>
-        <VDivider />
-
         <VListTile
           ripple
           @click.stop="toEvent"
@@ -210,10 +206,8 @@
             <VListTileSubTitle>一分钟，我要看到所有的资料</VListTileSubTitle>
           </VListTileContent>
         </VListTile>
-        <VDivider />
       </VList>
       <VList>
-        <VDivider />
         <VListTile
           ripple
           @click.stop="toFaq"
@@ -255,10 +249,8 @@
           </VListTileContent>
         </VListTile>
 
-        <VDivider />
       </VList>
       <VList>
-        <VDivider />
         <VListTile
           ripple
           @click.stop="darkMode"
@@ -271,10 +263,8 @@
             <VListTileSubTitle>Deep ♂ Dark ♂ Fantasy</VListTileSubTitle>
           </VListTileContent>
         </VListTile>
-        <VDivider />
       </VList>
       <VList>
-        <VDivider />
         <VListTile
           ripple
           @click.stop="toUserRank"
@@ -287,7 +277,21 @@
             <VListTileSubTitle>站内积分榜</VListTileSubTitle>
           </VListTileContent>
         </VListTile>
-        <VDivider />
+      </VList>
+
+      <VList>
+        <VListTile
+          ripple
+          @click.stop="toAndroidPage"
+        >
+          <VListTileAvatar>
+            <VIcon>mdi-android</VIcon>
+          </VListTileAvatar>
+          <VListTileContent>
+            <VListTileTitle>获取安卓APP</VListTileTitle>
+            <VListTileSubTitle>你从未尝试过的船新版本</VListTileSubTitle>
+          </VListTileContent>
+        </VListTile>
       </VList>
       <!-- <div
         :hidden="egg"
@@ -457,6 +461,9 @@ export default {
     },
     toUser() {
       this.$router.push("/user");
+    },
+    toAndroidPage() {
+      this.$router.push("/download/android");
     },
     darkMode() {
       this.$store.commit("setDark");
