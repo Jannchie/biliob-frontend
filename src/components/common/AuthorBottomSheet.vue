@@ -1,6 +1,5 @@
 <template>
   <VBottomSheet v-model="sheet">
-
     <VBtn
       slot="activator"
       color="pink lighten-2"
@@ -28,7 +27,15 @@
         <VListTileTitle>前往UP主的个人空间</VListTileTitle>
       </VListTile>
       <VListTile
-        :href="`https://connect.qq.com/widget/shareqq/index.html?url=https://www.biliob.com${this.$route.path}&sharesource=qzone&title=biliob观测者:${this.name}的历史数据&pics=https:${this.pic}&summary=快来围观这个UP主的数据变化吧~&desc=这个UP主牛逼坏了`"
+        :href="
+          `https://connect.qq.com/widget/shareqq/index.html?url=https://www.biliob.com${
+            this.$route.path
+          }&sharesource=qzone&title=biliob观测者:${
+            name
+          }的历史数据&pics=https:${
+            pic
+          }&summary=快来围观这个UP主的数据变化吧~&desc=这个UP主牛逼坏了`
+        "
         target="_blank"
         class="light-blue--text lighten-2 text--lighten-2"
         @click="sheet = false"
@@ -55,9 +62,9 @@
       >
         <VCardText slot="card-text">
           立即刷新需要<span class="font-weight-black red--text">消耗5积分</span>。
-          <br>
+          <br />
           立即刷新需要数秒至数分钟的操作时间
-          <br>
+          <br />
           请稍后刷新页面获取最新的数据！
         </VCardText>
       </BottomSheetTile>
@@ -74,9 +81,9 @@
       >
         <VCardText slot="card-text">
           强行观测需要<span class="font-weight-black red--text">消耗200积分</span>。
-          <br>
+          <br />
           打破取消爬取机制，保持数据每日更新。
-          <br>
+          <br />
           目前强行观测后只有管理员能取消操作。
         </VCardText>
       </BottomSheetTile>
