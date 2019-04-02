@@ -922,7 +922,7 @@
     "type": "unimportant"
   },
   {
-    "title": "安卓版上线",
+    "title": "安卓版客户端上线",
     "version": "ver.4.0.0",
     "date": "2019-04-01",
     "list": [{
@@ -957,6 +957,10 @@
       },
       {
         "text": "美化了部分数据说明",
+        "type": "beautify"
+      },
+      {
+        "text": "美化了部分文字显示效果",
         "type": "beautify"
       },
       {

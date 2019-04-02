@@ -54,7 +54,10 @@ export default {
   },
   methods: {
     dateToStr(d) {
-      return format(convertDateToUTC(new Date(d)), "YYYY-MM-DD HH:mm");
+      return format(
+        convertDateToUTC(new Date(d.replace("+0000", ""))),
+        "YYYY-MM-DD HH:mm"
+      );
     }
   }
 };

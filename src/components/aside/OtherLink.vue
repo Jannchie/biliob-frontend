@@ -8,17 +8,18 @@
       >
         <VIcon style="vertical-align: middle;margin-right:5px">
           mdi-github-face
-        </VIcon><span>Jannchie</span>
+        </VIcon><span :class="`grey--text text--${brightness}-3`">Jannchie</span>
       </a> <br>
       <VIcon style="vertical-align: middle;margin-right:5px">
         mdi-gmail
-      </VIcon><span>
+      </VIcon><span :class="`grey--text text--${brightness}-3`">
         jannchie@gmail.com
       </span><br>
       <span>
         <a
           target="_blank"
           href="https://jq.qq.com/?_wv=1027&k=593vDCo"
+          :class="`grey--text text--${brightness}-3`"
         >
           <VIcon style="vertical-align: middle;margin-right:5px">
             mdi-qqchat
@@ -29,6 +30,7 @@
       <a
         target="_blank"
         href="https://space.bilibili.com/1850091"
+        :class="`grey--text text--${brightness}-3`"
       >
         <VIcon style="vertical-align: middle;margin-right:5px">
           mdi-link-variant
@@ -37,6 +39,7 @@
       <a
         target="_blank"
         href="https://jannchie.github.io/"
+        :class="`grey--text text--${brightness}-3`"
       >
         <VIcon style="vertical-align: middle;margin-right:5px">
           mdi-link-variant
@@ -47,6 +50,7 @@
         <a
           target="_blank"
           href="https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=z82eczgc"
+          :class="`grey--text text--${brightness}-3`"
         >
           <VIcon style="vertical-align: middle;margin-right:5px">
             mdi-weather-cloudy
@@ -57,6 +61,7 @@
         <a
           target="_blank"
           href="https://cloud.tencent.com/redirect.php?redirect=1005&cps_key=7db3d9f0ef080a24be84d44938108742&from=console"
+          :class="`grey--text text--${brightness}-3`"
         >
           <VIcon style="vertical-align: middle;margin-right:5px">
             mdi-weather-cloudy
@@ -67,6 +72,7 @@
         <a
           href="https://www.vultr.com/?ref=7540103"
           target="_blank"
+          :class="`grey--text text--${brightness}-3`"
         >
           <VIcon style="vertical-align: middle;margin-right:5px">
             mdi-weather-cloudy
@@ -77,6 +83,7 @@
         <a
           target="_blank"
           href="http://www.i-mp.cn/"
+          :class="`grey--text text--${brightness}-3`"
         >
           <VIcon style="vertical-align: middle;margin-right:5px">
             mdi-language-python-text
@@ -84,7 +91,7 @@
         </a><br>
       </span>
       <br>
-      <span>
+      <span :class="`grey--text text--${brightness}-3`">
         互联网ICP备案：浙ICP备17035172号-2
       </span>
       <br>
@@ -92,19 +99,27 @@
   </VCard>
 </template>
 <script>
-export default {};
+export default {
+  computed: {
+    brightness() {
+      if (this.$store.state.dark) {
+        return "lighten";
+      } else {
+        return "darken";
+      }
+    }
+  }
+};
 </script>
 <style scoped>
 a {
   text-decoration: none;
-  color: #777;
 }
 span {
-  color: #777;
   text-decoration: none;
 }
 a:hover {
-  color: #666;
+  color: #222;
   text-align: center;
   text-justify: auto;
 }
