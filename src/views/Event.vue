@@ -9,24 +9,22 @@
           class="event-card"
         >
           <VCardTitle @click.stop="toAuthor(eachData.mid)">
-            <div :class="
-                `float-info display-3 font-weight-black ${getColor(
-                  eachData.info
-                )}--text`
-              ">
-              {{ eachData.info }}
-            </div>
+
             <div
               style="display:flex;"
               class="text-no-wrap"
             >
-              <VAvatar style="margin-right:12px">
+              <VAvatar
+                small
+                size="42"
+                style="margin-right:12px"
+              >
                 <img
                   :src="eachData.face.replace('http:', '')"
                   :alt="eachData.author"
                 />
               </VAvatar>
-              <div>
+              <div style="display">
                 <div class="subheading">
                   {{ eachData.author }}
                 </div>
@@ -35,7 +33,54 @@
                   {{ eachData.datetime }}
                 </div>
               </div>
-              <div style="position:absolute;right:12px;text-align:right">
+              <div
+                :class="
+                `float-info`
+              "
+                style="position:absolute;right:12px;text-align:right"
+              >
+                <img
+                  v-if="eachData.info === '新星爆发'"
+                  height="40"
+                  src="../../public/img/pendent/新星爆发.png"
+                >
+                <img
+                  v-else-if="eachData.info === '大量涨粉'"
+                  height="40"
+                  src="../../public/img/pendent/大量涨粉.png"
+                >
+                <img
+                  v-else-if="eachData.info === '史诗级涨粉'"
+                  height="40"
+                  src="../../public/img/pendent/史诗级涨粉.png"
+                >
+                <img
+                  v-else-if="eachData.info === '传说级涨粉'"
+                  height="40"
+                  src="../../public/img/pendent/传说级涨粉.png"
+                >
+                <img
+                  v-else-if="eachData.info === '急转直下'"
+                  height="40"
+                  src="../../public/img/pendent/急转直下.png"
+                >
+                <img
+                  v-else-if="eachData.info === '大量掉粉'"
+                  height="40"
+                  src="../../public/img/pendent/大量掉粉.png"
+                >
+                <img
+                  v-else-if="eachData.info === '雪崩级掉粉'"
+                  height="40"
+                  src="../../public/img/pendent/雪崩级掉粉.png"
+                >
+                <img
+                  v-else-if="eachData.info === '末日级掉粉'"
+                  height="40"
+                  src="../../public/img/pendent/末日级掉粉.png"
+                >
+              </div>
+              <div hidden>
                 <div>
                   <MyBadget
                     left-text="单日增量"
@@ -96,10 +141,12 @@
     </div>
     <div slot="aside-cards">
       <VCard style="margin-bottom:5px">
-        <VCardTitle class="font-weight-black">
+        <VCardTitle class="title font-weight-bold blue--text text--darken-2">
+          <VIcon class="mr-2 blue--text text--darken-2">mdi-message-alert-outline</VIcon>
           粉丝变动观测说明
         </VCardTitle>
-        <VDivider></VDivider>
+      </VCard>
+      <VCard style="margin-bottom:5px">
         <VCardText class="caption">
           此页面展示了粉丝数发生剧烈波动的UP主。<br />
           由于<span class="text--darken-2 red--text">发布视频</span>、<span class="text--darken-2 blue--text">抽奖开奖</span>、<span class="text--darken-2 green--text">石锤锤爆</span>等原因，UP主的粉丝数可能发生剧烈变化，而这种剧烈变化是观测者们喜闻乐见的。<br />
@@ -229,9 +276,8 @@ export default {
   margin-bottom: 5px;
 }
 .float-info {
-  position: absolute;
-  right: 20px;
-  opacity: 0.15;
+  margin-left: 20px;
+  opacity: 0.75;
 }
 .video-pic {
   width: 96px;
