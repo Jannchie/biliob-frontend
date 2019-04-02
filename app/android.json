@@ -1,0 +1,16 @@
+{
+    "$jason": {
+        "head": {
+            "title": "BiliOB观测者"
+        },
+        "body": {
+            "background": {
+                "type": "html",
+                "url": "https://biliob.com",
+                "action": {
+                    "trigger": "visit"
+                }
+            }
+        }
+    }
+}

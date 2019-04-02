@@ -926,14 +926,44 @@
     "version": "ver.4.0.0",
     "date": "2019-04-01",
     "list": [{
-        "text": "安卓版上线",
+        "text": "安卓版客户端上线",
         "type": "stone"
       },
       {
-        "text": "添加了安卓版下载页面",
+        "text": "添加了安卓版客户端下载页面",
         "type": "feature"
       }
     ],
     "type": "holyshit"
+  }, {
+    "title": "样式美化",
+    "version": "ver.4.1.0",
+    "date": "2019-04-02",
+    "list": [{
+        "text": "美化了侧边栏样式",
+        "type": "beautify"
+      },
+      {
+        "text": "美化了粉丝波动页面",
+        "type": "beautify"
+      },
+      {
+        "text": "美化了观测者排行页面",
+        "type": "beautify"
+      },
+      {
+        "text": "美化了FAQ页面",
+        "type": "beautify"
+      },
+      {
+        "text": "美化了部分数据说明",
+        "type": "beautify"
+      },
+      {
+        "text": "修复了侧边视频日期的显示错误",
+        "type": "fix"
+      }
+    ],
+    "type": "important"
   }
 ]
