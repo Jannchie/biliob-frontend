@@ -11,7 +11,7 @@
         flat
         @click="snackbar = false"
       >
-        Close
+        关闭
       </VBtn>
     </VSnackbar>
     <VToolbar
@@ -74,6 +74,11 @@
     >
       <div
         v-if="logined"
+        :class="backgroundStyle"
+      >
+      </div>
+      <div
+        v-if="logined"
         class="check-in"
       >
         <VBtn
@@ -107,23 +112,16 @@
 
       <VList
         class="user-info-content"
-        style="padding:0"
+        style="padding:0;margin-top:150px"
       >
-        <VListTile
-          v-if="logined"
-          :class="backgroundStyle"
-          style="padding-bottom:-20px"
-        >
-
-        </VListTile>
         <VListTile v-if="logined">
           <VListTileAvatar>
-            <VIcon large>
+            <VIcon>
               mdi-home
             </VIcon>
           </VListTileAvatar>
           <VListTileContent>
-            <VListTileTitle class="title font-weight-medium">{{ name }}</VListTileTitle>
+            <VListTileTitle :class="`grey--text text--${brightness}-2 title font-weight-regular`">{{ name }}</VListTileTitle>
             <VListTileSubTitle>
               <div style="display:flex;">
                 <ExpBadget
@@ -139,157 +137,163 @@
           </VListTileContent>
         </VListTile>
       </VList>
-      <VList>
+      <VList dense>
         <VListTile
           v-if="!logined"
+          class="nav-list-tile"
           ripple
           @click.stop="toLogin"
         >
           <VListTileAvatar>
-            <VIcon>mdi-login-variant</VIcon>
+            <CircleIconBtn>mdi-login-variant</CircleIconBtn>
           </VListTileAvatar>
           <VListTileContent>
-            <VListTileTitle>登录</VListTileTitle>
-            <VListTileSubTitle>或者注册？</VListTileSubTitle>
+            <VListTileTitle :class="`font-weight-regular grey--text text--${brightness}-2`">登录</VListTileTitle>
           </VListTileContent>
         </VListTile>
       </VList>
-
-      <VList v-if="logined">
+      <VDivider></VDivider>
+      <VList
+        v-if="logined"
+        dense
+      >
         <VListTile
+          class="nav-list-tile"
           ripple
           @click.stop="toFavoriteAuthor"
         >
           <VListTileAvatar>
-            <VIcon>mdi-account-heart</VIcon>
+            <CircleIconBtn>mdi-account-heart</CircleIconBtn>
           </VListTileAvatar>
           <VListTileContent>
-            <VListTileTitle>我的关注</VListTileTitle>
-            <VListTileSubTitle>查看我关注的UP主</VListTileSubTitle>
+            <VListTileTitle :class="`font-weight-regular grey--text text--${brightness}-2`">我的关注</VListTileTitle>
           </VListTileContent>
         </VListTile>
         <VListTile
+          class="nav-list-tile"
           ripple
           @click.stop="toFavoriteVideo"
         >
           <VListTileAvatar>
-            <VIcon>mdi-star</VIcon>
+            <CircleIconBtn>mdi-star</CircleIconBtn>
           </VListTileAvatar>
           <VListTileContent>
-            <VListTileTitle>我的收藏</VListTileTitle>
-            <VListTileSubTitle>查看我关注的视频</VListTileSubTitle>
+            <VListTileTitle :class="`font-weight-regular grey--text text--${brightness}-2`">我的收藏</VListTileTitle>
           </VListTileContent>
         </VListTile>
         <VListTile
+          class="nav-list-tile"
           ripple
           @click.stop="toRecord"
         >
           <VListTileAvatar>
-            <VIcon>mdi-notebook</VIcon>
+            <CircleIconBtn>mdi-notebook</CircleIconBtn>
           </VListTileAvatar>
           <VListTileContent>
-            <VListTileTitle>操作记录</VListTileTitle>
-            <VListTileSubTitle>身为观测者的观察日记</VListTileSubTitle>
+            <VListTileTitle :class="`font-weight-regular grey--text text--${brightness}-2`">操作记录</VListTileTitle>
           </VListTileContent>
         </VListTile>
       </VList>
-      <VList>
+      <VDivider></VDivider>
+      <VList dense>
         <VListTile
+          class="nav-list-tile"
           ripple
           @click.stop="toEvent"
         >
           <VListTileAvatar>
-            <VIcon>mdi-bulletin-board</VIcon>
+            <CircleIconBtn>mdi-bulletin-board</CircleIconBtn>
           </VListTileAvatar>
           <VListTileContent>
-            <VListTileTitle>UP主粉丝波动情报</VListTileTitle>
-            <VListTileSubTitle>一分钟，我要看到所有的资料</VListTileSubTitle>
+            <VListTileTitle :class="`font-weight-regular grey--text text--${brightness}-2`">UP主粉丝波动情报</VListTileTitle>
           </VListTileContent>
         </VListTile>
       </VList>
-      <VList>
-        <VListTile
-          ripple
-          @click.stop="toFaq"
-        >
-          <VListTileAvatar>
-            <VIcon>mdi-help-circle-outline</VIcon>
-          </VListTileAvatar>
-          <VListTileContent>
-            <VListTileTitle>FA♂Q</VListTileTitle>
-            <VListTileSubTitle>你们问，我来答</VListTileSubTitle>
-          </VListTileContent>
-        </VListTile>
 
-        <VListTile
-          ripple
-          @click.stop="toAbout"
-        >
-          <VListTileAvatar>
-            <VIcon>mdi-information-outline</VIcon>
-          </VListTileAvatar>
+      <VDivider></VDivider>
 
-          <VListTileContent>
-            <VListTileTitle>关于</VListTileTitle>
-            <VListTileSubTitle>你对这些肯定不感兴趣</VListTileSubTitle>
-          </VListTileContent>
-        </VListTile>
-
+      <VList dense>
         <VListTile
-          ripple
-          @click.stop="toLog"
-        >
-          <VListTileAvatar>
-            <VIcon>mdi-developer-board</VIcon>
-          </VListTileAvatar>
-
-          <VListTileContent>
-            <VListTileTitle>开发日志</VListTileTitle>
-            <VListTileSubTitle>快来看看全新的功能</VListTileSubTitle>
-          </VListTileContent>
-        </VListTile>
-
-      </VList>
-      <VList>
-        <VListTile
-          ripple
-          @click.stop="darkMode"
-        >
-          <VListTileAvatar>
-            <VIcon>{{darkModeIcon}}</VIcon>
-          </VListTileAvatar>
-          <VListTileContent>
-            <VListTileTitle>{{darkModeText}}</VListTileTitle>
-            <VListTileSubTitle>Deep ♂ Dark ♂ Fantasy</VListTileSubTitle>
-          </VListTileContent>
-        </VListTile>
-      </VList>
-      <VList>
-        <VListTile
+          class="nav-list-tile"
           ripple
           @click.stop="toUserRank"
         >
           <VListTileAvatar>
-            <VIcon>mdi-view-list</VIcon>
+            <CircleIconBtn>mdi-view-list</CircleIconBtn>
           </VListTileAvatar>
           <VListTileContent>
-            <VListTileTitle>观测者排行</VListTileTitle>
-            <VListTileSubTitle>站内积分榜</VListTileSubTitle>
+            <VListTileTitle :class="`font-weight-regular grey--text text--${brightness}-2`">观测者排行</VListTileTitle>
+          </VListTileContent>
+        </VListTile>
+        <VListTile
+          class="nav-list-tile"
+          ripple
+          @click.stop="toFaq"
+        >
+          <VListTileAvatar>
+            <CircleIconBtn>mdi-help-circle-outline</CircleIconBtn>
+          </VListTileAvatar>
+          <VListTileContent>
+            <VListTileTitle :class="`font-weight-regular grey--text text--${brightness}-2`">FA♂Q</VListTileTitle>
+          </VListTileContent>
+        </VListTile>
+
+        <VListTile
+          class="nav-list-tile"
+          ripple
+          @click.stop="toAbout"
+        >
+          <VListTileAvatar>
+            <CircleIconBtn>mdi-information-outline</CircleIconBtn>
+          </VListTileAvatar>
+
+          <VListTileContent>
+            <VListTileTitle :class="`font-weight-regular grey--text text--${brightness}-2`">关于</VListTileTitle>
+          </VListTileContent>
+        </VListTile>
+
+        <VListTile
+          class="nav-list-tile"
+          ripple
+          @click.stop="toLog"
+        >
+          <VListTileAvatar>
+            <CircleIconBtn>mdi-developer-board</CircleIconBtn>
+          </VListTileAvatar>
+
+          <VListTileContent>
+            <VListTileTitle :class="`font-weight-regular grey--text text--${brightness}-2`">开发日志</VListTileTitle>
+          </VListTileContent>
+        </VListTile>
+
+      </VList>
+      <VDivider></VDivider>
+      <VList dense>
+        <VListTile
+          class="nav-list-tile"
+          ripple
+          @click.stop="darkMode"
+        >
+          <VListTileAvatar>
+            <CircleIconBtn>{{darkModeIcon}}</CircleIconBtn>
+          </VListTileAvatar>
+          <VListTileContent>
+            <VListTileTitle :class="`font-weight-regular grey--text text--${brightness}-2`">{{darkModeText}}</VListTileTitle>
           </VListTileContent>
         </VListTile>
       </VList>
 
-      <VList>
+      <VList dense>
         <VListTile
+          class="nav-list-tile"
           ripple
           @click.stop="toAndroidPage"
         >
           <VListTileAvatar>
-            <VIcon>mdi-android</VIcon>
+            <CircleIconBtn>mdi-android</CircleIconBtn>
           </VListTileAvatar>
           <VListTileContent>
-            <VListTileTitle>获取安卓APP</VListTileTitle>
-            <VListTileSubTitle>你从未尝试过的船新版本</VListTileSubTitle>
+            <VListTileTitle :class="`font-weight-regular grey--text text--${brightness}-2`">获取安卓APP</VListTileTitle>
           </VListTileContent>
         </VListTile>
       </VList>
@@ -305,10 +309,11 @@
 <script>
 import CreditBadget from "./CreditBadget.vue";
 import ExpBadget from "./ExpBadget.vue";
+import CircleIconBtn from "./CircleIconBtn";
 
 export default {
   name: "NavBar",
-  components: { CreditBadget, ExpBadget },
+  components: { CreditBadget, ExpBadget, CircleIconBtn },
   data() {
     return {
       egg: false,
@@ -326,6 +331,13 @@ export default {
     };
   },
   computed: {
+    brightness() {
+      if (this.$store.state.dark) {
+        return "lighten";
+      } else {
+        return "darken";
+      }
+    },
     logined: {
       // getter
       get: function() {
@@ -508,20 +520,22 @@ export default {
 }
 
 .aside-pic {
-  position: relative;
-  left: 0px;
-  top: 0px;
-  height: 180px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
   margin: 0 0;
   padding: 0 0;
   background-image: url("../../../public/img/aside-bright.png");
 }
 
 .aside-pic-dark {
-  position: relative;
-  left: 0px;
-  height: 180px;
-  top: 0px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
   margin: 0 0;
   padding: 0 0;
   background-image: url("../../../public/img/aside-dark.png");
@@ -537,7 +551,9 @@ export default {
   top: 5px;
   z-index: 10;
 }
-
+.nav-list-tile {
+  height: 40px;
+}
 .badget {
   margin-right: 4px;
 }

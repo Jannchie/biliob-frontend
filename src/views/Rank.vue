@@ -179,14 +179,24 @@
       </VTabs>
     </div>
     <div slot="aside-cards">
-      <VCard class="aside-cards">
-        <VCardTitle class="title">
+      <VCard style="margin-bottom:5px">
+        <VCardTitle class="title font-weight-bold blue--text text--darken-2">
+          <VIcon class="mr-2 blue--text text--darken-2">mdi-message-alert-outline</VIcon>
           排行榜说明
         </VCardTitle>
-        <VCardText>
-          本排行榜数据每日更新一次。
-          <br>其中涨粉、掉粉排行仅包括所有正在观测的UP主数据。具体数字为一日粉丝变动数，仅供参考。
-          <br>国创番剧排行榜数据摘录自B站。
+      </VCard>
+      <VCard class="aside-cards">
+        <VCardText class="caption">
+          <li>
+            本排行榜数据每日更新一次。
+          </li>
+
+          <li>
+            其中涨粉、掉粉排行仅包括所有正在观测的UP主数据。具体数字为一日粉丝变动数，仅供参考。
+          </li>
+          <li>
+            国创番剧排行榜数据摘录自B站。
+          </li>
         </VCardText>
       </VCard>
       <OtherLink class="aside-cards" />

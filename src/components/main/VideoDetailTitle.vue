@@ -12,8 +12,10 @@
         <div class="font-weight-bold video-title ">
           {{ title }}
         </div>
-        <br>
-        aid:{{ $route.params.aid }}
+        <span
+          class="px-1 pink lighten-3 white--text mr-1 font-weight-black"
+          style="border-radius:3px"
+        >AV</span><span class="text--lighten-3 pink--text">{{ $route.params.aid }}</span>
       </VCardText>
       <FavoriteBtn
         :aid="aid"

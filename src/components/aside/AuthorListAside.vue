@@ -2,7 +2,7 @@
   <div>
     <VCard>
       <VCardTitle class="title font-weight-bold blue--text text--darken-2">
-        <VIcon class="blue--text text--darken-2">mdi-message-alert-outline</VIcon>
+        <VIcon class="mr-2 blue--text text--darken-2">mdi-message-alert-outline</VIcon>
         数据说明
       </VCardTitle>
     </VCard>
