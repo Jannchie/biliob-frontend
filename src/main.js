@@ -35,7 +35,6 @@ axios.defaults.headers = {
 };
 Vue.use(VueAxios, axios);
 Vue.use(Vuex);
-Vue.config.productionTip = false;
 new Vue({
   router,
   store,
