@@ -384,6 +384,13 @@ export default {
     }
   },
   watch: {
+    drawer(drawer) {
+      if (drawer) {
+        this.fixedBody();
+      } else {
+        this.looseBody();
+      }
+    },
     isDark(isDark) {
       if (isDark) {
         this.backgroundStyle = "aside-pic-dark";
@@ -495,6 +502,21 @@ export default {
           }
         })
         .catch(e => e.data.msg);
+    },
+    fixedBody() {
+      var scrollTop =
+        document.body.scrollTop || document.documentElement.scrollTop;
+      document.body.style.cssText +=
+        "position:fixed; width:100%; top:-" + scrollTop + "px;";
+    },
+    looseBody() {
+      var body = document.body;
+      body.style.position = "static";
+      var top = body.style.top;
+      document.body.scrollTop = document.documentElement.scrollTop = -parseInt(
+        top
+      );
+      body.style.top = "";
     }
   }
 };
