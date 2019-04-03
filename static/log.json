@@ -969,5 +969,18 @@
       }
     ],
     "type": "important"
+  },
+  {
+    "title": "修复错误",
+    "version": "ver.4.1.1",
+    "date": "2019-04-03",
+    "list": [{
+      "text": "修复了未登录时侧边栏的样式",
+      "type": "fix"
+    }, {
+      "text": "修复了滚动穿透的问题",
+      "type": "fix"
+    }],
+    "type": "unimportant"
   }
 ]
