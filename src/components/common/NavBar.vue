@@ -111,10 +111,11 @@
       </div>
 
       <VList
+        v-if="logined"
         class="user-info-content"
         style="padding:0;margin-top:150px"
       >
-        <VListTile v-if="logined">
+        <VListTile>
           <VListTileAvatar>
             <VIcon>
               mdi-home
@@ -152,7 +153,6 @@
           </VListTileContent>
         </VListTile>
       </VList>
-      <VDivider></VDivider>
       <VList
         v-if="logined"
         dense
