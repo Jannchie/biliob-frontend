@@ -982,5 +982,21 @@
       "type": "fix"
     }],
     "type": "unimportant"
+  },
+  {
+    "title": "FAQ更新",
+    "version": "ver.4.1.2",
+    "date": "2019-04-05",
+    "list": [{
+      "text": "美化了FAQ页面",
+      "type": "beautify"
+    }, {
+      "text": "更新FAQ问题",
+      "type": "feature"
+    }, {
+      "text": "修复了在安卓客户端也会显示下载安卓应用的BUG",
+      "type": "fix"
+    }],
+    "type": "unimportant"
   }
 ]
