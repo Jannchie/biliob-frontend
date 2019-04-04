@@ -3,15 +3,6 @@
     <li>
       {{userAgent}}
     </li>
-    <li>
-      {{appName}}
-    </li>
-    <li>
-      {{appCodeName}}
-    </li>
-    <li>
-      {{platform}}
-    </li>
   </div>
 </template>
 <script>
@@ -26,6 +17,7 @@ export default {
   },
   mounted() {
     this.userAgent = navigator.userAgent;
+    console.log(this.userAgent);
     this.appName = navigator.appName;
     this.appCodeName = navigator.appCodeName;
     this.platform = navigator.platform;

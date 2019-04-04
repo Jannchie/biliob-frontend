@@ -23,7 +23,7 @@
       </VCardTitle>
       <VForm>
         <VCardText v-if="type==='else'">
-          如果遇到了任何问题，或者有什么意见或者建议，请联系我：jannchie@gmail.com<a href="/test">.</a>
+          如果遇到了任何问题，或者有什么意见或者建议，请联系我：jannchie@gmail.com
         </VCardText>
         <VCardText>
           <VTextField
