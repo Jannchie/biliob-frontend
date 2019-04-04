@@ -283,7 +283,10 @@
         </VListTile>
       </VList>
 
-      <VList dense>
+      <VList
+        :hidden="isBsl"
+        dense
+      >
         <VListTile
           class="nav-list-tile"
           ripple
@@ -327,7 +330,8 @@ export default {
       backgroundStyle: String(),
       darkModeText: String(),
       darkModeIcon: String(),
-      checkInLoading: true
+      checkInLoading: true,
+      isBsl: false
     };
   },
   computed: {
@@ -405,6 +409,9 @@ export default {
   },
 
   created() {
+    if (navigator.userAgent.indexOf("bsl") !== -1) {
+      this.isBsl = true;
+    }
     if (this.$store.state.dark) {
       this.darkModeIcon = "mdi-weather-sunny";
       this.darkModeText = "日间模式";
