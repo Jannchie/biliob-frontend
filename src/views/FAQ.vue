@@ -1,9 +1,34 @@
 <template>
-  <MainLayout>
+  <MainLayout reverse>
+    <div slot="aside-cards">
+      <VCard class="mb-2">
+        <VCardTitle class="title blue--text text--darken-3 font-weight-black">
+          <VIcon color="blue darken-3">mdi-file-document-box-outline</VIcon>目录
+        </VCardTitle>
+      </VCard>
+      <VCard class="mb-2">
+        <VCardText>
+          <ol
+            v-for="(eachCatalog,catalogIndex) in questionCards"
+            :key="catalogIndex"
+            class="subheading mb-2"
+          >
+            <a :href="`#${eachCatalog.catalogName}`">{{eachCatalog.catalogName}}</a>
+            <li
+              v-for="(eachQuestion, questionIndex) in eachCatalog.catalogQuestions"
+              :id="eachQuestion.question"
+              :key="questionIndex"
+              class="body-1"
+            ><a :href="`#${eachQuestion.question}`">{{eachQuestion.question}}</a></li>
+            <VDivider></VDivider>
+          </ol>
+        </VCardText>
+      </VCard>
+    </div>
     <div slot="main-cards">
-      <VCard class="question-card">
+      <VCard class="mb-2">
         <VCardTitle class="title font-weight-black blue--text text--darken-3">
-          <VIcon color="blue darken-3 font-weight-black"> mdi-comment-question-outline </VIcon>常见问题解答
+          <VIcon color="blue darken-3"> mdi-comment-question-outline </VIcon>常见问题解答
         </VCardTitle>
       </VCard>
       <VCard
@@ -12,7 +37,7 @@
         class="mb-1"
       >
         <VCardTitle class="blue--text text--darken-3 subheading font-weight-black">
-          <li>
+          <li :id="eachCatalog.catalogName">
             {{eachCatalog.catalogName}}
           </li>
         </VCardTitle>
@@ -20,7 +45,10 @@
           v-for="(eachQuestion, questionIndex) in eachCatalog.catalogQuestions"
           :key="questionIndex"
         >
-          <div class="subheading font-weight-regular blue--text text--darken-3">
+          <div
+            :id="eachQuestion.question"
+            class="subheading font-weight-regular blue--text text--darken-3"
+          >
             问题{{ questionIndex + 1 }}：{{ eachQuestion.question }}
           </div>
           <div
@@ -95,11 +123,35 @@ export default {
         }
       ]
     };
+  },
+  computed: {
+    brightness() {
+      if (this.$store.state.dark) {
+        return "lighten";
+      } else {
+        return "darken";
+      }
+    }
   }
 };
 </script>
 <style scoped>
 .question-card {
   margin-bottom: 10px;
+}
+a {
+  color: #424242;
+  text-decoration: none;
+}
+.theme--dark a {
+  color: #fff;
+  text-decoration: none;
+}
+.theme--dark a:hover {
+  color: #3c89e0;
+  text-decoration: none;
+}
+a:hover {
+  color: #1565c0;
 }
 </style>

@@ -935,7 +935,8 @@
       }
     ],
     "type": "holyshit"
-  }, {
+  },
+  {
     "title": "样式美化",
     "version": "ver.4.1.0",
     "date": "2019-04-02",
@@ -975,12 +976,14 @@
     "version": "ver.4.1.1",
     "date": "2019-04-03",
     "list": [{
-      "text": "修复了未登录时侧边栏的样式",
-      "type": "fix"
-    }, {
-      "text": "修复了滚动穿透的问题",
-      "type": "fix"
-    }],
+        "text": "修复了未登录时侧边栏的样式",
+        "type": "fix"
+      },
+      {
+        "text": "修复了滚动穿透的问题",
+        "type": "fix"
+      }
+    ],
     "type": "unimportant"
   },
   {
@@ -988,14 +991,27 @@
     "version": "ver.4.1.2",
     "date": "2019-04-05",
     "list": [{
-      "text": "美化了FAQ页面",
-      "type": "beautify"
-    }, {
-      "text": "更新FAQ问题",
+        "text": "美化了FAQ页面",
+        "type": "beautify"
+      },
+      {
+        "text": "更新FAQ问题",
+        "type": "feature"
+      },
+      {
+        "text": "修复了在安卓客户端也会显示下载安卓应用的BUG",
+        "type": "fix"
+      }
+    ],
+    "type": "unimportant"
+  },
+  {
+    "title": "FAQ添加目录",
+    "version": "ver.4.1.3",
+    "date": "2019-04-10",
+    "list": [{
+      "text": "添加FAQ目录",
       "type": "feature"
-    }, {
-      "text": "修复了在安卓客户端也会显示下载安卓应用的BUG",
-      "type": "fix"
     }],
     "type": "unimportant"
   }
