@@ -40,3 +40,16 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount("#app");
+
+// refresh index.html
+caches.open("biliob-precache-https://www.biliob.com/").then(c => {
+  c.keys().then(k => {
+    k.forEach(e => {
+      if (e.url === "https://www.biliob.com/index.html") {
+        c.delete(e).then(() => {
+          console.log("index.html缓存清除成功");
+        });
+      }
+    });
+  });
+});
