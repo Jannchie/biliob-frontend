@@ -1,6 +1,9 @@
 <template>
   <div style="display: flex;margin-bottom:5px; flex-wrap: wrap">
-    <VCard class="versus-card">
+    <VCard
+      class="versus-card"
+      @click.stop="toAuthorVersus"
+    >
       <div style="display: flex">
         <VCardText
           class="competitor-div"
@@ -157,6 +160,10 @@ export default {
     },
     jumpToAuthorPage(mid) {
       this.$router.push(`/author/${mid}`);
+    },
+    toAuthorVersus() {
+      if (this.aMid != 0 && this.bMid != 0)
+        this.$router.push(`/author/versus?aMid=${this.aMid}&bMid=${this.bMid}`);
     }
   }
 };

@@ -19,7 +19,7 @@ const UserRank = () => import("./views/UserRank.vue");
 const UserRecord = () => import("./views/UserRecord.vue");
 const Test = () => import("./views/Test.vue");
 const Android = () => import("./views/Android.vue");
-
+const AuthorVersus = () => import("./views/AuthorVersus.vue");
 Vue.use(Router);
 
 export default new Router({
@@ -41,6 +41,10 @@ export default new Router({
     {
       path: "/event",
       component: Occurrence
+    },
+    {
+      path: "/author/versus",
+      component: AuthorVersus
     },
     {
       path: "/author/:mid",
@@ -99,12 +103,12 @@ export default new Router({
       component: Test
     },
     {
-      path: "*",
-      component: NotFound
-    },
-    {
       path: "/download/android",
       component: Android
+    },
+    {
+      path: "*",
+      component: NotFound
     }
   ],
   scrollBehavior(to, from, savedPosition) {
