@@ -1014,5 +1014,23 @@
       "type": "feature"
     }],
     "type": "unimportant"
+  },
+  {
+    "title": "FAQ添加目录",
+    "version": "ver.4.2.0",
+    "date": "2019-04-14",
+    "list": [{
+        "text": "添加榜首实时对比页面，点击首页榜首粉丝卡片空白处即可进入",
+        "type": "feature"
+      }, {
+        "text": "添加粉丝实时对比的图表",
+        "type": "feature"
+      },
+      {
+        "text": "美化计数器样式",
+        "type": "beautify"
+      }
+    ],
+    "type": "important"
   }
 ]

@@ -23,13 +23,24 @@ export default {
     formatFunction: { type: Function, default: val => val }
   },
   data: () => ({
-    instance: null
+    instance: null,
+    coldDown: false
   }),
   watch: {
     value: {
       handler(value) {
         if (this.instance && this.instance.update) {
-          this.instance.update(value);
+          if (this.coldDown) {
+            setTimeout(() => {
+              this.instance.update(value);
+            }, 1000);
+          } else {
+            setTimeout(() => {
+              this.coldDown = false;
+            }, 1000);
+            this.coldDown = true;
+            this.instance.update(value);
+          }
         }
       },
       deep: false
