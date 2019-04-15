@@ -10,7 +10,7 @@ script:
   - npm run build
 branches:
   only:
-    - travis
+    - master
 before_install:
   - openssl aes-256-cbc -K $encrypted_b9878c0ec178_key -iv $encrypted_b9878c0ec178_iv
     -in biliob_frontend.enc -out ~/.ssh/biliob_frontend -d
