@@ -1034,9 +1034,23 @@
     "type": "important"
   },
   {
-    "title": "修复错误",
+    "title": "更新FAQ内容",
     "version": "ver.4.2.1",
-    "date": "2019-04-14",
+    "date": "2019-04-15",
+    "list": [{
+      "text": "更新了“积分相关问题的回答”",
+      "type": "feature"
+    }, {
+      "text": "添加了“等级相关问题及回答”",
+      "type": "feature"
+    }, {
+      "text": "添加了“爬虫相关问题及回答”",
+      "type": "feature"
+    }]
+  }, {
+    "title": "修复错误",
+    "version": "ver.4.2.2",
+    "date": "2019-04-21",
     "list": [{
         "text": "修复了实时对比显示错误的问题",
         "type": "fix"
