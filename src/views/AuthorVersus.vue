@@ -70,7 +70,10 @@
         </div>
       </div>
     </VCard>
-    <DetailCharts :options="realtimeChartOptions" />
+    <DetailCharts
+      :hidden="!freq"
+      :options="realtimeChartOptions"
+    />
   </div>
 </template>
 <script>
@@ -111,6 +114,13 @@ export default {
     },
     bMid() {
       return this.$route.query.bMid;
+    },
+    freq() {
+      if (this.$route.query.freq !== undefined) {
+        return this.$route.query.freq;
+      } else {
+        return false;
+      }
     },
     dataIntegrity() {
       var a = this.aRealtimeData.length;
@@ -182,12 +192,12 @@ export default {
     },
     getNewData() {
       this.counter += 1;
-      if (this.counter % 10 == 0) {
+      if (this.counter % 5 == 0) {
         this.refresh();
-      } else if (this.counter % 3 == 0) {
-        return;
       } else {
-        this.randomize();
+        if (this.freq) {
+          this.randomize();
+        }
       }
     },
     randomize() {
@@ -212,7 +222,7 @@ export default {
         this.bOriginData.push(this.bFans);
         this.bOriginData.shift();
       });
-      var dataString = format(new Date(), "YYYY-mm-DD HH:MM:SS");
+      var dataString = format(new Date(), "YYYY-MM-DD HH:mm:ss");
       this.datetimeArray.push(dataString);
       this.datetimeArray.shift();
       this.refreshRealtimeChart();
