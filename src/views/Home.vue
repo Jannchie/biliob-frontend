@@ -6,6 +6,7 @@
       title="粉丝数榜首争夺"
       a-title="冠军"
       b-title="亚军"
+      :frequently="true"
     />
     <DetailCharts :options="siteData" />
     <!-- <DetailCharts :options="onlineOptions"></DetailCharts> -->
