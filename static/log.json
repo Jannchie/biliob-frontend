@@ -1016,7 +1016,7 @@
     "type": "unimportant"
   },
   {
-    "title": "FAQ添加目录",
+    "title": "实时对比",
     "version": "ver.4.2.0",
     "date": "2019-04-14",
     "list": [{
@@ -1032,5 +1032,20 @@
       }
     ],
     "type": "important"
+  },
+  {
+    "title": "修复错误",
+    "version": "ver.4.2.1",
+    "date": "2019-04-14",
+    "list": [{
+        "text": "修复了实时对比显示错误的问题",
+        "type": "fix"
+      },
+      {
+        "text": "实时数据更新频率一致化",
+        "type": "feature"
+      }
+    ],
+    "type": "unimportant"
   }
 ]
