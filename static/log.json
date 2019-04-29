@@ -1046,7 +1046,8 @@
     }, {
       "text": "添加了“爬虫相关问题及回答”",
       "type": "feature"
-    }]
+    }],
+    "type": "unimportant"
   }, {
     "title": "修复错误",
     "version": "ver.4.2.2",
@@ -1058,6 +1059,20 @@
       {
         "text": "实时数据更新频率一致化",
         "type": "feature"
+      }
+    ],
+    "type": "unimportant"
+  }, {
+    "title": "修复错误",
+    "version": "ver.4.2.3",
+    "date": "2019-04-29",
+    "list": [{
+        "text": "修复了番剧、国创排行榜显示问题",
+        "type": "fix"
+      },
+      {
+        "text": "添加百度统计模块进行数据分析",
+        "type": "stone"
       }
     ],
     "type": "unimportant"
