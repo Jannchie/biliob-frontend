@@ -21,6 +21,11 @@ export default {
     this.appName = navigator.appName;
     this.appCodeName = navigator.appCodeName;
     this.platform = navigator.platform;
+    this.axios
+      .get("https://api.bilibili.com/x/web-interface/view?aid=17486449")
+      .then(r => {
+        alert(r);
+      });
   }
 };
 </script>
