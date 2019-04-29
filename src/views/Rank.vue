@@ -112,8 +112,8 @@
                   {{ index+1 }}
                 </h2>
                 <img
-                  style="border-radius:3px;width:50px;height:50px;margin:0 8px"
-                  :src="eachBangumi.squareCover"
+                  style="border-radius:3px;width:90px;height:120px;margin:0 8px"
+                  :src="eachBangumi.cover"
                 >
                 <div style="flex-basis:80%;font-size:14px">
                   <b>{{ eachBangumi.title }}</b>
@@ -152,8 +152,8 @@
                   {{ index+1 }}
                 </h2>
                 <img
-                  style="border-radius:3px;width:50px;height:50px;margin:0 8px"
-                  :src="eachDonghua.squareCover"
+                  style="border-radius:3px;width:90px;height:120px;margin:0 8px"
+                  :src="eachDonghua.cover"
                 >
                 <div style="flex-basis:80%;font-size:14px">
                   <b>{{ eachDonghua.title }}</b>
@@ -224,13 +224,13 @@ export default {
     this.axios.get("/bangumi").then(response => {
       this.bangumiData = response.data.content;
       this.bangumiData.forEach(element => {
-        element.squareCover = element.squareCover.slice(5);
+        element.cover = element.cover.slice(5);
       });
     });
     this.axios.get("/donghua").then(response => {
       this.donghuaData = response.data.content;
       this.donghuaData.forEach(element => {
-        element.squareCover = element.squareCover.slice(5);
+        element.cover = element.cover.slice(5);
       });
     });
     this.axios.get("/rank/fans-increase-rate").then(response => {
