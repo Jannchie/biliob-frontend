@@ -97,7 +97,7 @@ export default {
   },
   mounted() {
     this.$store.commit("toAuthor");
-    this.axios.get("/author/" + this.$route.params.mid).then(response => {
+    this.axios.get("/author/" + this.authorData.mid).then(response => {
       this.authorData = response.data;
       this.authorFansOptions = drawFansChart(deepCopy(this.authorData));
       this.authorFansRateOptions = drawFansRateChart(deepCopy(this.authorData));
@@ -105,11 +105,11 @@ export default {
         this.authorData.forceFocus == false;
       }
     });
-    this.axios.get(`/author/${this.$route.params.mid}/video`).then(response => {
+    this.axios.get(`/author/${this.authorData.mid}/video`).then(response => {
       this.authorTopVideo = response.data;
     });
     this.axios
-      .get(`/author/${this.$route.params.mid}/video?sort=1`)
+      .get(`/author/${this.authorData.mid}/video?sort=1`)
       .then(response => {
         this.authorLatestVideo = response.data;
       });

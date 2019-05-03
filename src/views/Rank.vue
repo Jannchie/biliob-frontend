@@ -1,6 +1,53 @@
 <template>
   <MainLayout>
+
     <div slot="main-cards">
+      <MaterialCard class="card-tabs">
+        <div>
+          <VSearchForm
+            slot="search"
+            hint="请输入标题、分区或者av号"
+            @getSearchValue="getSearchValue"
+          />
+        </div>
+        <VFlex slot="header">
+          <VTabs
+            color="transparent"
+            slider-color="white"
+          >
+            <span
+              class="subheading font-weight-light mr-3"
+              style="align-self: center"
+            >类目：</span>
+            <VTab @click="sortChange(0)">
+              <VIcon style="margin-right:10px;">
+                mdi-heart
+              </VIcon>
+              涨粉
+            </VTab>
+            <VTab @click="sortChange(1)">
+              <VIcon style="margin-right:10px;">
+                mdi-heart-broken
+              </VIcon>掉粉
+            </VTab>
+            <VTab @click="sortChange(2)">
+              <VIcon style="margin-right:10px;">
+                mdi-video-vintage
+              </VIcon>番剧
+            </VTab>
+            <VTab @click="sortChange(3)">
+              <VIcon style="margin-right:10px;">
+                mdi-rabbit
+              </VIcon>国创
+            </VTab>
+          </VTabs>
+        </VFlex>
+        <VSlideYTransition group>
+
+        </VSlideYTransition>
+
+      </MaterialCard>
+
       <VTabs
         fixed-tabscentered
         grow
@@ -263,6 +310,5 @@ export default {
 }
 
 .aside-cards {
-  margin-bottom: 5px;
 }
 </style>

@@ -2,70 +2,93 @@
   <div class="author-list-main">
     <div>
       <div>
-        <VSearchForm
-          slot="search"
-          hint="请输入UP主名称，或者uid"
-          @getSearchValue="getSearchValue"
-        />
-        <VCard style="margin-bottom:5px">
-          <VTabs fixed-tabs>
-            <VTab @click="sortChange(0)">
-              粉丝总数
-            </VTab>
-            <VTab @click="sortChange(1)">
-              播放总量
-            </VTab>
-            <VTab @click="sortChange(2)">
-              专栏阅读
-            </VTab>
-          </VTabs>
-        </VCard>
-        <VSlideYTransition group>
-          <VCard
-            v-for="eachAuthor in authorList.content"
-            :key="eachAuthor.mid"
-            class="author-cards"
-            ripple
-            :to="'/author/' + eachAuthor.mid"
-          >
-            <div style="padding:5px;display:flex">
-              <div>
-                <VImg
-                  style="border-radius:40px;width:80px;height:80px"
-                  :src="eachAuthor.face.replace('http:', '')"
-                  :lazy-src="eachAuthor.face.replace('http:', '')"
+        <MaterialCard class="card-tabs">
+
+          <VFlex slot="header">
+            <VTabs
+              color="transparent"
+              slider-color="white"
+            >
+              <span
+                class="subheading font-weight-light mr-3"
+                style="align-self: center"
+              >排序：</span>
+              <VTab @click="sortChange(0)">
+                <VIcon style="margin-right:10px;">
+                  mdi-account-multiple
+                </VIcon>
+                粉丝总数
+              </VTab>
+              <VTab @click="sortChange(1)">
+                <VIcon style="margin-right:10px;">
+                  mdi-play-circle-outline
+                </VIcon>
+                播放总量
+              </VTab>
+              <VTab @click="sortChange(2)">
+                <VIcon style="margin-right:10px;">
+                  mdi-script-text-outline
+                </VIcon>
+                专栏阅读
+              </VTab>
+            </VTabs>
+          </VFlex>
+          <div>
+
+            <VSearchForm
+              slot="search"
+              hint="请输入UP主名称，或者uid"
+              @getSearchValue="getSearchValue"
+            />
+          </div>
+
+          <VSlideYTransition group>
+            <div
+              v-for="eachAuthor in authorList.content"
+              :key="eachAuthor.mid"
+              class="author-cards"
+              @click.stop="toAuthorDetail(eachAuthor.mid)"
+            >
+              <div style="padding:5px;display:flex">
+                <div>
+                  <VImg
+                    style="border-radius:40px;width:80px;height:80px"
+                    :src="eachAuthor.face.replace('http:', '')"
+                    :lazy-src="eachAuthor.face.replace('http:', '')"
+                  />
+                </div>
+                <div style="margin-left:10px;width:100%">
+                  <div class="font-weight-bold author-title">
+                    {{ eachAuthor.name }}
+                    <SexIcon :sex="eachAuthor.sex" />
+                  </div>
+                  <div
+                    v-if="eachAuthor.official !== ''"
+                    class="caption  author-info"
+                  >
+                    <VIcon
+                      color="#FBC02D"
+                      small
+                    >
+                      mdi-flash </VIcon>{{ eachAuthor.official }}
+                  </div>
+                </div>
+                <ObserveStatus
+                  class="observe-status"
+                  :object="eachAuthor"
                 />
               </div>
-              <div style="margin-left:10px;width:100%">
-                <div class="font-weight-bold author-title">
-                  {{ eachAuthor.name }}
-                  <SexIcon :sex="eachAuthor.sex" />
-                </div>
-                <div
-                  v-if="eachAuthor.official !== ''"
-                  class="caption  author-info"
-                >
-                  <VIcon
-                    color="#FBC02D"
-                    small
-                  >
-                    mdi-flash </VIcon>{{ eachAuthor.official }}
-                </div>
-              </div>
-              <ObserveStatus
-                class="observe-status"
-                :object="eachAuthor"
-              />
+              <VDivider></VDivider>
             </div>
-          </VCard>
-        </VSlideYTransition>
-        <VBtn
-          block
-          outline
-          color="blue darken-2"
-          :disabled="nextBtnDisabled"
-          @click.stop="next"
-        >{{ nextBtnText }}</VBtn>
+          </VSlideYTransition>
+          <VBtn
+            block
+            outline
+            color="blue darken-2"
+            :disabled="nextBtnDisabled"
+            @click.stop="next"
+          >{{ nextBtnText }}</VBtn>
+        </MaterialCard>
       </div>
     </div>
   </div>
@@ -179,6 +202,9 @@ export default {
         .then(response => {
           this.refreshList(response);
         });
+    },
+    toAuthorDetail(mid) {
+      this.$router.push("/author/" + mid);
     }
   }
 };
@@ -197,16 +223,11 @@ export default {
   padding: 2px 0;
 }
 
-p {
-  position: absolute;
-  bottom: 0px;
-  margin-bottom: 5px;
-}
-
 .author-cards {
   margin: 10px 2px;
   height: 90px;
   border-radius: 5px;
+  position: relative;
 }
 
 .author-title {

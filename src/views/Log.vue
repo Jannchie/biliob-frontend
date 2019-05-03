@@ -13,14 +13,16 @@
       >
         <VLayout pt-3>
           <VFlex>
-            <strong>{{ eachPost.title }}</strong><span
-              class="grey white--text darken-2"
-              style="border-radius:3px;padding:1px 5px;margin:0px 5px"
-            >{{eachPost.version}}</span>
+            <div class="title">
+              {{ eachPost.title }}<span
+                class="grey white--text darken-2"
+                style="border-radius:3px;padding:1px 5px;margin:0px 5px"
+              >{{eachPost.version}}</span>
+            </div>
             <br>
-            <strong class="caption mb-1">
+            <div class="subheading mb-1">
               {{ eachPost.date }}
-            </strong>
+            </div>
             <div class="caption mb-2">
               <div
                 v-for="eachLine in eachPost.list"

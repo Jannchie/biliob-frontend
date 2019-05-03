@@ -1,7 +1,9 @@
 <template>
-  <div :class="backgroundStyle">
-    <img height="188px">
-  </div>
+  <VCard style="margin-bottom:20px">
+    <div :class="backgroundStyle">
+      <img height="188px">
+    </div>
+  </VCard>
 </template>
 <script>
 export default {
@@ -35,7 +37,6 @@ export default {
 
 <style>
 .banner {
-  position: relative;
   left: 0px;
   top: 0px;
   margin: 0 0;
@@ -44,12 +45,35 @@ export default {
   background-position: center;
 }
 .banner-dark {
-  position: relative;
   left: 0px;
   top: 0px;
   margin: 0 0;
   padding: 0 0;
   background-image: url("../../../public/img/banner-dark.png");
   background-position: center;
+}
+@-webkit-keyframes scrollGood {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-320px);
+  }
+}
+@-moz-keyframes scrollGood {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-320px);
+  }
+}
+@keyframes scrollGood {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-320px);
+  }
 }
 </style>

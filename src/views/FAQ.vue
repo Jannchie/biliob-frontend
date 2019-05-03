@@ -1,47 +1,35 @@
 <template>
   <MainLayout reverse>
     <div slot="aside-cards">
-      <VCard class="mb-2">
-        <VCardTitle class="title blue--text text--darken-3 font-weight-black">
-          <VIcon color="blue darken-3">mdi-file-document-box-outline</VIcon>目录
-        </VCardTitle>
-      </VCard>
-      <VCard class="mb-2">
-        <VCardText>
-          <ol
-            v-for="(eachCatalog,catalogIndex) in questionCards"
-            :key="catalogIndex"
-            class="subheading mb-2"
-          >
-            <a :href="`#${eachCatalog.catalogName}`">{{eachCatalog.catalogName}}</a>
-            <li
-              v-for="(eachQuestion, questionIndex) in eachCatalog.catalogQuestions"
-              :id="eachQuestion.question"
-              :key="questionIndex"
-              class="body-1"
-            ><a :href="`#${eachQuestion.question}`">{{eachQuestion.question}}</a></li>
-            <VDivider></VDivider>
-          </ol>
-        </VCardText>
-      </VCard>
+      <MaterialCard
+        title="目录"
+        class="mb-2"
+      >
+        <ol
+          v-for="(eachCatalog,catalogIndex) in questionCards"
+          :key="catalogIndex"
+          class="subheading mb-2"
+        >
+          <a :href="`#${eachCatalog.catalogName}`">{{eachCatalog.catalogName}}</a>
+          <li
+            v-for="(eachQuestion, questionIndex) in eachCatalog.catalogQuestions"
+            :id="eachQuestion.question"
+            :key="questionIndex"
+            class="body-1"
+          ><a :href="`#${eachQuestion.question}`">{{eachQuestion.question}}</a></li>
+          <VDivider></VDivider>
+        </ol>
+      </MaterialCard>
     </div>
     <div slot="main-cards">
-      <VCard class="mb-2">
-        <VCardTitle class="title font-weight-black blue--text text--darken-3">
-          <VIcon color="blue darken-3"> mdi-comment-question-outline </VIcon>常见问题解答
-        </VCardTitle>
-      </VCard>
-      <VCard
+
+      <MaterialCard
         v-for="(eachCatalog,catalogIndex) in questionCards"
         :key="catalogIndex"
+        :title="eachCatalog.catalogName"
         class="mb-1"
       >
-        <VCardTitle class="blue--text text--darken-3 subheading font-weight-black">
-          <li :id="eachCatalog.catalogName">
-            {{eachCatalog.catalogName}}
-          </li>
-        </VCardTitle>
-        <VCardText
+        <div
           v-for="(eachQuestion, questionIndex) in eachCatalog.catalogQuestions"
           :key="questionIndex"
         >
@@ -58,8 +46,8 @@
           >
             {{ eachParagraph }}
           </div>
-        </VCardText>
-      </VCard>
+        </div>
+      </MaterialCard>
     </div>
   </MainLayout>
 </template>

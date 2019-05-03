@@ -49,6 +49,5 @@ export default {
   top: 5px;
 }
 .v-card {
-  margin-bottom: 5px;
 }
 </style>

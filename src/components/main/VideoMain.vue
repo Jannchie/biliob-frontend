@@ -30,6 +30,5 @@ export default {};
 
 <style scoped>
 .v-card {
-  margin-bottom: 5px;
 }
 </style>

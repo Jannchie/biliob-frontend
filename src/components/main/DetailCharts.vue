@@ -1,23 +1,32 @@
 <template>
-  <VCard class="card">
-    <VResponsive :aspect-ratio="aspectRatio">
-      <div></div>
-      <VProgressCircular
-        v-show="loading"
-        :size="50"
-        color="primary"
-        indeterminate
-        class="progress-circular"
-      ></VProgressCircular>
-      <Chart
-        v-show="!loading"
-        :theme="theme"
-        :auto-resize="true"
-        :options="options"
-        style="width:100%;height:100%;"
-      />
-    </VResponsive>
-  </VCard>
+  <div>
+    <MaterialCard
+      :title="title"
+      :text="subTitle"
+      :color="color"
+      class="card elevation-10"
+    >
+      <VResponsive
+        :aspect-ratio="aspectRatio"
+        style="margin-top:30px"
+      >
+        <VProgressCircular
+          v-show="loading"
+          :size="50"
+          color="primary"
+          indeterminate
+          class="progress-circular"
+        ></VProgressCircular>
+        <Chart
+          v-show="!loading"
+          :theme="theme"
+          :auto-resize="true"
+          :options="options"
+          style="width:100%;height:100%;"
+        />
+      </VResponsive>
+    </MaterialCard>
+  </div>
 </template>
 
 <script>
@@ -29,8 +38,25 @@ export default {
         return {
           a: 1
         };
-      },
-      required: true
+      }
+    },
+    title: {
+      type: String,
+      default: function() {
+        return "华丽的标题";
+      }
+    },
+    subTitle: {
+      type: String,
+      default: function() {
+        return "华丽的副标题";
+      }
+    },
+    color: {
+      type: String,
+      default: function() {
+        return "deepblue";
+      }
     }
   },
   data() {
@@ -88,5 +114,12 @@ export default {
   top: 50%;
   margin-left: -25px;
   margin-top: -25px;
+}
+.chart-title {
+  width: 98%;
+  margin: auto;
+  position: relative;
+  border-radius: 8px;
+  margin-bottom: -80px;
 }
 </style>

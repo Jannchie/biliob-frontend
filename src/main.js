@@ -12,6 +12,9 @@ import axios from "axios";
 import VueAxios from "vue-axios";
 import VueRouter from "vue-router";
 import Vuex from "vuex";
+
+import "./components";
+
 Vue.config.productionTip = false;
 
 // 在vue-router中使用google analytics

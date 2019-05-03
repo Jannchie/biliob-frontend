@@ -1,32 +1,26 @@
 <template>
-  <VCard>
-    <VCardText>
-      <div style="display:flex">
-        <img
-          class="author-face"
-          :src="authorData.face"
-          ripple
-          @click.stop="toAuthor"
-        >
-        <div>
-          <div>
-            <span>{{ authorData.name }}</span>
-            <LevelIcon :level="authorData.level" />
-            <SexIcon :sex="authorData.sex" />
-            <br>
-            <span>粉丝数:{{ fans }}</span>
-            <br>
-            <span>{{ authorData.official }}</span>
-          </div>
-          <FocusBtn
-            v-if="$store.getters.getLoginState"
-            :author-data="authorData"
-            class="focus-btn"
-          />
-        </div>
-      </div>
-    </VCardText>
-  </VCard>
+  <MaterialCard>
+    <VAvatar
+      slot="offset"
+      class="mx-auto d-block"
+      size="80"
+    >
+      <img :src="authorData.face">
+    </VAvatar>
+    <FocusBtn
+      v-if="$store.getters.getLoginState"
+      :author-data="authorData"
+      class="focus-btn"
+    />
+    <div class="text-xs-center">
+      <h4 class="card-title font-weight-light">{{ authorData.name }}
+        <LevelIcon :level="authorData.level" />
+        <SexIcon :sex="authorData.sex" />
+      </h4>
+      <h6 class="category text-gray font-weight-thin mb-3">粉丝数:{{ authorData.fans }}</h6>
+      <p class="card-description font-weight-light">{{ authorData.official}}</p>
+    </div>
+  </MaterialCard>
 </template>
 <script>
 import FocusBtn from "../common/FocusBtn.vue";
@@ -76,6 +70,6 @@ export default {
 }
 
 .v-card {
-  margin-bottom: 5px;
+  margin-bottom: 20px;
 }
 </style>

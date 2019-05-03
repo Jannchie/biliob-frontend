@@ -1,7 +1,8 @@
 <template>
   <div style="display: flex;margin-bottom:5px; flex-wrap: wrap">
-    <VCard
-      class="versus-card"
+    <MaterialCard
+      class="versus-card elevation-10"
+      :title="title"
       @click.stop="toAuthorVersus"
     >
       <div style="display: flex">
@@ -49,8 +50,11 @@
             ></VOdometer>
           </div>
         </VCardText>
-        <div class="center-info">
-          <div class="caption font-weight-black">{{title}}</div>
+        <div
+          class="center-info"
+          color="blue"
+          dark
+        >
           <div class="title font-weight-black red--text text--darken-2">
             VS
           </div>
@@ -97,7 +101,7 @@
           </div>
         </VCardText>
       </div>
-    </VCard>
+    </MaterialCard>
   </div>
 </template>
 <script>
@@ -177,6 +181,7 @@ export default {
 <style scoped>
 .versus-card {
   width: 100%;
+  margin-top: 20px;
 }
 .center-info {
   display: flex;
@@ -185,6 +190,7 @@ export default {
   flex-direction: column;
   flex-shrink: 0;
   padding: 0 5px;
+  border-radius: 5px;
 }
 .competitor-div {
   display: flex;
