@@ -1,5 +1,8 @@
 <template>
-  <MaterialCard title="更多链接">
+  <MaterialCard
+    title="更多链接"
+    class="body-1"
+  >
     <a
       target="_blank"
       href="https://github.com/Jannchie"
@@ -95,7 +98,7 @@
       互联网ICP备案：浙ICP备17035172号-2
     </span>
     <br>
-    <span @click.stop="toTracer">后台监控系统</span>
+    <!-- <span @click.stop="toTracer">后台监控系统</span> -->
     <br>
   </MaterialCard>
 </template>

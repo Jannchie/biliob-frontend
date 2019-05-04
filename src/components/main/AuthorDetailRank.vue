@@ -1,6 +1,5 @@
 <template>
   <MaterialCard
-    color="orange"
     title="UP主排名数据"
   >
     <div class="rank-container">

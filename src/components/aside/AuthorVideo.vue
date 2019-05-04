@@ -2,7 +2,6 @@
   <MaterialCard
     class="aside-card"
     :title="title"
-    color="orange"
   >
 
     <VList two-line>

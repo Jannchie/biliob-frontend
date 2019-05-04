@@ -49,7 +49,7 @@ export default {
     subTitle: {
       type: String,
       default: function() {
-        return "华丽的副标题";
+        return "";
       }
     },
     color: {

@@ -1,16 +1,18 @@
 <template>
   <div>
-    <MaterialCard title="UP主收录情况概览">
+    <MaterialCard
+      class="body-1"
+      title="UP主收录情况概览"
+    >
       <p>收录UP主总数 {{count}}</p>
       <p>正在观测UP主总数 {{focusCount}}</p>
       <p>强行观测UP主总数 {{forceFocusCount}}</p>
     </MaterialCard>
     <MaterialCard
-      icon="mdi-eye"
       title="数据说明"
       class="card"
     >
-      <div class="caption">
+      <div class="body-1">
         <li>这里可以查询所有<span class="green--text">正在追踪</span>的UP主。</li>
         <li>
           <span

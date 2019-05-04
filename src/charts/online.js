@@ -81,18 +81,14 @@ function drawChart(data) {
     },
     xAxis: {
       type: "time",
-      splitLine: {
-        show: false
-      },
+
       min: dateMin,
       max: dateMax
     },
     yAxis: {
       type: "value",
       name: "同时在线人数",
-      splitLine: {
-        show: false
-      },
+
       axisLabel: {
         formatter: function(params) {
           if (params >= 10000) {

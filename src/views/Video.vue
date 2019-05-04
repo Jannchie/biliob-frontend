@@ -13,20 +13,23 @@
       ></VideoDetailRank>
       <DetailCharts
         slot="main"
+        title="视频详细历史数据"
         :options="mainChart"
       />
       <DetailCharts
         v-if="hasDanmakuAggregate"
         slot="danmaku-density"
-        :options="danmakuDensityOptions"
+        title="弹幕密度统计"
       />
       <DetailCharts
         slot="like-rate"
+        title="各指标比率统计"
         :options="likeRateChart"
       />
       <DetailCharts
         v-if="hasDanmakuAggregate"
         slot="danmaku-cloud"
+        title="弹幕云关键词统计"
         :options="wordCloudOptions"
       />
       <VCard

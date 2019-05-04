@@ -28,7 +28,6 @@
       </VListTile>
 
       <BottomSheetTile
-        color="orange"
         :pic="pic"
         :name="title"
         icon="mdi-message-bulleted"

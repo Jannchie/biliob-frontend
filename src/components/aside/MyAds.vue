@@ -1,10 +1,10 @@
 <template>
-  <VCard>
+  <MaterialCard>
     <VCardMedia />
     <VCardText>
       广告标题
     </VCardText>
-  </VCard>
+  </MaterialCard>
 </template>
 <script>
 export default {

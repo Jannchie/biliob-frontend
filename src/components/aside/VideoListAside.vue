@@ -4,7 +4,7 @@
       class="card"
       title="数据说明"
     >
-      <div class="caption">
+      <div class="body-1">
         <li>这里可以查询所有<span class="green--text">正在追踪</span>的视频数据。</li>
         <li>
           <span

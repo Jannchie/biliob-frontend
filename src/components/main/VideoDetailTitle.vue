@@ -1,5 +1,5 @@
 <template>
-  <VCard>
+  <MaterialCard>
     <div style="display:flex">
       <div>
         <img
@@ -8,7 +8,7 @@
           :src="pic"
         >
       </div>
-      <VCardText style="overflow:hidden">
+      <div style="overflow:hidden">
         <div class="font-weight-bold video-title ">
           {{ title }}
         </div>
@@ -16,13 +16,13 @@
           class="px-1 pink lighten-3 white--text mr-1 font-weight-black"
           style="border-radius:3px"
         >AV</span><span class="text--lighten-3 pink--text">{{ $route.params.aid }}</span>
-      </VCardText>
+      </div>
       <FavoriteBtn
         :aid="aid"
         class="favorite-btn"
       />
     </div>
-  </VCard>
+  </MaterialCard>
 </template>
 
 <script>

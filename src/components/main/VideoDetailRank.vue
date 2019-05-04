@@ -1,9 +1,16 @@
 <template>
-  <VCard>
-    <VCardText style="height:100%">
-      <div class="rank-container">
+  <MaterialCard title="视频排名数据">
+    <VContainer
+      grid-list-md
+      text-xs-center
+      class="pa-0"
+    >
+      <VLayout row>
 
-        <div class="item">
+        <VFlex
+          xs12
+          md4
+        >
           <div class="rank-title subheading font-weight-bold grey--text text--darken-2">
             播放数排名
           </div>
@@ -11,11 +18,14 @@
             {{viewInfo}}
           </div>
           <ChevronBudget :value="dViewRank"></ChevronBudget>
-        </div>
-        <div>
-          <VDivider vertical></VDivider>
-        </div>
-        <div class="item">
+          <div>
+            <VDivider vertical></VDivider>
+          </div>
+        </VFlex>
+        <VFlex
+          xs12
+          md4
+        >
           <div class="rank-title subheading font-weight-bold grey--text text--darken-2">
             点赞数排名
           </div>
@@ -23,11 +33,14 @@
             {{likeInfo}}
           </div>
           <ChevronBudget :value="dLikeRank"></ChevronBudget>
-        </div>
-        <div>
-          <VDivider vertical></VDivider>
-        </div>
-        <div class="item">
+          <div>
+            <VDivider vertical></VDivider>
+          </div>
+        </VFlex>
+        <VFlex
+          xs12
+          md4
+        >
           <div class="rank-title subheading font-weight-bold grey--text text--darken-2">
             硬币数排名
           </div>
@@ -35,11 +48,17 @@
             {{coinInfo}}
           </div>
           <ChevronBudget :value="dCoinRank"></ChevronBudget>
-        </div>
-        <div class="special-divider">
-          <VDivider vertical></VDivider>
-        </div>
-        <div class="item">
+          <div class="special-divider">
+            <VDivider vertical></VDivider>
+          </div>
+        </VFlex>
+      </VLayout>
+      <VLayout row>
+
+        <VFlex
+          xs12
+          md4
+        >
           <div class="rank-title subheading font-weight-bold grey--text text--darken-2">
             弹幕数排名
           </div>
@@ -47,11 +66,14 @@
             {{danmakuInfo}}
           </div>
           <ChevronBudget :value="dDanmakuRank"></ChevronBudget>
-        </div>
-        <div>
-          <VDivider vertical></VDivider>
-        </div>
-        <div class="item">
+          <div>
+            <VDivider vertical></VDivider>
+          </div>
+        </VFlex>
+        <VFlex
+          xs12
+          md4
+        >
           <div class="rank-title subheading font-weight-bold grey--text text--darken-2">
             收藏数排名
           </div>
@@ -59,11 +81,14 @@
             {{favoriteInfo}}
           </div>
           <ChevronBudget :value="dFavoriteRank"></ChevronBudget>
-        </div>
-        <div>
-          <VDivider vertical></VDivider>
-        </div>
-        <div class="item">
+          <div>
+            <VDivider vertical></VDivider>
+          </div>
+        </VFlex>
+        <VFlex
+          xs12
+          md4
+        >
           <div class="rank-title subheading font-weight-bold grey--text text--darken-2">
             分享数排名
           </div>
@@ -71,10 +96,13 @@
             {{shareInfo}}
           </div>
           <ChevronBudget :value="dShareRank"></ChevronBudget>
-        </div>
-      </div>
-    </VCardText>
-    <VCardText
+          <div class="special-divider">
+            <VDivider vertical></VDivider>
+          </div>
+        </VFlex>
+      </VLayout>
+    </VContainer>
+    <div
       class="caption grey--text pt-0"
       style="display:flex;justify-content:space-between"
     >
@@ -84,8 +112,8 @@
       <div>
         {{formatedDate}}
       </div>
-    </VCardText>
-  </VCard>
+    </div>
+  </MaterialCard>
 </template>
 
 <script>
@@ -200,17 +228,17 @@ export default {
 </script>
 
 <style scoped>
-.rank-container {
+/* .rank-container {
   flex-wrap: wrap;
   display: flex;
   align-items: stretch;
   justify-content: center;
   height: 100%;
-}
-.item {
+} */
+/* .item {
   flex-grow: 1;
   text-align: center;
-}
+} */
 @media only screen and (max-width: 1800px) {
   .item {
     flex-grow: 1;

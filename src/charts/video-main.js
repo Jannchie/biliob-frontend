@@ -60,9 +60,7 @@ function drawChart(data) {
     },
     xAxis: {
       type: "time",
-      splitLine: {
-        show: false
-      },
+
       axisPointer: {
         label: {
           formatter: function(params) {
