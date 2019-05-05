@@ -273,7 +273,6 @@ export default {
 </script>
 <style scoped>
 .event-card {
-  margin-bottom: 5px;
 }
 .float-info {
   margin-left: 20px;

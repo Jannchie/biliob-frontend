@@ -1,19 +1,19 @@
 function drawChart(aData, bData, tData, aName, bName) {
   let Chart = {
     title: {
-      left: "center",
-      text: "实时粉丝变化趋势-近10分钟增长",
-      subtext: `${aName} VS ${bName}`
+      left: "center"
+      // text: "实时粉丝变化趋势-近10分钟增长",
+      // subtext: `${aName} VS ${bName}`
     },
     legend: {
       data: [aName, bName],
       bottom: "5px"
     },
     grid: {
+      top: "10px",
       bottom: "50px",
       right: "40px",
-      left: "60px",
-      top: "50px"
+      left: "60px"
     },
     axisLabel: {
       formatter: function(params) {

@@ -60,9 +60,7 @@ function drawChart(data) {
     },
     xAxis: {
       type: "time",
-      splitLine: {
-        show: false
-      },
+
       axisPointer: {
         label: {
           formatter: function(params) {
@@ -97,7 +95,7 @@ function drawChart(data) {
         type: "value",
         name: "播放量",
         splitLine: {
-          show: false
+          show: true
         },
         min: "dataMin",
         axisLabel: {

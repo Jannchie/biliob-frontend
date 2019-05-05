@@ -1,43 +1,43 @@
 <template>
-  <VCard>
-    <VCardText>
-      <div class="rank-container">
-        <div style="flex-grow: 1;text-align:center">
-          <div class="rank-title subheading font-weight-bold grey--text text--darken-2">
-            粉丝数排名
-          </div>
-          <div class="rank-value title font-weight-black blue--text text--darken-3">
-            {{fansInfo}}
-          </div>
-          <ChevronBudget :value="dFansRank"></ChevronBudget>
+  <MaterialCard
+    title="UP主排名数据"
+  >
+    <div class="rank-container">
+      <div style="flex-grow: 1;text-align:center">
+        <div class="rank-title subheading font-weight-bold grey--text text--darken-2">
+          粉丝数排名
         </div>
-        <div>
-          <VDivider vertical></VDivider>
+        <div class="rank-value title font-weight-black blue--text text--darken-3">
+          {{fansInfo}}
         </div>
-        <div style="flex-grow: 1;text-align:center">
-          <div class="rank-title subheading font-weight-bold grey--text text--darken-2">
-            播放量排名
-          </div>
-          <div class="rank-value title font-weight-black blue--text text--darken-3">
-            {{archiveInfo}}
-          </div>
-          <ChevronBudget :value="dArchiveViewRank"></ChevronBudget>
-        </div>
-        <div>
-          <VDivider vertical></VDivider>
-        </div>
-        <div style="flex-grow: 1;text-align:center">
-          <div class="rank-title subheading font-weight-bold grey--text text--darken-2">
-            专栏阅读排名
-          </div>
-          <div class="rank-value title font-weight-black blue--text text--darken-3">
-            {{articleInfo}}
-          </div>
-          <ChevronBudget :value="dArticleViewRank"></ChevronBudget>
-        </div>
+        <ChevronBudget :value="dFansRank"></ChevronBudget>
       </div>
-    </VCardText>
-    <VCardText
+      <div>
+        <VDivider vertical></VDivider>
+      </div>
+      <div style="flex-grow: 1;text-align:center">
+        <div class="rank-title subheading font-weight-bold grey--text text--darken-2">
+          播放量排名
+        </div>
+        <div class="rank-value title font-weight-black blue--text text--darken-3">
+          {{archiveInfo}}
+        </div>
+        <ChevronBudget :value="dArchiveViewRank"></ChevronBudget>
+      </div>
+      <div>
+        <VDivider vertical></VDivider>
+      </div>
+      <div style="flex-grow: 1;text-align:center">
+        <div class="rank-title subheading font-weight-bold grey--text text--darken-2">
+          专栏阅读排名
+        </div>
+        <div class="rank-value title font-weight-black blue--text text--darken-3">
+          {{articleInfo}}
+        </div>
+        <ChevronBudget :value="dArticleViewRank"></ChevronBudget>
+      </div>
+    </div>
+    <div
       class="caption grey--text pt-0"
       style="display:flex;justify-content:space-between"
     >
@@ -47,8 +47,8 @@
       <div>
         {{formatedDate}}
       </div>
-    </VCardText>
-  </VCard>
+    </div>
+  </MaterialCard>
 </template>
 
 <script>

@@ -7,11 +7,6 @@ function drawChart(data) {
     fans.push([d["datetime"], d["fans"]]);
   });
   let Chart = {
-    title: {
-      left: "center",
-      subtext: "粉丝数变化趋势",
-      text: data.name
-    },
     legend: {
       data: ["粉丝数"],
       bottom: "5px"
@@ -19,8 +14,8 @@ function drawChart(data) {
     grid: {
       bottom: "90px",
       right: "40px",
-      left: "60px",
-      top: "50px"
+      top: "10px",
+      left: "60px"
     },
     dataZoom: [
       {

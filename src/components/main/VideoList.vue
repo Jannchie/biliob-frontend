@@ -1,79 +1,104 @@
 <template>
   <div class="video-list-main">
-    <div>
+    <MaterialCard class="card-tabs">
       <div>
         <VSearchForm
           slot="search"
           hint="请输入标题、分区或者av号"
           @getSearchValue="getSearchValue"
         />
-        <VCard style="margin-bottom:5px">
-          <VTabs fixed-tabs>
-            <VTab @click="sortChange(0)">
-              播放
-            </VTab>
-            <VTab @click="sortChange(1)">
-              点赞
-            </VTab>
-            <VTab @click="sortChange(2)">
-              硬币
-            </VTab>
-            <VTab @click="sortChange(3)">
-              弹幕
-            </VTab>
-            <VTab @click="sortChange(4)">
-              收藏
-            </VTab>
-            <VTab @click="sortChange(5)">
-              分享
-            </VTab>
-          </VTabs>
-        </VCard>
-        <VSlideYTransition group>
-          <VCard
-            v-for="eachVideo in videoList.content"
-            :key="eachVideo.aid"
-            class="video-cards"
-            ripple
-            :to="'/author/'+eachVideo.mid+'/video/'+eachVideo.aid"
-          >
-            <div style="padding:5px;display:flex">
-              <div>
-                <VImg
-                  style="border-radius:5px;width:120px;height:80px"
-                  :src="eachVideo.pic.replace('http:','')"
-                  :lazy-src="eachVideo.pic.replace('http:','')"
-                />
-              </div>
-              <div style="margin-left:10px;overflow:hidden">
-                <div class="font-weight-bold video-title text-no-wrap text-truncate">
-                  {{ eachVideo.title }}
-                </div>
-                <div class="caption subtext video-info">
-                  <VIcon small>
-                    mdi-account-box-outline
-                  </VIcon>{{ eachVideo.author }}
-                  <VIcon small>
-                    mdi-bookmark-outline
-                  </VIcon>{{ eachVideo.channel }}
-                </div>
-              </div>
-              <ObserveStatus
-                class="observe-status"
-                :object="eachVideo"
+      </div>
+      <VFlex slot="header">
+        <VTabs
+          color="transparent"
+          slider-color="white"
+        >
+          <span
+            class="subheading font-weight-light mr-3"
+            style="align-self: center"
+          >排序：</span>
+          <VTab @click="sortChange(0)">
+            <VIcon style="margin-right:10px;">
+              mdi-play-circle-outline
+            </VIcon>
+            播放
+          </VTab>
+          <VTab @click="sortChange(1)">
+            <VIcon style="margin-right:10px;">
+              mdi-thumb-up-outline
+            </VIcon>
+            点赞
+          </VTab>
+          <VTab @click="sortChange(2)">
+            <VIcon style="margin-right:10px;">
+              mdi-coin
+            </VIcon>
+            硬币
+          </VTab>
+          <VTab @click="sortChange(3)">
+            <VIcon style="margin-right:10px;">
+              mdi-message-bulleted
+            </VIcon>
+            弹幕
+          </VTab>
+          <VTab @click="sortChange(4)">
+            <VIcon style="margin-right:10px;">
+              mdi-folder-star
+            </VIcon>
+            收藏
+          </VTab>
+          <VTab @click="sortChange(5)">
+            <VIcon style="margin-right:10px;">
+              mdi-share-outline
+            </VIcon>
+            分享
+          </VTab>
+        </VTabs>
+      </VFlex>
+      <VSlideYTransition group>
+        <div
+          v-for="eachVideo in videoList.content"
+          :key="eachVideo.aid"
+          class="video-cards"
+          @click.stop="toVideoDetail(eachVideo.mid,eachVideo.aid)"
+        >
+          <ObserveStatus
+            class="observe-status"
+            :object="eachVideo"
+          />
+          <div style="padding:5px;display:flex">
+            <div>
+              <VImg
+                style="border-radius:5px;width:120px;height:80px"
+                :src="eachVideo.pic.replace('http:','')"
+                :lazy-src="eachVideo.pic.replace('http:','')"
               />
             </div>
-          </VCard>
-        </VSlideYTransition>
-        <VBtn
-          block
-          outline
-          color="blue darken-2"
-          :disabled="nextBtnDisabled"
-          @click.stop="next"
-        >{{nextBtnText}}</VBtn>
-      </div>
-    </div>
+            <div style="margin-left:10px;overflow:hidden">
+              <div class="font-weight-bold video-title text-no-wrap text-truncate">
+                {{ eachVideo.title }}
+              </div>
+              <div class="caption subtext video-info">
+                <VIcon small>
+                  mdi-account-box-outline
+                </VIcon>{{ eachVideo.author }}
+                <VIcon small>
+                  mdi-bookmark-outline
+                </VIcon>{{ eachVideo.channel }}
+              </div>
+            </div>
+          </div>
+          <VDivider></VDivider>
+        </div>
+      </VSlideYTransition>
+      <VBtn
+        block
+        outline
+        color="blue darken-2"
+        :disabled="nextBtnDisabled"
+        @click.stop="next"
+      >{{nextBtnText}}</VBtn>
+    </MaterialCard>
   </div>
 </template>
 
@@ -186,6 +211,9 @@ export default {
         .then(response => {
           this.refreshList(response);
         });
+    },
+    toVideoDetail(mid, aid) {
+      this.$router.push("/author/" + mid + "/video/" + aid);
     }
   }
 };
@@ -204,16 +232,12 @@ export default {
   padding: 2px 0;
 }
 
-p {
-  position: absolute;
-  bottom: 0px;
-  margin-bottom: 5px;
-}
-
 .video-cards {
-  margin: 10px 2px;
+  margin: 10px 0px;
+  padding: 0px 0px;
   height: 90px;
   border-radius: 5px;
+  position: relative;
 }
 
 .video-title {

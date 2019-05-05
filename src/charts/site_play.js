@@ -2,15 +2,18 @@ var format = require("date-fns/format");
 
 function drawChart(data) {
   var xData = [];
-  var yData = [];
+  var playOninleData = [];
+  var webOnlineData = [];
   data.forEach(e => {
     xData.unshift(format(new Date(e.datetime.replace(/-/g, "/")), "HH:mm"));
-    yData.unshift(e.playOnline);
+    playOninleData.unshift(e.playOnline);
+    webOnlineData.unshift(e.webOnline);
   });
+  console.log(data);
   var option = {
     title: {
-      left: "center",
-      text: "过去24小时全站在线观看人数"
+      left: "center"
+      // text: "过去24小时全站在线观看人数"
     },
     tooltip: {
       trigger: "axis",
@@ -23,6 +26,7 @@ function drawChart(data) {
       }
     },
     grid: {
+      top: "10px",
       bottom: "30px",
       right: "10px",
       left: "50px"
@@ -43,10 +47,19 @@ function drawChart(data) {
     },
     series: [
       {
+        name: "在线观看",
         itemStyle: {
           borderWidth: 3
         },
-        data: yData,
+        data: playOninleData,
+        type: "line"
+      },
+      {
+        name: "在线人数",
+        itemStyle: {
+          borderWidth: 3
+        },
+        data: webOnlineData,
         type: "line"
       }
     ]

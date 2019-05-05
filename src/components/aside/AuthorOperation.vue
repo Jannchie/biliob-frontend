@@ -1,14 +1,12 @@
 <template>
-  <VCard>
-    <VCardText>
-      <AuthorBottomSheet
-        :name="name"
-        :pic="pic"
-        :mid="mid"
-        :force-focus="forceFocus"
-      ></AuthorBottomSheet>
-    </VCardText>
-  </VCard>
+  <MaterialCard>
+    <AuthorBottomSheet
+      :name="name"
+      :pic="pic"
+      :mid="mid"
+      :force-focus="forceFocus"
+    ></AuthorBottomSheet>
+  </MaterialCard>
 </template>
 <script>
 import AuthorBottomSheet from "../common/AuthorBottomSheet.vue";
@@ -25,9 +23,6 @@ export default {
 </script>
 
 <style scoped>
-.v-card {
-  margin-bottom: 5px;
-}
 .v-btn {
   color: #ffffff;
 }
