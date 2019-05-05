@@ -1,7 +1,7 @@
 {
     "color": [
-        "#0098d9",
-        "#e6b600",
+        "#22b8f9",
+        "#f6dd00",
         "#c12e34",
         "#2b821d",
         "#005eaa",
@@ -49,11 +49,11 @@
         "itemStyle": {
             "normal": {
                 "barBorderWidth": "0",
-                "barBorderColor": "#ccc"
+                "barBorderColor": " #888"
             },
             "emphasis": {
                 "barBorderWidth": "0",
-                "barBorderColor": "#ccc"
+                "barBorderColor": " #888"
             }
         }
     },
@@ -61,11 +61,11 @@
         "itemStyle": {
             "normal": {
                 "borderWidth": "0",
-                "borderColor": "#ccc"
+                "borderColor": " #888"
             },
             "emphasis": {
                 "borderWidth": "0",
-                "borderColor": "#ccc"
+                "borderColor": " #888"
             }
         }
     },
@@ -73,11 +73,11 @@
         "itemStyle": {
             "normal": {
                 "borderWidth": "0",
-                "borderColor": "#ccc"
+                "borderColor": " #888"
             },
             "emphasis": {
                 "borderWidth": "0",
-                "borderColor": "#ccc"
+                "borderColor": " #888"
             }
         }
     },
@@ -85,11 +85,11 @@
         "itemStyle": {
             "normal": {
                 "borderWidth": "0",
-                "borderColor": "#ccc"
+                "borderColor": " #888"
             },
             "emphasis": {
                 "borderWidth": "0",
-                "borderColor": "#ccc"
+                "borderColor": " #888"
             }
         }
     },
@@ -97,11 +97,11 @@
         "itemStyle": {
             "normal": {
                 "borderWidth": "0",
-                "borderColor": "#ccc"
+                "borderColor": " #888"
             },
             "emphasis": {
                 "borderWidth": "0",
-                "borderColor": "#ccc"
+                "borderColor": " #888"
             }
         }
     },
@@ -109,11 +109,11 @@
         "itemStyle": {
             "normal": {
                 "borderWidth": "0",
-                "borderColor": "#ccc"
+                "borderColor": " #888"
             },
             "emphasis": {
                 "borderWidth": "0",
-                "borderColor": "#ccc"
+                "borderColor": " #888"
             }
         }
     },
@@ -121,11 +121,11 @@
         "itemStyle": {
             "normal": {
                 "borderWidth": "0",
-                "borderColor": "#ccc"
+                "borderColor": " #888"
             },
             "emphasis": {
                 "borderWidth": "0",
-                "borderColor": "#ccc"
+                "borderColor": " #888"
             }
         }
     },
@@ -133,11 +133,11 @@
         "itemStyle": {
             "normal": {
                 "borderWidth": "0",
-                "borderColor": "#ccc"
+                "borderColor": " #888"
             },
             "emphasis": {
                 "borderWidth": "0",
-                "borderColor": "#ccc"
+                "borderColor": " #888"
             }
         }
     },
@@ -156,7 +156,7 @@
         "itemStyle": {
             "normal": {
                 "borderWidth": "0",
-                "borderColor": "#ccc"
+                "borderColor": " #888"
             }
         },
         "lineStyle": {
@@ -240,7 +240,7 @@
     },
     "categoryAxis": {
         "axisLine": {
-            "show": true,
+            "show": false,
             "lineStyle": {
                 "color": "#333"
             }
@@ -248,20 +248,20 @@
         "axisTick": {
             "show": true,
             "lineStyle": {
-                "color": "#333"
+                "color": "#ccc"
             }
         },
         "axisLabel": {
             "show": true,
             "textStyle": {
-                "color": "#333"
+                "color": "#888"
             }
         },
         "splitLine": {
             "show": false,
             "lineStyle": {
                 "color": [
-                    "#ccc"
+                    " #888"
                 ]
             }
         },
@@ -277,28 +277,28 @@
     },
     "valueAxis": {
         "axisLine": {
-            "show": true,
+            "show": false,
             "lineStyle": {
-                "color": "#333"
+                "color": " #888"
             }
         },
         "axisTick": {
             "show": true,
             "lineStyle": {
-                "color": "#333"
+                "color": " #ccc"
             }
         },
         "axisLabel": {
             "show": true,
             "textStyle": {
-                "color": "#333"
+                "color": " #888"
             }
         },
         "splitLine": {
-            "show": false,
+            "show": true,
             "lineStyle": {
                 "color": [
-                    "#ccc"
+                    " #ccc"
                 ]
             }
         },
@@ -335,7 +335,7 @@
             "show": false,
             "lineStyle": {
                 "color": [
-                    "#ccc"
+                    " #888"
                 ]
             }
         },
@@ -372,7 +372,7 @@
             "show": false,
             "lineStyle": {
                 "color": [
-                    "#ccc"
+                    " #888"
                 ]
             }
         },
@@ -404,11 +404,11 @@
     "tooltip": {
         "axisPointer": {
             "lineStyle": {
-                "color": "#cccccc",
+                "color": " #888ccc",
                 "width": 1
             },
             "crossStyle": {
-                "color": "#cccccc",
+                "color": " #888ccc",
                 "width": 1
             }
         }

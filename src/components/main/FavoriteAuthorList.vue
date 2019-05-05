@@ -159,12 +159,6 @@ export default {
   padding: 2px 0;
 }
 
-p {
-  position: absolute;
-  bottom: 0px;
-  margin-bottom: 5px;
-}
-
 .author-cards {
   margin: 10px 2px;
   height: 90px;

@@ -71,11 +71,6 @@ function drawChart(data) {
     );
   }
   let Chart = {
-    title: {
-      left: "center",
-      subtext: "粉丝增长变化趋势"
-      // text: data.name
-    },
     legend: {
       data: ["粉丝增量"],
       bottom: "5px"
@@ -94,6 +89,7 @@ function drawChart(data) {
     grid: {
       left: "60px",
       right: "40px",
+      top: "10px",
       bottom: "90px"
     },
     dataZoom: [

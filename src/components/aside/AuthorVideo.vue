@@ -1,16 +1,9 @@
 <template>
-  <VCard class="aside-card">
-    <VCardTitle
-      style="padding-bottom:0px"
-      column
-      fill-height
-    >
-      <h4>{{ title }}</h4>
-    </VCardTitle>
-    <VCardText
-      class="video-list"
-      column
-    />
+  <MaterialCard
+    class="aside-card"
+    :title="title"
+  >
+
     <VList two-line>
       <template v-for="eachVideo in authorTopVideo.content">
         <VDivider :key="eachVideo.title" />
@@ -37,7 +30,7 @@
         </VListTile>
       </template>
     </VList>
-  </VCard>
+  </MaterialCard>
 </template>
 <script>
 var format = require("date-fns/format");
@@ -68,7 +61,6 @@ export default {
 }
 
 .aside-card {
-  margin-bottom: 5px;
 }
 
 .video-list {

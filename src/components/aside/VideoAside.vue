@@ -16,6 +16,5 @@ export default {
 
 <style scoped>
 .aside-card {
-  margin-bottom: 5px;
 }
 </style>

@@ -6,7 +6,7 @@
   >
     <VLayout justify-center>
       <VFlex
-        lg8
+        lg9
         md12
       >
         <VSlideYTransition leave-absolute>

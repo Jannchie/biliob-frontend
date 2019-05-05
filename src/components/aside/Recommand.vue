@@ -1,5 +1,8 @@
 <template>
-  <VCard :href="'https://www.bilibili.com/av'+ads.aid">
+  <MaterialCard
+    :href="'https://www.bilibili.com/av'+ads.aid"
+    title="站长倾情推荐"
+  >
     <VResponsive>
       <VImg
         :src="ads.pic"
@@ -18,15 +21,7 @@
         </VIcon>{{ ads.author }}
       </div>
     </VCardText>
-    <VChip
-      small
-      color="#FF7FAC"
-      class="ad-chip"
-      dark
-    >
-      站长倾情推荐
-    </VChip>
-  </VCard>
+  </MaterialCard>
 </template>
 <script>
 export default {
@@ -49,6 +44,5 @@ export default {
   top: 5px;
 }
 .v-card {
-  margin-bottom: 5px;
 }
 </style>

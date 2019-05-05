@@ -40,7 +40,10 @@ export default {
 };
 </script>
 
-<style>
+
+<style lang="scss">
+@import "@/styles/index.scss";
+
 .el-table td {
   padding: 2px 0;
 }

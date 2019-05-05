@@ -3,6 +3,14 @@
     <li>
       {{userAgent}}
     </li>
+
+    <MaterialStatsCard
+      icon="mdi-store"
+      title="Revenue"
+      value="$34,245"
+      sub-icon="mdi-calendar"
+      sub-text="Last 24 Hours"
+    />
   </div>
 </template>
 <script>

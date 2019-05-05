@@ -1,10 +1,10 @@
 <template>
-  <VCard>
+  <MaterialCard>
     <VCardMedia />
     <VCardText>
       广告标题
     </VCardText>
-  </VCard>
+  </MaterialCard>
 </template>
 <script>
 export default {
@@ -26,7 +26,6 @@ export default {
 
 <style scoped>
 .v-card {
-  margin-bottom: 5px;
 }
 .v-btn {
   color: #ffffff;

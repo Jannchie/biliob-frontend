@@ -8,7 +8,11 @@
       b-title="亚军"
       :frequently="true"
     />
-    <DetailCharts :options="siteData" />
+    <DetailCharts
+      :options="siteData"
+      title="过去24小时全站在线人数情况"
+      subtitle="每小时统计"
+    />
     <!-- <DetailCharts :options="onlineOptions"></DetailCharts> -->
   </div>
 </template>
@@ -48,6 +52,5 @@ export default {
 
 <style scoped>
 .v-card {
-  margin-bottom: 5px;
 }
 </style>

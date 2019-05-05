@@ -1,8 +1,8 @@
 <template>
   <div>
-    <VCard
-      class="mb-2 pa-4"
+    <MaterialCard
       style="min-height: 150px;"
+      title="榜首粉丝实时差距"
     >
       <div style="display: flex; justify-content: space-between">
         <div class="vs-text">
@@ -69,8 +69,10 @@
           </div>
         </div>
       </div>
-    </VCard>
+    </MaterialCard>
     <DetailCharts
+      title="实时粉丝数变化趋势 - 近十分钟变化情况"
+      :sub-title="`${aName} VS ${bName}`"
       :hidden="!freq"
       :options="realtimeChartOptions"
     />
