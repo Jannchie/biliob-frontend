@@ -10,8 +10,3 @@
 <script>
 export default {};
 </script>
-
-<style scoped>
-.v-card {
-}
-</style>

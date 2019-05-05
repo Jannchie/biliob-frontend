@@ -8,10 +8,12 @@
       <!-- <AuthorDetailChannel slot="channel" :channels="authorData.channels"></AuthorDetailChannel> -->
       <DetailCharts
         slot="fans"
+        title="粉丝数变化趋势"
         :options="authorFansOptions"
       />
       <DetailCharts
         slot="fans-rate"
+        title="粉丝数变化速率"
         :options="authorFansRateOptions"
       />
     </AuthorMain>
@@ -92,12 +94,16 @@ export default {
       authorTopVideo: Object(),
       authorLatestVideo: Object(),
       authorFansOptions: Object(),
-      authorFansRateOptions: Object()
+      authorFansRateOptions: Object(),
+      mid: Number()
     };
   },
   mounted() {
+    if (this.$route.params.mid != undefined) {
+      this.mid = this.$route.params.mid;
+    }
     this.$store.commit("toAuthor");
-    this.axios.get("/author/" + this.authorData.mid).then(response => {
+    this.axios.get("/author/" + this.mid).then(response => {
       this.authorData = response.data;
       this.authorFansOptions = drawFansChart(deepCopy(this.authorData));
       this.authorFansRateOptions = drawFansRateChart(deepCopy(this.authorData));
@@ -105,14 +111,12 @@ export default {
         this.authorData.forceFocus == false;
       }
     });
-    this.axios.get(`/author/${this.authorData.mid}/video`).then(response => {
+    this.axios.get(`/author/${this.mid}/video`).then(response => {
       this.authorTopVideo = response.data;
     });
-    this.axios
-      .get(`/author/${this.authorData.mid}/video?sort=1`)
-      .then(response => {
-        this.authorLatestVideo = response.data;
-      });
+    this.axios.get(`/author/${this.mid}/video?sort=1`).then(response => {
+      this.authorLatestVideo = response.data;
+    });
   }
 };
 </script>

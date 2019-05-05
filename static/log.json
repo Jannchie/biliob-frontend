@@ -1076,5 +1076,20 @@
       }
     ],
     "type": "unimportant"
+  },
+  {
+    "title": "究极装修",
+    "version": "ver.5.0.0",
+    "date": "2019-05-04",
+    "list": [{
+        "text": "美化了一系列图标、样式",
+        "type": "beautify"
+      },
+      {
+        "text": "增加作者爬取数量信息卡片",
+        "type": "feature"
+      }
+    ],
+    "type": "important"
   }
 ]

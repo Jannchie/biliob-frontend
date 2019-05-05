@@ -1,13 +1,11 @@
 <template>
-  <VCard>
-    <VCardText>
-      <VideoBottomSheet
-        :title="title"
-        :pic="pic"
-        :aid="aid"
-      ></VideoBottomSheet>
-    </VCardText>
-  </VCard>
+  <MaterialCard>
+    <VideoBottomSheet
+      :title="title"
+      :pic="pic"
+      :aid="aid"
+    ></VideoBottomSheet>
+  </MaterialCard>
 </template>
 <script>
 import VideoBottomSheet from "../common/VideoBottomSheet.vue";
@@ -23,8 +21,6 @@ export default {
 </script>
 
 <style scoped>
-.v-card {
-}
 .v-btn {
   color: #ffffff;
 }

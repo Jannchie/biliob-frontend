@@ -12,211 +12,108 @@
               class="subheading font-weight-light mr-3"
               style="align-self: center"
             >类目：</span>
-            <VTab @click="sortChange(0)">
+            <VTab @click="getData(0)">
               <VIcon style="margin-right:10px;">
                 mdi-heart
               </VIcon>
               涨粉
             </VTab>
-            <VTab @click="sortChange(1)">
+            <VTab @click="getData(1)">
               <VIcon style="margin-right:10px;">
                 mdi-heart-broken
               </VIcon>掉粉
             </VTab>
-            <VTab @click="sortChange(2)">
+            <VTab @click="getData(2)">
               <VIcon style="margin-right:10px;">
                 mdi-video-vintage
               </VIcon>番剧
             </VTab>
-            <VTab @click="sortChange(3)">
+            <VTab @click="getData(3)">
               <VIcon style="margin-right:10px;">
                 mdi-rabbit
               </VIcon>国创
             </VTab>
           </VTabs>
         </VFlex>
-        <VSlideYTransition group>
-
-        </VSlideYTransition>
-
+        <div>
+          <div v-if="index === 0 || index === 1">
+            <div
+              v-for="eachData in data"
+              :key="eachData.name"
+              style="display: flex"
+              class="my-4"
+            >
+              <VAvatar
+                size="60px"
+                class="mr-4"
+              >
+                <img :src="eachData.face">
+              </VAvatar>
+              <div>
+                <p>{{eachData.name}}</p>
+                <p>{{eachData.official}}</p>
+              </div>
+              <VChip
+                :color="getColor(index)"
+                small
+                text-color="white"
+                style="position:absolute;right:16px;width:80px"
+              >
+                <VAvatar>
+                  <VIcon
+                    class="mx-0"
+                    color="white"
+                    right
+                  >
+                    {{getIcon(index)}}
+                  </VIcon>
+                </VAvatar>
+                {{Math.abs(eachData.cRate)}}
+              </VChip>
+            </div>
+          </div>
+          <div v-else>
+            <div
+              v-for="eachData in data"
+              :key="eachData.name"
+              style="display: flex"
+              class="my-4"
+            >
+              <img
+                style="border-radius:3px;width:90px;height:120px;margin:0 8px"
+                :src="eachData.cover"
+              >
+              <div style="width: 100%">
+                <VContainer class="pt-0 body-1">
+                  <VLayout>
+                    <VFlex xs-12>
+                      <h4 class="font-weight-bold">{{eachData.title}}</h4>
+                    </VFlex>
+                  </VLayout>
+                  <VLayout row>
+                    <VFlex xs-2>
+                      播放 <span>{{eachData.currentPlay}}</span>
+                    </VFlex>
+                    <VFlex xs-2>
+                      综分 <span>{{eachData.currentPts}}</span>
+                    </VFlex>
+                    <VFlex xs-2>
+                      追番 <span>{{eachData.currentWatch}}</span>
+                    </VFlex>
+                    <VFlex xs-2>
+                      评论 <span>{{eachData.currentReview}}</span>
+                    </VFlex>
+                    <VFlex xs-4>
+                      弹幕 <span>{{eachData.currentDanmaku}}</span>
+                    </VFlex>
+                  </VLayout>
+                </VContainer>
+              </div>
+            </div>
+          </div>
+        </div>
       </MaterialCard>
 
-      <VTabs
-        fixed-tabscentered
-        grow
-      >
-        <VTab :key="1">
-          <VIcon style="margin-right:10px;">
-            mdi-heart
-          </VIcon>
-          涨粉
-        </VTab>
-        <VTab :key="2">
-          <VIcon style="margin-right:10px;">
-            mdi-heart-broken
-          </VIcon>掉粉
-        </VTab>
-        <VTab :key="3">
-          <VIcon style="margin-right:10px;">
-            mdi-video-vintage
-          </VIcon>番剧
-        </VTab>
-        <VTab :key="4">
-          <VIcon style="margin-right:10px;">
-            mdi-rabbit
-          </VIcon>国创
-        </VTab>
-
-        <VTabItem :key="1">
-          <VCard
-            v-for="(eachAuthor,index) in fansIncrease"
-            :key="eachAuthor.mid"
-            flat
-            :to="'/author/'+eachAuthor.mid"
-          >
-            <VCardText>
-              <div class="item-info">
-                <h2
-                  style="width:50px;"
-                  class="text-center"
-                >
-                  {{ index+1 }}
-                </h2>
-                <img
-                  style="border-radius:25px;height:50px;margin:0 20px"
-                  :src="eachAuthor.face.slice(5)"
-                >
-                <div style="flex-basis:100%">
-                  {{ eachAuthor.name }}
-                </div>
-                <VChip
-                  label
-                  color="red"
-                  text-color="white"
-                >
-                  <VIcon>mdi-menu-up</VIcon>
-                  {{ eachAuthor.cRate }}
-                </VChip>
-              </div>
-            </VCardText>
-          </VCard>
-        </VTabItem>
-
-        <VTabItem :key="2">
-          <VCard
-            v-for="(eachAuthor,index) in fansDecrease"
-            :key="eachAuthor.mid"
-            flat
-            :to="'/author/'+eachAuthor.mid"
-          >
-            <VCardText>
-              <div class="item-info">
-                <h2
-                  style="width:50px;"
-                  class="text-center"
-                >
-                  {{ index+1 }}
-                </h2>
-                <img
-                  style="border-radius:25px;height:50px;margin:0 20px"
-                  :src="eachAuthor.face.slice(5)"
-                >
-                <div style="flex-basis:100%">
-                  {{ eachAuthor.name }}
-                </div>
-                <VChip
-                  label
-                  color="green"
-                  text-color="white"
-                >
-                  <VIcon>mdi-menu-down</VIcon>
-                  {{ -eachAuthor.cRate }}
-                </VChip>
-              </div>
-            </VCardText>
-          </VCard>
-        </VTabItem>
-
-        <VTabItem :key="3">
-          <VCard
-            v-for="(eachBangumi,index) in bangumiData"
-            :key="eachBangumi.mid"
-            flat
-          >
-            <VCardText>
-              <div class="item-info">
-                <h2
-                  style="width:50px;"
-                  class="text-center"
-                >
-                  {{ index+1 }}
-                </h2>
-                <img
-                  style="border-radius:3px;width:90px;height:120px;margin:0 8px"
-                  :src="eachBangumi.cover"
-                >
-                <div style="flex-basis:80%;font-size:14px">
-                  <b>{{ eachBangumi.title }}</b>
-                  <br>
-                  <VChip
-                    v-for="eachTag in eachBangumi.tag"
-                    :key="eachTag"
-                    small
-                    class="hidden-lg-and-down"
-                  >
-                    {{ eachTag }}
-                  </VChip>
-                </div>
-                <div style="text-align:center;font-size:12px;width:60px">
-                  <h3 style="font-size:14px">
-                    {{ eachBangumi.currentPts }}
-                  </h3>综合得分
-                </div>
-              </div>
-            </VCardText>
-          </VCard>
-        </VTabItem>
-
-        <VTabItem :key="4">
-          <VCard
-            v-for="(eachDonghua,index) in donghuaData"
-            :key="eachDonghua.mid"
-            flat
-          >
-            <VCardText>
-              <div class="item-info">
-                <h2
-                  style="width:50px;"
-                  class="text-center"
-                >
-                  {{ index+1 }}
-                </h2>
-                <img
-                  style="border-radius:3px;width:90px;height:120px;margin:0 8px"
-                  :src="eachDonghua.cover"
-                >
-                <div style="flex-basis:80%;font-size:14px">
-                  <b>{{ eachDonghua.title }}</b>
-                  <br>
-                  <VChip
-                    v-for="eachTag in eachDonghua.tag"
-                    :key="eachTag"
-                    small
-                    class="hidden-lg-and-down"
-                  >
-                    {{ eachTag }}
-                  </VChip>
-                </div>
-                <div style="text-align:center;font-size:12px;width:60px">
-                  <h3 style="font-size:14px">
-                    {{ eachDonghua.currentPts }}
-                  </h3>综合得分
-                </div>
-              </div>
-            </VCardText>
-          </VCard>
-        </VTabItem>
-      </VTabs>
     </div>
     <div slot="aside-cards">
       <MaterialCard
@@ -248,32 +145,66 @@ export default {
   },
   data() {
     return {
+      data: Object(),
       bangumiData: Object(),
       fansIncrease: Object(),
       fansDecrease: Object(),
-      donghuaData: Object()
+      donghuaData: Object(),
+      index: Number()
     };
   },
   mounted() {
+    this.getData(0);
     this.$store.commit("toElse");
-    this.axios.get("/bangumi").then(response => {
-      this.bangumiData = response.data.content;
-      this.bangumiData.forEach(element => {
-        element.cover = element.cover.slice(5);
-      });
-    });
-    this.axios.get("/donghua").then(response => {
-      this.donghuaData = response.data.content;
-      this.donghuaData.forEach(element => {
-        element.cover = element.cover.slice(5);
-      });
-    });
-    this.axios.get("/rank/fans-increase-rate").then(response => {
-      this.fansIncrease = response.data.content;
-    });
-    this.axios.get("/rank/fans-decrease-rate").then(response => {
-      this.fansDecrease = response.data.content;
-    });
+  },
+  methods: {
+    getData(index) {
+      this.index = index;
+      switch (index) {
+        case 0:
+          this.axios.get("/rank/fans-increase-rate").then(response => {
+            this.data = response.data.content;
+          });
+          break;
+        case 1:
+          this.axios.get("/rank/fans-decrease-rate").then(response => {
+            this.data = response.data.content;
+          });
+          break;
+        case 2:
+          this.axios.get("/bangumi").then(response => {
+            this.data = response.data.content;
+            this.data.forEach(element => {
+              element.cover = element.cover.slice(5);
+            });
+          });
+          break;
+        case 3:
+          this.axios.get("/donghua").then(response => {
+            this.data = response.data.content;
+            this.data.forEach(element => {
+              element.cover = element.cover.slice(5);
+            });
+          });
+          break;
+        default:
+          break;
+      }
+    },
+    getColor(index) {
+      if (index === 0) {
+        return "red";
+      } else if (index === 1) {
+        return "green";
+      }
+    },
+    getIcon(index) {
+      if (index === 0) {
+        return "mdi-chevron-up-circle";
+      } else if (index === 1) {
+        return "mdi-chevron-down-circle";
+      }
+    }
   }
 };
 </script>

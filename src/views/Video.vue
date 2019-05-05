@@ -19,7 +19,8 @@
       <DetailCharts
         v-if="hasDanmakuAggregate"
         slot="danmaku-density"
-        title="弹幕密度统计"
+        :options="danmakuDensityOptions"
+        title="弹幕统计-弹幕密度"
       />
       <DetailCharts
         slot="like-rate"
@@ -29,14 +30,15 @@
       <DetailCharts
         v-if="hasDanmakuAggregate"
         slot="danmaku-cloud"
-        title="弹幕云关键词统计"
+        title="弹幕统计-弹幕云关键词"
         :options="wordCloudOptions"
       />
-      <VCard
+      <MaterialCard
         v-if="hasDanmakuAggregate"
         slot="danmaku-switch"
+        title="弹幕统计-分P选择"
       >
-        <VCardActions>
+        <div>
           <VSelect
             v-model="defaultPage"
             solo
@@ -45,8 +47,8 @@
             :messages="`<span>选择分P</span><span style='float: right'>更新时间: ${danmakuUpdateTime}</span>`"
             @change="pageChange"
           ></VSelect>
-        </VCardActions>
-      </VCard>
+        </div>
+      </MaterialCard>
     </VideoMain>
     <VideoAside slot="aside-cards">
       <AuthorInfo

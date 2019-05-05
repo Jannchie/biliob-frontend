@@ -2,6 +2,7 @@
   <VCard
     v-bind="$attrs"
     :style="styles"
+    :class="`elevation-${elevation}`"
     v-on="$listeners"
   >
     <HelperOffset

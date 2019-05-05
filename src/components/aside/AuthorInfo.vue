@@ -17,7 +17,7 @@
         <LevelIcon :level="authorData.level" />
         <SexIcon :sex="authorData.sex" />
       </h4>
-      <h6 class="category text-gray font-weight-thin mb-3">粉丝数:{{ authorData.fans }}</h6>
+      <h6 class="category text-gray font-weight-thin mb-3">粉丝数:{{ authorData.cFans }}</h6>
       <p class="card-description font-weight-light">{{ authorData.official}}</p>
     </div>
   </MaterialCard>
