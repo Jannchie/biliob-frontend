@@ -17,7 +17,7 @@
             :key="eachVideo.title"
             tile
           >
-            <VImg :src="eachVideo.pic" />
+            <VImg :src="zipPic(eachVideo.pic)" />
           </VListTileAvatar>
           <VListTileContent>
             <VListTileTitle>

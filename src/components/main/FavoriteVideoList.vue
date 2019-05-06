@@ -15,8 +15,8 @@
                 <VResponsive :aspect-ratio="16/9">
                   <VImg
                     style="border-radius:5px;width:120px;height:80px"
-                    :src="eachVideo.pic.slice(5)"
-                    :lazy-src="eachVideo.pic.slice(5)"
+                    :src="zipPic(eachVideo.pic.slice(5))"
+                    :lazy-src="zipPic(eachVideo.pic.slice(5))"
                   />
                 </VResponsive>
               </div>

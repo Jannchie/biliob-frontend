@@ -53,8 +53,8 @@
                 <div>
                   <VImg
                     style="border-radius:40px;width:80px;height:80px"
-                    :src="eachAuthor.face.replace('http:', '')"
-                    :lazy-src="eachAuthor.face.replace('http:', '')"
+                    :src="zipPic(eachAuthor.face.replace('http:', ''))"
+                    :lazy-src="zipPic(eachAuthor.face.replace('http:', ''))"
                   />
                 </div>
                 <div style="margin-left:10px;width:100%">

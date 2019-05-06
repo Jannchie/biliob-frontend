@@ -24,8 +24,7 @@ function drawChart(data) {
   let Chart = {
     title: {
       left: "center",
-      top: "-5px",
-      subtext: "各项指标总量"
+      top: "-5px"
     },
     dataset: {
       source: data.data

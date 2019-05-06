@@ -6,7 +6,8 @@
     >
       <img
         class="video-img"
-        :src="pic"
+        style="width:160px;height:100px"
+        :src="zipPic(pic)"
       >
     </div>
     <div style="position:absolute;top:20px;left:200px;right:20px">

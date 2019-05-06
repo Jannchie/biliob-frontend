@@ -15,8 +15,8 @@
             @click.stop="jumpToAuthorPage(aMid)"
           >
             <VImg
-              :src="aFace.replace('http:','')"
-              :lazy-src="aFace.replace('http:','')"
+              :src="zipPic(aFace.replace('http:',''))"
+              :lazy-src="zipPic(aFace.replace('http:',''))"
             />
           </VAvatar>
           <div
@@ -68,8 +68,8 @@
             @click.stop="jumpToAuthorPage(bMid)"
           >
             <VImg
-              :src="bFace.replace('http:','')"
-              :lazy-src="bFace.replace('http:','')"
+              :src="zipPic(bFace.replace('http:',''))"
+              :lazy-src="zipPic(bFace.replace('http:',''))"
             />
           </VAvatar>
           <div class="hidden-lg-and-down">

@@ -30,7 +30,7 @@
     }
 
     .v-card--material__header.v-card {
-      padding: $padding-general;
+      padding: $padding-small;
     }
   }
 
@@ -77,7 +77,7 @@
   margin: $card-margin 0 !important;
 }
 
-@include card-header-color('deepblue', $brand-info, $blue-500, $blue-700);
+@include card-header-color('deepblue', $brand-info, $blue-600, $blue-800);
 @include card-header-color('blue', $brand-info, $blue-400, $blue-600);
 @include card-header-color('info', $brand-info, $cyan-400, $cyan-600);
 @include card-header-color('red', $brand-danger, $red-400, $red-600);

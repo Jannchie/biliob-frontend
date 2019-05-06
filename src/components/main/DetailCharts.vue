@@ -4,7 +4,8 @@
       :title="title"
       :text="subTitle"
       :color="color"
-      class="card elevation-10"
+      :card-padding="'pa-0'"
+      class="card elevation-10 pa-0"
     >
       <VResponsive
         :aspect-ratio="aspectRatio"
