@@ -16,7 +16,7 @@
                 <VResponsive :aspect-ratio="16/9">
                   <img
                     style="border-radius:40px;width:80px;height:80px"
-                    :src="eachAuthor.face.slice(5)"
+                    :src="zipPic(eachAuthor.face.slice(5))"
                   >
                 </VResponsive>
               </div>

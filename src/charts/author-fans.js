@@ -63,6 +63,8 @@ function drawChart(data) {
           formatter: function(params) {
             if (params > 10000) {
               return Math.round(params / 100) / 100.0 + "万";
+            } else {
+              return params;
             }
           }
         },

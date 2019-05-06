@@ -26,7 +26,7 @@
         />
         <span v-else>
           <div>
-            <h4
+            <p
               class="title font-weight-light mb-2"
               v-text="title"
             />
@@ -43,7 +43,7 @@
       />
     </HelperOffset>
 
-    <VCardText>
+    <VCardText :class="cardPadding + ' material-card-content'">
       <slot />
     </VCardText>
 
@@ -94,6 +94,10 @@ export default {
     icon: {
       type: String,
       default: undefined
+    },
+    cardPadding: {
+      type: String,
+      default: ""
     }
   },
 
@@ -121,6 +125,16 @@ export default {
     &.v-card {
       border-radius: 4px;
     }
+  }
+}
+@media only screen and (min-width: 1029px) {
+  .material-card-content {
+    padding: 15px;
+  }
+}
+@media only screen and (max-width: 1029px) {
+  .material-card-content {
+    padding: 5px;
   }
 }
 </style>

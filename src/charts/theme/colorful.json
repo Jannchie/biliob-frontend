@@ -26,7 +26,7 @@
         "lineStyle": {
             "width": "3"
         },
-        "symbolSize": "8",
+        "symbolSize": "6",
         "symbol": "emptyCircle",
         "smooth": false
     },

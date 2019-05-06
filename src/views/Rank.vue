@@ -42,12 +42,13 @@
               :key="eachData.name"
               style="display: flex"
               class="my-4"
+              @click.stop="linkTo(eachData)"
             >
               <VAvatar
                 size="60px"
                 class="mr-4"
               >
-                <img :src="eachData.face">
+                <img :src="zipPic(eachData.face)">
               </VAvatar>
               <div>
                 <p>{{eachData.name}}</p>
@@ -158,6 +159,11 @@ export default {
     this.$store.commit("toElse");
   },
   methods: {
+    linkTo(eachData) {
+      if (eachData.mid != undefined) {
+        this.$router.push(`author/${eachData.mid}`);
+      }
+    },
     getData(index) {
       this.index = index;
       switch (index) {

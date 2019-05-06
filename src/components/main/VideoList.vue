@@ -70,8 +70,8 @@
             <div>
               <VImg
                 style="border-radius:5px;width:120px;height:80px"
-                :src="eachVideo.pic.replace('http:','')"
-                :lazy-src="eachVideo.pic.replace('http:','')"
+                :src="zipPic(eachVideo.pic.replace('http:',''))"
+                :lazy-src="zipPic(eachVideo.pic.replace('http:',''))"
               />
             </div>
             <div style="margin-left:10px;overflow:hidden">

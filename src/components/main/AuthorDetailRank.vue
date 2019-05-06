@@ -1,35 +1,27 @@
 <template>
-  <MaterialCard
-    title="UP主排名数据"
-  >
+  <MaterialCard title="UP主排名数据">
     <div class="rank-container">
       <div style="flex-grow: 1;text-align:center">
         <div class="rank-title subheading font-weight-bold grey--text text--darken-2">
-          粉丝数排名
+          粉丝数
         </div>
         <div class="rank-value title font-weight-black blue--text text--darken-3">
           {{fansInfo}}
         </div>
         <ChevronBudget :value="dFansRank"></ChevronBudget>
       </div>
-      <div>
-        <VDivider vertical></VDivider>
-      </div>
       <div style="flex-grow: 1;text-align:center">
         <div class="rank-title subheading font-weight-bold grey--text text--darken-2">
-          播放量排名
+          播放量
         </div>
         <div class="rank-value title font-weight-black blue--text text--darken-3">
           {{archiveInfo}}
         </div>
         <ChevronBudget :value="dArchiveViewRank"></ChevronBudget>
       </div>
-      <div>
-        <VDivider vertical></VDivider>
-      </div>
       <div style="flex-grow: 1;text-align:center">
         <div class="rank-title subheading font-weight-bold grey--text text--darken-2">
-          专栏阅读排名
+          专栏阅读
         </div>
         <div class="rank-value title font-weight-black blue--text text--darken-3">
           {{articleInfo}}

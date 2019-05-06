@@ -11,5 +11,16 @@ requireComponent.keys().forEach(fileName => {
     camelCase(fileName.replace(/^\.\//, "").replace(/\.\w+$/, ""))
   );
 
+  Vue.prototype.zipPic = function(url) {
+    var c = url.split("bfs/")[1].split("/")[0];
+    var t = url.slice(3);
+    var postfix = "";
+    if (c === "face" && t === "jpg") {
+      postfix = `@40w_40h.webp`;
+    } else if (c === "archive") {
+      postfix = "@160w_100h.jpg";
+    }
+    return `${url}${postfix}`;
+  };
   Vue.component(componentName, componentConfig.default || componentConfig);
 });

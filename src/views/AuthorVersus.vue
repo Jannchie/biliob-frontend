@@ -1,7 +1,7 @@
 <template>
   <div>
     <MaterialCard
-      style="min-height: 150px;"
+      style="min-height: 180px;"
       title="榜首粉丝实时差距"
     >
       <div style="display: flex; justify-content: space-between">
@@ -30,8 +30,8 @@
               @click.stop="jumpToAuthorPage(aMid)"
             >
               <VImg
-                :src="aFace.replace('http:','')"
-                :lazy-src="aFace.replace('http:','')"
+                :src="zipPic(aFace.replace('http:',''))"
+                :lazy-src="zipPic(aFace.replace('http:',''))"
               />
             </VAvatar>
           </div>
@@ -56,8 +56,8 @@
               @click.stop="jumpToAuthorPage(bMid)"
             >
               <VImg
-                :src="bFace.replace('http:','')"
-                :lazy-src="bFace.replace('http:','')"
+                :src="zipPic(bFace.replace('http:',''))"
+                :lazy-src="zipPic(bFace.replace('http:',''))"
               />
             </VAvatar>
           </div>
@@ -71,7 +71,7 @@
       </div>
     </MaterialCard>
     <DetailCharts
-      title="实时粉丝数变化趋势 - 近十分钟变化情况"
+      title="实时粉丝数变化 - 十分钟变化情况"
       :sub-title="`${aName} VS ${bName}`"
       :hidden="!freq"
       :options="realtimeChartOptions"

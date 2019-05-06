@@ -49,7 +49,7 @@ function drawChart(data) {
       {
         name: "在线观看",
         itemStyle: {
-          borderWidth: 3
+          borderWidth: 2
         },
         data: playOninleData,
         type: "line"
@@ -57,7 +57,7 @@ function drawChart(data) {
       {
         name: "在线人数",
         itemStyle: {
-          borderWidth: 3
+          borderWidth: 2
         },
         data: webOnlineData,
         type: "line"
