@@ -1091,5 +1091,22 @@
       }
     ],
     "type": "important"
+  }, {
+    "title": "美化并修复",
+    "version": "ver.5.0.1",
+    "date": "2019-05-06",
+    "list": [{
+        "text": "对手机端的样式进行修复",
+        "type": "beautify"
+      },
+      {
+        "text": "修正排行榜到UP的页面的链接",
+        "type": "fix"
+      }, {
+        "text": "压缩图片大小，大大节省了流量开支",
+        "type": "feature"
+      }
+    ],
+    "type": "unimportant"
   }
 ]

@@ -5,7 +5,11 @@
       class="mx-auto d-block"
       size="80"
     >
-      <img :src="authorData.face">
+      <img
+        height="40px"
+        width="40px"
+        :src="zipPic(authorData.face)"
+      >
     </VAvatar>
     <FocusBtn
       v-if="$store.getters.getLoginState"

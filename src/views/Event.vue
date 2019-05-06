@@ -20,7 +20,7 @@
                 style="margin-right:12px"
               >
                 <img
-                  :src="eachData.face.replace('http:', '')"
+                  :src="zipPic(eachData.face.replace('http:', ''))"
                   :alt="eachData.author"
                 />
               </VAvatar>
