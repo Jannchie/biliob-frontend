@@ -134,7 +134,7 @@ export default {
 }
 @media only screen and (max-width: 1029px) {
   .material-card-content {
-    padding: 5px;
+    padding: 2px;
   }
 }
 </style>
