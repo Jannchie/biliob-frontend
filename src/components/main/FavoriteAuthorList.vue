@@ -136,11 +136,6 @@ export default {
     },
     getSearchValue(value) {
       this.text = value;
-    },
-    handleChoosed(index, row) {
-      this.$router.push({
-        path: "/author/" + row.mid + "/author/" + row.aid
-      });
     }
   }
 };

@@ -12,7 +12,14 @@ requireComponent.keys().forEach(fileName => {
   );
 
   Vue.prototype.zipPic = function(url) {
-    var c = url.split("bfs/")[1].split("/")[0];
+    if (url === undefined) {
+      return url;
+    }
+    var subUrl = url.split("bfs/");
+    if (subUrl.length < 2) {
+      return url;
+    }
+    var c = subUrl[1].split("/")[0];
     var t = url.slice(3);
     var postfix = "";
     if (c === "face" && t === "jpg") {

@@ -1108,5 +1108,20 @@
       }
     ],
     "type": "unimportant"
+  },
+  {
+    "title": "修复错误",
+    "version": "ver.5.0.2",
+    "date": "2019-05-09",
+    "list": [{
+        "text": "修复了一个导致翻页失败的错误",
+        "type": "fix"
+      },
+      {
+        "text": "修复了点击头像从视频页面到UP主页面的跳转",
+        "type": "fix"
+      }
+    ],
+    "type": "unimportant"
   }
 ]
