@@ -111,7 +111,7 @@ export default {
       this.videoList = response.data;
       this.face = response.data.content.pic;
     });
-    window.addEventListener("scroll", this.onScroll, true);
+    // window.addEventListener("scroll", this.onScroll, true);
   },
   methods: {
     onScroll() {
