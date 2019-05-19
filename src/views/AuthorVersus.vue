@@ -180,7 +180,10 @@ export default {
         this.datetimeArray = r.data.datetime.slice(this.aggregateParam);
       });
     this.refresh();
-    setInterval(this.getNewData, 1000);
+    const timer = setInterval(this.getNewData, 1000);
+    this.$once("hook:beforeDestroy", () => {
+      clearInterval(timer);
+    });
   },
   methods: {
     refreshRealtimeChart() {
