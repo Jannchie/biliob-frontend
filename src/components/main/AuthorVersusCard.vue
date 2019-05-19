@@ -141,7 +141,10 @@ export default {
   watch: {
     aMid() {
       this.refresh();
-      setInterval(this.refresh, 10000);
+      const timer = setInterval(this.refresh, 10000);
+      this.$once("hook:beforeDestroy", () => {
+        clearInterval(timer);
+      });
     }
   },
   methods: {
