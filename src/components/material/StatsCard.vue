@@ -27,17 +27,16 @@
 
     <template slot="actions">
       <VIcon
-        :color="subIconColor"
+        :color="subTextColor"
         size="20"
         class="mr-2"
       >
         {{ subIcon }}
       </VIcon>
       <span
-        :class="subTextColor"
+        :class="`${subTextColor}--text`"
         class="caption font-weight-light"
-        v-text="subText"
-      />
+      >{{subText}}</span>
     </template>
   </MaterialCard>
 </template>

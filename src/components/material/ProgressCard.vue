@@ -1,81 +1,117 @@
+
 <template>
   <MaterialCard
     v-bind="$attrs"
+    style="margin-top:25px;height:127px;padding-bottom:0px"
+    class="progress-card"
     v-on="$listeners"
   >
-    <VProgressLinear
-      slot="header"
-      color="white"
-      height="20"
-      value="75"
-    ></VProgressLinear>
-
-    <slot />
-
-    <slot
-      slot="actions"
-      name="actions"
+    <VCard
+      slot="offset"
+      :class="`progress-card elevation-${elevation}`"
+      style="height: 85px;padding: 15px !important;"
+      :color="color"
+      dark
+    >
+      <div>
+        <VProgressLinear
+          color="white"
+          class="my-2"
+          :value="value/smallValue"
+          indeterminate
+        ></VProgressLinear>
+        <h3 class="category white--text font-weight-light">{{title}}</h3>
+      </div>
+    </VCard>
+    <VDivider
+      class="mx-3"
+      style="margin-top:4px"
     />
+    <VLayout style="margin-bottom:0px;padding-bottom:0px">
+      <VFlex
+        style="padding-bottom:0px"
+        md6
+      >
+        <div
+          class="text-xs-left"
+          style="verticalAlign:bottom"
+        >
+          <VIcon
+            :color="subTextColor"
+            size="18"
+            class="mr-2"
+          >
+            {{ subIcon }}
+          </VIcon>
+          <span
+            :class="`${subTextColor}--text`"
+            class="caption font-weight-light"
+          >{{subText}}</span>
+        </div>
+      </VFlex>
+      <VFlex
+        style="padding-bottom:0px"
+        md6
+      >
+        <div class="text-xs-right">
+          <span class="title display-1 font-weight-light">
+            当前进度：{{ value }} /<small>{{ smallValue }}</small>
+          </span>
+        </div>
+      </VFlex>
+    </VLayout>
   </MaterialCard>
 </template>
 
 <script>
+import Card from "./Card";
+
 export default {
   inheritAttrs: false,
 
   props: {
-    data: {
-      type: Object,
-      default: () => ({})
+    ...Card.props,
+    icon: {
+      type: String,
+      required: true
     },
-    eventHandlers: {
-      type: Array,
-      default: () => []
-    },
-    options: {
-      type: Object,
-      default: () => ({})
-    },
-    ratio: {
+    subIcon: {
       type: String,
       default: undefined
     },
-    responsiveOptions: {
-      type: Array,
-      default: () => []
-    },
-    type: {
+    subIconColor: {
       type: String,
-      required: true,
-      validator: v => ["Bar", "Line", "Pie"].includes(v)
+      default: undefined
+    },
+    subTextColor: {
+      type: String,
+      default: undefined
+    },
+    subText: {
+      type: String,
+      default: undefined
+    },
+    title: {
+      type: String,
+      default: undefined
+    },
+    value: {
+      type: String,
+      default: undefined
+    },
+    smallValue: {
+      type: String,
+      default: undefined
     }
   }
 };
 </script>
 
 <style lang="scss">
-.v-card--material-chart {
-  .v-card--material__header {
-    .ct-label {
-      color: inherit;
-      opacity: 0.7;
-      font-size: 0.975rem;
-      font-weight: 100;
-    }
-
-    .ct-grid {
-      stroke: rgba(255, 255, 255, 0.2);
-    }
-    .ct-series-a .ct-point,
-    .ct-series-a .ct-line,
-    .ct-series-a .ct-bar,
-    .ct-series-a .ct-slice-donut {
-      stroke: rgba(255, 255, 255, 0.8);
-    }
-    .ct-series-a .ct-slice-pie,
-    .ct-series-a .ct-area {
-      fill: rgba(255, 255, 255, 0.4);
-    }
+.progress-card {
+  .v-card__text {
+    margin: 0px;
+    padding-bottom: 0px;
   }
 }
 </style>
