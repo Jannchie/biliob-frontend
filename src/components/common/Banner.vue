@@ -1,5 +1,5 @@
 <template>
-  <VCard style="margin-bottom:20px">
+  <VCard :hidden="hidden">
     <div :class="backgroundStyle">
       <img height="188px">
     </div>
@@ -14,6 +14,13 @@ export default {
   computed: {
     isDark() {
       return this.$store.state.dark;
+    },
+    hidden() {
+      if (this.$route.path !== "/tracer") {
+        return false;
+      } else {
+        return true;
+      }
     }
   },
   watch: {
