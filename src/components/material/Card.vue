@@ -69,7 +69,7 @@ export default {
     },
     elevation: {
       type: [Number, String],
-      default: 10
+      default: 2
     },
     inline: {
       type: Boolean,
@@ -134,7 +134,7 @@ export default {
 }
 @media only screen and (max-width: 1029px) {
   .material-card-content {
-    padding: 2px;
+    padding: 15 2px;
   }
 }
 </style>

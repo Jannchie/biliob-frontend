@@ -1,7 +1,7 @@
 <template>
   <div style="display: flex;margin-bottom:5px; flex-wrap: wrap; cursor:pointer">
     <MaterialCard
-      class="versus-card elevation-10"
+      class="versus-card elevation-2"
       :title="title"
       @click.stop="toAuthorVersus"
     >
@@ -141,7 +141,10 @@ export default {
   watch: {
     aMid() {
       this.refresh();
-      setInterval(this.refresh, 10000);
+      const timer = setInterval(this.refresh, 10000);
+      this.$once("hook:beforeDestroy", () => {
+        clearInterval(timer);
+      });
     }
   },
   methods: {

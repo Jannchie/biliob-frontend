@@ -4,6 +4,7 @@
       slot="offset"
       class="mx-auto d-block"
       size="80"
+      @click.stop="toAuthor()"
     >
       <img
         height="40px"
