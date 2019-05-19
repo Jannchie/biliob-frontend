@@ -9,7 +9,10 @@
         lg9
         md12
       >
-        <VSlideYTransition leave-absolute>
+        <VSlideYTransition
+          hide-on-leave
+          leave-absolute
+        >
           <RouterView />
         </VSlideYTransition>
       </VFlex>
