@@ -1218,5 +1218,21 @@
       }
     ],
     "type": "unimportant"
+  },
+  {
+    "title": "日常更新",
+    "version": "ver.5.0.4",
+    "date": "2019-05-21",
+    "list": [
+      {
+        "text": "修复了作者列表下标错位的问题",
+        "type": "fix"
+      },
+      {
+        "text": "重制了页面底部链接",
+        "type": "feature"
+      }
+    ],
+    "type": "unimportant"
   }
 ]
