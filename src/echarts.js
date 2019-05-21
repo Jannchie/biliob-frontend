@@ -13,9 +13,11 @@ import "echarts-wordcloud";
 // // custom theme
 import mydark from "./charts/theme/mydark.json";
 import colorful from "./charts/theme/colorful.json";
+import card from "./charts/theme/card.json";
 
 // // registering custom theme
 ECharts.registerTheme("mydark", mydark);
 ECharts.registerTheme("colorful", colorful);
+ECharts.registerTheme("card", card);
 
 Vue.component("Chart", ECharts);
