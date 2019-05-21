@@ -72,11 +72,11 @@
                     >
                       mdi-flash </VIcon>{{ eachAuthor.official }}
                   </div>
+                  <ObserveStatus
+                    class="observe-status"
+                    :object="eachAuthor"
+                  />
                 </div>
-                <ObserveStatus
-                  class="observe-status"
-                  :object="eachAuthor"
-                />
               </div>
               <VDivider></VDivider>
             </div>
@@ -213,8 +213,6 @@ export default {
 <style>
 .face {
   position: relative;
-  height: 60%;
-  width: 60%;
   align-content: center;
   border-radius: 4px;
 }
@@ -224,7 +222,8 @@ export default {
 }
 
 .author-cards {
-  margin: 10px 2px;
+  margin: 10px 0px;
+  padding: 0px 0px;
   border-radius: 5px;
   position: relative;
 }
