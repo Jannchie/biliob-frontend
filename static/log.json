@@ -1218,5 +1218,25 @@
       }
     ],
     "type": "unimportant"
+  },
+  {
+    "title": "添加追踪管理页面",
+    "version": "ver.6.0.0",
+    "date": "2019-05-22",
+    "list": [
+      {
+        "text": "添加了后端追踪页面",
+        "type": "stone"
+      },
+      {
+        "text": "修复了作者列表下标错位的问题",
+        "type": "fix"
+      },
+      {
+        "text": "重制了页面底部链接",
+        "type": "feature"
+      }
+    ],
+    "type": "holyshit"
   }
 ]

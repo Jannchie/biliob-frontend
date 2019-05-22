@@ -25,18 +25,23 @@
       </h3>
     </div>
 
+    <VCardText :class="'text-xs-left px-1 title display-1 font-weight-light'">
+      <slot />
+    </VCardText>
+
     <template slot="actions">
       <VIcon
-        :color="subTextColor"
+        :color="subIconColor"
         size="20"
         class="mr-2"
       >
         {{ subIcon }}
       </VIcon>
       <span
-        :class="`${subTextColor}--text`"
+        :class="subTextColor"
         class="caption font-weight-light"
-      >{{subText}}</span>
+        v-text="subText"
+      />
     </template>
   </MaterialCard>
 </template>
@@ -74,7 +79,7 @@ export default {
       default: undefined
     },
     value: {
-      type: [Number, String],
+      type: String,
       default: undefined
     },
     smallValue: {

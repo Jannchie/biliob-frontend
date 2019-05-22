@@ -6,10 +6,10 @@
   >
     <VLayout justify-center>
       <VFlex
-        lg9
+        lg8
         md12
       >
-        <VSlideYTransition leave-absolute>
+        <VSlideYTransition mode="out-in">
           <RouterView />
         </VSlideYTransition>
       </VFlex>

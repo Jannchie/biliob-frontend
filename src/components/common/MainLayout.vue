@@ -30,7 +30,7 @@ export default {
   }
 };
 </script>
-<style>
+<style scoped>
 @media only screen and (max-width: 1029px) {
   .main-container {
     padding: 16px 0;

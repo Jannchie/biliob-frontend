@@ -69,7 +69,7 @@
           <div style="padding:5px;display:flex">
             <div>
               <VImg
-                style="border-radius:5px;width:120px;height:80px"
+                class="video-img"
                 :src="zipPic(eachVideo.pic.replace('http:',''))"
                 :lazy-src="zipPic(eachVideo.pic.replace('http:',''))"
               />
@@ -235,7 +235,6 @@ export default {
 .video-cards {
   margin: 10px 0px;
   padding: 0px 0px;
-  height: 90px;
   border-radius: 5px;
   position: relative;
 }
@@ -255,5 +254,19 @@ export default {
 
 .video-info {
   margin-top: 5px;
+}
+@media only screen and (max-width: 1029px) {
+  .video-img {
+    border-radius: 5px;
+    width: 80px;
+    height: 50px;
+  }
+}
+@media only screen and (min-width: 1029px) {
+  .video-img {
+    border-radius: 5px;
+    width: 120px;
+    height: 75px;
+  }
 }
 </style>

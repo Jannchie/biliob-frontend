@@ -141,7 +141,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .face {
   position: relative;
   height: 60%;
