@@ -52,7 +52,7 @@
               <div style="padding:5px;display:flex">
                 <div>
                   <VImg
-                    style="border-radius:40px;width:80px;height:80px"
+                    class="author-face"
                     :src="zipPic(eachAuthor.face.replace('http:', ''))"
                     :lazy-src="zipPic(eachAuthor.face.replace('http:', ''))"
                   />
@@ -72,11 +72,11 @@
                     >
                       mdi-flash </VIcon>{{ eachAuthor.official }}
                   </div>
+                  <ObserveStatus
+                    class="observe-status"
+                    :object="eachAuthor"
+                  />
                 </div>
-                <ObserveStatus
-                  class="observe-status"
-                  :object="eachAuthor"
-                />
               </div>
               <VDivider></VDivider>
             </div>
@@ -213,8 +213,6 @@ export default {
 <style>
 .face {
   position: relative;
-  height: 60%;
-  width: 60%;
   align-content: center;
   border-radius: 4px;
 }
@@ -224,8 +222,8 @@ export default {
 }
 
 .author-cards {
-  margin: 10px 2px;
-  height: 90px;
+  margin: 10px 0px;
+  padding: 0px 0px;
   border-radius: 5px;
   position: relative;
 }
@@ -245,5 +243,20 @@ export default {
 
 .author-info {
   margin-top: 5px;
+}
+
+@media only screen and (max-width: 1029px) {
+  .author-face {
+    border-radius: 30px;
+    width: 60px;
+    height: 60px;
+  }
+}
+@media only screen and (min-width: 1029px) {
+  .author-face {
+    border-radius: 40px;
+    width: 80px;
+    height: 80px;
+  }
 }
 </style>
