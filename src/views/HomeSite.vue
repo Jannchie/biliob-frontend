@@ -6,13 +6,12 @@
     <FirstLoadDialog />
     <BottomNav />
     <Container />
-    <BiliobFooter />
+    <LayoutFooter />
   </div>
 </template>
 
 <script>
 import FirstLoadDialog from "@/components/common/FirstLoadDialog.vue";
-import BiliobFooter from "@/components/common/BiliobFooter.vue";
 import BottomNav from "@/components/common/BottomNav.vue";
 import NavBar from "@/components/common/NavBar.vue";
 import Container from "@/components/common/Container.vue";
@@ -27,7 +26,6 @@ export default {
     Container,
     Banner,
     FloatDialog,
-    BiliobFooter,
     BottomNav
   },
   computed: {

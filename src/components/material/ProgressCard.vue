@@ -17,14 +17,27 @@
         <VProgressLinear
           color="white"
           class="my-2"
-          :value="value/smallValue"
-          indeterminate
+          :value="percent"
         ></VProgressLinear>
-        <h3 class="category white--text font-weight-light">{{title}}</h3>
+        <VLayout>
+          <VFlex md6>
+            <div class="title white--text font-weight-light">{{title}}</div>
+          </VFlex>
+          <VFlex md6>
+            <div class="title white--text font-weight-light text-xs-right">
+              <CommonVOdometer
+                theme="minimal"
+                format=""
+                :value="percent"
+              ></CommonVOdometer>%
+            </div>
+          </VFlex>
+        </VLayout>
       </div>
     </VCard>
     <VDivider
-      class="mx-3"
+      class="
+                mx-3"
       style="margin-top:4px"
     />
     <VLayout style="margin-bottom:0px;padding-bottom:0px">
@@ -55,7 +68,11 @@
       >
         <div class="text-xs-right">
           <span class="title display-1 font-weight-light">
-            当前进度：{{ value }} /<small>{{ smallValue }}</small>
+            当前进度：<CommonVOdometer
+              theme="minimal"
+              format=""
+              :value="value"
+            ></CommonVOdometer> /<small>{{ smallValue }}</small>
           </span>
         </div>
       </VFlex>
@@ -67,14 +84,16 @@
 import Card from "./Card";
 
 export default {
-  inheritAttrs: false,
-
+  data() {
+    return {
+      percent: Number()
+    };
+  },
+  mounted() {
+    this.percent = (this.value / this.smallValue) * 100;
+  },
   props: {
     ...Card.props,
-    icon: {
-      type: String,
-      required: true
-    },
     subIcon: {
       type: String,
       default: undefined
@@ -96,11 +115,11 @@ export default {
       default: undefined
     },
     value: {
-      type: String,
+      type: [String, Number],
       default: undefined
     },
     smallValue: {
-      type: String,
+      type: [String, Number],
       default: undefined
     }
   }
