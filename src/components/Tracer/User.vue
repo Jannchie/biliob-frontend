@@ -102,29 +102,15 @@ export default {
       videoListLength: ""
     };
   },
-  computed: {
-    progressColor() {
-      switch (this.progressTask.status) {
-        case 9:
-          return "green";
-        case 4:
-          return "red";
-        case 2:
-          return "orange";
-        default:
-          return "";
-      }
-    }
-  },
   mounted() {
     this.axios(`/tracer/spider-tasks?type=1`).then(r => {
       this.spiderTasks = r.data.content;
     });
     this.axios(`/tracer/author-queue`).then(r => {
-      this.authorListLength = r.data.length;
+      this.authorListLength = String(r.data.length);
     });
     this.axios(`/tracer/video-queue`).then(r => {
-      this.videoListLength = r.data.length;
+      this.videoListLength = String(r.data.length);
     });
   },
   methods: {
@@ -139,7 +125,7 @@ export default {
       }
     },
     getColor(value) {
-      if (value === 0 || value === "") {
+      if (value === "0" || value === "") {
         return "green";
       } else {
         return "orange";

@@ -2,6 +2,7 @@
   <VToolbar
     color="grey lighten-3"
     flat
+    absolute
     app
     prominent
   >

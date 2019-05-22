@@ -77,13 +77,13 @@
   margin: $card-margin 0 !important;
 }
 
-@include card-header-color('deepblue', $brand-info, $blue-600, $blue-800);
+@include card-header-color('deepblue', $brand-primary, $blue-600, $blue-800);
 @include card-header-color('blue', $brand-info, $blue-400, $blue-600);
 @include card-header-color('info', $brand-info, $cyan-400, $cyan-600);
 @include card-header-color('red', $brand-danger, $red-400, $red-600);
 @include card-header-color('green', $brand-success, $green-400, $green-600);
 @include card-header-color('orange', $brand-warning, $orange-400, $orange-600);
-@include card-header-color('purple', $brand-primary, $purple-400, $purple-600);
+@include card-header-color('purple', $brand-info, $purple-400, $purple-600);
 
 .v-card--material-stats.v-card {
   .v-offset {

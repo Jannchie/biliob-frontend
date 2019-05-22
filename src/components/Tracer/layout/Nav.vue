@@ -19,28 +19,48 @@
               BiliOB观测者
             </VListTileTitle>
             <VListTileSubTitle>
-              监控系统
+              追踪系统
             </VListTileSubTitle>
           </VListTileContent>
         </VListTile>
       </VList>
     </VContainer>
     <TracerNavItem
-      name="监控仪表盘"
-      icon="mdi-monitor-dashboard"
-      path="dashboard"
-    ></TracerNavItem>
-    <TracerNavItem
-      name="爬虫服务监控"
-      icon="mdi-spider-web"
-      path="spider"
+      v-for="eachItem in navItem"
+      :key="eachItem.name"
+      :name="eachItem.name"
+      :icon="eachItem.icon"
+      :path="eachItem.path"
     ></TracerNavItem>
   </VNavigationDrawer>
 </template>
 <script>
 export default {
   data() {
-    return { mini: false };
+    return {
+      navItem: [
+        {
+          name: "仪表盘",
+          icon: "mdi-monitor-dashboard",
+          path: "dashboard"
+        },
+        {
+          name: "计划任务",
+          icon: "mdi-timer",
+          path: "schedule"
+        },
+        {
+          name: "爬虫服务概览",
+          icon: "mdi-spider-web",
+          path: "spider"
+        }
+        // {
+        //   name: "观测者概览",
+        //   icon: "mdi-account",
+        //   path: "user"
+        // }
+      ]
+    };
   }
 };
 </script>

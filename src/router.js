@@ -22,8 +22,10 @@ const Test = () => import("./views/Test.vue");
 const Android = () => import("./views/Android.vue");
 const AuthorVersus = () => import("./views/AuthorVersus.vue");
 const Tracer = () => import("./views/Tracer.vue");
-const Dashboard = () => import("@/components/Tracer/Dashboard.vue");
-const Spider = () => import("@/components/Tracer/Spider.vue");
+const TracerDashboard = () => import("@/components/Tracer/Dashboard.vue");
+const TracerSpider = () => import("@/components/Tracer/Spider.vue");
+const TracerSchedule = () => import("@/components/Tracer/Schedule.vue");
+const TracerUser = () => import("@/components/Tracer/User.vue");
 Vue.use(Router);
 
 export default new Router({
@@ -124,17 +126,27 @@ export default new Router({
         {
           path: "",
           name: "BiliOB观测者-爬虫监控系统",
-          component: Dashboard
+          component: TracerDashboard
         },
         {
           path: "dashboard",
-          name: "监控仪表盘",
-          component: Dashboard
+          name: "仪表盘",
+          component: TracerDashboard
         },
         {
           path: "spider",
+          name: "爬虫服务概览",
+          component: TracerSpider
+        },
+        {
+          path: "schedule",
+          name: "计划任务概览",
+          component: TracerSchedule
+        },
+        {
+          path: "user",
           name: "爬虫服务监控",
-          component: Spider
+          component: TracerUser
         }
       ]
     },
