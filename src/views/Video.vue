@@ -9,7 +9,7 @@
       />
       <VideoDetailRank
         slot="rank"
-        v-bind="videoData.rank"
+        v-bind="rank"
       ></VideoDetailRank>
       <DetailCharts
         slot="main"
@@ -131,7 +131,8 @@ export default {
       hasDanmakuAggregate: false,
       pageItems: Array(),
       danmakuUpdateTime: "未记录",
-      defaultPage: String()
+      defaultPage: String(),
+      rank: { pViewRank: -1, updateTime: Date() }
     };
   },
   watch: {
@@ -183,6 +184,32 @@ export default {
         });
       this.axios.get("/video/" + this.$route.params.aid).then(response => {
         this.getVideoData(response);
+        this.axios.get(`video/rank-table`).then(r => {
+          let keys = ["Coin", "Danmaku", "Favorite", "Like", "Share", "View"];
+          let dict = r.data;
+          let title = this.videoData.title;
+          keys.forEach(e => {
+            let key = `c${e}`;
+            let v = this.videoData.data[0][e.toLowerCase()];
+            if (title in dict[key]) {
+              this.rank[`${key}Rank`] = dict[key][title];
+              this.rank[`p${e}Rank`] = 0;
+            } else {
+              let rate = dict[key]["rate"];
+              for (let index = 1; index < rate.length; index++) {
+                if (v > rate[index]) {
+                  this.rank[`${key}Rank`] = 999;
+                  this.rank[`p${e}Rank`] = (
+                    index +
+                    (v - rate[index]) / (rate[index - 1] - rate[index])
+                  ).toFixed(2);
+                  break;
+                }
+              }
+            }
+          });
+          console.log(this.videoData);
+        });
       });
       this.axios
         .get(

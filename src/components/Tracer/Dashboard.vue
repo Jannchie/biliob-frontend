@@ -4,55 +4,27 @@
       v-if="loaded"
       wrap
     >
+
       <VFlex
-        lg2
+        lg4
         md12
       >
-        <MaterialStatsCard
-          :value="sumSpiderCount"
-          title="正在爬取爬虫数"
-          small-value="个"
-          color="green"
-          icon="mdi-spider-web"
-          sub-icon="mdi-check-circle"
-          sub-text="正常运行中..."
-          sub-text-color="green"
-        ></MaterialStatsCard>
-      </VFlex>
-      <VFlex
-        lg2
-        md12
-      >
-        <MaterialStatsCard
-          :hidden="authorCrawlLength == ''"
+        <MaterialTracerCrawlCard
+          title="作者爬虫运行状况"
           :value="authorCrawlLength"
-          title="计划爬取作者数量"
-          small-value="个"
-          icon="mdi-account"
-          sub-icon="mdi-check-circle"
-          :sub-text="getStatus(authorCrawlLength)"
-          :sub-text-color="getColor(authorCrawlLength)"
-          :color="getColor(authorCrawlLength)"
-        ></MaterialStatsCard>
+        ></MaterialTracerCrawlCard>
       </VFlex>
       <VFlex
-        lg2
+        lg4
         md12
       >
-        <MaterialStatsCard
-          :hidden="videoCrawlLength == ''"
+        <MaterialTracerCrawlCard
+          title="视频爬虫运行状况"
           :value="videoCrawlLength"
-          title="计划爬取视频数量"
-          small-value="个"
-          icon="mdi-video"
-          sub-icon="mdi-check-circle"
-          :sub-text="getStatus(videoCrawlLength)"
-          :sub-text-color="getColor(videoCrawlLength)"
-          :color="getColor(videoCrawlLength)"
-        ></MaterialStatsCard>
+        ></MaterialTracerCrawlCard>
       </VFlex>
       <VFlex
-        lg6
+        lg4
         md12
       >
         <MaterialProgressCard
@@ -174,7 +146,7 @@ export default {
   },
   computed: {
     progressColor() {
-      switch (this.progressTask.status) {
+      switch (this.progressTask != null && this.progressTask.status) {
         case 9:
           return "green";
         case 4:
@@ -191,6 +163,7 @@ export default {
     this.axios.get("/tracer/exists-tasks").then(r => {
       this.scheduleTask = r.data;
     });
+
     this.axios.get(`/tracer/dashboard`).then(r => {
       this.sumSpiderCount = r.data.sumSpiderCount;
       this.checkedInCount = r.data.checkedInCount;
@@ -273,6 +246,10 @@ export default {
     getLatestTaskInfo() {
       this.axios.get(`/tracer/latest-progress`).then(r => {
         this.updateTask(r.data);
+      });
+      this.axios.get(`/tracer/latest-spider`).then(r => {
+        this.authorCrawlLength = r.data.authorCrawlLength;
+        this.videoCrawlLength = r.data.videoCrawlLength;
       });
     }
   }

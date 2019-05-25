@@ -1238,5 +1238,33 @@
       }
     ],
     "type": "holyshit"
+  },
+  {
+    "title": "美化样式",
+    "version": "ver.6.1.0",
+    "date": "2019-05-25",
+    "list": [
+      {
+        "text": "修改了部分文字说明",
+        "type": "fix"
+      },
+      {
+        "text": "修复了视频各指标排名",
+        "type": "fix"
+      },
+      {
+        "text": "统一了部分样式",
+        "type": "beautify"
+      },
+      {
+        "text": "修改了后台监测爬虫的表现方式",
+        "type": "feature"
+      },
+      {
+        "text": "添加了观测UP主类型分布图表",
+        "type": "feature"
+      }
+    ],
+    "type": "important"
   }
 ]

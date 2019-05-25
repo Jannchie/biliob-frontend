@@ -17,7 +17,7 @@
           <div class="rank-value title font-weight-black blue--text text--darken-3">
             {{viewInfo}}
           </div>
-          <ChevronBudget :value="dViewRank"></ChevronBudget>
+          <!-- <ChevronBudget :value="rank.dViewRank"></ChevronBudget> -->
           <div>
             <VDivider vertical></VDivider>
           </div>
@@ -32,7 +32,7 @@
           <div class="rank-value title font-weight-black blue--text text--darken-3">
             {{likeInfo}}
           </div>
-          <ChevronBudget :value="dLikeRank"></ChevronBudget>
+          <!-- <ChevronBudget :value="rank.dLikeRank"></ChevronBudget> -->
           <div>
             <VDivider vertical></VDivider>
           </div>
@@ -47,7 +47,7 @@
           <div class="rank-value title font-weight-black blue--text text--darken-3">
             {{coinInfo}}
           </div>
-          <ChevronBudget :value="dCoinRank"></ChevronBudget>
+          <!-- <ChevronBudget :value="rank.dCoinRank"></ChevronBudget> -->
           <div class="special-divider">
             <VDivider vertical></VDivider>
           </div>
@@ -65,7 +65,7 @@
           <div class="rank-value title font-weight-black blue--text text--darken-3">
             {{danmakuInfo}}
           </div>
-          <ChevronBudget :value="dDanmakuRank"></ChevronBudget>
+          <!-- <ChevronBudget :value="rank.dDanmakuRank"></ChevronBudget> -->
           <div>
             <VDivider vertical></VDivider>
           </div>
@@ -80,7 +80,7 @@
           <div class="rank-value title font-weight-black blue--text text--darken-3">
             {{favoriteInfo}}
           </div>
-          <ChevronBudget :value="dFavoriteRank"></ChevronBudget>
+          <!-- <ChevronBudget :value="rank.dFavoriteRank"></ChevronBudget> -->
           <div>
             <VDivider vertical></VDivider>
           </div>
@@ -95,7 +95,7 @@
           <div class="rank-value title font-weight-black blue--text text--darken-3">
             {{shareInfo}}
           </div>
-          <ChevronBudget :value="dShareRank"></ChevronBudget>
+          <!-- <ChevronBudget :value="rank.dShareRank"></ChevronBudget> -->
           <div class="special-divider">
             <VDivider vertical></VDivider>
           </div>
@@ -119,9 +119,9 @@
 <script>
 var format = require("date-fns/format");
 var { convertDateToUTC } = require("../../charts/util/convertDateToUTC");
-import ChevronBudget from "../common/ChevronBudget.vue";
+// import ChevronBudget from "../common/ChevronBudget.vue";
 export default {
-  components: { ChevronBudget },
+  // components: { ChevronBudget },
   props: {
     updateTime: String(),
     cViewRank: Number(),
@@ -215,6 +215,7 @@ export default {
       }
     }
   },
+  mounted() {},
   methods: {
     beautify(val) {
       if (val === -1) {

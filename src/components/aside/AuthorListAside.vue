@@ -1,17 +1,7 @@
 <template>
   <div>
-    <MaterialCard
-      class="body-1"
-      title="UP主收录情况概览"
-    >
-      <p>收录UP主总数 {{count}}</p>
-      <p>正在观测UP主总数 {{focusCount}}</p>
-      <p>强行观测UP主总数 {{forceFocusCount}}</p>
-    </MaterialCard>
-    <MaterialCard
-      title="数据说明"
-      class="card"
-    >
+
+    <MaterialCard title="数据说明">
       <div class="body-1">
         <li>这里可以查询所有<span class="green--text">正在追踪</span>的UP主。</li>
         <li>
@@ -44,10 +34,20 @@
         </div>
       </div>
     </MaterialCard>
+    <MaterialChartCard
+      :options="options"
+      class="body-1"
+    >
+      <p>收录UP主总数 {{count}}</p>
+      <p>正在观测UP主总数 {{focusCount}}</p>
+      <p>强行观测UP主总数 {{forceFocusCount}}</p>
+    </MaterialChartCard>
     <slot name="link" />
   </div>
 </template>
 <script>
+import getCardChart from "@/charts/get-card-chart.js";
+
 export default {
   name: "AuthorListAside",
   data() {
@@ -56,6 +56,15 @@ export default {
       focusCount: Number(),
       forceFocusCount: Number()
     };
+  },
+  computed: {
+    options() {
+      return getCardChart(
+        ["收录数", "正在观测", "强行观测"],
+        [this.count, this.focusCount, this.forceFocusCount],
+        "bar"
+      );
+    }
   },
   mounted() {
     this.axios(`/site/author/count`).then(response => {
@@ -66,7 +75,3 @@ export default {
   }
 };
 </script>
-<style scoped>
-.v-card {
-}
-</style>

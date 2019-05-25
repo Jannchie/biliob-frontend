@@ -1,32 +1,37 @@
 <template>
-  <VDataTable
-    :headers="headers"
-    :items="userRecordData"
-    :pagination.sync="pageInfo"
-    disable-initial-sort
-    :loading="loading"
-    no-results-text="目前没有数据"
-    rows-per-page-text="每页条数"
-    class="elevation-1"
-    style="white-space: nowrap"
+  <MaterialCard
+    color="deepblue"
+    title="我的操作记录"
+    text="此处显示所有与积分有关的操作记录"
   >
-    <template
-      slot="items"
-      slot-scope="props"
+    <VDataTable
+      :headers="headers"
+      :items="userRecordData"
+      :pagination.sync="pageInfo"
+      disable-initial-sort
+      :loading="loading"
+      no-results-text="目前没有数据"
+      rows-per-page-text="每页条数"
+      style="white-space: nowrap"
     >
-      <td class="caption text-xs-left">{{ props.item.message }}</td>
-      <td class="caption text-xs-left">{{ props.item.datetime }}</td>
-      <td class="caption text-xs-center">{{ props.item.credit }}</td>
-      <td class="caption text-xs-center">
-        <span
-          :class="`caption white--text ${getExecuteStatusColor(props.item.executed)} pa-1`"
-          style="border-radius: 2px"
-        >
-          {{executeState(props.item.executed)}}
-        </span>
-      </td>
-    </template>
-  </VDataTable>
+      <template
+        slot="items"
+        slot-scope="props"
+      >
+        <td class="caption text-xs-left">{{ props.item.message }}</td>
+        <td class="caption text-xs-left">{{ props.item.datetime }}</td>
+        <td class="caption text-xs-center">{{ props.item.credit }}</td>
+        <td class="caption text-xs-center">
+          <span
+            :class="`caption white--text ${getExecuteStatusColor(props.item.executed)} pa-1`"
+            style="border-radius: 2px"
+          >
+            {{executeState(props.item.executed)}}
+          </span>
+        </td>
+      </template>
+    </VDataTable>
+  </MaterialCard>
 </template>
 <script>
 export default {

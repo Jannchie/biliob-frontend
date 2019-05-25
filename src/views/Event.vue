@@ -6,7 +6,7 @@
           v-for="(eachData, index) in fansVariationData"
           :key="index"
           ripple
-          class="event-card"
+          class="event-card mb-1"
         >
           <VCardTitle @click.stop="toAuthor(eachData.mid)">
 
@@ -140,13 +140,10 @@
       </VSlideYTransition>
     </div>
     <div slot="aside-cards">
-      <VCard style="margin-bottom:5px">
-        <VCardTitle class="title font-weight-bold blue--text text--darken-2">
-          <VIcon class="mr-2 blue--text text--darken-2">mdi-message-alert-outline</VIcon>
-          粉丝变动观测说明
-        </VCardTitle>
-      </VCard>
-      <VCard style="margin-bottom:5px">
+      <MaterialCard
+        title="粉丝变动观测说明"
+        style="margin-bottom:5px"
+      >
         <VCardText class="caption">
           此页面展示了粉丝数发生剧烈波动的UP主。<br />
           由于<span class="text--darken-2 red--text">发布视频</span>、<span class="text--darken-2 blue--text">抽奖开奖</span>、<span class="text--darken-2 green--text">石锤锤爆</span>等原因，UP主的粉丝数可能发生剧烈变化，而这种剧烈变化是观测者们喜闻乐见的。<br />
@@ -203,7 +200,7 @@
             对于<span class="text--darken-2 blue--text">新星爆发</span>事件，变化率代表日增量与该UP主粉丝数总量的百分比。
           </li>
         </VCardText>
-      </VCard>
+      </MaterialCard>
       <OtherLink />
     </div>
   </MainLayout>

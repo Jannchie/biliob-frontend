@@ -19,7 +19,7 @@
               BiliOB观测者
             </VListTileTitle>
             <VListTileSubTitle>
-              追踪系统
+              管理系统
             </VListTileSubTitle>
           </VListTileContent>
         </VListTile>

@@ -12,40 +12,27 @@
         sub-icon="mdi-check-circle"
         sub-text="正常运行中..."
         sub-text-color="green"
+        color="green"
       ></MaterialStatsCard>
     </VFlex>
     <VFlex
       lg4
       md12
     >
-      <MaterialStatsCard
-        :hidden="authorListLength == ''"
+      <MaterialTracerCrawlCard
+        title="作者爬虫运行状况"
         :value="authorListLength"
-        title="计划爬取作者数量"
-        small-value="个"
-        icon="mdi-account"
-        sub-icon="mdi-check-circle"
-        :sub-text="getStatus(authorListLength)"
-        :sub-text-color="getColor(authorListLength)"
-        :color="getColor(authorListLength)"
-      ></MaterialStatsCard>
+      ></MaterialTracerCrawlCard>
     </VFlex>
 
     <VFlex
       lg4
       md12
     >
-      <MaterialStatsCard
-        :hidden="videoListLength == ''"
+      <MaterialTracerCrawlCard
+        title="视频爬虫运行状况"
         :value="videoListLength"
-        title="计划爬取视频数量"
-        small-value="个"
-        icon="mdi-video"
-        sub-icon="mdi-check-circle"
-        :sub-text="getStatus(videoListLength)"
-        :sub-text-color="getColor(videoListLength)"
-        :color="getColor(videoListLength)"
-      ></MaterialStatsCard>
+      ></MaterialTracerCrawlCard>
     </VFlex>
     <VFlex lg12>
 
@@ -104,7 +91,7 @@ export default {
   },
   computed: {
     progressColor() {
-      switch (this.progressTask.status) {
+      switch (this.progressTask != null && this.progressTask.status) {
         case 9:
           return "green";
         case 4:
@@ -126,8 +113,18 @@ export default {
     this.axios(`/tracer/video-queue`).then(r => {
       this.videoListLength = r.data.length;
     });
+    let timer = setInterval(this.getLatestSpiderInfo, 5000);
+    this.$once("hook:beforeDestroy", () => {
+      clearInterval(timer);
+    });
   },
   methods: {
+    getLatestSpiderInfo() {
+      this.axios.get(`/tracer/latest-spider`).then(r => {
+        this.authorCrawlLength = r.data.authorCrawlLength;
+        this.authorCrawlLength = r.data.videoCrawlLength;
+      });
+    },
     lastTime(startTime, updateTime) {
       return distanceInWords(startTime, updateTime, { locale: cnLocale });
     },

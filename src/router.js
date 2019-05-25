@@ -125,7 +125,7 @@ export default new Router({
       children: [
         {
           path: "",
-          name: "BiliOB观测者-爬虫监控系统",
+          name: "BiliOB观测者-管理系统",
           component: TracerDashboard
         },
         {
@@ -145,7 +145,7 @@ export default new Router({
         },
         {
           path: "user",
-          name: "爬虫服务监控",
+          name: "用户概览",
           component: TracerUser
         }
       ]
