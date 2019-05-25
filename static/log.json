@@ -1249,6 +1249,10 @@
         "type": "fix"
       },
       {
+        "text": "修复了视频各指标排名",
+        "type": "fix"
+      },
+      {
         "text": "统一了部分样式",
         "type": "beautify"
       },
