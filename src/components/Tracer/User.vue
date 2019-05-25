@@ -21,7 +21,7 @@
       <MaterialStatsCard
         :hidden="authorListLength == ''"
         :value="authorListLength"
-        title="计划爬取作者数量"
+        title="作者爬虫运行状况"
         small-value="个"
         icon="mdi-account"
         sub-icon="mdi-check-circle"
@@ -38,7 +38,7 @@
       <MaterialStatsCard
         :hidden="videoListLength == ''"
         :value="videoListLength"
-        title="计划爬取视频数量"
+        title="视频爬虫运行状况"
         small-value="个"
         icon="mdi-video"
         sub-icon="mdi-check-circle"

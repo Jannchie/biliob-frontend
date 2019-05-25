@@ -32,9 +32,9 @@
 export default {
   data: () => ({
     links: [
-      { name: "监控系统", Link: "/tracer/dashboard" },
-      { name: "作者B站个人空间", Link: "https://space.bilibili.com/1850091" },
-      { name: "作者博客", Link: "http://jannchie.github.io" }
+      { name: "管理系统", Link: "/tracer/dashboard" },
+      { name: "站长B站个人空间", Link: "https://space.bilibili.com/1850091" },
+      { name: "站长博客", Link: "http://jannchie.github.io" }
     ]
   })
 };

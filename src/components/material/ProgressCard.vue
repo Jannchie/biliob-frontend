@@ -18,18 +18,39 @@
           color="white"
           class="my-2"
           :value="percent"
+          :indeterminate="indeterminate && value != 0"
         ></VProgressLinear>
         <VLayout>
           <VFlex md6>
             <div class="title white--text font-weight-light">{{title}}</div>
           </VFlex>
           <VFlex md6>
-            <div class="title white--text font-weight-light text-xs-right">
+            <div
+              v-if="!indeterminate"
+              class="title white--text font-weight-light text-xs-right"
+            >
               <CommonVOdometer
                 theme="minimal"
                 format=""
                 :value="percent"
               ></CommonVOdometer>%
+            </div>
+            <div
+              v-else
+              class="title white--text font-weight-light text-xs-right"
+            >
+              <div v-if="value==0">
+                <VIcon>mdi-check</VIcon>已清空列表
+              </div>
+              <div v-if="value !=0">
+                <VIcon>mdi-spin</VIcon>
+                剩余任务数量：
+                <CommonVOdometer
+                  theme="minimal"
+                  format=""
+                  :value="value"
+                ></CommonVOdometer>
+              </div>
             </div>
           </VFlex>
         </VLayout>
@@ -66,7 +87,10 @@
         style="padding-bottom:0px"
         md6
       >
-        <div class="text-xs-right">
+        <div
+          v-if="!indeterminate"
+          class="text-xs-right"
+        >
           <span class="title display-1 font-weight-light">
             当前进度：<CommonVOdometer
               theme="minimal"
@@ -84,14 +108,6 @@
 import Card from "./Card";
 
 export default {
-  data() {
-    return {
-      percent: Number()
-    };
-  },
-  mounted() {
-    this.percent = (this.value / this.smallValue) * 100;
-  },
   props: {
     ...Card.props,
     subIcon: {
@@ -121,6 +137,28 @@ export default {
     smallValue: {
       type: [String, Number],
       default: undefined
+    },
+    indeterminate: { type: Boolean, default: false }
+  },
+  data() {
+    return {
+      percent: Number()
+    };
+  },
+  watch: {
+    value() {
+      if (this.indeterminate === true && this.value === 0) {
+        this.percent = 100;
+      } else {
+        this.percent = (this.value / this.smallValue) * 100;
+      }
+    }
+  },
+  mounted() {
+    if (this.indeterminate === true && this.value === 0) {
+      this.percent = 100;
+    } else {
+      this.percent = (this.value / this.smallValue) * 100;
     }
   }
 };

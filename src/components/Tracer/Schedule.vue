@@ -21,8 +21,8 @@
 
         <MaterialCard
           color="green"
-          title="运行中爬虫详细信息"
-          text="此处显示的是目前正在运行中的爬虫状态"
+          title="计划任务运行情况"
+          text="计划任务运行时长和耗时分析"
         >
           <VDataTable
             :headers="headers"
@@ -44,7 +44,7 @@
             >
               <td>{{ item.taskName }}</td>
               <td>{{ item.computerName }}</td>
-              <td>{{ lastTime(item.startTime,new Date())}}</td>
+              <td>{{ lastTime(item.startTime.replace('+0000',''),new Date())}}</td>
               <td>{{ lastTime(item.startTime,item.updateTime)}}</td>
               <td>{{ item.msg}}</td>
 
@@ -78,7 +78,7 @@ export default {
   },
   computed: {
     progressColor() {
-      switch (this.progressTask.status) {
+      switch (this.progressTask != null && this.progressTask.status) {
         case 9:
           return "green";
         case 4:

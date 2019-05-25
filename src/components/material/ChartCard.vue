@@ -1,5 +1,5 @@
 <template>
-  <MaterialCard class="v-card--material-chart">
+  <MaterialCard>
     <Chart
       slot="header"
       theme="card"
