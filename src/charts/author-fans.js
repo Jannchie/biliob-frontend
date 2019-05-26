@@ -6,6 +6,10 @@ function drawChart(data) {
   data.data.forEach(d => {
     fans.push([d["datetime"], d["fans"]]);
   });
+
+  fans.sort((a, b) => {
+    return new Date(a[0]) - new Date(b[0]);
+  });
   let Chart = {
     legend: {
       data: ["粉丝数"],
