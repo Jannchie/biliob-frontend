@@ -10,10 +10,10 @@
       />
     </VResponsive>
     <VCardText>
-      <h3>
+      <h4 class="font-weight-bold">
         {{ ads.title }}
-      </h3>
-      <div class="sub-text">
+      </h4>
+      <div class="sub-text caption">
         <VIcon small>
           mdi-bookmark-outline
         </VIcon>{{ ads.channel }}<VIcon small>
