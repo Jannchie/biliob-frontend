@@ -1266,5 +1266,21 @@
       }
     ],
     "type": "important"
+  },
+  {
+    "title": "优化用户体验",
+    "version": "ver.6.1.1",
+    "date": "2019-05-27",
+    "list": [
+      {
+        "text": "优化了啥也没搜着的提示",
+        "type": "beautify"
+      },
+      {
+        "text": "优化了不同PC分辨率下的显示",
+        "type": "beautify"
+      }
+    ],
+    "type": "unimportant"
   }
 ]
