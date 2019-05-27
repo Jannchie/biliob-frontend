@@ -1,26 +1,12 @@
 <template>
   <div>
-    <VSlideYTransition>
-      <slot name="title" />
-    </VSlideYTransition>
-    <VSlideYTransition>
-      <slot name="rank" />
-    </VSlideYTransition>
-    <VSlideYTransition>
-      <slot name="main" />
-    </VSlideYTransition>
-    <VSlideYTransition>
-      <slot name="like-rate" />
-    </VSlideYTransition>
-    <VSlideYTransition>
-      <slot name="danmaku-switch" />
-    </VSlideYTransition>
-    <VSlideYTransition>
-      <slot name="danmaku-density" />
-    </VSlideYTransition>
-    <VSlideYTransition>
-      <slot name="danmaku-cloud" />
-    </VSlideYTransition>
+    <slot name="title" />
+    <slot name="rank" />
+    <slot name="main" />
+    <slot name="like-rate" />
+    <slot name="danmaku-switch" />
+    <slot name="danmaku-density" />
+    <slot name="danmaku-cloud" />
   </div>
 </template>
 

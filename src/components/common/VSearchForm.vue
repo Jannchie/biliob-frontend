@@ -44,6 +44,14 @@ export default {
     }
   },
   methods: {
+    pretreatment() {
+      let result = String();
+      result = this.searchText.toLowerCase();
+      result.replace("av", "");
+      result.replace("uid:", "");
+      result.replace("mid:", "");
+      result.replace("av:", "");
+    },
     submit() {
       this.$emit("getSearchValue", this.searchText.toLowerCase());
     }

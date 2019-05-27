@@ -156,7 +156,7 @@ export default {
     },
     viewInfo() {
       if (this.cViewRank == undefined) {
-        return "";
+        return this.beautify(this.pViewRank);
       }
       if (this.cViewRank <= 200 && this.cViewRank != -1) {
         return `Top ${this.cViewRank}`;
@@ -166,7 +166,7 @@ export default {
     },
     danmakuInfo() {
       if (this.cDanmakuRank == undefined) {
-        return "";
+        return this.beautify(this.pDanmakuRank);
       }
       if (this.cDanmakuRank <= 200 && this.cDanmakuRank != -1) {
         return `Top ${this.cDanmakuRank}`;
@@ -176,7 +176,7 @@ export default {
     },
     shareInfo() {
       if (this.cShareRank == undefined) {
-        return "";
+        return this.beautify(this.pShareRank);
       }
       if (this.cShareRank <= 200 && this.cShareRank != -1) {
         return `Top ${this.cShareRank}`;
@@ -186,7 +186,7 @@ export default {
     },
     favoriteInfo() {
       if (this.cFavoriteRank == undefined) {
-        return "";
+        return this.beautify(this.pFavoriteRank);
       }
       if (this.cFavoriteRank <= 200 && this.cFavoriteRank != -1) {
         return `Top ${this.cFavoriteRank}`;
@@ -196,7 +196,7 @@ export default {
     },
     likeInfo() {
       if (this.cLikeRank == undefined) {
-        return "";
+        return this.beautify(this.pLikeRank);
       }
       if (this.cLikeRank <= 200 && this.cLikeRank != -1) {
         return `Top ${this.cLikeRank}`;
@@ -206,7 +206,7 @@ export default {
     },
     coinInfo() {
       if (this.cCoinRank == undefined) {
-        return "";
+        return this.beautify(this.pCoinRank);
       }
       if (this.cCoinRank <= 200 && this.cCoinRank != -1) {
         return `Top ${this.cCoinRank}`;
@@ -218,7 +218,7 @@ export default {
   mounted() {},
   methods: {
     beautify(val) {
-      if (val === -1) {
+      if (val === -1 || val === undefined) {
         return "-";
       } else {
         return `前${val}%`;

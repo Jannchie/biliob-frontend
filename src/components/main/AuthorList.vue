@@ -82,12 +82,16 @@
             </div>
           </VSlideYTransition>
           <VBtn
+            v-if="!notFound"
             block
             outline
             color="blue darken-2"
             :disabled="nextBtnDisabled"
             @click.stop="next"
           >{{ nextBtnText }}</VBtn>
+          <div v-else>
+            <h4>什么都没有找到QwQ</h4>
+          </div>
         </MaterialCard>
       </div>
     </div>
@@ -114,7 +118,8 @@ export default {
       text: String(),
       nextBtnText: "请给我更多...",
       nextBtnDisabled: false,
-      requestUrl: String()
+      requestUrl: String(),
+      notFound: false
     };
   },
   watch: {
@@ -132,6 +137,11 @@ export default {
         )
         .then(response => {
           this.authorList.content = response.data.content;
+          if (this.content.length == 0) {
+            this.notFound = true;
+          } else {
+            this.notFound = false;
+          }
         });
     },
     currentPage: function changePage(page) {
