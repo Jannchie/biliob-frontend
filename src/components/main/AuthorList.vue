@@ -90,7 +90,13 @@
             @click.stop="next"
           >{{ nextBtnText }}</VBtn>
           <div v-else>
-            <h4>什么都没有找到QwQ</h4>
+            <h4 class="blue--text text--darken-2">
+              <VIcon class="blue--text text--darken-2">mdi-ship-wheel</VIcon>抱歉！什么都没有找到QwQ
+            </h4>
+            <p>
+              搜索功能可能并不完善，为了精确搜索请在上方输入相关UP主的ID！
+            </p>
+            <p>如果搜索ID仍然没有结果，可能是因为该UP主并未被本站观测。你可以点击页面右下角的圆形按钮进行添加！</p>
           </div>
         </MaterialCard>
       </div>
@@ -137,7 +143,7 @@ export default {
         )
         .then(response => {
           this.authorList.content = response.data.content;
-          if (this.content.length == 0) {
+          if (this.authorList.content.length == 0) {
             this.notFound = true;
           } else {
             this.notFound = false;
