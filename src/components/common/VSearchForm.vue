@@ -31,13 +31,13 @@ export default {
       if (!this.flag) {
         this.flag = true;
         setTimeout(() => {
-          this.$emit("getSearchValue", this.searchText.toLowerCase());
+          this.$emit("getSearchValue", this.pretreatment(this.searchText));
           this.flag = false;
         }, 2500);
       } else {
         setTimeout(() => {
           if (this.flag == false) {
-            this.$emit("getSearchValue", this.searchText.toLowerCase());
+            this.$emit("getSearchValue", this.pretreatment(this.searchText));
           }
         }, 2500);
       }
@@ -47,13 +47,15 @@ export default {
     pretreatment() {
       let result = String();
       result = this.searchText.toLowerCase();
-      result.replace("av", "");
-      result.replace("uid:", "");
-      result.replace("mid:", "");
-      result.replace("av:", "");
+      result = result.replace("av", "");
+      result = result.replace("uid:", "");
+      result = result.replace("mid:", "");
+      result = result.replace("av:", "");
+      console.log(result);
+      return result;
     },
     submit() {
-      this.$emit("getSearchValue", this.searchText.toLowerCase());
+      this.$emit("getSearchValue", this.pretreatment(this.searchText));
     }
   }
 };
