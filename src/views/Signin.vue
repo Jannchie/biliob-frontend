@@ -22,6 +22,7 @@
           <div class="body-1">这是一个第三方网站，账号信息和B站并不通用。
             <br>登录后可以自主添加视频追踪，还能够实现关注UP主和收藏视频的功能。
             <br>登录后还能签到获取积分，消耗积分获取更多数据情报。
+            <br><span class="red--text">目前暂时无法注册，因为系统无法发送邮件，该服务正在审核中。</span>
           </div>
         </div>
         <VCardActions>
@@ -56,10 +57,12 @@
               >
                 <VBtn
                   flat
+                  :loading="loading"
                   color="primary"
                   :disabled="!mailVerification(mail)"
                   @click.stop="sendActivationCode"
-                >向邮箱发送验证码</VBtn>
+                >向邮箱发送验证码
+                </VBtn>
               </VFlex>
             </VLayout>
             <VTextField
@@ -89,7 +92,9 @@
                 color="primary"
                 :disabled="!valid"
                 @click="submit"
-              >注册</VBtn>
+              >注册
+
+              </VBtn>
             </Center>
           </VForm>
         </VCardActions>
@@ -110,6 +115,8 @@ export default {
       alertError: false,
       errorMsg: "",
       mailDisabled: false,
+      loading: false,
+      loader: "",
       activationCode: "",
       rules: {
         required: value => !!value || "我必须知道这一项！求求你告诉我吧~",
@@ -156,6 +163,10 @@ export default {
     },
     sendActivationCode() {
       this.mailDisabled = true;
+      this.loading = true;
+      setTimeout(() => {
+        this.loading = false;
+      }, 60 * 1000);
       this.axios
         .post(`/user/activation-code?mail=${this.mail}`)
         .then(() => {
