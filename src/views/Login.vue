@@ -4,22 +4,19 @@
       lg5
       md12
     >
-      <VCard>
+      <MaterialCard title="登录">
         <div>
-          <VAlert
+          <MaterialNotification
             :value="showAlert"
             :type="type"
             transition="slide-y-transition"
           >
             {{ msg }}
-          </VAlert>
+          </MaterialNotification>
         </div>
         <VCardTitle>
           <div>
-            <h3 class="headline mb-1">
-              登录
-            </h3>
-            <div>
+            <div class="body-1">
               这是一个第三方网站，账号信息和B站并不通用，
               <br>新用户请点击注册按钮注册一个账号。
             </div>
@@ -34,7 +31,7 @@
               v-model="name"
               :rules="[rules.required]"
               browser-autocomplete="username"
-              label="用户名"
+              label="用户名/邮箱"
               required
             />
             <VTextField
@@ -63,7 +60,7 @@
             </Center>
           </VForm>
         </VCardActions>
-      </VCard>
+      </MaterialCard>
     </VFlex>
   </VLayout>
 </template>
@@ -147,6 +144,7 @@ export default {
 .v-alert {
   margin: 0px;
   position: absolute;
-  width: 100%;
+  left: 15px;
+  right: 15px;
 }
 </style>

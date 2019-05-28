@@ -1279,8 +1279,28 @@
       {
         "text": "优化了不同PC分辨率下的显示",
         "type": "beautify"
+      },
+      {
+        "text": "美化了小广告",
+        "type": "beautify"
       }
     ],
     "type": "unimportant"
+  },
+  {
+    "title": "优化用户注册登录",
+    "version": "ver.6.2.0",
+    "date": "2019-05-28",
+    "list": [
+      {
+        "text": "美化了用户登录注册",
+        "type": "beautify"
+      },
+      {
+        "text": "现在注册需要验证邮箱，增强安全性",
+        "type": "feature"
+      }
+    ],
+    "type": "important"
   }
 ]
