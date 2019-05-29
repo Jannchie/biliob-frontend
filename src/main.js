@@ -17,18 +17,19 @@ import "./components";
 
 Vue.config.productionTip = false;
 
-// 在vue-router中使用google analytics
-router.afterEach(function(to) {
-  if (window.ga) {
-    window.ga("set", "page", to.fullPath);
-    window.ga("send", "pageview");
-  }
-});
-Vue.use(VueRouter);
-
 // 使用vue-cookies
 import VueCookies from "vue-cookies";
 Vue.use(VueCookies);
+
+// 在vue-router中使用google analytics
+router.afterEach(function(to) {
+  let count = window.localStorage.getItem(to.path);
+  if (count == undefined) {
+    count = 0;
+  }
+  window.localStorage.setItem(to.path, Number(count) + 1);
+});
+Vue.use(VueRouter);
 
 // 使用axios
 axios.defaults.withCredentials = true;
