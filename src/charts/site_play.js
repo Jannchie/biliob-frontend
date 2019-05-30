@@ -9,7 +9,6 @@ function drawChart(data) {
     playOninleData.unshift(e.playOnline);
     webOnlineData.unshift(e.webOnline);
   });
-  console.log(data);
   var option = {
     title: {
       left: "center"

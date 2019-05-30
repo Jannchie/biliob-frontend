@@ -21,7 +21,7 @@
           </VAvatar>
           <div
             style="text-align:end"
-            class="hidden-lg-and-down"
+            class="hidden-md-and-down"
           >
             <div class="competitor-title">
               {{aTitle}}
@@ -43,11 +43,7 @@
             class="r-fans-counter title hidden-sm-and-down"
             style="align-items: center;"
           >
-            <VOdometer
-              class="font-weight-light blue--text text--darken-1"
-              :value="aFans"
-              format="(,ddd).d"
-            ></VOdometer>
+
           </div>
         </VCardText>
         <div
@@ -72,7 +68,7 @@
               :lazy-src="zipPic(bFace.replace('http:',''))"
             />
           </VAvatar>
-          <div class="hidden-lg-and-down">
+          <div class="hidden-md-and-down">
             <div class="competitor-title">
               {{bTitle}}
             </div>
@@ -93,11 +89,7 @@
             class="l-fans-counter title hidden-sm-and-down"
             style="align-items: center;"
           >
-            <VOdometer
-              class="font-weight-light blue--text text--darken-1"
-              :value="bFans"
-              format="(,ddd).d"
-            ></VOdometer>
+
           </div>
         </VCardText>
       </div>

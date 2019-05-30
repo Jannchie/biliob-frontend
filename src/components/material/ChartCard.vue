@@ -1,13 +1,16 @@
 <template>
   <MaterialCard>
-    <Chart
+    <VResponsive
       slot="header"
-      theme="card"
-      :auto-resize="true"
-      :options="options"
-      style="width:100%;height:200px"
-    />
-
+      :aspect-ratio="16/9"
+    >
+      <Chart
+        theme="card"
+        :auto-resize="true"
+        :options="options"
+        style="width:100%; max-height:200px"
+      />
+    </VResponsive>
     <slot />
 
     <slot

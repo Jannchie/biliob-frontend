@@ -274,8 +274,8 @@ export default {
 @media only screen and (max-width: 1029px) {
   .video-img {
     border-radius: 5px;
-    width: 80px;
-    height: 50px;
+    width: 112px;
+    height: 70px;
   }
 }
 @media only screen and (min-width: 1029px) {

@@ -1241,7 +1241,7 @@
   },
   {
     "title": "美化样式",
-    "version": "ver.6.1.0",
+    "version": "ver.6.0.1",
     "date": "2019-05-25",
     "list": [
       {
@@ -1265,11 +1265,11 @@
         "type": "feature"
       }
     ],
-    "type": "important"
+    "type": "unimportant"
   },
   {
     "title": "优化用户体验",
-    "version": "ver.6.1.1",
+    "version": "ver.6.0.2",
     "date": "2019-05-27",
     "list": [
       {
@@ -1289,7 +1289,7 @@
   },
   {
     "title": "优化用户注册登录",
-    "version": "ver.6.2.0",
+    "version": "ver.6.1.0",
     "date": "2019-05-28",
     "list": [
       {
@@ -1305,7 +1305,7 @@
   },
   {
     "title": "修复恶性BUG",
-    "version": "ver.6.2.1",
+    "version": "ver.6.1.1",
     "date": "2019-05-29",
     "list": [
       {
@@ -1314,5 +1314,41 @@
       }
     ],
     "type": "unimportant"
+  },
+  {
+    "title": "首页进化",
+    "version": "ver.6.2.0",
+    "date": "2019-05-30",
+    "list": [
+      {
+        "text": "增加了首页近期热门大屏",
+        "type": "feature"
+      },
+      {
+        "text": "增加了用户热门关键词显示",
+        "type": "feature"
+      },
+      {
+        "text": "增加了首页推荐",
+        "type": "feature"
+      },
+      {
+        "text": "增加了首页近期值得注意的UP主列表",
+        "type": "feature"
+      },
+      {
+        "text": "美化了各种页面",
+        "type": "beautify"
+      },
+      {
+        "text": "修复了一个图表显示错误",
+        "type": "fix"
+      },
+      {
+        "text": "修复了排行榜封面显示错误",
+        "type": "fix"
+      }
+    ],
+    "type": "important"
   }
 ]

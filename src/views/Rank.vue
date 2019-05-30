@@ -80,10 +80,11 @@
               style="display: flex"
               class="my-4"
             >
-              <img
+              <VImg
                 style="border-radius:3px;width:90px;height:120px;margin:0 8px"
                 :src="eachData.cover"
-              >
+                :lazy-src="eachData.cover"
+              />
               <div style="width: 100%">
                 <VContainer class="pt-0 body-1">
                   <VLayout>

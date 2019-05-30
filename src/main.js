@@ -23,11 +23,31 @@ Vue.use(VueCookies);
 
 // 在vue-router中使用google analytics
 router.afterEach(function(to) {
-  let count = window.localStorage.getItem(to.path);
-  if (count == undefined) {
-    count = 0;
+  function saveToLocal(key) {
+    let count = window.localStorage.getItem(key);
+    if (count == undefined) {
+      count = 0;
+    }
+    window.localStorage.setItem(key, Number(count) + 1);
   }
-  window.localStorage.setItem(to.path, Number(count) + 1);
+  function addVideo(aid) {
+    let key = `aid:${aid}`;
+    saveToLocal(key);
+  }
+  function addAuthor(mid) {
+    let key = `mid:${mid}`;
+    saveToLocal(key);
+  }
+  var videoPatt = /\/author\/[0-9]*\/video\/[0-9]*/;
+  var authorPatt = /\/author\/[0-9]*/;
+  if (to.path.match(videoPatt)) {
+    let list = to.path.split("/");
+    addVideo(list[4]);
+    addAuthor(list[2]);
+  } else if (to.path.match(authorPatt)) {
+    let list = to.path.split("/");
+    addAuthor(list[2]);
+  }
 });
 Vue.use(VueRouter);
 

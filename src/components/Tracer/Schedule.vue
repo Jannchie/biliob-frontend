@@ -65,7 +65,7 @@ export default {
       progressTask: Object(),
       progressTasks: Array(),
       headers: [
-        { text: "爬虫名称", sortable: false },
+        { text: "计划任务名称", sortable: false },
         { text: "服务器名称", sortable: false },
         { text: "距离上次运行", sortable: false },
         { text: "上次运行耗时", sortable: false },

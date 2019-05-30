@@ -14,7 +14,10 @@ function drawChart(data) {
       share: 0,
       favorite: 0,
       coin: 0,
-      datetime: format(new Date(data.datetime), "YYYY-MM-DD HH:mm")
+      datetime: format(
+        new Date(data.datetime.replace("+0000", "")),
+        "YYYY-MM-DD HH:mm"
+      )
     });
   }
 
