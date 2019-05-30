@@ -27,7 +27,6 @@ const TracerSpider = () => import("@/components/Tracer/Spider.vue");
 const TracerSchedule = () => import("@/components/Tracer/Schedule.vue");
 const TracerUser = () => import("@/components/Tracer/User.vue");
 Vue.use(Router);
-
 export default new Router({
   mode: "history",
   base: process.env.BASE_URL,
