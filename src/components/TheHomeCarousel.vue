@@ -26,17 +26,8 @@ export default {
     };
   },
   mounted() {
-    //   this.axios.get(`/video/online/top`).then(r => {
-    //     o = {};
-
-    //     o.title = r.data.title;
-    //     o.author = r.data.author
-    //     o.
-    //  });
     this.axios.get(`video?pageSize=5&page=0&sort=0&days=3`).then(r => {
       r.data.content.forEach(element => {
-        console.log(element);
-
         this.items.push(element);
       });
       this.axios.get(`/video/ads`).then(r => {
