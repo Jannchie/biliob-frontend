@@ -43,11 +43,7 @@
             class="r-fans-counter title hidden-sm-and-down"
             style="align-items: center;"
           >
-            <VOdometer
-              class="font-weight-light blue--text text--darken-1"
-              :value="aFans"
-              format="(,ddd).d"
-            ></VOdometer>
+
           </div>
         </VCardText>
         <div
@@ -93,11 +89,7 @@
             class="l-fans-counter title hidden-sm-and-down"
             style="align-items: center;"
           >
-            <VOdometer
-              class="font-weight-light blue--text text--darken-1"
-              :value="bFans"
-              format="(,ddd).d"
-            ></VOdometer>
+
           </div>
         </VCardText>
       </div>

@@ -15,7 +15,7 @@ export default {
   name: "VOdometer",
   props: {
     value: { type: Number, default: () => 0 },
-    theme: { type: String, default: () => "default" },
+    theme: { type: String, default: () => "minimal" },
     format: { type: String, default: () => "(,ddd)" },
     duration: { type: Number, default: () => 500 },
     className: { type: String, default: () => "v-odometer" },
