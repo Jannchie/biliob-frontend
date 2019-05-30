@@ -56,10 +56,12 @@
               >
                 <VBtn
                   flat
+                  :loading="loading"
                   color="primary"
                   :disabled="!mailVerification(mail)"
                   @click.stop="sendActivationCode"
-                >向邮箱发送验证码</VBtn>
+                >向邮箱发送验证码
+                </VBtn>
               </VFlex>
             </VLayout>
             <VTextField
@@ -89,7 +91,9 @@
                 color="primary"
                 :disabled="!valid"
                 @click="submit"
-              >注册</VBtn>
+              >注册
+
+              </VBtn>
             </Center>
           </VForm>
         </VCardActions>
@@ -110,6 +114,8 @@ export default {
       alertError: false,
       errorMsg: "",
       mailDisabled: false,
+      loading: false,
+      loader: "",
       activationCode: "",
       rules: {
         required: value => !!value || "我必须知道这一项！求求你告诉我吧~",
@@ -156,6 +162,10 @@ export default {
     },
     sendActivationCode() {
       this.mailDisabled = true;
+      this.loading = true;
+      setTimeout(() => {
+        this.loading = false;
+      }, 60 * 1000);
       this.axios
         .post(`/user/activation-code?mail=${this.mail}`)
         .then(() => {

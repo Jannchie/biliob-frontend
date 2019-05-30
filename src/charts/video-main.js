@@ -19,7 +19,10 @@ function drawChart(data) {
   }
 
   data.data.sort((a, b) => {
-    return new Date(a.datetime) - new Date(b.datetime);
+    return (
+      new Date(a.datetime.replace("+0000", "")) -
+      new Date(b.datetime.replace("+0000", ""))
+    );
   });
   let Chart = {
     title: {
