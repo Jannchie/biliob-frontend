@@ -1,26 +1,87 @@
 <template>
-  <div>
-    <AuthorVersusCard
-      :a-mid="firstMid"
-      :b-mid="secondMid"
-      title="粉丝数榜首争夺"
-      a-title="冠军"
-      b-title="亚军"
-      :frequently="true"
-    />
-    <DetailCharts
-      :options="siteData"
-      title="过去24小时全站在线人数情况"
-      subtitle="每小时统计"
-    />
+  <VLayout wrap>
+    <VFlex
+      sm12
+      md12
+      lg8
+    >
+
+      <TheHomeCarousel></TheHomeCarousel>
+      <AuthorVersusCard
+        :a-mid="firstMid"
+        :b-mid="secondMid"
+        title="粉丝数榜首争夺"
+        a-title="冠军"
+        b-title="亚军"
+        :frequently="true"
+      />
+      <DetailCharts
+        :options="siteData"
+        title="过去24小时全站在线人数情况"
+        sub-title="每小时统计"
+      />
+    </VFlex>
+    <VFlex
+      sm12
+      md12
+      lg4
+    >
+      <MaterialCard title="近期值得注意的UP主">
+        <VList two-line>
+          <template v-for="(item, index) in variationData">
+            <VSubheader
+              v-if="item.header"
+              :key="item.header"
+            >
+              {{ item.header }}
+            </VSubheader>
+
+            <VDivider
+              v-else-if="item.divider"
+              :key="index"
+            ></VDivider>
+
+            <VListTile
+              v-else
+              :key="item.title"
+              avatar
+              @click="toAuthor(item.mid)"
+            >
+              <VListTileAvatar>
+                <img :src="zipPic(item.face)">
+              </VListTileAvatar>
+
+              <VListTileContent>
+                <VListTileTitle>{{item.author}}</VListTileTitle>
+                <VListTileSubTitle>{{item.info}}</VListTileSubTitle>
+              </VListTileContent>
+            </VListTile>
+          </template>
+        </VList>
+        <div
+          slot="actions"
+          class="caption"
+        >
+          <RouterLink to="/event">
+            更多...
+          </RouterLink>
+        </div>
+      </MaterialCard>
+      <MaterialChartCard :options="keywordOptions">
+        <h4>观测者关注的话题</h4>
+      </MaterialChartCard>
+      <VideoRecommendList :video-list="recommendVideoList"></VideoRecommendList>
+      <AsideOtherLink></AsideOtherLink>
+    </VFlex>
     <!-- <DetailCharts :options="onlineOptions"></DetailCharts> -->
-  </div>
+  </VLayout>
 </template>
 <script>
 import AuthorVersusCard from "../components/main/AuthorVersusCard.vue";
 import DetailCharts from "../components/main/DetailCharts.vue";
 import drawSitePlay from "../charts/site_play.js";
 // import getOnlineOptions from "../charts/online.js";
+import drawKeywordCloud from "../charts/keyword-cloud.js";
 
 export default {
   components: { AuthorVersusCard, DetailCharts },
@@ -30,10 +91,15 @@ export default {
       onlineOptions: Object(),
       firstMid: Number(),
       secondMid: Number(),
-      thirdMid: Number()
+      thirdMid: Number(),
+      keywords: Object(),
+      recommendVideoList: Array(),
+      variationData: Array(),
+      keywordOptions: Object()
     };
   },
   mounted() {
+    this.getRecommendData();
     this.$store.commit("toElse");
     this.axios.get(`/site`).then(response => {
       this.siteData = drawSitePlay(response.data);
@@ -43,14 +109,41 @@ export default {
       this.secondMid = r.data.content[1].mid;
       this.thirdMid = r.data.content[2].mid;
     });
-    // this.axios.get(`/video/online`).then(response => {
-    //   this.onlineOptions = getOnlineOptions(response.data);
-    // });
+    this.axios.get(`/event/fans-variation?pagesize=5`).then(response => {
+      this.variationData = response.data.content;
+    });
+  },
+  methods: {
+    toAuthor(mid) {
+      this.$router.push(`/author/${mid}`);
+    },
+    getRecommendData() {
+      this.axios
+        .post(`/video/prefer-keyword`, this.getPreferKeyword())
+        .then(r => {
+          this.keywords = r.data;
+          this.keywordOptions = drawKeywordCloud(this.keywords);
+          this.axios
+            .post(`/video/recommend?pagesize=5`, this.keywords)
+            .then(response => {
+              this.recommendVideoList = response.data;
+            });
+        });
+    },
+    getPreferKeyword() {
+      let result = {};
+      for (var i = localStorage.length - 1; i >= 0; i--) {
+        let key = localStorage.key(i);
+        let value = Number(localStorage.getItem(localStorage.key(i)));
+        let list = key.split(":");
+        let type = list[0];
+        let id = list[1];
+        if ("aid" === type) {
+          result[id] = value;
+        }
+      }
+      return result;
+    }
   }
 };
 </script>
-
-<style scoped>
-.v-card {
-}
-</style>
