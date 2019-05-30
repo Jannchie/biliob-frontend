@@ -20,6 +20,7 @@
         title="过去24小时全站在线人数情况"
         sub-title="每小时统计"
       />
+      <HomePopularTag></HomePopularTag>
     </VFlex>
     <VFlex
       sm12

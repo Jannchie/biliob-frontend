@@ -1,7 +1,8 @@
 <template>
   <VCarousel
-    height="300"
-    class="mt-5"
+    :height="$vuetify.breakpoint.lgAndUp ? 300 : 200"
+    :class="$vuetify.breakpoint.lgAndUp ? 'mt-5' : 'mt-0'"
+    hide-delimiters
   >
     <VCarouselItem
       v-for="item in items"
@@ -12,7 +13,7 @@
     >
       <div
         style="position:absolute;bottom:0;width:95%"
-        class="mx-3 mb-5 text-xs-left display-1 bottom-gradient text-no-wrap text-truncate white--text"
+        class="mx-3 mb-3 text-xs-left title bottom-gradient text-no-wrap text-truncate white--text"
       >{{item.title}}</div>
     </VCarouselItem>
   </VCarousel>
