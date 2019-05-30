@@ -27,51 +27,68 @@
       md12
       lg4
     >
-      <MaterialCard title="近期值得注意的UP主">
-        <VList two-line>
-          <template v-for="(item, index) in variationData">
-            <VSubheader
-              v-if="item.header"
-              :key="item.header"
-            >
-              {{ item.header }}
-            </VSubheader>
+      <VSlideYTransition>
 
-            <VDivider
-              v-else-if="item.divider"
-              :key="index"
-            ></VDivider>
-
-            <VListTile
-              v-else
-              :key="item.title"
-              avatar
-              @click="toAuthor(item.mid)"
-            >
-              <VListTileAvatar>
-                <img :src="zipPic(item.face)">
-              </VListTileAvatar>
-
-              <VListTileContent>
-                <VListTileTitle>{{item.author}}</VListTileTitle>
-                <VListTileSubTitle>{{item.info}}</VListTileSubTitle>
-              </VListTileContent>
-            </VListTile>
-          </template>
-        </VList>
-        <div
-          slot="actions"
-          class="caption"
+        <MaterialCard
+          v-if="variationData.length != 0"
+          title="近期值得注意的UP主"
         >
-          <RouterLink to="/event">
-            更多...
-          </RouterLink>
-        </div>
-      </MaterialCard>
-      <MaterialChartCard :options="keywordOptions">
-        <h4>观测者关注的话题</h4>
-      </MaterialChartCard>
-      <VideoRecommendList :video-list="recommendVideoList"></VideoRecommendList>
+          <VList two-line>
+            <template v-for="(item, index) in variationData">
+              <VSubheader
+                v-if="item.header"
+                :key="item.header"
+              >
+                {{ item.header }}
+              </VSubheader>
+
+              <VDivider
+                v-else-if="item.divider"
+                :key="index"
+              ></VDivider>
+
+              <VListTile
+                v-else
+                :key="item.title"
+                avatar
+                @click="toAuthor(item.mid)"
+              >
+                <VListTileAvatar>
+                  <img :src="zipPic(item.face)">
+                </VListTileAvatar>
+
+                <VListTileContent>
+                  <VListTileTitle>{{item.author}}</VListTileTitle>
+                  <VListTileSubTitle>{{item.info}}</VListTileSubTitle>
+                </VListTileContent>
+              </VListTile>
+            </template>
+          </VList>
+          <div
+            slot="actions"
+            class="caption"
+          >
+            <RouterLink to="/event">
+              更多...
+            </RouterLink>
+          </div>
+        </MaterialCard>
+      </VSlideYTransition>
+      <VSlideYTransition>
+        <MaterialChartCard
+          v-if="recommendVideoList.length != 0"
+          :options="keywordOptions"
+        >
+          <h4>观测者关注的话题</h4>
+        </MaterialChartCard>
+      </VSlideYTransition>
+
+      <VSlideYTransition>
+        <VideoRecommendList
+          v-if="recommendVideoList.length != 0"
+          :video-list="recommendVideoList"
+        ></VideoRecommendList>
+      </VSlideYTransition>
       <AsideOtherLink></AsideOtherLink>
     </VFlex>
     <!-- <DetailCharts :options="onlineOptions"></DetailCharts> -->
@@ -93,9 +110,9 @@ export default {
       firstMid: Number(),
       secondMid: Number(),
       thirdMid: Number(),
-      keywords: Object(),
-      recommendVideoList: Array(),
-      variationData: Array(),
+      keywords: {},
+      recommendVideoList: [],
+      variationData: [],
       keywordOptions: Object()
     };
   },
