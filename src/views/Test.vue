@@ -25,7 +25,6 @@ export default {
   },
   mounted() {
     this.userAgent = navigator.userAgent;
-    console.log(this.userAgent);
     this.appName = navigator.appName;
     this.appCodeName = navigator.appCodeName;
     this.platform = navigator.platform;

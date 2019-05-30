@@ -32,7 +32,7 @@
             <div class="caption">{{aOfficial}}</div>
           </div>
           <div
-            class="r-fans-counter-mobile hidden-md-and-up"
+            class="r-fans-counter-mobile hidden-lg-and-up"
             style="align-items: center;"
           >
             <div class="caption">粉丝数</div>
@@ -78,7 +78,7 @@
             <div class="caption">{{bOfficial}}</div>
           </div>
           <div
-            class="l-fans-counter-mobile hidden-md-and-up"
+            class="l-fans-counter-mobile hidden-lg-and-up"
             style="align-items: center;"
           >
             <div class="caption">粉丝数</div>

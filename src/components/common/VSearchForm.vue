@@ -51,7 +51,6 @@ export default {
       result = result.replace("uid:", "");
       result = result.replace("mid:", "");
       result = result.replace("av:", "");
-      console.log(result);
       return result;
     },
     submit() {
