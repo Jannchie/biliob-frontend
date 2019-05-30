@@ -8,6 +8,7 @@
       <VFlex
         lg4
         md12
+        xs12
       >
         <MaterialTracerCrawlCard
           title="作者爬虫运行状况"
@@ -16,6 +17,7 @@
       </VFlex>
       <VFlex
         lg4
+        xs12
         md12
       >
         <MaterialTracerCrawlCard
@@ -25,6 +27,7 @@
       </VFlex>
       <VFlex
         lg4
+        xs12
         md12
       >
         <MaterialProgressCard
@@ -40,6 +43,7 @@
       </VFlex>
       <VFlex
         lg3
+        xs12
         md12
       >
         <MaterialStatsCard
@@ -54,6 +58,7 @@
       </VFlex>
       <VFlex
         lg3
+        xs12
         md12
       >
         <MaterialStatsCard
@@ -69,6 +74,7 @@
       <VFlex
         lg3
         md12
+        xs12
       >
         <MaterialStatsCard
           :value="recordCount"
@@ -83,6 +89,7 @@
       <VFlex
         lg3
         md12
+        xs12
       >
         <MaterialStatsCard
           value="计划任务系统"
@@ -98,6 +105,7 @@
       <VFlex
         lg4
         md12
+        xs12
       >
         <MaterialChartCard :options="userOptions">
           <h4>用户经验值分布</h4>
@@ -106,6 +114,7 @@
       <VFlex
         lg4
         md12
+        xs12
       >
         <MaterialChartCard :options="signInOptions">
           <h4>每月注册用户增量</h4>
@@ -114,6 +123,7 @@
       <VFlex
         lg4
         md12
+        xs12
       >
         <MaterialChartCard :options="checkInOptions">
           <h4>每周活跃注册用户数</h4>

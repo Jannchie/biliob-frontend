@@ -22,12 +22,12 @@
         ></VProgressLinear>
         <VLayout>
           <VFlex md6>
-            <div class="title white--text font-weight-light">{{title}}</div>
+            <div class="subtitle white--text font-weight-light">{{title}}</div>
           </VFlex>
           <VFlex md6>
             <div
               v-if="!indeterminate"
-              class="title white--text font-weight-light text-xs-right"
+              class="subtitle white--text font-weight-light text-xs-right"
             >
               <CommonVOdometer
                 theme="minimal"
@@ -37,7 +37,7 @@
             </div>
             <div
               v-else
-              class="title white--text font-weight-light text-xs-right"
+              class="subtitle white--text font-weight-light text-xs-right"
             >
               <div v-if="value==0">
                 <VIcon>mdi-check</VIcon>已清空列表
