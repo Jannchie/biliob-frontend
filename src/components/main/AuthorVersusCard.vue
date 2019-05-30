@@ -21,7 +21,7 @@
           </VAvatar>
           <div
             style="text-align:end"
-            class="hidden-lg-and-down"
+            class="hidden-md-and-down"
           >
             <div class="competitor-title">
               {{aTitle}}
@@ -68,7 +68,7 @@
               :lazy-src="zipPic(bFace.replace('http:',''))"
             />
           </VAvatar>
-          <div class="hidden-lg-and-down">
+          <div class="hidden-md-and-down">
             <div class="competitor-title">
               {{bTitle}}
             </div>

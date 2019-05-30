@@ -38,7 +38,7 @@ export default {
 }
 @media only screen and (min-width: 960px) {
   .container {
-    max-width: 1500px;
+    max-width: 1600px;
   }
 }
 </style>
