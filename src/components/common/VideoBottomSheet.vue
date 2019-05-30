@@ -30,6 +30,7 @@
       <BottomSheetTile
         :pic="pic"
         :name="title"
+        color="red"
         icon="mdi-message-bulleted"
         tile-title="更新视频弹幕统计"
         tile-sub-title="需要消耗积分：10"
