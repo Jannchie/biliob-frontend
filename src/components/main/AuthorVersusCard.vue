@@ -1,5 +1,5 @@
 <template>
-  <div style="display: flex;margin-bottom:5px; flex-wrap: wrap; cursor:pointer">
+  <div style="display: flex; flex-wrap: wrap; cursor:pointer">
     <MaterialCard
       class="versus-card elevation-2"
       :title="title"

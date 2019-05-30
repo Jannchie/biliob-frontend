@@ -1,7 +1,7 @@
 <template>
   <MainDetailCharts
     :options="tagOptions"
-    title="全站最热门关键词"
+    title="全站飙升关键词"
     sub-title="统计包括最近一周"
   />
 </template>
@@ -16,9 +16,13 @@ export default {
   mounted() {
     this.axios.get(`/video/popular-keyword`).then(r => {
       let data = r.data.map(e => {
-        return { name: e._id, value: e.totalView };
+        return { name: e._id, value: e.delta };
       });
-      this.tagOptions = getOptions(data, 128);
+      let size = window.innerWidth / 20;
+      if (size <= 60) {
+        size = 60;
+      }
+      this.tagOptions = getOptions(data, size);
     });
   }
 };
