@@ -6,7 +6,7 @@ function drawChart(data) {
   var datedelta =
     parse(data.data[data.data.length - 1].datetime) - parse(data.datetime);
   if (datedelta < 60 * 60 * 24 * 30 * 1000) {
-    data.data.push({
+    data.data.unshift({
       view: 0,
       danmaku: 0,
       like: 0,
@@ -14,10 +14,7 @@ function drawChart(data) {
       share: 0,
       favorite: 0,
       coin: 0,
-      datetime: format(
-        new Date(data.datetime.replace("+0000", "")),
-        "YYYY-MM-DD HH:mm"
-      )
+      datetime: data.datetime
     });
   }
 
