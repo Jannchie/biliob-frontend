@@ -8,6 +8,7 @@ import "echarts/lib/chart/radar";
 import "echarts/lib/chart/line";
 import "echarts/lib/chart/pie";
 import "echarts/lib/chart/bar";
+import "echarts/lib/chart/graph";
 import "echarts-wordcloud";
 
 // // custom theme

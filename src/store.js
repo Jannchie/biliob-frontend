@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-
+import axios from "axios";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -101,6 +101,26 @@ export default new Vuex.Store({
     },
     getCheckStatus: state => {
       return state.checked;
+    }
+  },
+  actions: {
+    login(context) {
+      axios
+        .get(`/user`)
+        .then(response => {
+          this.logined = true;
+          context.commit("login");
+          context.commit("setRole", response.data.role);
+          context.commit("setCredit", response.data.credit);
+          context.commit("setExp", response.data.exp);
+          context.commit("setUserName", response.data.name);
+          context.commit("setFavoriteVideo", response.data.favoriteAid);
+          context.commit("setFavoriteAuthor", response.data.favoriteMid);
+        })
+        .catch(() => {
+          this.$store.commit("logout");
+          this.logined = false;
+        });
     }
   }
 });

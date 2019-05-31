@@ -1,9 +1,6 @@
 <template>
   <div>
-    <slot name="rank" />
-    <slot name="channel" />
-    <slot name="fans" />
-    <slot name="fans-rate" />
+    <slot />
   </div>
 </template>
 

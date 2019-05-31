@@ -421,26 +421,10 @@ export default {
       this.darkModeText = "夜间模式";
       this.darkModeIcon = "mdi-weather-night";
     }
-    this.axios
-      .get(`/user`)
-      .then(response => {
-        this.logined = true;
-        this.$store.commit("login");
-        this.$store.commit("setRole", response.data.role);
-        this.$store.commit("setCredit", response.data.credit);
-        this.$store.commit("setExp", response.data.exp);
-        this.$store.commit("setUserName", response.data.name);
-        this.$store.commit("setFavoriteVideo", response.data.favoriteAid);
-        this.$store.commit("setFavoriteAuthor", response.data.favoriteMid);
-        this.axios.get(`/user/check-in`).then(response => {
-          this.$store.commit("checkIn", response.data.status);
-          this.checkInLoading = false;
-        });
-      })
-      .catch(() => {
-        this.$store.commit("logout");
-        this.logined = false;
-      });
+    this.axios.get(`/user/check-in`).then(response => {
+      this.$store.commit("checkIn", response.data.status);
+      this.checkInLoading = false;
+    });
     if (this.$cookies.get("dark") == "true") {
       this.$store.commit("setDark");
     }

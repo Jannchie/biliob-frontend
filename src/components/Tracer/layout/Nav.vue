@@ -53,12 +53,12 @@ export default {
           name: "爬虫服务概览",
           icon: "mdi-spider-web",
           path: "spider"
+        },
+        {
+          name: "观测者概览",
+          icon: "mdi-account",
+          path: "user"
         }
-        // {
-        //   name: "观测者概览",
-        //   icon: "mdi-account",
-        //   path: "user"
-        // }
       ]
     };
   }
