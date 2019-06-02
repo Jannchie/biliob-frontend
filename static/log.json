@@ -1350,5 +1350,21 @@
       }
     ],
     "type": "important"
+  },
+  {
+    "title": "优化和关系",
+    "version": "ver.6.3.0",
+    "date": "2019-06-02",
+    "list": [
+      {
+        "text": "优化了全站流行关键字的算法",
+        "type": "feature"
+      },
+      {
+        "text": "添加了UP主作品关联图",
+        "type": "feature"
+      }
+    ],
+    "type": "important"
   }
 ]
