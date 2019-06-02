@@ -55,7 +55,7 @@ function drawChart(nodes, categories, links, pic) {
       {
         name: "up主名称",
         type: "graph",
-        layout: "force",
+        layout: "circular",
         data: nodes,
         links: links,
         categories: categories,

@@ -95,7 +95,6 @@ function getImgData(
       contex.restore(); // 还原状态
       resolve(canvas.toDataURL("image/png", 1));
     };
-    console.log(imgSrc);
     img.src = imgSrc;
   });
 }
@@ -150,7 +149,7 @@ export default {
     this.axios.get("/author/" + this.mid).then(response => {
       this.authorData = response.data;
       this.axios
-        .get(`/author/${this.mid}/relationship?limit=5`)
+        .get(`/author/${this.mid}/relationship?limit=3`)
         .then(response => {
           let data = response.data;
           let nodes = [];
@@ -158,38 +157,63 @@ export default {
           let links = [];
           let tags = new Set();
           let pic = {};
-          nodes.push({
-            name: this.authorData.name,
-            value: 100,
-            symbolSize: 100,
-            id: this.authorData.name
-          });
-          pic[this.authorData.name] = this.authorData.face;
-          categories.push(this.authorData.name);
-          data.forEach(e => {
+          let tagSet = new Set();
+          let max = Math.max.apply(
+            Math,
+            data.map(function(o) {
+              console.log(o);
+              return o.value;
+            })
+          );
+          let min = Math.min.apply(
+            Math,
+            data.map(function(o) {
+              return o.value;
+            })
+          );
+          console.log(max);
+          console.log(min);
+          // 标准化值
+          function getValue(value) {
+            return ((value - min) / (max - min)) * 50 + 50;
+          }
+          data.forEach((e, memberIndex) => {
+            let fixed = false;
+            if (memberIndex == data.length - 1) {
+              fixed = true;
+            } else {
+              links.push({ source: this.authorData.name, target: e.name });
+            }
             nodes.push({
               name: e.name,
-              value: 70,
-              symbolSize: 60,
-              id: e.name
+              value: getValue(e.value),
+              symbolSize: getValue(e.value),
+              id: e.name,
+              fixed: fixed
             });
             pic[e.name] = e.face;
-            links.push({ source: this.authorData.name, target: e.name });
             categories.push(e.name);
             var i = 6;
             e.tag.forEach(t => {
+              tagSet.add(t);
+              // let value = 70;
               i--;
               if (i >= 0) {
                 tags.add(t);
-                links.push({ source: e.name, target: t + "id" });
+                // links.push({
+                //   source: e.name,
+                //   target: t + "id",
+                //   value: value
+                // });
               } else {
                 return;
               }
             });
           });
-          let nodesList = Array.from(tags).map(e => {
-            return { name: e, id: e + "id", symbolSize: 5, value: 1 };
-          });
+          let nodesList = [];
+          // let nodesList = Array.from(tags).map(e => {
+          //   return { name: e, id: e + "id", symbolSize: 5, value: 1 };
+          // });
           nodes = nodes.concat(nodesList);
 
           var listPromise = [];
@@ -226,8 +250,8 @@ export default {
                 },
                 force: {
                   initLayout: "circular",
-                  edgeLength: 70,
-                  repulsion: 200
+                  edgeLength: [60, 180],
+                  repulsion: 300
                 },
                 label: {
                   position: "right",

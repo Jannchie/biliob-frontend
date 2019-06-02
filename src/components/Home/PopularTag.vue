@@ -16,9 +16,9 @@ export default {
   mounted() {
     this.axios.get(`/video/popular-keyword`).then(r => {
       let data = r.data.map(e => {
-        return { name: e._id, value: e.delta };
+        return { name: e._id, value: e.value };
       });
-      let size = window.innerWidth / 20;
+      let size = window.innerWidth / 15;
       if (size <= 60) {
         size = 60;
       }

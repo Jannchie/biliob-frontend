@@ -1,58 +1,10 @@
 <template>
   <VLayout wrap>
-    <VFlex
-      lg4
-      md12
-    >
-      <MaterialStatsCard
-        :value="spiderTasks.length"
-        title="正在爬取爬虫数"
-        small-value="个"
-        icon="mdi-spider-web"
-        sub-icon="mdi-check-circle"
-        sub-text="正常运行中..."
-        sub-text-color="green"
-      ></MaterialStatsCard>
-    </VFlex>
-    <VFlex
-      lg4
-      md12
-    >
-      <MaterialStatsCard
-        :hidden="authorListLength == ''"
-        :value="authorListLength"
-        title="作者爬虫运行状况"
-        small-value="个"
-        icon="mdi-account"
-        sub-icon="mdi-check-circle"
-        :sub-text="getStatus(authorListLength)"
-        :sub-text-color="getColor(authorListLength)"
-        :color="getColor(authorListLength)"
-      ></MaterialStatsCard>
-    </VFlex>
-
-    <VFlex
-      lg4
-      md12
-    >
-      <MaterialStatsCard
-        :hidden="videoListLength == ''"
-        :value="videoListLength"
-        title="视频爬虫运行状况"
-        small-value="个"
-        icon="mdi-video"
-        sub-icon="mdi-check-circle"
-        :sub-text="getStatus(videoListLength)"
-        :sub-text-color="getColor(videoListLength)"
-        :color="getColor(videoListLength)"
-      ></MaterialStatsCard>
-    </VFlex>
-    <VFlex lg12>
-
+    <VFlex>
       <MaterialCard
         color="green"
-        title="运行中爬虫详细信息"
-        text="此处显示的是目前正在运行中的爬虫状态"
+        title="用户检索"
+        text="此处显示全部用户信息"
       >
         <VDataTable
           :headers="headers"
@@ -103,14 +55,8 @@ export default {
     };
   },
   mounted() {
-    this.axios(`/tracer/spider-tasks?type=1`).then(r => {
+    this.axios(`/admin/spider-tasks?type=1`).then(r => {
       this.spiderTasks = r.data.content;
-    });
-    this.axios(`/tracer/author-queue`).then(r => {
-      this.authorListLength = String(r.data.length);
-    });
-    this.axios(`/tracer/video-queue`).then(r => {
-      this.videoListLength = String(r.data.length);
     });
   },
   methods: {
