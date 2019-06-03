@@ -181,7 +181,7 @@
                 ripple
               >
                 <VIcon
-                  color="red darken-1"
+                  color="grey lighten-1"
                   @click="removeMethod(eachSearchMethod)"
                 >mdi-delete-circle</VIcon>
               </VBtn>

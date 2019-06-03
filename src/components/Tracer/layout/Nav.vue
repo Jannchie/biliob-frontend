@@ -58,6 +58,11 @@ export default {
           name: "观测者概览",
           icon: "mdi-account",
           path: "user"
+        },
+        {
+          name: "自定义采集任务",
+          icon: "mdi-upload",
+          path: "upload"
         }
       ]
     };

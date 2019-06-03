@@ -22,7 +22,7 @@ export default {
     to(path) {
       console.log(this.$store.state);
       let basePath =
-        (this.path == "user" || this.path == "task") &&
+        (this.path == "user" || this.path == "upload") &&
         this.$store.state.role !== "管理员"
           ? "/tracer/no-role"
           : `/tracer/${path}`;
