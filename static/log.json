@@ -1366,5 +1366,17 @@
       }
     ],
     "type": "important"
+  },
+  {
+    "title": "优化和关系",
+    "version": "ver.6.3.1",
+    "date": "2019-06-03",
+    "list": [
+      {
+        "text": "添加了一些大家目前还用不了的后台管理功能",
+        "type": "feature"
+      }
+    ],
+    "type": "unimportant"
   }
 ]
