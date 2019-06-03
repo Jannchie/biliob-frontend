@@ -1,21 +1,23 @@
 <template>
   <MainLayout>
     <AuthorMain slot="main-cards">
-      <AuthorDetailRank
-        slot="rank"
-        v-bind="authorData.rank"
-      ></AuthorDetailRank>
-      <!-- <AuthorDetailChannel slot="channel" :channels="authorData.channels"></AuthorDetailChannel> -->
-      <DetailCharts
-        slot="fans"
-        title="粉丝数变化趋势"
-        :options="authorFansOptions"
-      />
-      <DetailCharts
-        slot="fans-rate"
-        title="粉丝数变化速率"
-        :options="authorFansRateOptions"
-      />
+      <div>
+        <AuthorDetailRank v-bind="authorData.rank"></AuthorDetailRank>
+        <!-- <AuthorDetailChannel slot="channel" :channels="authorData.channels"></AuthorDetailChannel> -->
+        <DetailCharts
+          title="粉丝数变化趋势"
+          :options="authorFansOptions"
+        />
+        <DetailCharts
+          title="粉丝数变化速率"
+          :options="authorFansRateOptions"
+        />
+        <DetailCharts
+          id="relationship"
+          title="UP主作品相关度"
+          :options="relationshipOptions"
+        />
+      </div>
     </AuthorMain>
     <AuthorAside slot="aside-cards">
       <AuthorInfo
@@ -56,6 +58,46 @@ import DetailCharts from "../components/main/DetailCharts.vue";
 import OtherLink from "../components/aside/OtherLink.vue";
 import drawFansChart from "../charts/author-fans.js";
 import drawFansRateChart from "../charts/author-fans-rate.js";
+//定义抠图方法
+function getImgData(
+  imgSrc,
+  center = {
+    x: 80,
+    y: 80
+  }
+) {
+  return new Promise(resolve => {
+    let radius = 80;
+    const canvas = document.createElement("canvas");
+    const contex = canvas.getContext("2d");
+    const img = new Image();
+    img.crossOrigin = "";
+    const diameter = 2 * radius;
+    img.onload = function() {
+      canvas.width = diameter;
+      canvas.height = diameter;
+      contex.clearRect(0, 0, diameter, diameter);
+      contex.save();
+      contex.beginPath();
+      contex.arc(radius, radius, radius, 0, 2 * Math.PI); //画出圆
+      contex.clip(); //裁剪上面的圆形
+      contex.drawImage(
+        img,
+        center.x - radius,
+        center.y - radius,
+        diameter,
+        diameter,
+        0,
+        0,
+        diameter,
+        diameter
+      ); // 在刚刚裁剪的园上画图
+      contex.restore(); // 还原状态
+      resolve(canvas.toDataURL("image/png", 1));
+    };
+    img.src = imgSrc;
+  });
+}
 // import AuthorDetailChannel from "../components/main/AuthorDetailChannel.vue";
 var deepCopy = function(o) {
   if (o instanceof Array) {
@@ -94,6 +136,7 @@ export default {
       authorTopVideo: Object(),
       authorLatestVideo: Object(),
       authorFansOptions: Object(),
+      relationshipOptions: Object(),
       authorFansRateOptions: Object(),
       mid: Number()
     };
@@ -105,6 +148,135 @@ export default {
     this.$store.commit("toAuthor");
     this.axios.get("/author/" + this.mid).then(response => {
       this.authorData = response.data;
+      this.axios
+        .get(`/author/${this.mid}/relationship?limit=3`)
+        .then(response => {
+          let data = response.data;
+          let nodes = [];
+          let categories = [];
+          let links = [];
+          let tags = new Set();
+          let pic = {};
+          let tagSet = new Set();
+          let max = Math.max.apply(
+            Math,
+            data.map(function(o) {
+              console.log(o);
+              return o.value;
+            })
+          );
+          let min = Math.min.apply(
+            Math,
+            data.map(function(o) {
+              return o.value;
+            })
+          );
+          console.log(max);
+          console.log(min);
+          // 标准化值
+          function getValue(value) {
+            return ((value - min) / (max - min)) * 50 + 50;
+          }
+          data.forEach((e, memberIndex) => {
+            let fixed = false;
+            if (memberIndex == data.length - 1) {
+              fixed = true;
+            } else {
+              links.push({ source: this.authorData.name, target: e.name });
+            }
+            nodes.push({
+              name: e.name,
+              value: getValue(e.value),
+              symbolSize: getValue(e.value),
+              id: e.name,
+              fixed: fixed
+            });
+            pic[e.name] = e.face;
+            categories.push(e.name);
+            var i = 6;
+            e.tag.forEach(t => {
+              tagSet.add(t);
+              // let value = 70;
+              i--;
+              if (i >= 0) {
+                tags.add(t);
+                // links.push({
+                //   source: e.name,
+                //   target: t + "id",
+                //   value: value
+                // });
+              } else {
+                return;
+              }
+            });
+          });
+          let nodesList = [];
+          // let nodesList = Array.from(tags).map(e => {
+          //   return { name: e, id: e + "id", symbolSize: 5, value: 1 };
+          // });
+          nodes = nodes.concat(nodesList);
+
+          var listPromise = [];
+
+          categories.forEach(e => {
+            listPromise.push(getImgData(pic[e] + "@160w_160h.webp"));
+          });
+          let option = {
+            tooltip: {},
+            legend: [
+              {
+                data: categories.map(function(a) {
+                  return a.name;
+                })
+              }
+            ],
+            series: [
+              {
+                name: "up主名称",
+                type: "graph",
+                layout: "force",
+                data: nodes,
+                links: links,
+                categories: categories,
+                roam: true,
+                focusNodeAdjacency: true,
+                itemStyle: {
+                  normal: {
+                    borderColor: "#fff",
+                    borderWidth: 2,
+                    shadowBlur: 10,
+                    shadowColor: "rgba(0, 0, 0, 0.3)"
+                  }
+                },
+                force: {
+                  initLayout: "circular",
+                  edgeLength: [60, 180],
+                  repulsion: 300
+                },
+                label: {
+                  position: "right",
+                  formatter: "{b}"
+                },
+                lineStyle: {
+                  color: "source",
+                  curveness: 0.1
+                },
+                emphasis: {
+                  lineStyle: {
+                    width: 5
+                  }
+                }
+              }
+            ]
+          };
+          //当处理的图片数据量比较大时，可由后端来处理这个过程
+          Promise.all(listPromise).then(images => {
+            for (let i = 0; i < categories.length; i++) {
+              nodes[i].symbol = "image://" + images[i];
+            }
+            this.relationshipOptions = option;
+          });
+        });
       this.authorFansOptions = drawFansChart(deepCopy(this.authorData));
       this.authorFansRateOptions = drawFansRateChart(deepCopy(this.authorData));
       if (this.authorData.forceFocus != true) {

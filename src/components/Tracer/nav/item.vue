@@ -4,7 +4,7 @@
       flat
       large
       block
-      :to="`/tracer/${path}`"
+      @click.stop="to(path)"
     >
       <VListTileAvatar>
         <VIcon left>{{icon}}</VIcon>
@@ -17,6 +17,17 @@
 </template>
 <script>
 export default {
-  props: { name: String(), icon: String(), path: String() }
+  props: { name: String(), icon: String(), path: String() },
+  methods: {
+    to(path) {
+      console.log(this.$store.state);
+      let basePath =
+        (this.path == "user" || this.path == "upload") &&
+        this.$store.state.role !== "管理员"
+          ? "/tracer/no-role"
+          : `/tracer/${path}`;
+      this.$router.push(basePath);
+    }
+  }
 };
 </script>

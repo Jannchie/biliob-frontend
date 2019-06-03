@@ -1,0 +1,163 @@
+<template>
+  <VLayout wrap>
+    <VFlex lg8>
+      <VForm>
+        <MaterialCard title="批量上传爬虫任务">
+          <MaterialNotification
+            :value="alert"
+            :type="alertType"
+            transition="slide-y-transition"
+          >{{alertMsg}}</MaterialNotification>
+          <h5>选择计划任务的类型</h5>
+          <VRadioGroup v-model="type">
+            <VRadio
+              value="video"
+              label="视频"
+            ></VRadio>
+            <VRadio
+              value="author"
+              label="作者"
+            ></VRadio>
+          </VRadioGroup>
+          <h5>此处输入计划任务的名称</h5>
+          <VTextField
+            v-model="name"
+            solo
+          ></VTextField>
+          <h5>此处可以批量输入ID进行爬取</h5>
+          <p class="caption">如果是作者，输入uid，如果是视频，输入av号。输入纯数字即可，以回车键分开。</p>
+          <VTextarea
+            v-model="originData"
+            solo
+          ></VTextarea>
+          <h5>频率设置</h5>
+          <VRadioGroup v-model="frequency">
+            <VRadio
+              label="每6小时一次"
+              :value="1"
+            ></VRadio>
+            <VRadio
+              label="每1小时一次"
+              :value="2"
+            ></VRadio>
+            <VRadio
+              label="每5分钟一次"
+              :value="3"
+            ></VRadio>
+          </VRadioGroup>
+          <VBtn
+            color="blue"
+            class="white--text"
+            :disabled="type=='' || name=='' || frequency==-1 || originData==''"
+            @click="upload"
+          >
+            <VIcon left>mdi-upload</VIcon>上传
+          </VBtn>
+        </MaterialCard>
+      </VForm>
+    </VFlex>
+    <VFlex lg4>
+      <MaterialCard title="已设定任务">
+        <VList three-line>
+          <VListTile
+            v-for="eachItem in schedules"
+            :key="eachItem.name"
+          >
+            <VListTileContent>
+              <VListTileTitle>
+                {{eachItem.name}}
+              </VListTileTitle>
+              <VListTileSubTitle>
+                {{frequencyText(eachItem.frequency)}}
+              </VListTileSubTitle>
+              <VListTileSubTitle>
+                {{eachItem.owner}}
+              </VListTileSubTitle>
+            </VListTileContent>
+            <VListTileAction>
+              <VBtn
+                icon
+                @click="deleteSchedule(item)"
+              >
+                <VIcon color="red darken-1">mdi-delete-circle</VIcon>
+              </VBtn>
+            </VListTileAction>
+          </VListTile>
+        </VList>
+      </MaterialCard>
+    </VFlex>
+
+  </VLayout>
+</template>
+<script>
+export default {
+  data() {
+    return {
+      type: "",
+      alert: false,
+      alertType: "success",
+      alertMsg: "",
+      name: "",
+      frequency: -1,
+      originData: "",
+      schedules: []
+    };
+  },
+  computed: {
+    uploadData() {
+      return this.originData.split("\n");
+    }
+  },
+  mounted() {
+    this.getSchedules();
+  },
+  methods: {
+    getSchedules() {
+      this.axios.get("/admin/upload/schedule").then(r => {
+        this.schedules = r.data;
+      });
+    },
+    deleteSchedule() {
+      this.axios.delete;
+    },
+    upload() {
+      this.axios
+        .post("/admin/upload/schedule", {
+          idList: this.uploadData,
+          type: this.type,
+          frequency: this.frequency,
+          name: this.name
+        })
+        .then(r => {
+          this.alertMsg = r.data.msg;
+          this.alertType = "success";
+          this.alert = true;
+          this.getSchedules();
+          setTimeout(() => {
+            this.alert = false;
+          }, 3000);
+        })
+        .catch(e => {
+          this.alertMsg = "发生错误！" + e.data.msg;
+          this.alertType = "error";
+          this.alert = true;
+          setTimeout(() => {
+            this.alert = false;
+          }, 3000);
+        });
+    },
+    frequencyText(value) {
+      switch (value) {
+        case 1:
+          return "每六小时采集一次";
+        case 2:
+          return "每一小时采集一次";
+        case 3:
+          return "每五分钟采集一次";
+        default:
+          break;
+      }
+    }
+  }
+};
+</script>

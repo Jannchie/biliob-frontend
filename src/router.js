@@ -26,6 +26,8 @@ const TracerDashboard = () => import("@/components/Tracer/Dashboard.vue");
 const TracerSpider = () => import("@/components/Tracer/Spider.vue");
 const TracerSchedule = () => import("@/components/Tracer/Schedule.vue");
 const TracerUser = () => import("@/components/Tracer/User.vue");
+const TracerNoRole = () => import("@/components/Tracer/NoRole.vue");
+const TracerUpload = () => import("@/components/Tracer/Upload.vue");
 Vue.use(Router);
 export default new Router({
   mode: "history",
@@ -146,6 +148,16 @@ export default new Router({
           path: "user",
           name: "用户概览",
           component: TracerUser
+        },
+        {
+          path: "no-role",
+          name: "权限验证失败",
+          component: TracerNoRole
+        },
+        {
+          path: "upload",
+          name: "上传任务",
+          component: TracerUpload
         }
       ]
     },
