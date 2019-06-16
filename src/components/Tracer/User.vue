@@ -147,6 +147,25 @@
             <td v-if="!group && !isBucket">{{ check(item.exp )}}</td>
             <td v-if="!group && !isBucket">{{ check(item.mail )}}</td>
             <td v-if="!group && !isBucket">{{ check(item._id.date)}}</td>
+            <td v-if="!group && !isBucket">{{ check(item.role )}}</td>
+            <td v-if="!group && !isBucket">
+              <VBtn
+                v-if="item.role != '管理员'"
+                flat
+                class="red--text"
+                @click="grantAdminRole(item.name)"
+              >
+                授予管理员权限
+              </VBtn>
+              <VBtn
+                v-else
+                flat
+                class="green--text"
+                @click="cancelAdminRole(item.name)"
+              >
+                取消管理员权限
+              </VBtn>
+            </td>
             <td v-if="group && !isBucket">{{ check(item._id)}}</td>
             <td v-if="group && !isBucket && groupKeyword=='sum'">{{ check(item.sum)}}</td>
             <td v-if="group && !isBucket && groupKeyword=='avg'">{{ check(item.avg)}}</td>
@@ -256,14 +275,18 @@ export default {
         { text: "积分", sortable: false },
         { text: "经验值", sortable: false },
         { text: "邮箱", sortable: false },
-        { text: "创建时间", sortable: false }
+        { text: "创建时间", sortable: false },
+        { text: "权限", sortable: false },
+        { text: "操作", sortable: false }
       ],
       headersNormal: [
         { text: "用户名", sortable: false },
         { text: "积分", sortable: false },
         { text: "经验值", sortable: false },
         { text: "邮箱", sortable: false },
-        { text: "创建时间", sortable: false }
+        { text: "创建时间", sortable: false },
+        { text: "权限", sortable: false },
+        { text: "操作", sortable: false }
       ],
       headersBucket: [
         { text: "最小值", sortable: false },
@@ -367,6 +390,14 @@ export default {
       this.axios.get(`/admin/user/search-method`).then(rr => {
         this.searchMethods = rr.data;
       });
+    },
+    grantAdminRole(name) {
+      this.axios.put(`/admin/user/grant?userName=${name}`);
+      this.submit();
+    },
+    cancelAdminRole(name) {
+      this.axios.put(`/admin/user/cancel?userName=${name}`);
+      this.submit();
     },
     getProps(props) {
       this.orderBy = props.orderBy;

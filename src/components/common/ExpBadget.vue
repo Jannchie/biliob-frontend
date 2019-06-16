@@ -49,7 +49,7 @@ export default {
       } else if (v < 5120) {
         return "与天同行的观测者";
       } else {
-        return "观测站的管理员";
+        return "观测站的管理者";
       }
     },
     deepColor() {
