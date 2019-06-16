@@ -1,13 +1,9 @@
 <template>
   <VLayout wrap>
+
     <VFlex lg8>
       <VForm>
         <MaterialCard title="批量上传爬虫任务">
-          <MaterialNotification
-            :value="alert"
-            :type="alertType"
-            transition="slide-y-transition"
-          >{{alertMsg}}</MaterialNotification>
           <h5>选择计划任务的类型</h5>
           <VRadioGroup v-model="type">
             <VRadio
@@ -60,8 +56,8 @@
       <MaterialCard title="已设定任务">
         <VList three-line>
           <VListTile
-            v-for="eachItem in schedules"
-            :key="eachItem.name"
+            v-for="(eachItem,index) in schedules"
+            :key="index"
           >
             <VListTileContent>
               <VListTileTitle>
@@ -77,7 +73,7 @@
             <VListTileAction>
               <VBtn
                 icon
-                @click="deleteSchedule(item)"
+                @click="deleteSchedule(eachItem)"
               >
                 <VIcon color="red darken-1">mdi-delete-circle</VIcon>
               </VBtn>
@@ -86,7 +82,12 @@
         </VList>
       </MaterialCard>
     </VFlex>
-
+    <MaterialNotification
+      style="position: absolute; min-width: 300px"
+      :value="alert"
+      :type="alertType"
+      transition="slide-y-transition"
+    >{{alertMsg}}</MaterialNotification>
   </VLayout>
 </template>
 <script>
@@ -117,8 +118,22 @@ export default {
         this.schedules = r.data;
       });
     },
-    deleteSchedule() {
-      this.axios.delete;
+    deleteSchedule(item) {
+      console.log(item);
+
+      this.axios
+        .delete(`/admin/schedule/${item.type}`, {
+          params: {
+            owner: item.owner,
+            name: item.name
+          }
+        })
+        .then(r => {
+          this.successAlert(r);
+        })
+        .catch(e => {
+          this.failedAlert(e);
+        });
     },
     upload() {
       this.axios
@@ -129,22 +144,29 @@ export default {
           name: this.name
         })
         .then(r => {
-          this.alertMsg = r.data.msg;
-          this.alertType = "success";
-          this.alert = true;
           this.getSchedules();
-          setTimeout(() => {
-            this.alert = false;
-          }, 3000);
+          this.successAlert(r);
         })
         .catch(e => {
-          this.alertMsg = "发生错误！" + e.data.msg;
-          this.alertType = "error";
-          this.alert = true;
-          setTimeout(() => {
-            this.alert = false;
-          }, 3000);
+          this.failedAlert(e);
         });
+    },
+    successAlert(r) {
+      this.alertMsg = r.data.msg;
+      this.alertType = "success";
+      this.alert = true;
+      this.getSchedules();
+      setTimeout(() => {
+        this.alert = false;
+      }, 3000);
+    },
+    failedAlert(e) {
+      this.alertMsg = "发生错误！" + e.data.msg;
+      this.alertType = "error";
+      this.alert = true;
+      setTimeout(() => {
+        this.alert = false;
+      }, 3000);
     },
     frequencyText(value) {
       switch (value) {

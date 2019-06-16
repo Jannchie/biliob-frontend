@@ -5,6 +5,11 @@
       :class="`mx-auto  title-div`"
     >
       <img
+        v-if="title === '观测站的管理者'"
+        height="70"
+        src="../../../public/img/pendent/观测站的管理者.png"
+      >
+      <img
         v-if="title === '与天同行的观测者'"
         height="70"
         src="../../../public/img/pendent/与天同行的观测者.png"
@@ -90,7 +95,7 @@ export default {
       } else if (v < 5120) {
         return "与天同行的观测者";
       } else {
-        return "观测站的管理员";
+        return "观测站的管理者";
       }
     }
   },
