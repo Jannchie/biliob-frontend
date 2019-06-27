@@ -1378,5 +1378,21 @@
       }
     ],
     "type": "unimportant"
+  },
+  {
+    "title": "优化与播放量",
+    "version": "ver.6.3.2",
+    "date": "2019-06-27",
+    "list": [
+      {
+        "text": "暂时移除了不太科学的关联图",
+        "type": "feature"
+      },
+      {
+        "text": "添加了作者总播放量增长的显示",
+        "type": "feature"
+      }
+    ],
+    "type": "unimportant"
   }
 ]
