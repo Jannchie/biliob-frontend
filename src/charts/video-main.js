@@ -89,6 +89,8 @@ function drawChart(data) {
           formatter: function(params) {
             if (params > 10000) {
               return Math.round(params / 100) / 100.0 + "万";
+            } else {
+              return params;
             }
           }
         }
@@ -97,13 +99,15 @@ function drawChart(data) {
         type: "value",
         name: "播放量",
         splitLine: {
-          show: true
+          show: false
         },
         min: "dataMin",
         axisLabel: {
           formatter: function(params) {
             if (params > 10000) {
               return Math.round(params / 100) / 100.0 + "万";
+            } else {
+              return params;
             }
           }
         }

@@ -1,8 +1,5 @@
 <template>
-  <VApp
-    id="app"
-    :dark="dark"
-  >
+  <VApp id="app" :dark="dark">
     <RouterView />
   </VApp>
 </template>
