@@ -19,7 +19,7 @@
         class="v-card--material__header"
         dark
       >
-        <slot v-if="!title && !text" name="header" />
+        <slot v-if="!title && !text" style="padding:0px" name="header" />
         <span v-else>
           <div>
             <p class="title font-weight-light mb-2" v-text="title" />

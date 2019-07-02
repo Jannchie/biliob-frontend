@@ -8,51 +8,84 @@
           @getSearchValue="getSearchValue"
         />
       </div>
-      <VFlex slot="header">
-        <VTabs color="transparent" slider-color="white">
-          <span
-            class="subheading font-weight-light mr-3"
-            style="align-self: center"
-            >排序：</span
-          >
-          <VTab @click="sortChange(0)">
-            <VIcon style="margin-right:10px;">
-              mdi-play-circle-outline
-            </VIcon>
-            播放
-          </VTab>
-          <VTab @click="sortChange(1)">
-            <VIcon style="margin-right:10px;">
-              mdi-thumb-up-outline
-            </VIcon>
-            点赞
-          </VTab>
-          <VTab @click="sortChange(2)">
-            <VIcon style="margin-right:10px;">
-              mdi-coin
-            </VIcon>
-            硬币
-          </VTab>
-          <VTab @click="sortChange(3)">
-            <VIcon style="margin-right:10px;">
-              mdi-message-bulleted
-            </VIcon>
-            弹幕
-          </VTab>
-          <VTab @click="sortChange(4)">
-            <VIcon style="margin-right:10px;">
-              mdi-folder-star
-            </VIcon>
-            收藏
-          </VTab>
-          <VTab @click="sortChange(5)">
-            <VIcon style="margin-right:10px;">
-              mdi-share-outline
-            </VIcon>
-            分享
-          </VTab>
-        </VTabs>
-      </VFlex>
+      <VLayout slot="header" row>
+        <VFlex style="width: 70%" grow>
+          <div>
+            <VTabs color="transparent" slider-color="white">
+              <VIcon right>mdi-sort</VIcon>
+              <VTab @click="sortChange(0)">
+                <VIcon>
+                  mdi-play-circle-outline
+                </VIcon>
+                <span v-if="$vuetify.breakpoint.mdAndUp">
+                  播放
+                </span>
+              </VTab>
+              <VTab @click="sortChange(1)">
+                <VIcon>
+                  mdi-thumb-up-outline
+                </VIcon>
+                <span v-if="$vuetify.breakpoint.mdAndUp">
+                  点赞
+                </span>
+              </VTab>
+              <VTab @click="sortChange(2)">
+                <VIcon>
+                  mdi-coin
+                </VIcon>
+                <span v-if="$vuetify.breakpoint.mdAndUp">
+                  硬币
+                </span>
+              </VTab>
+              <VTab @click="sortChange(3)">
+                <VIcon>
+                  mdi-message-bulleted
+                </VIcon>
+                <span v-if="$vuetify.breakpoint.mdAndUp">
+                  弹幕
+                </span>
+              </VTab>
+              <VTab @click="sortChange(4)">
+                <VIcon>
+                  mdi-folder-star
+                </VIcon>
+                <span v-if="$vuetify.breakpoint.mdAndUp">
+                  收藏
+                </span>
+              </VTab>
+              <VTab @click="sortChange(5)">
+                <VIcon hidden-md-and-down>
+                  mdi-share
+                </VIcon>
+                <span v-if="$vuetify.breakpoint.mdAndUp">
+                  分享
+                </span>
+              </VTab>
+            </VTabs>
+          </div>
+        </VFlex>
+        <VDivider vertical style="margin: 2px 2px !important" />
+        <VFlex style="width:30%" align-content-end>
+          <VTabs right color="transparent" slider-color="white">
+            <VIcon left>mdi-calendar-blank-outline</VIcon>
+            <VTab @click="daysChange(1)">
+              <VIcon>
+                mdi-numeric-1-box
+              </VIcon>
+            </VTab>
+            <VTab @click="daysChange(3)">
+              <VIcon>
+                mdi-numeric-3-box
+              </VIcon>
+            </VTab>
+            <VTab @click="daysChange(31)">
+              <VIcon>
+                mdi-alpha-a-box
+              </VIcon>
+            </VTab>
+          </VTabs>
+        </VFlex>
+      </VLayout>
       <VSlideYTransition group>
         <div
           v-for="eachVideo in videoList.content"
@@ -101,7 +134,7 @@
           >抱歉！什么都没有找到QwQ
         </h4>
         <p>
-          搜索功能可能并不完善，为了精确搜索请在上方输入相关U视频的AV号！
+          搜索功能可能并不完善，为了精确搜索请在上方输入相关视频的AV号！
         </p>
         <p>
           如果搜索ID仍然没有结果，可能是因为该UP主并未被本站观测。你可以点击页面右下角的圆形按钮进行添加！
@@ -124,12 +157,13 @@ export default {
     return {
       sort: 0,
       videoList: [],
-      currentApiurl: String(),
+      currentApiurl: "/video",
       currentPage: 0,
       text: String(),
       nextBtnText: "请给我更多...",
       nextBtnDisabled: false,
-      notFound: false
+      notFound: false,
+      days: 1
     };
   },
   watch: {
@@ -137,13 +171,7 @@ export default {
       this.currentPage = 0;
       this.axios
         .get(
-          this.currentApiurl +
-            "?page=" +
-            this.currentPage +
-            "&text=" +
-            this.text +
-            "&sort=" +
-            this.sort
+          `${this.currentApiurl}?page=${this.currentPage}&pagesize=20&text=${this.text}&sort=${this.sort}&days=${this.days}`
         )
         .then(response => {
           this.videoList.content = response.data.content;
@@ -157,13 +185,7 @@ export default {
     currentPage: function changePage(page) {
       this.axios
         .get(
-          this.currentApiurl +
-            "?page=" +
-            page +
-            "&text=" +
-            this.text +
-            "&sort=" +
-            this.sort
+          `${this.currentApiurl}?page=${page}&pagesize=20&text=${this.text}&sort=${this.sort}&days=${this.days}`
         )
         .then(response => {
           // 判断是否为最后一页
@@ -178,10 +200,13 @@ export default {
     }
   },
   created() {
-    this.currentApiurl = "/video";
-    this.axios.get(this.currentApiurl).then(response => {
-      this.refreshList(response);
-    });
+    this.axios
+      .get(
+        `${this.currentApiurl}?page=${this.currentPage}&pagesize=20&text=${this.text}&sort=${this.sort}&days=${this.days}`
+      )
+      .then(response => {
+        this.refreshList(response);
+      });
   },
   methods: {
     refreshList(response) {
@@ -219,7 +244,18 @@ export default {
       this.currentPage = 0;
       this.axios
         .get(
-          `${this.currentApiurl}?page=${this.currentPage}&text=${this.text}&sort=${this.sort}`
+          `${this.currentApiurl}?page=${this.currentPage}&pagesize=20&text=${this.text}&sort=${this.sort}&days=${this.days}`
+        )
+        .then(response => {
+          this.refreshList(response);
+        });
+    },
+    daysChange(days) {
+      this.days = days;
+      this.currentPage = 0;
+      this.axios
+        .get(
+          `${this.currentApiurl}?page=${this.currentPage}&pagesize=20&text=${this.text}&sort=${this.sort}&days=${this.days}`
         )
         .then(response => {
           this.refreshList(response);

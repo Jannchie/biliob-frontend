@@ -3,7 +3,7 @@
     <AuthorMain slot="main-cards">
       <div>
         <VCard color="deepblue" dark>
-          <VCardText>
+          <VCardText style="padding: 0">
             <VFlex slot="header">
               <VTabs color="transparent" slider-color="white">
                 <span
@@ -45,6 +45,9 @@
               sub-title="每一万播放量增长造成的粉丝变动数"
               :options="authorFansEfficiencyOptions"
             />
+            <DetailCharts :options="authorTagCloudOptions">
+              <div slot="header"></div>
+            </DetailCharts>
           </div>
         </VSlideYTransition>
       </div>
@@ -86,6 +89,7 @@ import OtherLink from "../components/aside/OtherLink.vue";
 import drawFansChart from "../charts/author-fans.js";
 import drawFansRateChart from "../charts/author-fans-rate.js";
 import getAuthorFansEfficiencyOptions from "../charts/author-fans-efficiency.js";
+import getAuthorTagCloudOptions from "../charts/author-tag-cloud.js";
 //定义抠图方法
 // function getImgData(
 //   imgSrc,
@@ -167,6 +171,7 @@ export default {
       relationshipOptions: Object(),
       authorFansRateOptions: Object(),
       authorFansEfficiencyOptions: Object(),
+      authorTagCloudOptions: Object(),
       mid: Number(),
       cPage: 0
     };
@@ -178,6 +183,7 @@ export default {
     this.$store.commit("toAuthor");
     this.axios.get("/author/" + this.mid).then(response => {
       this.authorData = response.data;
+
       //   this.axios
       //     .get(`/author/${this.mid}/relationship?limit=3`)
       //     .then(response => {
@@ -191,7 +197,6 @@ export default {
       //       let max = Math.max.apply(
       //         Math,
       //         data.map(function(o) {
-      //           console.log(o);
       //           return o.value;
       //         })
       //       );
@@ -201,8 +206,6 @@ export default {
       //           return o.value;
       //         })
       //       );
-      //       console.log(max);
-      //       console.log(min);
       //       // 标准化值
       //       function getValue(value) {
       //         return ((value - min) / (max - min)) * 50 + 50;
@@ -321,6 +324,9 @@ export default {
     });
     this.axios.get(`/author/${this.mid}/video?sort=1`).then(response => {
       this.authorLatestVideo = response.data;
+    });
+    this.axios.get(`/author/tag?mid=${this.mid}&limit=${50}`).then(r => {
+      this.authorTagCloudOptions = getAuthorTagCloudOptions(r.data);
     });
   },
   methods: {

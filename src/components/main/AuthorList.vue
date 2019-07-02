@@ -3,33 +3,37 @@
     <div>
       <div>
         <MaterialCard class="card-tabs">
-          <VFlex slot="header">
-            <VTabs color="transparent" slider-color="white">
-              <span
-                class="subheading font-weight-light mr-3"
-                style="align-self: center"
-                >排序：</span
-              >
-              <VTab @click="sortChange(0)">
-                <VIcon style="margin-right:10px;">
-                  mdi-account-multiple
-                </VIcon>
-                粉丝总数
-              </VTab>
-              <VTab @click="sortChange(1)">
-                <VIcon style="margin-right:10px;">
-                  mdi-play-circle-outline
-                </VIcon>
-                播放总量
-              </VTab>
-              <VTab @click="sortChange(2)">
-                <VIcon style="margin-right:10px;">
-                  mdi-script-text-outline
-                </VIcon>
-                专栏阅读
-              </VTab>
-            </VTabs>
-          </VFlex>
+          <VLayout slot="header">
+            <VIcon right>mdi-sort</VIcon>
+            <VFlex>
+              <VTabs show-arrows color="transparent" slider-color="white">
+                <VTab @click="sortChange(0)">
+                  <VIcon>
+                    mdi-account-heart
+                  </VIcon>
+                  <div style="margin-left:10px">
+                    粉丝总数
+                  </div>
+                </VTab>
+                <VTab @click="sortChange(1)">
+                  <VIcon>
+                    mdi-play-circle-outline
+                  </VIcon>
+                  <div style="margin-left:10px">
+                    播放总量
+                  </div>
+                </VTab>
+                <VTab @click="sortChange(2)">
+                  <VIcon>
+                    mdi-script-text-outline
+                  </VIcon>
+                  <div style="margin-left:10px">
+                    专栏阅读
+                  </div>
+                </VTab>
+              </VTabs>
+            </VFlex>
+          </VLayout>
           <div>
             <VSearchForm
               slot="search"
