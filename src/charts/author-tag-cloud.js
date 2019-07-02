@@ -1,8 +1,13 @@
-function drawChart(data) {
+function drawChart(data, type = 0) {
   var d = [];
-
-  for (var e in data) {
-    d.push({ name: data[e]._id, value: data[e].count });
+  if (type == 0) {
+    for (let e in data) {
+      d.push({ name: data[e]._id, value: data[e].count });
+    }
+  } else if (type == 1) {
+    for (let e in data) {
+      d.push({ name: data[e]._id, value: data[e].totalView });
+    }
   }
 
   var maxSize = 72;

@@ -8,27 +8,7 @@
       class="card elevation-2 pa-0"
     >
       <VFlex slot="header">
-        <VTabs color="transparent" slider-color="white">
-          <span
-            class="subheading font-weight-light mr-3"
-            style="align-self: center"
-          >
-            <h4>123</h4>
-            排序：
-          </span>
-          <VTab @click="sortChange(0)">
-            <VIcon style="margin-right:10px;">
-              mdi-play-circle-outline
-            </VIcon>
-            播放
-          </VTab>
-          <VTab @click="sortChange(1)">
-            <VIcon style="margin-right:10px;">
-              mdi-thumb-up-outline
-            </VIcon>
-            点赞
-          </VTab>
-        </VTabs>
+        <slot name="header" style="padding: 0 "></slot>
       </VFlex>
       <VResponsive :aspect-ratio="aspectRatio" style="margin-top:30px">
         <VProgressCircular

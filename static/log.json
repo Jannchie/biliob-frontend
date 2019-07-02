@@ -1403,6 +1403,14 @@
       {
         "text": "重构了作者页面，添加了粉丝变动效率的显示",
         "type": "feature"
+      },
+      {
+        "text": "增加了作者投稿标签词云展示的功能",
+        "type": "feature"
+      },
+      {
+        "text": "增强了视频列表页面的分类筛选功能",
+        "type": "feature"
       }
     ],
     "type": "important"

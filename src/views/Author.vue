@@ -46,7 +46,28 @@
               :options="authorFansEfficiencyOptions"
             />
             <DetailCharts :options="authorTagCloudOptions">
-              <div slot="header"></div>
+              <VFlex slot="header" pa-1>
+                <VTabs color="transparent" slider-color="white">
+                  <span
+                    class="subheading font-weight-light mr-3"
+                    style="align-self: center"
+                  >
+                    <VIcon>mdi-format-list-bulleted-type</VIcon>
+                  </span>
+                  <VTab @click="tagSort(0)">
+                    <VIcon style="margin-right:10px;">
+                      mdi-video
+                    </VIcon>
+                    投稿量
+                  </VTab>
+                  <VTab @click="tagSort(1)">
+                    <VIcon style="margin-right:10px;">
+                      mdi-play-circle-outline
+                    </VIcon>
+                    播放量
+                  </VTab>
+                </VTabs>
+              </VFlex>
             </DetailCharts>
           </div>
         </VSlideYTransition>
@@ -326,12 +347,21 @@ export default {
       this.authorLatestVideo = response.data;
     });
     this.axios.get(`/author/tag?mid=${this.mid}&limit=${50}`).then(r => {
-      this.authorTagCloudOptions = getAuthorTagCloudOptions(r.data);
+      this.authorTagCloudData = r.data;
+      this.authorTagCloudOptions = getAuthorTagCloudOptions(
+        this.authorTagCloudData
+      );
     });
   },
   methods: {
     getPage(page) {
       this.cPage = page;
+    },
+    tagSort(type) {
+      this.authorTagCloudOptions = getAuthorTagCloudOptions(
+        this.authorTagCloudData,
+        type
+      );
     }
   }
 };
