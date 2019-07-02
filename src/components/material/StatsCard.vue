@@ -16,27 +16,21 @@
       </VIcon>
     </VCard>
     <div class="text-xs-right">
-      <p
-        class="category grey--text font-weight-light"
-        v-text="title"
-      />
+      <p class="category grey--text font-weight-light" v-text="title" />
       <h3 class="title display-1 font-weight-light">
         {{ value }} <small>{{ smallValue }}</small>
       </h3>
     </div>
 
     <template slot="actions">
-      <VIcon
-        :color="subTextColor"
-        size="20"
-        class="mr-2"
-      >
+      <VIcon :color="subTextColor" size="20" class="mr-2">
         {{ subIcon }}
       </VIcon>
       <span
         :class="`${subTextColor}--text`"
         class="caption font-weight-light"
-      >{{subText}}</span>
+        >{{ subText }}</span
+      >
     </template>
   </MaterialCard>
 </template>

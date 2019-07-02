@@ -8,11 +8,11 @@
             :key="eachVideo.aid"
             class="video-cards"
             ripple
-            :to="'/author/'+eachVideo.mid+'/video/'+eachVideo.aid"
+            :to="'/author/' + eachVideo.mid + '/video/' + eachVideo.aid"
           >
             <div style="padding:5px;display:flex">
               <div>
-                <VResponsive :aspect-ratio="16/9">
+                <VResponsive :aspect-ratio="16 / 9">
                   <VImg
                     style="border-radius:5px;width:120px;height:80px"
                     :src="zipPic(eachVideo.pic.slice(5))"
@@ -21,22 +21,19 @@
                 </VResponsive>
               </div>
               <div style="margin-left:10px;overflow:hidden">
-                <div class="font-weight-bold video-title text-no-wrap text-truncate">
+                <div
+                  class="font-weight-bold video-title text-no-wrap text-truncate"
+                >
                   {{ eachVideo.title }}
                 </div>
                 <div class="caption subtext video-info">
-                  <VIcon small>
-                    mdi-account-box-outline
-                  </VIcon>{{ eachVideo.author }}
-                  <VIcon small>
-                    mdi-bookmark-outline
-                  </VIcon>{{ eachVideo.channel }}
+                  <VIcon small> mdi-account-box-outline </VIcon
+                  >{{ eachVideo.author }}
+                  <VIcon small> mdi-bookmark-outline </VIcon
+                  >{{ eachVideo.channel }}
                 </div>
               </div>
-              <ObserveStatus
-                class="observe-status"
-                :object="eachVideo"
-              />
+              <ObserveStatus class="observe-status" :object="eachVideo" />
             </div>
           </VCard>
         </VSlideYTransition>
@@ -47,7 +44,8 @@
           color="blue darken-2"
           :disabled="nextBtnDisabled"
           @click.stop="next"
-        >{{nextBtnText}}</VBtn>
+          >{{ nextBtnText }}</VBtn
+        >
       </div>
     </div>
   </div>

@@ -1,45 +1,42 @@
 <template>
   <MaterialCard>
-    <div
-      slot="offset"
-      :class="`mx-auto  title-div`"
-    >
+    <div slot="offset" :class="`mx-auto  title-div`">
       <img
         v-if="title === '观测站的管理者'"
         height="70"
         src="../../../public/img/pendent/观测站的管理者.png"
-      >
+      />
       <img
         v-if="title === '与天同行的观测者'"
         height="70"
         src="../../../public/img/pendent/与天同行的观测者.png"
-      >
+      />
       <img
         v-if="title === '洞悉法度的观想者'"
         height="70"
         src="../../../public/img/pendent/洞悉法度的观想者.png"
-      >
+      />
       <img
         v-if="title === '本心不渝的追寻者'"
         height="70"
         src="../../../public/img/pendent/本心不渝的追寻者.png"
-      >
+      />
     </div>
     <div style="display:flex;flex-direction:column">
-      <div
-        class="name-div"
-        style="flex:99"
-      >
-        <span :class="`title  grey--text text--${brightness}-3`">{{name}}</span>
-        <div :class="`subheading font-weight-medium grey--text text--${brightness}-1`">
-          <span
-            class="mr-1"
-            style="border-radius: 5px"
-          >EXP</span> {{exp}}
+      <div class="name-div" style="flex:99">
+        <span :class="`title  grey--text text--${brightness}-3`">{{
+          name
+        }}</span>
+        <div
+          :class="
+            `subheading font-weight-medium grey--text text--${brightness}-1`
+          "
+        >
+          <span class="mr-1" style="border-radius: 5px">EXP</span> {{ exp }}
         </div>
       </div>
     </div>
-    <div class="caption grey--text date-div">{{formatedDate}}</div>
+    <div class="caption grey--text date-div">{{ formatedDate }}</div>
   </MaterialCard>
 </template>
 <script>

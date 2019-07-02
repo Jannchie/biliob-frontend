@@ -1,4 +1,3 @@
-
 <template>
   <MaterialCard
     v-bind="$attrs"
@@ -22,7 +21,9 @@
         ></VProgressLinear>
         <VLayout>
           <VFlex md6>
-            <div class="subtitle white--text font-weight-light">{{title}}</div>
+            <div class="subtitle white--text font-weight-light">
+              {{ title }}
+            </div>
           </VFlex>
           <VFlex md6>
             <div
@@ -33,16 +34,15 @@
                 theme="minimal"
                 format=""
                 :value="percent"
-              ></CommonVOdometer>%
+              ></CommonVOdometer
+              >%
             </div>
             <div
               v-else
               class="subtitle white--text font-weight-light text-xs-right"
             >
-              <div v-if="value==0">
-                <VIcon>mdi-check</VIcon>已清空列表
-              </div>
-              <div v-if="value !=0">
+              <div v-if="value == 0"><VIcon>mdi-check</VIcon>已清空列表</div>
+              <div v-if="value != 0">
                 <VIcon>mdi-spin</VIcon>
                 剩余任务数量：
                 <CommonVOdometer
@@ -62,41 +62,27 @@
       style="margin-top:4px"
     />
     <VLayout style="margin-bottom:0px;padding-bottom:0px">
-      <VFlex
-        style="padding-bottom:0px"
-        md6
-      >
-        <div
-          class="text-xs-left"
-          style="verticalAlign:bottom"
-        >
-          <VIcon
-            :color="subTextColor"
-            size="18"
-            class="mr-2"
-          >
+      <VFlex style="padding-bottom:0px" md6>
+        <div class="text-xs-left" style="verticalAlign:bottom">
+          <VIcon :color="subTextColor" size="18" class="mr-2">
             {{ subIcon }}
           </VIcon>
           <span
             :class="`${subTextColor}--text`"
             class="caption font-weight-light"
-          >{{subText}}</span>
+            >{{ subText }}</span
+          >
         </div>
       </VFlex>
-      <VFlex
-        style="padding-bottom:0px"
-        md6
-      >
-        <div
-          v-if="!indeterminate"
-          class="text-xs-right"
-        >
+      <VFlex style="padding-bottom:0px" md6>
+        <div v-if="!indeterminate" class="text-xs-right">
           <span class="title display-1 font-weight-light">
             当前进度：<CommonVOdometer
               theme="minimal"
               format=""
               :value="value"
-            ></CommonVOdometer> /<small>{{ smallValue }}</small>
+            ></CommonVOdometer>
+            /<small>{{ smallValue }}</small>
           </span>
         </div>
       </VFlex>

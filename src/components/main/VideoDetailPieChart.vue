@@ -1,6 +1,6 @@
 <template>
   <VCard class="card">
-    <VResponsive :aspect-ratio="18/9">
+    <VResponsive :aspect-ratio="18 / 9">
       <Chart
         :theme="theme"
         :auto-resize="true"

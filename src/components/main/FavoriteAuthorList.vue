@@ -3,25 +3,26 @@
     <div>
       <div>
         <VSlideYTransition group>
-
           <VCard
             v-for="eachAuthor in authorList.content"
             :key="eachAuthor.mid"
             class="author-cards"
             ripple
-            :to="'/author/'+eachAuthor.mid"
+            :to="'/author/' + eachAuthor.mid"
           >
             <div style="padding:5px;display:flex">
               <div>
-                <VResponsive :aspect-ratio="16/9">
+                <VResponsive :aspect-ratio="16 / 9">
                   <img
                     style="border-radius:40px;width:80px;height:80px"
                     :src="zipPic(eachAuthor.face.slice(5))"
-                  >
+                  />
                 </VResponsive>
               </div>
               <div style="margin-left:10px;overflow:hidden">
-                <div class="font-weight-bold text-no-wrap text-truncate author-title">
+                <div
+                  class="font-weight-bold text-no-wrap text-truncate author-title"
+                >
                   {{ eachAuthor.name }}
                   <SexIcon :sex="eachAuthor.sex" />
                 </div>
@@ -29,18 +30,11 @@
                   v-if="eachAuthor.official !== ''"
                   class="caption subtext author-info"
                 >
-                  <VIcon
-                    color="#FBC02D"
-                    small
-                  >
-                    mdi-flash
-                  </VIcon>{{ eachAuthor.official }}
+                  <VIcon color="#FBC02D" small> mdi-flash </VIcon
+                  >{{ eachAuthor.official }}
                 </div>
               </div>
-              <ObserveStatus
-                class="observe-status"
-                :object="eachAuthor"
-              />
+              <ObserveStatus class="observe-status" :object="eachAuthor" />
             </div>
           </VCard>
         </VSlideYTransition>
@@ -51,7 +45,7 @@
           :disabled="nextBtnDisabled"
           @click.stop="next"
         >
-          {{nextBtnText}}
+          {{ nextBtnText }}
         </VBtn>
       </div>
     </div>

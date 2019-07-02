@@ -1,8 +1,5 @@
 <template>
-  <div
-    id="float-btn" 
-    class="drag"
-  >
+  <div id="float-btn" class="drag">
     <VFabTransition>
       <VBtn
         :key="activeFab.icon"

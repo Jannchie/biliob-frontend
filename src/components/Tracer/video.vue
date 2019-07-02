@@ -1,10 +1,7 @@
 <template>
   <VLayout wrap>
     <VFlex lg9>
-      <MaterialCard
-        title="查询条件"
-        subtitle="高级查询可能会消耗较多时间"
-      >
+      <MaterialCard title="查询条件" subtitle="高级查询可能会消耗较多时间">
         <VForm>
           <VLayout wrap>
             <VFlex lg4>
@@ -24,10 +21,7 @@
               </VSelect>
             </VFlex>
             <VFlex lg4>
-              <VTextField
-                v-model="matchValue"
-                label="筛选值"
-              ></VTextField>
+              <VTextField v-model="matchValue" label="筛选值"></VTextField>
             </VFlex>
 
             <VFlex lg3>
@@ -57,49 +51,25 @@
             </VFlex>
 
             <VFlex lg3>
-              <VSelect
-                v-model="bucket"
-                label="分桶统计"
-                :items="buckets"
-              >
+              <VSelect v-model="bucket" label="分桶统计" :items="buckets">
               </VSelect>
             </VFlex>
             <VFlex lg10>
-              <VSelect
-                v-model="orderBy"
-                label="根据字段排序"
-                :items="orderBys"
-              >
+              <VSelect v-model="orderBy" label="根据字段排序" :items="orderBys">
               </VSelect>
             </VFlex>
 
             <VFlex lg2>
-              <VRadioGroup
-                v-model="sort"
-                :column="false"
-              >
-                <VRadio
-                  :key="1"
-                  :label="`升序`"
-                  :value="1"
-                ></VRadio>
-                <VRadio
-                  :key="2"
-                  :label="`降序`"
-                  :value="-1"
-                ></VRadio>
+              <VRadioGroup v-model="sort" :column="false">
+                <VRadio :key="1" :label="`升序`" :value="1"></VRadio>
+                <VRadio :key="2" :label="`降序`" :value="-1"></VRadio>
               </VRadioGroup>
             </VFlex>
 
             <VFlex lg6>
-              <VBtn
-                dark
-                color="primary"
-                @click.stop="submit"
-              >
+              <VBtn dark color="primary" @click.stop="submit">
                 <VIcon>mdi-account-search-outline</VIcon>提交查询
               </VBtn>
-
             </VFlex>
             <VFlex lg4>
               <VTextField
@@ -108,53 +78,38 @@
               ></VTextField>
             </VFlex>
             <VFlex lg2>
-              <VBtn
-                :disabled="searchMethodName==''"
-                @click.stop="save"
-              >
-
+              <VBtn :disabled="searchMethodName == ''" @click.stop="save">
                 <VIcon>mdi-content-save</VIcon>保存查询
               </VBtn>
             </VFlex>
           </VLayout>
         </VForm>
       </MaterialCard>
-      <MaterialCard
-        title="用户检索"
-        text="此处显示全部用户信息"
-      >
-        <VDataTable
-          :headers="headers"
-          :items="userItems"
-          hide-actions
-        >
-          <template
-            slot="headerCell"
-            slot-scope="{ header }"
-            color="primary"
-          >
+      <MaterialCard title="用户检索" text="此处显示全部用户信息">
+        <VDataTable :headers="headers" :items="userItems" hide-actions>
+          <template slot="headerCell" slot-scope="{ header }" color="primary">
             <span
               class="subheading font-weight-light text--deepblue text--darken-3"
               v-text="header.text"
             />
           </template>
-          <template
-            slot="items"
-            slot-scope="{ item }"
-          >
+          <template slot="items" slot-scope="{ item }">
             <td v-if="!group && !isBucket">{{ check(item.name) }}</td>
             <td v-if="!group && !isBucket">{{ check(item.credit) }}</td>
-            <td v-if="!group && !isBucket">{{ check(item.exp )}}</td>
-            <td v-if="!group && !isBucket">{{ check(item.mail )}}</td>
-            <td v-if="!group && !isBucket">{{ check(item._id.date)}}</td>
-            <td v-if="group && !isBucket">{{ check(item._id)}}</td>
-            <td v-if="group && !isBucket && groupKeyword=='sum'">{{ check(item.sum)}}</td>
-            <td v-if="group && !isBucket && groupKeyword=='avg'">{{ check(item.avg)}}</td>
-            <td v-if="isBucket">{{ check(item.min)}}</td>
-            <td v-if="isBucket">{{ check(item.max)}}</td>
-            <td v-if="group || isBucket">{{ check(item.count)}}</td>
-            <td v-if="
-              group && groupKeyword=='avg'">{{ check(item.avg)}}</td>
+            <td v-if="!group && !isBucket">{{ check(item.exp) }}</td>
+            <td v-if="!group && !isBucket">{{ check(item.mail) }}</td>
+            <td v-if="!group && !isBucket">{{ check(item._id.date) }}</td>
+            <td v-if="group && !isBucket">{{ check(item._id) }}</td>
+            <td v-if="group && !isBucket && groupKeyword == 'sum'">
+              {{ check(item.sum) }}
+            </td>
+            <td v-if="group && !isBucket && groupKeyword == 'avg'">
+              {{ check(item.avg) }}
+            </td>
+            <td v-if="isBucket">{{ check(item.min) }}</td>
+            <td v-if="isBucket">{{ check(item.max) }}</td>
+            <td v-if="group || isBucket">{{ check(item.count) }}</td>
+            <td v-if="group && groupKeyword == 'avg'">{{ check(item.avg) }}</td>
           </template>
         </VDataTable>
       </MaterialCard>
@@ -169,21 +124,19 @@
           >
             <VListTileContent>
               <VListTileTitle>
-                {{eachSearchMethod.name}}
+                {{ eachSearchMethod.name }}
               </VListTileTitle>
               <VListTileSubTitle>
-                {{eachSearchMethod.owner}}
+                {{ eachSearchMethod.owner }}
               </VListTileSubTitle>
             </VListTileContent>
             <VListTileAction>
-              <VBtn
-                icon
-                ripple
-              >
+              <VBtn icon ripple>
                 <VIcon
                   color="grey lighten-1"
                   @click="removeMethod(eachSearchMethod)"
-                >mdi-delete-circle</VIcon>
+                  >mdi-delete-circle</VIcon
+                >
               </VBtn>
             </VListTileAction>
           </VListTile>

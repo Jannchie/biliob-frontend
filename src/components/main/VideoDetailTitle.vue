@@ -1,35 +1,29 @@
 <template>
   <MaterialCard>
-    <div
-      slot="offset"
-      class="mx-auto d-block"
-    >
+    <div slot="offset" class="mx-auto d-block">
       <img
         class="video-img"
         style="width:160px;height:100px"
         :src="zipPic(pic)"
-      >
+      />
     </div>
     <div style="position:absolute;top:20px;left:200px;right:20px">
       <div style="display:flex;">
         <div style="overflow:hidden;">
-          <div
-            style="width:100%"
-            class="font-weight-bold video-title "
-          >
+          <div style="width:100%" class="font-weight-bold video-title ">
             {{ title }}
           </div>
           <span
             class="px-1 pink lighten-3 white--text mr-1 font-weight-black"
             style="border-radius:3px"
-          >AV</span><span class="text--lighten-3 pink--text">{{ $route.params.aid }}</span>
+            >AV</span
+          ><span class="text--lighten-3 pink--text">{{
+            $route.params.aid
+          }}</span>
         </div>
       </div>
     </div>
-    <FavoriteBtn
-      :aid="aid"
-      class="favorite-btn"
-    />
+    <FavoriteBtn :aid="aid" class="favorite-btn" />
   </MaterialCard>
 </template>
 

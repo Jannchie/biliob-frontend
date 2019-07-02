@@ -14,19 +14,20 @@
       rows-per-page-text="每页条数"
       style="white-space: nowrap"
     >
-      <template
-        slot="items"
-        slot-scope="props"
-      >
+      <template slot="items" slot-scope="props">
         <td class="caption text-xs-left">{{ props.item.message }}</td>
         <td class="caption text-xs-left">{{ props.item.datetime }}</td>
         <td class="caption text-xs-center">{{ props.item.credit }}</td>
         <td class="caption text-xs-center">
           <span
-            :class="`caption white--text ${getExecuteStatusColor(props.item.executed)} pa-1`"
+            :class="
+              `caption white--text ${getExecuteStatusColor(
+                props.item.executed
+              )} pa-1`
+            "
             style="border-radius: 2px"
           >
-            {{executeState(props.item.executed)}}
+            {{ executeState(props.item.executed) }}
           </span>
         </td>
       </template>
@@ -73,5 +74,4 @@ export default {
   }
 };
 </script>
-<style scoped>
-</style>
+<style scoped></style>

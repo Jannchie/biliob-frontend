@@ -1,10 +1,6 @@
 <template>
   <MaterialCard>
-    <VideoBottomSheet
-      :title="title"
-      :pic="pic"
-      :aid="aid"
-    ></VideoBottomSheet>
+    <VideoBottomSheet :title="title" :pic="pic" :aid="aid"></VideoBottomSheet>
   </MaterialCard>
 </template>
 <script>

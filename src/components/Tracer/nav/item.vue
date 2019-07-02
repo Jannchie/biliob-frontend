@@ -1,16 +1,11 @@
 <template>
   <div class="mx-3">
-    <VBtn
-      flat
-      large
-      block
-      @click.stop="to(path)"
-    >
+    <VBtn flat large block @click.stop="to(path)">
       <VListTileAvatar>
-        <VIcon left>{{icon}}</VIcon>
+        <VIcon left>{{ icon }}</VIcon>
       </VListTileAvatar>
       <VListTileContent>
-        {{name}}
+        {{ name }}
       </VListTileContent>
     </VBtn>
   </div>

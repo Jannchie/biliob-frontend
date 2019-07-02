@@ -1,11 +1,6 @@
 <template>
   <VLayout wrap>
-    <VFlex
-      sm12
-      md12
-      lg8
-    >
-
+    <VFlex sm12 md12 lg8>
       <TheHomeCarousel></TheHomeCarousel>
       <AuthorVersusCard
         :a-mid="firstMid"
@@ -22,30 +17,19 @@
         sub-title="每小时统计"
       />
     </VFlex>
-    <VFlex
-      sm12
-      md12
-      lg4
-    >
+    <VFlex sm12 md12 lg4>
       <VSlideYTransition>
-
         <MaterialCard
           v-if="variationData.length != 0"
           title="近期值得注意的UP主"
         >
           <VList two-line>
             <template v-for="(item, index) in variationData">
-              <VSubheader
-                v-if="item.header"
-                :key="item.header"
-              >
+              <VSubheader v-if="item.header" :key="item.header">
                 {{ item.header }}
               </VSubheader>
 
-              <VDivider
-                v-else-if="item.divider"
-                :key="index"
-              ></VDivider>
+              <VDivider v-else-if="item.divider" :key="index"></VDivider>
 
               <VListTile
                 v-else
@@ -54,20 +38,17 @@
                 @click="toAuthor(item.mid)"
               >
                 <VListTileAvatar>
-                  <img :src="zipPic(item.face)">
+                  <img :src="zipPic(item.face)" />
                 </VListTileAvatar>
 
                 <VListTileContent>
-                  <VListTileTitle>{{item.author}}</VListTileTitle>
-                  <VListTileSubTitle>{{item.info}}</VListTileSubTitle>
+                  <VListTileTitle>{{ item.author }}</VListTileTitle>
+                  <VListTileSubTitle>{{ item.info }}</VListTileSubTitle>
                 </VListTileContent>
               </VListTile>
             </template>
           </VList>
-          <div
-            slot="actions"
-            class="caption"
-          >
+          <div slot="actions" class="caption">
             <RouterLink to="/event">
               更多...
             </RouterLink>

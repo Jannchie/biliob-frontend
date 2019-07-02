@@ -3,11 +3,13 @@
     <span
       :class="`${leftColor} caption white--text darken-2`"
       style="padding:1px 5px;"
-    >{{leftText}}</span>
+      >{{ leftText }}</span
+    >
     <span
       :class="`${rightColor} caption white--text darken-2`"
       style="padding:1px 5px"
-    >{{rightText}}</span>
+      >{{ rightText }}</span
+    >
   </span>
 </template>
 

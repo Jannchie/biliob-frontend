@@ -1,30 +1,33 @@
 <template>
   <MainLayout reverse>
     <div slot="aside-cards">
-      <MaterialCard
-        title="目录"
-        class="mb-2"
-      >
+      <MaterialCard title="目录" class="mb-2">
         <ol
-          v-for="(eachCatalog,catalogIndex) in questionCards"
+          v-for="(eachCatalog, catalogIndex) in questionCards"
           :key="catalogIndex"
           class="subheading mb-2"
         >
-          <a :href="`#${eachCatalog.catalogName}`">{{eachCatalog.catalogName}}</a>
+          <a :href="`#${eachCatalog.catalogName}`">{{
+            eachCatalog.catalogName
+          }}</a>
           <li
-            v-for="(eachQuestion, questionIndex) in eachCatalog.catalogQuestions"
+            v-for="(eachQuestion,
+            questionIndex) in eachCatalog.catalogQuestions"
             :id="eachQuestion.question"
             :key="questionIndex"
             class="body-1"
-          ><a :href="`#${eachQuestion.question}`">{{eachQuestion.question}}</a></li>
+          >
+            <a :href="`#${eachQuestion.question}`">{{
+              eachQuestion.question
+            }}</a>
+          </li>
           <VDivider></VDivider>
         </ol>
       </MaterialCard>
     </div>
     <div slot="main-cards">
-
       <MaterialCard
-        v-for="(eachCatalog,catalogIndex) in questionCards"
+        v-for="(eachCatalog, catalogIndex) in questionCards"
         :key="catalogIndex"
         :title="eachCatalog.catalogName"
         class="mb-1"

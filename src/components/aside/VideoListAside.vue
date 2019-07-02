@@ -1,11 +1,10 @@
 <template>
   <div>
-    <MaterialCard
-      class="card"
-      title="数据说明"
-    >
+    <MaterialCard class="card" title="数据说明">
       <div class="body-1">
-        <li>这里可以查询所有<span class="green--text">正在追踪</span>的视频数据。</li>
+        <li>
+          这里可以查询所有<span class="green--text">正在追踪</span>的视频数据。
+        </li>
         <li>
           <span
             class="white--text px-1 "
@@ -15,10 +14,12 @@
           </span>
           一天更新一次视频的数据。
         </li>
-        <li><span
+        <li>
+          <span
             class="white--text px-1 "
             style="background-color:#FF5722;border-radius:2px;margin-right:5px"
-          >保守观测</span>
+            >保守观测</span
+          >
           变化幅度太小的视频数据将每周更新一次，但可以手动刷新。
         </li>
         <li>

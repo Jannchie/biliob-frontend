@@ -1,51 +1,49 @@
 <template>
   <MaterialCard title="视频排名数据">
-    <VContainer
-      grid-list-md
-      text-xs-center
-      class="pa-0"
-    >
+    <VContainer grid-list-md text-xs-center class="pa-0">
       <VLayout row>
-
-        <VFlex
-          xs12
-          md4
-        >
-          <div class="rank-title subheading font-weight-bold grey--text text--darken-2">
+        <VFlex xs12 md4>
+          <div
+            class="rank-title subheading font-weight-bold grey--text text--darken-2"
+          >
             播放数排名
           </div>
-          <div class="rank-value title font-weight-black blue--text text--darken-3">
-            {{viewInfo}}
+          <div
+            class="rank-value title font-weight-black blue--text text--darken-3"
+          >
+            {{ viewInfo }}
           </div>
           <!-- <ChevronBudget :value="rank.dViewRank"></ChevronBudget> -->
           <div>
             <VDivider vertical></VDivider>
           </div>
         </VFlex>
-        <VFlex
-          xs12
-          md4
-        >
-          <div class="rank-title subheading font-weight-bold grey--text text--darken-2">
+        <VFlex xs12 md4>
+          <div
+            class="rank-title subheading font-weight-bold grey--text text--darken-2"
+          >
             点赞数排名
           </div>
-          <div class="rank-value title font-weight-black blue--text text--darken-3">
-            {{likeInfo}}
+          <div
+            class="rank-value title font-weight-black blue--text text--darken-3"
+          >
+            {{ likeInfo }}
           </div>
           <!-- <ChevronBudget :value="rank.dLikeRank"></ChevronBudget> -->
           <div>
             <VDivider vertical></VDivider>
           </div>
         </VFlex>
-        <VFlex
-          xs12
-          md4
-        >
-          <div class="rank-title subheading font-weight-bold grey--text text--darken-2">
+        <VFlex xs12 md4>
+          <div
+            class="rank-title subheading font-weight-bold grey--text text--darken-2"
+          >
             硬币数排名
           </div>
-          <div class="rank-value title font-weight-black blue--text text--darken-3">
-            {{coinInfo}}
+          <div
+            class="rank-value title font-weight-black blue--text text--darken-3"
+          >
+            {{ coinInfo }}
           </div>
           <!-- <ChevronBudget :value="rank.dCoinRank"></ChevronBudget> -->
           <div class="special-divider">
@@ -54,46 +52,48 @@
         </VFlex>
       </VLayout>
       <VLayout row>
-
-        <VFlex
-          xs12
-          md4
-        >
-          <div class="rank-title subheading font-weight-bold grey--text text--darken-2">
+        <VFlex xs12 md4>
+          <div
+            class="rank-title subheading font-weight-bold grey--text text--darken-2"
+          >
             弹幕数排名
           </div>
-          <div class="rank-value title font-weight-black blue--text text--darken-3">
-            {{danmakuInfo}}
+          <div
+            class="rank-value title font-weight-black blue--text text--darken-3"
+          >
+            {{ danmakuInfo }}
           </div>
           <!-- <ChevronBudget :value="rank.dDanmakuRank"></ChevronBudget> -->
           <div>
             <VDivider vertical></VDivider>
           </div>
         </VFlex>
-        <VFlex
-          xs12
-          md4
-        >
-          <div class="rank-title subheading font-weight-bold grey--text text--darken-2">
+        <VFlex xs12 md4>
+          <div
+            class="rank-title subheading font-weight-bold grey--text text--darken-2"
+          >
             收藏数排名
           </div>
-          <div class="rank-value title font-weight-black blue--text text--darken-3">
-            {{favoriteInfo}}
+          <div
+            class="rank-value title font-weight-black blue--text text--darken-3"
+          >
+            {{ favoriteInfo }}
           </div>
           <!-- <ChevronBudget :value="rank.dFavoriteRank"></ChevronBudget> -->
           <div>
             <VDivider vertical></VDivider>
           </div>
         </VFlex>
-        <VFlex
-          xs12
-          md4
-        >
-          <div class="rank-title subheading font-weight-bold grey--text text--darken-2">
+        <VFlex xs12 md4>
+          <div
+            class="rank-title subheading font-weight-bold grey--text text--darken-2"
+          >
             分享数排名
           </div>
-          <div class="rank-value title font-weight-black blue--text text--darken-3">
-            {{shareInfo}}
+          <div
+            class="rank-value title font-weight-black blue--text text--darken-3"
+          >
+            {{ shareInfo }}
           </div>
           <!-- <ChevronBudget :value="rank.dShareRank"></ChevronBudget> -->
           <div class="special-divider">
@@ -110,7 +110,7 @@
         仅包括已经观测的视频
       </div>
       <div>
-        {{formatedDate}}
+        {{ formatedDate }}
       </div>
     </div>
   </MaterialCard>

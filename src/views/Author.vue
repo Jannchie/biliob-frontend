@@ -3,7 +3,7 @@
     <AuthorMain slot="main-cards">
       <div>
         <VCard color="deepblue" dark>
-          <v-card-text>
+          <VCardText>
             <VFlex slot="header">
               <VTabs color="transparent" slider-color="white">
                 <span
@@ -19,9 +19,10 @@
                 </VTab>
               </VTabs>
             </VFlex>
-          </v-card-text>
+          </VCardText>
         </VCard>
         <VSlideYTransition>
+          <DetailCharts></DetailCharts>
           <div v-if="cPage == 0">
             <!-- <AuthorDetailChannel slot="channel" :channels="authorData.channels"></AuthorDetailChannel> -->
             <AuthorDetailRank v-bind="authorData.rank"></AuthorDetailRank>

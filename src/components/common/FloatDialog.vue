@@ -1,12 +1,6 @@
 <template>
-  <VDialog
-    v-model="dialog"
-    width="500"
-  >
-    <FloatBtn
-      slot="activator"
-      @getType="getType"
-    />
+  <VDialog v-model="dialog" width="500">
+    <FloatBtn slot="activator" @getType="getType" />
     <VCard>
       <VAlert
         :value="showAlert"
@@ -15,30 +9,27 @@
       >
         {{ msg }}
       </VAlert>
-      <VCardTitle
-        class="headline"
-        primary-title
-      >
+      <VCardTitle class="headline" primary-title>
         {{ title }}
       </VCardTitle>
       <VForm>
-        <VCardText v-if="type==='else'">
+        <VCardText v-if="type === 'else'">
           如果遇到了任何问题，或者有什么意见或者建议，请联系我：jannchie@gmail.com
         </VCardText>
         <VCardText>
           <VTextField
-            v-if="type!='else'"
+            v-if="type != 'else'"
             v-model="ID"
             required
-            :rules="[rules.required,rules.isNumber]"
+            :rules="[rules.required, rules.isNumber]"
             :label="label"
           />
         </VCardText>
-        <VDivider v-if="type!='else'" />
+        <VDivider v-if="type != 'else'" />
         <VCardActions>
           <VSpacer />
           <VBtn
-            v-if="type!='else'"
+            v-if="type != 'else'"
             v-model="valid"
             color="primary"
             flat

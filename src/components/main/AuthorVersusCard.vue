@@ -6,51 +6,41 @@
       @click.stop="toAuthorVersus"
     >
       <div style="display: flex">
-        <VCardText
-          class="competitor-div"
-          style="flex-direction:row-reverse"
-        >
+        <VCardText class="competitor-div" style="flex-direction:row-reverse">
           <VAvatar
             style="margin-left: 10px"
             @click.stop="jumpToAuthorPage(aMid)"
           >
             <VImg
-              :src="zipPic(aFace.replace('http:',''))"
-              :lazy-src="zipPic(aFace.replace('http:',''))"
+              :src="zipPic(aFace.replace('http:', ''))"
+              :lazy-src="zipPic(aFace.replace('http:', ''))"
             />
           </VAvatar>
-          <div
-            style="text-align:end"
-            class="hidden-md-and-down"
-          >
+          <div style="text-align:end" class="hidden-md-and-down">
             <div class="competitor-title">
-              {{aTitle}}
+              {{ aTitle }}
             </div>
             <div>
-              {{aName}}
+              {{ aName }}
             </div>
-            <div class="caption">{{aOfficial}}</div>
+            <div class="caption">{{ aOfficial }}</div>
           </div>
           <div
             class="r-fans-counter-mobile hidden-lg-and-up"
             style="align-items: center;"
           >
             <div class="caption">粉丝数</div>
-            <div class="font-weight-black body-2 blue--text text--darken-1">{{(aFans/10000).toFixed(2)}}</div>
+            <div class="font-weight-black body-2 blue--text text--darken-1">
+              {{ (aFans / 10000).toFixed(2) }}
+            </div>
             <div class="caption">万</div>
           </div>
           <div
             class="r-fans-counter title hidden-sm-and-down"
             style="align-items: center;"
-          >
-
-          </div>
+          ></div>
         </VCardText>
-        <div
-          class="center-info"
-          color="blue"
-          dark
-        >
+        <div class="center-info" color="blue" dark>
           <div class="title font-weight-black red--text text--darken-2">
             VS
           </div>
@@ -64,33 +54,33 @@
             @click.stop="jumpToAuthorPage(bMid)"
           >
             <VImg
-              :src="zipPic(bFace.replace('http:',''))"
-              :lazy-src="zipPic(bFace.replace('http:',''))"
+              :src="zipPic(bFace.replace('http:', ''))"
+              :lazy-src="zipPic(bFace.replace('http:', ''))"
             />
           </VAvatar>
           <div class="hidden-md-and-down">
             <div class="competitor-title">
-              {{bTitle}}
+              {{ bTitle }}
             </div>
             <div>
-              {{bName}}
+              {{ bName }}
             </div>
-            <div class="caption">{{bOfficial}}</div>
+            <div class="caption">{{ bOfficial }}</div>
           </div>
           <div
             class="l-fans-counter-mobile hidden-lg-and-up"
             style="align-items: center;"
           >
             <div class="caption">粉丝数</div>
-            <div class="font-weight-black body-2 blue--text text--darken-1">{{(bFans/10000).toFixed(2)}}</div>
+            <div class="font-weight-black body-2 blue--text text--darken-1">
+              {{ (bFans / 10000).toFixed(2) }}
+            </div>
             <div class="caption">万</div>
           </div>
           <div
             class="l-fans-counter title hidden-sm-and-down"
             style="align-items: center;"
-          >
-
-          </div>
+          ></div>
         </VCardText>
       </div>
     </MaterialCard>
@@ -164,9 +154,7 @@ export default {
     toAuthorVersus() {
       if (this.aMid != 0 && this.bMid != 0)
         this.$router.push(
-          `/author/versus?aMid=${this.aMid}&bMid=${this.bMid}&freq=${
-            this.frequently
-          }`
+          `/author/versus?aMid=${this.aMid}&bMid=${this.bMid}&freq=${this.frequently}`
         );
     }
   }

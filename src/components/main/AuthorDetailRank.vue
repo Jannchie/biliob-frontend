@@ -2,29 +2,41 @@
   <MaterialCard title="UP主排名数据">
     <div class="rank-container">
       <div style="flex-grow: 1;text-align:center">
-        <div class="rank-title subheading font-weight-bold grey--text text--darken-2">
+        <div
+          class="rank-title subheading font-weight-bold grey--text text--darken-2"
+        >
           粉丝数
         </div>
-        <div class="rank-value title font-weight-black blue--text text--darken-3">
-          {{fansInfo}}
+        <div
+          class="rank-value title font-weight-black blue--text text--darken-3"
+        >
+          {{ fansInfo }}
         </div>
         <ChevronBudget :value="dFansRank"></ChevronBudget>
       </div>
       <div style="flex-grow: 1;text-align:center">
-        <div class="rank-title subheading font-weight-bold grey--text text--darken-2">
+        <div
+          class="rank-title subheading font-weight-bold grey--text text--darken-2"
+        >
           播放量
         </div>
-        <div class="rank-value title font-weight-black blue--text text--darken-3">
-          {{archiveInfo}}
+        <div
+          class="rank-value title font-weight-black blue--text text--darken-3"
+        >
+          {{ archiveInfo }}
         </div>
         <ChevronBudget :value="dArchiveViewRank"></ChevronBudget>
       </div>
       <div style="flex-grow: 1;text-align:center">
-        <div class="rank-title subheading font-weight-bold grey--text text--darken-2">
+        <div
+          class="rank-title subheading font-weight-bold grey--text text--darken-2"
+        >
           专栏阅读
         </div>
-        <div class="rank-value title font-weight-black blue--text text--darken-3">
-          {{articleInfo}}
+        <div
+          class="rank-value title font-weight-black blue--text text--darken-3"
+        >
+          {{ articleInfo }}
         </div>
         <ChevronBudget :value="dArticleViewRank"></ChevronBudget>
       </div>
@@ -37,7 +49,7 @@
         仅包括已经观测UP主
       </div>
       <div>
-        {{formatedDate}}
+        {{ formatedDate }}
       </div>
     </div>
   </MaterialCard>

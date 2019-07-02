@@ -6,13 +6,7 @@
     :value="bottomNavShow"
     class="hidden-lg-and-up"
   >
-    <VBtn
-      color="red"
-      :ripple="false"
-      flat
-      value="video"
-      @click.stop="toVideo"
-    >
+    <VBtn color="red" :ripple="false" flat value="video" @click.stop="toVideo">
       <span>视频追踪</span>
       <VIcon>mdi-video-outline</VIcon>
     </VBtn>
@@ -26,13 +20,7 @@
       <span>UP主追踪</span>
       <VIcon>mdi-account-search-outline</VIcon>
     </VBtn>
-    <VBtn
-      color="teal"
-      :ripple="false"
-      flat
-      value="rank"
-      @click.stop="toRank"
-    >
+    <VBtn color="teal" :ripple="false" flat value="rank" @click.stop="toRank">
       <span>排行榜</span>
       <VIcon>mdi-chart-histogram</VIcon>
     </VBtn>

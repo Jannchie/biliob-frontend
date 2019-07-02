@@ -1,12 +1,7 @@
 <template>
   <VCard class="card">
-    <VResponsive :aspect-ratio="8/5">
-      <Chart
-        class="chart"
-        :theme="theme"
-        :auto-resize="true"
-        :options="fans"
-      />
+    <VResponsive :aspect-ratio="8 / 5">
+      <Chart class="chart" :theme="theme" :auto-resize="true" :options="fans" />
     </VResponsive>
   </VCard>
 </template>

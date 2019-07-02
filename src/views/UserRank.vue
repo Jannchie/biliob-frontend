@@ -10,7 +10,6 @@
         :exp="eachUser.exp"
         :create-time="eachUser.id.date"
       >
-
       </UserListItem>
     </div>
     <div slot="aside-cards">

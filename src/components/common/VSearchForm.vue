@@ -1,8 +1,5 @@
 <template>
-  <VForm
-    v-model="valid"
-    @submit.native.prevent="submit"
-  >
+  <VForm v-model="valid" @submit.native.prevent="submit">
     <VTextField
       v-model="searchText"
       solo

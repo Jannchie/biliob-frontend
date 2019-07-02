@@ -1,22 +1,15 @@
 <template>
-  <MaterialCard
-    class="aside-card"
-    :title="title"
-  >
-
+  <MaterialCard class="aside-card" :title="title">
     <VList two-line>
       <template v-for="eachVideo in authorTopVideo.content">
         <VDivider :key="eachVideo.title" />
         <VListTile
           :key="eachVideo.aid"
           style="width: 100%"
-          :to="'/author/'+eachVideo.mid+'/video/'+eachVideo.aid"
+          :to="'/author/' + eachVideo.mid + '/video/' + eachVideo.aid"
           ripple
         >
-          <VListTileAvatar
-            :key="eachVideo.title"
-            tile
-          >
+          <VListTileAvatar :key="eachVideo.title" tile>
             <VImg :src="zipPic(eachVideo.pic)" />
           </VListTileAvatar>
           <VListTileContent>
@@ -24,7 +17,9 @@
               {{ eachVideo.title }}
             </VListTileTitle>
             <VListTileSubTitle class="caption subtext">
-              分区：{{ eachVideo.channel }} 投稿时间：{{ dateToStr(eachVideo.datetime) }}
+              分区：{{ eachVideo.channel }} 投稿时间：{{
+                dateToStr(eachVideo.datetime)
+              }}
             </VListTileSubTitle>
           </VListTileContent>
         </VListTile>

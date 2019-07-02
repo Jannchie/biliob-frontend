@@ -1,9 +1,7 @@
 <template>
   <div class="caption font-weight-bold grey--text text--darken-2">
-    <VIcon
-      :class="color"
-      small
-    >{{icon}}</VIcon><span :class="color">{{value}}</span>
+    <VIcon :class="color" small>{{ icon }}</VIcon
+    ><span :class="color">{{ value }}</span>
   </div>
 </template>
 <script>
@@ -34,5 +32,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

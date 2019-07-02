@@ -1,12 +1,13 @@
 <template>
   <div>
-    <MaterialCard
-      style="min-height: 180px;"
-      title="榜首粉丝实时差距"
-    >
+    <MaterialCard style="min-height: 180px;" title="榜首粉丝实时差距">
       <div style="display: flex; justify-content: space-between">
         <div class="vs-text">
-          <div class="display-4 font-weight-black red--text  hidden-sm-and-down"> VS </div>
+          <div
+            class="display-4 font-weight-black red--text  hidden-sm-and-down"
+          >
+            VS
+          </div>
           <div class="display-1">实时差距</div>
           <div>
             <VOdometer
@@ -25,13 +26,10 @@
             format="(,ddd).d"
           ></VOdometer>
           <div style="text-align: center">
-            <VAvatar
-              size="100"
-              @click.stop="jumpToAuthorPage(aMid)"
-            >
+            <VAvatar size="100" @click.stop="jumpToAuthorPage(aMid)">
               <VImg
-                :src="zipPic(aFace.replace('http:',''))"
-                :lazy-src="zipPic(aFace.replace('http:',''))"
+                :src="zipPic(aFace.replace('http:', ''))"
+                :lazy-src="zipPic(aFace.replace('http:', ''))"
               />
             </VAvatar>
           </div>
@@ -39,7 +37,7 @@
             :class="`display-2 grey--text text--darken-3`"
             style="text-align: center; margin-top: 10px"
           >
-            {{aName}}
+            {{ aName }}
           </div>
         </div>
         <div class="hidden-sm-and-down">
@@ -56,8 +54,8 @@
               @click.stop="jumpToAuthorPage(bMid)"
             >
               <VImg
-                :src="zipPic(bFace.replace('http:',''))"
-                :lazy-src="zipPic(bFace.replace('http:',''))"
+                :src="zipPic(bFace.replace('http:', ''))"
+                :lazy-src="zipPic(bFace.replace('http:', ''))"
               />
             </VAvatar>
           </div>
@@ -65,7 +63,7 @@
             :class="`display-2 grey--text text--darken-3`"
             style="text-align: center; margin-top: 10px"
           >
-            {{bName}}
+            {{ bName }}
           </div>
         </div>
       </div>
@@ -235,7 +233,7 @@ export default {
   }
 };
 </script>
-<style >
+<style>
 .vs-text {
   width: 200px;
   position: absolute;

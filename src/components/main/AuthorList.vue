@@ -3,16 +3,13 @@
     <div>
       <div>
         <MaterialCard class="card-tabs">
-
           <VFlex slot="header">
-            <VTabs
-              color="transparent"
-              slider-color="white"
-            >
+            <VTabs color="transparent" slider-color="white">
               <span
                 class="subheading font-weight-light mr-3"
                 style="align-self: center"
-              >排序：</span>
+                >排序：</span
+              >
               <VTab @click="sortChange(0)">
                 <VIcon style="margin-right:10px;">
                   mdi-account-multiple
@@ -34,7 +31,6 @@
             </VTabs>
           </VFlex>
           <div>
-
             <VSearchForm
               slot="search"
               hint="请输入UP主名称，或者uid"
@@ -66,16 +62,10 @@
                     v-if="eachAuthor.official !== ''"
                     class="caption  author-info"
                   >
-                    <VIcon
-                      color="#FBC02D"
-                      small
-                    >
-                      mdi-flash </VIcon>{{ eachAuthor.official }}
+                    <VIcon color="#FBC02D" small> mdi-flash </VIcon
+                    >{{ eachAuthor.official }}
                   </div>
-                  <ObserveStatus
-                    class="observe-status"
-                    :object="eachAuthor"
-                  />
+                  <ObserveStatus class="observe-status" :object="eachAuthor" />
                 </div>
               </div>
               <VDivider></VDivider>
@@ -88,15 +78,19 @@
             color="blue darken-2"
             :disabled="nextBtnDisabled"
             @click.stop="next"
-          >{{ nextBtnText }}</VBtn>
+            >{{ nextBtnText }}</VBtn
+          >
           <div v-else>
             <h4 class="blue--text text--darken-2">
-              <VIcon class="blue--text text--darken-2">mdi-ship-wheel</VIcon>抱歉！什么都没有找到QwQ
+              <VIcon class="blue--text text--darken-2">mdi-ship-wheel</VIcon
+              >抱歉！什么都没有找到QwQ
             </h4>
             <p>
               搜索功能可能并不完善，为了精确搜索请在上方输入相关UP主的ID！
             </p>
-            <p>如果搜索ID仍然没有结果，可能是因为该UP主并未被本站观测。你可以点击页面右下角的圆形按钮进行添加！</p>
+            <p>
+              如果搜索ID仍然没有结果，可能是因为该UP主并未被本站观测。你可以点击页面右下角的圆形按钮进行添加！
+            </p>
           </div>
         </MaterialCard>
       </div>
@@ -153,9 +147,7 @@ export default {
     currentPage: function changePage(page) {
       this.axios
         .get(
-          `${this.currentApiurl}?page=${page}&text=${this.text}&sort=${
-            this.sort
-          }`
+          `${this.currentApiurl}?page=${page}&text=${this.text}&sort=${this.sort}`
         )
         .then(response => {
           // 判断是否为最后一页
@@ -211,9 +203,7 @@ export default {
       this.currentPage = 0;
       this.axios
         .get(
-          `${this.currentApiurl}?page=${this.currentPage}&text=${
-            this.text
-          }&sort=${this.sort}`
+          `${this.currentApiurl}?page=${this.currentPage}&text=${this.text}&sort=${this.sort}`
         )
         .then(response => {
           this.refreshList(response);

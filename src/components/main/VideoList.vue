@@ -9,14 +9,12 @@
         />
       </div>
       <VFlex slot="header">
-        <VTabs
-          color="transparent"
-          slider-color="white"
-        >
+        <VTabs color="transparent" slider-color="white">
           <span
             class="subheading font-weight-light mr-3"
             style="align-self: center"
-          >排序：</span>
+            >排序：</span
+          >
           <VTab @click="sortChange(0)">
             <VIcon style="margin-right:10px;">
               mdi-play-circle-outline
@@ -60,31 +58,28 @@
           v-for="eachVideo in videoList.content"
           :key="eachVideo.aid"
           class="video-cards"
-          @click.stop="toVideoDetail(eachVideo.mid,eachVideo.aid)"
+          @click.stop="toVideoDetail(eachVideo.mid, eachVideo.aid)"
         >
-          <ObserveStatus
-            class="observe-status"
-            :object="eachVideo"
-          />
+          <ObserveStatus class="observe-status" :object="eachVideo" />
           <div style="padding:5px;display:flex">
             <div>
               <VImg
                 class="video-img"
-                :src="zipPic(eachVideo.pic.replace('http:',''))"
-                :lazy-src="zipPic(eachVideo.pic.replace('http:',''))"
+                :src="zipPic(eachVideo.pic.replace('http:', ''))"
+                :lazy-src="zipPic(eachVideo.pic.replace('http:', ''))"
               />
             </div>
             <div style="margin-left:10px;overflow:hidden">
-              <div class="font-weight-bold video-title text-no-wrap text-truncate">
+              <div
+                class="font-weight-bold video-title text-no-wrap text-truncate"
+              >
                 {{ eachVideo.title }}
               </div>
               <div class="caption subtext video-info">
-                <VIcon small>
-                  mdi-account-box-outline
-                </VIcon>{{ eachVideo.author }}
-                <VIcon small>
-                  mdi-bookmark-outline
-                </VIcon>{{ eachVideo.channel }}
+                <VIcon small> mdi-account-box-outline </VIcon
+                >{{ eachVideo.author }}
+                <VIcon small> mdi-bookmark-outline </VIcon
+                >{{ eachVideo.channel }}
               </div>
             </div>
           </div>
@@ -98,15 +93,19 @@
         color="blue darken-2"
         :disabled="nextBtnDisabled"
         @click.stop="next"
-      >{{nextBtnText}}</VBtn>
+        >{{ nextBtnText }}</VBtn
+      >
       <div v-else>
         <h4 class="blue--text text--darken-2">
-          <VIcon class="blue--text text--darken-2">mdi-ship-wheel</VIcon>抱歉！什么都没有找到QwQ
+          <VIcon class="blue--text text--darken-2">mdi-ship-wheel</VIcon
+          >抱歉！什么都没有找到QwQ
         </h4>
         <p>
           搜索功能可能并不完善，为了精确搜索请在上方输入相关U视频的AV号！
         </p>
-        <p>如果搜索ID仍然没有结果，可能是因为该UP主并未被本站观测。你可以点击页面右下角的圆形按钮进行添加！</p>
+        <p>
+          如果搜索ID仍然没有结果，可能是因为该UP主并未被本站观测。你可以点击页面右下角的圆形按钮进行添加！
+        </p>
       </div>
     </MaterialCard>
   </div>
@@ -220,9 +219,7 @@ export default {
       this.currentPage = 0;
       this.axios
         .get(
-          `${this.currentApiurl}?page=${this.currentPage}&text=${
-            this.text
-          }&sort=${this.sort}`
+          `${this.currentApiurl}?page=${this.currentPage}&text=${this.text}&sort=${this.sort}`
         )
         .then(response => {
           this.refreshList(response);

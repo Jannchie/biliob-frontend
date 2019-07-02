@@ -1,8 +1,5 @@
 <template>
-  <VDialog
-    v-model="dialog"
-    width="500px"
-  >
+  <VDialog v-model="dialog" width="500px">
     <VListTile
       slot="activator"
       style="width:100%"
@@ -11,7 +8,9 @@
     >
       <VListTileAvatar>
         <VAvatar size="32px">
-          <VIcon :class="color + ' white--text lighten-2 text--lighten-2'">{{icon}}</VIcon>
+          <VIcon :class="color + ' white--text lighten-2 text--lighten-2'">{{
+            icon
+          }}</VIcon>
         </VAvatar>
       </VListTileAvatar>
       <VListTileContent>
@@ -28,7 +27,9 @@
         {{ alertMsg }}
       </VAlert>
       <VCardTitle
-        :class="'headline '+ color +' lighten-1 font-weight-black white--text'"
+        :class="
+          'headline ' + color + ' lighten-1 font-weight-black white--text'
+        "
         primary-title
       >
         {{ tileTitle }}?
@@ -79,9 +80,7 @@ export default {
         .then(response => {
           this.showAlert = true;
           this.alertType = "success";
-          this.alertMsg = `操作成功！当前积分：${
-            response.data.data.credit
-          }，当前经验：${response.data.data.exp}`;
+          this.alertMsg = `操作成功！当前积分：${response.data.data.credit}，当前经验：${response.data.data.exp}`;
           this.$store.commit("setCredit", response.data.data.credit);
           this.$store.commit("setExp", response.data.data.exp);
           setTimeout(() => {

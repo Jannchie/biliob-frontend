@@ -5,22 +5,21 @@
       :key="index"
       flat
       class="px-0 py-1"
-      @click.stop="toVideo(item.mid,item.aid)"
+      @click.stop="toVideo(item.mid, item.aid)"
     >
       <div style="display: flex">
-
         <VImg
           width="100px"
           max-width="100px"
-          :aspect-ratio="16/10"
+          :aspect-ratio="16 / 10"
           style="border-radius:4px"
           :src="zipPic(item.pic)"
         />
         <div class="ml-2 body-1 video-title">
-          {{item.title}}
+          {{ item.title }}
           <div class="caption">
             <VIcon small>mdi-account</VIcon>
-            {{item.author}}
+            {{ item.author }}
           </div>
         </div>
       </div>

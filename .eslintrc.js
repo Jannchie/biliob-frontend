@@ -8,7 +8,14 @@ module.exports = {
   rules: {
     "no-console": "off",
     "no-debugger": "off",
-    "vue/component-name-in-template-casing": "warn"
+    "vue/component-name-in-template-casing": [
+      "warn",
+      "PascalCase",
+      {
+        registeredComponentsOnly: false,
+        ignores: []
+      }
+    ]
   },
 
   parserOptions: {

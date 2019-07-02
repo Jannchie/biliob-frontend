@@ -14,7 +14,9 @@
       <div
         style="position:absolute;bottom:0;width:95%"
         class="mx-3 mb-3 text-xs-left title bottom-gradient text-no-wrap text-truncate white--text"
-      >{{item.title}}</div>
+      >
+        {{ item.title }}
+      </div>
     </VCarouselItem>
   </VCarousel>
 </template>

@@ -8,7 +8,6 @@
     width="260"
   >
     <VContainer>
-
       <VList two-line>
         <VListTile>
           <VListTileAvatar>

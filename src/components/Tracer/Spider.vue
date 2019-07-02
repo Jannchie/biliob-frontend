@@ -1,9 +1,6 @@
 <template>
   <VLayout wrap>
-    <VFlex
-      lg4
-      md12
-    >
+    <VFlex lg4 md12>
       <MaterialStatsCard
         :value="spiderTasks.length"
         title="正在爬取爬虫数"
@@ -15,56 +12,38 @@
         color="green"
       ></MaterialStatsCard>
     </VFlex>
-    <VFlex
-      lg4
-      md12
-    >
+    <VFlex lg4 md12>
       <MaterialTracerCrawlCard
         title="作者爬虫运行状况"
         :value="authorListLength"
       ></MaterialTracerCrawlCard>
     </VFlex>
 
-    <VFlex
-      lg4
-      md12
-    >
+    <VFlex lg4 md12>
       <MaterialTracerCrawlCard
         title="视频爬虫运行状况"
         :value="videoListLength"
       ></MaterialTracerCrawlCard>
     </VFlex>
     <VFlex lg12>
-
       <MaterialCard
         color="green"
         title="运行中爬虫详细信息"
         text="此处显示的是目前正在运行中的爬虫状态"
       >
-        <VDataTable
-          :headers="headers"
-          :items="spiderTasks"
-          hide-actions
-        >
-          <template
-            slot="headerCell"
-            slot-scope="{ header }"
-          >
+        <VDataTable :headers="headers" :items="spiderTasks" hide-actions>
+          <template slot="headerCell" slot-scope="{ header }">
             <span
               class="subheading font-weight-light text-success text--darken-3"
               v-text="header.text"
             />
           </template>
-          <template
-            slot="items"
-            slot-scope="{ item }"
-          >
+          <template slot="items" slot-scope="{ item }">
             <td>{{ item.taskName }}</td>
             <td>{{ item.computerName }}</td>
             <td>{{ item.crawlCount }}</td>
             <td>{{ successRate(item) }}</td>
-            <td>{{ lastTime(item.startTime,item.updateTime)}}</td>
-
+            <td>{{ lastTime(item.startTime, item.updateTime) }}</td>
           </template>
         </VDataTable>
       </MaterialCard>

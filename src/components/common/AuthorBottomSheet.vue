@@ -1,13 +1,6 @@
 <template>
   <VBottomSheet v-model="sheet">
-    <VBtn
-      slot="activator"
-      color="pink lighten-2"
-      class=""
-      flat
-      block
-      dark
-    >
+    <VBtn slot="activator" color="pink lighten-2" class="" flat block dark>
       <VIcon style="margin-right:20px">mdi-infinity</VIcon>更多操作
     </VBtn>
 
@@ -21,20 +14,16 @@
       >
         <VListTileAvatar>
           <VAvatar size="32px">
-            <VIcon class="pink white--text lighten-2 text--lighten-2">mdi-home</VIcon>
+            <VIcon class="pink white--text lighten-2 text--lighten-2"
+              >mdi-home</VIcon
+            >
           </VAvatar>
         </VListTileAvatar>
         <VListTileTitle>前往UP主的个人空间</VListTileTitle>
       </VListTile>
       <VListTile
         :href="
-          `https://connect.qq.com/widget/shareqq/index.html?url=https://www.biliob.com${
-            this.$route.path
-          }&sharesource=qzone&title=biliob观测者:${
-            name
-          }的历史数据&pics=https:${
-            pic
-          }&summary=快来围观这个UP主的数据变化吧~&desc=这个UP主牛逼坏了`
+          `https://connect.qq.com/widget/shareqq/index.html?url=https://www.biliob.com${this.$route.path}&sharesource=qzone&title=biliob观测者:${name}的历史数据&pics=https:${pic}&summary=快来围观这个UP主的数据变化吧~&desc=这个UP主牛逼坏了`
         "
         target="_blank"
         class="light-blue--text lighten-2 text--lighten-2"
@@ -42,7 +31,9 @@
       >
         <VListTileAvatar>
           <VAvatar size="32px">
-            <VIcon class="light-blue white--text lighten-2 text--lighten-2">mdi-qqchat</VIcon>
+            <VIcon class="light-blue white--text lighten-2 text--lighten-2"
+              >mdi-qqchat</VIcon
+            >
           </VAvatar>
         </VListTileAvatar>
         <VListTileContent>
@@ -61,7 +52,8 @@
         :request-url="`/user/author/${mid}/data`"
       >
         <VCardText slot="card-text">
-          立即刷新需要<span class="font-weight-black red--text">消耗5积分</span>。
+          立即刷新需要<span class="font-weight-black red--text">消耗5积分</span
+          >。
           <br />
           立即刷新需要数秒至数分钟的操作时间
           <br />
@@ -80,7 +72,9 @@
         :request-url="`/user/author/${mid}/status?forceFocus=true`"
       >
         <VCardText slot="card-text">
-          强行观测需要<span class="font-weight-black red--text">消耗200积分</span>。
+          强行观测需要<span class="font-weight-black red--text"
+            >消耗200积分</span
+          >。
           <br />
           打破取消爬取机制，保持数据每日更新。
           <br />

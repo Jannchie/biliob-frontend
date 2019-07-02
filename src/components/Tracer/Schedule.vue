@@ -1,9 +1,6 @@
 <template>
   <VFadeTransition mode="out-in">
-    <VLayout
-      v-if="loaded"
-      wrap
-    >
+    <VLayout v-if="loaded" wrap>
       <VFlex md12>
         <MaterialProgressCard
           :hidden="progressColor == ''"
@@ -18,36 +15,26 @@
       </VFlex>
 
       <VFlex lg12>
-
         <MaterialCard
           color="green"
           title="计划任务运行情况"
           text="计划任务运行时长和耗时分析"
         >
-          <VDataTable
-            :headers="headers"
-            :items="progressTasks"
-            hide-actions
-          >
-            <template
-              slot="headerCell"
-              slot-scope="{ header }"
-            >
+          <VDataTable :headers="headers" :items="progressTasks" hide-actions>
+            <template slot="headerCell" slot-scope="{ header }">
               <span
                 class="subheading font-weight-light text-success text--darken-3"
                 v-text="header.text"
               />
             </template>
-            <template
-              slot="items"
-              slot-scope="{ item }"
-            >
+            <template slot="items" slot-scope="{ item }">
               <td>{{ item.taskName }}</td>
               <td>{{ item.computerName }}</td>
-              <td>{{ lastTime(item.startTime.replace('+0000',''),new Date())}}</td>
-              <td>{{ lastTime(item.startTime,item.updateTime)}}</td>
-              <td>{{ item.msg}}</td>
-
+              <td>
+                {{ lastTime(item.startTime.replace("+0000", ""), new Date()) }}
+              </td>
+              <td>{{ lastTime(item.startTime, item.updateTime) }}</td>
+              <td>{{ item.msg }}</td>
             </template>
           </VDataTable>
         </MaterialCard>

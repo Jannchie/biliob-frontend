@@ -6,11 +6,7 @@
       size="80"
       @click.stop="toAuthor()"
     >
-      <img
-        height="40px"
-        width="40px"
-        :src="zipPic(authorData.face)"
-      >
+      <img height="40px" width="40px" :src="zipPic(authorData.face)" />
     </VAvatar>
     <FocusBtn
       v-if="$store.getters.getLoginState"
@@ -18,12 +14,17 @@
       class="focus-btn"
     />
     <div class="text-xs-center">
-      <h4 class="card-title font-weight-light">{{ authorData.name }}
+      <h4 class="card-title font-weight-light">
+        {{ authorData.name }}
         <LevelIcon :level="authorData.level" />
         <SexIcon :sex="authorData.sex" />
       </h4>
-      <h6 class="category text-gray font-weight-thin mb-3">粉丝数:{{ authorData.cFans }}</h6>
-      <p class="card-description font-weight-light">{{ authorData.official}}</p>
+      <h6 class="category text-gray font-weight-thin mb-3">
+        粉丝数:{{ authorData.cFans }}
+      </h6>
+      <p class="card-description font-weight-light">
+        {{ authorData.official }}
+      </p>
     </div>
   </MaterialCard>
 </template>

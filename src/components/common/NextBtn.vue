@@ -5,7 +5,8 @@
     color="blue darken-2"
     :disabled="nextBtnDisabled"
     @click.stop="getData"
-  >{{nextBtnText}}</VBtn>
+    >{{ nextBtnText }}</VBtn
+  >
 </template>
 <script>
 export default {

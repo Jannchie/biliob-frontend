@@ -1,9 +1,5 @@
 <template>
-  <div
-    :style="styles"
-    :class="classes"
-    class="v-offset"
-  >
+  <div :style="styles" :class="classes" class="v-offset">
     <slot />
   </div>
 </template>

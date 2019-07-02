@@ -1,7 +1,7 @@
 <template>
   <VCard :hidden="hidden">
     <div :class="backgroundStyle">
-      <img height="188px">
+      <img height="188px" />
     </div>
   </VCard>
 </template>

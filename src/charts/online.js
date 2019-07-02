@@ -63,13 +63,15 @@ function drawChart(data) {
         params.forEach(e => {
           tempData.push([e.seriesName, e.color, e.value[1]]);
         });
-        tempData.sort((a, b) => b[2] - a[2]).forEach(e => {
-          o += `<div class="caption">
+        tempData
+          .sort((a, b) => b[2] - a[2])
+          .forEach(e => {
+            o += `<div class="caption">
           <span style="color:${e[1]};width:10px;height:10px"> ● </span>
           <span">${e[0]}: ${e[2]}</span> 
           </div>
           `;
-        });
+          });
         return o;
       }
     },

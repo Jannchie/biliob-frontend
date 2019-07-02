@@ -3,10 +3,7 @@
     <div slot="main-cards">
       <VCard>
         <VCardTitle>
-          <img
-            style="margin: 0 auto"
-            src="../../public/img/biliob_qr.png"
-          />
+          <img style="margin: 0 auto" src="../../public/img/biliob_qr.png" />
         </VCardTitle>
         <VCardText
           class="font-weight-black text--darken-3 blue--text caption"
@@ -20,7 +17,8 @@
             block
             outline
             class="font-weight-black text--darken-3 blue--text title"
-          >手机端网站点我跳转到下载链接</VBtn>
+            >手机端网站点我跳转到下载链接</VBtn
+          >
         </VCardText>
       </VCard>
     </div>

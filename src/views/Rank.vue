@@ -1,17 +1,14 @@
 <template>
   <MainLayout>
-
     <div slot="main-cards">
       <MaterialCard class="card-tabs">
         <VFlex slot="header">
-          <VTabs
-            color="transparent"
-            slider-color="white"
-          >
+          <VTabs color="transparent" slider-color="white">
             <span
               class="subheading font-weight-light mr-3"
               style="align-self: center"
-            >类目：</span>
+              >类目：</span
+            >
             <VTab @click="getData(0)">
               <VIcon style="margin-right:10px;">
                 mdi-heart
@@ -19,19 +16,13 @@
               涨粉
             </VTab>
             <VTab @click="getData(1)">
-              <VIcon style="margin-right:10px;">
-                mdi-heart-broken
-              </VIcon>掉粉
+              <VIcon style="margin-right:10px;"> mdi-heart-broken </VIcon>掉粉
             </VTab>
             <VTab @click="getData(2)">
-              <VIcon style="margin-right:10px;">
-                mdi-video-vintage
-              </VIcon>番剧
+              <VIcon style="margin-right:10px;"> mdi-video-vintage </VIcon>番剧
             </VTab>
             <VTab @click="getData(3)">
-              <VIcon style="margin-right:10px;">
-                mdi-rabbit
-              </VIcon>国创
+              <VIcon style="margin-right:10px;"> mdi-rabbit </VIcon>国创
             </VTab>
           </VTabs>
         </VFlex>
@@ -44,15 +35,12 @@
               class="my-4"
               @click.stop="linkTo(eachData)"
             >
-              <VAvatar
-                size="60px"
-                class="mr-4"
-              >
-                <img :src="zipPic(eachData.face)">
+              <VAvatar size="60px" class="mr-4">
+                <img :src="zipPic(eachData.face)" />
               </VAvatar>
               <div>
-                <p>{{eachData.name}}</p>
-                <p>{{eachData.official}}</p>
+                <p>{{ eachData.name }}</p>
+                <p>{{ eachData.official }}</p>
               </div>
               <VChip
                 :color="getColor(index)"
@@ -61,15 +49,11 @@
                 style="position:absolute;right:16px;width:80px"
               >
                 <VAvatar>
-                  <VIcon
-                    class="mx-0"
-                    color="white"
-                    right
-                  >
-                    {{getIcon(index)}}
+                  <VIcon class="mx-0" color="white" right>
+                    {{ getIcon(index) }}
                   </VIcon>
                 </VAvatar>
-                {{Math.abs(eachData.cRate)}}
+                {{ Math.abs(eachData.cRate) }}
               </VChip>
             </div>
           </div>
@@ -89,24 +73,24 @@
                 <VContainer class="pt-0 body-1">
                   <VLayout>
                     <VFlex xs-12>
-                      <h4 class="font-weight-bold">{{eachData.title}}</h4>
+                      <h4 class="font-weight-bold">{{ eachData.title }}</h4>
                     </VFlex>
                   </VLayout>
                   <VLayout row>
                     <VFlex xs-2>
-                      播放 <span>{{eachData.currentPlay}}</span>
+                      播放 <span>{{ eachData.currentPlay }}</span>
                     </VFlex>
                     <VFlex xs-2>
-                      综分 <span>{{eachData.currentPts}}</span>
+                      综分 <span>{{ eachData.currentPts }}</span>
                     </VFlex>
                     <VFlex xs-2>
-                      追番 <span>{{eachData.currentWatch}}</span>
+                      追番 <span>{{ eachData.currentWatch }}</span>
                     </VFlex>
                     <VFlex xs-2>
-                      评论 <span>{{eachData.currentReview}}</span>
+                      评论 <span>{{ eachData.currentReview }}</span>
                     </VFlex>
                     <VFlex xs-4>
-                      弹幕 <span>{{eachData.currentDanmaku}}</span>
+                      弹幕 <span>{{ eachData.currentDanmaku }}</span>
                     </VFlex>
                   </VLayout>
                 </VContainer>
@@ -115,13 +99,9 @@
           </div>
         </div>
       </MaterialCard>
-
     </div>
     <div slot="aside-cards">
-      <MaterialCard
-        class="body-1"
-        title="排行榜说明"
-      >
+      <MaterialCard class="body-1" title="排行榜说明">
         <li>
           本排行榜数据每日更新一次。
         </li>

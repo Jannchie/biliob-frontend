@@ -1,7 +1,7 @@
 <template>
   <div>
     <li>
-      {{userAgent}}
+      {{ userAgent }}
     </li>
 
     <MaterialStatsCard

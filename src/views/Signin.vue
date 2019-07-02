@@ -1,34 +1,31 @@
 <template>
   <VLayout justify-center>
-    <VFlex
-      lg5
-      md12
-    >
+    <VFlex lg5 md12>
       <MaterialCard title="注册">
         <div style="position: absolute;left:15px;right:15px;">
           <MaterialNotification
             :value="alertSuccess"
             type="success"
             transition="scale-transition"
-          >恭喜！操作成功！</MaterialNotification>
+            >恭喜！操作成功！</MaterialNotification
+          >
           <MaterialNotification
             :value="alertError"
             type="error"
             transition="scale-transition"
-          >抱歉！{{ errorMsg }}!</MaterialNotification>
+            >抱歉！{{ errorMsg }}!</MaterialNotification
+          >
         </div>
 
         <div>
-          <div class="body-1">这是一个第三方网站，账号信息和B站并不通用。
-            <br>登录后可以自主添加视频追踪，还能够实现关注UP主和收藏视频的功能。
-            <br>登录后还能签到获取积分，消耗积分获取更多数据情报。
+          <div class="body-1">
+            这是一个第三方网站，账号信息和B站并不通用。
+            <br />登录后可以自主添加视频追踪，还能够实现关注UP主和收藏视频的功能。
+            <br />登录后还能签到获取积分，消耗积分获取更多数据情报。
           </div>
         </div>
         <VCardActions>
-          <VForm
-            v-model="valid"
-            style="width:100%"
-          >
+          <VForm v-model="valid" style="width:100%">
             <VTextField
               v-model="name"
               :rules="[rules.required]"
@@ -38,7 +35,7 @@
             <VTextField
               v-model="mail"
               :readonly="mailDisabled"
-              :rules="[rules.required,rules.email]"
+              :rules="[rules.required, rules.email]"
               browser-autocomplete="mail"
               label="请输入邮箱"
             />
@@ -50,17 +47,14 @@
                   label="请输入验证激活码"
                 />
               </VFlex>
-              <VFlex
-                md4
-                class="align-self-center"
-              >
+              <VFlex md4 class="align-self-center">
                 <VBtn
                   flat
                   :loading="loading"
                   color="primary"
                   :disabled="!mailVerification(mail)"
                   @click.stop="sendActivationCode"
-                >向邮箱发送验证码
+                  >向邮箱发送验证码
                 </VBtn>
               </VFlex>
             </VLayout>
@@ -73,7 +67,7 @@
               browser-autocomplete="new-password"
               :rules="[rules.required]"
               hint="至少6个字符"
-              @click:append="show = !show;"
+              @click:append="show = !show"
             />
             <VTextField
               :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
@@ -84,15 +78,11 @@
               label="请再输入一次密码呗"
               browser-autocomplete="new-password"
               hint="至少6个字符"
-              @click:append="show = !show;"
+              @click:append="show = !show"
             />
             <Center>
-              <VBtn
-                color="primary"
-                :disabled="!valid"
-                @click="submit"
-              >注册
-
+              <VBtn color="primary" :disabled="!valid" @click="submit"
+                >注册
               </VBtn>
             </Center>
           </VForm>

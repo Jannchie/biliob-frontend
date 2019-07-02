@@ -1,11 +1,8 @@
 <template>
-  <VTimeline
-    class="timeline"
-    dense
-  >
+  <VTimeline class="timeline" dense>
     <VSlideYTransition group>
       <VTimelineItem
-        v-for="(eachPost,index) in timelinePost"
+        v-for="(eachPost, index) in timelinePost"
         :key="index"
         :color="getColor(eachPost.type)"
         :icon="getIcon(eachPost.type)"
@@ -14,12 +11,14 @@
         <VLayout pt-3>
           <VFlex>
             <div class="title">
-              {{ eachPost.title }}<span
+              {{ eachPost.title
+              }}<span
                 class="grey white--text darken-2"
                 style="border-radius:3px;padding:1px 5px;margin:0px 5px"
-              >{{eachPost.version}}</span>
+                >{{ eachPost.version }}</span
+              >
             </div>
-            <br>
+            <br />
             <div class="subheading mb-1">
               {{ eachPost.date }}
             </div>
@@ -29,7 +28,7 @@
                 :key="eachLine.text"
                 type="circle"
               >
-                <VIcon small>{{getListIcon(eachLine.type)}}</VIcon>
+                <VIcon small>{{ getListIcon(eachLine.type) }}</VIcon>
                 {{ eachLine.text }}
               </div>
             </div>

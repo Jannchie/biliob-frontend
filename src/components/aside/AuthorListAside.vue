@@ -1,9 +1,10 @@
 <template>
   <div>
-
     <MaterialCard title="数据说明">
       <div class="body-1">
-        <li>这里可以查询所有<span class="green--text">正在追踪</span>的UP主。</li>
+        <li>
+          这里可以查询所有<span class="green--text">正在追踪</span>的UP主。
+        </li>
         <li>
           <span
             class="white--text px-1 "
@@ -13,10 +14,12 @@
           </span>
           一天更新一次UP主的数据。
         </li>
-        <li><span
+        <li>
+          <span
             class="white--text px-1 "
             style="background-color:#FF5722;border-radius:2px;margin-right:5px"
-          >保守观测</span>
+            >保守观测</span
+          >
           变化幅度太小的UP主数据将停止更新，但可以手动刷新。
         </li>
         <li>
@@ -34,13 +37,10 @@
         </div>
       </div>
     </MaterialCard>
-    <MaterialChartCard
-      :options="options"
-      class="body-1"
-    >
-      <p>收录UP主总数 {{count}}</p>
-      <p>正在观测UP主总数 {{focusCount}}</p>
-      <p>强行观测UP主总数 {{forceFocusCount}}</p>
+    <MaterialChartCard :options="options" class="body-1">
+      <p>收录UP主总数 {{ count }}</p>
+      <p>正在观测UP主总数 {{ focusCount }}</p>
+      <p>强行观测UP主总数 {{ forceFocusCount }}</p>
     </MaterialChartCard>
     <slot name="link" />
   </div>

@@ -1,8 +1,5 @@
 <template>
-  <VDialog
-    :value="show"
-    width="500"
-  >
+  <VDialog :value="show" width="500">
     <VCard>
       <VCardTitle
         class="headline blue darken-2 white--text font-weight-black"
@@ -13,36 +10,34 @@
 
       <VCardText>
         <span display="flex">
-          <span
-            class="blue white--text darken-2"
-            style="padding:1px 5px;"
-          >版本</span>
+          <span class="blue white--text darken-2" style="padding:1px 5px;"
+            >版本</span
+          >
           <span
             class="grey white--text darken-2"
             style="padding:1px 5px;margin-right:10px"
-          >{{log.version}}</span>
+            >{{ log.version }}</span
+          >
         </span>
         <span display="flex">
-          <span
-            class="green white--text darken-2"
-            style="padding:1px 5px;"
-          >日期</span>
+          <span class="green white--text darken-2" style="padding:1px 5px;"
+            >日期</span
+          >
           <span
             class="grey white--text darken-2"
             style="padding:1px 5px;margin-right:10px;"
-          >{{log.date}}</span>
+            >{{ log.date }}</span
+          >
         </span>
         <div
           class="subheading font-weight-black"
           style="margin-top:10px;margin-bottom:5px"
-        >近期更新内容</div>
+        >
+          近期更新内容
+        </div>
         <div class="caption mb-2">
-          <div
-            v-for="eachLine in log.list"
-            :key="eachLine.text"
-            type="circle"
-          >
-            <VIcon small>{{getListIcon(eachLine.type)}}</VIcon>
+          <div v-for="eachLine in log.list" :key="eachLine.text" type="circle">
+            <VIcon small>{{ getListIcon(eachLine.type) }}</VIcon>
             {{ eachLine.text }}
           </div>
         </div>
@@ -52,11 +47,7 @@
 
       <VCardActions>
         <VSpacer></VSpacer>
-        <VBtn
-          color="primary"
-          flat
-          @click="show = false"
-        >
+        <VBtn color="primary" flat @click="show = false">
           I got it
         </VBtn>
       </VCardActions>

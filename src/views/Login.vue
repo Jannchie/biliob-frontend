@@ -1,9 +1,6 @@
 <template>
   <VLayout justify-center>
-    <VFlex
-      lg5
-      md12
-    >
+    <VFlex lg5 md12>
       <MaterialCard title="登录">
         <div>
           <MaterialNotification
@@ -18,15 +15,12 @@
           <div>
             <div class="body-1">
               这是一个第三方网站，账号信息和B站并不通用，
-              <br>新用户请点击注册按钮注册一个账号。
+              <br />新用户请点击注册按钮注册一个账号。
             </div>
           </div>
         </VCardTitle>
         <VCardActions>
-          <VForm
-            v-model="valid"
-            style="width:100%"
-          >
+          <VForm v-model="valid" style="width:100%">
             <VTextField
               v-model="name"
               :rules="[rules.required]"
@@ -40,18 +34,14 @@
               :type="show ? 'text' : 'password'"
               name="input"
               label="密码"
-              :rules="[rules.required,rules.min]"
+              :rules="[rules.required, rules.min]"
               browser-autocomplete="current-password"
               hint="至少6个字符"
               class="input-group--focused"
               @click:append="show = !show"
             />
             <Center>
-              <VBtn
-                color="primary"
-                :disabled="!valid"
-                @click="submit"
-              >
+              <VBtn color="primary" :disabled="!valid" @click="submit">
                 登录
               </VBtn>
               <VBtn to="/signin">

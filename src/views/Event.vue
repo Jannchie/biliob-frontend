@@ -9,16 +9,8 @@
           class="event-card mb-1"
         >
           <VCardTitle @click.stop="toAuthor(eachData.mid)">
-
-            <div
-              style="display:flex;"
-              class="text-no-wrap"
-            >
-              <VAvatar
-                small
-                size="42"
-                style="margin-right:12px"
-              >
+            <div style="display:flex;" class="text-no-wrap">
+              <VAvatar small size="42" style="margin-right:12px">
                 <img
                   :src="zipPic(eachData.face.replace('http:', ''))"
                   :alt="eachData.author"
@@ -34,51 +26,49 @@
                 </div>
               </div>
               <div
-                :class="
-                `float-info`
-              "
+                :class="`float-info`"
                 style="position:absolute;right:12px;text-align:right"
               >
                 <img
                   v-if="eachData.info === '新星爆发'"
                   height="40"
                   src="../../public/img/pendent/新星爆发.png"
-                >
+                />
                 <img
                   v-else-if="eachData.info === '大量涨粉'"
                   height="40"
                   src="../../public/img/pendent/大量涨粉.png"
-                >
+                />
                 <img
                   v-else-if="eachData.info === '史诗级涨粉'"
                   height="40"
                   src="../../public/img/pendent/史诗级涨粉.png"
-                >
+                />
                 <img
                   v-else-if="eachData.info === '传说级涨粉'"
                   height="40"
                   src="../../public/img/pendent/传说级涨粉.png"
-                >
+                />
                 <img
                   v-else-if="eachData.info === '急转直下'"
                   height="40"
                   src="../../public/img/pendent/急转直下.png"
-                >
+                />
                 <img
                   v-else-if="eachData.info === '大量掉粉'"
                   height="40"
                   src="../../public/img/pendent/大量掉粉.png"
-                >
+                />
                 <img
                   v-else-if="eachData.info === '雪崩级掉粉'"
                   height="40"
                   src="../../public/img/pendent/雪崩级掉粉.png"
-                >
+                />
                 <img
                   v-else-if="eachData.info === '末日级掉粉'"
                   height="40"
                   src="../../public/img/pendent/末日级掉粉.png"
-                >
+                />
               </div>
               <div hidden>
                 <div>
@@ -90,11 +80,13 @@
                   ></MyBadget>
                 </div>
                 <div>
-                  <span :class="
+                  <span
+                    :class="
                       `${getColor(
                         eachData.info
                       )}--text font-weight-black text--darken-1`
-                    ">
+                    "
+                  >
                     {{ eachData.deltaRate }}%
                   </span>
                   <!-- <MyBadget
@@ -113,10 +105,7 @@
             @click.stop="toVideo(eachData.mid, eachData.cause.aid)"
           >
             <div style="display:flex;">
-              <img
-                :src="eachData.cause.pic"
-                class="video-pic"
-              />
+              <img :src="eachData.cause.pic" class="video-pic" />
               <div class="text-no-wrap overflow-hidden">
                 <div class=" text-truncate">
                   {{ eachData.cause.title }}
@@ -125,7 +114,8 @@
                   <VIcon small>mdi-bookmark-outline</VIcon>
                   {{ eachData.cause.channel
                   }}<span>
-                    <VIcon small>mdi-bookmark-outline</VIcon>{{ eachData.cause.subChannel }}
+                    <VIcon small>mdi-bookmark-outline</VIcon
+                    >{{ eachData.cause.subChannel }}
                   </span>
                 </div>
               </div>
@@ -140,13 +130,14 @@
       </VSlideYTransition>
     </div>
     <div slot="aside-cards">
-      <MaterialCard
-        title="粉丝变动观测说明"
-        style="margin-bottom:5px"
-      >
+      <MaterialCard title="粉丝变动观测说明" style="margin-bottom:5px">
         <VCardText class="caption">
           此页面展示了粉丝数发生剧烈波动的UP主。<br />
-          由于<span class="text--darken-2 red--text">发布视频</span>、<span class="text--darken-2 blue--text">抽奖开奖</span>、<span class="text--darken-2 green--text">石锤锤爆</span>等原因，UP主的粉丝数可能发生剧烈变化，而这种剧烈变化是观测者们喜闻乐见的。<br />
+          由于<span class="text--darken-2 red--text">发布视频</span>、<span
+            class="text--darken-2 blue--text"
+            >抽奖开奖</span
+          >、<span class="text--darken-2 green--text">石锤锤爆</span
+          >等原因，UP主的粉丝数可能发生剧烈变化，而这种剧烈变化是观测者们喜闻乐见的。<br />
           BiliOB观测者将这些剧烈波动记录下来，并集中进行展示。
         </VCardText>
         <VDivider></VDivider>
@@ -181,23 +172,30 @@
             每日掉粉数突破5W
           </li>
           <li>
-            <span class="text--darken-2 blue--text">新星爆发</span>:日涨粉超过粉丝总数的20%
+            <span class="text--darken-2 blue--text">新星爆发</span
+            >:日涨粉超过粉丝总数的20%
           </li>
         </VCardText>
         <VDivider></VDivider>
         <VCardText class="caption">
           针对不同可能的情况，变化率的含义也不同。
           <li>
-            对于<span class="text--darken-2 red--text">大量涨粉、史诗级涨粉、传说级涨粉</span>事件，变化率是当日涨粉量较上周平均增量的百分比。
+            对于<span class="text--darken-2 red--text"
+              >大量涨粉、史诗级涨粉、传说级涨粉</span
+            >事件，变化率是当日涨粉量较上周平均增量的百分比。
           </li>
           <li>
-            对于<span class="text--darken-2 green--text">大量掉粉、雪崩级掉粉、末日级掉粉</span>事件，变化率是当日掉粉量较上日掉粉量的百分比。
+            对于<span class="text--darken-2 green--text"
+              >大量掉粉、雪崩级掉粉、末日级掉粉</span
+            >事件，变化率是当日掉粉量较上日掉粉量的百分比。
           </li>
           <li>
-            对于<span class="text--darken-2 green--text">急转直下</span>事件，没有变化率之说。
+            对于<span class="text--darken-2 green--text">急转直下</span
+            >事件，没有变化率之说。
           </li>
           <li>
-            对于<span class="text--darken-2 blue--text">新星爆发</span>事件，变化率代表日增量与该UP主粉丝数总量的百分比。
+            对于<span class="text--darken-2 blue--text">新星爆发</span
+            >事件，变化率代表日增量与该UP主粉丝数总量的百分比。
           </li>
         </VCardText>
       </MaterialCard>

@@ -1,6 +1,6 @@
 <template>
   <span :class="`badget white--text caption ${roleBadgetColor}`">
-    <VIcon small>mdi-account</VIcon> {{role}}
+    <VIcon small>mdi-account</VIcon> {{ role }}
   </span>
 </template>
 <script>
