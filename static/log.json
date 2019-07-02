@@ -1394,5 +1394,17 @@
       }
     ],
     "type": "unimportant"
+  },
+  {
+    "title": "粉丝变动效率",
+    "version": "ver.6.4.0",
+    "date": "2019-07-02",
+    "list": [
+      {
+        "text": "重构了作者页面，添加了粉丝变动效率的显示",
+        "type": "feature"
+      }
+    ],
+    "type": "important"
   }
 ]
