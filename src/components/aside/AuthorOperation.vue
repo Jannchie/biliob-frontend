@@ -9,7 +9,7 @@
   </MaterialCard>
 </template>
 <script>
-import AuthorBottomSheet from "../common/AuthorBottomSheet.vue";
+import AuthorBottomSheet from "../author/BottomSheet.vue";
 
 export default {
   components: { AuthorBottomSheet },

@@ -267,8 +267,6 @@ export default {
 };
 </script>
 <style scoped>
-.event-card {
-}
 .float-info {
   margin-left: 20px;
   opacity: 0.75;
