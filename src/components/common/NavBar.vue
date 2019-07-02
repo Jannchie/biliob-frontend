@@ -238,6 +238,19 @@
           </VListTileContent>
         </VListTile>
       </VList>
+      <VList dense>
+        <VListTile class="nav-list-tile" ripple @click.stop="toDonate">
+          <VListTileAvatar>
+            <CircleIconBtn>mdi-currency-cny</CircleIconBtn>
+          </VListTileAvatar>
+          <VListTileContent>
+            <VListTileTitle
+              :class="`font-weight-regular grey--text text--${brightness}-2`"
+              >援助与捐赠</VListTileTitle
+            >
+          </VListTileContent>
+        </VListTile>
+      </VList>
       <!-- <div
         :hidden="egg"
         style="position:absolute ;bottom:16px"
@@ -412,6 +425,9 @@ export default {
     },
     toAndroidPage() {
       this.$router.push("/download/android");
+    },
+    toDonate() {
+      this.$router.push("/donate");
     },
     darkMode() {
       this.$store.commit("setDark");

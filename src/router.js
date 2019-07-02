@@ -21,6 +21,7 @@ const UserRecord = () => import("./views/UserRecord.vue");
 const Test = () => import("./views/Test.vue");
 const Android = () => import("./views/Android.vue");
 const AuthorVersus = () => import("./views/AuthorVersus.vue");
+const Donate = () => import("./views/Donate.vue");
 const Tracer = () => import("./views/Tracer.vue");
 const TracerDashboard = () => import("@/components/Tracer/Dashboard.vue");
 const TracerSpider = () => import("@/components/Tracer/Spider.vue");
@@ -116,6 +117,10 @@ export default new Router({
         {
           path: "/download/android",
           component: Android
+        },
+        {
+          path: "/donate",
+          component: Donate
         }
       ]
     },
