@@ -212,6 +212,20 @@
       </VList>
       <VDivider></VDivider>
       <VList dense>
+        <VListTile class="nav-list-tile" ripple @click.stop="toDonate">
+          <VListTileAvatar>
+            <CircleIconBtn>mdi-currency-cny</CircleIconBtn>
+          </VListTileAvatar>
+          <VListTileContent>
+            <VListTileTitle
+              :class="`font-weight-regular grey--text text--${brightness}-2`"
+              >援助与捐赠</VListTileTitle
+            >
+          </VListTileContent>
+        </VListTile>
+      </VList>
+
+      <VList dense>
         <VListTile class="nav-list-tile" ripple @click.stop="darkMode">
           <VListTileAvatar>
             <CircleIconBtn>{{ darkModeIcon }}</CircleIconBtn>
@@ -238,19 +252,7 @@
           </VListTileContent>
         </VListTile>
       </VList>
-      <VList dense>
-        <VListTile class="nav-list-tile" ripple @click.stop="toDonate">
-          <VListTileAvatar>
-            <CircleIconBtn>mdi-currency-cny</CircleIconBtn>
-          </VListTileAvatar>
-          <VListTileContent>
-            <VListTileTitle
-              :class="`font-weight-regular grey--text text--${brightness}-2`"
-              >援助与捐赠</VListTileTitle
-            >
-          </VListTileContent>
-        </VListTile>
-      </VList>
+
       <!-- <div
         :hidden="egg"
         style="position:absolute ;bottom:16px"

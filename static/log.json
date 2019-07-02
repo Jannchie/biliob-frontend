@@ -1414,5 +1414,17 @@
       }
     ],
     "type": "important"
+  },
+  {
+    "title": "添加捐赠页面",
+    "version": "ver.6.4.1",
+    "date": "2019-07-03",
+    "list": [
+      {
+        "text": "现在可以更加方便地支持本站的发展了。",
+        "type": "feature"
+      }
+    ],
+    "type": "unimportant"
   }
 ]
