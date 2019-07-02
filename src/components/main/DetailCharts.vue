@@ -7,10 +7,7 @@
       :card-padding="'pa-0'"
       class="card elevation-2 pa-0"
     >
-      <VResponsive
-        :aspect-ratio="aspectRatio"
-        style="margin-top:30px"
-      >
+      <VResponsive :aspect-ratio="aspectRatio" style="margin-top:30px">
         <VProgressCircular
           v-show="loading"
           :size="50"

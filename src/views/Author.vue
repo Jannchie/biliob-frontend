@@ -2,15 +2,51 @@
   <MainLayout>
     <AuthorMain slot="main-cards">
       <div>
-        <AuthorDetailRank v-bind="authorData.rank"></AuthorDetailRank>
-        <!-- <AuthorDetailChannel slot="channel" :channels="authorData.channels"></AuthorDetailChannel> -->
-        <DetailCharts title="粉丝数变化趋势" :options="authorFansOptions" />
-        <DetailCharts title="粉丝数变化速率" :options="authorFansRateOptions" />
-        <!-- <DetailCharts
+        <VCard color="deepblue" dark>
+          <v-card-text>
+            <VFlex slot="header">
+              <VTabs color="transparent" slider-color="white">
+                <span
+                  class="subheading font-weight-light mr-3"
+                  style="align-self: center"
+                  >情报分类</span
+                >
+                <VTab @click="getPage(0)">
+                  <VIcon left>mdi-database</VIcon>基本统计
+                </VTab>
+                <VTab @click="getPage(1)">
+                  <VIcon left>mdi-brain</VIcon>高级统计
+                </VTab>
+              </VTabs>
+            </VFlex>
+          </v-card-text>
+        </VCard>
+        <VSlideYTransition>
+          <div v-if="cPage == 0">
+            <!-- <AuthorDetailChannel slot="channel" :channels="authorData.channels"></AuthorDetailChannel> -->
+            <AuthorDetailRank v-bind="authorData.rank"></AuthorDetailRank>
+            <DetailCharts
+              title="粉丝、播放量变化趋势"
+              :options="authorFansOptions"
+            />
+            <DetailCharts
+              title="粉丝数变化速率"
+              :options="authorFansRateOptions"
+            />
+            <!-- <DetailCharts
           id="relationship"
           title="UP主作品相关度"
           :options="relationshipOptions"
-        />-->
+            />-->
+          </div>
+          <div v-else-if="cPage == 1">
+            <DetailCharts
+              title="粉丝变化效率"
+              sub-title="每一万播放量增长造成的粉丝变动数"
+              :options="authorFansEfficiencyOptions"
+            />
+          </div>
+        </VSlideYTransition>
       </div>
     </AuthorMain>
     <AuthorAside slot="aside-cards">
@@ -49,6 +85,7 @@ import DetailCharts from "../components/main/DetailCharts.vue";
 import OtherLink from "../components/aside/OtherLink.vue";
 import drawFansChart from "../charts/author-fans.js";
 import drawFansRateChart from "../charts/author-fans-rate.js";
+import getAuthorFansEfficiencyOptions from "../charts/author-fans-efficiency.js";
 //定义抠图方法
 // function getImgData(
 //   imgSrc,
@@ -129,7 +166,9 @@ export default {
       authorFansOptions: Object(),
       relationshipOptions: Object(),
       authorFansRateOptions: Object(),
-      mid: Number()
+      authorFansEfficiencyOptions: Object(),
+      mid: Number(),
+      cPage: 0
     };
   },
   mounted() {
@@ -270,6 +309,9 @@ export default {
       //     });
       this.authorFansOptions = drawFansChart(deepCopy(this.authorData));
       this.authorFansRateOptions = drawFansRateChart(deepCopy(this.authorData));
+      this.authorFansEfficiencyOptions = getAuthorFansEfficiencyOptions(
+        deepCopy(this.authorData)
+      );
       if (this.authorData.forceFocus != true) {
         this.authorData.forceFocus == false;
       }
@@ -280,6 +322,11 @@ export default {
     this.axios.get(`/author/${this.mid}/video?sort=1`).then(response => {
       this.authorLatestVideo = response.data;
     });
+  },
+  methods: {
+    getPage(page) {
+      this.cPage = page;
+    }
   }
 };
 </script>

@@ -1,50 +1,32 @@
 <template>
   <VLayout wrap>
-
     <VFlex lg8>
       <VForm>
         <MaterialCard title="批量上传爬虫任务">
           <h5>选择计划任务的类型</h5>
           <VRadioGroup v-model="type">
-            <VRadio
-              value="video"
-              label="视频"
-            ></VRadio>
-            <VRadio
-              value="author"
-              label="作者"
-            ></VRadio>
+            <VRadio value="video" label="视频"></VRadio>
+            <VRadio value="author" label="作者"></VRadio>
           </VRadioGroup>
           <h5>此处输入计划任务的名称</h5>
-          <VTextField
-            v-model="name"
-            solo
-          ></VTextField>
+          <VTextField v-model="name" solo></VTextField>
           <h5>此处可以批量输入ID进行爬取</h5>
-          <p class="caption">如果是作者，输入uid，如果是视频，输入av号。输入纯数字即可，以回车键分开。</p>
-          <VTextarea
-            v-model="originData"
-            solo
-          ></VTextarea>
+          <p class="caption">
+            如果是作者，输入uid，如果是视频，输入av号。输入纯数字即可，以回车键分开。
+          </p>
+          <VTextarea v-model="originData" solo></VTextarea>
           <h5>频率设置</h5>
           <VRadioGroup v-model="frequency">
-            <VRadio
-              label="每6小时一次"
-              :value="1"
-            ></VRadio>
-            <VRadio
-              label="每1小时一次"
-              :value="2"
-            ></VRadio>
-            <VRadio
-              label="每5分钟一次"
-              :value="3"
-            ></VRadio>
+            <VRadio label="每6小时一次" :value="1"></VRadio>
+            <VRadio label="每1小时一次" :value="2"></VRadio>
+            <VRadio label="每5分钟一次" :value="3"></VRadio>
           </VRadioGroup>
           <VBtn
             color="blue"
             class="white--text"
-            :disabled="type=='' || name=='' || frequency==-1 || originData==''"
+            :disabled="
+              type == '' || name == '' || frequency == -1 || originData == ''
+            "
             @click="upload"
           >
             <VIcon left>mdi-upload</VIcon>上传
@@ -55,26 +37,16 @@
     <VFlex lg4>
       <MaterialCard title="已设定任务">
         <VList three-line>
-          <VListTile
-            v-for="(eachItem,index) in schedules"
-            :key="index"
-          >
+          <VListTile v-for="(eachItem, index) in schedules" :key="index">
             <VListTileContent>
-              <VListTileTitle>
-                {{eachItem.name}}
-              </VListTileTitle>
-              <VListTileSubTitle>
-                {{frequencyText(eachItem.frequency)}}
-              </VListTileSubTitle>
-              <VListTileSubTitle>
-                {{eachItem.owner}}
-              </VListTileSubTitle>
+              <VListTileTitle>{{ eachItem.name }}</VListTileTitle>
+              <VListTileSubTitle>{{
+                frequencyText(eachItem.frequency)
+              }}</VListTileSubTitle>
+              <VListTileSubTitle>{{ eachItem.owner }}</VListTileSubTitle>
             </VListTileContent>
             <VListTileAction>
-              <VBtn
-                icon
-                @click="deleteSchedule(eachItem)"
-              >
+              <VBtn icon @click="deleteSchedule(eachItem)">
                 <VIcon color="red darken-1">mdi-delete-circle</VIcon>
               </VBtn>
             </VListTileAction>
@@ -87,7 +59,8 @@
       :value="alert"
       :type="alertType"
       transition="slide-y-transition"
-    >{{alertMsg}}</MaterialNotification>
+      >{{ alertMsg }}</MaterialNotification
+    >
   </VLayout>
 </template>
 <script>
