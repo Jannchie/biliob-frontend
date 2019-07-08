@@ -1421,7 +1421,19 @@
     "date": "2019-07-03",
     "list": [
       {
-        "text": "现在可以更加方便地支持本站的发展了。",
+        "text": "现在可以更加方便地支持本站的发展了",
+        "type": "feature"
+      }
+    ],
+    "type": "unimportant"
+  },
+  {
+    "title": "新的合作",
+    "version": "ver.6.4.2",
+    "date": "2019-07-08",
+    "list": [
+      {
+        "text": "经过PY, 获取了来自Kanbilibili的数据",
         "type": "feature"
       }
     ],

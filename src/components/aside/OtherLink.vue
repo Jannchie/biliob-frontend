@@ -83,8 +83,19 @@
       >
         <VIcon style="vertical-align: middle;margin-right:5px">
           mdi-language-python-text </VIcon
-        >激情赞助 蔚文印刷 </a
-      ><br />
+        >激情赞助 蔚文印刷
+      </a>
+      <br />
+      <a
+        target="_blank"
+        href="https://www.kanbilibili.com/"
+        :class="`grey--text text--${brightness}-3`"
+      >
+        <VIcon style="vertical-align: middle;margin-right:5px">
+          mdi-language-python-text </VIcon
+        >数据合作 Kanbilibili
+      </a>
+      <br />
     </span>
     <br />
     <VDivider />
