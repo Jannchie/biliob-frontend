@@ -19,4 +19,4 @@ addons:
   ssh_known_hosts: $server_ip
 after_script:
   - pwd
-  - scp -i ~/.ssh/biliob_frontend -o StrictHostKeyChecking=no -r dist/*  $username@$server_ip:/usr/share/nginx/html/
+  - script -q /dev/stdout -c 'scp -i ~/.ssh/biliob_frontend -o StrictHostKeyChecking=no -r dist/*  $username@$server_ip:/usr/share/nginx/html/'
