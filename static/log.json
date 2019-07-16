@@ -1447,6 +1447,10 @@
       {
         "text": "修复了部分浏览器下视频饼图显示异常的问题",
         "type": "fix"
+      },
+      {
+        "text": "修复了视频数据会显示null的问题",
+        "type": "fix"
       }
     ],
     "type": "unimportant"
