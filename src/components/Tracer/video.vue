@@ -278,7 +278,6 @@ export default {
           pagesize: this.pagesize
         })
         .then(r => {
-          console.log(r.data);
           this.userItems = r.data;
         });
     },

@@ -35,7 +35,6 @@ function getImgData(
       contex.restore();
       resolve(canvas.toDataURL("image/png", 1));
     };
-    console.log(imgSrc);
 
     img.src = imgSrc;
   });
@@ -43,11 +42,8 @@ function getImgData(
 
 function drawChart(nodes, categories, links, pic) {
   var listPromise = [];
-  console.log(pic);
-  console.log(categories);
 
   categories.forEach(e => {
-    console.log(pic[e]);
     listPromise.push(getImgData(pic[e]));
   });
   let option = {
