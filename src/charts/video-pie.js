@@ -1,4 +1,6 @@
 function drawChart(data) {
+  console.log(data);
+
   let Chart = {
     title: [
       {
@@ -27,12 +29,12 @@ function drawChart(data) {
         },
         data: [
           {
-            value: data.data[0].view / 100,
+            value: data.cView / 100,
             selected: true,
             name: "百次播放"
           },
           {
-            value: data.data[0].danmaku,
+            value: data.cDanmaku,
             name: "弹幕",
             selected: true
           }
@@ -51,12 +53,12 @@ function drawChart(data) {
         },
         data: [
           {
-            value: data.data[0].view / 100,
+            value: data.cView / 100,
             selected: true,
             name: "百次播放"
           },
           {
-            value: data.data[0].coin,
+            value: data.cCoin,
             name: "硬币",
             selected: true
           }
@@ -76,12 +78,12 @@ function drawChart(data) {
         },
         data: [
           {
-            value: data.data[0].view / 100,
+            value: data.cView / 100,
             selected: true,
             name: "百次播放"
           },
           {
-            value: data.data[0].favorite,
+            value: data.cFavorite,
             name: "收藏",
             selected: true
           }
@@ -100,12 +102,12 @@ function drawChart(data) {
         },
         data: [
           {
-            value: data.data[0].view / 100,
+            value: data.cView / 100,
             selected: true,
             name: "百次播放"
           },
           {
-            value: data.data[0].share,
+            value: data.cShare,
             name: "分享",
             selected: true
           }
@@ -124,12 +126,12 @@ function drawChart(data) {
         },
         data: [
           {
-            value: data.data[0].view / 100,
+            value: data.cView / 100,
             selected: true,
             name: "百次播放"
           },
           {
-            value: data.data[0].like,
+            value: data.cLike,
             name: "点赞",
             selected: true
           }
@@ -148,17 +150,17 @@ function drawChart(data) {
         },
         data: [
           {
-            value: data.data[0].like,
+            value: data.cLike,
             name: "点赞",
             selected: true
           },
           {
-            value: data.data[0].coin,
+            value: data.cCoin,
             name: "硬币",
             selected: true
           },
           {
-            value: data.data[0].favorite,
+            value: data.cFavorite,
             name: "收藏",
             selected: true
           }

@@ -1438,5 +1438,17 @@
       }
     ],
     "type": "unimportant"
+  },
+  {
+    "title": "修复错误",
+    "version": "ver.6.4.3",
+    "date": "2019-07-16",
+    "list": [
+      {
+        "text": "修复了部分浏览器下视频饼图显示异常的问题",
+        "type": "fix"
+      }
+    ],
+    "type": "unimportant"
   }
 ]
