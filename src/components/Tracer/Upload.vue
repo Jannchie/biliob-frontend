@@ -92,8 +92,6 @@ export default {
       });
     },
     deleteSchedule(item) {
-      console.log(item);
-
       this.axios
         .delete(`/admin/schedule/${item.type}`, {
           params: {

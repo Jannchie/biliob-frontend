@@ -15,7 +15,6 @@ export default {
   props: { name: String(), icon: String(), path: String() },
   methods: {
     to(path) {
-      console.log(this.$store.state);
       let basePath =
         (this.path == "user" || this.path == "upload") &&
         this.$store.state.role !== "管理员"

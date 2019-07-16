@@ -24,6 +24,8 @@ function drawChart(data) {
       new Date(b.datetime.replace("+0000", ""))
     );
   });
+  console.log(data.data);
+
   let Chart = {
     title: {
       left: "center",
@@ -52,6 +54,25 @@ function drawChart(data) {
             return Math.round(params.value);
           }
         }
+      },
+      formatter: function(params) {
+        let o = params[0].axisValueLabel;
+        let tempData = [];
+
+        params.forEach(e => {
+          if (null != e.data[e.seriesId])
+            tempData.push([e.seriesName, e.color, e.data[e.seriesId]]);
+        });
+        tempData
+          .sort((a, b) => b[2] - a[2])
+          .forEach(e => {
+            o += `<div>
+          <span style="color:${e[1]};width:10px;height:10px"> ● </span>
+          <span">${e[0]}: ${e[2]}</span> 
+          </div>
+          `;
+          });
+        return o;
       }
     },
     grid: {
@@ -119,6 +140,7 @@ function drawChart(data) {
         type: "line",
         dimensions: ["datetime", "view"],
         name: "播放",
+        id: "view",
         smooth: false,
         showSymbol: false,
         yAxisIndex: 1
@@ -127,6 +149,7 @@ function drawChart(data) {
         type: "line",
         dimensions: ["datetime", "danmaku"],
         name: "弹幕",
+        id: "danmaku",
         smooth: false,
         showSymbol: false,
         yAxisIndex: 0
@@ -135,6 +158,7 @@ function drawChart(data) {
         type: "line",
         dimensions: ["datetime", "coin"],
         name: "硬币",
+        id: "coin",
         smooth: false,
         showSymbol: false,
         yAxisIndex: 0
@@ -143,6 +167,7 @@ function drawChart(data) {
         type: "line",
         dimensions: ["datetime", "favorite"],
         name: "收藏",
+        id: "favorite",
         smooth: false,
         showSymbol: false,
         yAxisIndex: 0
@@ -151,6 +176,7 @@ function drawChart(data) {
         type: "line",
         dimensions: ["datetime", "share"],
         name: "分享",
+        id: "share",
         smooth: false,
         showSymbol: false,
         yAxisIndex: 0
@@ -159,6 +185,7 @@ function drawChart(data) {
         type: "line",
         dimensions: ["datetime", "like"],
         name: "点赞",
+        id: "like",
         smooth: false,
         showSymbol: false,
         yAxisIndex: 0
