@@ -1,6 +1,6 @@
 <template>
   <VFooter height="82">
-    <div class="footer-items">
+    <div>
       <span v-for="link in links" :key="link.name">
         <a :href="link.Link" class="tertiary--text footer-links">{{
           link.name
@@ -8,7 +8,7 @@
       </span>
     </div>
     <VSpacer />
-    <span class="font-weight-light copyright">
+    <span class="font-weight-light">
       &copy;
       {{ new Date().getFullYear() }}
       <a href="https://www.github.com/jannchie" target="_blank">Jannchie</a>,
@@ -34,5 +34,12 @@ export default {
 <style>
 #core-footer {
   z-index: 0;
+}
+@media (max-width: 550px) {
+  .footer-items,
+  .copyright {
+    width: unset;
+    text-align: center;
+  }
 }
 </style>

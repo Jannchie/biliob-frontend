@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
-const HomeSite = () => import("./views/HomeSite.vue");
-const Home = () => import("./views/Home.vue");
+const MasterIndex = () => import("./views/master/Index.vue");
+const LayoutMaster = () => import("@/components/layout/Master.vue");
 const Rank = () => import("./views/Rank.vue");
 const Author = () => import("./views/Author.vue");
 const Video = () => import("./views/Video.vue");
@@ -36,15 +36,15 @@ export default new Router({
   routes: [
     {
       path: "/",
-      component: HomeSite,
+      component: LayoutMaster,
       children: [
         {
           path: "/index.html",
-          component: Home
+          component: MasterIndex
         },
         {
           path: "/",
-          component: Home
+          component: MasterIndex
         },
         {
           path: "/rank",

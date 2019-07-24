@@ -2,7 +2,6 @@ import "babel-polyfill";
 // import "@fortawesome/fontawesome-free/css/all.css";
 import "@mdi/font/css/materialdesignicons.css"; // Ensure you are using css-loader
 import Vue from "vue";
-import "./plugins/vuetify";
 import "./echarts";
 const App = () => import("./App.vue");
 import router from "./router";
@@ -19,6 +18,8 @@ Vue.config.productionTip = false;
 
 // 使用vue-cookies
 import VueCookies from "vue-cookies";
+
+import vuetify from "./plugins/vuetify";
 Vue.use(VueCookies);
 
 // 在vue-router中使用google analytics
@@ -62,6 +63,7 @@ Vue.use(Vuex);
 new Vue({
   router,
   store,
+  vuetify,
   render: h => h(App)
 }).$mount("#app");
 
