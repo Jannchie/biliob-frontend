@@ -60,19 +60,52 @@
       <VContainer>
         <VSheet>
           <VNavigationDrawer v-model="showNav" fixed temporary>
-            <VContainer>
-              <VSheet>
+            <VContainer grid-list-md>
+              <VLayout v-if="!$store.state.logined">
+                <VFlex lg6>
+                  <VBtn width="100%" large dark to="/login"
+                    ><VIcon left> mdi-login-variant </VIcon>登录</VBtn
+                  >
+                </VFlex>
+                <VFlex lg6>
+                  <VBtn width="100%" large text to="/signin"
+                    ><VIcon left> mdi-login-variant </VIcon>注册</VBtn
+                  >
+                </VFlex>
+              </VLayout>
+              <VSheet v-if="$store.state.logined">
                 <VCardActions style="justify-content:flex-end">
-                  <VBtn color="primary" text><VIcon>mdi-check</VIcon>签到</VBtn>
+                  <div v-if="$store.state.logined" class="check-in">
+                    <VBtn
+                      v-if="$store.state.checked"
+                      ripple
+                      text
+                      primary
+                      small
+                      :loading="getCheckStatus"
+                    >
+                      <VIcon left> mdi-check-circle-outline </VIcon>已签到
+                    </VBtn>
+                    <VBtn
+                      v-else
+                      small
+                      ripple
+                      text
+                      primary
+                      :loading="getCheckStatus"
+                      @click.stop="$store.dispatch('checkIn')"
+                    >
+                      <VIcon left> mdi-checkbox-blank-circle-outline </VIcon
+                      >签到
+                    </VBtn>
+                  </div>
                 </VCardActions>
                 <VCardTitle primary-title>Jannchie</VCardTitle>
                 <VCardText
                   ><div>
-                    观测站的管理员
+                    {{ $store.state.role }}
                   </div>
-                  <div>
-                    积分：100
-                  </div>
+                  <div>积分：{{ $store.state.credit }}</div>
                 </VCardText>
                 <VDivider></VDivider>
                 <VCardActions>
@@ -80,11 +113,12 @@
                     v-for="(eachUserItem, index) in UserItems"
                     :key="index"
                     width="50%"
+                    :to="eachUserItem.path"
                     large
                     text
                   >
                     <div style="display:block">
-                      <div>{{ eachUserItem.value }}</div>
+                      <div>{{ getUserItemValue(eachUserItem.name) }}</div>
                       <div class="caption">{{ eachUserItem.name }}</div>
                     </div>
                   </VBtn>
@@ -111,7 +145,9 @@
     <VContainer>
       <VLayout justify-center>
         <VFlex lg8>
-          <RouterView> </RouterView>
+          <VSlideYTransition mode="out-in">
+            <RouterView />
+          </VSlideYTransition>
         </VFlex>
       </VLayout>
     </VContainer>
@@ -123,6 +159,7 @@ export default {
   data() {
     return {
       collapseOnScroll: true,
+      checkInLoading: true,
       showNav: false,
       navItems: [
         {
@@ -130,11 +167,7 @@ export default {
           icon: "mdi-home",
           url: "/index"
         },
-        {
-          name: "个人空间",
-          icon: "mdi-home",
-          url: "/home"
-        },
+
         {
           name: "观测者排行",
           icon: "mdi-view-list",
@@ -159,11 +192,11 @@ export default {
       UserItems: [
         {
           name: "关注",
-          value: 123
+          path: "/user/author"
         },
         {
           name: "收藏",
-          value: 456
+          path: "/user/video"
         }
       ],
       appBarTabs: [
@@ -173,6 +206,30 @@ export default {
         { name: "话题指数", path: "/index" }
       ]
     };
+  },
+  computed: {
+    getCheckStatus() {
+      if (this.$store.state.checked == undefined) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  },
+  mounted() {
+    this.axios.get(`/user/check-in`).then(response => {
+      this.$store.commit("checkIn", response.data.status);
+    });
+  },
+  methods: {
+    getUserItemValue(type) {
+      switch (type) {
+        case "关注":
+          return this.$store.state.favoriteMid.length;
+        default:
+          return this.$store.state.favoriteAid.length;
+      }
+    }
   }
 };
 </script>

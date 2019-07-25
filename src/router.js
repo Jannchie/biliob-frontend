@@ -36,30 +36,37 @@ export default new Router({
   routes: [
     {
       path: "/",
+      name: "首页",
       component: LayoutMaster,
       children: [
         {
           path: "/index.html",
+          name: "首页",
           component: MasterIndex
         },
         {
           path: "/",
+          name: "首页",
           component: MasterIndex
         },
         {
           path: "/rank",
+          name: "排行榜",
           component: Rank
         },
         {
           path: "/event",
+          name: "粉丝波动",
           component: Occurrence
         },
         {
           path: "/author/versus",
+          name: "榜首粉丝对比",
           component: AuthorVersus
         },
         {
           path: "/author/:mid",
+          name: "UP主信息详情",
           component: Author
         },
         {
@@ -72,38 +79,47 @@ export default new Router({
         },
         {
           path: "/login",
+          name: "用户登录",
           component: Login
         },
         {
           path: "/signin",
+          name: "用户注册",
           component: Signin
         },
         {
           path: "/video",
+          name: "视频列表",
           component: VideoList
         },
         {
           path: "/user/author",
+          name: "我关注的用户",
           component: FavoriteAuthorList
         },
         {
           path: "/user/video",
+          name: "我关注的作者",
           component: FavoriteVideoList
         },
         {
           path: "/log",
+          name: "更新日志",
           component: Log
         },
         {
           path: "/faq",
+          name: "问答",
           component: FAQ
         },
         {
           path: "/about",
+          name: "关于",
           component: About
         },
         {
           path: "/rank/user",
+          name: "观测者排行",
           component: UserRank
         },
         {

@@ -22,8 +22,9 @@ import VueCookies from "vue-cookies";
 import vuetify from "./plugins/vuetify";
 Vue.use(VueCookies);
 
-// 在vue-router中使用google analytics
 router.afterEach(function(to) {
+  let baseTitle = " - BiliOB观测者 - B站历史数据统计分析站点";
+  window.document.title = to.name + baseTitle;
   function saveToLocal(key) {
     let count = window.localStorage.getItem(key);
     if (count == undefined) {

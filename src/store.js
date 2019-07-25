@@ -6,7 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     logined: false,
-    checked: false,
+    checked: undefined,
     userName: String(),
     role: String(),
     credit: Number(),
@@ -108,7 +108,6 @@ export default new Vuex.Store({
       axios
         .get(`/user`)
         .then(response => {
-          this.logined = true;
           context.commit("login");
           context.commit("setRole", response.data.role);
           context.commit("setCredit", response.data.credit);
@@ -118,9 +117,22 @@ export default new Vuex.Store({
           context.commit("setFavoriteAuthor", response.data.favoriteMid);
         })
         .catch(() => {
-          this.$store.commit("logout");
-          this.logined = false;
+          context.commit("logout");
         });
+    },
+    checkIn(context) {
+      axios
+        .post("/user/check-in")
+        .then(response => {
+          if (response.data.code == 1) {
+            context.commit("setCredit", response.data.data.credit);
+            context.commit("setExp", response.data.data.exp);
+            context.commit("checkIn", true);
+          } else {
+            context.commit("checkIn", false);
+          }
+        })
+        .catch(e => e.data.msg);
     }
   }
 });
