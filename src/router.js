@@ -121,6 +121,10 @@ export default new Router({
         {
           path: "/donate",
           component: Donate
+        },
+        {
+          path: "*",
+          component: NotFound
         }
       ]
     },

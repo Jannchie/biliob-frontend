@@ -1,20 +1,24 @@
 <template>
-  <VFooter height="82">
+  <VFooter height="82px">
     <div>
-      <span v-for="link in links" :key="link.name">
-        <a :href="link.Link" class="tertiary--text footer-links">{{
+      <span v-for="link in links" :key="link.name" style="text-align:center">
+        <a :href="link.Link" class="body-2 mr-2 tertiary--text footer-links">{{
           link.name
         }}</a>
       </span>
     </div>
     <VSpacer />
-    <span class="font-weight-light">
+    <span class="body-2">
       &copy;
       {{ new Date().getFullYear() }}
-      <a href="https://www.github.com/jannchie" target="_blank">Jannchie</a>,
-      made with
+      <a
+        class="tertiary--text"
+        href="https://www.github.com/jannchie"
+        target="_blank"
+        >Jannchie</a
+      >, made with
       <VIcon color="tertiary" size="17">mdi-heart</VIcon>
-      for the Bilibili
+      for BILIBILI
     </span>
   </VFooter>
 </template>
@@ -31,9 +35,15 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #core-footer {
   z-index: 0;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
 }
 @media (max-width: 550px) {
   .footer-items,
