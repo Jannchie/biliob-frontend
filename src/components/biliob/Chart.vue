@@ -1,44 +1,38 @@
 <template>
   <div>
-    <MaterialCard
-      :title="title"
-      :text="subTitle"
-      :color="color"
-      :card-padding="'pa-0'"
-      class="card elevation-2 pa-0"
-    >
-      <VFlex slot="header">
-        <slot name="header" style="padding: 0 "></slot>
+    <BiliobDarkInfo class="py-2 px-5 title my-2" border="top">{{
+      title
+    }}</BiliobDarkInfo>
+    <VLayout>
+      <VFlex>
+        <VResponsive :aspect-ratio="aspectRatio">
+          <Chart
+            v-if="!loading"
+            :theme="theme"
+            :auto-resize="true"
+            :options="options"
+            style="width:100%; height:100%;"
+          />
+          <VProgressCircular
+            v-if="loading"
+            :size="80"
+            color="primary"
+            indeterminate
+            class="progress-circular"
+          ></VProgressCircular>
+        </VResponsive>
+        <slot></slot>
       </VFlex>
-      <VResponsive :aspect-ratio="aspectRatio" style="margin-top:30px">
-        <VProgressCircular
-          v-show="loading"
-          :size="50"
-          color="primary"
-          indeterminate
-          class="progress-circular"
-        ></VProgressCircular>
-        <Chart
-          v-show="!loading"
-          :theme="theme"
-          :auto-resize="true"
-          :options="options"
-          style="width:1000;height:1000;"
-        />
-      </VResponsive>
-    </MaterialCard>
+    </VLayout>
   </div>
 </template>
-
 <script>
 export default {
   props: {
     options: {
       type: Object,
       default: function() {
-        return {
-          a: 1
-        };
+        return {};
       }
     },
     title: {

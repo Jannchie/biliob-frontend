@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
+import drawSitePlay from "./charts/site_play.js";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -11,12 +12,16 @@ export default new Vuex.Store({
     role: String(),
     credit: Number(),
     exp: Number(),
+    siteInfo: {},
     dark: false,
     currentPage: String(),
     favoriteAid: [],
     favoriteMid: []
   },
   mutations: {
+    setSiteInfo(state, info) {
+      state.siteInfo = info;
+    },
     setUserName(state, userName) {
       state.userName = userName;
     },
@@ -133,6 +138,11 @@ export default new Vuex.Store({
           }
         })
         .catch(e => e.data.msg);
+    },
+    getSiteInfo(context) {
+      axios.get("/site").then(response => {
+        context.commit("setSiteInfo", drawSitePlay(response.data));
+      });
     }
   }
 });

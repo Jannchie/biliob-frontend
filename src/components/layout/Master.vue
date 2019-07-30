@@ -23,9 +23,9 @@
 
       <VSpacer></VSpacer>
 
-      <VBtn icon>
+      <!-- <VBtn icon>
         <VIcon>mdi-heart</VIcon>
-      </VBtn>
+      </VBtn> -->
 
       <!-- <VBtn icon>
         <VIcon>mdi-magnify</VIcon>
@@ -55,7 +55,10 @@
         </VTabs>
       </template>
     </VAppBar>
-
+    <div style="height:192px"></div>
+    <!-- <VParallax src="https://cdn.vuetifyjs.com/images/parallax/material.jpg">
+      <div style="text-align:center" class="display-4"></div>
+    </VParallax> -->
     <div>
       <VContainer>
         <VSheet>
@@ -117,7 +120,7 @@
                     large
                     text
                   >
-                    <div style="display:block">
+                    <div style="display:block; text-align:center;">
                       <div>{{ getUserItemValue(eachUserItem.name) }}</div>
                       <div class="caption">{{ eachUserItem.name }}</div>
                     </div>
@@ -141,8 +144,7 @@
         </VSheet>
       </VContainer>
     </div>
-    <div style="height:192px"></div>
-    <VContainer>
+    <VContainer class="pa-0">
       <VLayout justify-center>
         <VFlex lg8>
           <VSlideYTransition mode="out-in">
@@ -165,7 +167,7 @@ export default {
         {
           name: "首页",
           icon: "mdi-home",
-          url: "/index"
+          url: "/"
         },
 
         {
