@@ -1,30 +1,33 @@
 <template>
   <MainLayout>
     <div slot="main-cards">
-      <MaterialCard class="card-tabs">
+      <BiliobSheet class="card-tabs">
         <VFlex slot="header">
-          <VTabs color="transparent" slider-color="white">
-            <span
-              class="subheading font-weight-light mr-3"
-              style="align-self: center"
-              >类目：</span
-            >
-            <VTab @click="getData(0)">
-              <VIcon style="margin-right:10px;">
-                mdi-heart
-              </VIcon>
-              涨粉
-            </VTab>
-            <VTab @click="getData(1)">
-              <VIcon style="margin-right:10px;"> mdi-heart-broken </VIcon>掉粉
-            </VTab>
-            <VTab @click="getData(2)">
-              <VIcon style="margin-right:10px;"> mdi-video-vintage </VIcon>番剧
-            </VTab>
-            <VTab @click="getData(3)">
-              <VIcon style="margin-right:10px;"> mdi-rabbit </VIcon>国创
-            </VTab>
-          </VTabs>
+          <BiliobDarkInfo border="bottom" class="pb-0">
+            <VTabs slider-color="#1e88e5" dark background-color="#333">
+              <span
+                class="subheading font-weight-light mr-3"
+                style="align-self: center"
+                >类目：</span
+              >
+              <VTab @click="getData(0)">
+                <VIcon style="margin-right:10px;">
+                  mdi-heart
+                </VIcon>
+                涨粉
+              </VTab>
+              <VTab @click="getData(1)">
+                <VIcon style="margin-right:10px;"> mdi-heart-broken </VIcon>掉粉
+              </VTab>
+              <VTab @click="getData(2)">
+                <VIcon style="margin-right:10px;"> mdi-video-vintage </VIcon
+                >番剧
+              </VTab>
+              <VTab @click="getData(3)">
+                <VIcon style="margin-right:10px;"> mdi-rabbit </VIcon>国创
+              </VTab>
+            </VTabs>
+          </BiliobDarkInfo>
         </VFlex>
         <div>
           <div v-if="index === 0 || index === 1">
@@ -98,10 +101,10 @@
             </div>
           </div>
         </div>
-      </MaterialCard>
+      </BiliobSheet>
     </div>
     <div slot="aside-cards">
-      <MaterialCard class="body-1" title="排行榜说明">
+      <BiliobSheet class="body-1" title="排行榜说明">
         <li>
           本排行榜数据每日更新一次。
         </li>
@@ -112,7 +115,7 @@
         <li>
           国创番剧排行榜数据摘录自B站。
         </li>
-      </MaterialCard>
+      </BiliobSheet>
       <OtherLink class="aside-cards" />
     </div>
   </MainLayout>

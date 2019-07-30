@@ -12,10 +12,7 @@
       dense
     >
       <template v-slot:img="{ props }">
-        <VImg
-          v-bind="props"
-          gradient="to top right, #222222CC, #444444CC"
-        ></VImg>
+        <VImg v-bind="props" gradient="to top right, #222222CC, #333333"></VImg>
       </template>
       <VAppBarNavIcon @click.stop="showNav = !showNav"></VAppBarNavIcon>
 

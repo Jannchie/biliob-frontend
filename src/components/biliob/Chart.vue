@@ -1,12 +1,12 @@
 <template>
   <div>
-    <BiliobDarkInfo class="py-2 px-5 title my-2" border="top">{{
+    <BiliobDarkInfo class="py-2 px-5 title mt-2" border="bottom">{{
       title
     }}</BiliobDarkInfo>
     <VLayout :column="this.$vuetify.breakpoint.mdAndDown">
       <VFlex lg8 md12>
         <VResponsive :aspect-ratio="aspectRatio" class="v">
-          <VSheet height="100%">
+          <VSheet height="100%" class="pa-5">
             <Chart
               v-if="!loading"
               :theme="theme"
@@ -24,14 +24,14 @@
         </VResponsive>
       </VFlex>
       <VFlex lg4 md12>
-        <VSheet tile height="100%">
-          <BiliobDarkInfo class="py-2 px-5 subtitle " border="left"
+        <VSheet tile height="100%" class="pa-5">
+          <BiliobDarkInfo class="py-1 px-5 subtitle inline" border="left"
             >24小时内最高在线观看</BiliobDarkInfo
           >
           <p class="title site-aside-value font-weight-bold">
             {{ bigestWatching }}
           </p>
-          <BiliobDarkInfo class="py-2 px-5 subtitle " border="left"
+          <BiliobDarkInfo class="py-1 px-5 subtitle inline" border="left"
             >24小时内最高在线人数</BiliobDarkInfo
           >
           <p class="title site-aside-value font-weight-bold">
