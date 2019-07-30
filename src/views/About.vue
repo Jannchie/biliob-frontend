@@ -1,16 +1,15 @@
 <template>
   <div class="about">
     <div>
-      <MaterialCard title="关于本网站">
+      <BiliobSheet title="关于本网站">
         <div>
-          <br />本网站所有数据来自于Bilibili。
+          本网站所有数据来自于Bilibili。
           <br />本网站的目的是搜集并观测B站的UP主、视频或番剧等数据。
           <br />一方面，这些数据能够给UP主作为参考，了解自己作品的受欢迎程度。从而帮助作者创作更加优秀的作品。
           <br />另一方面，通过观测这些数据，能够了解到B站的最新动态。这些数据本身就非常具有观赏性。
         </div>
-      </MaterialCard>
-      <MaterialCard title="网站架构">
-        <br />
+      </BiliobSheet>
+      <BiliobSheet title="网站架构">
         <h4>前端</h4>
         <li>使用Vue.js</li>
         <li>
@@ -53,13 +52,13 @@
         <br />
         <h4>其他支持</h4>
         <li>服务器由阿里云、腾讯云提供支持，使用了CDN内容分发网络服务。</li>
-      </MaterialCard>
-      <MaterialCard title="其他想要说的话">
+      </BiliobSheet>
+      <BiliobSheet title="其他想要说的话">
         这个网站在可以预见的未来很长一段时间内，由我个人维护。
         由于技术有限、资源有限等原因，该网站可能还有很多不尽如人意的地方。
         欢迎各路大佬能够提供支持或者建议。
         联系方式的话，点一下那个绿绿的小按钮吧！
-      </MaterialCard>
+      </BiliobSheet>
     </div>
   </div>
 </template>

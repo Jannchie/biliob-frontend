@@ -13,7 +13,7 @@ const Log = () => import("./views/Log.vue");
 const Login = () => import("./views/Login.vue");
 const Signin = () => import("./views/Signin.vue");
 const NotFound = () => import("./views/NotFound.vue");
-const About = () => import("./views/About.vue");
+const About = () => import("./views/master/About.vue");
 const Occurrence = () => import("./views/Event.vue");
 const FAQ = () => import("./views/FAQ.vue");
 const UserRank = () => import("./views/UserRank.vue");

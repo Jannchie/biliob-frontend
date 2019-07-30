@@ -3,7 +3,7 @@
     <VAppBar
       fixed
       app
-      color="#444"
+      color="#333"
       dark
       shrink-on-scroll
       prominent

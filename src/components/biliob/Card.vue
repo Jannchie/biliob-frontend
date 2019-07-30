@@ -1,7 +1,11 @@
 <template>
-  <VCard style="text-align: center">
-    <div class="primary" style="color:#FFF">{{ title }}</div>
-    <slot />
+  <VCard>
+    <div style="text-align: center;color:#FFF" class="primary">
+      {{ title }}
+    </div>
+    <VCardText>
+      <slot />
+    </VCardText>
   </VCard>
 </template>
 <script>
