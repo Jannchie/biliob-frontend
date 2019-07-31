@@ -1,15 +1,31 @@
 <template>
-  <MainLayout>
-    <div slot="main-cards">
+  <VLayout wrap>
+    <!-- <VFlex lg3 md12> </VFlex> -->
+    <VFlex md12>
       <BiliobSheet class="card-tabs">
         <VFlex slot="header">
           <BiliobDarkInfo border="bottom" class="pb-0">
             <VTabs slider-color="#1e88e5" dark background-color="#333">
-              <span
-                class="subheading font-weight-light mr-3"
-                style="align-self: center"
-                >类目：</span
-              >
+              <VTooltip color="#222" right eager>
+                <template v-slot:activator="{ on }">
+                  <span
+                    class="subheading font-weight-light mr-3"
+                    style="align-self: center"
+                    ><VIcon v-on="on">mdi-chevron-triple-up</VIcon></span
+                  >
+                </template>
+                <li>
+                  本排行榜数据每日更新一次。
+                </li>
+
+                <li>
+                  其中涨粉、掉粉排行仅包括所有正在观测的UP主数据。具体数字为一日粉丝变动数，仅供参考。
+                </li>
+                <li>
+                  国创番剧排行榜数据摘录自B站。
+                </li>
+              </VTooltip>
+
               <VTab @click="getData(0)">
                 <VIcon style="margin-right:10px;">
                   mdi-heart
@@ -49,13 +65,12 @@
                 :color="getColor(index)"
                 small
                 text-color="white"
-                style="position:absolute;right:16px;width:80px"
+                class="pl-0"
+                style="position:absolute;right:16px;align-self:center"
               >
-                <VAvatar>
-                  <VIcon class="mx-0" color="white" right>
-                    {{ getIcon(index) }}
-                  </VIcon>
-                </VAvatar>
+                <VIcon class="ml-0" color="white" left>
+                  {{ getIcon(index) }}
+                </VIcon>
                 {{ Math.abs(eachData.cRate) }}
               </VChip>
             </div>
@@ -102,32 +117,12 @@
           </div>
         </div>
       </BiliobSheet>
-    </div>
-    <div slot="aside-cards">
-      <BiliobSheet class="body-1" title="排行榜说明">
-        <li>
-          本排行榜数据每日更新一次。
-        </li>
-
-        <li>
-          其中涨粉、掉粉排行仅包括所有正在观测的UP主数据。具体数字为一日粉丝变动数，仅供参考。
-        </li>
-        <li>
-          国创番剧排行榜数据摘录自B站。
-        </li>
-      </BiliobSheet>
-      <OtherLink class="aside-cards" />
-    </div>
-  </MainLayout>
+    </VFlex>
+  </VLayout>
 </template>
 <script>
-import MainLayout from "../components/common/MainLayout.vue";
-import OtherLink from "../components/aside/OtherLink.vue";
 export default {
-  components: {
-    MainLayout,
-    OtherLink
-  },
+  components: {},
   data() {
     return {
       data: Object(),
