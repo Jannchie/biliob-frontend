@@ -9,9 +9,11 @@
     <div class="left-info">
       <BiliobDarkInfo
         style="display: inline-block;"
-        class="caption mb-2 white--text dark-info-left"
+        class="caption white--text dark-info-left"
       >
-        B站签约UP主
+        <div class="px-2 mb-1">
+          B站签约UP主
+        </div>
       </BiliobDarkInfo>
       <br />
       <BiliobDarkInfo
@@ -19,7 +21,9 @@
         style="display: inline-block;"
         class="dark-info-left font-weight-black subtitle"
       >
-        Jannchie见齐
+        <div class="px-2">
+          Jannchie见齐
+        </div>
       </BiliobDarkInfo>
     </div>
 
@@ -29,14 +33,18 @@
         style="display: inline-block;"
         class="dark-info-right font-weight-black subtitle"
       >
-        Jannchie见齐
+        <div class="px-2 mb-1">
+          Jannchie见齐
+        </div>
       </BiliobDarkInfo>
       <br />
       <BiliobDarkInfo
         style="display: inline-block;"
-        class="caption  mt-2 white--text dark-info-right"
+        class="caption white--text dark-info-right"
       >
-        B站签约UP主
+        <div class="px-2">
+          B站签约UP主
+        </div>
       </BiliobDarkInfo>
     </div>
     <VAvatar style="position:absolute;right:0;margin-right:80px" size="100px">

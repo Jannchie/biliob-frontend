@@ -1,8 +1,10 @@
 <template>
   <div>
-    <BiliobDarkInfo class="py-2 px-5 title mt-2" border="bottom">{{
-      title
-    }}</BiliobDarkInfo>
+    <BiliobDarkInfo class="mt-2" border="bottom"
+      ><div class="py-1 px-2 title">
+        {{ title }}
+      </div>
+    </BiliobDarkInfo>
     <VLayout :column="this.$vuetify.breakpoint.mdAndDown">
       <VFlex lg8 md12>
         <VResponsive :aspect-ratio="aspectRatio" class="v">
