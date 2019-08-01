@@ -17,7 +17,7 @@
           style="display: inline-block;"
           class="caption white--text dark-info-left"
         >
-          <div class="px-2 mb-1">
+          <div class="px-2 my-1">
             {{ aOfficial }}
           </div>
         </BiliobDarkInfo>
@@ -32,14 +32,13 @@
           </div>
         </BiliobDarkInfo>
       </div>
-
       <div class="right-info">
         <BiliobDarkInfo
           border="right"
           style="display: inline-block;"
           class="dark-info-right font-weight-black subtitle"
         >
-          <div class="px-2 mb-1">
+          <div class="px-2 my-1">
             {{ bName }}
           </div>
         </BiliobDarkInfo>
@@ -65,7 +64,7 @@
 
       <div
         class="center-versus display-2 font-weight-black"
-        style="text-shadow: 4px 2px 1px #1E88E5"
+        style="text-shadow: 4px 2px 1px #1E88E5;"
       >
         <div>VS</div>
         <div>

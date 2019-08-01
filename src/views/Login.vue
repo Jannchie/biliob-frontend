@@ -1,56 +1,58 @@
 <template>
   <VLayout justify-center>
     <VFlex lg5 md12>
-      <MaterialCard title="登录">
-        <div>
-          <MaterialNotification
-            :value="showAlert"
-            :type="type"
-            transition="slide-y-transition"
-          >
-            {{ msg }}
-          </MaterialNotification>
-        </div>
-        <VCardTitle>
+      <BiliobDarkInfo title="登录" border="bottom">
+        <div slot="body">
           <div>
-            <div class="body-1">
-              这是一个第三方网站，账号信息和B站并不通用，
-              <br />新用户请点击注册按钮注册一个账号。
-            </div>
+            <MaterialNotification
+              :value="showAlert"
+              :type="type"
+              transition="slide-y-transition"
+            >
+              {{ msg }}
+            </MaterialNotification>
           </div>
-        </VCardTitle>
-        <VCardActions>
-          <VForm v-model="valid" style="width:100%">
-            <VTextField
-              v-model="name"
-              :rules="[rules.required]"
-              browser-autocomplete="username"
-              label="用户名/邮箱"
-              required
-            />
-            <VTextField
-              v-model="password"
-              :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
-              :type="show ? 'text' : 'password'"
-              name="input"
-              label="密码"
-              :rules="[rules.required, rules.min]"
-              browser-autocomplete="current-password"
-              hint="至少6个字符"
-              class="input-group--focused"
-              @click:append="show = !show"
-            />
-            <Center>
-              <VBtn color="primary" :disabled="!valid" @click="submit">
-                登录
-              </VBtn>
-              <VBtn to="/signin">
-                注册
-              </VBtn>
-            </Center>
-          </VForm>
-        </VCardActions>
-      </MaterialCard>
+          <VCardTitle>
+            <div>
+              <div class="body-1">
+                这是一个第三方网站，账号信息和B站并不通用，
+                <br />新用户请点击注册按钮注册一个账号。
+              </div>
+            </div>
+          </VCardTitle>
+          <VCardActions>
+            <VForm v-model="valid" style="width:100%">
+              <VTextField
+                v-model="name"
+                :rules="[rules.required]"
+                autocomplete="username"
+                label="用户名/邮箱"
+                required
+              />
+              <VTextField
+                v-model="password"
+                :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
+                :type="show ? 'text' : 'password'"
+                name="input"
+                label="密码"
+                :rules="[rules.required, rules.min]"
+                autocomplete="current-password"
+                hint="至少6个字符"
+                class="input-group--focused"
+                @click:append="show = !show"
+              />
+              <Center>
+                <VBtn color="primary" :disabled="!valid" @click="submit">
+                  登录
+                </VBtn>
+                <VBtn to="/signin">
+                  注册
+                </VBtn>
+              </Center>
+            </VForm>
+          </VCardActions>
+        </div>
+      </BiliobDarkInfo>
     </VFlex>
   </VLayout>
 </template>
