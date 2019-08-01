@@ -22,6 +22,9 @@ export default new Vuex.Store({
     setSiteInfo(state, info) {
       state.siteInfo = info;
     },
+    setData(state, payload) {
+      state[payload.name] = payload.data;
+    },
     setUserName(state, userName) {
       state.userName = userName;
     },
@@ -142,6 +145,14 @@ export default new Vuex.Store({
     getSiteInfo(context) {
       axios.get("/site").then(response => {
         context.commit("setSiteInfo", drawSitePlay(response.data));
+      });
+    },
+    getSiteGroupInfo(context) {
+      axios.get("/site/group").then(response => {
+        context.commit("setData", {
+          data: response.data,
+          name: "siteGroupInfo"
+        });
       });
     }
   }

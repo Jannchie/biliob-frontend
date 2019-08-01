@@ -10,12 +10,12 @@
           </div>
           <div class="display-1">实时差距</div>
           <div>
-            <VOdometer
+            <CommonVOdometer
               class="font-weight-black blue--text text--darken-1"
               :value="deltaFans"
               style="font-size: 50px; font-family: auto"
               format="(,ddd).d"
-            ></VOdometer>
+            ></CommonVOdometer>
           </div>
         </div>
         <div class="hidden-sm-and-down">

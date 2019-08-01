@@ -14,10 +14,22 @@ export default {
   computed: {
     siteInfo() {
       return this.$store.state.siteInfo;
+    },
+    groupDataNow() {
+      return this.$store.state.siteGroupInfo[0];
+    },
+    groupDataMonthAgo() {
+      return this.$store.state.siteGroupInfo[1];
+    },
+    groupDataYearAgo() {
+      return this.$store.state.siteGroupInfo[
+        this.$store.state.siteGroupInfo.length - 1
+      ];
     }
   },
   mounted() {
     this.$store.dispatch("getSiteInfo");
+    this.$store.dispatch("getSiteGroupInfo");
   }
 };
 </script>

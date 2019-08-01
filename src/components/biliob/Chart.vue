@@ -1,7 +1,7 @@
 <template>
   <div>
     <BiliobDarkInfo class="mt-2" border="bottom"
-      ><div class="py-1 px-2 title">
+      ><div class="px-5 py-2">
         {{ title }}
       </div>
     </BiliobDarkInfo>
@@ -27,17 +27,67 @@
       </VFlex>
       <VFlex lg4 md12>
         <VSheet tile height="100%" class="pa-5">
-          <BiliobDarkInfo class="py-1 px-5 subtitle inline" border="left"
-            >24小时内最高在线观看</BiliobDarkInfo
-          >
+          <BiliobDarkInfo class="subtitle inline" border="left">
+            <div class="py-1 px-5">
+              24小时内最高在线观看
+            </div>
+          </BiliobDarkInfo>
           <p class="title site-aside-value font-weight-bold">
             {{ bigestWatching }}
           </p>
-          <BiliobDarkInfo class="py-1 px-5 subtitle inline" border="left"
-            >24小时内最高在线人数</BiliobDarkInfo
-          >
+          <BiliobDarkInfo class="subtitle inline" border="left">
+            <div class="py-1 px-5 ">
+              24小时内最高在线人数
+            </div>
+          </BiliobDarkInfo>
           <p class="title site-aside-value font-weight-bold">
             {{ bigestOnline }}
+          </p>
+          <BiliobDarkInfo class="subtitle inline" border="left">
+            <div class="py-1 px-5 ">
+              本月最值
+            </div>
+          </BiliobDarkInfo>
+          <p class="title site-aside-value font-weight-bold">
+            {{
+              `${($store.state.siteGroupInfo[0].play_online / 10000).toFixed(
+                3
+              )}`
+            }}
+          </p>
+          <BiliobDarkInfo class="subtitle inline" border="left">
+            <div class="py-1 px-5 ">
+              同比上月
+            </div>
+          </BiliobDarkInfo>
+          <p class="title site-aside-value font-weight-bold">
+            {{
+              `${(
+                (($store.state.siteGroupInfo[0].play_online -
+                  $store.state.siteGroupInfo[1].play_online) /
+                  $store.state.siteGroupInfo[1].play_online) *
+                100
+              ).toFixed(3)}%`
+            }}
+          </p>
+          <BiliobDarkInfo class="subtitle inline" border="left">
+            <div class="py-1 px-5 ">
+              同比去年
+            </div>
+          </BiliobDarkInfo>
+          <p class="title site-aside-value font-weight-bold">
+            {{
+              `${(
+                (($store.state.siteGroupInfo[0].play_online -
+                  $store.state.siteGroupInfo[
+                    $store.state.siteGroupInfo.length - 1
+                  ].play_online) /
+                  $store.state.siteGroupInfo[
+                    $store.state.siteGroupInfo.length - 1
+                  ].play_online) *
+                100
+              ).toFixed(3)}%`
+            }}
           </p>
         </VSheet>
       </VFlex>
