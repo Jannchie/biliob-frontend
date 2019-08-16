@@ -2,6 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
 import siteInfoModule from "./store/site.js";
+import rankModule from "./store/rank.js";
 
 Vue.use(Vuex);
 
@@ -144,6 +145,7 @@ export default new Vuex.Store({
     }
   },
   modules: {
-    site: siteInfoModule
+    site: siteInfoModule,
+    rank: rankModule
   }
 });

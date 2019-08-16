@@ -5,46 +5,48 @@
       <BiliobSheet class="card-tabs">
         <VFlex slot="header">
           <BiliobDarkInfo border="bottom" class="pb-0">
-            <VTabs slider-color="#1e88e5" dark background-color="#333">
-              <VTooltip color="#222" right eager>
-                <template v-slot:activator="{ on }">
-                  <span
-                    class="subheading font-weight-light"
-                    style="align-self: center"
-                    ><VIcon class="mx-5" v-on="on"
-                      >mdi-chevron-triple-up</VIcon
-                    ></span
-                  >
-                </template>
-                <li>
-                  本排行榜数据每日更新一次。
-                </li>
+            <div>
+              <h1 class="px-5" style="text-align: center">{{ title }}</h1>
+              <VTabs slider-color="#1e88e5" dark background-color="#333">
+                <VTooltip color="#222" right eager>
+                  <template v-slot:activator="{ on }">
+                    <span
+                      class="subheading font-weight-light"
+                      style="align-self: center"
+                      ><VIcon class="mx-5" v-on="on">mdi-help-box</VIcon></span
+                    >
+                  </template>
+                  <li>
+                    本排行榜数据每日更新一次。
+                  </li>
 
-                <li>
-                  其中涨粉、掉粉排行仅包括所有正在观测的UP主数据。具体数字为一日粉丝变动数，仅供参考。
-                </li>
-                <li>
-                  国创番剧排行榜数据摘录自B站。
-                </li>
-              </VTooltip>
+                  <li>
+                    其中涨粉、掉粉排行仅包括所有正在观测的UP主数据。具体数字为一日粉丝变动数，仅供参考。
+                  </li>
+                  <li>
+                    国创番剧排行榜数据摘录自B站。
+                  </li>
+                </VTooltip>
 
-              <VTab @click="getData(0)">
-                <VIcon style="margin-right:10px;">
-                  mdi-heart
-                </VIcon>
-                涨粉
-              </VTab>
-              <VTab @click="getData(1)">
-                <VIcon style="margin-right:10px;"> mdi-heart-broken </VIcon>掉粉
-              </VTab>
-              <VTab @click="getData(2)">
-                <VIcon style="margin-right:10px;"> mdi-video-vintage </VIcon
-                >番剧
-              </VTab>
-              <VTab @click="getData(3)">
-                <VIcon style="margin-right:10px;"> mdi-rabbit </VIcon>国创
-              </VTab>
-            </VTabs>
+                <VTab @click="getData(0)">
+                  <VIcon style="margin-right:10px;">
+                    mdi-heart
+                  </VIcon>
+                  涨粉
+                </VTab>
+                <VTab @click="getData(1)">
+                  <VIcon style="margin-right:10px;"> mdi-heart-broken </VIcon
+                  >掉粉
+                </VTab>
+                <VTab @click="getData(2)">
+                  <VIcon style="margin-right:10px;"> mdi-video-vintage </VIcon
+                  >番剧
+                </VTab>
+                <VTab @click="getData(3)">
+                  <VIcon style="margin-right:10px;"> mdi-rabbit </VIcon>国创
+                </VTab>
+              </VTabs>
+            </div>
           </BiliobDarkInfo>
         </VFlex>
         <div>
@@ -127,13 +129,25 @@ export default {
   components: {},
   data() {
     return {
-      data: Object(),
-      bangumiData: Object(),
-      fansIncrease: Object(),
-      fansDecrease: Object(),
-      donghuaData: Object(),
+      title: "数据载入中",
       index: Number()
     };
+  },
+  computed: {
+    data() {
+      switch (this.index) {
+        case 0:
+          return this.$store.state.rank.rankListFansIncrease;
+        case 1:
+          return this.$store.state.rank.rankListFansDecrease;
+        case 2:
+          return this.$store.state.rank.rankListBangumi;
+        case 3:
+          return this.$store.state.rank.rankListDonghua;
+        default:
+          return this.$store.state.rank.rankListFansIncrease;
+      }
+    }
   },
   mounted() {
     this.getData(0);
@@ -149,30 +163,24 @@ export default {
       this.index = index;
       switch (index) {
         case 0:
-          this.axios.get("/rank/fans-increase-rate").then(response => {
-            this.data = response.data.content;
-          });
+          this.title = "UP主每日涨粉TOP20";
+          if (this.$store.state.rank.rankListFansIncrease == undefined)
+            this.$store.dispatch("getIncrease");
           break;
         case 1:
-          this.axios.get("/rank/fans-decrease-rate").then(response => {
-            this.data = response.data.content;
-          });
+          this.title = "UP主每日掉粉TOP20";
+          if (this.$store.state.rank.rankListFansDecrease == undefined)
+            this.$store.dispatch("getDecrease");
           break;
         case 2:
-          this.axios.get("/bangumi").then(response => {
-            this.data = response.data.content;
-            this.data.forEach(element => {
-              element.cover = element.cover.slice(5);
-            });
-          });
+          this.title = "番剧综合评分TOP20";
+          if (this.$store.state.rank.rankListBangumi == undefined)
+            this.$store.dispatch("getBangumiTopList");
           break;
         case 3:
-          this.axios.get("/donghua").then(response => {
-            this.data = response.data.content;
-            this.data.forEach(element => {
-              element.cover = element.cover.slice(5);
-            });
-          });
+          this.title = "国创综合评分TOP20";
+          if (this.$store.state.rank.rankListDonghua == undefined)
+            this.$store.dispatch("getDonghuaTopList");
           break;
         default:
           break;
