@@ -41,7 +41,7 @@
         <VBtn
           color="primary"
           flat
-          outline
+          outlined
           :disabled="showAlert"
           @click="refresh"
         >
@@ -80,7 +80,9 @@ export default {
         .then(response => {
           this.showAlert = true;
           this.alertType = "success";
-          this.alertMsg = `操作成功！当前积分：${response.data.data.credit}，当前经验：${response.data.data.exp}`;
+          this.alertMsg = `操作成功！当前积分：${
+            response.data.data.credit
+          }，当前经验：${response.data.data.exp}`;
           this.$store.commit("setCredit", response.data.data.credit);
           this.$store.commit("setExp", response.data.data.exp);
           setTimeout(() => {

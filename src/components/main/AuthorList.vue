@@ -78,7 +78,7 @@
           <VBtn
             v-if="!notFound"
             block
-            outline
+            outlined
             color="blue darken-2"
             :disabled="nextBtnDisabled"
             @click.stop="next"
@@ -151,7 +151,9 @@ export default {
     currentPage: function changePage(page) {
       this.axios
         .get(
-          `${this.currentApiurl}?page=${page}&text=${this.text}&sort=${this.sort}`
+          `${this.currentApiurl}?page=${page}&text=${this.text}&sort=${
+            this.sort
+          }`
         )
         .then(response => {
           // 判断是否为最后一页
@@ -207,7 +209,9 @@ export default {
       this.currentPage = 0;
       this.axios
         .get(
-          `${this.currentApiurl}?page=${this.currentPage}&text=${this.text}&sort=${this.sort}`
+          `${this.currentApiurl}?page=${this.currentPage}&text=${
+            this.text
+          }&sort=${this.sort}`
         )
         .then(response => {
           this.refreshList(response);

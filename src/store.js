@@ -1,22 +1,22 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
-import drawSitePlay from "./charts/site_play.js";
+import siteInfoModule from "./store/site.js";
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
     logined: false,
     checked: undefined,
-    userName: String(),
-    role: String(),
-    credit: Number(),
-    exp: Number(),
-    siteInfo: {},
+    userName: undefined,
+    role: undefined,
+    credit: undefined,
+    exp: undefined,
     dark: false,
-    currentPage: String(),
-    favoriteAid: [],
-    favoriteMid: []
+    currentPage: undefined,
+    favoriteAid: undefined,
+    favoriteMid: undefined
   },
   mutations: {
     setSiteInfo(state, info) {
@@ -141,19 +141,9 @@ export default new Vuex.Store({
           }
         })
         .catch(e => e.data.msg);
-    },
-    getSiteInfo(context) {
-      axios.get("/site").then(response => {
-        context.commit("setSiteInfo", drawSitePlay(response.data));
-      });
-    },
-    getSiteGroupInfo(context) {
-      axios.get("/site/group").then(response => {
-        context.commit("setData", {
-          data: response.data,
-          name: "siteGroupInfo"
-        });
-      });
     }
+  },
+  modules: {
+    site: siteInfoModule
   }
 });

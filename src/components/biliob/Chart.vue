@@ -49,11 +49,7 @@
             </div>
           </BiliobDarkInfo>
           <p class="title site-aside-value font-weight-bold">
-            {{
-              `${($store.state.siteGroupInfo[0].play_online / 10000).toFixed(
-                3
-              )}`
-            }}
+            {{ currentMonthTop }}
           </p>
           <BiliobDarkInfo class="subtitle inline" border="left">
             <div class="py-1 px-5 ">
@@ -61,14 +57,7 @@
             </div>
           </BiliobDarkInfo>
           <p class="title site-aside-value font-weight-bold">
-            {{
-              `${(
-                (($store.state.siteGroupInfo[0].play_online -
-                  $store.state.siteGroupInfo[1].play_online) /
-                  $store.state.siteGroupInfo[1].play_online) *
-                100
-              ).toFixed(3)}%`
-            }}
+            {{ compareWithLastMonth }}
           </p>
           <BiliobDarkInfo class="subtitle inline" border="left">
             <div class="py-1 px-5 ">
@@ -76,18 +65,7 @@
             </div>
           </BiliobDarkInfo>
           <p class="title site-aside-value font-weight-bold">
-            {{
-              `${(
-                (($store.state.siteGroupInfo[0].play_online -
-                  $store.state.siteGroupInfo[
-                    $store.state.siteGroupInfo.length - 1
-                  ].play_online) /
-                  $store.state.siteGroupInfo[
-                    $store.state.siteGroupInfo.length - 1
-                  ].play_online) *
-                100
-              ).toFixed(3)}%`
-            }}
+            {{ compareWithLastYear }}
           </p>
         </VSheet>
       </VFlex>
@@ -95,6 +73,7 @@
   </div>
 </template>
 <script>
+import { mapGetters } from "vuex";
 export default {
   props: {
     options: {
@@ -124,13 +103,22 @@ export default {
   },
   data() {
     return {
-      theme: "colorful"
+      theme: "colorful",
+      siteGroupInfo: undefined
     };
   },
   computed: {
+    ...mapGetters([
+      "bigestWatching",
+      "bigestOnline",
+      "currentMonthTop",
+      "compareWithLastMonth",
+      "compareWithLastYear"
+    ]),
     isDark() {
       return this.$store.state.dark;
     },
+
     aspectRatio() {
       if (document.body.clientWidth > 768) {
         return 2;
@@ -139,6 +127,9 @@ export default {
       }
     },
     items() {
+      if (this.options == {}) {
+        return [];
+      }
       let o = [];
       for (let index = 0; index < this.options.xAxis.data.length; index++) {
         o.push([
@@ -149,26 +140,7 @@ export default {
       }
       return o;
     },
-    bigestWatching() {
-      if (this.options.series != undefined) {
-        this.options.series[0].data;
-        return `约为${(
-          Math.max.apply(null, this.options.series[0].data) / 10000
-        ).toFixed(2)}万人`;
-      } else {
-        return null;
-      }
-    },
-    bigestOnline() {
-      if (this.options.series != undefined) {
-        this.options.series[1].data;
-        return `约为${(
-          Math.max.apply(null, this.options.series[1].data) / 10000
-        ).toFixed(2)}万人`;
-      } else {
-        return null;
-      }
-    },
+
     loading() {
       if (this.options.series == undefined) {
         return true;

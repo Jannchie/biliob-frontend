@@ -187,4 +187,16 @@ export default {
   text-align: center;
   margin: auto;
 }
+@media screen and (max-width: 960px) {
+  .left-info {
+    transform: rotate3d(0.1, 0.9, 0, 50deg);
+    left: -40px;
+    position: absolute;
+  }
+  .right-info {
+    transform: rotate3d(0.1, -0.9, 0, 50deg);
+    right: -40px;
+    position: absolute;
+  }
+}
 </style>

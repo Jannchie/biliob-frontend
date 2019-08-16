@@ -40,7 +40,7 @@
         </VSlideYTransition>
         <VBtn
           block
-          outline
+          outlined
           color="blue darken-2"
           :disabled="nextBtnDisabled"
           @click.stop="next"

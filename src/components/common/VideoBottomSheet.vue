@@ -90,7 +90,7 @@
             <VBtn
               color="primary"
               flat
-              outline
+              outlined
               :disabled="showAlert"
               @click="refresh"
             >
@@ -102,7 +102,9 @@
 
       <VListTile
         :href="
-          `https://connect.qq.com/widget/shareqq/index.html?url=www.biliob.com${$route.path}&sharesource=qzone&title=biliob观测者:视频《${title}》的历史数据&pics=https:${pic}&summary=快来围观这个视频的数据变化吧~&desc=`
+          `https://connect.qq.com/widget/shareqq/index.html?url=www.biliob.com${
+            $route.path
+          }&sharesource=qzone&title=biliob观测者:视频《${title}》的历史数据&pics=https:${pic}&summary=快来围观这个视频的数据变化吧~&desc=`
         "
         target="_blank"
         class="light-blue--text lighten-2 text--lighten-2"
@@ -154,7 +156,9 @@ export default {
         .then(response => {
           this.showAlert = true;
           this.alertType = "success";
-          this.alertMsg = `操作成功！当前积分：${response.data.data.credit}(-1)，当前经验：${response.data.data.exp}(+1)`;
+          this.alertMsg = `操作成功！当前积分：${
+            response.data.data.credit
+          }(-1)，当前经验：${response.data.data.exp}(+1)`;
           this.$store.commit("setCredit", response.data.data.credit);
           this.$store.commit("setExp", response.data.data.exp);
           setTimeout(() => {

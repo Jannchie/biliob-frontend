@@ -13,23 +13,19 @@ export default {
   },
   computed: {
     siteInfo() {
-      return this.$store.state.siteInfo;
-    },
-    groupDataNow() {
-      return this.$store.state.siteGroupInfo[0];
-    },
-    groupDataMonthAgo() {
-      return this.$store.state.siteGroupInfo[1];
-    },
-    groupDataYearAgo() {
-      return this.$store.state.siteGroupInfo[
-        this.$store.state.siteGroupInfo.length - 1
-      ];
+      if (this.$store.state.site.siteInfo == undefined) {
+        return {};
+      }
+      return this.$store.state.site.siteInfo;
     }
   },
   mounted() {
-    this.$store.dispatch("getSiteInfo");
-    this.$store.dispatch("getSiteGroupInfo");
+    if (this.$store.state.site.siteInfo == undefined) {
+      this.$store.dispatch("getSiteInfo");
+    }
+    if (this.$store.state.site.siteGroupInfo == undefined) {
+      this.$store.dispatch("getSiteGroupInfo");
+    }
   }
 };
 </script>
