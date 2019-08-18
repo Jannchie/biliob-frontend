@@ -130,6 +130,7 @@ export default new Vuex.Store({
         });
     },
     checkIn(context) {
+      context.commit("checkIn", undefined);
       axios
         .post("/user/check-in")
         .then(response => {
