@@ -3,12 +3,12 @@ import Router from "vue-router";
 const MasterIndex = () => import("./views/master/Index.vue");
 const LayoutMaster = () => import("@/components/layout/Master.vue");
 const Rank = () => import("./views/master/Rank.vue");
-const Author = () => import("./views/Author.vue");
+const Author = () => import("./views/master/Author.vue");
 const Video = () => import("./views/Video.vue");
-const AuthorList = () => import("./views/AuthorList.vue");
+const AuthorList = () => import("./views/master/AuthorList.vue");
 const FavoriteAuthorList = () => import("./views/FavoriteAuthorList.vue");
 const FavoriteVideoList = () => import("./views/FavoriteVideoList.vue");
-const VideoList = () => import("./views/VideoList.vue");
+const VideoList = () => import("./views/master/VideoList.vue");
 const Log = () => import("./views/Log.vue");
 const Login = () => import("./views/Login.vue");
 const Signin = () => import("./views/Signin.vue");
@@ -41,12 +41,12 @@ export default new Router({
       children: [
         {
           path: "/index.html",
-          name: "首页",
+          name: "主站",
           component: MasterIndex
         },
         {
           path: "/",
-          name: "首页",
+          name: "主站首页",
           component: MasterIndex
         },
         {
@@ -75,6 +75,7 @@ export default new Router({
         },
         {
           path: "/author",
+          name: "UP主数据列表",
           component: AuthorList
         },
         {
@@ -89,7 +90,7 @@ export default new Router({
         },
         {
           path: "/video",
-          name: "视频列表",
+          name: "视频数据列表",
           component: VideoList
         },
         {

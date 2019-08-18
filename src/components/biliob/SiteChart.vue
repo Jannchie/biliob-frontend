@@ -5,30 +5,29 @@
         {{ title }}
       </div>
     </BiliobDarkInfo>
-    <VLayout :column="this.$vuetify.breakpoint.mdAndDown">
+    <VLayout :column="this.$vuetify.breakpoint.mdAndDown" class="elevation-3">
       <VFlex lg8 md12>
-        <VResponsive :aspect-ratio="aspectRatio" class="v">
-          <VSheet height="100%" class="pa-5">
-            <Chart
-              v-if="!loading"
-              :theme="theme"
-              :auto-resize="true"
-              :options="options"
-              style="width:100%; height:100%;"/>
-            <VProgressCircular
-              v-if="loading"
-              :size="80"
-              color="primary"
-              indeterminate
-              class="progress-circular"
-            ></VProgressCircular
-          ></VSheet>
-        </VResponsive>
+        <div height="100%" class="pa-5">
+          <Chart
+            v-if="!loading"
+            :theme="theme"
+            :auto-resize="true"
+            :options="options"
+            style="height:350px; width:100%; "
+          />
+          <VProgressCircular
+            v-if="loading"
+            :size="80"
+            color="primary"
+            indeterminate
+            class="progress-circular"
+          ></VProgressCircular>
+        </div>
       </VFlex>
       <VFlex lg4 md12>
-        <VSheet tile height="100%" class="pa-5">
+        <div tile height="100%" class="pa-5">
           <BiliobDarkInfo class="subtitle inline" border="left">
-            <div class="py-1 px-5">
+            <div class="py-0 px-3 caption">
               24小时内最高在线观看
             </div>
           </BiliobDarkInfo>
@@ -36,7 +35,7 @@
             {{ bigestWatching }}
           </p>
           <BiliobDarkInfo class="subtitle inline" border="left">
-            <div class="py-1 px-5 ">
+            <div class="py-0 px-3 caption ">
               24小时内最高在线人数
             </div>
           </BiliobDarkInfo>
@@ -44,7 +43,7 @@
             {{ bigestOnline }}
           </p>
           <BiliobDarkInfo class="subtitle inline" border="left">
-            <div class="py-1 px-5 ">
+            <div class="py-0 px-3 caption ">
               本月最值
             </div>
           </BiliobDarkInfo>
@@ -52,7 +51,7 @@
             {{ currentMonthTop }}
           </p>
           <BiliobDarkInfo class="subtitle inline" border="left">
-            <div class="py-1 px-5 ">
+            <div class="py-0 px-3 caption ">
               同比上月
             </div>
           </BiliobDarkInfo>
@@ -60,14 +59,14 @@
             {{ compareWithLastMonth }}
           </p>
           <BiliobDarkInfo class="subtitle inline" border="left">
-            <div class="py-1 px-5 ">
+            <div class="py-0 px-3 caption ">
               同比去年
             </div>
           </BiliobDarkInfo>
           <p class="title site-aside-value font-weight-bold">
             {{ compareWithLastYear }}
           </p>
-        </VSheet>
+        </div>
       </VFlex>
     </VLayout>
   </div>
