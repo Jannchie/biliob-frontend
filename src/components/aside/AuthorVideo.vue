@@ -1,31 +1,31 @@
 <template>
-  <MaterialCard class="aside-card" :title="title">
+  <BiliobCard class="aside-card" :title="title">
     <VList two-line>
       <template v-for="eachVideo in authorTopVideo.content">
         <VDivider :key="eachVideo.title" />
-        <VListTile
+        <VListItem
           :key="eachVideo.aid"
           style="width: 100%"
           :to="'/author/' + eachVideo.mid + '/video/' + eachVideo.aid"
           ripple
         >
-          <VListTileAvatar :key="eachVideo.title" tile>
+          <VListItemAvatar :key="eachVideo.title" tile>
             <VImg :src="zipPic(eachVideo.pic)" />
-          </VListTileAvatar>
-          <VListTileContent>
-            <VListTileTitle>
+          </VListItemAvatar>
+          <VListItemContent>
+            <VListItemTitle>
               {{ eachVideo.title }}
-            </VListTileTitle>
-            <VListTileSubTitle class="caption subtext">
+            </VListItemTitle>
+            <VListItemSubtitle class="caption subtext">
               分区：{{ eachVideo.channel }} 投稿时间：{{
                 dateToStr(eachVideo.datetime)
               }}
-            </VListTileSubTitle>
-          </VListTileContent>
-        </VListTile>
+            </VListItemSubtitle>
+          </VListItemContent>
+        </VListItem>
       </template>
     </VList>
-  </MaterialCard>
+  </BiliobCard>
 </template>
 <script>
 var format = require("date-fns/format");

@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div :class="`dark-info ${border}`">
+  <div :dark="dark">
+    <div :class="`elevation-3 dark-info ${border}`">
       <slot v-if="title == ''"></slot>
       <div v-else class="px-5 py-2">{{ title }}</div>
     </div>
@@ -17,6 +17,10 @@ export default {
     title: {
       default: "",
       type: String
+    },
+    dark: {
+      default: true,
+      type: Boolean
     }
   }
 };

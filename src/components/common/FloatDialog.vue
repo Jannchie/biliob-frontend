@@ -32,7 +32,7 @@
             v-if="type != 'else'"
             v-model="valid"
             color="primary"
-            flat
+            text
             @click="submit"
           >
             确认添加

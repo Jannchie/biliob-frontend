@@ -1,7 +1,7 @@
 <template>
   <VLayout wrap>
     <VFlex lg9>
-      <MaterialCard title="查询条件" subtitle="高级查询可能会消耗较多时间">
+      <BiliobCard title="查询条件" subtitle="高级查询可能会消耗较多时间">
         <VForm>
           <VLayout wrap>
             <VFlex lg4>
@@ -84,8 +84,8 @@
             </VFlex>
           </VLayout>
         </VForm>
-      </MaterialCard>
-      <MaterialCard title="用户检索" text="此处显示全部用户信息">
+      </BiliobCard>
+      <BiliobCard title="用户检索" text="此处显示全部用户信息">
         <VDataTable :headers="headers" :items="userItems" hide-actions>
           <template slot="headerCell" slot-scope="{ header }" color="primary">
             <span
@@ -112,25 +112,25 @@
             <td v-if="group && groupKeyword == 'avg'">{{ check(item.avg) }}</td>
           </template>
         </VDataTable>
-      </MaterialCard>
+      </BiliobCard>
     </VFlex>
     <VFlex lg3>
-      <MaterialCard title="预设">
+      <BiliobCard title="预设">
         <VList two-line>
-          <VListTile
+          <VListItem
             v-for="eachSearchMethod in searchMethods"
             :key="eachSearchMethod.name"
             @click.stop="getProps(eachSearchMethod)"
           >
-            <VListTileContent>
-              <VListTileTitle>
+            <VListItemContent>
+              <VListItemTitle>
                 {{ eachSearchMethod.name }}
-              </VListTileTitle>
-              <VListTileSubTitle>
+              </VListItemTitle>
+              <VListItemSubtitle>
                 {{ eachSearchMethod.owner }}
-              </VListTileSubTitle>
-            </VListTileContent>
-            <VListTileAction>
+              </VListItemSubtitle>
+            </VListItemContent>
+            <VListItemAction>
               <VBtn icon ripple>
                 <VIcon
                   color="grey lighten-1"
@@ -138,10 +138,10 @@
                   >mdi-delete-circle</VIcon
                 >
               </VBtn>
-            </VListTileAction>
-          </VListTile>
+            </VListItemAction>
+          </VListItem>
         </VList>
-      </MaterialCard>
+      </BiliobCard>
     </VFlex>
   </VLayout>
 </template>

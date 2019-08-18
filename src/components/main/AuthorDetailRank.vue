@@ -1,5 +1,5 @@
 <template>
-  <MaterialCard title="UP主排名数据">
+  <BiliobCard border="bottom" title="UP主排名数据">
     <div class="rank-container">
       <div style="flex-grow: 1;text-align:center">
         <div
@@ -52,7 +52,7 @@
         {{ formatedDate }}
       </div>
     </div>
-  </MaterialCard>
+  </BiliobCard>
 </template>
 
 <script>

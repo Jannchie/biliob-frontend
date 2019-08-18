@@ -2,7 +2,7 @@
   <div class="author-list-main">
     <div>
       <div>
-        <MaterialCard class="card-tabs">
+        <BiliobCard class="card-tabs">
           <VLayout slot="header">
             <VIcon right>mdi-sort</VIcon>
             <VFlex>
@@ -96,7 +96,7 @@
               如果搜索ID仍然没有结果，可能是因为该UP主并未被本站观测。你可以点击页面右下角的圆形按钮进行添加！
             </p>
           </div>
-        </MaterialCard>
+        </BiliobCard>
       </div>
     </div>
   </div>

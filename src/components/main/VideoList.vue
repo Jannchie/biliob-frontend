@@ -1,6 +1,6 @@
 <template>
   <div class="video-list-main">
-    <MaterialCard class="card-tabs">
+    <BiliobCard class="card-tabs">
       <div>
         <VSearchForm
           slot="search"
@@ -140,7 +140,7 @@
           如果搜索ID仍然没有结果，可能是因为该UP主并未被本站观测。你可以点击页面右下角的圆形按钮进行添加！
         </p>
       </div>
-    </MaterialCard>
+    </BiliobCard>
   </div>
 </template>
 

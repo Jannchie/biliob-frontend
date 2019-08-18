@@ -1,5 +1,5 @@
 <template>
-  <MaterialCard
+  <BiliobCard
     :href="'https://www.bilibili.com/av' + ads.aid"
     title="站长倾情推荐"
   >
@@ -15,7 +15,7 @@
         }}<VIcon small> mdi-account-box-outline </VIcon>{{ ads.author }}
       </div>
     </VCardText>
-  </MaterialCard>
+  </BiliobCard>
 </template>
 <script>
 export default {

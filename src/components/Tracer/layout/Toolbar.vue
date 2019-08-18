@@ -1,5 +1,5 @@
 <template>
-  <VAppBar color="grey lighten-3" flat absolute app prominent>
+  <VAppBar color="grey lighten-3" text absolute app prominent>
     <VAppBarTitle>
       {{ title }}
     </VAppBarTitle>

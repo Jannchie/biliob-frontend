@@ -2,7 +2,10 @@
   <VLayout justify-center>
     <VFlex md12>
       <BiliobVersusCard></BiliobVersusCard>
-      <BiliobChart :options="siteInfo" title="B站全站信息"></BiliobChart>
+      <BiliobSiteChart
+        :options="siteInfo"
+        title="B站全站信息"
+      ></BiliobSiteChart>
     </VFlex>
   </VLayout>
 </template>

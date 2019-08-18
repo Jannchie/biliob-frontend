@@ -1,9 +1,9 @@
 <template>
-  <MaterialCard title="为你推荐">
+  <BiliobCard title="为你推荐">
     <div
       v-for="(item, index) in videoList"
       :key="index"
-      flat
+      text
       class="px-0 py-1"
       @click.stop="toVideo(item.mid, item.aid)"
     >
@@ -24,7 +24,7 @@
         </div>
       </div>
     </div>
-  </MaterialCard>
+  </BiliobCard>
 </template>
 <script>
 export default {

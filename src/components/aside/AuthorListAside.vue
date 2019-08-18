@@ -1,6 +1,6 @@
 <template>
   <div>
-    <MaterialCard title="数据说明">
+    <BiliobCard title="数据说明">
       <div class="body-1">
         <li>
           这里可以查询所有<span class="green--text">正在追踪</span>的UP主。
@@ -36,7 +36,7 @@
           目前，如果UP主的视频<span>同时在线人数达到全站前20</span>，那么该UP主的数据更新频率会强行加快到<span>每10分钟采集一次</span>。以此获取更加精密实时的数据。
         </div>
       </div>
-    </MaterialCard>
+    </BiliobCard>
     <MaterialChartCard :options="options" class="body-1">
       <p>收录UP主总数 {{ count }}</p>
       <p>正在观测UP主总数 {{ focusCount }}</p>

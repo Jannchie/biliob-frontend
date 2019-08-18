@@ -2,7 +2,7 @@
   <nav>
     <VSnackbar v-model="snackbar" :timeout="3000" top>
       {{ snackbarText }}
-      <VBtn color="pink" flat @click="snackbar = false">
+      <VBtn color="pink" text @click="snackbar = false">
         关闭
       </VBtn>
     </VSnackbar>
@@ -14,7 +14,7 @@
       >
         <VIcon>mdi-menu</VIcon>
       </VToolbarSideIcon>
-      <VBtn class="toolbar-item" flat dark @click.stop="toHomepage">
+      <VBtn class="toolbar-item" text dark @click.stop="toHomepage">
         <VToolbarTitle class="toolbar-title">
           <img
             class="logo"
@@ -24,13 +24,13 @@
         </VToolbarTitle>
       </VBtn>
       <VToolbarItems class="hidden-md-and-down">
-        <VBtn class="toolbar-item" flat dark @click.stop="toVideo">
+        <VBtn class="toolbar-item" text dark @click.stop="toVideo">
           <VIcon>mdi-video-outline</VIcon>视频追踪
         </VBtn>
-        <VBtn class="toolbar-item" flat dark @click.stop="toAuthor">
+        <VBtn class="toolbar-item" text dark @click.stop="toAuthor">
           <VIcon>mdi-account-outline</VIcon>UP主追踪
         </VBtn>
-        <VBtn class="toolbar-item" flat dark @click.stop="toRank">
+        <VBtn class="toolbar-item" text dark @click.stop="toRank">
           <VIcon>mdi-chart-histogram</VIcon>排行榜
         </VBtn>
       </VToolbarItems>
@@ -41,7 +41,7 @@
         <VBtn
           v-if="checked"
           ripple
-          flat
+          text
           primary
           dark
           small
@@ -54,7 +54,7 @@
           small
           ripple
           dark
-          flat
+          text
           primary
           :loading="checkInLoading"
           @click.stop="checkIn"
@@ -68,189 +68,189 @@
         class="user-info-content"
         style="padding:0;margin-top:150px"
       >
-        <VListTile>
-          <VListTileAvatar>
+        <VListItem>
+          <VListItemAvatar>
             <VIcon>
               mdi-home
             </VIcon>
-          </VListTileAvatar>
-          <VListTileContent>
-            <VListTileTitle
+          </VListItemAvatar>
+          <VListItemContent>
+            <VListItemTitle
               :class="
                 `grey--text text--${brightness}-2 title font-weight-regular`
               "
-              >{{ name }}</VListTileTitle
+              >{{ name }}</VListItemTitle
             >
-            <VListTileSubTitle>
+            <VListItemSubtitle>
               <div style="display:flex;">
                 <ExpBadget class="badget" :exp="exp" />
                 <CreditBadget class="badget" :credit="credit" />
               </div>
-            </VListTileSubTitle>
-          </VListTileContent>
-        </VListTile>
+            </VListItemSubtitle>
+          </VListItemContent>
+        </VListItem>
       </VList>
       <VList dense>
-        <VListTile
+        <VListItem
           v-if="!logined"
           class="nav-list-tile"
           ripple
           @click.stop="toLogin"
         >
-          <VListTileAvatar>
+          <VListItemAvatar>
             <CircleIconBtn>mdi-login-variant</CircleIconBtn>
-          </VListTileAvatar>
-          <VListTileContent>
-            <VListTileTitle
+          </VListItemAvatar>
+          <VListItemContent>
+            <VListItemTitle
               :class="`font-weight-regular grey--text text--${brightness}-2`"
-              >登录</VListTileTitle
+              >登录</VListItemTitle
             >
-          </VListTileContent>
-        </VListTile>
+          </VListItemContent>
+        </VListItem>
       </VList>
       <VList v-if="logined" dense>
-        <VListTile class="nav-list-tile" ripple @click.stop="toFavoriteAuthor">
-          <VListTileAvatar>
+        <VListItem class="nav-list-tile" ripple @click.stop="toFavoriteAuthor">
+          <VListItemAvatar>
             <CircleIconBtn>mdi-account-heart</CircleIconBtn>
-          </VListTileAvatar>
-          <VListTileContent>
-            <VListTileTitle
+          </VListItemAvatar>
+          <VListItemContent>
+            <VListItemTitle
               :class="`font-weight-regular grey--text text--${brightness}-2`"
-              >我的关注</VListTileTitle
+              >我的关注</VListItemTitle
             >
-          </VListTileContent>
-        </VListTile>
-        <VListTile class="nav-list-tile" ripple @click.stop="toFavoriteVideo">
-          <VListTileAvatar>
+          </VListItemContent>
+        </VListItem>
+        <VListItem class="nav-list-tile" ripple @click.stop="toFavoriteVideo">
+          <VListItemAvatar>
             <CircleIconBtn>mdi-star</CircleIconBtn>
-          </VListTileAvatar>
-          <VListTileContent>
-            <VListTileTitle
+          </VListItemAvatar>
+          <VListItemContent>
+            <VListItemTitle
               :class="`font-weight-regular grey--text text--${brightness}-2`"
-              >我的收藏</VListTileTitle
+              >我的收藏</VListItemTitle
             >
-          </VListTileContent>
-        </VListTile>
-        <VListTile class="nav-list-tile" ripple @click.stop="toRecord">
-          <VListTileAvatar>
+          </VListItemContent>
+        </VListItem>
+        <VListItem class="nav-list-tile" ripple @click.stop="toRecord">
+          <VListItemAvatar>
             <CircleIconBtn>mdi-notebook</CircleIconBtn>
-          </VListTileAvatar>
-          <VListTileContent>
-            <VListTileTitle
+          </VListItemAvatar>
+          <VListItemContent>
+            <VListItemTitle
               :class="`font-weight-regular grey--text text--${brightness}-2`"
-              >操作记录</VListTileTitle
+              >操作记录</VListItemTitle
             >
-          </VListTileContent>
-        </VListTile>
+          </VListItemContent>
+        </VListItem>
       </VList>
       <VDivider></VDivider>
       <VList dense>
-        <VListTile class="nav-list-tile" ripple @click.stop="toEvent">
-          <VListTileAvatar>
+        <VListItem class="nav-list-tile" ripple @click.stop="toEvent">
+          <VListItemAvatar>
             <CircleIconBtn>mdi-bulletin-board</CircleIconBtn>
-          </VListTileAvatar>
-          <VListTileContent>
-            <VListTileTitle
+          </VListItemAvatar>
+          <VListItemContent>
+            <VListItemTitle
               :class="`font-weight-regular grey--text text--${brightness}-2`"
-              >UP主粉丝波动情报</VListTileTitle
+              >UP主粉丝波动情报</VListItemTitle
             >
-          </VListTileContent>
-        </VListTile>
+          </VListItemContent>
+        </VListItem>
       </VList>
 
       <VDivider></VDivider>
 
       <VList dense>
-        <VListTile class="nav-list-tile" ripple @click.stop="toUserRank">
-          <VListTileAvatar>
+        <VListItem class="nav-list-tile" ripple @click.stop="toUserRank">
+          <VListItemAvatar>
             <CircleIconBtn>mdi-view-list</CircleIconBtn>
-          </VListTileAvatar>
-          <VListTileContent>
-            <VListTileTitle
+          </VListItemAvatar>
+          <VListItemContent>
+            <VListItemTitle
               :class="`font-weight-regular grey--text text--${brightness}-2`"
-              >观测者排行</VListTileTitle
+              >观测者排行</VListItemTitle
             >
-          </VListTileContent>
-        </VListTile>
-        <VListTile class="nav-list-tile" ripple @click.stop="toFaq">
-          <VListTileAvatar>
+          </VListItemContent>
+        </VListItem>
+        <VListItem class="nav-list-tile" ripple @click.stop="toFaq">
+          <VListItemAvatar>
             <CircleIconBtn>mdi-help-circle-outline</CircleIconBtn>
-          </VListTileAvatar>
-          <VListTileContent>
-            <VListTileTitle
+          </VListItemAvatar>
+          <VListItemContent>
+            <VListItemTitle
               :class="`font-weight-regular grey--text text--${brightness}-2`"
-              >FA♂Q</VListTileTitle
+              >FA♂Q</VListItemTitle
             >
-          </VListTileContent>
-        </VListTile>
+          </VListItemContent>
+        </VListItem>
 
-        <VListTile class="nav-list-tile" ripple @click.stop="toAbout">
-          <VListTileAvatar>
+        <VListItem class="nav-list-tile" ripple @click.stop="toAbout">
+          <VListItemAvatar>
             <CircleIconBtn>mdi-information-outline</CircleIconBtn>
-          </VListTileAvatar>
+          </VListItemAvatar>
 
-          <VListTileContent>
-            <VListTileTitle
+          <VListItemContent>
+            <VListItemTitle
               :class="`font-weight-regular grey--text text--${brightness}-2`"
-              >关于</VListTileTitle
+              >关于</VListItemTitle
             >
-          </VListTileContent>
-        </VListTile>
+          </VListItemContent>
+        </VListItem>
 
-        <VListTile class="nav-list-tile" ripple @click.stop="toLog">
-          <VListTileAvatar>
+        <VListItem class="nav-list-tile" ripple @click.stop="toLog">
+          <VListItemAvatar>
             <CircleIconBtn>mdi-developer-board</CircleIconBtn>
-          </VListTileAvatar>
+          </VListItemAvatar>
 
-          <VListTileContent>
-            <VListTileTitle
+          <VListItemContent>
+            <VListItemTitle
               :class="`font-weight-regular grey--text text--${brightness}-2`"
-              >开发日志</VListTileTitle
+              >开发日志</VListItemTitle
             >
-          </VListTileContent>
-        </VListTile>
+          </VListItemContent>
+        </VListItem>
       </VList>
       <VDivider></VDivider>
       <VList dense>
-        <VListTile class="nav-list-tile" ripple @click.stop="toDonate">
-          <VListTileAvatar>
+        <VListItem class="nav-list-tile" ripple @click.stop="toDonate">
+          <VListItemAvatar>
             <CircleIconBtn>mdi-currency-cny</CircleIconBtn>
-          </VListTileAvatar>
-          <VListTileContent>
-            <VListTileTitle
+          </VListItemAvatar>
+          <VListItemContent>
+            <VListItemTitle
               :class="`font-weight-regular grey--text text--${brightness}-2`"
-              >援助与捐赠</VListTileTitle
+              >援助与捐赠</VListItemTitle
             >
-          </VListTileContent>
-        </VListTile>
+          </VListItemContent>
+        </VListItem>
       </VList>
 
       <VList dense>
-        <VListTile class="nav-list-tile" ripple @click.stop="darkMode">
-          <VListTileAvatar>
+        <VListItem class="nav-list-tile" ripple @click.stop="darkMode">
+          <VListItemAvatar>
             <CircleIconBtn>{{ darkModeIcon }}</CircleIconBtn>
-          </VListTileAvatar>
-          <VListTileContent>
-            <VListTileTitle
+          </VListItemAvatar>
+          <VListItemContent>
+            <VListItemTitle
               :class="`font-weight-regular grey--text text--${brightness}-2`"
-              >{{ darkModeText }}</VListTileTitle
+              >{{ darkModeText }}</VListItemTitle
             >
-          </VListTileContent>
-        </VListTile>
+          </VListItemContent>
+        </VListItem>
       </VList>
 
       <VList :hidden="isBsl" dense>
-        <VListTile class="nav-list-tile" ripple @click.stop="toAndroidPage">
-          <VListTileAvatar>
+        <VListItem class="nav-list-tile" ripple @click.stop="toAndroidPage">
+          <VListItemAvatar>
             <CircleIconBtn>mdi-android</CircleIconBtn>
-          </VListTileAvatar>
-          <VListTileContent>
-            <VListTileTitle
+          </VListItemAvatar>
+          <VListItemContent>
+            <VListItemTitle
               :class="`font-weight-regular grey--text text--${brightness}-2`"
-              >获取安卓APP</VListTileTitle
+              >获取安卓APP</VListItemTitle
             >
-          </VListTileContent>
-        </VListTile>
+          </VListItemContent>
+        </VListItem>
       </VList>
 
       <!-- <div
@@ -436,6 +436,7 @@ export default {
       this.$cookies.set("dark", this.$store.getters.getDark);
     },
     checkIn() {
+      this.checkInLoading = true;
       this.axios
         .post("/user/check-in")
         .then(response => {

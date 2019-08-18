@@ -47,7 +47,7 @@
 
       <VCardActions>
         <VSpacer></VSpacer>
-        <VBtn color="primary" flat @click="show = false">
+        <VBtn color="primary" text @click="show = false">
           I got it
         </VBtn>
       </VCardActions>

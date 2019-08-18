@@ -1,15 +1,13 @@
 <template>
-  <span>
-    <VIcon v-if="sex === '男'" color="blue" small>
-      mdi-gender-male
-    </VIcon>
-    <VIcon v-if="sex === '女'" color="pink" small>
-      mdi-gender-female
-    </VIcon>
-    <VIcon v-if="sex === '保密'" color="purple" small>
-      mdi-gender-male-female
-    </VIcon>
-  </span>
+  <VIcon v-if="sex === '男'" size="22px" color="blue">
+    mdi-gender-male
+  </VIcon>
+  <VIcon v-else-if="sex === '女'" color="pink">
+    mdi-gender-female
+  </VIcon>
+  <VIcon v-else-if="sex === '保密'" color="purple">
+    mdi-gender-male-female
+  </VIcon>
 </template>
 <script>
 export default {

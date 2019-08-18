@@ -130,7 +130,7 @@
       </VSlideYTransition>
     </div>
     <div slot="aside-cards">
-      <MaterialCard title="粉丝变动观测说明" style="margin-bottom:5px">
+      <BiliobCard title="粉丝变动观测说明" style="margin-bottom:5px">
         <VCardText class="caption">
           此页面展示了粉丝数发生剧烈波动的UP主。<br />
           由于<span class="text--darken-2 red--text">发布视频</span>、<span
@@ -198,7 +198,7 @@
             >事件，变化率代表日增量与该UP主粉丝数总量的百分比。
           </li>
         </VCardText>
-      </MaterialCard>
+      </BiliobCard>
       <OtherLink />
     </div>
   </MainLayout>

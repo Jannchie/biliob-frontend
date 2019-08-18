@@ -26,7 +26,7 @@
         title="弹幕统计-弹幕云关键词"
         :options="wordCloudOptions"
       />
-      <MaterialCard
+      <BiliobCard
         v-if="hasDanmakuAggregate"
         slot="danmaku-switch"
         title="弹幕统计-分P选择"
@@ -43,7 +43,7 @@
             @change="pageChange"
           ></VSelect>
         </div>
-      </MaterialCard>
+      </BiliobCard>
     </VideoMain>
     <VideoAside slot="aside-cards">
       <AuthorInfo slot="author-operation" :author-data="authorData" />
@@ -146,7 +146,9 @@ export default {
       this.mainChart = drawMainChart(deepCopy(response.data));
       this.likeRateChart = drawVideoPieChart(deepCopy(response.data));
       this.drawDanmakuCloud = drawVideoPieChart(deepCopy(response.data));
-      if (response.data.hasOwnProperty("danmakuAggregate")) {
+      if (
+        Object.prototype.hasOwnProperty.call(response.data, "danmakuAggregate")
+      ) {
         this.hasDanmakuAggregate = true;
         let pagelist = [];
         for (let eachPage in response.data.danmakuAggregate) {
@@ -188,7 +190,10 @@ export default {
     },
     redrawDanmakuCharts(page) {
       if (
-        this.videoData.danmakuAggregate[page].hasOwnProperty("word_frequency")
+        Object.prototype.hasOwnProperty.call(
+          this.videoData.danmakuAggregate[page],
+          "word_frequency"
+        )
       ) {
         this.wordCloudOptions = drawDanmakuCloud(
           this.videoData.danmakuAggregate[page]["word_frequency"]

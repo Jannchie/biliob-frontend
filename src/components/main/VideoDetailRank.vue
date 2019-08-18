@@ -1,5 +1,5 @@
 <template>
-  <MaterialCard title="视频排名数据">
+  <BiliobCard title="视频排名数据">
     <VContainer grid-list-md text-xs-center class="pa-0">
       <VLayout row>
         <VFlex xs12 md4>
@@ -113,7 +113,7 @@
         {{ formatedDate }}
       </div>
     </div>
-  </MaterialCard>
+  </BiliobCard>
 </template>
 
 <script>

@@ -54,8 +54,8 @@
             <div
               v-for="eachData in data"
               :key="eachData.name"
+              class="py-4"
               style="display: flex"
-              class="my-4"
               @click.stop="linkTo(eachData)"
             >
               <VAvatar size="60px" class="mr-4">
@@ -84,7 +84,7 @@
               v-for="eachData in data"
               :key="eachData.name"
               style="display: flex"
-              class="my-4"
+              class="py-4"
             >
               <VImg
                 style="border-radius:3px;width:90px;height:120px;margin:0 8px"

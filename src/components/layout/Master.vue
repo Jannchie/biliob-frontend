@@ -57,8 +57,8 @@
       <div style="text-align:center" class="display-4"></div>
     </VParallax> -->
     <div>
-      <VContainer>
-        <VSheet>
+      <VContainer class="py-0">
+        <div>
           <VNavigationDrawer v-model="showNav" fixed temporary>
             <VContainer grid-list-md>
               <VLayout v-if="!$store.state.logined">
@@ -73,7 +73,7 @@
                   >
                 </VFlex>
               </VLayout>
-              <VSheet v-if="$store.state.logined">
+              <div v-if="$store.state.logined">
                 <VCardActions style="justify-content:flex-end">
                   <div v-if="$store.state.logined" class="check-in">
                     <VBtn
@@ -124,7 +124,7 @@
                   </VBtn>
                 </VCardActions>
                 <VDivider></VDivider>
-              </VSheet>
+              </div>
               <VBtn
                 v-for="(eachNavItem, index) in navItems"
                 :key="index"
@@ -138,7 +138,7 @@
               >
             </VContainer>
           </VNavigationDrawer>
-        </VSheet>
+        </div>
       </VContainer>
     </div>
     <VContainer class="pa-0">

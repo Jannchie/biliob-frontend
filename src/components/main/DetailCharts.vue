@@ -1,16 +1,16 @@
 <template>
   <div>
-    <MaterialCard
-      :title="title"
-      :text="subTitle"
-      :color="color"
-      :card-padding="'pa-0'"
-      class="card elevation-2 pa-0"
-    >
+    <BiliobCard :text="subTitle" :color="color">
+      <BiliobDarkInfo slot="offset" border="bottom" class="title">
+        <div class="px-5 py-1">
+          {{ title }}
+        </div>
+      </BiliobDarkInfo>
       <VFlex slot="header">
-        <slot name="header" style="padding: 0 "></slot>
+        <slot name="header"></slot>
       </VFlex>
       <VResponsive :aspect-ratio="aspectRatio" style="margin-top:30px">
+        <Chart :auto-resize="true" :theme="theme" :options="options" />
         <VProgressCircular
           v-show="loading"
           :size="50"
@@ -18,15 +18,8 @@
           indeterminate
           class="progress-circular"
         ></VProgressCircular>
-        <Chart
-          v-show="!loading"
-          :theme="theme"
-          :auto-resize="true"
-          :options="options"
-          style="width:1000;height:1000;"
-        />
       </VResponsive>
-    </MaterialCard>
+    </BiliobCard>
   </div>
 </template>
 
@@ -111,5 +104,14 @@ export default {
   top: 50%;
   margin-left: -25px;
   margin-top: -25px;
+}
+/**
+ * The default size is 600px×400px, for responsive charts
+ * you may need to set percentage values as follows (also
+ * don't forget to provide a size for the container).
+ */
+.echarts {
+  width: 100%;
+  height: 100%;
 }
 </style>

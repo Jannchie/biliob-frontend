@@ -1,7 +1,7 @@
 <template>
-  <MaterialCard>
+  <BiliobCard>
     <VideoBottomSheet :title="title" :pic="pic" :aid="aid"></VideoBottomSheet>
-  </MaterialCard>
+  </BiliobCard>
 </template>
 <script>
 import VideoBottomSheet from "../common/VideoBottomSheet.vue";

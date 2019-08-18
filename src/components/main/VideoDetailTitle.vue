@@ -1,5 +1,5 @@
 <template>
-  <MaterialCard>
+  <BiliobCard>
     <div slot="offset" class="mx-auto d-block">
       <img
         class="video-img"
@@ -24,7 +24,7 @@
       </div>
     </div>
     <FavoriteBtn :aid="aid" class="favorite-btn" />
-  </MaterialCard>
+  </BiliobCard>
 </template>
 
 <script>

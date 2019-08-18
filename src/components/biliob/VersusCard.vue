@@ -3,14 +3,14 @@
     <BiliobDarkInfo border="bottom"
       ><div class="px-5 py-2">榜首粉丝争夺</div></BiliobDarkInfo
     >
-    <div class="versus-card">
+    <div class="versus-card elevation-3">
       <VImg
         :src="aFace"
         :lazy-src="aFace"
         style="position:absolute"
         height="100px"
         width="50%"
-        gradient="to  right, rgba(255,255,255,.33), rgba(255,255,255,1)"
+        gradient="to  right, rgba(80,80,80,.1), rgba(255,255,255,1)"
       ></VImg>
       <div class="left-info">
         <BiliobDarkInfo
@@ -57,7 +57,7 @@
         style="position:absolute;right:0px"
         height="100px"
         width="50%"
-        gradient="to left, rgba(255,255,255,.33), rgba(255,255,255,1)"
+        gradient="to left, rgba(80,80,80,.1), rgba(255,255,255,1)"
         :src="bFace"
         :lazy-src="bFace"
       ></VImg>

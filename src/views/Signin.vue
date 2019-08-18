@@ -1,7 +1,7 @@
 <template>
   <VLayout justify-center>
     <VFlex lg5 md12>
-      <MaterialCard title="注册">
+      <BiliobCard title="注册">
         <div style="position: absolute;left:15px;right:15px;">
           <MaterialNotification
             :value="alertSuccess"
@@ -49,7 +49,7 @@
               </VFlex>
               <VFlex md4 class="align-self-center">
                 <VBtn
-                  flat
+                  text
                   :loading="loading"
                   color="primary"
                   :disabled="!mailVerification(mail)"
@@ -87,7 +87,7 @@
             </Center>
           </VForm>
         </VCardActions>
-      </MaterialCard>
+      </BiliobCard>
     </VFlex>
   </VLayout>
 </template>

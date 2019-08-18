@@ -6,7 +6,7 @@
       icon
       depressed
       color="grey lighten-1"
-      flat
+      text
       @click.stop="addFocus"
     >
       <VIcon>mdi-star-outline</VIcon>
@@ -17,7 +17,7 @@
       icon
       depressed
       color="orange darken-2"
-      flat
+      text
       @click.stop="removeFocus"
     >
       <VIcon>mdi-star</VIcon>

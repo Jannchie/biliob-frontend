@@ -1,9 +1,5 @@
 <template>
-  <MaterialCard
-    v-bind="$attrs"
-    class="v-card--material-stats"
-    v-on="$listeners"
-  >
+  <BiliobCard v-bind="$attrs" class="v-card--material-stats" v-on="$listeners">
     <VCard
       slot="offset"
       :class="`elevation-${elevation}`"
@@ -32,7 +28,7 @@
         >{{ subText }}</span
       >
     </template>
-  </MaterialCard>
+  </BiliobCard>
 </template>
 
 <script>

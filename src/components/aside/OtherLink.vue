@@ -1,5 +1,5 @@
 <template>
-  <MaterialCard title="更多链接" class="body-1">
+  <BiliobCard title="更多链接" class="body-1">
     <a target="_blank" href="https://github.com/Jannchie">
       <VIcon style="vertical-align: middle;margin-right:5px">
         mdi-github-face </VIcon
@@ -106,7 +106,7 @@
     <br />
     <!-- <span @click.stop="toTracer">后台管理系统</span> -->
     <br />
-  </MaterialCard>
+  </BiliobCard>
 </template>
 <script>
 export default {

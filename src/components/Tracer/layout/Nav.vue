@@ -9,19 +9,19 @@
   >
     <VContainer>
       <VList two-line>
-        <VListTile>
-          <VListTileAvatar>
+        <VListItem>
+          <VListItemAvatar>
             <img src="../../../../public/img/icons/favicon-32x32.png" />
-          </VListTileAvatar>
-          <VListTileContent>
-            <VListTileTitle class="white--text">
+          </VListItemAvatar>
+          <VListItemContent>
+            <VListItemTitle class="white--text">
               BiliOB观测者
-            </VListTileTitle>
-            <VListTileSubTitle>
+            </VListItemTitle>
+            <VListItemSubtitle>
               管理系统
-            </VListTileSubTitle>
-          </VListTileContent>
-        </VListTile>
+            </VListItemSubtitle>
+          </VListItemContent>
+        </VListItem>
       </VList>
     </VContainer>
     <TracerNavItem

@@ -2,7 +2,7 @@
   <VLayout wrap>
     <VFlex lg8>
       <VForm>
-        <MaterialCard title="批量上传爬虫任务">
+        <BiliobCard title="批量上传爬虫任务">
           <h5>选择计划任务的类型</h5>
           <VRadioGroup v-model="type">
             <VRadio value="video" label="视频"></VRadio>
@@ -31,28 +31,28 @@
           >
             <VIcon left>mdi-upload</VIcon>上传
           </VBtn>
-        </MaterialCard>
+        </BiliobCard>
       </VForm>
     </VFlex>
     <VFlex lg4>
-      <MaterialCard title="已设定任务">
+      <BiliobCard title="已设定任务">
         <VList three-line>
-          <VListTile v-for="(eachItem, index) in schedules" :key="index">
-            <VListTileContent>
-              <VListTileTitle>{{ eachItem.name }}</VListTileTitle>
-              <VListTileSubTitle>{{
+          <VListItem v-for="(eachItem, index) in schedules" :key="index">
+            <VListItemContent>
+              <VListItemTitle>{{ eachItem.name }}</VListItemTitle>
+              <VListItemSubtitle>{{
                 frequencyText(eachItem.frequency)
-              }}</VListTileSubTitle>
-              <VListTileSubTitle>{{ eachItem.owner }}</VListTileSubTitle>
-            </VListTileContent>
-            <VListTileAction>
+              }}</VListItemSubtitle>
+              <VListItemSubtitle>{{ eachItem.owner }}</VListItemSubtitle>
+            </VListItemContent>
+            <VListItemAction>
               <VBtn icon @click="deleteSchedule(eachItem)">
                 <VIcon color="red darken-1">mdi-delete-circle</VIcon>
               </VBtn>
-            </VListTileAction>
-          </VListTile>
+            </VListItemAction>
+          </VListItem>
         </VList>
-      </MaterialCard>
+      </BiliobCard>
     </VFlex>
     <MaterialNotification
       style="position: absolute; min-width: 300px"
