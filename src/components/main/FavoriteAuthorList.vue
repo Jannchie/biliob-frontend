@@ -43,6 +43,7 @@
           outlined
           color="blue darken-2"
           :disabled="nextBtnDisabled"
+          tile
           @click.stop="next"
         >
           {{ nextBtnText }}

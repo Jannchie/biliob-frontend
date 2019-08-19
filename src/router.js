@@ -4,7 +4,7 @@ const MasterIndex = () => import("./views/master/Index.vue");
 const LayoutMaster = () => import("@/components/layout/Master.vue");
 const Rank = () => import("./views/master/Rank.vue");
 const Author = () => import("./views/master/Author.vue");
-const Video = () => import("./views/Video.vue");
+const Video = () => import("./views/master/Video.vue");
 const AuthorList = () => import("./views/master/AuthorList.vue");
 const FavoriteAuthorList = () => import("./views/FavoriteAuthorList.vue");
 const FavoriteVideoList = () => import("./views/FavoriteVideoList.vue");
@@ -71,6 +71,7 @@ export default new Router({
         },
         {
           path: "/author/:mid/video/:aid",
+          name: "视频详细数据",
           component: Video
         },
         {

@@ -1,5 +1,5 @@
 <template>
-  <BiliobCard class="aside-card" :title="title">
+  <BiliobCard border="bottom" class="aside-card" :title="title">
     <VList two-line>
       <template v-for="eachVideo in authorTopVideo.content">
         <VDivider :key="eachVideo.title" />

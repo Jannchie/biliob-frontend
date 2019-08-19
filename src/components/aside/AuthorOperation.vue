@@ -1,5 +1,5 @@
 <template>
-  <BiliobCard>
+  <BiliobCard :title="title" border="bottom">
     <VBtn class="ma-2" color="green" block outlined tile>
       <VIcon left>
         mdi-refresh
@@ -20,6 +20,7 @@ export default {
     mid: Number(),
     pic: String(),
     name: String(),
+    title: String(),
     forceFocus: Boolean()
   }
 };

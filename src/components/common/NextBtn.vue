@@ -2,6 +2,7 @@
   <VBtn
     block
     outlined
+    tile
     color="blue darken-2"
     :disabled="nextBtnDisabled"
     @click.stop="getData"

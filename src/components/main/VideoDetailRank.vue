@@ -1,6 +1,6 @@
 <template>
-  <BiliobCard title="视频排名数据">
-    <VContainer grid-list-md text-xs-center class="pa-0">
+  <BiliobCard border="bottom" title="视频排名数据">
+    <VContainer class="text-center" grid-list-md text-xs-center>
       <VLayout row>
         <VFlex xs12 md4>
           <div
