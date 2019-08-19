@@ -62,17 +62,10 @@
         :lazy-src="bFace"
       ></VImg>
 
-      <div
-        class="center-versus display-2 font-weight-black"
-        style="text-shadow: 4px 2px 1px #1E88E5;"
-      >
+      <div class="center-versus display-2 font-weight-black">
         <div>VS</div>
         <div>
-          <VOdometer
-            style="text-shadow: 2px 1px 1px #1E88E5"
-            class="display-1"
-            :value="deltaFans"
-          ></VOdometer>
+          <VOdometer class="display-1" :value="deltaFans"></VOdometer>
         </div>
       </div>
       <div style="height:100px"></div>

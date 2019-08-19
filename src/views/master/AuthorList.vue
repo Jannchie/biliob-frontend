@@ -7,7 +7,7 @@
         @getSearchValue="getSearchValue"
       />
     </div>
-    <BiliobCard>
+    <BiliobCard border="bottom">
       <VLayout slot="header">
         <VTooltip color="#222" right eager>
           <template v-slot:activator="{ on }">
@@ -27,12 +27,12 @@
             针对不同的UP主，观测频率会有所不同。
           </li>
         </VTooltip>
-        <VFlex>
+        <VFlex class="py-0">
           <VTabs
             show-arrows
             dark
             background-color="#333"
-            slider-color="#1e88e5"
+            slider-color="primary"
           >
             <VTab @click="sortChange(0)">
               <VIcon>

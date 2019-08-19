@@ -62,12 +62,12 @@
           <VNavigationDrawer v-model="showNav" fixed temporary>
             <VContainer grid-list-md>
               <VLayout v-if="!$store.state.logined">
-                <VFlex lg6>
+                <VFlex lg7>
                   <VBtn width="100%" large dark to="/login"
                     ><VIcon left> mdi-login-variant </VIcon>登录</VBtn
                   >
                 </VFlex>
-                <VFlex lg6>
+                <VFlex lg7>
                   <VBtn width="100%" large text to="/signin"
                     ><VIcon left> mdi-login-variant </VIcon>注册</VBtn
                   >
@@ -106,6 +106,7 @@
                     {{ $store.state.role }}
                   </div>
                   <div>积分：{{ $store.state.credit }}</div>
+                  <div>经验：{{ $store.state.exp }}</div>
                 </VCardText>
                 <VDivider></VDivider>
                 <VCardActions>
@@ -143,7 +144,7 @@
     </div>
     <VContainer class="pa-0">
       <VLayout justify-center>
-        <VFlex lg8>
+        <VFlex lg8 md12>
           <VSlideYTransition mode="out-in">
             <RouterView />
           </VSlideYTransition>
@@ -236,5 +237,10 @@ export default {
 <style>
 .nav-btn {
   justify-content: right;
+}
+@media only screen and (min-width: 960px) {
+  .container {
+    max-width: 1600px;
+  }
 }
 </style>

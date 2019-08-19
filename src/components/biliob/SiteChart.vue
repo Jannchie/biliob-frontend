@@ -1,6 +1,6 @@
 <template>
   <div>
-    <BiliobDarkInfo class="mt-2" border="bottom"
+    <BiliobDarkInfo :elevation="0" class="mt-2" border="bottom"
       ><div class="px-5 py-2">
         {{ title }}
       </div>

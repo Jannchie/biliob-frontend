@@ -1,6 +1,6 @@
 <template>
   <div :dark="dark">
-    <div :class="`elevation-3 dark-info ${border}`">
+    <div :class="`elevation-${elevation} dark-info ${border}`">
       <slot v-if="title == ''"></slot>
       <div v-else class="px-5 py-2">{{ title }}</div>
     </div>
@@ -21,6 +21,10 @@ export default {
     dark: {
       default: true,
       type: Boolean
+    },
+    elevation: {
+      default: 3,
+      type: [Number, String]
     }
   }
 };

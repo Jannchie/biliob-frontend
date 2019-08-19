@@ -1,72 +1,81 @@
 <template>
-  <div>
-    <AuthorInfo slot="author-operation" :author-data="authorData" />
-    <div>
-      <VTabs class="elevation-3 my-2" show-arrows dark background-color="#333">
-        <VIcon left right>mdi-finance</VIcon>
+  <VLayout>
+    <VFlex md8>
+      <AuthorInfo slot="author-operation" :author-data="authorData" />
+      <div>
+        <VTabs
+          class="elevation-3 py-0 my-2"
+          show-arrows
+          dark
+          background-color="#333"
+        >
+          <VIcon left right>mdi-finance</VIcon>
 
-        <VTab @click="getPage(0)">
-          <VIcon left>mdi-database</VIcon>基本统计
-        </VTab>
-        <VTab @click="getPage(1)"> <VIcon left>mdi-brain</VIcon>高级统计 </VTab>
-      </VTabs>
-      <VSlideYTransition>
-        <div v-if="cPage == 0">
-          <!-- <AuthorDetailChannel slot="channel" :channels="authorData.channels"></AuthorDetailChannel> -->
-          <AuthorDetailRank
-            v-bind="authorData.rank"
-            class="mb-2"
-          ></AuthorDetailRank>
-          <DetailCharts
-            class="mb-2"
-            title="粉丝、播放量变化趋势"
-            :options="authorFansOptions"
-          />
-          <DetailCharts
-            class="mb-2"
-            title="粉丝数变化速率"
-            :options="authorFansRateOptions"
-          />
-          <!-- <DetailCharts
+          <VTab @click="getPage(0)">
+            <VIcon left>mdi-database</VIcon>基本统计
+          </VTab>
+          <VTab @click="getPage(1)">
+            <VIcon left>mdi-brain</VIcon>高级统计
+          </VTab>
+        </VTabs>
+        <VSlideYTransition>
+          <div v-if="cPage == 0">
+            <!-- <AuthorDetailChannel slot="channel" :channels="authorData.channels"></AuthorDetailChannel> -->
+            <AuthorDetailRank
+              v-bind="authorData.rank"
+              class="mb-2"
+            ></AuthorDetailRank>
+            <DetailCharts
+              class="mb-2"
+              title="粉丝、播放量变化趋势"
+              :options="authorFansOptions"
+            />
+            <DetailCharts
+              class="mb-2"
+              title="粉丝数变化速率"
+              :options="authorFansRateOptions"
+            />
+            <!-- <DetailCharts
           id="relationship"
           title="UP主作品相关度"
           :options="relationshipOptions"
             />-->
-        </div>
-        <div v-else-if="cPage == 1">
-          <DetailCharts
-            title="粉丝变化效率"
-            sub-title="每一万播放量增长造成的粉丝变动数"
-            :options="authorFansEfficiencyOptions"
-          />
-          <DetailCharts class="ml-2" :options="authorTagCloudOptions">
-            <VFlex slot="header" pa-1>
-              <VTabs color="transparent" slider-color="white">
-                <span
-                  class="subheading font-weight-light mr-3"
-                  style="align-self: center"
-                >
-                  <VIcon>mdi-format-list-bulleted-type</VIcon>
-                </span>
-                <VTab @click="tagSort(0)">
-                  <VIcon style="margin-right:10px;">
-                    mdi-video
-                  </VIcon>
-                  投稿量
-                </VTab>
-                <VTab @click="tagSort(1)">
-                  <VIcon style="margin-right:10px;">
-                    mdi-play-circle-outline
-                  </VIcon>
-                  播放量
-                </VTab>
-              </VTabs>
-            </VFlex>
-          </DetailCharts>
-        </div>
-      </VSlideYTransition>
-    </div>
-    <AuthorAside slot="aside-cards">
+          </div>
+          <div v-else-if="cPage == 1">
+            <DetailCharts
+              title="粉丝变化效率"
+              sub-title="每一万播放量增长造成的粉丝变动数"
+              :options="authorFansEfficiencyOptions"
+            />
+            <DetailCharts :options="authorTagCloudOptions">
+              <VFlex slot="header">
+                <VTabs dark background-color="#333" slider-color="blue">
+                  <span
+                    class="subheading font-weight-light mr-3"
+                    style="align-self: center"
+                  >
+                    <VIcon left right>mdi-format-list-bulleted-type</VIcon>
+                  </span>
+                  <VTab @click="tagSort(0)">
+                    <VIcon style="margin-right:10px;">
+                      mdi-video
+                    </VIcon>
+                    投稿量
+                  </VTab>
+                  <VTab @click="tagSort(1)">
+                    <VIcon style="margin-right:10px;">
+                      mdi-play-circle-outline
+                    </VIcon>
+                    播放量
+                  </VTab>
+                </VTabs>
+              </VFlex>
+            </DetailCharts>
+          </div>
+        </VSlideYTransition>
+      </div>
+    </VFlex>
+    <VFlex md4 class="pl-2">
       <AuthorOperation
         slot="author-to-space"
         :mid="authorData.mid"
@@ -85,13 +94,12 @@
         :author-top-video="authorTopVideo"
       />
       <OtherLink slot="other-link" />
-    </AuthorAside>
-  </div>
+    </VFlex>
+  </VLayout>
 </template>
 
 <script>
 import AuthorDetailRank from "@/components/main/AuthorDetailRank.vue";
-import AuthorAside from "@/components/aside/AuthorDetailAside.vue";
 import AuthorInfo from "@/components/aside/AuthorInfo.vue";
 import AuthorVideo from "@/components/aside/AuthorVideo.vue";
 import AuthorOperation from "@/components/aside/AuthorOperation.vue";
@@ -163,7 +171,6 @@ export default {
   name: "Author",
   components: {
     OtherLink,
-    AuthorAside,
     AuthorDetailRank,
     AuthorInfo,
     AuthorVideo,

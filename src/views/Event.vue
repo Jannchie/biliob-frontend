@@ -16,7 +16,7 @@
                   :alt="eachData.author"
                 />
               </VAvatar>
-              <div style="display">
+              <div>
                 <div class="subheading">
                   {{ eachData.author }}
                 </div>

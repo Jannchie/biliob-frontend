@@ -1,14 +1,17 @@
 <template>
   <div>
     <BiliobCard :text="subTitle" :color="color">
-      <BiliobDarkInfo slot="offset" border="bottom" class="title">
-        <div class="px-5 py-1">
+      <BiliobDarkInfo
+        slot="offset"
+        :elevation="0"
+        border="bottom"
+        class="title"
+      >
+        <slot v-if="$slots.header" name="header"></slot>
+        <div v-else class="px-5 py-1">
           {{ title }}
         </div>
       </BiliobDarkInfo>
-      <VFlex slot="header">
-        <slot name="header"></slot>
-      </VFlex>
       <VResponsive :aspect-ratio="aspectRatio" style="margin-top:30px">
         <Chart :auto-resize="true" :theme="theme" :options="options" />
         <VProgressCircular

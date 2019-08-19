@@ -1,18 +1,21 @@
 <template>
   <BiliobCard>
-    <AuthorBottomSheet
-      :name="name"
-      :pic="pic"
-      :mid="mid"
-      :force-focus="forceFocus"
-    ></AuthorBottomSheet>
+    <VBtn class="ma-2" color="green" block outlined tile>
+      <VIcon left>
+        mdi-refresh
+      </VIcon>
+      立即刷新作者数据</VBtn
+    >
+    <VBtn class="ma-2" color="blue" block outlined tile>
+      <VIcon left>
+        mdi-qqchat
+      </VIcon>
+      通过QQ分享该页面</VBtn
+    >
   </BiliobCard>
 </template>
 <script>
-import AuthorBottomSheet from "../author/BottomSheet.vue";
-
 export default {
-  components: { AuthorBottomSheet },
   props: {
     mid: Number(),
     pic: String(),

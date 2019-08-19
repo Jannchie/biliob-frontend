@@ -9,7 +9,7 @@
             lg4
             md6
             class="pl-1"
-            style="text-align:left;border-left: 2px solid #1e88e5;"
+            style="text-align:left;border-left: 2px solid primary;"
           >
             <div class="title font-weight-black grey--text">
               {{ eachBlock.name }}

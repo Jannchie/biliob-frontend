@@ -1,13 +1,12 @@
 <template>
   <VLayout wrap>
-    <!-- <VFlex lg3 md12> </VFlex> -->
     <VFlex md12>
       <BiliobSheet class="card-tabs">
         <VFlex slot="header">
-          <BiliobDarkInfo border="bottom" class="pb-0">
+          <BiliobDarkInfo border="bottom">
             <div>
               <h1 class="px-5" style="text-align: center">{{ title }}</h1>
-              <VTabs slider-color="#1e88e5" dark background-color="#333">
+              <VTabs slider-color="primary" dark background-color="#333">
                 <VTooltip color="#222" right eager>
                   <template v-slot:activator="{ on }">
                     <span

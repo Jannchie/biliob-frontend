@@ -3,7 +3,7 @@
     <div v-if="hasOffset" :inline="inline" :offset="offset" :icon="icon">
       <BiliobDarkInfo
         v-if="!$slots.offset"
-        :class="`elevation-${elevation}`"
+        :elevation="0"
         :border="border"
         dark
       >

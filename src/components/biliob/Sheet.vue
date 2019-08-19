@@ -1,8 +1,12 @@
 <template>
   <div>
-    <BiliobDarkInfo v-if="!$slots.header" class="subtitle" border="top">{{
-      title
-    }}</BiliobDarkInfo>
+    <BiliobDarkInfo
+      v-if="!$slots.header"
+      :elevation="0"
+      class="subtitle"
+      border="top"
+      >{{ title }}</BiliobDarkInfo
+    >
     <slot v-if="$slots.header" style="padding:0px" name="header" />
     <VSheet class="px-5 body-2 elevation-3">
       <slot></slot>
