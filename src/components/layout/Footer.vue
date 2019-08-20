@@ -1,6 +1,6 @@
 <template>
   <VFooter class="elevation-0 px-0 pt-5" dark height="100%">
-    <VLayout wrap justify-center style="text-align:center">
+    <VLayout wrap justify-center style="text-align:center;width:100%">
       <VFlex md12 lg8>
         <VLayout class="pb-5" wrap>
           <VFlex
