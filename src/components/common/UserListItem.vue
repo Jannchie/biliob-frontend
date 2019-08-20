@@ -1,6 +1,6 @@
 <template>
   <BiliobCard>
-    <div slot="offset" :class="`mx-auto  title-div`">
+    <div style="position:absolute; top:-20px" :class="`mx-auto pb-5 title-div`">
       <img
         v-if="title === '观测站的管理者'"
         height="70"

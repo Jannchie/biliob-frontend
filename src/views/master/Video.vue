@@ -57,18 +57,25 @@
       </BiliobCard>
     </VCol>
     <VCol cols="12" md="4">
-      <AuthorInfo slot="author-operation" :author-data="authorData" />
-      <AuthorVideo
-        slot="other-video"
-        title="UP主其他已追踪视频"
-        :author-top-video="otherVideo"
+      <AuthorInfo
+        slot="author-operation"
+        class="mb-2"
+        :author-data="authorData"
       />
       <VideoOperation
         slot="video-to-bilibili"
+        class="mb-2"
         :aid="videoData.aid"
         :pic="videoData.pic"
         :title="videoData.title"
       />
+      <AuthorVideo
+        slot="other-video"
+        class="mb-2"
+        title="UP主其他已追踪视频"
+        :author-top-video="otherVideo"
+      />
+
       <Recommand slot="recommand" />
     </VCol>
   </VRow>
@@ -143,9 +150,8 @@ export default {
     },
     getVideoData(response) {
       this.videoData = response.data;
-      document.title = `${
-        this.videoData.title
-      } - 视频详细数据 - biliOB观测者 - B站历史数据统计分析站点`;
+      let title = this.videoData.title;
+      document.title = `${title} - 视频详细数据 - biliOB观测者 - B站历史数据统计分析站点`;
       this.rank = this.videoData.rank;
       this.videoData.pic = this.videoData.pic.slice(5);
       this.mainChart = drawMainChart(deepCopy(response.data));

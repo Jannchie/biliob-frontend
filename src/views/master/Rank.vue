@@ -5,7 +5,7 @@
         <VFlex slot="header">
           <BiliobDarkInfo border="bottom">
             <div>
-              <h1 class="px-5" style="text-align: center">{{ title }}</h1>
+              <h4 class="px-5" style="text-align: center">{{ title }}</h4>
               <VTabs slider-color="primary" dark background-color="#333">
                 <VTooltip color="#222" right eager>
                   <template v-slot:activator="{ on }">
@@ -50,73 +50,77 @@
         </VFlex>
         <div>
           <div v-if="index === 0 || index === 1">
-            <div
-              v-for="eachData in data"
-              :key="eachData.name"
-              class="py-4"
-              style="display: flex"
-              @click.stop="linkTo(eachData)"
-            >
-              <VAvatar size="60px" class="mr-4">
-                <img :src="zipPic(eachData.face)" />
-              </VAvatar>
-              <div>
-                <p>{{ eachData.name }}</p>
-                <p>{{ eachData.official }}</p>
-              </div>
-              <VChip
-                :color="getColor(index)"
-                small
-                text-color="white"
-                class="pl-0"
-                style="position:absolute;right:16px;align-self:center"
+            <VFadeTransition mode="out-in" group>
+              <div
+                v-for="eachData in data"
+                :key="eachData.name"
+                class="py-4"
+                style="display: flex"
+                @click.stop="linkTo(eachData)"
               >
-                <VIcon class="ml-0" color="white" left>
-                  {{ getIcon(index) }}
-                </VIcon>
-                {{ Math.abs(eachData.cRate) }}
-              </VChip>
-            </div>
+                <VAvatar size="60px" class="mr-4">
+                  <img :src="zipPic(eachData.face)" />
+                </VAvatar>
+                <div>
+                  <p>{{ eachData.name }}</p>
+                  <p>{{ eachData.official }}</p>
+                </div>
+                <VChip
+                  :color="getColor(index)"
+                  small
+                  text-color="white"
+                  class="pl-0"
+                  style="position:absolute;right:16px;align-self:center"
+                >
+                  <VIcon class="ml-0" color="white" left>
+                    {{ getIcon(index) }}
+                  </VIcon>
+                  {{ Math.abs(eachData.cRate) }}
+                </VChip>
+              </div>
+            </VFadeTransition>
           </div>
           <div v-else>
-            <div
-              v-for="eachData in data"
-              :key="eachData.name"
-              style="display: flex"
-              class="py-4"
-            >
-              <VImg
-                style="border-radius:3px;width:90px;height:120px;margin:0 8px"
-                :src="eachData.cover"
-                :lazy-src="eachData.cover"
-              />
-              <div style="width: 100%">
-                <VContainer class="pt-0 body-1">
-                  <VLayout>
-                    <VFlex xs-12>
-                      <h4 class="font-weight-bold">{{ eachData.title }}</h4>
-                    </VFlex>
-                  </VLayout>
-                  <VLayout row>
-                    <VFlex xs-2>
-                      播放 <span>{{ eachData.currentPlay }}</span>
-                    </VFlex>
-                    <VFlex xs-2>
-                      综分 <span>{{ eachData.currentPts }}</span>
-                    </VFlex>
-                    <VFlex xs-2>
-                      追番 <span>{{ eachData.currentWatch }}</span>
-                    </VFlex>
-                    <VFlex xs-2>
-                      评论 <span>{{ eachData.currentReview }}</span>
-                    </VFlex>
-                    <VFlex xs-4>
-                      弹幕 <span>{{ eachData.currentDanmaku }}</span>
-                    </VFlex>
-                  </VLayout>
-                </VContainer>
+            <VFadeTransition mode="out-in" group>
+              <div
+                v-for="(eachData, idx) in data"
+                :key="idx"
+                style="display: flex"
+                class="py-4"
+              >
+                <VImg
+                  style="border-radius:3px;width:90px;height:120px;margin:0 8px"
+                  :src="eachData.cover"
+                  :lazy-src="eachData.cover"
+                />
+                <div style="width: 100%">
+                  <VContainer class="pt-0 body-1">
+                    <VLayout>
+                      <VFlex xs-12>
+                        <h5 class="font-weight-bold">{{ eachData.title }}</h5>
+                      </VFlex>
+                    </VLayout>
+                    <VLayout row>
+                      <VFlex xs-2>
+                        播放 <span>{{ eachData.currentPlay }}</span>
+                      </VFlex>
+                      <VFlex xs-2>
+                        综分 <span>{{ eachData.currentPts }}</span>
+                      </VFlex>
+                      <VFlex xs-2>
+                        追番 <span>{{ eachData.currentWatch }}</span>
+                      </VFlex>
+                      <VFlex xs-2>
+                        评论 <span>{{ eachData.currentReview }}</span>
+                      </VFlex>
+                      <VFlex xs-4>
+                        弹幕 <span>{{ eachData.currentDanmaku }}</span>
+                      </VFlex>
+                    </VLayout>
+                  </VContainer>
+                </div>
               </div>
-            </div>
+            </VFadeTransition>
           </div>
         </div>
       </BiliobSheet>

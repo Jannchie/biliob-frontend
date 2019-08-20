@@ -27,7 +27,7 @@
       </div>
     </div>
     <VDivider class="my-2"></VDivider>
-    <div>
+    <div style="text-align: center">
       <VBtn
         color="pink lighten-3"
         outlined

@@ -42,7 +42,7 @@
         </VList>
       </VMenu> -->
       <template v-slot:extension>
-        <VTabs align-with-title background-color="transparent">
+        <VTabs background-color="transparent">
           <VTab
             v-for="(eachTabItem, index) in appBarTabs"
             :key="index"
@@ -137,6 +137,15 @@
                 ><VIcon left>{{ eachNavItem.icon }}</VIcon
                 >{{ eachNavItem.name }}</VBtn
               >
+              <VBtn
+                :key="index"
+                large
+                class="nav-btn"
+                text
+                block
+                href="https://azz.net/jannchie"
+                ><VIcon left>mdi-currency-cny</VIcon> 援助</VBtn
+              >
             </VContainer>
           </VNavigationDrawer>
         </div>
@@ -182,11 +191,6 @@ export default {
           name: "关于",
           icon: "mdi-information-outline",
           url: "/about"
-        },
-        {
-          name: "援助",
-          icon: "mdi-currency-cny",
-          url: "/donate"
         }
       ],
       UserItems: [
