@@ -130,7 +130,7 @@
                 v-for="(eachNavItem, index) in navItems"
                 :key="index"
                 large
-                class="nav-btn"
+                class="naVBtn"
                 text
                 block
                 :to="eachNavItem.url"
@@ -140,7 +140,7 @@
               <VBtn
                 :key="index"
                 large
-                class="nav-btn"
+                class="naVBtn"
                 text
                 block
                 href="https://azz.net/jannchie"
@@ -151,11 +151,20 @@
         </div>
       </VContainer>
     </div>
+    <div class="text-center ma-2">
+      <CommonFirstLoadDialog />
+      <VSnackbar v-model="snackbar" top color="info">
+        <div>这里是消息内容</div>
+        <VBtn text @click="snackbar = false">
+          关闭
+        </VBtn>
+      </VSnackbar>
+    </div>
     <VContainer class="pa-0">
       <VLayout justify-center>
         <VFlex lg8 md12>
           <VSlideYTransition mode="out-in">
-            <RouterView />
+            <RouterView style="min-height:800px" />
           </VSlideYTransition>
         </VFlex>
       </VLayout>
@@ -167,6 +176,7 @@
 export default {
   data() {
     return {
+      snackbar: false,
       collapseOnScroll: true,
       checkInLoading: true,
       showNav: false,
@@ -239,7 +249,7 @@ export default {
 };
 </script>
 <style>
-.nav-btn {
+.naVBtn {
   justify-content: right;
 }
 @media only screen and (min-width: 960px) {

@@ -24,6 +24,9 @@ Vue.use(VueCookies);
 
 router.afterEach(function(to) {
   let baseTitle = " - BiliOB观测者 - B站历史数据统计分析站点";
+  if (to.name == undefined) {
+    to.name = "404";
+  }
   window.document.title = to.name + baseTitle;
   function saveToLocal(key) {
     let count = window.localStorage.getItem(key);
