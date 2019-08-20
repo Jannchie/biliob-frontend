@@ -15,6 +15,7 @@ export default new Vuex.Store({
     credit: undefined,
     exp: undefined,
     dark: false,
+    ad: undefined,
     currentPage: undefined,
     favoriteAid: undefined,
     favoriteMid: undefined
@@ -143,6 +144,11 @@ export default new Vuex.Store({
           }
         })
         .catch(e => e.data.msg);
+    },
+    getAd(context) {
+      axios.get("/video/ads").then(response => {
+        context.commit("setData", { name: "ad", data: response.data });
+      });
     }
   },
   modules: {

@@ -16,7 +16,7 @@ const NotFound = () => import("./views/NotFound.vue");
 const About = () => import("./views/master/About.vue");
 const Occurrence = () => import("./views/Event.vue");
 const FAQ = () => import("./views/master/FAQ.vue");
-const UserRank = () => import("./views/UserRank.vue");
+const UserRank = () => import("./views/master/UserRank.vue");
 const UserRecord = () => import("./views/UserRecord.vue");
 const Test = () => import("./views/Test.vue");
 const Android = () => import("./views/Android.vue");
@@ -120,7 +120,7 @@ export default new Router({
           component: About
         },
         {
-          path: "/rank/user",
+          path: "/user/rank",
           name: "观测者排行",
           component: UserRank
         },
