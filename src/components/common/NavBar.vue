@@ -212,7 +212,7 @@
       </VList>
       <VDivider></VDivider>
       <VList dense>
-        <VListTile class="nav-list-tile" ripple @click.stop="toDonate">
+        <VListTile class="nav-list-tile" ripple href="https://azz.net/jannchie">
           <VListTileAvatar>
             <CircleIconBtn>mdi-currency-cny</CircleIconBtn>
           </VListTileAvatar>
