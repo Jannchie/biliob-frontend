@@ -39,87 +39,108 @@ export default new Router({
       component: HomeSite,
       children: [
         {
+          name: "首页",
           path: "/index.html",
           component: Home
         },
         {
+          name: "首页",
           path: "/",
           component: Home
         },
         {
+          name: "排行榜",
           path: "/rank",
           component: Rank
         },
         {
+          name: "粉丝变动率",
           path: "/event",
           component: Occurrence
         },
         {
+          name: "UP主对比",
           path: "/author/versus",
           component: AuthorVersus
         },
         {
+          name: "UP主数据",
           path: "/author/:mid",
           component: Author
         },
         {
+          name: "视频数据",
           path: "/author/:mid/video/:aid",
           component: Video
         },
         {
+          name: "UP主列表",
           path: "/author",
           component: AuthorList
         },
         {
+          name: "登陆",
           path: "/login",
           component: Login
         },
         {
+          name: "注册",
           path: "/signin",
           component: Signin
         },
         {
+          name: "视频列表",
           path: "/video",
           component: VideoList
         },
         {
+          name: "我关注的作者",
           path: "/user/author",
           component: FavoriteAuthorList
         },
         {
+          name: "我收藏的作品",
           path: "/user/video",
           component: FavoriteVideoList
         },
         {
           path: "/log",
+          name: "开发日志",
           component: Log
         },
         {
           path: "/faq",
+          name: "常见问题解答",
           component: FAQ
         },
         {
           path: "/about",
+          name: "关于",
           component: About
         },
         {
           path: "/rank/user",
+          name: "观测者排行",
           component: UserRank
         },
         {
           path: "/user/record",
+          name: "我的操作记录",
           component: UserRecord
         },
         {
           path: "/test",
+          name: "测试",
           component: Test
         },
         {
           path: "/download/android",
+          name: "下载安卓客户端",
           component: Android
         },
         {
           path: "/donate",
+          name: "捐助",
           component: Donate
         }
       ]

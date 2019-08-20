@@ -141,6 +141,8 @@ export default {
     },
     getVideoData(response) {
       this.videoData = response.data;
+      let title = this.videoData.title;
+      document.title = `${title} - 视频详细数据 - biliOB观测者 - B站历史数据统计分析站点`;
       this.rank = this.videoData.rank;
       this.videoData.pic = this.videoData.pic.slice(5);
       this.mainChart = drawMainChart(deepCopy(response.data));

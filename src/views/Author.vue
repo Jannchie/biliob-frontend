@@ -204,7 +204,7 @@ export default {
     this.$store.commit("toAuthor");
     this.axios.get("/author/" + this.mid).then(response => {
       this.authorData = response.data;
-
+      document.title = `${this.authorData.name} - UP主数据详情 - BiliOB观测者 - B站历史数据统计分析站点`;
       //   this.axios
       //     .get(`/author/${this.mid}/relationship?limit=3`)
       //     .then(response => {
