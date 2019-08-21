@@ -15,13 +15,13 @@
             :options="options"
             style="height:350px; width:100%; "
           />
-          <VProgressCircular
+          <!-- <VProgressCircular
             v-if="loading"
             :size="80"
             color="primary"
             indeterminate
             class="progress-circular"
-          ></VProgressCircular>
+          ></VProgressCircular> -->
         </div>
       </VFlex>
       <VFlex lg4 md12>

@@ -75,7 +75,6 @@
         title="UP主其他已追踪视频"
         :author-top-video="otherVideo"
       />
-
       <Recommand slot="recommand" />
     </VCol>
   </VRow>
@@ -193,7 +192,9 @@ export default {
       });
       this.axios
         .get(
-          `/author/${this.$route.params.mid}/video/${this.$route.params.aid}`
+          `/author/${this.$route.params.mid}/video/${
+            this.$route.params.aid
+          }?pagesize=${10}`
         )
         .then(response => {
           this.otherVideo = response.data;

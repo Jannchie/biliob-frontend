@@ -22,13 +22,14 @@ const Test = () => import("./views/Test.vue");
 const Android = () => import("./views/Android.vue");
 const AuthorVersus = () => import("./views/AuthorVersus.vue");
 const Donate = () => import("./views/Donate.vue");
-const Tracer = () => import("./views/Tracer.vue");
+const Tracer = () => import("./views/admin/Tracer.vue");
 const TracerDashboard = () => import("@/components/Tracer/Dashboard.vue");
 const TracerSpider = () => import("@/components/Tracer/Spider.vue");
 const TracerSchedule = () => import("@/components/Tracer/Schedule.vue");
 const TracerUser = () => import("@/components/Tracer/User.vue");
 const TracerNoRole = () => import("@/components/Tracer/NoRole.vue");
 const TracerUpload = () => import("@/components/Tracer/Upload.vue");
+
 Vue.use(Router);
 export default new Router({
   mode: "history",
@@ -139,14 +140,9 @@ export default new Router({
         {
           path: "/donate",
           component: Donate
-        },
-        {
-          path: "*",
-          component: NotFound
         }
       ]
     },
-
     {
       path: "/tracer",
       component: Tracer,

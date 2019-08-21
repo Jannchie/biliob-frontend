@@ -44,8 +44,8 @@
       <template v-slot:extension>
         <VTabs background-color="transparent">
           <VTab
-            v-for="(eachTabItem, index) in appBarTabs"
-            :key="index"
+            v-for="(eachTabItem, idx) in appBarTabs"
+            :key="idx"
             :to="eachTabItem.path"
             >{{ eachTabItem.name }}</VTab
           >
@@ -111,8 +111,8 @@
                 <VDivider></VDivider>
                 <VCardActions>
                   <VBtn
-                    v-for="(eachUserItem, index) in UserItems"
-                    :key="index"
+                    v-for="(eachUserItem, userItemIdx) in UserItems"
+                    :key="userItemIdx"
                     width="50%"
                     :to="eachUserItem.path"
                     large
@@ -127,8 +127,8 @@
                 <VDivider></VDivider>
               </div>
               <VBtn
-                v-for="(eachNavItem, index) in navItems"
-                :key="index"
+                v-for="(eachNavItem, navItemIndex) in navItems"
+                :key="navItemIndex"
                 large
                 class="naVBtn"
                 text
@@ -138,7 +138,6 @@
                 >{{ eachNavItem.name }}</VBtn
               >
               <VBtn
-                :key="index"
                 large
                 class="naVBtn"
                 text
@@ -151,15 +150,6 @@
         </div>
       </VContainer>
     </div>
-    <div class="text-center ma-2">
-      <CommonFirstLoadDialog />
-      <VSnackbar v-model="snackbar" top color="info">
-        <div>这里是消息内容</div>
-        <VBtn text @click="snackbar = false">
-          关闭
-        </VBtn>
-      </VSnackbar>
-    </div>
     <VContainer class="pa-0">
       <VLayout justify-center>
         <VFlex lg8 md12>
@@ -169,6 +159,13 @@
         </VFlex>
       </VLayout>
     </VContainer>
+    <CommonFirstLoadDialog />
+    <VSnackbar v-model="snackbar" top color="info">
+      <div>这里是消息内容</div>
+      <VBtn text @click="snackbar = false">
+        关闭
+      </VBtn>
+    </VSnackbar>
     <LayoutMasterFooter />
   </div>
 </template>
@@ -217,8 +214,8 @@ export default {
         { name: "首页", path: "/" },
         { name: "排行榜", path: "/rank" },
         { name: "UP主查询", path: "/author" },
-        { name: "视频查询", path: "/video" },
-        { name: "话题指数", path: "/index" }
+        { name: "视频查询", path: "/video" }
+        // { name: "话题指数", path: "/index" }
       ]
     };
   },

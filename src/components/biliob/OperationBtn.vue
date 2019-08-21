@@ -2,9 +2,9 @@
   <VDialog v-model="dialog" style="position: absolute" width="500px">
     <VBtn
       slot="activator"
-      class="ma-2"
-      :color="color"
+      large
       block
+      :color="color"
       outlined
       tile
       @click="dialog = true"

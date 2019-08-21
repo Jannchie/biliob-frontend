@@ -12,7 +12,7 @@
           {{ title }}
         </div>
       </BiliobDarkInfo>
-      <VResponsive :aspect-ratio="aspectRatio" style="margin-top:30px">
+      <VResponsive :aspect-ratio="aspectRatio" :style="`height:${height}px`">
         <Chart :auto-resize="true" :theme="theme" :options="options" />
         <VProgressCircular
           v-show="loading"
@@ -35,6 +35,12 @@ export default {
         return {
           a: 1
         };
+      }
+    },
+    height: {
+      type: Number,
+      default: function() {
+        return this.$vuetify.breakpoint.mdAndDown ? 220 : 300;
       }
     },
     title: {
