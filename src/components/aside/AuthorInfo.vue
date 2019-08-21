@@ -1,5 +1,5 @@
 <template>
-  <BiliobCard>
+  <BiliobCard width="100%">
     <div class="d-flex flex-row">
       <FocusBtn
         v-if="$store.getters.getLoginState"
@@ -25,20 +25,6 @@
           {{ authorData.official }}
         </div>
       </div>
-    </div>
-    <VDivider class="my-2"></VDivider>
-    <div style="text-align: center">
-      <VBtn
-        color="pink lighten-3"
-        outlined
-        tile
-        :href="`https://space.bilibili.com/${authorData.mid}`"
-      >
-        <VIcon left>
-          mdi-home
-        </VIcon>
-        前往UP主个人空间</VBtn
-      >
     </div>
   </BiliobCard>
 </template>

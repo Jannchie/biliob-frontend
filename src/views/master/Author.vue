@@ -1,111 +1,180 @@
 <template>
-  <VLayout>
-    <VRow>
-      <VCol :md="8" :cols="12">
+  <div>
+    <VRow dense>
+      <VCol :md="6" :cols="12">
         <AuthorInfo slot="author-operation" :author-data="authorData" />
-        <div>
-          <VTabs
-            class="elevation-3 py-0 my-2"
-            show-arrows
-            dark
-            background-color="#333"
-          >
-            <VIcon left right>mdi-finance</VIcon>
-
-            <VTab @click="getPage(0)">
-              <VIcon left>mdi-database</VIcon>基本统计
-            </VTab>
-            <VTab @click="getPage(1)">
-              <VIcon left>mdi-brain</VIcon>高级统计
-            </VTab>
-          </VTabs>
-          <VSlideYTransition>
-            <div v-if="cPage == 0">
-              <!-- <AuthorDetailChannel slot="channel" :channels="authorData.channels"></AuthorDetailChannel> -->
-              <AuthorDetailRank
-                v-bind="authorData.rank"
-                class="mb-2"
-              ></AuthorDetailRank>
-              <DetailCharts
-                class="mb-2"
-                title="粉丝、播放量变化趋势"
-                :options="authorFansOptions"
-              />
-              <DetailCharts
-                class="mb-2"
-                title="粉丝数变化速率"
-                :options="authorFansRateOptions"
-              />
-              <!-- <DetailCharts
-          id="relationship"
-          title="UP主作品相关度"
-          :options="relationshipOptions"
-            />-->
-            </div>
-            <div v-else-if="cPage == 1">
-              <DetailCharts
-                title="粉丝变化效率"
-                sub-title="每一万播放量增长造成的粉丝变动数"
-                :options="authorFansEfficiencyOptions"
-              />
-              <DetailCharts :options="authorTagCloudOptions">
-                <VFlex slot="header">
-                  <VTabs dark background-color="#333" slider-color="blue">
-                    <span
-                      class="subheading font-weight-light mr-3"
-                      style="align-self: center"
-                    >
-                      <VIcon left right>mdi-format-list-bulleted-type</VIcon>
-                    </span>
-                    <VTab @click="tagSort(0)">
-                      <VIcon style="margin-right:10px;">
-                        mdi-video
-                      </VIcon>
-                      投稿量
-                    </VTab>
-                    <VTab @click="tagSort(1)">
-                      <VIcon style="margin-right:10px;">
-                        mdi-play-circle-outline
-                      </VIcon>
-                      播放量
-                    </VTab>
-                  </VTabs>
-                </VFlex>
-              </DetailCharts>
-            </div>
-          </VSlideYTransition>
-        </div>
       </VCol>
-      <VCol :md="4" :cols="12">
+      <VCol :md="6" :cols="12">
         <AuthorOperation
-          slot="author-to-space"
-          class="mb-2"
+          style="height: 100%"
           :mid="authorData.mid"
           :name="authorData.name"
           :pic="authorData.face"
           :force-focus="authorData.forceFocus"
         />
-        <AuthorVideo
-          slot="author-latest-video"
-          class="mb-2"
-          title="UP主最新发布视频"
-          :author-top-video="authorLatestVideo"
-        />
-        <AuthorVideo
-          slot="author-video"
-          class="mb-2"
-          title="UP主播放最高视频"
-          :author-top-video="authorTopVideo"
-        />
       </VCol>
     </VRow>
-  </VLayout>
+
+    <VRow dense>
+      <VCol>
+        <VTabs
+          class="elevation-3 py-0 my-2"
+          show-arrows
+          dark
+          background-color="#333"
+        >
+          <VIcon left right>mdi-finance</VIcon>
+
+          <VTab @click="getPage(0)">
+            <VIcon left>mdi-database</VIcon>基本统计
+          </VTab>
+          <VTab @click="getPage(1)">
+            <VIcon left>mdi-brain</VIcon>高级统计
+          </VTab>
+        </VTabs>
+      </VCol>
+    </VRow>
+    <VRow dense>
+      <VCol :cols="12">
+        <VSlideYTransition>
+          <div v-if="cPage == 0">
+            <!-- <AuthorDetailChannel slot="channel" :channels="authorData.channels"></AuthorDetailChannel> -->
+            <AuthorDetailRank
+              v-bind="authorData.rank"
+              class="mb-2"
+            ></AuthorDetailRank>
+            <DetailCharts
+              class="mb-2"
+              title="粉丝、播放量变化趋势"
+              :options="authorFansOptions"
+            />
+            <DetailCharts
+              class="mb-2"
+              title="粉丝数变化速率"
+              :options="authorFansRateOptions"
+            />
+            <!-- <DetailCharts
+          id="relationship"
+          title="UP主作品相关度"
+          :options="relationshipOptions"
+            />-->
+          </div>
+          <div v-else-if="cPage == 1">
+            <DetailCharts
+              title="粉丝变化效率"
+              sub-title="每一万播放量增长造成的粉丝变动数"
+              :options="authorFansEfficiencyOptions"
+            />
+            <DetailCharts :options="authorTagCloudOptions">
+              <VFlex slot="header">
+                <VTabs dark background-color="#333" slider-color="blue">
+                  <span
+                    class="subheading font-weight-light mr-3"
+                    style="align-self: center"
+                  >
+                    <VIcon left right>mdi-format-list-bulleted-type</VIcon>
+                  </span>
+                  <VTab @click="tagSort(0)">
+                    <VIcon style="margin-right:10px;">
+                      mdi-video
+                    </VIcon>
+                    投稿量
+                  </VTab>
+                  <VTab @click="tagSort(1)">
+                    <VIcon style="margin-right:10px;">
+                      mdi-play-circle-outline
+                    </VIcon>
+                    播放量
+                  </VTab>
+                </VTabs>
+              </VFlex>
+            </DetailCharts>
+          </div>
+        </VSlideYTransition>
+      </VCol>
+    </VRow>
+    <VRow dense>
+      <VCol>
+        <BiliobCard title="UP主播放最高视频" border="bottom">
+          <VSlideGroup :value="authorTopVideo.content" multiple show-arrows>
+            <VSlideItem
+              v-for="(eachVideo, index) in authorTopVideo.content"
+              :key="index"
+            >
+              <VCard
+                :to="`/author/${eachVideo.mid}/video/${eachVideo.aid}`"
+                class="ma-4"
+                max-width="160"
+                width="160px"
+              >
+                <VImg
+                  class="white--text"
+                  height="100px"
+                  :src="zipPic(eachVideo.pic)"
+                >
+                </VImg>
+
+                <VCardText style="overflow: hidden; text-overflow: ellipsis;">
+                  <span class="text--primary caption">
+                    <span>{{ eachVideo.title }}</span
+                    ><br />
+                  </span>
+                  <span class="caption">{{
+                    formatDate(eachVideo.datetime, "YYYY-MM-DD HH:MM:SS")
+                  }}</span
+                  ><br />
+                </VCardText>
+              </VCard>
+            </VSlideItem>
+          </VSlideGroup>
+        </BiliobCard>
+      </VCol>
+    </VRow>
+    <VRow dense>
+      <VCol>
+        <BiliobCard title="UP主最新上传视频" border="bottom">
+          <VSlideGroup :value="authorLatestVideo.content" multiple show-arrows>
+            <VSlideItem
+              v-for="(eachVideo, index) in authorLatestVideo.content"
+              :key="index"
+            >
+              <VCard
+                :to="`/author/${eachVideo.mid}/video/${eachVideo.aid}`"
+                class="ma-4"
+                max-width="160"
+                width="160px"
+              >
+                <VImg
+                  class="white--text"
+                  height="100px"
+                  :src="zipPic(eachVideo.pic)"
+                >
+                </VImg>
+
+                <VCardText style="overflow: hidden; text-overflow: ellipsis;">
+                  <span class="text--primary caption">
+                    <span>{{ eachVideo.title }}</span
+                    ><br />
+                  </span>
+                  <span class="caption">{{
+                    formatDate(eachVideo.datetime, "YYYY-MM-DD HH:MM:SS")
+                  }}</span
+                  ><br />
+                </VCardText>
+              </VCard>
+            </VSlideItem>
+          </VSlideGroup>
+        </BiliobCard>
+      </VCol>
+    </VRow>
+  </div>
 </template>
 
 <script>
+var format = require("date-fns/format");
+
 import AuthorDetailRank from "@/components/main/AuthorDetailRank.vue";
 import AuthorInfo from "@/components/aside/AuthorInfo.vue";
-import AuthorVideo from "@/components/aside/AuthorVideo.vue";
 import AuthorOperation from "@/components/aside/AuthorOperation.vue";
 import DetailCharts from "@/components/main/DetailCharts.vue";
 import drawFansChart from "@/charts/author-fans.js";
@@ -175,10 +244,8 @@ export default {
   components: {
     AuthorDetailRank,
     AuthorInfo,
-    AuthorVideo,
     AuthorOperation,
     DetailCharts
-    // AuthorDetailChannel
   },
   data() {
     return {
@@ -342,9 +409,11 @@ export default {
     this.axios.get(`/author/${this.mid}/video`).then(response => {
       this.authorTopVideo = response.data;
     });
-    this.axios.get(`/author/${this.mid}/video?sort=1`).then(response => {
-      this.authorLatestVideo = response.data;
-    });
+    this.axios
+      .get(`/author/${this.mid}/video?sort=1&pagesize=${10}`)
+      .then(response => {
+        this.authorLatestVideo = response.data;
+      });
     this.axios.get(`/author/tag?mid=${this.mid}&limit=${50}`).then(r => {
       this.authorTagCloudData = r.data;
       this.authorTagCloudOptions = getAuthorTagCloudOptions(
@@ -353,6 +422,9 @@ export default {
     });
   },
   methods: {
+    formatDate(date) {
+      return format(date, "YYYY-MM-DD HH:MM:SS");
+    },
     getPage(page) {
       this.cPage = page;
     },
