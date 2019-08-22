@@ -37,6 +37,11 @@
           <VIcon color="tertiary" size="17">mdi-heart</VIcon>
           for BILIBILI
         </span>
+        <div>
+          <span class="grey--text caption"
+            >互联网ICP备案：浙ICP备17035172号-2</span
+          >
+        </div>
       </VFlex>
     </VLayout>
   </VFooter>
