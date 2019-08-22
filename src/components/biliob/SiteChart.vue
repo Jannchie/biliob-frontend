@@ -13,7 +13,7 @@
             :theme="theme"
             :auto-resize="true"
             :options="options"
-            style="height:350px; width:100%; "
+            :style="`height:${height}px; width:100%; `"
           />
           <!-- <VProgressCircular
             v-if="loading"
@@ -97,6 +97,12 @@ export default {
       type: String,
       default: function() {
         return "deepblue";
+      }
+    },
+    height: {
+      type: Number,
+      default: function() {
+        return this.$vuetify.breakpoint.mdAndUp ? 350 : 200;
       }
     }
   },
