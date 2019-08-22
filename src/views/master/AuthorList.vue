@@ -1,12 +1,18 @@
 <template>
   <div>
-    <div>
-      <VSearchForm
-        slot="search"
-        hint="请输入UP主名称，或者uid"
-        @getSearchValue="getSearchValue"
-      />
-    </div>
+    <VRow>
+      <VCol>
+        <VCard>
+          <VCardText>
+            <VSearchForm
+              slot="search"
+              hint="请输入UP主名称，或者uid"
+              @getSearchValue="getSearchValue"
+            />
+          </VCardText>
+        </VCard>
+      </VCol>
+    </VRow>
     <BiliobCard border="bottom">
       <VLayout slot="header">
         <VTooltip color="#222" right eager>

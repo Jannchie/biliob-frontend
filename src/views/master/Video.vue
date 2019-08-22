@@ -84,7 +84,6 @@
           title="UP主其他已追踪视频"
           :author-top-video="otherVideo"
         />
-        <Recommand slot="recommand" />
       </VCol>
     </VRow>
   </div>
@@ -95,7 +94,6 @@ import VideoDetailTitle from "@/components/main/VideoDetailTitle.vue";
 import DetailCharts from "@/components/main/DetailCharts.vue";
 import AuthorInfo from "@/components/aside/AuthorInfo.vue";
 import AuthorVideo from "@/components/aside/AuthorVideo.vue";
-import Recommand from "@/components/aside/Recommand.vue";
 import VideoOperation from "@/components/aside/VideoOperation.vue";
 import drawMainChart from "@/charts/video-main.js";
 import drawVideoPieChart from "@/charts/video-pie.js";
@@ -126,7 +124,6 @@ export default {
     DetailCharts,
     AuthorInfo,
     AuthorVideo,
-    Recommand,
     VideoOperation
   },
   data() {

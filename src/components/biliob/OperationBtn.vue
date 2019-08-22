@@ -1,19 +1,21 @@
 <template>
   <VDialog v-model="dialog" style="position: absolute" width="500px">
-    <VBtn
-      slot="activator"
-      large
-      block
-      :color="color"
-      outlined
-      tile
-      @click="dialog = true"
-    >
-      <VIcon left>
-        {{ icon }}
-      </VIcon>
-      {{ tileTitle }}</VBtn
-    >
+    <template v-slot:activator="{ on }">
+      <VBtn
+        large
+        block
+        :color="color"
+        outlined
+        tile
+        v-on="on"
+        @click="dialog = true"
+      >
+        <VIcon left>
+          {{ icon }}
+        </VIcon>
+        {{ tileTitle }}</VBtn
+      >
+    </template>
     <VCard>
       <VAlert
         :value="showAlert"

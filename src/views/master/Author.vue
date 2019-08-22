@@ -406,9 +406,11 @@ export default {
         this.authorData.forceFocus == false;
       }
     });
-    this.axios.get(`/author/${this.mid}/video`).then(response => {
-      this.authorTopVideo = response.data;
-    });
+    this.axios
+      .get(`/author/${this.mid}/video?pagesize=${10}`)
+      .then(response => {
+        this.authorTopVideo = response.data;
+      });
     this.axios
       .get(`/author/${this.mid}/video?sort=1&pagesize=${10}`)
       .then(response => {

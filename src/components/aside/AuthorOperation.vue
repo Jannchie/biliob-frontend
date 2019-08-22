@@ -9,7 +9,7 @@
           icon="mdi-refresh"
           tile-title="刷新数据"
           tile-sub-title="需要消耗积分：5"
-          :request-url="`/user/author/${mid}`"
+          :request-url="`/user/author/${mid}/data`"
         >
           <VCardText slot="card-text">
             立即刷新作者数据<span class="font-weight-black red--text"

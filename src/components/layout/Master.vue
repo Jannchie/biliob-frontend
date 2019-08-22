@@ -56,8 +56,12 @@
     <!-- <VParallax src="https://cdn.vuetifyjs.com/images/parallax/material.jpg">
       <div style="text-align:center" class="display-4"></div>
     </VParallax> -->
+
     <div>
       <VContainer class="py-0">
+        <VRow>
+          <BiliobFab />
+        </VRow>
         <div>
           <VNavigationDrawer v-model="showNav" fixed temporary>
             <VContainer grid-list-md>
@@ -160,6 +164,7 @@
       </VLayout>
     </VContainer>
     <CommonFirstLoadDialog />
+
     <VSnackbar v-model="snackbar" top color="info">
       <div>这里是消息内容</div>
       <VBtn text @click="snackbar = false">
