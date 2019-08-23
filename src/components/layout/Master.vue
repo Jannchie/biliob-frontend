@@ -104,7 +104,9 @@
                     </VBtn>
                   </div>
                 </VCardActions>
-                <VCardTitle primary-title>Jannchie</VCardTitle>
+                <VCardTitle primary-title>{{
+                  $store.state.userName
+                }}</VCardTitle>
                 <VCardText
                   ><div>
                     {{ $store.state.role }}
