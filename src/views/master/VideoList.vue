@@ -64,7 +64,6 @@
           <VTabs
             grow
             right
-            dark
             slider-color="primary"
             background-color="transparent"
           >

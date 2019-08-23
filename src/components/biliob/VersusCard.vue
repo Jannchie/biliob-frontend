@@ -3,7 +3,7 @@
     <BiliobDarkInfo border="bottom"
       ><div class="px-5 py-2">榜首粉丝争夺</div></BiliobDarkInfo
     >
-    <div class="versus-card elevation-3">
+    <div class="versus-card elevation-3" style="overflow: hidden;">
       <VImg
         :src="aFace"
         :lazy-src="aFace"
@@ -12,7 +12,7 @@
         width="50%"
         gradient="to  right, rgba(80,80,80,.1), rgba(255,255,255,1)"
       ></VImg>
-      <div class="left-info">
+      <div class="pl-2 left-info">
         <BiliobDarkInfo
           style="display: inline-block;"
           class="caption white--text dark-info-left"
@@ -32,7 +32,7 @@
           </div>
         </BiliobDarkInfo>
       </div>
-      <div class="right-info">
+      <div class="pr-2 right-info">
         <BiliobDarkInfo
           border="right"
           style="display: inline-block;"
@@ -154,7 +154,7 @@ export default {
   }
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .left-info {
   z-index: 1;
   //   align-self: flex-end;
@@ -182,12 +182,12 @@ export default {
 }
 @media screen and (max-width: 960px) {
   .left-info {
-    transform: rotate3d(0.1, 0.9, 0, 50deg);
+    transform: rotate3d(0.1, 0.8, 0, 50deg);
     left: -40px;
     position: absolute;
   }
   .right-info {
-    transform: rotate3d(0.1, -0.9, 0, 50deg);
+    transform: rotate3d(0.1, -0.8, 0, 50deg);
     right: -40px;
     position: absolute;
   }
