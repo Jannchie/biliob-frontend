@@ -88,7 +88,7 @@ var deepCopy = function(o) {
     return n;
   } else if (o instanceof Object) {
     var no = {};
-    for (let i in o) {
+    for (var i in o) {
       no[i] = deepCopy(o[i]);
     }
     return no;
@@ -153,7 +153,7 @@ export default {
       ) {
         this.hasDanmakuAggregate = true;
         let pagelist = [];
-        for (let eachPage in response.data.danmakuAggregate) {
+        for (var eachPage in response.data.danmakuAggregate) {
           pagelist.push(eachPage);
           if (eachPage == "updatetime") {
             this.danmakuUpdateTime = response.data.danmakuAggregate.updatetime;

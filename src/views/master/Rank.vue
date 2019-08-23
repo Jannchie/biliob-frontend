@@ -51,12 +51,13 @@
         <div>
           <div v-if="index === 0 || index === 1">
             <VFadeTransition mode="out-in" group>
-              <div
+              <RouterLink
                 v-for="eachData in data"
                 :key="eachData.name"
+                tag="div"
                 class="py-4"
                 style="display: flex"
-                @click.stop="linkTo(eachData)"
+                :to="linkTo(eachData)"
               >
                 <VAvatar size="60px" class="mr-4">
                   <img :src="zipPic(eachData.face)" />
@@ -77,7 +78,7 @@
                   </VIcon>
                   {{ Math.abs(eachData.cRate) }}
                 </VChip>
-              </div>
+              </RouterLink>
             </VFadeTransition>
           </div>
           <div v-else>
@@ -159,7 +160,7 @@ export default {
   methods: {
     linkTo(eachData) {
       if (eachData.mid != undefined) {
-        this.$router.push(`author/${eachData.mid}`);
+        return `/author/${eachData.mid}`;
       }
     },
     getData(index) {
