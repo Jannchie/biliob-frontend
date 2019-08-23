@@ -3,7 +3,7 @@
     <VBtn
       v-if="!focus"
       color="grey lighten-1"
-      flat
+      text
       icon
       depressed
       @click.stop="addFocus"
@@ -13,7 +13,7 @@
     <VBtn
       v-if="focus"
       color="red lighten-1"
-      flat
+      text
       icon
       depressed
       @click.stop="removeFocus"

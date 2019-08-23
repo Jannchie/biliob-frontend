@@ -21,7 +21,7 @@
       >
         <slot v-if="!title && !text" style="padding:0px" name="header" />
         <span v-else>
-          <div>
+          <div class="pa-1">
             <p class="title font-weight-light mb-2" v-text="title" />
             <p class="category font-weight-thin" v-text="text" />
           </div>

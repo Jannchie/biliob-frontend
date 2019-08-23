@@ -26,7 +26,7 @@
       ></MaterialTracerCrawlCard>
     </VFlex>
     <VFlex lg12>
-      <MaterialCard
+      <BiliobCard
         color="green"
         title="运行中爬虫详细信息"
         text="此处显示的是目前正在运行中的爬虫状态"
@@ -46,7 +46,7 @@
             <td>{{ lastTime(item.startTime, item.updateTime) }}</td>
           </template>
         </VDataTable>
-      </MaterialCard>
+      </BiliobCard>
     </VFlex>
   </VLayout>
 </template>

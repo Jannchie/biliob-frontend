@@ -20,11 +20,8 @@ export default {
 
 <style lang="scss">
 @import "@/styles/index.scss";
-
-.el-table td {
-  padding: 2px 0;
-}
-#app {
-  overflow-x: hidden;
+.v-application {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif !important;
 }
 </style>

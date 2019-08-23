@@ -1,20 +1,13 @@
 <template>
-  <MainLayout>
-    <FavoriteAuthorListMain slot="main-cards" />
-    <AuthorListAside slot="aside-cards" />
-  </MainLayout>
+  <FavoriteAuthorListMain slot="main-cards" />
 </template>
 
 <script>
-import MainLayout from "../components/common/MainLayout.vue";
 import FavoriteAuthorListMain from "../components/main/FavoriteAuthorList.vue";
-import AuthorListAside from "../components/aside/AuthorListAside.vue";
 export default {
   name: "AuthorList",
   components: {
-    MainLayout,
-    FavoriteAuthorListMain,
-    AuthorListAside
+    FavoriteAuthorListMain
   },
   mounted() {
     this.$store.commit("toAuthor");

@@ -1,0 +1,28 @@
+.biliob-shadow {
+  box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.05);
+}
+.inline {
+  display: inline-block;
+}
+.dark-info {
+  background-color: #333;
+  color: #fff;
+}
+
+.white-info {
+  background-color: #fff;
+  color: #333;
+}
+
+.dark-info.left {
+  border-left: 4px solid $blue-600;
+}
+.dark-info.right {
+  border-right: 4px solid $blue-600;
+}
+.dark-info.top {
+  border-top: 4px solid $blue-600;
+}
+.dark-info.bottom {
+  border-bottom: 4px solid $blue-600;
+}

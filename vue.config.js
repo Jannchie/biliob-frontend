@@ -21,5 +21,5 @@ module.exports = {
     name: "BiliOB观测者",
     msTileColor: "#444"
   },
-  transpileDependencies: [/\bvue-echarts\b/, /\bresize-detector\b/]
+  transpileDependencies: ["vue-echarts", "bresize-detector"]
 };

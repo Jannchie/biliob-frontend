@@ -1,26 +1,26 @@
 .<template>
   <VBottomSheet v-model="sheet">
-    <VBtn slot="activator" color="pink lighten-2" flat block dark>
+    <VBtn slot="activator" color="pink lighten-2" text block dark>
       <VIcon style="margin-right:20px">mdi-infinity</VIcon>更多操作
     </VBtn>
 
     <VList two-line>
       <VSubheader>更多操作</VSubheader>
-      <VListTile
+      <VListItem
         :href="url"
         target="_blank"
         class="pink--text lighten-2 text--lighten-2"
         @click="sheet = false"
       >
-        <VListTileAvatar>
+        <VListItemAvatar>
           <VAvatar size="32px">
             <VIcon class="pink white--text lighten-2 text--lighten-2"
               >mdi-video</VIcon
             >
           </VAvatar>
-        </VListTileAvatar>
-        <VListTileTitle>前往视频播放页面</VListTileTitle>
-      </VListTile>
+        </VListItemAvatar>
+        <VListItemTitle>前往视频播放页面</VListItemTitle>
+      </VListItem>
 
       <BottomSheetTile
         :pic="pic"
@@ -43,24 +43,24 @@
       </BottomSheetTile>
 
       <VDialog key="dialog" v-model="dialog" width="500px">
-        <VListTile
+        <VListItem
           slot="activator"
           style="width:100%"
           class="blue--text lighten-2 text--lighten-2"
           @click="dialog = true"
         >
-          <VListTileAvatar>
+          <VListItemAvatar>
             <VAvatar size="32px">
               <VIcon class="blue white--text lighten-2 text--lighten-2"
                 >mdi-refresh</VIcon
               >
             </VAvatar>
-          </VListTileAvatar>
-          <VListTileContent>
-            <VListTileTitle>立即刷新视频数据</VListTileTitle>
-            <VListTileSubTitle>需要消耗积分：1</VListTileSubTitle>
-          </VListTileContent>
-        </VListTile>
+          </VListItemAvatar>
+          <VListItemContent>
+            <VListItemTitle>立即刷新视频数据</VListItemTitle>
+            <VListItemSubtitle>需要消耗积分：1</VListItemSubtitle>
+          </VListItemContent>
+        </VListItem>
         <VCard>
           <VAlert
             :value="showAlert"
@@ -89,8 +89,9 @@
             <VSpacer></VSpacer>
             <VBtn
               color="primary"
-              flat
-              outline
+              text
+              outlined
+              style="border-width:1px"
               :disabled="showAlert"
               @click="refresh"
             >
@@ -100,26 +101,28 @@
         </VCard>
       </VDialog>
 
-      <VListTile
+      <VListItem
         :href="
-          `https://connect.qq.com/widget/shareqq/index.html?url=www.biliob.com${$route.path}&sharesource=qzone&title=biliob观测者:视频《${title}》的历史数据&pics=https:${pic}&summary=快来围观这个视频的数据变化吧~&desc=`
+          `https://connect.qq.com/widget/shareqq/index.html?url=www.biliob.com${
+            $route.path
+          }&sharesource=qzone&title=biliob观测者:视频《${title}》的历史数据&pics=https:${pic}&summary=快来围观这个视频的数据变化吧~&desc=`
         "
         target="_blank"
         class="light-blue--text lighten-2 text--lighten-2"
         @click="sheet = false"
       >
-        <VListTileAvatar>
+        <VListItemAvatar>
           <VAvatar size="32px">
             <VIcon class="light-blue white--text lighten-2 text--lighten-2"
               >mdi-qqchat</VIcon
             >
           </VAvatar>
-        </VListTileAvatar>
-        <VListTileContent>
-          <VListTileTitle>分享到QQ群或QQ好友</VListTileTitle>
-          <VListTileSubTitle>建议使用电脑端操作</VListTileSubTitle>
-        </VListTileContent>
-      </VListTile>
+        </VListItemAvatar>
+        <VListItemContent>
+          <VListItemTitle>分享到QQ群或QQ好友</VListItemTitle>
+          <VListItemSubtitle>建议使用电脑端操作</VListItemSubtitle>
+        </VListItemContent>
+      </VListItem>
     </VList>
   </VBottomSheet>
 </template>
@@ -154,7 +157,9 @@ export default {
         .then(response => {
           this.showAlert = true;
           this.alertType = "success";
-          this.alertMsg = `操作成功！当前积分：${response.data.data.credit}(-1)，当前经验：${response.data.data.exp}(+1)`;
+          this.alertMsg = `操作成功！当前积分：${
+            response.data.data.credit
+          }(-1)，当前经验：${response.data.data.exp}(+1)`;
           this.$store.commit("setCredit", response.data.data.credit);
           this.$store.commit("setExp", response.data.data.exp);
           setTimeout(() => {

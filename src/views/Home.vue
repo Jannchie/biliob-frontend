@@ -19,10 +19,7 @@
     </VFlex>
     <VFlex sm12 md12 lg4>
       <VSlideYTransition>
-        <MaterialCard
-          v-if="variationData.length != 0"
-          title="近期值得注意的UP主"
-        >
+        <BiliobCard v-if="variationData.length != 0" title="近期值得注意的UP主">
           <VList two-line>
             <template v-for="(item, index) in variationData">
               <VSubheader v-if="item.header" :key="item.header">
@@ -31,21 +28,21 @@
 
               <VDivider v-else-if="item.divider" :key="index"></VDivider>
 
-              <VListTile
+              <VListItem
                 v-else
                 :key="item.title"
                 avatar
                 @click="toAuthor(item.mid)"
               >
-                <VListTileAvatar>
+                <VListItemAvatar>
                   <img :src="zipPic(item.face)" />
-                </VListTileAvatar>
+                </VListItemAvatar>
 
-                <VListTileContent>
-                  <VListTileTitle>{{ item.author }}</VListTileTitle>
-                  <VListTileSubTitle>{{ item.info }}</VListTileSubTitle>
-                </VListTileContent>
-              </VListTile>
+                <VListItemContent>
+                  <VListItemTitle>{{ item.author }}</VListItemTitle>
+                  <VListItemSubtitle>{{ item.info }}</VListItemSubtitle>
+                </VListItemContent>
+              </VListItem>
             </template>
           </VList>
           <div slot="actions" class="caption">
@@ -53,7 +50,7 @@
               更多...
             </RouterLink>
           </div>
-        </MaterialCard>
+        </BiliobCard>
       </VSlideYTransition>
       <VSlideYTransition>
         <MaterialChartCard

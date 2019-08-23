@@ -1,6 +1,6 @@
 <template>
-  <MaterialCard>
-    <div slot="offset" :class="`mx-auto  title-div`">
+  <BiliobCard>
+    <div style="position:absolute; top:-20px" :class="`mx-auto pb-5 title-div`">
       <img
         v-if="title === '观测站的管理者'"
         height="70"
@@ -37,7 +37,7 @@
       </div>
     </div>
     <div class="caption grey--text date-div">{{ formatedDate }}</div>
-  </MaterialCard>
+  </BiliobCard>
 </template>
 <script>
 var format = require("date-fns/format");

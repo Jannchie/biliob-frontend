@@ -1,16 +1,19 @@
 <template>
   <div>
-    <MaterialCard
-      :title="title"
-      :text="subTitle"
-      :color="color"
-      :card-padding="'pa-0'"
-      class="card elevation-2 pa-0"
-    >
-      <VFlex slot="header">
-        <slot name="header" style="padding: 0 "></slot>
-      </VFlex>
-      <VResponsive :aspect-ratio="aspectRatio" style="margin-top:30px">
+    <BiliobCard :text="subTitle" :color="color">
+      <BiliobDarkInfo
+        slot="offset"
+        :elevation="0"
+        border="bottom"
+        class="title"
+      >
+        <slot v-if="$slots.header" name="header"></slot>
+        <div v-else class="px-5 py-1">
+          {{ title }}
+        </div>
+      </BiliobDarkInfo>
+      <VResponsive :aspect-ratio="aspectRatio" :style="`height:${height}px`">
+        <Chart :auto-resize="true" :theme="theme" :options="options" />
         <VProgressCircular
           v-show="loading"
           :size="50"
@@ -18,15 +21,8 @@
           indeterminate
           class="progress-circular"
         ></VProgressCircular>
-        <Chart
-          v-show="!loading"
-          :theme="theme"
-          :auto-resize="true"
-          :options="options"
-          style="width:100%;height:100%;"
-        />
       </VResponsive>
-    </MaterialCard>
+    </BiliobCard>
   </div>
 </template>
 
@@ -39,6 +35,12 @@ export default {
         return {
           a: 1
         };
+      }
+    },
+    height: {
+      type: Number,
+      default: function() {
+        return this.$vuetify.breakpoint.mdAndDown ? 220 : 300;
       }
     },
     title: {
@@ -105,10 +107,6 @@ export default {
 </script>
 
 <style scoped>
-.video-img {
-  height: 70px;
-  border-radius: 4px;
-}
 .progress-circular {
   position: absolute;
   left: 50%;
@@ -116,11 +114,13 @@ export default {
   margin-left: -25px;
   margin-top: -25px;
 }
-.chart-title {
-  width: 98%;
-  margin: auto;
-  position: relative;
-  border-radius: 8px;
-  margin-bottom: -80px;
+/**
+ * The default size is 600px×400px, for responsive charts
+ * you may need to set percentage values as follows (also
+ * don't forget to provide a size for the container).
+ */
+.echarts {
+  width: 100%;
+  height: 100%;
 }
 </style>

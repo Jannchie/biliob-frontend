@@ -1,17 +1,12 @@
 <template>
-  <MainLayout>
-    <FavoriteVideoListMain slot="main-cards" />
-    <VideoListAside slot="aside-cards" />
-  </MainLayout>
+  <FavoriteVideoListMain slot="main-cards" />
 </template>
 
 <script>
-import MainLayout from "../components/common/MainLayout.vue";
 import FavoriteVideoListMain from "../components/main/FavoriteVideoList.vue";
-import VideoListAside from "../components/aside/VideoListAside.vue";
 export default {
   name: "VideoList",
-  components: { MainLayout, FavoriteVideoListMain, VideoListAside },
+  components: { FavoriteVideoListMain },
   mounted() {
     this.$store.commit("toVideo");
   }

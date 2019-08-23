@@ -15,7 +15,7 @@
       </VFlex>
 
       <VFlex lg12>
-        <MaterialCard
+        <BiliobCard
           color="green"
           title="计划任务运行情况"
           text="计划任务运行时长和耗时分析"
@@ -37,7 +37,7 @@
               <td>{{ item.msg }}</td>
             </template>
           </VDataTable>
-        </MaterialCard>
+        </BiliobCard>
       </VFlex>
     </VLayout>
   </VFadeTransition>

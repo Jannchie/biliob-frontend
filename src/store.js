@@ -1,22 +1,32 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
+import siteInfoModule from "./store/site.js";
+import rankModule from "./store/rank.js";
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
     logined: false,
-    checked: false,
-    userName: String(),
-    role: String(),
-    credit: Number(),
-    exp: Number(),
+    checked: undefined,
+    userName: undefined,
+    role: undefined,
+    credit: undefined,
+    exp: undefined,
     dark: false,
-    currentPage: String(),
-    favoriteAid: [],
-    favoriteMid: []
+    ad: undefined,
+    currentPage: undefined,
+    favoriteAid: undefined,
+    favoriteMid: undefined
   },
   mutations: {
+    setSiteInfo(state, info) {
+      state.siteInfo = info;
+    },
+    setData(state, payload) {
+      state[payload.name] = payload.data;
+    },
     setUserName(state, userName) {
       state.userName = userName;
     },
@@ -108,7 +118,6 @@ export default new Vuex.Store({
       axios
         .get(`/user`)
         .then(response => {
-          this.logined = true;
           context.commit("login");
           context.commit("setRole", response.data.role);
           context.commit("setCredit", response.data.credit);
@@ -118,9 +127,32 @@ export default new Vuex.Store({
           context.commit("setFavoriteAuthor", response.data.favoriteMid);
         })
         .catch(() => {
-          this.$store.commit("logout");
-          this.logined = false;
+          context.commit("logout");
         });
+    },
+    checkIn(context) {
+      context.commit("checkIn", undefined);
+      axios
+        .post("/user/check-in")
+        .then(response => {
+          if (response.data.code == 1) {
+            context.commit("setCredit", response.data.data.credit);
+            context.commit("setExp", response.data.data.exp);
+            context.commit("checkIn", true);
+          } else {
+            context.commit("checkIn", false);
+          }
+        })
+        .catch(e => e.data.msg);
+    },
+    getAd(context) {
+      axios.get("/video/ads").then(response => {
+        context.commit("setData", { name: "ad", data: response.data });
+      });
     }
+  },
+  modules: {
+    site: siteInfoModule,
+    rank: rankModule
   }
 });

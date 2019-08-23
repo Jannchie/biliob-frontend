@@ -1,6 +1,6 @@
 <template>
   <div>
-    <MaterialCard style="min-height: 180px;" title="榜首粉丝实时差距">
+    <BiliobCard style="min-height: 180px;" title="榜首粉丝实时差距">
       <div style="display: flex; justify-content: space-between">
         <div class="vs-text">
           <div
@@ -10,12 +10,12 @@
           </div>
           <div class="display-1">实时差距</div>
           <div>
-            <VOdometer
+            <CommonVOdometer
               class="font-weight-black blue--text text--darken-1"
               :value="deltaFans"
               style="font-size: 50px; font-family: auto"
               format="(,ddd).d"
-            ></VOdometer>
+            ></CommonVOdometer>
           </div>
         </div>
         <div class="hidden-sm-and-down">
@@ -67,7 +67,7 @@
           </div>
         </div>
       </div>
-    </MaterialCard>
+    </BiliobCard>
     <DetailCharts
       title="实时粉丝数变化 - 十分钟变化情况"
       :sub-title="`${aName} VS ${bName}`"

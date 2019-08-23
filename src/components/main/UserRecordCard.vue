@@ -1,5 +1,5 @@
 <template>
-  <MaterialCard
+  <BiliobCard
     color="deepblue"
     title="我的操作记录"
     text="此处显示所有与积分有关的操作记录"
@@ -32,7 +32,7 @@
         </td>
       </template>
     </VDataTable>
-  </MaterialCard>
+  </BiliobCard>
 </template>
 <script>
 export default {

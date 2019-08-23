@@ -1,6 +1,6 @@
 <template>
   <div style="display: flex; flex-wrap: wrap; cursor:pointer">
-    <MaterialCard
+    <BiliobCard
       class="versus-card elevation-2"
       :title="title"
       @click.stop="toAuthorVersus"
@@ -83,7 +83,7 @@
           ></div>
         </VCardText>
       </div>
-    </MaterialCard>
+    </BiliobCard>
   </div>
 </template>
 <script>
@@ -154,7 +154,9 @@ export default {
     toAuthorVersus() {
       if (this.aMid != 0 && this.bMid != 0)
         this.$router.push(
-          `/author/versus?aMid=${this.aMid}&bMid=${this.bMid}&freq=${this.frequently}`
+          `/author/versus?aMid=${this.aMid}&bMid=${this.bMid}&freq=${
+            this.frequently
+          }`
         );
     }
   }

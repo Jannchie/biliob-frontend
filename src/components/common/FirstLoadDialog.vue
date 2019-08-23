@@ -1,12 +1,12 @@
 <template>
   <VDialog :value="show" width="500">
     <VCard>
-      <VCardTitle
-        class="headline blue darken-2 white--text font-weight-black"
+      <VCardText
+        class="md-2 headline blue darken-2 white--text font-weight-black"
         primary-title
       >
         这里是BiliOB观测者
-      </VCardTitle>
+      </VCardText>
 
       <VCardText>
         <span display="flex">
@@ -47,7 +47,7 @@
 
       <VCardActions>
         <VSpacer></VSpacer>
-        <VBtn color="primary" flat @click="show = false">
+        <VBtn color="primary" text @click="show = false">
           I got it
         </VBtn>
       </VCardActions>

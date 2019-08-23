@@ -1,9 +1,9 @@
 <template>
-  <VToolbar color="grey lighten-3" flat absolute app prominent>
-    <VToolbarTitle>
+  <VAppBar color="grey lighten-3" text absolute app prominent>
+    <VAppBarTitle>
       {{ title }}
-    </VToolbarTitle>
-  </VToolbar>
+    </VAppBarTitle>
+  </VAppBar>
 </template>
 
 <script>

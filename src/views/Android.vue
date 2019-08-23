@@ -15,7 +15,8 @@
           <VBtn
             href="https://www.bslyun.com/tby4hpO8tLTI2MjY3OC0tMA%3D"
             block
-            outline
+            outlined
+            style="border-width:1px"
             class="font-weight-black text--darken-3 blue--text title"
             >手机端网站点我跳转到下载链接</VBtn
           >

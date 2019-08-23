@@ -1,8 +1,9 @@
 <template>
-  <VForm v-model="valid" @submit.native.prevent="submit">
+  <VForm v-model="valid" class="mt-4" @submit.native.prevent="submit">
     <VTextField
       v-model="searchText"
-      solo
+      outlined
+      style="border-width:1px"
       append-icon="mdi-magnify"
       clearable
       label="搜索"
@@ -30,13 +31,13 @@ export default {
         setTimeout(() => {
           this.$emit("getSearchValue", this.pretreatment(this.searchText));
           this.flag = false;
-        }, 2500);
+        }, 5000);
       } else {
         setTimeout(() => {
           if (this.flag == false) {
             this.$emit("getSearchValue", this.pretreatment(this.searchText));
           }
-        }, 2500);
+        }, 5000);
       }
     }
   },

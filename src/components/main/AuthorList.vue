@@ -2,7 +2,7 @@
   <div class="author-list-main">
     <div>
       <div>
-        <MaterialCard class="card-tabs">
+        <BiliobCard class="card-tabs">
           <VLayout slot="header">
             <VIcon right>mdi-sort</VIcon>
             <VFlex>
@@ -78,9 +78,11 @@
           <VBtn
             v-if="!notFound"
             block
-            outline
+            outlined
+            style="border-width:1px"
             color="blue darken-2"
             :disabled="nextBtnDisabled"
+            tile
             @click.stop="next"
             >{{ nextBtnText }}</VBtn
           >
@@ -96,7 +98,7 @@
               如果搜索ID仍然没有结果，可能是因为该UP主并未被本站观测。你可以点击页面右下角的圆形按钮进行添加！
             </p>
           </div>
-        </MaterialCard>
+        </BiliobCard>
       </div>
     </div>
   </div>
@@ -151,7 +153,9 @@ export default {
     currentPage: function changePage(page) {
       this.axios
         .get(
-          `${this.currentApiurl}?page=${page}&text=${this.text}&sort=${this.sort}`
+          `${this.currentApiurl}?page=${page}&text=${this.text}&sort=${
+            this.sort
+          }`
         )
         .then(response => {
           // 判断是否为最后一页
@@ -207,7 +211,9 @@ export default {
       this.currentPage = 0;
       this.axios
         .get(
-          `${this.currentApiurl}?page=${this.currentPage}&text=${this.text}&sort=${this.sort}`
+          `${this.currentApiurl}?page=${this.currentPage}&text=${
+            this.text
+          }&sort=${this.sort}`
         )
         .then(response => {
           this.refreshList(response);

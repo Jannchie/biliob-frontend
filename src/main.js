@@ -2,7 +2,6 @@ import "babel-polyfill";
 // import "@fortawesome/fontawesome-free/css/all.css";
 import "@mdi/font/css/materialdesignicons.css"; // Ensure you are using css-loader
 import Vue from "vue";
-import "./plugins/vuetify";
 import "./echarts";
 const App = () => import("./App.vue");
 import router from "./router";
@@ -19,10 +18,16 @@ Vue.config.productionTip = false;
 
 // 使用vue-cookies
 import VueCookies from "vue-cookies";
+
+import vuetify from "./plugins/vuetify";
 Vue.use(VueCookies);
 
-// 在vue-router中使用google analytics
 router.afterEach(function(to) {
+  let baseTitle = " - BiliOB观测者 - B站历史数据统计分析站点";
+  if (to.name == undefined) {
+    to.name = "404";
+  }
+  window.document.title = to.name + baseTitle;
   function saveToLocal(key) {
     let count = window.localStorage.getItem(key);
     if (count == undefined) {
@@ -62,6 +67,7 @@ Vue.use(Vuex);
 new Vue({
   router,
   store,
+  vuetify,
   render: h => h(App)
 }).$mount("#app");
 

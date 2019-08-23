@@ -1,23 +1,23 @@
 <template>
   <VDialog v-model="dialog" width="500px">
-    <VListTile
+    <VListItem
       slot="activator"
       style="width:100%"
       :class="color + '--text lighten-2 text--lighten-2'"
       @click="dialog = true"
     >
-      <VListTileAvatar>
+      <VListItemAvatar>
         <VAvatar size="32px">
           <VIcon :class="color + ' white--text lighten-2 text--lighten-2'">{{
             icon
           }}</VIcon>
         </VAvatar>
-      </VListTileAvatar>
-      <VListTileContent>
-        <VListTileTitle>{{ tileTitle }}</VListTileTitle>
-        <VListTileSubTitle>{{ tileSubTitle }}</VListTileSubTitle>
-      </VListTileContent>
-    </VListTile>
+      </VListItemAvatar>
+      <VListItemContent>
+        <VListItemTitle>{{ tileTitle }}</VListItemTitle>
+        <VListItemSubtitle>{{ tileSubTitle }}</VListItemSubtitle>
+      </VListItemContent>
+    </VListItem>
     <VCard>
       <VAlert
         :value="showAlert"
@@ -40,8 +40,9 @@
         <VSpacer></VSpacer>
         <VBtn
           color="primary"
-          flat
-          outline
+          text
+          outlined
+          style="border-width:1px"
           :disabled="showAlert"
           @click="refresh"
         >
@@ -80,7 +81,9 @@ export default {
         .then(response => {
           this.showAlert = true;
           this.alertType = "success";
-          this.alertMsg = `操作成功！当前积分：${response.data.data.credit}，当前经验：${response.data.data.exp}`;
+          this.alertMsg = `操作成功！当前积分：${
+            response.data.data.credit
+          }，当前经验：${response.data.data.exp}`;
           this.$store.commit("setCredit", response.data.data.credit);
           this.$store.commit("setExp", response.data.data.exp);
           setTimeout(() => {

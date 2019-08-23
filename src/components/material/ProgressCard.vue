@@ -1,5 +1,5 @@
 <template>
-  <MaterialCard
+  <BiliobCard
     v-bind="$attrs"
     style="margin-top:25px;height:127px;padding-bottom:0px"
     class="progress-card"
@@ -87,7 +87,7 @@
         </div>
       </VFlex>
     </VLayout>
-  </MaterialCard>
+  </BiliobCard>
 </template>
 
 <script>

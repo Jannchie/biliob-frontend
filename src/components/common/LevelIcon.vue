@@ -1,27 +1,25 @@
 <template>
-  <span>
-    <VIcon v-if="level === 0" color="#BFBFBF" small>
-      mdi-numeric-0-box-outline
-    </VIcon>
-    <VIcon v-if="level === 1" color="#BFBFBF" small>
-      mdi-numeric-1-box-outline
-    </VIcon>
-    <VIcon v-if="level === 2" color="#95DDB2" small>
-      mdi-numeric-2-box-outline
-    </VIcon>
-    <VIcon v-if="level === 3" color="#92D1E5" small>
-      mdi-numeric-3-box-outline
-    </VIcon>
-    <VIcon v-if="level === 4" color="#FFB37C" small>
-      mdi-numeric-4-box-outline
-    </VIcon>
-    <VIcon v-if="level === 5" color="#FF6C00" small>
-      mdi-numeric-5-box-outline
-    </VIcon>
-    <VIcon v-if="level === 6" color="#FF0000" small>
-      mdi-numeric-6-box-outline
-    </VIcon>
-  </span>
+  <VChip v-if="level === 0" text-color="white" color="#BFBFBF" small>
+    Lv.0
+  </VChip>
+  <VChip v-else-if="level === 1" text-color="white" color="#BFBFBF" small>
+    Lv.1
+  </VChip>
+  <VChip v-else-if="level === 2" text-color="white" color="#95DDB2" small>
+    Lv.2
+  </VChip>
+  <VChip v-else-if="level === 3" text-color="white" color="#92D1E5" small>
+    Lv.3
+  </VChip>
+  <VChip v-else-if="level === 4" text-color="white" color="#FFB37C" small>
+    Lv.4
+  </VChip>
+  <VChip v-else-if="level === 5" text-color="white" color="#FF6C00" small>
+    Lv.5
+  </VChip>
+  <VChip v-else text-color="white" color="#FF0000" small>
+    Lv.6
+  </VChip>
 </template>
 <script>
 export default {

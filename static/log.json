@@ -1454,5 +1454,41 @@
       }
     ],
     "type": "unimportant"
+  },
+  {
+    "title": "重构前端",
+    "version": "ver.7.0.0",
+    "date": "2019-08-23",
+    "list": [
+      {
+        "text": "因为有很多地方实现不够优雅，所以对前端进行了一系列的重构。",
+        "type": "stone"
+      },
+      {
+        "text": "目前可能会有一系列功能的缺失，我会逐步重新设计。",
+        "type": "stone"
+      },
+      {
+        "text": "添加了一些全站数据的对比。",
+        "type": "feature"
+      },
+      {
+        "text": "使用爱赞助的第三方赞助页面，更加科学。",
+        "type": "feature"
+      },
+      {
+        "text": "重新设计了悬浮按钮",
+        "type": "beautify"
+      },
+      {
+        "text": "重新设计了主站样式",
+        "type": "beautify"
+      },
+      {
+        "text": "修复了视频排名较高时排名显示异常的错误。",
+        "type": "fix"
+      }
+    ],
+    "type": "holyshit"
   }
 ]

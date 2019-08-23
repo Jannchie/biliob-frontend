@@ -1,5 +1,5 @@
 <template>
-  <MaterialCard>
+  <BiliobCard>
     <Chart
       slot="header"
       theme="card"
@@ -10,7 +10,7 @@
     <slot />
 
     <slot slot="actions" name="actions" />
-  </MaterialCard>
+  </BiliobCard>
 </template>
 
 <script>

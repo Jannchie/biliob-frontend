@@ -1,5 +1,5 @@
 <template>
-  <MaterialCard
+  <BiliobCard
     :href="'https://www.bilibili.com/av' + ads.aid"
     title="站长倾情推荐"
   >
@@ -15,19 +15,19 @@
         }}<VIcon small> mdi-account-box-outline </VIcon>{{ ads.author }}
       </div>
     </VCardText>
-  </MaterialCard>
+  </BiliobCard>
 </template>
 <script>
 export default {
-  data() {
-    return {
-      ads: Object()
-    };
+  computed: {
+    ads() {
+      return this.$store.state.ad;
+    }
   },
   mounted() {
-    this.axios.get("/video/ads").then(response => {
-      this.ads = response.data;
-    });
+    if (this.$store.state.ad == undefined) {
+      this.$store.dispatch("getAd");
+    }
   }
 };
 </script>
@@ -36,7 +36,5 @@ export default {
   color: #ffffff;
   position: absolute;
   top: 5px;
-}
-.v-card {
 }
 </style>
