@@ -1,10 +1,10 @@
 <template>
   <BiliobCard>
-    <VLayout style="flex:1">
-      <VFlex style="width:160px">
+    <VLayout>
+      <VFlex style="flex: none;">
         <VImg
           class="video-img"
-          style="width:160px;height:100px"
+          style="width:120px;height:75px;"
           max-width="160"
           :src="zipPic(pic)"
           :lazy-src="zipPic(pic)"

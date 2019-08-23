@@ -6,6 +6,7 @@
         block
         :color="color"
         outlined
+        style="border-width:1px"
         tile
         v-on="on"
         @click="dialog = true"
@@ -40,6 +41,7 @@
           color="primary"
           text
           outlined
+          style="border-width:1px"
           :disabled="showAlert"
           @click="refresh"
         >

@@ -100,10 +100,10 @@
             <VSlideItem
               v-for="(eachVideo, index) in authorTopVideo.content"
               :key="index"
+              class="ma-1"
             >
               <VCard
                 :to="`/author/${eachVideo.mid}/video/${eachVideo.aid}`"
-                class="ma-4"
                 max-width="160"
                 width="160px"
               >
@@ -137,10 +137,10 @@
             <VSlideItem
               v-for="(eachVideo, index) in authorLatestVideo.content"
               :key="index"
+              class="ma-1"
             >
               <VCard
                 :to="`/author/${eachVideo.mid}/video/${eachVideo.aid}`"
-                class="ma-4"
                 max-width="160"
                 width="160px"
               >

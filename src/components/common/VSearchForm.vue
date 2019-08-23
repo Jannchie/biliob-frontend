@@ -3,6 +3,7 @@
     <VTextField
       v-model="searchText"
       outlined
+      style="border-width:1px"
       append-icon="mdi-magnify"
       clearable
       label="搜索"

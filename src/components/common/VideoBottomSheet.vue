@@ -91,6 +91,7 @@
               color="primary"
               text
               outlined
+              style="border-width:1px"
               :disabled="showAlert"
               @click="refresh"
             >

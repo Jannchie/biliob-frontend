@@ -2,6 +2,7 @@
   <VBtn
     block
     outlined
+    style="border-width:1px"
     tile
     color="blue darken-2"
     :disabled="nextBtnDisabled"

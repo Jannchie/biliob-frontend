@@ -48,6 +48,7 @@
           color="blue"
           block
           outlined
+          style="border-width:1px"
           large
           tile
           :href="
@@ -68,6 +69,7 @@
           large
           block
           outlined
+          style="border-width:1px"
           tile
           :href="`https://www.bilibili.com/av${aid}`"
         >

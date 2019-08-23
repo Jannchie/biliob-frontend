@@ -203,6 +203,11 @@ export default {
           name: "关于",
           icon: "mdi-information-outline",
           url: "/about"
+        },
+        {
+          name: "开发日志",
+          icon: "mdi-developer-board",
+          url: "/log"
         }
       ],
       UserItems: [

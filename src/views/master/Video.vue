@@ -3,17 +3,14 @@
     <VRow>
       <VCol cols="12" md="7">
         <VideoDetailTitle
-          slot="title"
+          style="height: 100%"
           class="mb-2"
           :title="videoData.title"
           :aid="videoData.aid"
           :pic="videoData.pic"
       /></VCol>
       <VCol cols="12" md="5">
-        <AuthorInfo
-          slot="author-operation"
-          class="mb-2"
-          :author-data="authorData"
+        <AuthorInfo style="height: 100%" class="mb-2" :author-data="authorData"
       /></VCol>
     </VRow>
     <VRow>
