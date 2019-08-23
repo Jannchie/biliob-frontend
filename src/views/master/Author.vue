@@ -20,8 +20,7 @@
         <VTabs
           class="elevation-3 py-0 my-2"
           show-arrows
-          dark
-          background-color="#333"
+          background-color="transparent"
         >
           <VIcon left right>mdi-finance</VIcon>
 
@@ -39,10 +38,10 @@
         <VSlideYTransition>
           <div v-if="cPage == 0">
             <!-- <AuthorDetailChannel slot="channel" :channels="authorData.channels"></AuthorDetailChannel> -->
-            <AuthorDetailRank
+            <BiliobAuthorRank
               v-bind="authorData.rank"
               class="mb-2"
-            ></AuthorDetailRank>
+            ></BiliobAuthorRank>
             <DetailCharts
               class="mb-2"
               title="粉丝、播放量变化趋势"
@@ -67,7 +66,7 @@
             />
             <DetailCharts :options="authorTagCloudOptions">
               <VFlex slot="header">
-                <VTabs dark background-color="#333" slider-color="blue">
+                <VTabs background-color="transparent" slider-color="primary">
                   <span
                     class="subheading font-weight-light mr-3"
                     style="align-self: center"
@@ -95,7 +94,7 @@
     </VRow>
     <VRow dense>
       <VCol>
-        <BiliobCard title="UP主播放最高视频" border="bottom">
+        <BiliobCard light title="UP主播放最高视频" border="bottom">
           <VSlideGroup :value="authorTopVideo.content" multiple show-arrows>
             <VSlideItem
               v-for="(eachVideo, index) in authorTopVideo.content"
@@ -132,7 +131,7 @@
     </VRow>
     <VRow dense>
       <VCol>
-        <BiliobCard title="UP主最新上传视频" border="bottom">
+        <BiliobCard light title="UP主最新上传视频" border="bottom">
           <VSlideGroup :value="authorLatestVideo.content" multiple show-arrows>
             <VSlideItem
               v-for="(eachVideo, index) in authorLatestVideo.content"
@@ -173,7 +172,6 @@
 <script>
 var format = require("date-fns/format");
 
-import AuthorDetailRank from "@/components/main/AuthorDetailRank.vue";
 import AuthorInfo from "@/components/aside/AuthorInfo.vue";
 import AuthorOperation from "@/components/aside/AuthorOperation.vue";
 import DetailCharts from "@/components/main/DetailCharts.vue";
@@ -231,7 +229,7 @@ var deepCopy = function(o) {
     return n;
   } else if (o instanceof Object) {
     var no = {};
-    for (let i in o) {
+    for (var i in o) {
       no[i] = deepCopy(o[i]);
     }
     return no;
@@ -242,7 +240,6 @@ var deepCopy = function(o) {
 export default {
   name: "Author",
   components: {
-    AuthorDetailRank,
     AuthorInfo,
     AuthorOperation,
     DetailCharts

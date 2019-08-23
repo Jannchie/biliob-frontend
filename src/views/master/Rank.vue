@@ -3,10 +3,10 @@
     <VFlex md12>
       <BiliobSheet class="card-tabs">
         <VFlex slot="header">
-          <BiliobDarkInfo border="bottom">
+          <BiliobDarkInfo light border="bottom">
             <div>
               <h4 class="px-5" style="text-align: center">{{ title }}</h4>
-              <VTabs slider-color="primary" dark background-color="#333">
+              <VTabs slider-color="primary" background-color="transparent">
                 <VTooltip color="#222" right eager>
                   <template v-slot:activator="{ on }">
                     <span

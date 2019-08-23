@@ -13,14 +13,14 @@
         </VCard>
       </VCol>
     </VRow>
-    <BiliobCard border="bottom">
+    <BiliobCard light border="bottom">
       <VLayout slot="header">
-        <VTooltip color="#222" right eager>
+        <VTooltip right eager>
           <template v-slot:activator="{ on }">
             <span
               class="subheading font-weight-light"
               style="align-self: center"
-              ><VIcon dark class="mx-5" v-on="on">mdi-help-box</VIcon></span
+              ><VIcon class="mx-5" v-on="on">mdi-help-box</VIcon></span
             >
           </template>
           <li>
@@ -36,8 +36,7 @@
         <VFlex class="py-0">
           <VTabs
             show-arrows
-            dark
-            background-color="#333"
+            background-color="transparent"
             slider-color="primary"
           >
             <VTab @click="sortChange(0)">

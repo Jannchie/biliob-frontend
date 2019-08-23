@@ -1,5 +1,5 @@
 <template>
-  <BiliobCard border="bottom">
+  <BiliobCard light border="bottom">
     <VRow>
       <VCol cols="6"
         ><BiliobOperationBtn

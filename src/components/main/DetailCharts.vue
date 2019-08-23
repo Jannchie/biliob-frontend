@@ -3,6 +3,7 @@
     <BiliobCard :text="subTitle" :color="color">
       <BiliobDarkInfo
         slot="offset"
+        light
         :elevation="0"
         border="bottom"
         class="title"

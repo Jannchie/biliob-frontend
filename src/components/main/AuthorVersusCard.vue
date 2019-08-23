@@ -1,6 +1,7 @@
 <template>
   <div style="display: flex; flex-wrap: wrap; cursor:pointer">
     <BiliobCard
+      light
       class="versus-card elevation-2"
       :title="title"
       @click.stop="toAuthorVersus"

@@ -1,5 +1,5 @@
 <template>
-  <BiliobCard border="bottom" title="UP主排名数据">
+  <BiliobCard light border="bottom" title="UP主排名数据">
     <div class="rank-container">
       <div style="flex-grow: 1;text-align:center">
         <div
@@ -57,8 +57,8 @@
 
 <script>
 var format = require("date-fns/format");
-var { convertDateToUTC } = require("../../charts/util/convertDateToUTC");
-import ChevronBudget from "../common/ChevronBudget.vue";
+var { convertDateToUTC } = require("@/charts/util/convertDateToUTC");
+import ChevronBudget from "@/components/common/ChevronBudget.vue";
 export default {
   components: { ChevronBudget },
   props: {

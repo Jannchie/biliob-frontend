@@ -5,7 +5,8 @@
         v-if="!$slots.offset"
         :elevation="0"
         :border="border"
-        dark
+        :dark="dark"
+        :light="light"
       >
         <slot v-if="!title && !text" name="header" />
         <div v-else class="title font-weight-light px-5 py-1">
@@ -64,7 +65,21 @@ export default {
     },
     cardPadding: {
       type: String,
-      default: ""
+      default: function() {
+        if (this.$vuetify.breakpoint.mdAndUp) {
+          return "pa-2";
+        } else {
+          return "pa-1";
+        }
+      }
+    },
+    dark: {
+      type: Boolean,
+      default: true
+    },
+    light: {
+      type: Boolean,
+      default: false
     }
   },
 

@@ -1,5 +1,5 @@
 <template>
-  <BiliobCard border="bottom" title="视频排名数据">
+  <BiliobCard light border="bottom" title="视频排名数据">
     <VContainer class="text-center" grid-list-md text-xs-center>
       <VRow>
         <VCol cols="4">

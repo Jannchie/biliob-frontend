@@ -1,5 +1,5 @@
 <template>
-  <BiliobCard :title="title" border="bottom">
+  <BiliobCard light :title="title" border="bottom">
     <VRow style="height: 100%;align-content: center;">
       <VCol align="center">
         <BiliobOperationBtn

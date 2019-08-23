@@ -5,10 +5,10 @@
       hint="请输入标题、分区或者av号"
       @getSearchValue="getSearchValue"
     />
-    <BiliobCard border="bottom">
+    <BiliobCard light border="bottom">
       <VLayout slot="header" class="flex-column flex-lg-row">
         <VFlex style="padding:0" lg8>
-          <VTabs dark slider-color="primary" background-color="#333">
+          <VTabs slider-color="primary" background-color="transparent">
             <VIcon left right>mdi-sort</VIcon>
             <VTab @click="sortChange(0)">
               <VIcon>
@@ -61,7 +61,13 @@
           </VTabs>
         </VFlex>
         <VFlex class="py-0" lg4>
-          <VTabs grow right dark slider-color="primary" background-color="#333">
+          <VTabs
+            grow
+            right
+            dark
+            slider-color="primary"
+            background-color="transparent"
+          >
             <VIcon left right>mdi-calendar-blank-outline</VIcon>
             <VTab @click="daysChange(1)">
               <VIcon>

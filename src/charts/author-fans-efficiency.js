@@ -16,10 +16,14 @@ function drawChart(data) {
     });
 
   let fansEfficiency = [];
-  for (let index = 1; index < data.length; index++) {
+  var step = 7;
+  if (data.length <= 7) {
+    step = 1;
+  }
+  for (let index = step; index < data.length; index++) {
     var efficiency = Math.round(
-      (10000 * (data[index].fans - data[index - 1].fans)) /
-        (data[index].archiveView - data[index - 1].archiveView)
+      (10000 * (data[index].fans - data[index - step].fans)) /
+        (data[index].archiveView - data[index - step].archiveView)
     );
     if (efficiency != Infinity && efficiency != -Infinity) {
       fansEfficiency.push([data[index].datetime, efficiency]);

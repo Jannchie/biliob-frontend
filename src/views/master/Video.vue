@@ -15,11 +15,11 @@
     </VRow>
     <VRow>
       <VCol cols="12" md="8">
-        <VideoDetailRank
+        <BiliobVideoRank
           slot="rank"
           class="mb-2"
           v-bind="rank"
-        ></VideoDetailRank>
+        ></BiliobVideoRank>
         <DetailCharts
           slot="main"
           class="mb-2"
@@ -75,22 +75,14 @@
           :pic="videoData.pic"
           :title="videoData.title"
         />
-        <AuthorVideo
-          slot="other-video"
-          class="mb-2"
-          title="UP主其他已追踪视频"
-          :author-top-video="otherVideo"
-        />
       </VCol>
     </VRow>
   </div>
 </template>
 <script>
-import VideoDetailRank from "@/components/main/VideoDetailRank.vue";
 import VideoDetailTitle from "@/components/main/VideoDetailTitle.vue";
 import DetailCharts from "@/components/main/DetailCharts.vue";
 import AuthorInfo from "@/components/aside/AuthorInfo.vue";
-import AuthorVideo from "@/components/aside/AuthorVideo.vue";
 import VideoOperation from "@/components/aside/VideoOperation.vue";
 import drawMainChart from "@/charts/video-main.js";
 import drawVideoPieChart from "@/charts/video-pie.js";
@@ -105,7 +97,7 @@ var deepCopy = function(o) {
     return n;
   } else if (o instanceof Object) {
     var no = {};
-    for (let i in o) {
+    for (var i in o) {
       no[i] = deepCopy(o[i]);
     }
     return no;
@@ -116,11 +108,9 @@ var deepCopy = function(o) {
 export default {
   name: "VideoDetail",
   components: {
-    VideoDetailRank,
     VideoDetailTitle,
     DetailCharts,
     AuthorInfo,
-    AuthorVideo,
     VideoOperation
   },
   data() {
@@ -165,7 +155,7 @@ export default {
       ) {
         this.hasDanmakuAggregate = true;
         let pagelist = [];
-        for (let eachPage in response.data.danmakuAggregate) {
+        for (var eachPage in response.data.danmakuAggregate) {
           pagelist.push(eachPage);
           if (eachPage == "updatetime") {
             this.danmakuUpdateTime = response.data.danmakuAggregate.updatetime;
