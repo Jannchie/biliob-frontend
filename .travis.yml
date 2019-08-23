@@ -5,9 +5,9 @@ cache:
   directories:
     - node_modules
 install:
-  - npm install
+  - yarn install
 script:
-  - npm run build
+  - yarn build
 branches:
   only:
     - master
