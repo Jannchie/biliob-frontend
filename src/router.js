@@ -41,8 +41,8 @@ export default new Router({
       component: LayoutMaster,
       children: [
         {
+          name: "首页",
           path: "/index.html",
-          name: "主站",
           component: MasterIndex
         },
         {
@@ -56,8 +56,8 @@ export default new Router({
           component: Rank
         },
         {
+          name: "粉丝变动率",
           path: "/event",
-          name: "粉丝波动",
           component: Occurrence
         },
         {
@@ -82,12 +82,12 @@ export default new Router({
         },
         {
           path: "/login",
-          name: "用户登录",
+          name: "观测者登录",
           component: Login
         },
         {
           path: "/signin",
-          name: "用户注册",
+          name: "观测者注册",
           component: Signin
         },
         {
@@ -96,13 +96,13 @@ export default new Router({
           component: VideoList
         },
         {
+          name: "我关注的作者",
           path: "/user/author",
-          name: "我关注的用户",
           component: FavoriteAuthorList
         },
         {
+          name: "我收藏的作品",
           path: "/user/video",
-          name: "我关注的作者",
           component: FavoriteVideoList
         },
         {
@@ -127,18 +127,22 @@ export default new Router({
         },
         {
           path: "/user/record",
+          name: "我的操作记录",
           component: UserRecord
         },
         {
           path: "/test",
+          name: "测试",
           component: Test
         },
         {
           path: "/download/android",
+          name: "下载安卓客户端",
           component: Android
         },
         {
           path: "/donate",
+          name: "捐助",
           component: Donate
         }
       ]

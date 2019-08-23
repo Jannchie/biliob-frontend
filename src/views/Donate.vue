@@ -41,9 +41,9 @@
         <div class="pa-2 title white--text" style="margin-top: 120px;">
           已收到转账
         </div>
-        <div class="pa-2 display-1 white--text">0 RMB</div>
+        <div class="pa-2 display-1 white--text">139 RMB</div>
         <div class="pa-2 title white--text">转账人次</div>
-        <div class="pa-2 display-1 white--text">0 人</div>
+        <div class="pa-2 display-1 white--text">3 人</div>
         <div class="pa-2 caption white--text">
           目前数据并非实时更新，可能会延后数日进行登记
         </div>
