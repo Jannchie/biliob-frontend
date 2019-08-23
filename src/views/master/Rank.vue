@@ -159,7 +159,7 @@ export default {
   methods: {
     linkTo(eachData) {
       if (eachData.mid != undefined) {
-        this.$router.push(`author/${eachData.mid}`);
+        this.$router.push(`/author/${eachData.mid}`);
       }
     },
     getData(index) {

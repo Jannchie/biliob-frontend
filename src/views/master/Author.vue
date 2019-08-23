@@ -412,6 +412,7 @@ export default {
       .get(`/author/${this.mid}/video?sort=1&pagesize=${10}`)
       .then(response => {
         this.authorLatestVideo = response.data;
+        console.log(this.authorLatestVideo);
       });
     this.axios.get(`/author/tag?mid=${this.mid}&limit=${50}`).then(r => {
       this.authorTagCloudData = r.data;
