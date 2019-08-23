@@ -24,7 +24,7 @@ export default {
       } else if (v < 100) {
         return "green";
       } else if (v < 200) {
-        return "blue";
+        return "primary";
       } else if (v < 300) {
         return "indigo";
       } else if (v < 500) {

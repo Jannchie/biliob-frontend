@@ -22,7 +22,7 @@
             <VRadio label="每5分钟一次" :value="3"></VRadio>
           </VRadioGroup>
           <VBtn
-            color="blue"
+            color="primary"
             class="white--text"
             :disabled="
               type == '' || name == '' || frequency == -1 || originData == ''

@@ -15,7 +15,7 @@ export default {
       } else if (this.role == "管理员") {
         return "red";
       } else {
-        return "blue";
+        return "primary";
       }
     }
   }

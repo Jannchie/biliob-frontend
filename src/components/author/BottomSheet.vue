@@ -45,7 +45,7 @@
       </VListItem>
 
       <BottomSheetTile
-        color="blue"
+        color="primary"
         :pic="pic"
         :name="name"
         icon="mdi-refresh"

@@ -225,7 +225,7 @@ export default {
       appBarTabs: [
         { name: "首页", path: "/" },
         { name: "排行榜", path: "/rank" },
-        { name: "UP主查询", path: "/author" },
+        { name: "UP主查询", path: "/authorlist" },
         { name: "视频查询", path: "/video" }
         // { name: "话题指数", path: "/index" }
       ]

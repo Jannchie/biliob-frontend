@@ -344,7 +344,7 @@ export default {
     },
     getColor(value) {
       if (value === "0" || value === "") {
-        return "blue";
+        return "primary";
       } else {
         return "orange";
       }

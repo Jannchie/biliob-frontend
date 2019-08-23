@@ -8,7 +8,7 @@
           粉丝数
         </div>
         <div
-          class="rank-value title font-weight-black blue--text text--darken-3"
+          class="rank-value py-1 title font-weight-black blue--text text--darken-3"
         >
           {{ fansInfo }}
         </div>
@@ -21,7 +21,7 @@
           播放量
         </div>
         <div
-          class="rank-value title font-weight-black blue--text text--darken-3"
+          class="rank-value py-1 title font-weight-black blue--text text--darken-3"
         >
           {{ archiveInfo }}
         </div>
@@ -34,7 +34,7 @@
           专栏阅读
         </div>
         <div
-          class="rank-value title font-weight-black blue--text text--darken-3"
+          class="rank-value py-1 title font-weight-black blue--text text--darken-3"
         >
           {{ articleInfo }}
         </div>
@@ -135,7 +135,7 @@ export default {
   justify-content: center;
   height: 100%;
 }
-.rank-value {
+.rank-value py-1 {
   height: 20px;
 }
 </style>

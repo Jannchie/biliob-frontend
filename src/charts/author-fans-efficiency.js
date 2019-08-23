@@ -113,7 +113,7 @@ function drawChart(data) {
               name: "平均线",
               // 支持 'average', 'min', 'max'
               type: "average",
-              lineStyle: { color: "#666" }
+              lineStyle: { color: "#444" }
             }
           ]
         }

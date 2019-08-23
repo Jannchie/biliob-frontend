@@ -66,8 +66,10 @@
                     v-if="eachAuthor.official !== ''"
                     class="caption  author-info"
                   >
-                    <VIcon color="#FBC02D" small> mdi-flash </VIcon
-                    >{{ eachAuthor.official }}
+                    <VIcon color="#FBC02D" small> mdi-flash-circle </VIcon
+                    ><span style="vertical-align: middle">
+                      {{ eachAuthor.official }}</span
+                    >
                   </div>
                   <ObserveStatus class="observe-status" :object="eachAuthor" />
                 </div>

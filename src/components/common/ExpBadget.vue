@@ -24,7 +24,7 @@ export default {
       } else if (v < 200) {
         return "teal";
       } else if (v < 1280) {
-        return "blue";
+        return "primary";
       } else if (v < 2560) {
         return "deep-orange";
       } else if (v < 5120) {

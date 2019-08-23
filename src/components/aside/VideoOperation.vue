@@ -45,7 +45,7 @@
       >
       <VCol cols="6"
         ><VBtn
-          color="blue"
+          color="primary"
           block
           outlined
           style="border-width:1px"

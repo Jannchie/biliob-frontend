@@ -71,14 +71,14 @@ export default new Router({
           component: Author
         },
         {
+          path: "/authorlist",
+          name: "UP主数据列表",
+          component: AuthorList
+        },
+        {
           path: "/author/:mid/video/:aid",
           name: "视频详细数据",
           component: Video
-        },
-        {
-          path: "/author",
-          name: "UP主数据列表",
-          component: AuthorList
         },
         {
           path: "/login",

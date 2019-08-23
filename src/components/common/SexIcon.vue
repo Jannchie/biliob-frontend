@@ -1,5 +1,5 @@
 <template>
-  <VIcon v-if="sex === '男'" size="22px" color="blue">
+  <VIcon v-if="sex === '男'" size="22px" color="primary">
     mdi-gender-male
   </VIcon>
   <VIcon v-else-if="sex === '女'" color="pink">

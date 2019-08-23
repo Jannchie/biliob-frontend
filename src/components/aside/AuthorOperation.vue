@@ -24,7 +24,7 @@
       </VCol>
       <VCol>
         <VBtn
-          color="blue"
+          color="primary"
           :href="
             `https://connect.qq.com/widget/shareqq/index.html?url=https://www.biliob.com${
               this.$route.path

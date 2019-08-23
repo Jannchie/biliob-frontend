@@ -14,7 +14,7 @@
     <p>
       如果方便的话，请收藏、投币、以及点赞，这样或许该视频就能推送给更多的人看到。诸位提供的播放量会使我产生金钱方面的收益——由B站提供。此外，播放量的增长能够证明我的潜在商业价值，这些是比起直接捐款更为宝贵的东西。
     </p>
-    <VBtn color="blue" href="https://space.bilibili.com/1850091" dark>
+    <VBtn color="primary" href="https://space.bilibili.com/1850091" dark>
       <VIcon left>mdi-home</VIcon>立即前往Jannchie见齐的个人空间</VBtn
     >
     <h3 class="donate-sub-title">
@@ -64,7 +64,7 @@
       如果你有购买服务器的想法，欢迎下面的链接购买，通过这些链接成交的购买算作是我推广的。我会因此获取一定的佣金。
     </p>
     <VBtn
-      color="blue"
+      color="primary"
       target="_blank"
       dark
       href="https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=z82eczgc"
@@ -74,7 +74,7 @@
       >服务器提供商 阿里云
     </VBtn>
     <VBtn
-      color="blue"
+      color="primary"
       target="_blank"
       dark
       href="https://cloud.tencent.com/redirect.php?redirect=1005&cps_key=7db3d9f0ef080a24be84d44938108742&from=console"
@@ -84,7 +84,7 @@
       >服务器提供商 腾讯云
     </VBtn>
     <VBtn
-      color="blue"
+      color="primary"
       href="https://www.vultr.com/?ref=7540103"
       target="_blank"
       dark

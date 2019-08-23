@@ -54,30 +54,44 @@
               <RouterLink
                 v-for="eachData in data"
                 :key="eachData.name"
-                tag="div"
-                class="py-4"
-                style="display: flex"
+                v-ripple
+                class="py-2"
+                style="display: flex; text-decoration: none; color: rgba(0, 0, 0, 0.87);"
                 :to="linkTo(eachData)"
               >
-                <VAvatar size="60px" class="mr-4">
-                  <img :src="zipPic(eachData.face)" />
-                </VAvatar>
-                <div>
-                  <p>{{ eachData.name }}</p>
-                  <p>{{ eachData.official }}</p>
-                </div>
-                <VChip
-                  :color="getColor(index)"
-                  small
-                  text-color="white"
-                  class="pl-0"
-                  style="position:absolute;right:16px;align-self:center"
-                >
-                  <VIcon class="ml-0" color="white" left>
-                    {{ getIcon(index) }}
-                  </VIcon>
-                  {{ Math.abs(eachData.cRate) }}
-                </VChip>
+                <VRow>
+                  <VCol cols="auto">
+                    <VAvatar size="60px">
+                      <img :src="zipPic(eachData.face)" /> </VAvatar
+                  ></VCol>
+                  <VCol>
+                    <div>
+                      <div>{{ eachData.name }}</div>
+                      <div v-if="eachData.official != ''">
+                        <VIcon color="#FBC02D" x-small>mdi-flash-circle</VIcon
+                        ><span
+                          class="caption grey--text text--darken-2"
+                          style="vertical-align: middle"
+                        >
+                          {{ eachData.official }}
+                        </span>
+                      </div>
+                    </div></VCol
+                  >
+                  <VCol cols="auto" style="align-self: center;">
+                    <VChip
+                      :color="getColor(index)"
+                      small
+                      text-color="white"
+                      class="pl-0"
+                    >
+                      <VIcon class="ml-0" color="white" left>
+                        {{ getIcon(index) }}
+                      </VIcon>
+                      {{ Math.abs(eachData.cRate) }}
+                    </VChip></VCol
+                  >
+                </VRow>
               </RouterLink>
             </VFadeTransition>
           </div>
@@ -86,7 +100,7 @@
               <div
                 v-for="(eachData, idx) in data"
                 :key="idx"
-                style="display: flex"
+                style="display: flex; text-decoration: none; color: rgba(0, 0, 0, 0.87);"
                 class="py-4"
               >
                 <VImg
@@ -207,26 +221,3 @@ export default {
   }
 };
 </script>
-
-<style scope>
-.item-cards {
-  margin: 10px 2px;
-  height: 90px;
-  border-radius: 5px;
-}
-
-.item-title {
-  max-width: 50vw;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.item-info {
-  display: flex;
-  align-items: center;
-}
-.dark-info.bottom {
-  padding-bottom: 0;
-}
-</style>

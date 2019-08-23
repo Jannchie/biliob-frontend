@@ -41,7 +41,7 @@
             style="align-items: center;"
           ></div>
         </VCardText>
-        <div class="center-info" color="blue" dark>
+        <div class="center-info" color="primary" dark>
           <div class="title font-weight-black red--text text--darken-2">
             VS
           </div>

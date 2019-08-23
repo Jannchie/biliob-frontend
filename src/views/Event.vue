@@ -250,7 +250,7 @@ export default {
         case "传说级涨粉":
           return "red";
         case "新星爆发":
-          return "blue";
+          return "primary";
         case "急转直下":
           return "green";
         case "大量掉粉":
