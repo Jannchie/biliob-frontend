@@ -1490,5 +1490,25 @@
       }
     ],
     "type": "holyshit"
+  },
+  {
+    "title": "修复错误",
+    "version": "ver.7.0.1",
+    "date": "2019-08-23",
+    "list": [
+      {
+        "text": "修正了Safari浏览器下显示崩坏的问题。",
+        "type": "fix"
+      },
+      {
+        "text": "修正了用户名无法正常显示的问题。",
+        "type": "fix"
+      },
+      {
+        "text": "重新设计了部分组件。",
+        "type": "beautify"
+      }
+    ],
+    "type": "unimportant"
   }
 ]
