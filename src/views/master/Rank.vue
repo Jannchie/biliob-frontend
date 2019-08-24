@@ -7,7 +7,7 @@
             <div>
               <h4 class="px-5" style="text-align: center">{{ title }}</h4>
               <VTabs slider-color="primary" background-color="transparent">
-                <VTooltip color="#222" right eager>
+                <VTooltip color="#333" right eager>
                   <template v-slot:activator="{ on }">
                     <span
                       class="subheading font-weight-light"

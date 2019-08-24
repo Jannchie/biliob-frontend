@@ -14,12 +14,20 @@ module.exports = {
         threshold: 10240,
         minRatio: 0.8
       })
-    ]
+    ],
+    entry: {
+      app: ["babel-polyfill", "@/main.js"]
+    }
   },
   pwa: {
-    themeColor: "#444",
+    themeColor: "#333",
     name: "BiliOB观测者",
-    msTileColor: "#444"
+    msTileColor: "#333"
   },
-  transpileDependencies: ["vue-echarts", "bresize-detector"]
+  transpileDependencies: [
+    "vue-echarts",
+    "bresize-detector",
+    "vuetify",
+    "resize-detector"
+  ]
 };

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <VSpeedDial v-model="fab" fixed bottom right open-on-hover>
+    <VSpeedDial v-model="fab" fixed bottom right>
       <template v-slot:activator>
         <VBtn v-model="fab" color="blue darken-2" dark fab>
           <VIcon v-if="fab">mdi-close</VIcon>
