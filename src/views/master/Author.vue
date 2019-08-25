@@ -17,11 +17,7 @@
 
     <VRow dense>
       <VCol>
-        <VTabs
-          class="elevation-3 py-0 my-2"
-          show-arrows
-          background-color="transparent"
-        >
+        <VTabs class="elevation-3 py-0 my-2" show-arrows>
           <VIcon left right>mdi-finance</VIcon>
 
           <VTab @click="getPage(0)">

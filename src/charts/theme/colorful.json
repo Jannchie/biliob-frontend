@@ -1,6 +1,6 @@
 {
   "color": [
-    "#2196f3",
+    "#1e88e5",
     "#f6dd00",
     "#2b821d",
     "#c12e34",
@@ -16,7 +16,7 @@
       "color": "#333333"
     },
     "subtextStyle": {
-      "color": "#aaaaaa"
+      "color": "#333"
     }
   },
   "line": {
@@ -26,7 +26,7 @@
     "lineStyle": {
       "width": "3"
     },
-    "symbolSize": "6",
+    "symbolSize": "5",
     "symbol": "emptyCircle",
     "smooth": false
   },
@@ -453,12 +453,12 @@
     "label": {
       "normal": {
         "textStyle": {
-          "color": "#eeeeee"
+          "color": "#333"
         }
       },
       "emphasis": {
         "textStyle": {
-          "color": "#eeeeee"
+          "color": "#333"
         }
       }
     }
