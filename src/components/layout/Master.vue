@@ -46,7 +46,7 @@
           <VTab
             v-for="(eachTabItem, idx) in appBarTabs"
             :key="idx"
-            :to="eachTabItem.path"
+            @click.stop="$router.push(eachTabItem.path)"
             >{{ eachTabItem.name }}</VTab
           >
         </VTabs>
@@ -116,17 +116,16 @@
                 </VCardText>
                 <VDivider></VDivider>
                 <VCardActions>
-                  <VBtn
-                    v-for="(eachUserItem, userItemIdx) in UserItems"
-                    :key="userItemIdx"
-                    width="50%"
-                    :to="eachUserItem.path"
-                    large
-                    text
-                  >
+                  <VBtn width="50%" to="/user/author" large text>
                     <div style="display:block; text-align:center;">
-                      <div>{{ getUserItemValue(eachUserItem.name) }}</div>
-                      <div class="caption">{{ eachUserItem.name }}</div>
+                      <div>{{ getUserItemValue("关注") }}</div>
+                      <div class="caption">关注</div>
+                    </div>
+                  </VBtn>
+                  <VBtn width="50%" to="/user/video" large text>
+                    <div style="display:block; text-align:center;">
+                      <div>{{ getUserItemValue("收藏") }}</div>
+                      <div class="caption">收藏</div>
                     </div>
                   </VBtn>
                 </VCardActions>
@@ -139,7 +138,7 @@
                 class="naVBtn"
                 text
                 block
-                :to="eachNavItem.url"
+                @click.stop="$router.push(eachNavItem.url)"
                 ><VIcon left>{{ eachNavItem.icon }}</VIcon
                 >{{ eachNavItem.name }}</VBtn
               >
@@ -226,7 +225,7 @@ export default {
         { name: "首页", path: "/" },
         { name: "排行榜", path: "/rank" },
         { name: "UP主查询", path: "/authorlist" },
-        { name: "视频查询", path: "/video" }
+        { name: "视频查询", path: "/videolist" }
         // { name: "话题指数", path: "/index" }
       ]
     };
@@ -259,7 +258,7 @@ export default {
 </script>
 <style>
 .naVBtn {
-  justify-content: right;
+  justify-content: left;
 }
 @media only screen and (min-width: 960px) {
   .container {

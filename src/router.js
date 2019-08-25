@@ -37,7 +37,6 @@ export default new Router({
   routes: [
     {
       path: "/",
-      name: "首页",
       component: LayoutMaster,
       children: [
         {
@@ -91,7 +90,7 @@ export default new Router({
           component: Signin
         },
         {
-          path: "/video",
+          path: "/videolist",
           name: "视频数据列表",
           component: VideoList
         },
