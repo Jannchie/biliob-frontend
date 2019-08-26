@@ -46,6 +46,7 @@
           <VTab
             v-for="(eachTabItem, idx) in appBarTabs"
             :key="idx"
+            :to="eachTabItem.path"
             @click.stop="$router.push(eachTabItem.path)"
             >{{ eachTabItem.name }}</VTab
           >
@@ -138,6 +139,7 @@
                 class="naVBtn"
                 text
                 block
+                :to="eachNavItem.url"
                 @click.stop="$router.push(eachNavItem.url)"
                 ><VIcon left>{{ eachNavItem.icon }}</VIcon
                 >{{ eachNavItem.name }}</VBtn
@@ -159,7 +161,7 @@
       <VLayout justify-center>
         <VFlex lg8 md12>
           <VSlideYTransition mode="out-in">
-            <RouterView style="min-height:800px" />
+            <RouterView key="master" style="min-height:800px" />
           </VSlideYTransition>
         </VFlex>
       </VLayout>
