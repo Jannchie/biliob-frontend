@@ -17,8 +17,8 @@ export default new Vuex.Store({
     dark: false,
     ad: undefined,
     currentPage: undefined,
-    favoriteAid: undefined,
-    favoriteMid: undefined
+    favoriteAid: [],
+    favoriteMid: []
   },
   mutations: {
     setSiteInfo(state, info) {
@@ -123,8 +123,12 @@ export default new Vuex.Store({
           context.commit("setCredit", response.data.credit);
           context.commit("setExp", response.data.exp);
           context.commit("setUserName", response.data.name);
-          context.commit("setFavoriteVideo", response.data.favoriteAid);
-          context.commit("setFavoriteAuthor", response.data.favoriteMid);
+          if (response.data.favoriteAid) {
+            context.commit("setFavoriteVideo", response.data.favoriteAid);
+          }
+          if (response.data.favoriteMid) {
+            context.commit("setFavoriteAuthor", response.data.favoriteMid);
+          }
         })
         .catch(() => {
           context.commit("logout");

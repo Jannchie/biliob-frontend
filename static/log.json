@@ -1522,5 +1522,17 @@
       }
     ],
     "type": "unimportant"
+  },
+  {
+    "title": "修复了按键失效的BUG",
+    "version": "ver.7.0.3",
+    "date": "2019-08-26",
+    "list": [
+      {
+        "text": "修复了没有关注或收藏任何视频时按钮失效的BUG",
+        "type": "fix"
+      }
+    ],
+    "type": "unimportant"
   }
 ]
