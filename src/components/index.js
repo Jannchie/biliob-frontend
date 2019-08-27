@@ -15,6 +15,7 @@ requireComponent.keys().forEach(fileName => {
     if (url === undefined) {
       return url;
     }
+    url = url.replace("http:", "");
     var subUrl = url.split("bfs/");
     if (subUrl.length < 2) {
       return url;
