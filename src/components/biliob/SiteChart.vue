@@ -50,7 +50,7 @@
           </p>
           <BiliobDarkInfo class="subtitle inline" border="left">
             <div class="py-0 px-3 caption ">
-              同比上月
+              环比上月
             </div>
           </BiliobDarkInfo>
           <p class="title site-aside-value font-weight-bold">
@@ -58,7 +58,7 @@
           </p>
           <BiliobDarkInfo class="subtitle inline" border="left">
             <div class="py-0 px-3 caption ">
-              同比去年
+              环比去年
             </div>
           </BiliobDarkInfo>
           <p class="title site-aside-value font-weight-bold">
