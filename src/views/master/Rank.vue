@@ -1,146 +1,150 @@
 <template>
-  <VLayout wrap>
-    <VFlex md12>
-      <BiliobSheet class="card-tabs">
-        <VFlex slot="header">
-          <BiliobDarkInfo light border="bottom">
-            <div>
-              <h4 class="px-5" style="text-align: center">{{ title }}</h4>
-              <VTabs slider-color="primary" background-color="transparent">
-                <VTooltip color="#333" right eager>
-                  <template v-slot:activator="{ on }">
-                    <span
-                      class="subheading font-weight-light"
-                      style="align-self: center"
-                      ><VIcon class="mx-5" v-on="on">mdi-help-box</VIcon></span
-                    >
-                  </template>
-                  <li>
-                    本排行榜数据每日更新一次。
-                  </li>
+  <VContainer>
+    <VRow dense>
+      <VCol cols="12">
+        <BiliobSheet class="card-tabs" padding="px-0">
+          <VFlex slot="header">
+            <BiliobDarkInfo light border="bottom">
+              <div>
+                <h4 class="px-5" style="text-align: center">{{ title }}</h4>
+                <VTabs slider-color="primary" background-color="transparent">
+                  <VTooltip color="#333" right eager>
+                    <template v-slot:activator="{ on }">
+                      <span
+                        class="subheading font-weight-light"
+                        style="align-self: center"
+                        ><VIcon class="mx-5" v-on="on"
+                          >mdi-help-box</VIcon
+                        ></span
+                      >
+                    </template>
+                    <li>
+                      本排行榜数据每日更新一次。
+                    </li>
 
-                  <li>
-                    其中涨粉、掉粉排行仅包括所有正在观测的UP主数据。具体数字为一日粉丝变动数，仅供参考。
-                  </li>
-                  <li>
-                    国创番剧排行榜数据摘录自B站。
-                  </li>
-                </VTooltip>
+                    <li>
+                      其中涨粉、掉粉排行仅包括所有正在观测的UP主数据。具体数字为一日粉丝变动数，仅供参考。
+                    </li>
+                    <li>
+                      国创番剧排行榜数据摘录自B站。
+                    </li>
+                  </VTooltip>
 
-                <VTab @click="getData(0)">
-                  <VIcon style="margin-right:10px;">
-                    mdi-heart
-                  </VIcon>
-                  涨粉
-                </VTab>
-                <VTab @click="getData(1)">
-                  <VIcon style="margin-right:10px;"> mdi-heart-broken </VIcon
-                  >掉粉
-                </VTab>
-                <VTab @click="getData(2)">
-                  <VIcon style="margin-right:10px;"> mdi-video-vintage </VIcon
-                  >番剧
-                </VTab>
-                <VTab @click="getData(3)">
-                  <VIcon style="margin-right:10px;"> mdi-rabbit </VIcon>国创
-                </VTab>
-              </VTabs>
-            </div>
-          </BiliobDarkInfo>
-        </VFlex>
-        <div>
-          <div v-if="index === 0 || index === 1">
-            <VFadeTransition mode="out-in" group>
-              <RouterLink
-                v-for="eachData in data"
-                :key="eachData.name"
-                v-ripple
-                class="py-2"
-                style="display: flex; text-decoration: none; color: rgba(0, 0, 0, 0.87);"
-                :to="linkTo(eachData)"
-              >
-                <VRow>
-                  <VCol cols="auto">
-                    <VAvatar size="60px">
-                      <img :src="zipPic(eachData.face)" /> </VAvatar
-                  ></VCol>
-                  <VCol>
-                    <div>
-                      <div>{{ eachData.name }}</div>
-                      <div v-if="eachData.official != ''">
-                        <VIcon color="#FBC02D" x-small>mdi-flash-circle</VIcon
-                        ><span
-                          class="caption grey--text text--darken-2"
-                          style="vertical-align: middle"
-                        >
-                          {{ eachData.official }}
-                        </span>
-                      </div>
-                    </div></VCol
-                  >
-                  <VCol cols="auto" style="align-self: center;">
-                    <VChip
-                      :color="getColor(index)"
-                      small
-                      text-color="white"
-                      class="pl-0"
-                    >
-                      <VIcon class="ml-0" color="white" left>
-                        {{ getIcon(index) }}
-                      </VIcon>
-                      {{ Math.abs(eachData.cRate) }}
-                    </VChip></VCol
-                  >
-                </VRow>
-              </RouterLink>
-            </VFadeTransition>
-          </div>
-          <div v-else>
-            <VFadeTransition mode="out-in" group>
-              <div
-                v-for="(eachData, idx) in data"
-                :key="idx"
-                style="display: flex; text-decoration: none; color: rgba(0, 0, 0, 0.87);"
-                class="py-4"
-              >
-                <VImg
-                  style="border-radius:3px;width:90px;height:120px;margin:0 8px"
-                  :src="zipPic(eachData.cover)"
-                  :lazy-src="zipPic(eachData.cover)"
-                />
-                <div style="width: 100%">
-                  <VContainer class="pt-0 body-1">
-                    <VLayout>
-                      <VFlex xs-12>
-                        <h5 class="font-weight-bold">{{ eachData.title }}</h5>
-                      </VFlex>
-                    </VLayout>
-                    <VLayout row>
-                      <VFlex xs-2>
-                        播放 <span>{{ eachData.currentPlay }}</span>
-                      </VFlex>
-                      <VFlex xs-2>
-                        综分 <span>{{ eachData.currentPts }}</span>
-                      </VFlex>
-                      <VFlex xs-2>
-                        追番 <span>{{ eachData.currentWatch }}</span>
-                      </VFlex>
-                      <VFlex xs-2>
-                        评论 <span>{{ eachData.currentReview }}</span>
-                      </VFlex>
-                      <VFlex xs-4>
-                        弹幕 <span>{{ eachData.currentDanmaku }}</span>
-                      </VFlex>
-                    </VLayout>
-                  </VContainer>
-                </div>
+                  <VTab @click="getData(0)">
+                    <VIcon style="margin-right:10px;">
+                      mdi-heart
+                    </VIcon>
+                    涨粉
+                  </VTab>
+                  <VTab @click="getData(1)">
+                    <VIcon style="margin-right:10px;"> mdi-heart-broken </VIcon
+                    >掉粉
+                  </VTab>
+                  <VTab @click="getData(2)">
+                    <VIcon style="margin-right:10px;"> mdi-video-vintage </VIcon
+                    >番剧
+                  </VTab>
+                  <VTab @click="getData(3)">
+                    <VIcon style="margin-right:10px;"> mdi-rabbit </VIcon>国创
+                  </VTab>
+                </VTabs>
               </div>
-            </VFadeTransition>
+            </BiliobDarkInfo>
+          </VFlex>
+          <div>
+            <div v-if="index === 0 || index === 1">
+              <VFadeTransition mode="out-in" group>
+                <RouterLink
+                  v-for="eachData in data"
+                  :key="eachData.name"
+                  v-ripple
+                  class="py-2 px-5"
+                  style="display: flex; text-decoration: none; color: rgba(0, 0, 0, 0.87);"
+                  :to="linkTo(eachData)"
+                >
+                  <VRow dense>
+                    <VCol cols="auto">
+                      <VAvatar size="60px">
+                        <img :src="zipPic(eachData.face)" /> </VAvatar
+                    ></VCol>
+                    <VCol>
+                      <div>
+                        <div>{{ eachData.name }}</div>
+                        <div v-if="eachData.official != ''">
+                          <VIcon color="#FBC02D" x-small>mdi-flash-circle</VIcon
+                          ><span
+                            class="caption grey--text text--darken-2"
+                            style="vertical-align: middle"
+                          >
+                            {{ eachData.official }}
+                          </span>
+                        </div>
+                      </div></VCol
+                    >
+                    <VCol cols="auto" style="align-self: center;">
+                      <VChip
+                        :color="getColor(index)"
+                        small
+                        text-color="white"
+                        class="pl-0"
+                      >
+                        <VIcon class="ml-0" color="white" left>
+                          {{ getIcon(index) }}
+                        </VIcon>
+                        {{ Math.abs(eachData.cRate) }}
+                      </VChip></VCol
+                    >
+                  </VRow>
+                </RouterLink>
+              </VFadeTransition>
+            </div>
+            <div v-else>
+              <VFadeTransition mode="out-in" group>
+                <div
+                  v-for="(eachData, idx) in data"
+                  :key="idx"
+                  style="display: flex; text-decoration: none; color: rgba(0, 0, 0, 0.87);"
+                  class="py-4"
+                >
+                  <VImg
+                    style="border-radius:3px;width:90px;height:120px;margin:0 8px"
+                    :src="zipPic(eachData.cover)"
+                    :lazy-src="zipPic(eachData.cover)"
+                  />
+                  <div style="width: 100%">
+                    <VContainer class="pt-0 body-1">
+                      <VLayout>
+                        <VFlex xs-12>
+                          <h5 class="font-weight-bold">{{ eachData.title }}</h5>
+                        </VFlex>
+                      </VLayout>
+                      <VLayout row>
+                        <VFlex xs-2>
+                          播放 <span>{{ eachData.currentPlay }}</span>
+                        </VFlex>
+                        <VFlex xs-2>
+                          综分 <span>{{ eachData.currentPts }}</span>
+                        </VFlex>
+                        <VFlex xs-2>
+                          追番 <span>{{ eachData.currentWatch }}</span>
+                        </VFlex>
+                        <VFlex xs-2>
+                          评论 <span>{{ eachData.currentReview }}</span>
+                        </VFlex>
+                        <VFlex xs-4>
+                          弹幕 <span>{{ eachData.currentDanmaku }}</span>
+                        </VFlex>
+                      </VLayout>
+                    </VContainer>
+                  </div>
+                </div>
+              </VFadeTransition>
+            </div>
           </div>
-        </div>
-      </BiliobSheet>
-    </VFlex>
-  </VLayout>
+        </BiliobSheet>
+      </VCol>
+    </VRow>
+  </VContainer>
 </template>
 <script>
 export default {

@@ -1,11 +1,11 @@
 <template>
   <VContainer>
-    <VRow>
+    <VRow dense>
       <VCol cols="12">
-        <BiliobVersusCard width="100%"></BiliobVersusCard>
+        <BiliobVersusCard></BiliobVersusCard>
       </VCol>
     </VRow>
-    <VRow>
+    <VRow dense>
       <VCol cols="12">
         <BiliobSiteChart
           :options="siteInfo"

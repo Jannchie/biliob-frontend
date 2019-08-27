@@ -47,7 +47,6 @@
             v-for="(eachTabItem, idx) in appBarTabs"
             :key="idx"
             :to="eachTabItem.path"
-            @click.stop="$router.push(eachTabItem.path)"
             >{{ eachTabItem.name }}</VTab
           >
         </VTabs>
@@ -60,7 +59,7 @@
 
     <div>
       <VContainer class="py-0">
-        <VRow>
+        <VRow dense>
           <BiliobFab />
         </VRow>
         <div>
@@ -140,7 +139,6 @@
                 text
                 block
                 :to="eachNavItem.url"
-                @click.stop="$router.push(eachNavItem.url)"
                 ><VIcon left>{{ eachNavItem.icon }}</VIcon
                 >{{ eachNavItem.name }}</VBtn
               >

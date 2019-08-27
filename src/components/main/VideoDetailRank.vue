@@ -1,7 +1,7 @@
 <template>
   <BiliobCard light border="bottom" title="视频排名数据">
     <VContainer class="text-center" grid-list-md text-xs-center>
-      <VRow>
+      <VRow dense>
         <VCol cols="4">
           <div
             class="rank-title subheading font-weight-bold grey--text text--darken-2"

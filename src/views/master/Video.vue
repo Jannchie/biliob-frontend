@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <VRow>
+  <VContainer>
+    <VRow dense>
       <VCol cols="12" md="7">
         <VideoDetailTitle
           style="height: 100%"
@@ -14,7 +14,18 @@
       /></VCol>
     </VRow>
     <VRow>
-      <VCol cols="12" md="8">
+      <VCol cols="12">
+        <VideoOperation
+          slot="video-to-bilibili"
+          class="mb-2"
+          :aid="videoData.aid"
+          :pic="videoData.pic"
+          :title="videoData.title"
+        />
+      </VCol>
+    </VRow>
+    <VRow dense>
+      <VCol cols="12">
         <BiliobVideoRank
           slot="rank"
           class="mb-2"
@@ -26,29 +37,18 @@
           title="视频详细历史数据"
           :options="mainChart"
         />
-        <DetailCharts
-          v-if="hasDanmakuAggregate"
-          slot="danmaku-density"
-          class="mb-2"
-          :options="danmakuDensityOptions"
-          title="弹幕统计-弹幕密度"
-        />
+
         <DetailCharts
           slot="like-rate"
           class="mb-2"
           title="各指标比率统计"
           :options="likeRateChart"
         />
-        <DetailCharts
-          v-if="hasDanmakuAggregate"
-          slot="danmaku-cloud"
-          class="mb-2"
-          title="弹幕统计-弹幕云关键词"
-          :options="wordCloudOptions"
-        />
         <BiliobCard
           v-if="hasDanmakuAggregate"
           slot="danmaku-switch"
+          light
+          border="bottom"
           class="mb-2"
           title="弹幕统计-分P选择"
         >
@@ -66,18 +66,23 @@
             ></VSelect>
           </div>
         </BiliobCard>
-      </VCol>
-      <VCol cols="12" md="4">
-        <VideoOperation
-          slot="video-to-bilibili"
+        <DetailCharts
+          v-if="hasDanmakuAggregate"
+          slot="danmaku-density"
           class="mb-2"
-          :aid="videoData.aid"
-          :pic="videoData.pic"
-          :title="videoData.title"
+          :options="danmakuDensityOptions"
+          title="弹幕统计-弹幕密度"
+        />
+        <DetailCharts
+          v-if="hasDanmakuAggregate"
+          slot="danmaku-cloud"
+          class="mb-2"
+          title="弹幕统计-弹幕云关键词"
+          :options="wordCloudOptions"
         />
       </VCol>
     </VRow>
-  </div>
+  </VContainer>
 </template>
 <script>
 import VideoDetailTitle from "@/components/main/VideoDetailTitle.vue";

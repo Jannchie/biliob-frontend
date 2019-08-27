@@ -1,6 +1,6 @@
 <template>
   <div>
-    <VRow>
+    <VRow dense>
       <VCol>
         <VCard>
           <VCardText>

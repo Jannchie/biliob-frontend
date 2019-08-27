@@ -1,7 +1,7 @@
 <template>
   <BiliobCard light border="bottom">
-    <VRow>
-      <VCol cols="6"
+    <VRow dense>
+      <VCol cols="6" lg="3"
         ><BiliobOperationBtn
           :pic="pic"
           :name="title"
@@ -22,7 +22,7 @@
           </VCardText>
         </BiliobOperationBtn></VCol
       >
-      <VCol cols="6"
+      <VCol cols="6" lg="3"
         ><BiliobOperationBtn
           :pic="pic"
           :name="title"
@@ -43,7 +43,7 @@
           </VCardText>
         </BiliobOperationBtn></VCol
       >
-      <VCol cols="6"
+      <VCol cols="6" lg="3"
         ><VBtn
           color="primary"
           block
@@ -63,7 +63,7 @@
           QQ分享</VBtn
         ></VCol
       >
-      <VCol cols="6">
+      <VCol cols="6" lg="3">
         <VBtn
           color="pink"
           large

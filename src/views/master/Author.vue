@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <VContainer>
     <VRow dense>
       <VCol :md="6" :cols="12">
         <AuthorInfo slot="author-operation" :author-data="authorData" />
@@ -110,7 +110,7 @@
                 </VImg>
 
                 <VCardText style="overflow: hidden; text-overflow: ellipsis;">
-                  <span class="text--primary caption">
+                  <span class=" cards-title text--primary caption">
                     <span>{{ eachVideo.title }}</span
                     ><br />
                   </span>
@@ -135,6 +135,7 @@
               class="ma-1"
             >
               <VCard
+                class="elevation-3"
                 :to="`/author/${eachVideo.mid}/video/${eachVideo.aid}`"
                 max-width="160"
                 width="160px"
@@ -146,8 +147,8 @@
                 >
                 </VImg>
 
-                <VCardText style="overflow: hidden; text-overflow: ellipsis;">
-                  <span class="text--primary caption">
+                <VCardText>
+                  <span class="text--primary caption cards-title">
                     <span>{{ eachVideo.title }}</span
                     ><br />
                   </span>
@@ -162,7 +163,7 @@
         </BiliobCard>
       </VCol>
     </VRow>
-  </div>
+  </VContainer>
 </template>
 
 <script>
@@ -433,3 +434,13 @@ export default {
   }
 };
 </script>
+<style scoped>
+.cards-title {
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+</style>
