@@ -1,149 +1,161 @@
 <template>
-  <div class="video-list-main">
-    <VSearchForm
-      slot="search"
-      hint="请输入标题、分区或者av号"
-      @getSearchValue="getSearchValue"
-    />
-    <BiliobCard light border="bottom">
-      <VLayout slot="header" class="flex-column flex-lg-row">
-        <VFlex style="padding:0" lg8>
-          <VTabs slider-color="primary" background-color="transparent">
-            <VIcon left right>mdi-sort</VIcon>
-            <VTab @click="sortChange(0)">
-              <VIcon>
-                mdi-play-circle-outline
-              </VIcon>
-              <span v-if="$vuetify.breakpoint.mdAndUp">
-                播放
-              </span>
-            </VTab>
-            <VTab @click="sortChange(1)">
-              <VIcon>
-                mdi-thumb-up-outline
-              </VIcon>
-              <span v-if="$vuetify.breakpoint.mdAndUp">
-                点赞
-              </span>
-            </VTab>
-            <VTab @click="sortChange(2)">
-              <VIcon>
-                mdi-coin
-              </VIcon>
-              <span v-if="$vuetify.breakpoint.mdAndUp">
-                硬币
-              </span>
-            </VTab>
-            <VTab @click="sortChange(3)">
-              <VIcon>
-                mdi-message-bulleted
-              </VIcon>
-              <span v-if="$vuetify.breakpoint.mdAndUp">
-                弹幕
-              </span>
-            </VTab>
-            <VTab @click="sortChange(4)">
-              <VIcon>
-                mdi-folder-star
-              </VIcon>
-              <span v-if="$vuetify.breakpoint.mdAndUp">
-                收藏
-              </span>
-            </VTab>
-            <VTab @click="sortChange(5)">
-              <VIcon hidden-md-and-down>
-                mdi-share
-              </VIcon>
-              <span v-if="$vuetify.breakpoint.mdAndUp">
-                分享
-              </span>
-            </VTab>
-          </VTabs>
-        </VFlex>
-        <VFlex class="py-0" lg4>
-          <VTabs
-            grow
-            right
-            slider-color="primary"
-            background-color="transparent"
-          >
-            <VIcon left right>mdi-calendar-blank-outline</VIcon>
-            <VTab @click="daysChange(1)">
-              <VIcon>
-                mdi-numeric-1-box
-              </VIcon>
-            </VTab>
-            <VTab @click="daysChange(3)">
-              <VIcon>
-                mdi-numeric-3-box
-              </VIcon>
-            </VTab>
-            <VTab @click="daysChange(31)">
-              <VIcon>
-                mdi-alpha-a-box
-              </VIcon>
-            </VTab>
-          </VTabs>
-        </VFlex>
-      </VLayout>
-      <VSlideYTransition group>
-        <div
-          v-for="eachVideo in videoList.content"
-          :key="eachVideo.aid"
-          class="video-cards"
-          @click.stop="toVideoDetail(eachVideo.mid, eachVideo.aid)"
-        >
-          <ObserveStatus class="observe-status" :object="eachVideo" />
-          <div style="padding:5px;display:flex">
-            <div>
-              <VImg
-                class="video-img"
-                :src="zipPic(eachVideo.pic.replace('http:', ''))"
-                :lazy-src="zipPic(eachVideo.pic.replace('http:', ''))"
-              />
-            </div>
-            <div style="margin-left:10px;overflow:hidden">
-              <div
-                class="font-weight-bold video-title text-no-wrap text-truncate"
+  <VContainer>
+    <VRow dense>
+      <VCol>
+        <VCard>
+          <VCardText>
+            <VSearchForm
+              slot="search"
+              hint="请输入标题、分区或者av号"
+              @getSearchValue="getSearchValue"
+            />
+          </VCardText>
+        </VCard>
+      </VCol>
+    </VRow>
+    <VRow dense>
+      <VCol>
+        <BiliobCard light border="bottom">
+          <VLayout slot="header" class="flex-column flex-lg-row">
+            <VFlex style="padding:0" lg8>
+              <VTabs slider-color="primary" background-color="transparent">
+                <VIcon left right>mdi-sort</VIcon>
+                <VTab @click="sortChange(0)">
+                  <VIcon>
+                    mdi-play-circle-outline
+                  </VIcon>
+                  <span v-if="$vuetify.breakpoint.mdAndUp">
+                    播放
+                  </span>
+                </VTab>
+                <VTab @click="sortChange(1)">
+                  <VIcon>
+                    mdi-thumb-up-outline
+                  </VIcon>
+                  <span v-if="$vuetify.breakpoint.mdAndUp">
+                    点赞
+                  </span>
+                </VTab>
+                <VTab @click="sortChange(2)">
+                  <VIcon>
+                    mdi-coin
+                  </VIcon>
+                  <span v-if="$vuetify.breakpoint.mdAndUp">
+                    硬币
+                  </span>
+                </VTab>
+                <VTab @click="sortChange(3)">
+                  <VIcon>
+                    mdi-message-bulleted
+                  </VIcon>
+                  <span v-if="$vuetify.breakpoint.mdAndUp">
+                    弹幕
+                  </span>
+                </VTab>
+                <VTab @click="sortChange(4)">
+                  <VIcon>
+                    mdi-folder-star
+                  </VIcon>
+                  <span v-if="$vuetify.breakpoint.mdAndUp">
+                    收藏
+                  </span>
+                </VTab>
+                <VTab @click="sortChange(5)">
+                  <VIcon hidden-md-and-down>
+                    mdi-share
+                  </VIcon>
+                  <span v-if="$vuetify.breakpoint.mdAndUp">
+                    分享
+                  </span>
+                </VTab>
+              </VTabs>
+            </VFlex>
+            <VFlex class="py-0" lg4>
+              <VTabs
+                grow
+                right
+                slider-color="primary"
+                background-color="transparent"
               >
-                {{ eachVideo.title }}
+                <VIcon left right>mdi-calendar-blank-outline</VIcon>
+                <VTab @click="daysChange(1)">
+                  <VIcon>
+                    mdi-numeric-1-box
+                  </VIcon>
+                </VTab>
+                <VTab @click="daysChange(3)">
+                  <VIcon>
+                    mdi-numeric-3-box
+                  </VIcon>
+                </VTab>
+                <VTab @click="daysChange(31)">
+                  <VIcon>
+                    mdi-alpha-a-box
+                  </VIcon>
+                </VTab>
+              </VTabs>
+            </VFlex>
+          </VLayout>
+          <VSlideYTransition group>
+            <div
+              v-for="eachVideo in videoList.content"
+              :key="eachVideo.aid"
+              class="video-cards"
+              @click.stop="toVideoDetail(eachVideo.mid, eachVideo.aid)"
+            >
+              <ObserveStatus class="observe-status" :object="eachVideo" />
+              <div style="padding:5px;display:flex">
+                <div>
+                  <VImg
+                    class="video-img"
+                    :src="zipPic(eachVideo.pic.replace('http:', ''))"
+                    :lazy-src="zipPic(eachVideo.pic.replace('http:', ''))"
+                  />
+                </div>
+                <div style="margin-left:10px;overflow:hidden">
+                  <div
+                    class="font-weight-bold video-title text-no-wrap text-truncate"
+                  >
+                    {{ eachVideo.title }}
+                  </div>
+                  <div class="caption subtext video-info">
+                    <VIcon small> mdi-account-box-outline </VIcon
+                    >{{ eachVideo.author }}
+                    <VIcon small> mdi-bookmark-outline </VIcon
+                    >{{ eachVideo.channel }}
+                  </div>
+                </div>
               </div>
-              <div class="caption subtext video-info">
-                <VIcon small> mdi-account-box-outline </VIcon
-                >{{ eachVideo.author }}
-                <VIcon small> mdi-bookmark-outline </VIcon
-                >{{ eachVideo.channel }}
-              </div>
+              <VDivider></VDivider>
             </div>
+          </VSlideYTransition>
+          <VBtn
+            v-if="!notFound"
+            block
+            outlined
+            style="border-width:1px"
+            color="blue darken-2"
+            :disabled="nextBtnDisabled"
+            tile
+            @click.stop="next"
+            >{{ nextBtnText }}</VBtn
+          >
+          <div v-else>
+            <h4 class="blue--text text--darken-2">
+              <VIcon class="blue--text text--darken-2">mdi-ship-wheel</VIcon
+              >抱歉！什么都没有找到QwQ
+            </h4>
+            <p>
+              搜索功能可能并不完善，为了精确搜索请在上方输入相关视频的AV号！
+            </p>
+            <p>
+              如果搜索ID仍然没有结果，可能是因为该UP主并未被本站观测。你可以点击页面右下角的圆形按钮进行添加！
+            </p>
           </div>
-          <VDivider></VDivider>
-        </div>
-      </VSlideYTransition>
-      <VBtn
-        v-if="!notFound"
-        block
-        outlined
-        style="border-width:1px"
-        color="blue darken-2"
-        :disabled="nextBtnDisabled"
-        tile
-        @click.stop="next"
-        >{{ nextBtnText }}</VBtn
-      >
-      <div v-else>
-        <h4 class="blue--text text--darken-2">
-          <VIcon class="blue--text text--darken-2">mdi-ship-wheel</VIcon
-          >抱歉！什么都没有找到QwQ
-        </h4>
-        <p>
-          搜索功能可能并不完善，为了精确搜索请在上方输入相关视频的AV号！
-        </p>
-        <p>
-          如果搜索ID仍然没有结果，可能是因为该UP主并未被本站观测。你可以点击页面右下角的圆形按钮进行添加！
-        </p>
-      </div>
-    </BiliobCard>
-  </div>
+        </BiliobCard>
+      </VCol>
+    </VRow>
+  </VContainer>
 </template>
 
 <script>

@@ -1,18 +1,15 @@
 <template>
-  <VCard class="versus-card elevation-3" @click.stop="toAuthorVersus">
-    <VRow style="align-items: center;">
+  <BiliobCard class="elevation-3" @click.stop="toAuthorVersus">
+    <VRow dense style="align-items: center;">
       <VCol style="text-align: center;" class="px-0">
-        <div class="r-fans-counter-mobile hidden-md-and-up">
+        <div class="hidden-md-and-up">
           <div class="caption">粉丝数</div>
           <div class="font-weight-black body-2 blue--text text--darken-1">
             {{ (aFans / 10000).toFixed(2) }}
           </div>
           <div class="caption">万</div>
         </div>
-        <div
-          class="r-fans-counter title hidden-sm-and-down"
-          style="align-items: center;"
-        >
+        <div class="title hidden-sm-and-down" style="align-items: center;">
           <div class="caption">粉丝数</div>
           <VOdometer
             class="font-weight-bold blue--text text--darken-1"
@@ -42,7 +39,11 @@
         </VAvatar>
       </VCol>
 
-      <VCol cols="auto" class="center-info mx-0 px-0">
+      <VCol
+        cols="auto"
+        style="text-align: center;"
+        class="center-info mx-0 px-0"
+      >
         <div>
           <div class="caption font-weight-black">榜首粉丝争夺</div>
           <div class="title font-weight-black red--text text--darken-2">
@@ -73,17 +74,14 @@
         </div>
       </VCol>
       <VCol style="text-align: center;" class="px-0">
-        <div class="l-fans-counter-mobile hidden-md-and-up px-0">
+        <div class="hidden-md-and-up px-0">
           <div class="caption">粉丝数</div>
           <div class="font-weight-black body-2 blue--text text--darken-1">
             {{ (bFans / 10000).toFixed(2) }}
           </div>
           <div class="caption">万</div>
         </div>
-        <div
-          class="l-fans-counter title hidden-sm-and-down"
-          style="align-items: center;"
-        >
+        <div class="title hidden-sm-and-down" style="align-items: center;">
           <div class="caption">粉丝数</div>
           <VOdometer
             class="font-weight-bold blue--text text--darken-1"
@@ -93,7 +91,7 @@
         </div>
       </VCol>
     </VRow>
-  </VCard>
+  </BiliobCard>
 </template>
 <script>
 import VOdometer from "@/components/common/VOdometer.vue";
@@ -174,34 +172,3 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
-.left-info {
-  z-index: 1;
-  //   align-self: flex-end;
-}
-.right-info {
-  z-index: 1;
-  text-align: end;
-  right: 0;
-}
-
-.versus-card {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-}
-.center-info {
-  align-self: center;
-  text-align: center;
-}
-@media screen and (max-width: 960px) {
-  .left-info {
-    transform: rotate3d(0.1, 0.8, 0, 50deg);
-    left: -40px;
-  }
-  .right-info {
-    transform: rotate3d(0.1, -0.8, 0, 50deg);
-    right: -40px;
-  }
-}
-</style>

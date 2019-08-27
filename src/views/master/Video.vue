@@ -13,7 +13,7 @@
         <AuthorInfo style="height: 100%" class="mb-2" :author-data="authorData"
       /></VCol>
     </VRow>
-    <VRow>
+    <VRow dense>
       <VCol cols="12">
         <VideoOperation
           slot="video-to-bilibili"

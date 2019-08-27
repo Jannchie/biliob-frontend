@@ -1,12 +1,12 @@
 <template>
   <VContainer>
     <VRow dense>
-      <VCol cols="12">
+      <VCol>
         <BiliobVersusCard></BiliobVersusCard>
       </VCol>
     </VRow>
     <VRow dense>
-      <VCol cols="12">
+      <VCol>
         <BiliobSiteChart
           :options="siteInfo"
           title="B站全站信息"

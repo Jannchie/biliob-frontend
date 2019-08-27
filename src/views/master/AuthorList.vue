@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <VContainer>
     <VRow dense>
       <VCol>
         <VCard>
@@ -13,120 +13,124 @@
         </VCard>
       </VCol>
     </VRow>
-    <BiliobCard light border="bottom">
-      <VLayout slot="header">
-        <VTooltip right eager>
-          <template v-slot:activator="{ on }">
-            <span
-              class="subheading font-weight-light"
-              style="align-self: center"
-              ><VIcon class="mx-5" v-on="on">mdi-help-box</VIcon></span
-            >
-          </template>
-          <li>
-            数据库会自动收录视频进入排行榜的UP主数据。
-          </li>
-          <li>
-            数据库允许用户手动添加UP主。
-          </li>
-          <li>
-            针对不同的UP主，观测频率会有所不同。
-          </li>
-        </VTooltip>
-        <VFlex class="py-0">
-          <VTabs
-            show-arrows
-            background-color="transparent"
-            slider-color="primary"
-          >
-            <VTab @click="sortChange(0)">
-              <VIcon>
-                mdi-account-heart
-              </VIcon>
-              <div style="margin-left:10px">
-                粉丝总数
-              </div>
-            </VTab>
-            <VTab @click="sortChange(1)">
-              <VIcon>
-                mdi-play-circle-outline
-              </VIcon>
-              <div style="margin-left:10px">
-                播放总量
-              </div>
-            </VTab>
-            <VTab @click="sortChange(2)">
-              <VIcon>
-                mdi-script-text-outline
-              </VIcon>
-              <div style="margin-left:10px">
-                专栏阅读
-              </div>
-            </VTab>
-          </VTabs>
-        </VFlex>
-      </VLayout>
-
-      <VSlideYTransition group>
-        <div
-          v-for="(eachAuthor, index) in authorList.content"
-          :key="eachAuthor.mid"
-          style="position: relative"
-          @click.stop="toAuthorDetail(eachAuthor.mid)"
-        >
-          <div style="padding:5px;display:flex">
-            <div>
-              <VImg
-                class="author-face"
-                :src="zipPic(eachAuthor.face.replace('http:', ''))"
-                :lazy-src="zipPic(eachAuthor.face.replace('http:', ''))"
-              />
-            </div>
-            <div style="margin-left:10px;width:100%;overflow:hidden">
-              <div class="font-weight-bold author-title">
-                {{ eachAuthor.name }}
-                <SexIcon :sex="eachAuthor.sex" />
-              </div>
-              <div
-                v-if="eachAuthor.official !== ''"
-                class="caption author-info d-block text-truncate"
-              >
-                <VIcon color="#FBC02D" small> mdi-flash-circle </VIcon
-                ><span style="vertical-align: middle">
-                  {{ eachAuthor.official }}</span
+    <VRow dense>
+      <VCol>
+        <BiliobCard light border="bottom">
+          <VLayout slot="header">
+            <VTooltip right eager>
+              <template v-slot:activator="{ on }">
+                <span
+                  class="subheading font-weight-light"
+                  style="align-self: center"
+                  ><VIcon class="mx-5" v-on="on">mdi-help-box</VIcon></span
                 >
+              </template>
+              <li>
+                数据库会自动收录视频进入排行榜的UP主数据。
+              </li>
+              <li>
+                数据库允许用户手动添加UP主。
+              </li>
+              <li>
+                针对不同的UP主，观测频率会有所不同。
+              </li>
+            </VTooltip>
+            <VFlex class="py-0">
+              <VTabs
+                show-arrows
+                background-color="transparent"
+                slider-color="primary"
+              >
+                <VTab @click="sortChange(0)">
+                  <VIcon>
+                    mdi-account-heart
+                  </VIcon>
+                  <div style="margin-left:10px">
+                    粉丝总数
+                  </div>
+                </VTab>
+                <VTab @click="sortChange(1)">
+                  <VIcon>
+                    mdi-play-circle-outline
+                  </VIcon>
+                  <div style="margin-left:10px">
+                    播放总量
+                  </div>
+                </VTab>
+                <VTab @click="sortChange(2)">
+                  <VIcon>
+                    mdi-script-text-outline
+                  </VIcon>
+                  <div style="margin-left:10px">
+                    专栏阅读
+                  </div>
+                </VTab>
+              </VTabs>
+            </VFlex>
+          </VLayout>
+
+          <VSlideYTransition group>
+            <div
+              v-for="(eachAuthor, index) in authorList.content"
+              :key="eachAuthor.mid"
+              style="position: relative"
+              @click.stop="toAuthorDetail(eachAuthor.mid)"
+            >
+              <div style="padding:5px;display:flex">
+                <div>
+                  <VImg
+                    class="author-face"
+                    :src="zipPic(eachAuthor.face.replace('http:', ''))"
+                    :lazy-src="zipPic(eachAuthor.face.replace('http:', ''))"
+                  />
+                </div>
+                <div style="margin-left:10px;width:100%;overflow:hidden">
+                  <div class="font-weight-bold author-title">
+                    {{ eachAuthor.name }}
+                    <SexIcon :sex="eachAuthor.sex" />
+                  </div>
+                  <div
+                    v-if="eachAuthor.official !== ''"
+                    class="caption author-info d-block text-truncate"
+                  >
+                    <VIcon color="#FBC02D" small> mdi-flash-circle </VIcon
+                    ><span style="vertical-align: middle">
+                      {{ eachAuthor.official }}</span
+                    >
+                  </div>
+                  <ObserveStatus class="observe-status" :object="eachAuthor" />
+                </div>
               </div>
-              <ObserveStatus class="observe-status" :object="eachAuthor" />
+              <VDivider v-if="index != authorList.length - 1"></VDivider>
             </div>
+          </VSlideYTransition>
+          <VBtn
+            v-if="!notFound"
+            block
+            outlined
+            style="border-width:1px"
+            color="blue darken-2"
+            :disabled="nextBtnDisabled"
+            tile
+            @click.stop="next"
+            >{{ nextBtnText }}</VBtn
+          >
+          <div v-else>
+            <h4 class="blue--text text--darken-2">
+              <VIcon class="blue--text text--darken-2">mdi-ship-wheel</VIcon
+              >抱歉！什么都没有找到QwQ
+            </h4>
+            <p>
+              搜索功能可能并不完善，为了精确搜索请在上方输入相关UP主的ID！
+            </p>
+            <p>
+              如果搜索ID仍然没有结果，可能是因为该UP主并未被本站观测。你可以点击页面右下角的圆形按钮进行添加！
+            </p>
           </div>
-          <VDivider v-if="index != authorList.length - 1"></VDivider>
-        </div>
-      </VSlideYTransition>
-      <VBtn
-        v-if="!notFound"
-        block
-        outlined
-        style="border-width:1px"
-        color="blue darken-2"
-        :disabled="nextBtnDisabled"
-        tile
-        @click.stop="next"
-        >{{ nextBtnText }}</VBtn
-      >
-      <div v-else>
-        <h4 class="blue--text text--darken-2">
-          <VIcon class="blue--text text--darken-2">mdi-ship-wheel</VIcon
-          >抱歉！什么都没有找到QwQ
-        </h4>
-        <p>
-          搜索功能可能并不完善，为了精确搜索请在上方输入相关UP主的ID！
-        </p>
-        <p>
-          如果搜索ID仍然没有结果，可能是因为该UP主并未被本站观测。你可以点击页面右下角的圆形按钮进行添加！
-        </p>
-      </div>
-    </BiliobCard>
-  </div>
+        </BiliobCard>
+      </VCol>
+    </VRow>
+  </VContainer>
 </template>
 
 <script>
