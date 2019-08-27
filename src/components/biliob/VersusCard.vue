@@ -1,79 +1,99 @@
 <template>
-  <div>
-    <BiliobDarkInfo border="bottom"
-      ><div class="px-5 py-2">榜首粉丝争夺</div></BiliobDarkInfo
-    >
-    <div class="versus-card elevation-3" style="overflow: hidden;">
-      <VImg
-        :src="aFace"
-        :lazy-src="aFace"
-        style="position:absolute"
-        height="100px"
-        width="50%"
-        gradient="to  right, rgba(80,80,80,.1), rgba(255,255,255,1)"
-      ></VImg>
-      <div class="pl-2 left-info">
-        <BiliobDarkInfo
-          style="display: inline-block;"
-          class="caption white--text dark-info-left"
-        >
-          <div class="px-2 my-1">
-            {{ aOfficial }}
+  <VCard class="versus-card elevation-3" @click.stop="toAuthorVersus">
+    <VRow style="align-items: center;">
+      <VCol style="text-align: center;" class="px-0">
+        <div class="r-fans-counter-mobile hidden-md-and-up">
+          <div class="caption">粉丝数</div>
+          <div class="font-weight-black body-2 blue--text text--darken-1">
+            {{ (aFans / 10000).toFixed(2) }}
           </div>
-        </BiliobDarkInfo>
-        <br />
-        <BiliobDarkInfo
-          border="left"
-          style="display: inline-block;"
-          class="dark-info-left font-weight-black subtitle"
+          <div class="caption">万</div>
+        </div>
+        <div
+          class="r-fans-counter title hidden-sm-and-down"
+          style="align-items: center;"
         >
-          <div class="px-2">
+          <div class="caption">粉丝数</div>
+          <VOdometer
+            class="font-weight-bold blue--text text--darken-1"
+            :value="aFans"
+            format="(,ddd).d"
+          ></VOdometer>
+        </div>
+      </VCol>
+      <VCol v-if="!$vuetify.breakpoint.lgAndDown" cols="auto">
+        <div style="text-align:end">
+          <div class="competitor-title">
+            {{ aTitle }}
+          </div>
+          <div>
             {{ aName }}
           </div>
-        </BiliobDarkInfo>
-      </div>
-      <div class="pr-2 right-info">
-        <BiliobDarkInfo
-          border="right"
-          style="display: inline-block;"
-          class="dark-info-right font-weight-black subtitle"
-        >
-          <div class="px-2 my-1">
+          <div class="caption">{{ aOfficial }}</div>
+        </div>
+      </VCol>
+
+      <VCol cols="auto" class="px-0">
+        <VAvatar @click.stop="jumpToAuthorPage(aMid)">
+          <VImg
+            :src="aFace.replace('http:', '')"
+            :lazy-src="aFace.replace('http:', '')"
+          />
+        </VAvatar>
+      </VCol>
+
+      <VCol cols="auto" class="center-info mx-0 px-0">
+        <div>
+          <div class="caption font-weight-black">榜首粉丝争夺</div>
+          <div class="title font-weight-black red--text text--darken-2">
+            VS
+          </div>
+          <div>
+            <VOdometer :value="deltaFans"></VOdometer>
+          </div>
+        </div>
+      </VCol>
+      <VCol cols="auto" class="px-0">
+        <VAvatar @click.stop="jumpToAuthorPage(bMid)">
+          <VImg
+            :src="bFace.replace('http:', '')"
+            :lazy-src="bFace.replace('http:', '')"
+          />
+        </VAvatar>
+      </VCol>
+      <VCol v-if="!$vuetify.breakpoint.lgAndDown" cols="auto">
+        <div>
+          <div class="competitor-title">
+            {{ bTitle }}
+          </div>
+          <div>
             {{ bName }}
           </div>
-        </BiliobDarkInfo>
-        <br />
-        <BiliobDarkInfo
-          style="display: inline-block;"
-          class="caption white--text dark-info-right"
-        >
-          <div class="px-2">
-            {{ bOfficial }}
-          </div>
-        </BiliobDarkInfo>
-      </div>
-
-      <VImg
-        style="position:absolute;right:0px"
-        height="100px"
-        width="50%"
-        gradient="to left, rgba(80,80,80,.1), rgba(255,255,255,1)"
-        :src="bFace"
-        :lazy-src="bFace"
-      ></VImg>
-
-      <div class="center-versus display-2 font-weight-black">
-        <div>VS</div>
-        <div>
-          <VOdometer class="display-1" :value="deltaFans"></VOdometer>
+          <div class="caption">{{ bOfficial }}</div>
         </div>
-      </div>
-      <div style="height:100px"></div>
-      <!-- <BiliobCard :title="title">
-      <div style="height: 100px"></div>
-    </BiliobCard> -->
-    </div>
-  </div>
+      </VCol>
+      <VCol style="text-align: center;" class="px-0">
+        <div class="l-fans-counter-mobile hidden-md-and-up px-0">
+          <div class="caption">粉丝数</div>
+          <div class="font-weight-black body-2 blue--text text--darken-1">
+            {{ (bFans / 10000).toFixed(2) }}
+          </div>
+          <div class="caption">万</div>
+        </div>
+        <div
+          class="l-fans-counter title hidden-sm-and-down"
+          style="align-items: center;"
+        >
+          <div class="caption">粉丝数</div>
+          <VOdometer
+            class="font-weight-bold blue--text text--darken-1"
+            :value="bFans"
+            format="(,ddd).d"
+          ></VOdometer>
+        </div>
+      </VCol>
+    </VRow>
+  </VCard>
 </template>
 <script>
 import VOdometer from "@/components/common/VOdometer.vue";
@@ -161,7 +181,6 @@ export default {
 }
 .right-info {
   z-index: 1;
-  position: absolute;
   text-align: end;
   right: 0;
 }
@@ -171,25 +190,18 @@ export default {
   display: flex;
   justify-content: space-between;
 }
-.center-versus {
-  position: absolute;
-  left: 0px;
-  right: 0px;
-  top: 0px;
-  bottom: 0px;
+.center-info {
+  align-self: center;
   text-align: center;
-  margin: auto;
 }
 @media screen and (max-width: 960px) {
   .left-info {
     transform: rotate3d(0.1, 0.8, 0, 50deg);
     left: -40px;
-    position: absolute;
   }
   .right-info {
     transform: rotate3d(0.1, -0.8, 0, 50deg);
     right: -40px;
-    position: absolute;
   }
 }
 </style>
