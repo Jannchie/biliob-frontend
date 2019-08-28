@@ -11,18 +11,16 @@
           <div class="display-1">实时差距</div>
           <div>
             <CommonVOdometer
-              class="font-weight-black blue--text text--darken-1"
+              class="font-weight-black blue--text text--darken-1 title"
               :value="deltaFans"
-              style="font-size: 50px; font-family: auto"
               format="(,ddd).d"
             ></CommonVOdometer>
           </div>
         </div>
         <div class="hidden-sm-and-down">
           <VOdometer
-            class="font-weight-black blue--text text--darken-1"
+            class="font-weight-black blue--text text--darken-1 title"
             :value="aFans"
-            style="font-size: 72px; font-family: auto"
             format="(,ddd).d"
           ></VOdometer>
           <div style="text-align: center">
@@ -42,9 +40,8 @@
         </div>
         <div class="hidden-sm-and-down">
           <VOdometer
-            class="font-weight-black blue--text text--darken-1"
+            class="font-weight-black blue--text text--darken-1 title"
             :value="bFans"
-            style="font-size: 72px; font-family: auto"
             format="(,ddd).d"
           ></VOdometer>
           <div style="text-align: center">
@@ -69,18 +66,18 @@
       </div>
     </BiliobCard>
     <DetailCharts
+      v-if="freq"
       title="实时粉丝数变化 - 十分钟变化情况"
       :sub-title="`${aName} VS ${bName}`"
-      :hidden="!freq"
       :options="realtimeChartOptions"
     />
   </div>
 </template>
 <script>
 var format = require("date-fns/format");
-import VOdometer from "../components/common/VOdometer.vue";
-import getOptions from "../charts/author-realtime-fans.js";
-import DetailCharts from "../components/main/DetailCharts.vue";
+import VOdometer from "@/components/common/VOdometer.vue";
+import getOptions from "@/charts/author-realtime-fans.js";
+import DetailCharts from "@/components/main/DetailCharts.vue";
 export default {
   components: { VOdometer, DetailCharts },
   data() {
@@ -98,7 +95,8 @@ export default {
       bOriginData: Array(),
       datetimeArray: Array(),
       realtimeChartOptions: Object(),
-      aggregateParam: 60
+      aggregateParam: 60,
+      freq: false
     };
   },
   computed: {
@@ -114,13 +112,6 @@ export default {
     },
     bMid() {
       return this.$route.query.bMid;
-    },
-    freq() {
-      if (this.$route.query.freq !== undefined) {
-        return this.$route.query.freq;
-      } else {
-        return false;
-      }
     },
     dataIntegrity() {
       var a = this.aRealtimeData.length;
@@ -167,6 +158,11 @@ export default {
     }
   },
   mounted() {
+    if (this.$route.query.freq == "true") {
+      this.freq = true;
+    } else {
+      this.freq = false;
+    }
     this.axios
       .get(`/author/real-time?aMid=${this.aMid}&bMid=${this.bMid}`)
       .then(r => {

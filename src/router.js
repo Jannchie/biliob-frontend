@@ -20,7 +20,7 @@ const UserRank = () => import("./views/master/UserRank.vue");
 const UserRecord = () => import("./views/UserRecord.vue");
 const Test = () => import("./views/Test.vue");
 const Android = () => import("./views/Android.vue");
-const AuthorVersus = () => import("./views/AuthorVersus.vue");
+const AuthorVersus = () => import("./views/master/AuthorVersus.vue");
 const Donate = () => import("./views/Donate.vue");
 const Tracer = () => import("./views/admin/Tracer.vue");
 const TracerDashboard = () => import("@/components/Tracer/Dashboard.vue");

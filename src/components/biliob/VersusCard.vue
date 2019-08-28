@@ -97,9 +97,11 @@
 import VOdometer from "@/components/common/VOdometer.vue";
 export default {
   components: { VOdometer },
+  props: {
+    frequently: { type: Boolean, default: false }
+  },
   data() {
     return {
-      frequently: Boolean(),
       aMid: Number(),
       bMid: Number(),
       aTitle: String(),
@@ -162,12 +164,13 @@ export default {
       this.$router.push(`/author/${mid}`);
     },
     toAuthorVersus() {
-      if (this.aMid != 0 && this.bMid != 0)
-        this.$router.push(
-          `/author/versus?aMid=${this.aMid}&bMid=${this.bMid}&freq=${
-            this.frequently
-          }`
-        );
+      //   if (this.aMid != 0 && this.bMid != 0) {
+      //     this.$router.push(
+      //       `/author/versus?aMid=${this.aMid}&bMid=${this.bMid}&freq=${
+      //         this.frequently
+      //       }`
+      //     );
+      //   }
     }
   }
 };

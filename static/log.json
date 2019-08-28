@@ -1534,5 +1534,25 @@
       }
     ],
     "type": "unimportant"
+  },
+  {
+    "title": "样式更新",
+    "version": "ver.7.0.4",
+    "date": "2019-08-28",
+    "list": [
+      {
+        "text": "修正了部分页面侧面出现白边的问题",
+        "type": "fix"
+      },
+      {
+        "text": "美化了整体样式",
+        "type": "beautify"
+      },
+      {
+        "text": "回归到上个版本的榜首对比卡片",
+        "type": "beautify"
+      }
+    ],
+    "type": "unimportant"
   }
 ]
