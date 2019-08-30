@@ -1554,5 +1554,17 @@
       }
     ],
     "type": "unimportant"
+  },
+  {
+    "title": "榜首对比",
+    "version": "ver.7.0.5",
+    "date": "2019-08-28",
+    "list": [
+      {
+        "text": "重新设计了榜首对比页面",
+        "type": "feature"
+      }
+    ],
+    "type": "unimportant"
   }
 ]

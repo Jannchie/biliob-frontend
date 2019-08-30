@@ -1,0 +1,135 @@
+var format = require("date-fns/format");
+var { convertDateToUTC } = require("./util/convertDateToUTC");
+function getTimeStamp(date) {
+  return new Date(date).getTime();
+}
+function drawChart(aData, bData, aName, bName) {
+  var data = [{}, {}];
+  [[aData, aName], [bData, bName]].forEach(element => {
+    var eachData = element[0];
+    var name = element[1];
+    var i = 1;
+    if (name == aName) {
+      i = 0;
+    }
+    let endDate = new Date(eachData[0].datetime).getTime();
+    endDate -= endDate % 60000;
+    for (let index = 1; index < eachData.length - 1; index++) {
+      const element = eachData[index];
+      const lastElement = eachData[index - 1];
+      const nextElement = eachData[index + 1];
+      let lTimestamp = getTimeStamp(lastElement.datetime);
+      let cTimestamp = getTimeStamp(element.datetime);
+      let nTimestamp = getTimeStamp(nextElement.datetime);
+      let lFans = getTimeStamp(lastElement.fans);
+      let cFans = element.fans;
+      let nFans = nextElement.fans;
+      while (cTimestamp < endDate) {
+        let value =
+          ((lFans - cFans) / (lTimestamp - cTimestamp)) *
+            (endDate - cTimestamp) +
+          cFans;
+
+        data[i][
+          format(convertDateToUTC(new Date(endDate)), "YYYY-MM-DD HH:mm")
+        ] = Math.round(value);
+        endDate -= 60000;
+      }
+      while (cTimestamp > endDate && nTimestamp < endDate - 60000) {
+        let value =
+          ((cFans - nFans) / (cTimestamp - nTimestamp)) *
+            (endDate - nTimestamp) +
+          nFans;
+        data[i][
+          format(convertDateToUTC(new Date(endDate)), "YYYY-MM-DD HH:mm")
+        ] = Math.round(value);
+        endDate -= 60000;
+      }
+    }
+  });
+  let keys = Object.keys(data[0]);
+  let ds = [];
+  keys.forEach((e, idx) => {
+    let deltaA = data[0][keys[idx]] - data[0][keys[idx + 10]];
+    let deltaB = data[1][keys[idx]] - data[1][keys[idx + 10]];
+    if (deltaB - deltaA) {
+      console.log(e, deltaA, deltaB, deltaA - deltaB);
+
+      ds.unshift([e, deltaA - deltaB]);
+    }
+  });
+  ds.unshift(["date", "da", "db", "d"]);
+  let Chart = {
+    dataset: {
+      source: ds
+    },
+    title: {
+      left: "center"
+      // text: "实时粉丝变化趋势-近10分钟增长",
+      // subtext: `${aName} VS ${bName}`
+    },
+    legend: {
+      data: [aName, bName],
+      bottom: "5px"
+    },
+    grid: {
+      top: "10px",
+      bottom: "50px",
+      right: "40px",
+      left: "60px"
+    },
+    axisLabel: {
+      //   formatter: function(params) {
+      //     return params.slice(11);
+      //   }
+    },
+    tooltip: {
+      trigger: "axis",
+      confine: true,
+      axisPointer: {
+        label: {
+          formatter: function(params) {
+            return params.value;
+          }
+        }
+      }
+    },
+    xAxis: {
+      type: "category"
+    },
+    yAxis: [
+      {
+        type: "value",
+        axisLabel: {
+          formatter: function(params) {
+            if (params > 10000) {
+              return Math.round(params / 100) / 100.0 + "万";
+            } else {
+              return params;
+            }
+          }
+        },
+        splitLine: {
+          show: true
+        }
+      }
+    ],
+    series: [
+      {
+        name: "差距变化",
+        smooth: true,
+        showSymbol: false,
+        type: "bar",
+        animationDelay: function(idx) {
+          return idx * 10;
+        }
+      }
+    ],
+    animationEasing: "elasticOut",
+    animationDelayUpdate: function(idx) {
+      return idx * 5;
+    }
+  };
+  return Chart;
+}
+export default drawChart;

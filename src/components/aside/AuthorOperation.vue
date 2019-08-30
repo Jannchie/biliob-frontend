@@ -1,13 +1,14 @@
 <template>
   <BiliobCard light :title="title" border="bottom">
     <VRow dense style="height: 100%;align-content: center;">
-      <VCol v-if="!forceFocus" lg="3" md="3" sm="6" align="center">
+      <VCol lg="3" md="3" sm="6" align="center">
         <BiliobOperationBtn
+          :disabled="forceFocus"
           color="red"
           :pic="pic"
           :name="name"
           icon="mdi-eye"
-          tile-title="强行观测"
+          :tile-title="'强行观测'"
           tile-sub-title="需要消耗积分：200"
           :request-url="`/user/author/${mid}/status?forceFocus=true`"
         >
@@ -90,7 +91,10 @@ export default {
     pic: String(),
     name: String(),
     title: String(),
-    forceFocus: Boolean()
+    forceFocus: {
+      type: Boolean,
+      default: false
+    }
   }
 };
 </script>

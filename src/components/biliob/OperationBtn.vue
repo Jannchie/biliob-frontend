@@ -6,6 +6,7 @@
         block
         :color="color"
         outlined
+        :disabled="disabled"
         style="border-width:1px"
         tile
         v-on="on"
@@ -59,6 +60,7 @@ export default {
     name: String(),
     requestUrl: String(),
     tileTitle: String(),
+    disabled: Boolean(),
     tileSubTitle: String(),
     icon: String(),
     forceFocus: Boolean()

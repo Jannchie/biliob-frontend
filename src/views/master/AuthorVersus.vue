@@ -1,82 +1,95 @@
 <template>
-  <div>
-    <BiliobCard style="min-height: 180px;" title="榜首粉丝实时差距">
-      <div style="display: flex; justify-content: space-between">
-        <div class="vs-text">
-          <div
-            class="display-4 font-weight-black red--text  hidden-sm-and-down"
-          >
-            VS
-          </div>
-          <div class="display-1">实时差距</div>
-          <div>
-            <CommonVOdometer
-              class="font-weight-black blue--text text--darken-1 title"
-              :value="deltaFans"
-              format="(,ddd).d"
-            ></CommonVOdometer>
-          </div>
-        </div>
-        <div class="hidden-sm-and-down">
-          <VOdometer
-            class="font-weight-black blue--text text--darken-1 title"
-            :value="aFans"
-            format="(,ddd).d"
-          ></VOdometer>
-          <div style="text-align: center">
-            <VAvatar size="100" @click.stop="jumpToAuthorPage(aMid)">
-              <VImg
-                :src="zipPic(aFace.replace('http:', ''))"
-                :lazy-src="zipPic(aFace.replace('http:', ''))"
-              />
-            </VAvatar>
-          </div>
-          <div
-            :class="`display-2 grey--text text--darken-3`"
-            style="text-align: center; margin-top: 10px"
-          >
-            {{ aName }}
-          </div>
-        </div>
-        <div class="hidden-sm-and-down">
-          <VOdometer
-            class="font-weight-black blue--text text--darken-1 title"
-            :value="bFans"
-            format="(,ddd).d"
-          ></VOdometer>
-          <div style="text-align: center">
-            <VAvatar
-              size="100"
-              style="text-align: center"
-              @click.stop="jumpToAuthorPage(bMid)"
-            >
-              <VImg
-                :src="zipPic(bFace.replace('http:', ''))"
-                :lazy-src="zipPic(bFace.replace('http:', ''))"
-              />
-            </VAvatar>
-          </div>
-          <div
-            :class="`display-2 grey--text text--darken-3`"
-            style="text-align: center; margin-top: 10px"
-          >
-            {{ bName }}
-          </div>
-        </div>
-      </div>
-    </BiliobCard>
+  <VContainer>
+    <VRow>
+      <VCol>
+        <BiliobCard light border="bottom" title="榜首粉丝实时差距">
+          <VRow>
+            <VCol class="text-center">
+              <div>粉丝数</div>
+              <VOdometer
+                class="font-weight-black blue--text text--darken-1 sub-title"
+                :value="aFans"
+                format="(,ddd).d"
+              ></VOdometer>
+              <div style="text-align: center">
+                <VAvatar :size="100" @click.stop="jumpToAuthorPage(aMid)">
+                  <VImg
+                    :src="zipPic(aFace.replace('http:', ''))"
+                    :lazy-src="zipPic(aFace.replace('http:', ''))"
+                  />
+                </VAvatar>
+              </div>
+              <div
+                :class="`title grey--text text--darken-3`"
+                style="text-align: center; margin-top: 10px"
+              >
+                {{ aName }}
+              </div>
+            </VCol>
+            <VCol class="text-center vs-text">
+              <div
+                v-if="$vuetify.breakpoint.mdAndDown"
+                class="display-3 font-weight-black red--text "
+              >
+                VS
+              </div>
+              <div
+                v-if="$vuetify.breakpoint.lgAndUp"
+                class="display-4 font-weight-black red--text "
+              >
+                VS
+              </div>
+              <div class="title">实时差距</div>
+              <div>
+                <CommonVOdometer
+                  class="font-weight-black blue--text text--darken-1 title"
+                  :value="deltaFans"
+                  format="(,ddd).d"
+                ></CommonVOdometer>
+              </div>
+            </VCol>
+            <VCol class="text-center">
+              <div>粉丝数</div>
+              <VOdometer
+                class="font-weight-black blue--text text--darken-1 sub-title"
+                :value="bFans"
+                format="(,ddd).d"
+              ></VOdometer>
+              <div style="text-align: center">
+                <VAvatar
+                  size="100"
+                  style="text-align: center"
+                  @click.stop="jumpToAuthorPage(bMid)"
+                >
+                  <VImg
+                    :src="zipPic(bFace.replace('http:', ''))"
+                    :lazy-src="zipPic(bFace.replace('http:', ''))"
+                  />
+                </VAvatar>
+              </div>
+              <div
+                :class="`title grey--text text--darken-3`"
+                style="text-align: center; margin-top: 10px"
+              >
+                {{ bName }}
+              </div>
+            </VCol>
+          </VRow>
+        </BiliobCard>
+      </VCol>
+    </VRow>
+
     <DetailCharts
-      v-if="freq"
       title="实时粉丝数变化 - 十分钟变化情况"
-      :sub-title="`${aName} VS ${bName}`"
-      :options="realtimeChartOptions"
+      :sub-sub-title="`${aName} VS ${bName}`"
+      :options="fansVersusOptions"
     />
-  </div>
+  </VContainer>
 </template>
 <script>
-var format = require("date-fns/format");
+// var format = require("date-fns/format");
 import VOdometer from "@/components/common/VOdometer.vue";
-import getOptions from "@/charts/author-realtime-fans.js";
+import getOptions from "@/charts/author-fans-versus.js";
 import DetailCharts from "@/components/main/DetailCharts.vue";
 export default {
   components: { VOdometer, DetailCharts },
@@ -84,19 +97,15 @@ export default {
     return {
       aOfficial: String(),
       aName: String(),
-      aFans: Number(),
       aFace: String(),
       bOfficial: String(),
       bName: String(),
-      bFans: Number(),
       bFace: String(),
+      aData: [],
+      bData: [],
       counter: 0,
-      aOriginData: Array(),
-      bOriginData: Array(),
-      datetimeArray: Array(),
-      realtimeChartOptions: Object(),
-      aggregateParam: 60,
-      freq: false
+      fansVersusOptions: Object(),
+      aggregateParam: 60
     };
   },
   computed: {
@@ -113,128 +122,65 @@ export default {
     bMid() {
       return this.$route.query.bMid;
     },
-    dataIntegrity() {
-      var a = this.aRealtimeData.length;
-      var b = this.bRealtimeData.length;
-      var t = this.datetimeArray.length;
-      if (a === b && b === t) {
-        return a;
-      } else {
+    aFans() {
+      if (this.aData.length == 0) {
         return 0;
       }
+      return this.aData[0].fans;
     },
-    aRealtimeData() {
-      var data = [];
-      for (
-        var index = this.aggregateParam;
-        index < this.aOriginData.length;
-        index++
-      ) {
-        data.push(
-          this.aOriginData[index] -
-            this.aOriginData[index - this.aggregateParam]
-        );
+    bFans() {
+      if (this.aData.length == 0) {
+        return 0;
       }
-      return data;
-    },
-    bRealtimeData() {
-      var data = [];
-      for (
-        var index = this.aggregateParam;
-        index < this.bOriginData.length;
-        index++
-      ) {
-        data.push(
-          this.bOriginData[index] -
-            this.bOriginData[index - this.aggregateParam]
-        );
-      }
-      return data;
-    }
-  },
-  watch: {
-    dataIntegrity() {
-      this.refreshRealtimeChart();
+      return this.bData[0].fans;
     }
   },
   mounted() {
-    if (this.$route.query.freq == "true") {
-      this.freq = true;
-    } else {
-      this.freq = false;
-    }
-    this.axios
-      .get(`/author/real-time?aMid=${this.aMid}&bMid=${this.bMid}`)
-      .then(r => {
-        r.data.aFans.reverse();
-        r.data.bFans.reverse();
-        r.data.datetime.reverse();
-        this.aOriginData = r.data.aFans;
-        this.bOriginData = r.data.bFans;
-        this.datetimeArray = r.data.datetime.slice(this.aggregateParam);
-      });
-    this.refresh();
-    const timer = setInterval(this.getNewData, 1000);
+    this.axios.get(`/author/top`).then(r => {
+      this.aName = r.data[0].name;
+      this.aFace = r.data[0].face;
+      this.aData = r.data[0].data;
+      this.bName = r.data[1].name;
+      this.bFace = r.data[1].face;
+      this.bData = r.data[1].data;
+      this.fansVersusOptions = getOptions(
+        this.aData,
+        this.bData,
+        this.aName,
+        this.bName
+      );
+    });
+    const timer = setInterval(this.refresh, 60000);
     this.$once("hook:beforeDestroy", () => {
       clearInterval(timer);
     });
   },
   methods: {
-    refreshRealtimeChart() {
-      this.realtimeChartOptions = getOptions(
-        this.aRealtimeData,
-        this.bRealtimeData,
-        this.datetimeArray,
-        this.aName,
-        this.bName
-      );
-    },
-    getNewData() {
-      this.counter += 1;
-      if (this.counter % 5 == 0) {
-        this.refresh();
-      } else {
-        if (this.freq) {
-          this.randomize();
-        }
-      }
-    },
-    randomize() {
-      var range = 1.5;
-      this.aFans = this.aFans + Math.round(Math.random() * range - range / 2);
-      this.bFans = this.bFans + Math.round(Math.random() * range - range / 2);
+    jumpToAuthorPage(mid) {
+      this.$router.push(`/author/${mid}`);
     },
     refresh() {
-      this.axios.get(`/author/${this.aMid}/info`).then(response => {
-        this.aName = response.data.name;
-        this.aOfficial = response.data.official;
-        this.aFans = response.data.cFans;
-        this.aFace = response.data.face;
-        this.aOriginData.push(this.aFans);
-        this.aOriginData.shift();
+      this.axios.get(`/author/top/refresh`).then(r => {
+        this.aName = r.data[0].name;
+        this.aFace = r.data[0].face;
+        this.bName = r.data[1].name;
+        this.bFace = r.data[1].face;
+        // 交换
+        if (r.data[0].name != this.aName) {
+          var temp = this.aData;
+          this.aData = this.bData;
+          this.bData = temp;
+        }
+        this.aData.unshift(r.data[0].data[0]);
+        this.bData.unshift(r.data[1].data[0]);
+        this.fansVersusOptions = getOptions(
+          this.aData,
+          this.bData,
+          this.aName,
+          this.bName
+        );
       });
-      this.axios.get(`/author/${this.bMid}/info`).then(response => {
-        this.bName = response.data.name;
-        this.bOfficial = response.data.official;
-        this.bFans = response.data.cFans;
-        this.bFace = response.data.face;
-        this.bOriginData.push(this.bFans);
-        this.bOriginData.shift();
-      });
-      var dataString = format(new Date(), "YYYY-MM-DD HH:mm:ss");
-      this.datetimeArray.push(dataString);
-      this.datetimeArray.shift();
-      this.refreshRealtimeChart();
     }
   }
 };
 </script>
-<style>
-.vs-text {
-  width: 200px;
-  position: absolute;
-  margin-left: -100px;
-  left: 50%;
-  text-align: center;
-}
-</style>

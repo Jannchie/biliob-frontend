@@ -164,13 +164,9 @@ export default {
       this.$router.push(`/author/${mid}`);
     },
     toAuthorVersus() {
-      //   if (this.aMid != 0 && this.bMid != 0) {
-      //     this.$router.push(
-      //       `/author/versus?aMid=${this.aMid}&bMid=${this.bMid}&freq=${
-      //         this.frequently
-      //       }`
-      //     );
-      //   }
+      if (this.aMid != 0 && this.bMid != 0) {
+        this.$router.push(`/author/versus?aMid=${this.aMid}&bMid=${this.bMid}`);
+      }
     }
   }
 };
