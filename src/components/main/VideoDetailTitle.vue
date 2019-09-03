@@ -12,7 +12,7 @@
             :lazy-src="zipPic(pic)"
           />
         </VCol>
-        <VCol>
+        <VCol cols="auto" style="width:calc(100% - 180px)">
           <div style="overflow:hidden; text-overflow: ellipsis;">
             <div>
               <div>

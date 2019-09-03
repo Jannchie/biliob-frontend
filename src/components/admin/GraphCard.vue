@@ -4,16 +4,17 @@
       max-width="calc(100% - 32px)"
       dark
       :color="color"
-      class="elevation-12 offset"
+      class="offset"
+      style="box-shadow: 0px 7px 8px -4px rgba(0, 0, 0, 0.05), 0px 12px 17px 2px rgba(0, 0, 0, 0.05), 0px 5px 22px 4px rgba(0, 0, 0, 0.05) !important"
     >
       <Chart
         theme="card"
         :auto-resize="true"
         :options="options"
-        :style="`height:200px; width:100%; `"
+        :style="`height:150px; width:100%; `"
       />
     </VCard>
-    <VCardTitle>
+    <VCardTitle class="title">
       {{ title }}
     </VCardTitle>
     <VCardText>
@@ -31,8 +32,8 @@ export default {
   }
 };
 </script>
-<style lang="scss">
-$graph-height: 200px;
+<style lang="scss" scoped>
+$graph-height: 150px;
 
 .admin-card {
   margin-top: 50px;
@@ -41,7 +42,7 @@ $graph-height: 200px;
 .offset {
   background: linear-gradient(60deg, #00000011, #ffffff44);
   min-height: $graph-height;
-  max-height: 200px;
+  max-height: $graph-height;
   min-width: calc(100% - 32px);
   max-width: calc(100% - 32px);
   top: -16px;

@@ -1,35 +1,92 @@
 <template>
   <div>
     <VContainer>
-      <VLayout>
-        <VRow>
-          <VCol cols="12" lg="6">
-            <AdminGraphCard
-              color="primary"
-              :options="$store.getters.authorQueueOptions"
-              title="UP主爬虫队列长度"
-              sub-title="待爬取的UP主数"
-            >
-            </AdminGraphCard>
-          </VCol>
-          <VCol cols="12" lg="6">
-            <AdminGraphCard
-              color="primary"
-              :options="$store.getters.videoQueueOptions"
-              title="视频爬虫队列长度"
-              sub-title="待爬取的视频数"
-            >
-            </AdminGraphCard>
-          </VCol>
-        </VRow>
-      </VLayout>
+      <VRow dense>
+        <VCol cols="12" lg="9">
+          <VRow dense>
+            <VCol cols="12" lg="6">
+              <AdminGraphCard
+                color="red"
+                :options="$store.getters.authorVisitOptions"
+                title="UP主数据查询次数"
+                sub-title="网站使用情况图表"
+              >
+              </AdminGraphCard>
+            </VCol>
+            <VCol cols="12" lg="6">
+              <AdminGraphCard
+                color="green"
+                :options="$store.getters.videoVisitOptions"
+                title="视频数据查询次数"
+                sub-title="网站使用情况图表"
+              >
+              </AdminGraphCard>
+            </VCol>
+          </VRow>
+          <VRow dense>
+            <VCol cols="12" lg="6">
+              <AdminGraphCard
+                color="primary"
+                :options="$store.getters.authorQueueOptions"
+                title="UP主爬虫队列长度"
+                sub-title="爬虫状态图表"
+              >
+              </AdminGraphCard>
+            </VCol>
+            <VCol cols="12" lg="6">
+              <AdminGraphCard
+                color="orange"
+                :options="$store.getters.videoQueueOptions"
+                title="视频爬虫队列长度"
+                sub-title="爬虫状态图表"
+              >
+              </AdminGraphCard>
+            </VCol>
+          </VRow>
+        </VCol>
+        <VCol cols="12" lg="3">
+          <VRow dense>
+            <VCol cols="12">
+              <AdminStatsCard
+                :value="$store.getters.userCount"
+                title="观测者总数"
+                icon="mdi-telescope"
+                sub-icon="mdi-calendar-blank"
+                small-value="人"
+                color="info"
+                :sub-text="currentDate"
+              ></AdminStatsCard>
+            </VCol>
+            <VCol cols="12">
+              <AdminStatsCard
+                :value="$store.getters.checkedInCount"
+                title="8小时内签到用户数"
+                icon="mdi-account-check"
+                color="info"
+                small-value="人"
+                sub-icon="mdi-calendar-blank"
+                :sub-text="currentDate"
+              ></AdminStatsCard>
+            </VCol>
+          </VRow>
+        </VCol>
+      </VRow>
     </VContainer>
   </div>
 </template>
 <script>
+var format = require("date-fns/format");
 export default {
+  data() {
+    return {
+      currentDate: format(Date(), "YYYY-MM-DD HH:mm:ss")
+    };
+  },
   mounted() {
     this.$store.dispatch("getHistoryQueueData");
+    this.$store.dispatch("getAuthorVisit");
+    this.$store.dispatch("getVideoVisit");
+    this.$store.dispatch("getDashBoardData");
   }
 };
 </script>
