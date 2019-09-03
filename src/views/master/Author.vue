@@ -5,7 +5,7 @@
         <AuthorInfo slot="author-operation" :author-data="authorData" />
       </VCol>
       <VCol :md="6" :cols="12">
-        <AuthorOperation
+        <BiliobAuthorOperation
           style="height: 100%"
           :mid="authorData.mid"
           :name="authorData.name"
@@ -170,7 +170,6 @@
 var format = require("date-fns/format");
 
 import AuthorInfo from "@/components/aside/AuthorInfo.vue";
-import AuthorOperation from "@/components/aside/AuthorOperation.vue";
 import DetailCharts from "@/components/main/DetailCharts.vue";
 import drawFansChart from "@/charts/author-fans.js";
 import drawFansRateChart from "@/charts/author-fans-rate.js";
@@ -238,7 +237,6 @@ export default {
   name: "Author",
   components: {
     AuthorInfo,
-    AuthorOperation,
     DetailCharts
   },
   data() {

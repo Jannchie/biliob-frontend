@@ -3,19 +3,17 @@
     <VRow dense>
       <VCol cols="12" md="7">
         <VideoDetailTitle
-          style="height: 100%"
-          class="mb-2"
           :title="videoData.title"
           :aid="videoData.aid"
           :pic="videoData.pic"
       /></VCol>
       <VCol cols="12" md="5">
-        <AuthorInfo style="height: 100%" class="mb-2" :author-data="authorData"
+        <AuthorInfo style="height:100%" :author-data="authorData"
       /></VCol>
     </VRow>
     <VRow dense>
       <VCol cols="12">
-        <VideoOperation
+        <BiliobVideoOperation
           slot="video-to-bilibili"
           class="mb-2"
           :aid="videoData.aid"
@@ -26,13 +24,8 @@
     </VRow>
     <VRow dense>
       <VCol cols="12">
-        <BiliobVideoRank
-          slot="rank"
-          class="mb-2"
-          v-bind="rank"
-        ></BiliobVideoRank>
+        <BiliobVideoRank class="mb-2" v-bind="rank"></BiliobVideoRank>
         <DetailCharts
-          slot="main"
           class="mb-2"
           title="视频详细历史数据"
           :options="mainChart"
@@ -88,7 +81,6 @@
 import VideoDetailTitle from "@/components/main/VideoDetailTitle.vue";
 import DetailCharts from "@/components/main/DetailCharts.vue";
 import AuthorInfo from "@/components/aside/AuthorInfo.vue";
-import VideoOperation from "@/components/aside/VideoOperation.vue";
 import drawMainChart from "@/charts/video-main.js";
 import drawVideoPieChart from "@/charts/video-pie.js";
 import drawDanmakuCloud from "@/charts/danmaku-cloud.js";
@@ -115,8 +107,7 @@ export default {
   components: {
     VideoDetailTitle,
     DetailCharts,
-    AuthorInfo,
-    VideoOperation
+    AuthorInfo
   },
   data() {
     return {

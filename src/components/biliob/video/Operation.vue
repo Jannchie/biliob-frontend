@@ -9,7 +9,7 @@
           icon="mdi-refresh"
           tile-title="刷新数据"
           tile-sub-title="需要消耗积分：1"
-          :request-url="`/user/video/${aid}/data`"
+          :request-url="`/user/video/${$route.params.aid}/data`"
         >
           <VCardText slot="card-text" class="mt-2">
             立即刷新视频数据<span class="font-weight-black green--text"
@@ -30,7 +30,7 @@
           icon="mdi-message-bulleted"
           tile-title="更新弹幕"
           tile-sub-title="需要消耗积分：10"
-          :request-url="`/user/video/${aid}/danmaku`"
+          :request-url="`/user/video/${$route.params.aid}/danmaku`"
         >
           <VCardText slot="card-text" class="mt-2">
             更新视频弹幕统计<span class="font-weight-black red--text"
@@ -71,7 +71,7 @@
           outlined
           style="border-width:1px"
           tile
-          :href="`https://www.bilibili.com/av${aid}`"
+          :href="`https://www.bilibili.com/av${$route.params.aid}`"
         >
           <VIcon left>
             mdi-play-box-outline

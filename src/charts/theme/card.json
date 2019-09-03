@@ -18,10 +18,10 @@
     },
     "lineStyle": {
       "normal": {
-        "width": "5"
+        "width": "2"
       }
     },
-    "symbolSize": "12",
+    "symbolSize": "3",
     "symbol": "emptyCircle",
     "smooth": true
   },
@@ -258,7 +258,7 @@
   },
   "valueAxis": {
     "axisLine": {
-      "show": false,
+      "show": true,
       "lineStyle": {
         "color": "rgba(255,255,255,0.57)"
       }
@@ -276,7 +276,7 @@
       }
     },
     "splitLine": {
-      "show": true,
+      "show": false,
       "lineStyle": {
         "color": ["rgba(255,255,255,0.8)"]
       }

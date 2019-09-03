@@ -6,7 +6,7 @@
         :author-data="authorData"
         class="focus-btn"
       />
-      <VAvatar size="80" @click.stop="toAuthor()">
+      <VAvatar size="70" @click.stop="toAuthor()">
         <img height="40px" width="40px" :src="zipPic(authorData.face)" />
       </VAvatar>
       <div class="ml-2">

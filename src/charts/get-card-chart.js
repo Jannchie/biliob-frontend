@@ -29,7 +29,7 @@ function getBarChart(x, y, type) {
             width: "5"
           }
         },
-        barWidth: "10px",
+        barWidth: "2px",
         data: y
       }
     ]

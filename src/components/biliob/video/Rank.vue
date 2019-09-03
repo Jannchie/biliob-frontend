@@ -81,7 +81,6 @@
           <!-- <ChevronBudget :value="rank.dShareRank"></ChevronBudget> -->
         </VCol>
       </VRow>
-      <VLayout row> </VLayout>
     </VContainer>
     <div
       class="caption grey--text pt-0"
@@ -99,10 +98,8 @@
 
 <script>
 var format = require("date-fns/format");
-var { convertDateToUTC } = require("../../charts/util/convertDateToUTC");
-// import ChevronBudget from "../common/ChevronBudget.vue";
+var { convertDateToUTC } = require("@/charts/util/convertDateToUTC");
 export default {
-  // components: { ChevronBudget },
   props: {
     updateTime: String(),
     cViewRank: Number(),

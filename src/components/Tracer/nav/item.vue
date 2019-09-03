@@ -1,7 +1,7 @@
 <template>
   <div class="mx-3">
     <VBtn text large block @click.stop="to(path)">
-      <VListItemAvatar>
+      <VListItemAvatar class="my-0">
         <VIcon left>{{ icon }}</VIcon>
       </VListItemAvatar>
       <VListItemContent>
