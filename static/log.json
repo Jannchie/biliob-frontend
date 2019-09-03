@@ -1566,5 +1566,21 @@
       }
     ],
     "type": "unimportant"
+  },
+  {
+    "title": "修复BUG",
+    "version": "ver.7.0.6",
+    "date": "2019-09-03",
+    "list": [
+      {
+        "text": "修复了跳转BUG",
+        "type": "fix"
+      },
+      {
+        "text": "修复了视频排名数据消失的BUG",
+        "type": "fix"
+      }
+    ],
+    "type": "unimportant"
   }
 ]
