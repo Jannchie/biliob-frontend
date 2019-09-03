@@ -78,7 +78,6 @@ function drawChart(data) {
     grid: {
       left: "10px",
       right: "10px",
-      bottom: "10px",
       top: "10px",
       containLabel: true
     },

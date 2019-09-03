@@ -25,10 +25,10 @@ function drawChart(data) {
       }
     },
     grid: {
-      left: "0px",
+      left: "-20px",
       right: "0px",
       bottom: "0px",
-      top: "0px",
+      top: "10px",
       containLabel: true
     },
     xAxis: {
