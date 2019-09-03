@@ -1568,10 +1568,18 @@
     "type": "unimportant"
   },
   {
-    "title": "修复BUG",
-    "version": "ver.7.0.6",
-    "date": "2019-09-03",
+    "title": "后台追踪回归",
+    "version": "ver.7.1.0",
+    "date": "2019-09-04",
     "list": [
+      {
+        "text": "上线了新版本的追踪系统",
+        "type": "feature"
+      },
+      {
+        "text": "美化图表结构",
+        "type": "beautify"
+      },
       {
         "text": "修复了跳转BUG",
         "type": "fix"
