@@ -31,7 +31,7 @@ function drawChart(aData, bData, aName, bName) {
           cFans;
 
         data[i][
-          format(convertDateToUTC(new Date(endDate)), "YYYY-MM-DD HH:mm")
+          format(convertDateToUTC(new Date(endDate)), "HH:mm")
         ] = Math.round(value);
         endDate -= 60000;
       }
@@ -41,7 +41,7 @@ function drawChart(aData, bData, aName, bName) {
             (endDate - nTimestamp) +
           nFans;
         data[i][
-          format(convertDateToUTC(new Date(endDate)), "YYYY-MM-DD HH:mm")
+          format(convertDateToUTC(new Date(endDate)), "HH:mm")
         ] = Math.round(value);
         endDate -= 60000;
       }
@@ -73,10 +73,10 @@ function drawChart(aData, bData, aName, bName) {
       bottom: "5px"
     },
     grid: {
+      left: "10px",
+      right: "50px",
       top: "10px",
-      bottom: "50px",
-      right: "40px",
-      left: "60px"
+      containLabel: true
     },
     axisLabel: {
       //   formatter: function(params) {

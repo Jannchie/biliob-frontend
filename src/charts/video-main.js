@@ -76,10 +76,11 @@ function drawChart(data) {
       }
     },
     grid: {
-      top: "50px",
-      bottom: "80px",
-      left: "60px",
-      right: "60px"
+      left: "10px",
+      right: "10px",
+      bottom: "10px",
+      top: "10px",
+      containLabel: true
     },
     xAxis: {
       type: "time",

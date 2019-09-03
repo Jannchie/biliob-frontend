@@ -49,8 +49,11 @@ function drawChart(data, duration) {
       confine: true
     },
     grid: {
-      left: "60px",
-      right: "40px"
+      left: "10px",
+      right: "50px",
+      bottom: "10px",
+      top: "10px",
+      containLabel: true
     },
     xAxis: {
       type: "category",

@@ -47,10 +47,10 @@ function drawChart(data) {
       }
     },
     grid: {
-      left: "60px",
-      right: "40px",
-      top: "10px",
-      bottom: "90px"
+      left: "10px",
+      right: "50px",
+      top: "30px",
+      containLabel: true
     },
     dataZoom: [
       {

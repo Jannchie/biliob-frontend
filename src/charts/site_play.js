@@ -25,10 +25,11 @@ function drawChart(data) {
       }
     },
     grid: {
-      top: "10px",
-      bottom: "30px",
-      right: "10px",
-      left: "50px"
+      left: "0px",
+      right: "0px",
+      bottom: "0px",
+      top: "0px",
+      containLabel: true
     },
     xAxis: {
       type: "category",

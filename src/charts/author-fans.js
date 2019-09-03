@@ -23,10 +23,10 @@ function drawChart(data) {
       bottom: "5px"
     },
     grid: {
-      bottom: "90px",
-      right: "60px",
+      left: "10px",
+      right: "10px",
       top: "10px",
-      left: "60px"
+      containLabel: true
     },
     dataZoom: [
       {
