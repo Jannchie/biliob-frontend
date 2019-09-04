@@ -1,54 +1,57 @@
 <template>
-  <VLayout wrap>
-    <VFlex lg4 md12>
-      <MaterialStatsCard
-        :value="spiderTasks.length"
-        title="正在爬取爬虫数"
-        small-value="个"
-        icon="mdi-spider-web"
-        sub-icon="mdi-check-circle"
-        sub-text="正常运行中..."
-        sub-text-color="green"
-        color="green"
-      ></MaterialStatsCard>
-    </VFlex>
-    <VFlex lg4 md12>
-      <MaterialTracerCrawlCard
-        title="作者爬虫运行状况"
-        :value="authorListLength"
-      ></MaterialTracerCrawlCard>
-    </VFlex>
-
-    <VFlex lg4 md12>
-      <MaterialTracerCrawlCard
-        title="视频爬虫运行状况"
-        :value="videoListLength"
-      ></MaterialTracerCrawlCard>
-    </VFlex>
-    <VFlex lg12>
-      <BiliobCard
-        color="green"
-        title="运行中爬虫详细信息"
-        text="此处显示的是目前正在运行中的爬虫状态"
-      >
-        <VDataTable :headers="headers" :items="spiderTasks" hide-actions>
-          <template slot="headerCell" slot-scope="{ header }">
-            <span
-              class="subheading font-weight-light text-success text--darken-3"
-              v-text="header.text"
-            />
-          </template>
-          <template slot="items" slot-scope="{ item }">
-            <td>{{ item.taskName }}</td>
-            <td>{{ item.computerName }}</td>
-            <td>{{ item.crawlCount }}</td>
-            <td>{{ successRate(item) }}</td>
-            <td>{{ lastTime(item.startTime, item.updateTime) }}</td>
-          </template>
-        </VDataTable>
-      </BiliobCard>
-    </VFlex>
-  </VLayout>
+  <VContainer>
+    <VRow>
+      <VCol>
+        <AdminStatsCard
+          :value="spiderTasks.length"
+          title="正在爬取爬虫数"
+          small-value="个"
+          icon="mdi-spider-web"
+          sub-icon="mdi-check-circle"
+          sub-text="正常运行中..."
+          sub-text-color="green"
+          color="green"
+        ></AdminStatsCard>
+      </VCol>
+      <VCol>
+        <AdminCrawlCard
+          title="作者爬虫运行状况"
+          :value="authorListLength"
+        ></AdminCrawlCard>
+      </VCol>
+      <VCol>
+        <AdminCrawlCard
+          title="视频爬虫运行状况"
+          :value="videoListLength"
+        ></AdminCrawlCard
+      ></VCol>
+    </VRow>
+    <VRow
+      ><VCol>
+        <BiliobCard
+          color="green"
+          title="运行中爬虫详细信息"
+          text="此处显示的是目前正在运行中的爬虫状态"
+        >
+          <VDataTable :headers="headers" :items="spiderTasks">
+            <template slot="headerCell" slot-scope="{ header }">
+              <span
+                class="subheading font-weight-light text-success text--darken-3"
+                v-text="header.text"
+              />
+            </template>
+            <template slot="items" slot-scope="{ item }">
+              <td>{{ item.taskName }}</td>
+              <td>{{ item.computerName }}</td>
+              <td>{{ item.crawlCount }}</td>
+              <td>{{ successRate(item) }}</td>
+              <td>{{ lastTime(item.startTime, item.updateTime) }}</td>
+            </template>
+          </VDataTable>
+        </BiliobCard>
+      </VCol>
+    </VRow>
+  </VContainer>
 </template>
 <script>
 import { distanceInWords } from "date-fns";

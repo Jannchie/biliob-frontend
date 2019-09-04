@@ -36,7 +36,7 @@ export default {
 $graph-height: 150px;
 
 .admin-card {
-  margin-top: 50px;
+  margin-top: 30px;
   min-height: $graph-height;
 }
 .offset {

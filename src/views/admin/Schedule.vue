@@ -1,8 +1,8 @@
 <template>
-  <VFadeTransition mode="out-in">
-    <VLayout v-if="loaded" wrap>
-      <VFlex md12>
-        <MaterialProgressCard
+  <VContainer>
+    <VRow>
+      <VCol cols="12">
+        <AdminProgressCard
           :hidden="progressColor == ''"
           :title="`${progressTask.task_name}`"
           :value="progressTask.current_value"
@@ -11,36 +11,20 @@
           sub-icon="mdi-calendar"
           :sub-text-color="progressColor"
           :color="progressColor"
-        ></MaterialProgressCard>
-      </VFlex>
-
-      <VFlex lg12>
-        <BiliobCard
-          color="green"
-          title="计划任务运行情况"
-          text="计划任务运行时长和耗时分析"
-        >
-          <VDataTable :headers="headers" :items="progressTasks" hide-actions>
-            <template slot="headerCell" slot-scope="{ header }">
-              <span
-                class="subheading font-weight-light text-success text--darken-3"
-                v-text="header.text"
-              />
-            </template>
-            <template slot="items" slot-scope="{ item }">
-              <td>{{ item.taskName }}</td>
-              <td>{{ item.computerName }}</td>
-              <td>
-                {{ lastTime(item.startTime.replace("+0000", ""), new Date()) }}
-              </td>
-              <td>{{ lastTime(item.startTime, item.updateTime) }}</td>
-              <td>{{ item.msg }}</td>
-            </template>
-          </VDataTable>
-        </BiliobCard>
-      </VFlex>
-    </VLayout>
-  </VFadeTransition>
+        ></AdminProgressCard>
+      </VCol>
+    </VRow>
+    <VRow>
+      <VCol>
+        <VDataTable
+          :headers="headers"
+          :items="progressTasks"
+          :items-per-page="20"
+          class="elevation-1"
+        ></VDataTable>
+      </VCol>
+    </VRow>
+  </VContainer>
 </template>
 <script>
 import { distanceInWords } from "date-fns";
@@ -52,15 +36,14 @@ export default {
       progressTask: Object(),
       progressTasks: Array(),
       headers: [
-        { text: "计划任务名称", sortable: false },
-        { text: "服务器名称", sortable: false },
-        { text: "距离上次运行", sortable: false },
-        { text: "上次运行耗时", sortable: false },
-        { text: "状态", sortable: false }
+        { text: "计划任务名称", value: "taskName" },
+        { text: "服务器名称", value: "computerName" },
+        { text: "距离上次运行", value: "distanceTime" },
+        { text: "上次运行耗时", value: "lastTime" },
+        { text: "状态", value: "msg" }
       ],
       authorListLength: "",
-      videoListLength: "",
-      loaded: false
+      videoListLength: ""
     };
   },
   computed: {
@@ -81,6 +64,13 @@ export default {
     this.getLatestTaskInfo();
     this.axios(`/tracer/progress-task`).then(r => {
       this.progressTasks = r.data.content;
+      this.progressTasks.forEach(item => {
+        item["lastTime"] = this.lastTime(item.startTime, item.updateTime);
+        item["distanceTime"] = this.lastTime(
+          item.startTime.replace("+0000", ""),
+          new Date()
+        );
+      });
     });
     this.axios(`/tracer/author-queue`).then(r => {
       this.authorListLength = String(r.data.length);
@@ -117,11 +107,11 @@ export default {
       } else {
         this.progressTask = data.lastRunningProgressTask;
       }
+      console.log(this.progressTask);
     },
     getLatestTaskInfo() {
       this.axios.get(`/tracer/latest-progress`).then(r => {
         this.updateTask(r.data);
-        this.loaded = true;
       });
     },
     successRate(item) {

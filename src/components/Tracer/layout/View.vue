@@ -1,11 +1,9 @@
 <template>
   <VContent>
     <div id="core-view">
-      <VContainer grid-list-lg>
-        <VFadeTransition mode="out-in">
-          <RouterView />
-        </VFadeTransition>
-      </VContainer>
+      <VFadeTransition mode="out-in">
+        <RouterView />
+      </VFadeTransition>
     </div>
     <TracerLayoutFooter />
   </VContent>

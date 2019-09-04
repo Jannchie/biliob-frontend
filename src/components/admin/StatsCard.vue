@@ -1,7 +1,7 @@
 <template>
   <VCard class="elevation-3 admin-card">
     <VCard dark :color="color" class="offset">
-      <VIcon size="60px" class="ma-4">{{ icon }}</VIcon>
+      <VIcon size="44px" class="ma-4">{{ icon }}</VIcon>
     </VCard>
     <div class="ma-4 text-right caption grey--text stats-card-aside">
       {{ title }}
@@ -10,7 +10,7 @@
         >{{ smallValue }}
       </div>
     </div>
-    <div style="padding-top:90px" class="px-4 pb-4">
+    <div style="padding-top:76px" class="px-4 pb-4">
       <VDivider class="pb-2" />
       <VIcon color="grey" small>{{ subIcon }}</VIcon
       ><span class="grey--text caption mx-2">{{ subText }}</span>
@@ -33,7 +33,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .admin-card {
-  margin-top: 50px;
+  margin-top: 30px;
   min-height: 80px;
 }
 .offset {

@@ -1,5 +1,5 @@
 <template>
-  <MaterialProgressCard
+  <AdminProgressCard
     :value="value"
     :title="title"
     small-value="个"
@@ -10,7 +10,7 @@
     :color="getColor(value)"
     indeterminate
   >
-  </MaterialProgressCard>
+  </AdminProgressCard>
 </template>
 <script>
 export default {

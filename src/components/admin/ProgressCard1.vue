@@ -91,11 +91,8 @@
 </template>
 
 <script>
-import Card from "./Card";
-
 export default {
   props: {
-    ...Card.props,
     subIcon: {
       type: String,
       default: undefined

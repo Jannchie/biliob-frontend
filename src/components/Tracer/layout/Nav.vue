@@ -25,8 +25,8 @@
       </VList>
     </VContainer>
     <TracerNavItem
-      v-for="eachItem in navItem"
-      :key="eachItem.name"
+      v-for="(eachItem, index) in navItem"
+      :key="index"
       :name="eachItem.name"
       :icon="eachItem.icon"
       :path="eachItem.path"
