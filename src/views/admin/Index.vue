@@ -1,7 +1,7 @@
 <template>
   <VContainer>
     <VRow dense>
-      <VCol cols="4">
+      <VCol cols="12" lg="4">
         <AdminStatsCard
           :value="$store.getters.userCount"
           title="观测者总数"
@@ -12,7 +12,7 @@
           :sub-text="currentDate"
         ></AdminStatsCard>
       </VCol>
-      <VCol cols="4">
+      <VCol cols="12" lg="4">
         <AdminStatsCard
           :value="$store.getters.checkedInCount"
           title="8小时内签到用户数"
@@ -23,7 +23,7 @@
           :sub-text="currentDate"
         ></AdminStatsCard>
       </VCol>
-      <VCol cols="4">
+      <VCol cols="12" lg="4">
         <AdminStatsCard
           :value="$store.getters.recordCount"
           title="观测者有效操作数"

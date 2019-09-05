@@ -1,14 +1,14 @@
 <template>
-  <div class="mx-3">
-    <VBtn text large block @click.stop="to(path)">
-      <VListItemAvatar class="my-0">
-        <VIcon left>{{ icon }}</VIcon>
-      </VListItemAvatar>
-      <VListItemContent>
+  <VListItem class="mx-3" text large block @click.stop="to(path)">
+    <VListItemAvatar class="my-0">
+      <VIcon>{{ icon }}</VIcon>
+    </VListItemAvatar>
+    <VListItemContent>
+      <VListItemTitle class="white--text">
         {{ name }}
-      </VListItemContent>
-    </VBtn>
-  </div>
+      </VListItemTitle>
+    </VListItemContent>
+  </VListItem>
 </template>
 <script>
 export default {

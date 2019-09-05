@@ -1,7 +1,7 @@
 <template>
   <VContainer>
     <VRow>
-      <VCol>
+      <VCol cols="12" lg="4">
         <AdminStatsCard
           :value="spiderTasks.length"
           title="正在爬取爬虫数"
@@ -13,13 +13,13 @@
           color="green"
         ></AdminStatsCard>
       </VCol>
-      <VCol>
+      <VCol cols="12" lg="4">
         <AdminCrawlCard
           title="作者爬虫运行状况"
           :value="authorListLength"
         ></AdminCrawlCard>
       </VCol>
-      <VCol>
+      <VCol cols="12" lg="4">
         <AdminCrawlCard
           title="视频爬虫运行状况"
           :value="videoListLength"
@@ -29,9 +29,10 @@
     <VRow
       ><VCol>
         <BiliobCard
-          color="green"
           title="运行中爬虫详细信息"
           text="此处显示的是目前正在运行中的爬虫状态"
+          border="bottom"
+          light
         >
           <VDataTable :headers="headers" :items="spiderTasks">
             <template slot="headerCell" slot-scope="{ header }">
@@ -61,11 +62,11 @@ export default {
     return {
       spiderTasks: Array(),
       headers: [
-        { text: "爬虫名称", sortable: false },
-        { text: "服务器名称", sortable: false },
-        { text: "爬取次数", sortable: false },
-        { text: "成功率", sortable: false },
-        { text: "持续运行时间", sortable: false }
+        { text: "爬虫名称", value: "taskName" },
+        { text: "服务器名称", value: "computerName" },
+        { text: "爬取次数", value: "crawlCount" },
+        { text: "成功率", value: "successRate" },
+        { text: "持续运行时间", value: "lastTime" }
       ],
       authorListLength: "",
       videoListLength: ""
@@ -87,7 +88,15 @@ export default {
   },
   mounted() {
     this.axios(`/tracer/spider-tasks?type=1`).then(r => {
-      this.spiderTasks = r.data.content;
+      this.spiderTasks = r.data.content.map(item => {
+        return {
+          taskName: item.taskName,
+          computerName: item.computerName,
+          crawlCount: item.crawlCount,
+          successRate: this.successRate(item),
+          lastTime: this.lastTime(item.startTime, item.updateTime)
+        };
+      });
     });
     this.axios(`/tracer/author-queue`).then(r => {
       this.authorListLength = r.data.length;

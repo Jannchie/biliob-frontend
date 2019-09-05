@@ -1,29 +1,27 @@
 <template>
   <VNavigationDrawer
+    expand-on-hover
+    permanent
+    disable-resize-watcher
+    :v-model="true"
     app
     dark
-    floating
-    persistent
-    mobile-break-point="991"
-    width="260"
   >
-    <VContainer>
-      <VList two-line>
-        <VListItem>
-          <VListItemAvatar>
-            <img src="../../../../public/img/icons/favicon-32x32.png" />
-          </VListItemAvatar>
-          <VListItemContent>
-            <VListItemTitle class="white--text">
-              BiliOB观测者
-            </VListItemTitle>
-            <VListItemSubtitle>
-              管理系统
-            </VListItemSubtitle>
-          </VListItemContent>
-        </VListItem>
-      </VList>
-    </VContainer>
+    <VList two-line>
+      <VListItem class="mx-3">
+        <VListItemAvatar>
+          <img src="../../../../public/img/icons/favicon-32x32.png" />
+        </VListItemAvatar>
+        <VListItemContent>
+          <VListItemTitle class="white--text">
+            BiliOB观测者
+          </VListItemTitle>
+          <VListItemSubtitle>
+            管理系统
+          </VListItemSubtitle>
+        </VListItemContent>
+      </VListItem>
+    </VList>
     <TracerNavItem
       v-for="(eachItem, index) in navItem"
       :key="index"
@@ -37,6 +35,7 @@
 export default {
   data() {
     return {
+      drawer: true,
       navItem: [
         {
           name: "仪表盘",
@@ -49,12 +48,12 @@ export default {
           path: "schedule"
         },
         {
-          name: "爬虫服务概览",
+          name: "爬虫服务",
           icon: "mdi-spider-web",
           path: "spider"
         },
         {
-          name: "观测者概览",
+          name: "观测者管理",
           icon: "mdi-account",
           path: "user"
         },
