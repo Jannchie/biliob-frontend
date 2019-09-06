@@ -1,20 +1,23 @@
 <template>
-  <VLayout justify-center>
-    <VFlex lg5 md12>
-      <BiliobDarkInfo title="登录" border="bottom">
-        <div slot="body">
-          <div>
-            <MaterialNotification
-              :value="showAlert"
-              :type="type"
-              transition="slide-y-transition"
-            >
-              {{ msg }}
-            </MaterialNotification>
-          </div>
+  <VContainer>
+    <VRow justify="center">
+      <VCol cols="12" lg="6">
+        <BiliobCard
+          title="登录 - BiliOB"
+          light
+          border="bottom"
+          style="height:100%"
+        >
+          <MaterialNotification
+            :value="showAlert"
+            :type="type"
+            transition="slide-y-transition"
+          >
+            {{ msg }}
+          </MaterialNotification>
           <VCardTitle>
             <div>
-              <div class="body-1">
+              <div class="caption">
                 这是一个第三方网站，账号信息和B站并不通用，
                 <br />新用户请点击注册按钮注册一个账号。
               </div>
@@ -39,6 +42,7 @@
                 autocomplete="current-password"
                 hint="至少6个字符"
                 class="input-group--focused"
+                @keyup.enter="submit"
                 @click:append="show = !show"
               />
               <Center>
@@ -51,10 +55,10 @@
               </Center>
             </VForm>
           </VCardActions>
-        </div>
-      </BiliobDarkInfo>
-    </VFlex>
-  </VLayout>
+        </BiliobCard>
+      </VCol>
+    </VRow>
+  </VContainer>
 </template>
 <script>
 export default {
@@ -73,11 +77,22 @@ export default {
       }
     };
   },
+  created() {
+    document.onkeydown = function() {
+      var key = window.event.keyCode;
+      if (key == 13) {
+        this.submit();
+      }
+    };
+  },
   mounted() {
     this.$store.commit("toElse");
   },
   methods: {
     submit() {
+      if (!this.valid) {
+        return;
+      }
       this.axios
         .post(`/login`, {
           name: this.name,
