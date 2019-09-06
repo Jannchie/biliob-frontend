@@ -1589,6 +1589,18 @@
         "type": "fix"
       }
     ],
+    "type": "important"
+  },
+  {
+    "title": "用户操作记录回归",
+    "version": "ver.7.1.1",
+    "date": "2019-09-07",
+    "list": [
+      {
+        "text": "用户操作记录回归",
+        "type": "feature"
+      }
+    ],
     "type": "unimportant"
   }
 ]
