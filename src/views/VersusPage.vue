@@ -5,7 +5,6 @@
 </template>
 <script>
 import DetailCharts from "../components/main/DetailCharts.vue";
-// import getOnlineOptions from "../charts/online.js";
 
 export default {
   components: { DetailCharts },

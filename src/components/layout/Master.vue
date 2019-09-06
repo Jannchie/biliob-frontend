@@ -132,6 +132,15 @@
                 <VDivider></VDivider>
               </div>
               <VBtn
+                v-if="$store.state.logined"
+                large
+                class="naVBtn"
+                text
+                block
+                :to="`/user/record`"
+                ><VIcon left>mdi-timetable</VIcon>操作记录</VBtn
+              >
+              <VBtn
                 v-for="(eachNavItem, navItemIndex) in navItems"
                 :key="navItemIndex"
                 large
@@ -189,7 +198,6 @@ export default {
           icon: "mdi-home",
           url: "/"
         },
-
         {
           name: "观测者排行",
           icon: "mdi-view-list",
