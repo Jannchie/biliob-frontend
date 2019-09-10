@@ -99,9 +99,10 @@ export default {
           password: this.password
         })
         .then(response => {
-          this.msg = response.data.msg;
-          this.type = "success";
-          this.showAlert = true;
+          this.$store.commit("showMessage", {
+            msg: response.data.msg,
+            color: "success"
+          });
           this.$store.commit("login");
           this.$store.commit("setUserName", response.data.data.name);
           this.$store.commit("setRole", response.data.data.role);
@@ -119,9 +120,10 @@ export default {
           }, 2000);
         })
         .catch(error => {
-          this.showAlert = true;
-          this.type = "error";
-          this.msg = error.response.data.msg;
+          this.$store.commit("showMessage", {
+            msg: error.response.data.msg,
+            color: "error"
+          });
         });
     }
   }

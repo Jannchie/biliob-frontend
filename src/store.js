@@ -18,12 +18,24 @@ export default new Vuex.Store({
     dark: false,
     ad: undefined,
     currentPage: undefined,
+    notification: false,
+    notificationColor: "primary",
+    notificationMsg: "测试文字",
     favoriteAid: [],
     favoriteMid: []
   },
   mutations: {
+    showMessage(state, data) {
+      state.notificationMsg = data.msg;
+      state.notificationColor = data.color;
+      state.notification = true;
+    },
+
     setSiteInfo(state, info) {
       state.siteInfo = info;
+    },
+    setNotification(state, notification) {
+      state.notification = notification;
     },
     setData(state, payload) {
       state[payload.name] = payload.data;
@@ -83,6 +95,9 @@ export default new Vuex.Store({
     }
   },
   getters: {
+    notificationState: state => {
+      return state.notification;
+    },
     getUserName: state => {
       return state.userName;
     },

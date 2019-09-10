@@ -20,27 +20,6 @@
 
       <VSpacer></VSpacer>
 
-      <!-- <VBtn icon>
-        <VIcon>mdi-heart</VIcon>
-      </VBtn> -->
-
-      <!-- <VBtn icon>
-        <VIcon>mdi-magnify</VIcon>
-      </VBtn> -->
-
-      <!-- <VMenu left bottom>
-        <template v-slot:activator="{ on }">
-          <VBtn icon v-on="on">
-            <VIcon>mdi-dots-vertical</VIcon>
-          </VBtn>
-        </template>
-
-        <VList>
-          <VListItem v-for="n in 5" :key="n" @click="() => {}">
-            <VListItemTitle>Option {{ n }}</VListItemTitle>
-          </VListItem>
-        </VList>
-      </VMenu> -->
       <template v-slot:extension>
         <VTabs background-color="transparent">
           <VTab
@@ -174,13 +153,7 @@
       </VLayout>
     </VContainer>
     <CommonFirstLoadDialog />
-
-    <VSnackbar v-model="snackbar" top color="info">
-      <div>这里是消息内容</div>
-      <VBtn text @click="snackbar = false">
-        关闭
-      </VBtn>
-    </VSnackbar>
+    <BiliobNotification />
     <LayoutMasterFooter />
   </div>
 </template>

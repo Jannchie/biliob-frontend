@@ -17,6 +17,7 @@
 export default {
   props: {
     title: { default: "标题载入中..", type: String },
+    px: { default: "0", type: String },
     padding: { default: "px-5", type: String }
   },
   data() {
