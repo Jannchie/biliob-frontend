@@ -17,56 +17,32 @@
       <VCol>
         <BiliobCard light border="bottom">
           <VLayout slot="header">
-            <VTooltip right eager>
-              <template v-slot:activator="{ on }">
-                <span
-                  class="subheading font-weight-light"
-                  style="align-self: center"
-                  ><VIcon class="mx-5" v-on="on">mdi-help-box</VIcon></span
-                >
-              </template>
-              <li>
-                数据库会自动收录视频进入排行榜的UP主数据。
-              </li>
-              <li>
-                数据库允许用户手动添加UP主。
-              </li>
-              <li>
-                针对不同的UP主，观测频率会有所不同。
-              </li>
-            </VTooltip>
-            <VFlex class="py-0">
-              <VTabs
-                show-arrows
-                background-color="transparent"
-                slider-color="primary"
-              >
-                <VTab @click="sortChange(0)">
-                  <VIcon>
-                    mdi-account-heart
-                  </VIcon>
-                  <div style="margin-left:10px">
-                    粉丝总数
-                  </div>
-                </VTab>
-                <VTab @click="sortChange(1)">
-                  <VIcon>
-                    mdi-play-circle-outline
-                  </VIcon>
-                  <div style="margin-left:10px">
-                    播放总量
-                  </div>
-                </VTab>
-                <VTab @click="sortChange(2)">
-                  <VIcon>
-                    mdi-script-text-outline
-                  </VIcon>
-                  <div style="margin-left:10px">
-                    专栏阅读
-                  </div>
-                </VTab>
-              </VTabs>
-            </VFlex>
+            <VTabs background-color="transparent" slider-color="primary">
+              <VTab @click="sortChange(0)">
+                <VIcon>
+                  mdi-account-heart
+                </VIcon>
+                <div style="margin-left:10px">
+                  粉丝总数
+                </div>
+              </VTab>
+              <VTab @click="sortChange(1)">
+                <VIcon>
+                  mdi-play-circle-outline
+                </VIcon>
+                <div style="margin-left:10px">
+                  播放总量
+                </div>
+              </VTab>
+              <VTab @click="sortChange(2)">
+                <VIcon>
+                  mdi-script-text-outline
+                </VIcon>
+                <div style="margin-left:10px">
+                  专栏阅读
+                </div>
+              </VTab>
+            </VTabs>
           </VLayout>
 
           <VSlideYTransition group>
