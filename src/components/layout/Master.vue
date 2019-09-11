@@ -3,6 +3,7 @@
     <VAppBar
       fixed
       app
+      hide-on-scroll
       color="#333"
       dark
       shrink-on-scroll
