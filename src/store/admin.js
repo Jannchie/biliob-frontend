@@ -52,6 +52,9 @@ export default {
       return state.dashBoardData.videoCrawlLength;
     },
     userOptions(state) {
+      if (state.dashBoardData == undefined) {
+        return {};
+      }
       let data = state.dashBoardData.userBucketResult;
       let userX = data.map(x => {
         if (x._id.min == null) {
@@ -67,6 +70,9 @@ export default {
       return getCardChartOptions(userX, userY, "bar");
     },
     signInOptions(state) {
+      if (state.dashBoardData == undefined) {
+        return 0;
+      }
       return getCardChartOptions(
         state.dashBoardData.monthlySignIn.map(e => {
           return e.month + "月";
@@ -78,6 +84,9 @@ export default {
       );
     },
     checkInOptions(state) {
+      if (state.dashBoardData == undefined) {
+        return 0;
+      }
       return getCardChartOptions(
         state.dashBoardData.weeklyCheckIn.map(e => {
           return "第" + e.week + "周";
