@@ -1610,5 +1610,21 @@
       }
     ],
     "type": "unimportant"
+  },
+  {
+    "title": "修复错误",
+    "version": "ver.7.1.2",
+    "date": "2019-09-11",
+    "list": [
+      {
+        "text": "修复了作者列表在手机端的样式错误",
+        "type": "fix"
+      },
+      {
+        "text": "修复了部分邮箱无法通过验证的错误",
+        "type": "fix"
+      }
+    ],
+    "type": "unimportant"
   }
 ]

@@ -29,14 +29,12 @@
             <VTextField
               v-model="name"
               :rules="[rules.required]"
-              browser-autocomplete="username"
               label="请输入用户名"
             />
             <VTextField
               v-model="mail"
               :readonly="mailDisabled"
               :rules="[rules.required, rules.email]"
-              browser-autocomplete="mail"
               label="请输入邮箱"
             />
             <VLayout>
@@ -64,7 +62,6 @@
               :type="show ? 'text' : 'password'"
               label="请输入密码"
               value
-              browser-autocomplete="new-password"
               :rules="[rules.required]"
               hint="至少6个字符"
               @click:append="show = !show"
@@ -76,7 +73,6 @@
               value
               name="input"
               label="请再输入一次密码呗"
-              browser-autocomplete="new-password"
               hint="至少6个字符"
               @click:append="show = !show"
             />
@@ -124,7 +120,9 @@ export default {
   },
   methods: {
     mailVerification(v) {
-      return /^([a-zA-Z]|[0-9])(\w|-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/.test(v);
+      return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+        v
+      );
     },
     submit() {
       this.axios
