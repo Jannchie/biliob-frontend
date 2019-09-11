@@ -1,5 +1,10 @@
 <template>
-  <VCard v-bind="$attrs" :class="`elevation-${elevation}`" v-on="$listeners">
+  <VCard
+    tile
+    v-bind="$attrs"
+    :class="`elevation-${elevation}`"
+    v-on="$listeners"
+  >
     <div v-if="hasOffset" :inline="inline" :offset="offset" :icon="icon">
       <BiliobDarkInfo
         v-if="!$slots.offset"
