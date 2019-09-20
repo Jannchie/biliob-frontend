@@ -159,6 +159,12 @@ export default new Vuex.Store({
             context.commit("setCredit", response.data.data.credit);
             context.commit("setExp", response.data.data.exp);
             context.commit("checkIn", true);
+            context.commit("showMessage", {
+              msg: `签到成功！当前积分：${
+                response.data.data.credit
+              }，当前经验：${response.data.data.exp}`,
+              color: "info"
+            });
           } else {
             context.commit("checkIn", false);
           }
