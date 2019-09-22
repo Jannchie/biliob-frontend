@@ -1,8 +1,5 @@
 <template>
-  <BiliobCard light border="bottom" class="mt-2">
-    <div slot="header" class="px-5 py-2">
-      {{ title }}
-    </div>
+  <BiliobCard :title="title" light border="bottom">
     <VLayout :column="this.$vuetify.breakpoint.mdAndDown">
       <VFlex lg8 md12>
         <div height="100%" class="pa-5">
@@ -13,13 +10,6 @@
             :options="options"
             :style="`height:${height}px; width:100%; `"
           />
-          <!-- <VProgressCircular
-            v-if="loading"
-            :size="80"
-            color="primary"
-            indeterminate
-            class="progress-circular"
-          ></VProgressCircular> -->
         </div>
       </VFlex>
       <VFlex lg4 md12>

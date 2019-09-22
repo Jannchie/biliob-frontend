@@ -21,10 +21,10 @@ requireComponent.keys().forEach(fileName => {
       return url;
     }
     var c = subUrl[1].split("/")[0];
-    var t = url.slice(3);
+    var t = url.split(".")[3];
     var postfix = "";
     if (c === "face" && t === "jpg") {
-      postfix = `@40w_40h.webp`;
+      postfix = `@80w_80h.webp`;
     } else if (c === "archive") {
       postfix = "@160w_100h.jpg";
     }

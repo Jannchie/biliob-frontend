@@ -7,6 +7,11 @@
     </VRow>
     <VRow dense>
       <VCol>
+        <BiliobEventSlideCard> </BiliobEventSlideCard>
+      </VCol>
+    </VRow>
+    <VRow dense>
+      <VCol>
         <BiliobSiteChart
           :options="siteInfo"
           title="B站全站信息"
@@ -31,6 +36,9 @@ export default {
   mounted() {
     if (this.$store.state.site.siteInfo == undefined) {
       this.$store.dispatch("getSiteInfo");
+    }
+    if (this.$store.state.event.recentEvent == undefined) {
+      this.$store.dispatch("getRecentEvent");
     }
     if (this.$store.state.site.siteGroupInfo == undefined) {
       this.$store.dispatch("getSiteGroupInfo");

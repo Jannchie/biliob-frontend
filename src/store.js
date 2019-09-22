@@ -4,6 +4,7 @@ import axios from "axios";
 import siteInfoModule from "./store/site.js";
 import rankModule from "./store/rank.js";
 import adminModule from "./store/admin.js";
+import eventModule from "./store/event.js";
 
 Vue.use(Vuex);
 
@@ -180,6 +181,7 @@ export default new Vuex.Store({
   modules: {
     site: siteInfoModule,
     admin: adminModule,
+    event: eventModule,
     rank: rankModule
   }
 });
