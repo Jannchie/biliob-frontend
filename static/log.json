@@ -1628,19 +1628,31 @@
     "type": "unimportant"
   },
   {
-    "title": "日常更新",
-    "version": "ver.7.1.3",
-    "date": "2019-09-20",
+    "title": "日常维护",
+    "version": "ver.7.2.0",
+    "date": "2019-09-22",
     "list": [
       {
         "text": "修改了工具栏样式",
         "type": "beautify"
       },
       {
+        "text": "美化了开发日志页面",
+        "type": "beautify"
+      },
+      {
         "text": "增加了签到的提示信息",
+        "type": "feature"
+      },
+      {
+        "text": "首页粉丝波动卡片回归",
+        "type": "feature"
+      },
+      {
+        "text": "事件页面回归",
         "type": "feature"
       }
     ],
-    "type": "unimportant"
+    "type": "important"
   }
 ]
