@@ -2,20 +2,30 @@
   <VContainer>
     <VRow dense>
       <VCol>
-        <BiliobVersusCard></BiliobVersusCard>
+        <VSlideYTransition>
+          <BiliobVersusCard></BiliobVersusCard>
+        </VSlideYTransition>
       </VCol>
     </VRow>
     <VRow dense>
       <VCol>
-        <BiliobEventSlideCard> </BiliobEventSlideCard>
+        <VSlideYTransition>
+          <BiliobEventSlideCard
+            v-if="this.$store.state.event.recentEvent != undefined"
+          >
+          </BiliobEventSlideCard>
+        </VSlideYTransition>
       </VCol>
     </VRow>
     <VRow dense>
       <VCol>
-        <BiliobSiteChart
-          :options="siteInfo"
-          title="B站全站信息"
-        ></BiliobSiteChart>
+        <VSlideYTransition>
+          <BiliobSiteChart
+            v-if="this.$store.state.site.siteInfo != undefined"
+            :options="siteInfo"
+            title="B站全站信息"
+          ></BiliobSiteChart>
+        </VSlideYTransition>
       </VCol>
     </VRow>
   </VContainer>
