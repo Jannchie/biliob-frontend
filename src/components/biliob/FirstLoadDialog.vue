@@ -1,5 +1,5 @@
 <template>
-  <VDialog :value="show" width="500">
+  <VDialog persistent :value="show" width="500">
     <VCard>
       <VCardTitle class="headline blue darken-2 white--text font-weight-black">
         这里是BiliOB观测者

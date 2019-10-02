@@ -1,29 +1,33 @@
 <template>
   <div slot="main-cards">
     <VSlideYTransition group>
-      <VCard
+      <BiliobCard
         v-for="(eachData, index) in fansVariationData"
         :key="index"
         ripple
         class="event-card mb-1 elevation-3"
       >
-        <VCardTitle @click.stop="toAuthor(eachData.mid)">
-          <div style="display:flex;" class="text-no-wrap">
-            <VAvatar small size="42" style="margin-right:12px">
-              <img
-                :src="zipPic(eachData.face.replace('http:', ''))"
-                :alt="eachData.author"
-              />
-            </VAvatar>
-            <div>
-              <div class="subheading">
-                {{ eachData.author }}
+        <div @click.stop="toAuthor(eachData.mid)">
+          <VRow style="margin-left: 0px;margin-right: 0px;">
+            <VCol cols="auto">
+              <VAvatar small size="48">
+                <img
+                  :src="zipPic(eachData.face.replace('http:', ''))"
+                  :alt="eachData.author"
+                />
+              </VAvatar>
+            </VCol>
+            <VCol>
+              <div>
+                <div class="subtitle-2">
+                  {{ eachData.author }}
+                </div>
+                <div class="caption grey--text text--darken-2">
+                  <VIcon small>mdi-calendar-blank</VIcon>
+                  {{ eachData.datetime }}
+                </div>
               </div>
-              <div class="caption grey--text text--darken-2">
-                <VIcon small>mdi-calendar-blank</VIcon>
-                {{ eachData.datetime }}
-              </div>
-            </div>
+            </VCol>
             <div
               :class="`float-info`"
               style="position:absolute;right:12px;text-align:right"
@@ -69,6 +73,8 @@
                 src="../../../public/img/pendent/末日级掉粉.png"
               />
             </div>
+          </VRow>
+          <div style="display:flex;" class="text-no-wrap">
             <div hidden>
               <div>
                 <MyBadget
@@ -97,10 +103,11 @@
               </div>
             </div>
           </div>
-        </VCardTitle>
+        </div>
         <VDivider v-if="eachData['cause'] != undefined"></VDivider>
-        <VCardText
+        <VRow
           v-if="eachData['cause'] != undefined"
+          class="mt-2"
           @click.stop="toVideo(eachData.mid, eachData.cause.aid)"
         >
           <div style="display:flex;">
@@ -119,8 +126,8 @@
               </div>
             </div>
           </div>
-        </VCardText>
-      </VCard>
+        </VRow>
+      </BiliobCard>
       <NextBtn key="-1" :api-url="apiUrl" @getMoreData="getMoreData"></NextBtn>
     </VSlideYTransition>
   </div>
@@ -196,5 +203,10 @@ export default {
   height: 60px;
   border-radius: 5px;
   margin-right: 10px;
+}
+
+.row {
+  margin-left: 0px;
+  margin-right: 0px;
 }
 </style>
