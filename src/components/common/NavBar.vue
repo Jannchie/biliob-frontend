@@ -307,7 +307,7 @@ export default {
     },
     name: {
       get: function() {
-        return this.$store.getters.getUserName;
+        return this.$store.getters.getNickName;
       },
       set: function() {}
     },
