@@ -28,7 +28,8 @@
           <VForm v-model="valid" style="width:100%">
             <VTextField
               v-model="name"
-              :rules="[rules.required]"
+              :rules="[rules.required, rules.max]"
+              :counter="20"
               label="请输入用户名"
             />
             <VTextField
@@ -62,14 +63,16 @@
               :type="show ? 'text' : 'password'"
               label="请输入密码"
               value
-              :rules="[rules.required]"
+              :counter="20"
+              :rules="[rules.required, rules.max, rules.min]"
               hint="至少6个字符"
               @click:append="show = !show"
             />
             <VTextField
               :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
               :type="show ? 'text' : 'password'"
-              :rules="[rules.required, rules.min, rules.passwdMatch]"
+              :rules="[rules.required, rules.min, rules.max, rules.passwdMatch]"
+              :counter="20"
               value
               name="input"
               label="请再输入一次密码呗"
@@ -106,6 +109,7 @@ export default {
       rules: {
         required: value => !!value || "我必须知道这一项！求求你告诉我吧~",
         min: v => v.length >= 6 || "这么短小的话，也太不安全了吧",
+        max: v => v.length <= 20 || "太长了！",
         passwdMatch: v => {
           return v === this.password || "貌似两次输入不一致..手速太快了？";
         },
