@@ -1654,5 +1654,17 @@
       }
     ],
     "type": "important"
+  },
+  {
+    "title": "日常更新",
+    "version": "ver.7.2.1",
+    "date": "2019-09-24",
+    "list": [
+      {
+        "text": "美化了事件页面的样式",
+        "type": "beautify"
+      }
+    ],
+    "type": "unimportant"
   }
 ]

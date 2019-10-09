@@ -13,13 +13,16 @@ export default new Vuex.Store({
     logined: false,
     checked: undefined,
     userName: undefined,
+    nickName: undefined,
     role: undefined,
     credit: undefined,
+    mail: undefined,
     exp: undefined,
     dark: false,
     ad: undefined,
     currentPage: undefined,
     notification: false,
+    error: false,
     notificationColor: "primary",
     notificationMsg: "测试文字",
     favoriteAid: [],
@@ -44,6 +47,9 @@ export default new Vuex.Store({
     setUserName(state, userName) {
       state.userName = userName;
     },
+    setNickName(state, nickName) {
+      state.nickName = nickName;
+    },
     setRole(state, role) {
       state.role = role;
     },
@@ -52,6 +58,9 @@ export default new Vuex.Store({
     },
     setCredit(state, credit) {
       state.credit = credit;
+    },
+    setMail(state, mail) {
+      state.mail = mail;
     },
     setExp(state, exp) {
       state.exp = exp;
@@ -93,14 +102,26 @@ export default new Vuex.Store({
     },
     checkIn(state, checkStatus) {
       state.checked = checkStatus;
+    },
+    error(state) {
+      state.error = true;
     }
   },
   getters: {
+    isError: state => {
+      return state.error;
+    },
     notificationState: state => {
       return state.notification;
     },
     getUserName: state => {
       return state.userName;
+    },
+    getNickName: state => {
+      return state.nickName;
+    },
+    getMail: state => {
+      return state.mail;
     },
     getRole: state => {
       return state.role;
@@ -139,6 +160,8 @@ export default new Vuex.Store({
           context.commit("setRole", response.data.role);
           context.commit("setCredit", response.data.credit);
           context.commit("setExp", response.data.exp);
+          context.commit("setNickName", response.data.nickName);
+          context.commit("setMail", response.data.mail);
           context.commit("setUserName", response.data.name);
           if (response.data.favoriteAid) {
             context.commit("setFavoriteVideo", response.data.favoriteAid);
@@ -159,6 +182,7 @@ export default new Vuex.Store({
           if (response.data.code == 1) {
             context.commit("setCredit", response.data.data.credit);
             context.commit("setExp", response.data.data.exp);
+            context.commit("setMail", response.data.data.mail);
             context.commit("checkIn", true);
             context.commit("showMessage", {
               msg: `签到成功！当前积分：${

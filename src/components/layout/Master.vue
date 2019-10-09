@@ -22,7 +22,7 @@
       <VSpacer></VSpacer>
 
       <template v-slot:extension>
-        <VTabs background-color="transparent">
+        <VTabs id="app-bar-tabs" background-color="transparent">
           <VTab
             v-for="(eachTabItem, idx) in appBarTabs"
             :key="idx"
@@ -84,17 +84,18 @@
                     </VBtn>
                   </div>
                 </VCardActions>
-                <VCardTitle primary-title>{{
-                  $store.state.userName
-                }}</VCardTitle>
-                <VCardText
-                  ><div>
-                    {{ $store.state.role }}
-                  </div>
-                  <div>积分：{{ $store.state.credit }}</div>
-                  <div>经验：{{ $store.state.exp }}</div>
-                </VCardText>
-                <VDivider></VDivider>
+                <BiliobCard to="/user">
+                  <VCardTitle primary-title>{{
+                    $store.state.nickName
+                  }}</VCardTitle>
+                  <VCardText
+                    ><div>
+                      {{ $store.state.role }}
+                    </div>
+                    <div>积分：{{ $store.state.credit }}</div>
+                    <div>经验：{{ $store.state.exp }}</div>
+                  </VCardText>
+                </BiliobCard>
                 <VCardActions>
                   <VBtn width="50%" to="/user/author" large text>
                     <div style="display:block; text-align:center;">
@@ -153,7 +154,8 @@
         </VFlex>
       </VLayout>
     </VContainer>
-    <CommonFirstLoadDialog />
+    <BiliobFirstLoadDialog />
+    <BiliobInfoDialog />
     <BiliobNotification />
     <LayoutMasterFooter />
   </div>
@@ -207,7 +209,8 @@ export default {
         { name: "首页", path: "/" },
         { name: "排行榜", path: "/rank" },
         { name: "UP主查询", path: "/authorlist" },
-        { name: "视频查询", path: "/videolist" }
+        { name: "视频查询", path: "/videolist" },
+        { name: "个人中心", path: "/user" }
         // { name: "话题指数", path: "/index" }
       ]
     };
@@ -219,6 +222,30 @@ export default {
       } else {
         return false;
       }
+    }
+  },
+
+  watch: {
+    $route() {
+      setTimeout(() => {
+        let appTabSelect =
+          document
+            .getElementById("app-bar-tabs")
+            .getElementsByClassName("v-tab--active").length == 0;
+        if (appTabSelect) {
+          document
+            .getElementById("app-bar-tabs")
+            .getElementsByClassName(
+              "v-tabs-slider-wrapper"
+            )[0].style.visibility = "hidden";
+        } else {
+          document
+            .getElementById("app-bar-tabs")
+            .getElementsByClassName(
+              "v-tabs-slider-wrapper"
+            )[0].style.visibility = "visible";
+        }
+      }, 100);
     }
   },
   mounted() {

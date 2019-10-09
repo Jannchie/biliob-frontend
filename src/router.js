@@ -16,6 +16,7 @@ const NotFound = () => import("./views/NotFound.vue");
 const About = () => import("./views/master/About.vue");
 const Occurrence = () => import("./views/master/Event.vue");
 const FAQ = () => import("./views/master/FAQ.vue");
+const User = () => import("./views/master/User.vue");
 const UserRank = () => import("./views/master/UserRank.vue");
 const UserRecord = () => import("./views/UserRecord.vue");
 const Test = () => import("./views/Test.vue");
@@ -43,6 +44,11 @@ export default new Router({
           name: "首页",
           path: "/index.html",
           component: MasterIndex
+        },
+        {
+          name: "个人中心",
+          path: "/user",
+          component: User
         },
         {
           path: "/",
