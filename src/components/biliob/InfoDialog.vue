@@ -38,9 +38,9 @@ export default {
     }
   },
   mounted() {
-    this.axios.get(`/site/alert`).then(() => {
-      //   this.$store.commit("error");
-    });
+    // this.axios.get(`/site/alert`).then(() => {
+    //   //   this.$store.commit("error");
+    // });
   }
 };
 </script>

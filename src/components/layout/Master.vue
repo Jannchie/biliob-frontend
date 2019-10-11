@@ -84,7 +84,8 @@
                     </VBtn>
                   </div>
                 </VCardActions>
-                <BiliobCard to="/user">
+                <!-- <BiliobCard to="/user"> -->
+                <BiliobCard>
                   <VCardTitle primary-title>{{
                     $store.state.nickName
                   }}</VCardTitle>
@@ -209,8 +210,8 @@ export default {
         { name: "首页", path: "/" },
         { name: "排行榜", path: "/rank" },
         { name: "UP主查询", path: "/authorlist" },
-        { name: "视频查询", path: "/videolist" },
-        { name: "个人中心", path: "/user" }
+        { name: "视频查询", path: "/videolist" }
+        // { name: "个人中心", path: "/user" }
         // { name: "话题指数", path: "/index" }
       ]
     };
@@ -249,9 +250,14 @@ export default {
     }
   },
   mounted() {
-    this.axios.get(`/user/check-in`).then(response => {
-      this.$store.commit("checkIn", response.data.status);
-    });
+    this.axios
+      .get(`/user/check-in`)
+      .then(response => {
+        this.$store.commit("checkIn", response.data.status);
+      })
+      .catch(() => {
+        this.$store.commit("error");
+      });
   },
   methods: {
     getUserItemValue(type) {
