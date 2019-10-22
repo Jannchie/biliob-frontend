@@ -8,17 +8,22 @@
         </VCard>
       </VCardTitle>
       <VCardText>
-        如果你看到这段文字，说明出现了两种情况。
+        如果你看到这段文字，说明可能出现了两种情况：
         <li>网站炸了</li>
         <li>网站正在维护中</li>
         由于这是一个个人维护的项目，修复问题需要一定的时间成本。
         <br />
-        我很有可能已经发现了问题所在，并已在着手修复。
+        我很有可能已经发现了BUG所在，并已在着手修复。
         <br />
-        但以防我真的没有发现出现问题，可以通过邮件向我报告问题。
+        你也可以通过邮件向我报告问题。
+        <br />
         <address>
           邮箱地址：jannchie@gmail.com
         </address>
+        <br />
+        <VDivider></VDivider>
+        <br />
+        很抱歉对您造成了不便。
       </VCardText>
       <!-- <VCardActions>
         <VBtn @click.stop="show = false"> CLOSE </VBtn>
