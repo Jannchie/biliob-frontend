@@ -255,8 +255,10 @@ export default {
       .then(response => {
         this.$store.commit("checkIn", response.data.status);
       })
-      .catch(() => {
-        this.$store.commit("error");
+      .catch(e => {
+        if (e.response.status != 401 && e.response.status != 403) {
+          this.$store.commit("error");
+        }
       });
   },
   methods: {
