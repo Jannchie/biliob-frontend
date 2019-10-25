@@ -84,7 +84,6 @@ function drawChart(data) {
     yAxis: {
       type: "value",
       name: "同时在线人数",
-
       axisLabel: {
         formatter: function(params) {
           if (params >= 10000) {

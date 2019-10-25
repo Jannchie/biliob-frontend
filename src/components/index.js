@@ -24,7 +24,7 @@ requireComponent.keys().forEach(fileName => {
     var t = url.split(".")[3];
     var postfix = "";
     if (c === "face" && t === "jpg") {
-      postfix = `@80w_80h.webp`;
+      postfix = `@80w_80h.jpg`;
     } else if (c === "archive") {
       postfix = "@160w_100h.jpg";
     }

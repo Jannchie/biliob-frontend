@@ -1666,5 +1666,29 @@
       }
     ],
     "type": "unimportant"
+  },
+  {
+    "title": "添加功能",
+    "version": "ver.7.2.2",
+    "date": "2019-10-24",
+    "list": [
+      {
+        "text": "添加了服务挂掉时的提示框",
+        "type": "feature"
+      }
+    ],
+    "type": "unimportant"
+  },
+  {
+    "title": "修复问题",
+    "version": "ver.7.2.3",
+    "date": "2019-10-26",
+    "list": [
+      {
+        "text": "修复了首页在线人数图表显示不全的问题",
+        "type": "feature"
+      }
+    ],
+    "type": "unimportant"
   }
 ]

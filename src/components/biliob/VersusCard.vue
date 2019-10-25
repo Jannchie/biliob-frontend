@@ -32,10 +32,7 @@
 
       <VCol cols="auto" class="px-0">
         <VAvatar @click.stop="jumpToAuthorPage(aMid)">
-          <VImg
-            :src="aFace.replace('http:', '')"
-            :lazy-src="aFace.replace('http:', '')"
-          />
+          <VImg :src="zipPic(aFace)" :lazy-src="zipPic(aFace)" />
         </VAvatar>
       </VCol>
 
@@ -56,10 +53,7 @@
       </VCol>
       <VCol cols="auto" class="px-0">
         <VAvatar @click.stop="jumpToAuthorPage(bMid)">
-          <VImg
-            :src="bFace.replace('http:', '')"
-            :lazy-src="bFace.replace('http:', '')"
-          />
+          <VImg :src="zipPic(bFace)" :lazy-src="zipPic(bFace)" />
         </VAvatar>
       </VCol>
       <VCol v-if="!$vuetify.breakpoint.lgAndDown" cols="auto">
