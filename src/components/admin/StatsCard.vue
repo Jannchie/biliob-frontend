@@ -1,6 +1,6 @@
 <template>
   <VCard class="elevation-3 admin-card">
-    <VCard dark :color="color" class="offset">
+    <VCard dark :color="color" class="offset-stats">
       <VIcon size="44px" class="ma-4">{{ icon }}</VIcon>
     </VCard>
     <div class="ma-4 text-right caption grey--text stats-card-aside">
@@ -36,7 +36,7 @@ export default {
   margin-top: 30px;
   min-height: 80px;
 }
-.offset {
+.offset-stats {
   position: absolute;
   background: linear-gradient(60deg, #00000011, #ffffff44);
   max-width: 92px;
