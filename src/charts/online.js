@@ -75,12 +75,6 @@ function drawChart(data) {
         return o;
       }
     },
-    grid: {
-      top: "50px",
-      bottom: "80px",
-      left: "60px",
-      right: "60px"
-    },
     xAxis: {
       type: "time",
 
