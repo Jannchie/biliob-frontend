@@ -1686,7 +1686,19 @@
     "list": [
       {
         "text": "修复了首页在线人数图表显示不全的问题",
-        "type": "feature"
+        "type": "fix"
+      },
+      {
+        "text": "修复了IOS下部分图片无法显示的问题",
+        "type": "fix"
+      },
+      {
+        "text": "修复了榜首粉丝头像未压缩的问题",
+        "type": "fix"
+      },
+      {
+        "text": "更新了管理页面侧边栏的展现形式",
+        "type": "feature  "
       }
     ],
     "type": "unimportant"
