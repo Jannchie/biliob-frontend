@@ -97,7 +97,11 @@ export default {
           name: "其他",
           links: [
             { name: "管理系统", link: "/tracer/dashboard" },
-            { name: "赞助见齐", link: "https://azz.net/jannchie" }
+            { name: "赞助见齐", link: "https://azz.net/jannchie" },
+            {
+              name: "BiliOB的源代码",
+              link: "https://github.com/Jannchie/BiliOB"
+            }
           ]
         }
       ]
