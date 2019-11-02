@@ -14,7 +14,10 @@
             <div class="title font-weight-black grey--text">
               {{ eachBlock.name }}
             </div>
-            <div v-for="(eachLink, index) in eachBlock.links" :key="index">
+            <div
+              v-for="(eachLink, indexLink) in eachBlock.links"
+              :key="indexLink"
+            >
               <a class="caption" :href="eachLink.link">
                 {{ eachLink.name }}
               </a>
