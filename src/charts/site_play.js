@@ -6,8 +6,8 @@ function drawChart(data) {
   var webOnlineData = [];
   data.forEach(e => {
     xData.unshift(format(new Date(e.datetime.replace(/-/g, "/")), "HH:mm"));
-    playOninleData.unshift(e.playOnline);
-    webOnlineData.unshift(e.webOnline);
+    playOninleData.unshift((e.playOnline / 10000).toFixed(2));
+    webOnlineData.unshift((e.webOnline / 10000).toFixed(2));
   });
   var option = {
     title: {
@@ -17,15 +17,11 @@ function drawChart(data) {
     tooltip: {
       trigger: "axis",
       axisPointer: {
-        type: "cross",
-        label: {
-          precision: 0
-        },
-        backgroundColor: "rgba(50,50,50,0.7)"
+        type: "cross"
       }
     },
     grid: {
-      left: "-20px",
+      left: "0px",
       right: "0px",
       bottom: "0px",
       top: "10px",
@@ -37,13 +33,7 @@ function drawChart(data) {
     },
     yAxis: {
       type: "value",
-      axisLabel: {
-        formatter: function(params) {
-          if (params > 10000) {
-            return Math.round(params / 1000) / 10.0 + "万";
-          }
-        }
-      }
+      axisLabel: { formatter: "{value}万" }
     },
     series: [
       {
