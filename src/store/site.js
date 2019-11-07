@@ -14,9 +14,9 @@ export default {
     bigestWatching(state) {
       if (state.siteInfo != undefined) {
         state.siteInfo.series[0].data;
-        return `约为${(
-          Math.max.apply(null, state.siteInfo.series[0].data) / 10000
-        ).toFixed(2)}万人`;
+        return `约为${Math.max
+          .apply(null, state.siteInfo.series[0].data)
+          .toFixed(2)}万人`;
       } else {
         return null;
       }
@@ -24,9 +24,9 @@ export default {
     bigestOnline(state) {
       if (state.siteInfo != undefined) {
         state.siteInfo.series[1].data;
-        return `约为${(
-          Math.max.apply(null, state.siteInfo.series[1].data) / 10000
-        ).toFixed(2)}万人`;
+        return `约为${Math.max
+          .apply(null, state.siteInfo.series[1].data)
+          .toFixed(2)}万人`;
       } else {
         return null;
       }
