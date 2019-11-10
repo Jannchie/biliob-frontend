@@ -1685,10 +1685,6 @@
     "date": "2019-10-26",
     "list": [
       {
-        "text": "修复了首页在线人数图表显示不全的问题",
-        "type": "fix"
-      },
-      {
         "text": "修复了IOS下部分图片无法显示的问题",
         "type": "fix"
       },
@@ -1718,11 +1714,7 @@
       },
       {
         "text": "美化了UP主、视频列表的点击样式",
-        "type": "fix"
-      },
-      {
-        "text": "更新了管理页面侧边栏的展现形式",
-        "type": "feature  "
+        "type": "beautify"
       }
     ],
     "type": "unimportant"
