@@ -1702,5 +1702,29 @@
       }
     ],
     "type": "unimportant"
+  },
+  {
+    "title": "修复问题",
+    "version": "ver.7.2.4",
+    "date": "2019-11-10",
+    "list": [
+      {
+        "text": "修复了首页在线人数图表显示不全的问题",
+        "type": "fix"
+      },
+      {
+        "text": "更新了吸粉效率计算方式，加上了专栏阅读数据",
+        "type": "fix"
+      },
+      {
+        "text": "美化了UP主、视频列表的点击样式",
+        "type": "fix"
+      },
+      {
+        "text": "更新了管理页面侧边栏的展现形式",
+        "type": "feature  "
+      }
+    ],
+    "type": "unimportant"
   }
 ]

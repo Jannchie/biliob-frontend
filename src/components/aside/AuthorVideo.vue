@@ -55,9 +55,6 @@ export default {
   text-decoration: none;
 }
 
-.aside-card {
-}
-
 .video-list {
   padding-bottom: 0px;
   padding-top: 0px;

@@ -46,11 +46,13 @@
           </VLayout>
 
           <VSlideYTransition group>
-            <div
+            <VCard
               v-for="(eachAuthor, index) in authorList.content"
               :key="eachAuthor.mid"
+              v-ripple="true"
               style="position: relative"
-              @click.stop="toAuthorDetail(eachAuthor.mid)"
+              :to="`/author/${eachAuthor.mid}`"
+              class="mx-0  elevation-0"
             >
               <div style="padding:5px;display:flex">
                 <div>
@@ -78,7 +80,7 @@
                 </div>
               </div>
               <VDivider v-if="index != authorList.length - 1"></VDivider>
-            </div>
+            </VCard>
           </VSlideYTransition>
           <VBtn
             v-if="!notFound"

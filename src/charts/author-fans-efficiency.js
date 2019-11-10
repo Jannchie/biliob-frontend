@@ -4,12 +4,13 @@ var { convertDateToUTC } = require("./util/convertDateToUTC");
 function drawChart(data) {
   data = data.data;
 
-  for (let index = 0; index < data.length; index++) {
-    data[index]["datetime"] = new Date(data[index].datetime);
-  }
   data = data
     .filter(function(item) {
-      return item.fans != null && item.articleView != null;
+      return (
+        item.fans != null &&
+        item.articleView != null &&
+        item.archiveView != null
+      );
     })
     .sort((a, b) => {
       return a.datetime - b.datetime;
@@ -23,7 +24,9 @@ function drawChart(data) {
   for (let index = step; index < data.length; index++) {
     var efficiency = Math.round(
       (10000 * (data[index].fans - data[index - step].fans)) /
-        (data[index].archiveView - data[index - step].archiveView)
+        (data[index].archiveView +
+          data[index].articleView -
+          (data[index - step].archiveView + data[index - step].articleView))
     );
     if (efficiency != Infinity && efficiency != -Infinity) {
       fansEfficiency.push([data[index].datetime, efficiency]);
@@ -32,7 +35,7 @@ function drawChart(data) {
 
   let Chart = {
     legend: {
-      data: ["万播放涨粉数"],
+      data: ["万点击涨粉数"],
       bottom: "5px"
     },
     tooltip: {
@@ -93,7 +96,7 @@ function drawChart(data) {
     ],
     series: [
       {
-        name: "万播放涨粉数",
+        name: "万点击涨粉数",
         data: fansEfficiency,
         smooth: true,
         showSymbol: false,

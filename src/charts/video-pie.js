@@ -1,4 +1,6 @@
 function drawChart(data) {
+  console.log(data);
+
   let Chart = {
     title: [
       {

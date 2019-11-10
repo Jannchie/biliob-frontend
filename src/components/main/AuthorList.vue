@@ -41,13 +41,13 @@
               @getSearchValue="getSearchValue"
             />
           </div>
-
           <VSlideYTransition group>
-            <div
+            <VCard
               v-for="eachAuthor in authorList.content"
               :key="eachAuthor.mid"
+              ripple
+              :to="`/author/${eachAuthor.mid}`"
               class="author-cards"
-              @click.stop="toAuthorDetail(eachAuthor.mid)"
             >
               <div style="padding:5px;display:flex">
                 <div>
@@ -75,7 +75,7 @@
                 </div>
               </div>
               <VDivider></VDivider>
-            </div>
+            </VCard>
           </VSlideYTransition>
           <VBtn
             v-if="!notFound"

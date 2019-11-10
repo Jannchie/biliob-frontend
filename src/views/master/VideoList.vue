@@ -97,11 +97,11 @@
             </VFlex>
           </VLayout>
           <VSlideYTransition group>
-            <div
+            <VCard
               v-for="eachVideo in videoList.content"
               :key="eachVideo.aid"
-              class="video-cards"
-              @click.stop="toVideoDetail(eachVideo.mid, eachVideo.aid)"
+              :to="'/author/' + eachVideo.mid + '/video/' + eachVideo.aid"
+              class="video-cards elevation-0"
             >
               <ObserveStatus class="observe-status" :object="eachVideo" />
               <div style="padding:5px;display:flex">
@@ -127,7 +127,7 @@
                 </div>
               </div>
               <VDivider></VDivider>
-            </div>
+            </VCard>
           </VSlideYTransition>
           <VBtn
             v-if="!notFound"

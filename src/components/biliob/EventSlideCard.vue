@@ -24,7 +24,7 @@
             {{ eachItem.author }}
           </div>
           <VChip
-            style="width:104px;vertical-align: middle"
+            style="vertical-align: middle"
             small
             dark
             :class="`caption ${getColor(eachItem.info)}`"
