@@ -229,7 +229,8 @@ export default {
     briefInfo() {
       if (
         this.authorData.name == undefined ||
-        this.authorTopVideo.content == undefined
+        this.authorTopVideo.content == undefined ||
+        this.authorTopVideo.content[0] == undefined
       )
         return "载入中";
       return `${this.authorData.name} 是 ${
