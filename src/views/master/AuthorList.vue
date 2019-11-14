@@ -53,6 +53,7 @@
               style="position: relative"
               :to="`/author/${eachAuthor.mid}`"
               class="mx-0  elevation-0"
+              @click.stop="toAuthorDetail(eachAuthor.mid)"
             >
               <div style="padding:5px;display:flex">
                 <div>

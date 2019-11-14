@@ -227,7 +227,11 @@ export default {
       ];
     },
     briefInfo() {
-      if (this.authorData.name == undefined) return "载入中";
+      if (
+        this.authorData.name == undefined ||
+        this.authorTopVideo.content == undefined
+      )
+        return "载入中";
       return `${this.authorData.name} 是 ${
         this.authorData.official == ""
           ? "没有认证的UP主"
