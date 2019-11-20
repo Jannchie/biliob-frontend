@@ -1718,5 +1718,21 @@
       }
     ],
     "type": "unimportant"
+  },
+  {
+    "title": "观测获赞数",
+    "version": "ver.7.3.0",
+    "date": "2019-11-21",
+    "list": [
+      {
+        "text": "添加了获赞数的观测",
+        "type": "feature"
+      },
+      {
+        "text": "修复了部分UP主排行无法正确显示的BUG",
+        "type": "fix"
+      }
+    ],
+    "type": "important"
   }
 ]
