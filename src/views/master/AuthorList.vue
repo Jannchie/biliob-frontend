@@ -34,6 +34,14 @@
                   播放总量
                 </div>
               </VTab>
+              <VTab @click="sortChange(3)">
+                <VIcon>
+                  mdi-thumb-up-outline
+                </VIcon>
+                <div style="margin-left:10px">
+                  获赞总量
+                </div>
+              </VTab>
               <VTab @click="sortChange(2)">
                 <VIcon>
                   mdi-script-text-outline

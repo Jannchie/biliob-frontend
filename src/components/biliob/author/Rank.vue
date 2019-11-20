@@ -2,39 +2,44 @@
   <BiliobCard light border="bottom" title="UP主排名数据">
     <div class="rank-container">
       <div style="flex-grow: 1;text-align:center">
-        <div
-          class="rank-title subheading font-weight-bold grey--text text--darken-2"
-        >
-          粉丝数
+        <div class="rank-title subheading  grey--text text--darken-2">
+          粉丝总数
         </div>
         <div
-          class="rank-value py-1 title font-weight-black blue--text text--darken-3"
+          class="rank-value py-1 title font-weight-light blue--text text--darken-3"
         >
           {{ fansInfo }}
         </div>
         <ChevronBudget :value="dFansRank"></ChevronBudget>
       </div>
       <div style="flex-grow: 1;text-align:center">
-        <div
-          class="rank-title subheading font-weight-bold grey--text text--darken-2"
-        >
-          播放量
+        <div class="rank-title subheading  grey--text text--darken-2">
+          播放总量
         </div>
         <div
-          class="rank-value py-1 title font-weight-black blue--text text--darken-3"
+          class="rank-value py-1 title font-weight-light blue--text text--darken-3"
         >
           {{ archiveInfo }}
         </div>
         <ChevronBudget :value="dArchiveViewRank"></ChevronBudget>
       </div>
       <div style="flex-grow: 1;text-align:center">
+        <div class="rank-title subheading  grey--text text--darken-2">
+          获赞总量
+        </div>
         <div
-          class="rank-title subheading font-weight-bold grey--text text--darken-2"
+          class="rank-value py-1 title font-weight-light blue--text text--darken-3"
         >
+          {{ likeInfo }}
+        </div>
+        <ChevronBudget :value="dLikeRank"></ChevronBudget>
+      </div>
+      <div style="flex-grow: 1;text-align:center">
+        <div class="rank-title subheading  grey--text text--darken-2">
           专栏阅读
         </div>
         <div
-          class="rank-value py-1 title font-weight-black blue--text text--darken-3"
+          class="rank-value py-1 title font-weight-light blue--text text--darken-3"
         >
           {{ articleInfo }}
         </div>
@@ -71,6 +76,8 @@ export default {
     pFansRank: Number(),
     pArticleViewRank: Number(),
     pArchiveViewRank: Number(),
+    dLikeRank: Number(),
+    likeRank: Number(),
     updateTime: String()
   },
   computed: {
@@ -85,34 +92,28 @@ export default {
       }
     },
     fansInfo() {
-      if (this.fansRank == undefined) {
-        return "";
+      if (this.fansRank == undefined || this.fansRank == -1) {
+        return "-";
       }
-      if (this.fansRank <= 200 && this.fansRank != -1) {
-        return `Top ${this.fansRank}`;
-      } else {
-        return this.beautify(this.pFansRank);
-      }
+      return `Top ${this.fansRank}`;
     },
     articleInfo() {
-      if (this.articleViewRank == undefined) {
-        return "";
+      if (this.articleViewRank == undefined || this.articleViewRank == -1) {
+        return "-";
       }
-      if (this.articleViewRank <= 200 && this.articleViewRank != -1) {
-        return `Top ${this.articleViewRank}`;
-      } else {
-        return this.beautify(this.pArticleViewRank);
+      return `Top ${this.articleViewRank}`;
+    },
+    likeInfo() {
+      if (this.likeRank == undefined || this.likeRank == -1) {
+        return "-";
       }
+      return `Top ${this.likeRank}`;
     },
     archiveInfo() {
-      if (this.archiveViewRank == undefined) {
-        return "";
+      if (this.archiveViewRank == undefined || this.archiveViewRank == -1) {
+        return "-";
       }
-      if (this.archiveViewRank <= 200 && this.archiveViewRank != -1) {
-        return `Top ${this.archiveViewRank}`;
-      } else {
-        return this.beautify(this.pArchiveViewRank);
-      }
+      return `Top ${this.archiveViewRank}`;
     }
   },
 
