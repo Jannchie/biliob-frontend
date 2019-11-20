@@ -4,6 +4,7 @@ var { convertDateToUTC } = require("./util/convertDateToUTC");
 function drawChart(data) {
   let fans = [];
   let view = [];
+  let like = [];
   data.data.forEach(d => {
     if (d["archiveView"] != null) {
       view.push([d["datetime"], d["archiveView"]]);
@@ -14,12 +15,16 @@ function drawChart(data) {
       fans.push([d["datetime"], d["fans"]]);
     }
   });
-  fans.sort((a, b) => {
-    return new Date(b[0]) - new Date(a[0]);
+
+  data.data.forEach(d => {
+    if (d["like"] != null) {
+      like.push([d["datetime"], d["like"]]);
+    }
   });
+
   let Chart = {
     legend: {
-      data: ["粉丝数", "播放量"],
+      data: ["粉丝数", "播放量", "获赞数"],
       bottom: "5px"
     },
     grid: {
@@ -109,6 +114,13 @@ function drawChart(data) {
         showSymbol: false,
         type: "line",
         yAxisIndex: 1
+      },
+      {
+        name: "获赞数",
+        data: like.reverse(),
+        smooth: true,
+        showSymbol: false,
+        type: "line"
       }
     ]
   };
