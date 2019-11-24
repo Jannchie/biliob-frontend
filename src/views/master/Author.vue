@@ -218,6 +218,13 @@ export default {
       cPage: 0
     };
   },
+  metaInfo() {
+    return {
+      meta: [
+        { vmid: "description", name: "description", content: this.briefInfo }
+      ]
+    };
+  },
   computed: {
     authorChannelInfo() {
       if (this.authorData.channels == undefined) return [" ", " "];
@@ -231,15 +238,17 @@ export default {
         this.authorData.name == undefined ||
         this.authorTopVideo.content == undefined ||
         this.authorTopVideo.content[0] == undefined
-      )
+      ) {
         return "载入中";
-      return `${this.authorData.name} 是 ${
+      }
+      let briefInfo = `${this.authorData.name} 是 ${
         this.authorData.official == ""
           ? "没有认证的UP主"
           : this.authorData.official
       }。他是主要活跃在${this.authorChannelInfo[0]}区的UP主，在该分区共存活 ${
         this.authorChannelInfo[1]
       } 个稿件。代表作有《 ${this.authorTopVideo.content[0].title}》。`;
+      return briefInfo;
     }
   },
   mounted() {

@@ -22,6 +22,9 @@ import VueCookies from "vue-cookies";
 import vuetify from "./plugins/vuetify";
 Vue.use(VueCookies);
 
+import Meta from "vue-meta";
+Vue.use(Meta);
+
 router.afterEach(function(to) {
   let baseTitle = " - BiliOB观测者 - B站历史数据统计分析站点";
   if (to.name == undefined) {
