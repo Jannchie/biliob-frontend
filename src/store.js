@@ -4,6 +4,7 @@ import axios from "axios";
 import siteInfoModule from "./store/site.js";
 import rankModule from "./store/rank.js";
 import adminModule from "./store/admin.js";
+import authorModule from "./store/author.js";
 import eventModule from "./store/event.js";
 
 Vue.use(Vuex);
@@ -15,8 +16,10 @@ export default new Vuex.Store({
     userName: undefined,
     nickName: undefined,
     role: undefined,
+    title: undefined,
     credit: undefined,
     mail: undefined,
+    userRank: undefined,
     exp: undefined,
     dark: false,
     ad: undefined,
@@ -64,6 +67,12 @@ export default new Vuex.Store({
     },
     setExp(state, exp) {
       state.exp = exp;
+    },
+    setTitle(state, title) {
+      state.title = title;
+    },
+    setUserRank(state, userRank) {
+      state.userRank = userRank;
     },
     setFavoriteVideo(state, aidList) {
       state.favoriteAid = aidList;
@@ -120,6 +129,9 @@ export default new Vuex.Store({
     getNickName: state => {
       return state.nickName;
     },
+    getTitle: state => {
+      return state.title;
+    },
     getMail: state => {
       return state.mail;
     },
@@ -163,6 +175,8 @@ export default new Vuex.Store({
           context.commit("setNickName", response.data.nickName);
           context.commit("setMail", response.data.mail);
           context.commit("setUserName", response.data.name);
+          context.commit("setUserRank", response.data.rank);
+          context.commit("setTitle", response.data.title);
           if (response.data.favoriteAid) {
             context.commit("setFavoriteVideo", response.data.favoriteAid);
           }
@@ -206,6 +220,7 @@ export default new Vuex.Store({
     site: siteInfoModule,
     admin: adminModule,
     event: eventModule,
+    author: authorModule,
     rank: rankModule
   }
 });

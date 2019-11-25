@@ -9,6 +9,15 @@
               hint="请输入UP主名称，或者uid"
               @getSearchValue="getSearchValue"
             />
+            <VChip
+              v-for="(author, index) in $store.getters.getHotSearchAuthor"
+              :key="index"
+              small
+              outlined
+              :to="`/author/${author._id}`"
+              class="mx-2 mb-2"
+              >{{ author.name }}</VChip
+            >
           </VCardText>
         </VCard>
       </VCol>
@@ -190,6 +199,11 @@ export default {
     this.axios.get(this.currentApiurl).then(response => {
       this.refreshList(response);
     });
+  },
+  mounted() {
+    if (this.$store.state.hotSearch == undefined) {
+      this.$store.dispatch("getHotSearchAuthor");
+    }
   },
   methods: {
     refreshList(response) {
