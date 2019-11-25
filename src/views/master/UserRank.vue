@@ -24,6 +24,9 @@
         lg="4"
       >
         <BiliobCard>
+          <div class="grey--text" style="position: absolute; right: 8px">
+            #{{ 1 + index }}
+          </div>
           <VCardTitle>
             {{ eachUser.nickName }}
           </VCardTitle>
@@ -47,6 +50,9 @@
         lg="3"
       >
         <BiliobCard>
+          <div class="grey--text" style="position: absolute; right: 8px">
+            #{{ 4 + index }}
+          </div>
           <VCardTitle>
             {{ eachUser.nickName }}
           </VCardTitle>
@@ -70,10 +76,10 @@
         lg="2"
       >
         <BiliobCard>
-          <VCardTitle
-            style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;"
-            class="body-1"
-          >
+          <div class="grey--text" style="position: absolute; right: 8px">
+            #{{ 16 + index }}
+          </div>
+          <VCardTitle class="body-1 text-truncate">
             {{ eachUser.nickName }}
           </VCardTitle>
           <VCardText class="caption">
