@@ -3,17 +3,79 @@
     <VRow>
       <VCol cols="12">
         <BiliobCard>
-          <div class="title">排名计算方式</div>
-          <div>2019年11月22日更新了排名计算方式。</div>
-          <div>
-            目前观测站的管理者三名、与天同行的观测者十六名、洞悉法度的观想者三十二名。
+          <div class="title mb-2 px-2 pt-2 pb-1 grey darken-3 white--text">
+            用户等级排行
           </div>
-          <div>积分前50%的观测者头衔为，其余观测者的头衔为。</div>
+          <p>2019年11月22日更新了排名计算方式。</p>
+          <div>
+            目前设
+            <VChip
+              style="vertical-align: baseline"
+              label
+              small
+              class="mx-1"
+              color="red"
+              outlined
+            >
+              管理者
+            </VChip>
+            三名、
+            <VChip
+              style="vertical-align: baseline"
+              label
+              small
+              class="mx-1"
+              color="orange"
+              outlined
+            >
+              观测者 </VChip
+            >十六名、
+            <VChip
+              style="vertical-align: baseline"
+              label
+              small
+              class="mx-1"
+              color="purple"
+              outlined
+            >
+              观想者 </VChip
+            >三十二名。
+          </div>
+          <div>
+            积分前50%的观测者头衔为<VChip
+              style="vertical-align: baseline"
+              label
+              small
+              class="ma-2"
+              color="blue"
+              outlined
+            >
+              追寻者 </VChip
+            >，其余观测者的头衔<VChip
+              style="vertical-align: baseline"
+              label
+              small
+              class="ma-2"
+              color="green"
+              outlined
+            >
+              彷徨者 </VChip
+            >,经验值小于100为<VChip
+              style="vertical-align: baseline"
+              label
+              small
+              class="ma-2"
+              color="grey"
+              outlined
+            >
+              初心者 </VChip
+            >。
+          </div>
         </BiliobCard>
       </VCol>
     </VRow>
     <BiliobUserRankTitle
-      title="观测站的管理者"
+      title="管理者"
       icon="mdi-chess-queen"
     ></BiliobUserRankTitle>
     <VRow>
@@ -39,7 +101,7 @@
       </VCol>
     </VRow>
     <BiliobUserRankTitle
-      title="与天同行的观测者"
+      title="观测者"
       icon="mdi-chess-king"
     ></BiliobUserRankTitle>
     <VRow>
@@ -65,7 +127,7 @@
       </VCol>
     </VRow>
     <BiliobUserRankTitle
-      title="洞悉法度的观想者"
+      title="观想者"
       icon="mdi-chess-bishop"
     ></BiliobUserRankTitle>
     <VRow>

@@ -24,10 +24,10 @@ export default {
 .user-rank-title {
   background: linear-gradient(
     90deg,
-    #ffffffff 233px,
-    #424242 233px 235px,
-    #fff 235px 237px,
-    #424242 237px
+    #ffffffff 90%,
+    #424242 90% 91%,
+    #fff 91% 92%,
+    #424242 92%
   );
 }
 </style>

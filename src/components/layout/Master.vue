@@ -93,8 +93,15 @@
                     ><div>
                       {{ $store.state.role }}
                     </div>
+                    <div>
+                      {{ $store.state.title }}
+                    </div>
                     <div>积分：{{ $store.state.credit }}</div>
-                    <div>经验：{{ $store.state.exp }}</div>
+                    <div>
+                      经验：{{ $store.state.exp }} (#{{
+                        $store.state.userRank
+                      }})
+                    </div>
                   </VCardText>
                 </BiliobCard>
                 <VCardActions>
