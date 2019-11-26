@@ -244,13 +244,13 @@
       }
     },
     "splitLine": {
-      "show": false,
+      "show": true,
       "lineStyle": {
         "color": ["#ccc"]
       }
     },
     "splitArea": {
-      "show": false,
+      "show": true,
       "areaStyle": {
         "color": ["rgba(250,250,250,0.3)", "rgba(200,200,200,0.3)"]
       }
@@ -276,13 +276,13 @@
       }
     },
     "splitLine": {
-      "show": false,
+      "show": true,
       "lineStyle": {
         "color": ["rgba(255,255,255,0.8)"]
       }
     },
     "splitArea": {
-      "show": false,
+      "show": true,
       "areaStyle": {
         "color": ["rgba(250,250,250,0.3)", "rgba(200,200,200,0.3)"]
       }
