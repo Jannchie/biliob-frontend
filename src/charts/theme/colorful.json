@@ -290,7 +290,7 @@
       }
     },
     "splitLine": {
-      "show": false,
+      "show": true,
       "lineStyle": {
         "color": [" #ccc"]
       }

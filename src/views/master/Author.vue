@@ -29,6 +29,9 @@
           <VTab @click="getPage(0)">
             <VIcon left>mdi-database</VIcon>基本统计
           </VTab>
+          <VTab @click="getPage(3)">
+            <VIcon left>mdi-history</VIcon>历史数据
+          </VTab>
           <VTab @click="getPage(1)">
             <VIcon left>mdi-brain</VIcon>高级统计
           </VTab>
@@ -38,22 +41,40 @@
     <VRow dense>
       <VCol :cols="12">
         <VSlideYTransition>
-          <div v-if="cPage == 0">
-            <!-- <AuthorDetailChannel slot="channel" :channels="authorData.channels"></AuthorDetailChannel> -->
-            <BiliobAuthorRank
-              v-bind="authorData.rank"
-              class="mb-2"
-            ></BiliobAuthorRank>
+          <div v-if="cPage == 3">
             <DetailCharts
               class="mb-2"
-              title="粉丝、播放量变化趋势"
-              :options="authorFansOptions"
+              title="粉丝数历史数据"
+              :options="historyFansOptions"
             />
             <DetailCharts
               class="mb-2"
               title="粉丝数变化速率"
               :options="authorFansRateOptions"
             />
+            <DetailCharts
+              class="mb-2"
+              title="播放数历史数据"
+              :options="historyViewOptions"
+            />
+            <DetailCharts
+              class="mb-2"
+              title="获赞数历史数据"
+              :options="historyLikeOptions"
+            />
+          </div>
+          <div v-if="cPage == 0">
+            <!-- <AuthorDetailChannel slot="channel" :channels="authorData.channels"></AuthorDetailChannel> -->
+            <BiliobAuthorRank
+              v-bind="authorData.rank"
+              class="mb-2"
+            ></BiliobAuthorRank>
+            <!-- <DetailCharts
+              class="mb-2"
+              title="粉丝、播放量变化趋势"
+              :options="authorFansOptions"
+            /> -->
+
             <!-- <DetailCharts
           id="relationship"
           title="UP主作品相关度"
@@ -179,6 +200,7 @@ import AuthorInfo from "@/components/aside/AuthorInfo.vue";
 import DetailCharts from "@/components/main/DetailCharts.vue";
 import drawFansChart from "@/charts/author-fans.js";
 import drawFansRateChart from "@/charts/author-fans-rate.js";
+import getLineChartOptions from "@/charts/biliob-line-chart.js";
 import getAuthorFansEfficiencyOptions from "@/charts/author-fans-efficiency.js";
 import getAuthorTagCloudOptions from "@/charts/author-tag-cloud.js";
 var deepCopy = function(o) {
@@ -214,6 +236,9 @@ export default {
       authorFansRateOptions: Object(),
       authorFansEfficiencyOptions: Object(),
       authorTagCloudOptions: Object(),
+      historyFansOptions: Object(),
+      historyViewOptions: Object(),
+      historyLikeOptions: Object(),
       mid: Number(),
       cPage: 0
     };
@@ -267,6 +292,37 @@ export default {
       this.authorFansEfficiencyOptions = getAuthorFansEfficiencyOptions(
         deepCopy(this.authorData)
       );
+      console.log(this.authorData);
+      let fansArray = [];
+      let likeArray = [];
+      let viewArray = [];
+      this.authorData.data.forEach(e => {
+        if (e.fans != undefined && e.fans != 0) {
+          fansArray.push([new Date(e.datetime), e.fans]);
+        }
+        if (e.like != undefined && e.like != 0) {
+          likeArray.push([new Date(e.datetime), e.like]);
+        }
+        if (e.archiveView != undefined && e.archiveView != 0) {
+          viewArray.push([new Date(e.datetime), e.archiveView]);
+        }
+      });
+      this.historyFansOptions = getLineChartOptions(
+        fansArray.reverse(),
+        "粉丝数",
+        "#1e88e5"
+      );
+      this.historyViewOptions = getLineChartOptions(
+        viewArray.reverse(),
+        "播放数",
+        "#2b821d"
+      );
+      this.historyLikeOptions = getLineChartOptions(
+        likeArray.reverse(),
+        "获赞数",
+        "#c12e34"
+      );
+
       if (this.authorData.forceFocus != true) {
         this.authorData.forceFocus == false;
       }
