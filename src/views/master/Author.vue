@@ -298,13 +298,13 @@ export default {
       let viewArray = [];
       this.authorData.data.forEach(e => {
         if (e.fans != undefined && e.fans != 0) {
-          fansArray.push([new Date(e.datetime), e.fans]);
+          fansArray.push([e.datetime, e.fans]);
         }
         if (e.like != undefined && e.like != 0) {
-          likeArray.push([new Date(e.datetime), e.like]);
+          likeArray.push([e.datetime, e.like]);
         }
         if (e.archiveView != undefined && e.archiveView != 0) {
-          viewArray.push([new Date(e.datetime), e.archiveView]);
+          viewArray.push([e.datetime, e.archiveView]);
         }
       });
       this.historyFansOptions = getLineChartOptions(
