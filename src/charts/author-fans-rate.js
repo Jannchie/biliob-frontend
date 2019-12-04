@@ -71,10 +71,10 @@ function drawChart(data) {
     );
   }
   let Chart = {
-    legend: {
-      data: ["粉丝增量"],
-      bottom: "5px"
-    },
+    // legend: {
+    //   data: ["粉丝增量"],
+    //   bottom: "5px"
+    // },
     tooltip: {
       trigger: "axis",
       confine: true,

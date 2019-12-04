@@ -5,7 +5,7 @@
         <Chart
           id="channel-chart"
           :theme="theme"
-          :auto-resize="true"
+          :autoresize="true"
           :options="channelChart"
           style="width:100%;"
         />

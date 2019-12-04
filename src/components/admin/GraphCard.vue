@@ -9,7 +9,7 @@
     >
       <Chart
         theme="card"
-        :auto-resize="true"
+        :autoresize="true"
         :options="options"
         :style="`height:150px; width:100%; `"
       />

@@ -1,11 +1,24 @@
 var format = require("date-fns/format");
 var { convertDateToUTC } = require("./util/convertDateToUTC");
-function drawChart(data, name, color = "#1e88e5") {
+function drawChart(data) {
+  let series = data.map(e => {
+    return {
+      name: e[1],
+      data: e[0],
+      smooth: true,
+      showSymbol: false,
+      color: e[2],
+      type: "line"
+    };
+  });
   let Chart = {
+    legend: {
+      selectedMode: "single"
+    },
     grid: {
       left: "10px",
       right: "50px",
-      top: "10px",
+      top: "30px",
       containLabel: true
     },
     dataZoom: [
@@ -46,7 +59,6 @@ function drawChart(data, name, color = "#1e88e5") {
         }
       }
     },
-    color: [color],
     yAxis: [
       {
         type: "value",
@@ -75,15 +87,7 @@ function drawChart(data, name, color = "#1e88e5") {
         }
       }
     ],
-    series: [
-      {
-        name: name,
-        data: data,
-        smooth: true,
-        showSymbol: false,
-        type: "line"
-      }
-    ]
+    series: series
   };
   return Chart;
 }

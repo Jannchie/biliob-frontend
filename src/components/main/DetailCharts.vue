@@ -14,7 +14,7 @@
         </div>
       </BiliobDarkInfo>
       <VResponsive :aspect-ratio="aspectRatio" :style="`height:${height}px`">
-        <Chart :auto-resize="true" :theme="theme" :options="options" />
+        <Chart :autoresize="true" :theme="theme" :options="options" />
         <VProgressCircular
           v-show="loading"
           :size="50"

@@ -4,7 +4,7 @@
       <Chart
         class="chart"
         :theme="theme"
-        :auto-resize="true"
+        :autoresize="true"
         :options="siteOptions"
         style="width:100%;height:100%"
       />

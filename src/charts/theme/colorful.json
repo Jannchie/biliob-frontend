@@ -21,13 +21,11 @@
   },
   "line": {
     "itemStyle": {
-      "borderWidth": "3"
-    },
-    "lineStyle": {
-      "width": "3"
+      "borderWidth": "1",
+      "borderColor": "#fff"
     },
     "symbolSize": "5",
-    "symbol": "emptyCircle",
+    "symbol": "circle",
     "smooth": false
   },
   "radar": {
@@ -38,10 +36,10 @@
     },
     "lineStyle": {
       "normal": {
-        "width": "3"
+        "width": "2"
       }
     },
-    "symbolSize": "10",
+    "symbolSize": "5",
     "symbol": "circle",
     "smooth": false
   },
@@ -379,7 +377,9 @@
   "legend": {
     "textStyle": {
       "color": "#333333"
-    }
+    },
+    "borderColor": "#FFF",
+    "borderWidth": 1
   },
   "tooltip": {
     "axisPointer": {

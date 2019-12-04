@@ -6,6 +6,7 @@ import "echarts/lib/component/dataZoom";
 import "echarts/lib/component/markLine";
 import "echarts/lib/component/markPoint";
 import "echarts/lib/component/radar";
+import "echarts/lib/component/legend";
 import "echarts/lib/chart/radar";
 import "echarts/lib/chart/line";
 import "echarts/lib/chart/pie";

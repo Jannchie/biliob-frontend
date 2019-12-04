@@ -34,10 +34,10 @@ function drawChart(data) {
   }
 
   let Chart = {
-    legend: {
-      data: ["万点击涨粉数"],
-      bottom: "5px"
-    },
+    // legend: {
+    //   data: ["万点击涨粉数"],
+    //   bottom: "5px"
+    // },
     tooltip: {
       trigger: "axis",
       confine: true,

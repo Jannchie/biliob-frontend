@@ -6,7 +6,7 @@
           <Chart
             v-if="!loading"
             :theme="theme"
-            :auto-resize="true"
+            :autoresize="true"
             :options="options"
             :style="`height:${height}px; width:100%; `"
           />

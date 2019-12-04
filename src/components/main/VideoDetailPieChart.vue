@@ -3,7 +3,7 @@
     <VResponsive :aspect-ratio="18 / 9">
       <Chart
         :theme="theme"
-        :auto-resize="true"
+        :autoresize="true"
         :options="likeRateChart"
         style="width:100%;height:100%;"
       />

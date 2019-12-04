@@ -44,23 +44,13 @@
           <div v-if="cPage == 3">
             <DetailCharts
               class="mb-2"
-              title="粉丝数历史数据"
-              :options="historyFansOptions"
+              title="UP主历史数据"
+              :options="historyDataOptions"
             />
             <DetailCharts
               class="mb-2"
               title="粉丝数变化速率"
               :options="authorFansRateOptions"
-            />
-            <DetailCharts
-              class="mb-2"
-              title="播放数历史数据"
-              :options="historyViewOptions"
-            />
-            <DetailCharts
-              class="mb-2"
-              title="获赞数历史数据"
-              :options="historyLikeOptions"
             />
           </div>
           <div v-if="cPage == 0">
@@ -201,6 +191,7 @@ import DetailCharts from "@/components/main/DetailCharts.vue";
 import drawFansChart from "@/charts/author-fans.js";
 import drawFansRateChart from "@/charts/author-fans-rate.js";
 import getLineChartOptions from "@/charts/biliob-line-chart.js";
+import getMultiLineChartOptions from "@/charts/biliob-multi-line-chart.js";
 import getAuthorFansEfficiencyOptions from "@/charts/author-fans-efficiency.js";
 import getAuthorTagCloudOptions from "@/charts/author-tag-cloud.js";
 var deepCopy = function(o) {
@@ -239,6 +230,7 @@ export default {
       historyFansOptions: Object(),
       historyViewOptions: Object(),
       historyLikeOptions: Object(),
+      historyDataOptions: Object(),
       mid: Number(),
       cPage: 0
     };
@@ -307,21 +299,31 @@ export default {
           viewArray.push([e.datetime, e.archiveView]);
         }
       });
+      fansArray = fansArray.reverse();
+      viewArray = viewArray.reverse();
+      likeArray = likeArray.reverse();
       this.historyFansOptions = getLineChartOptions(
-        fansArray.reverse(),
+        fansArray,
         "粉丝数",
         "#1e88e5"
       );
       this.historyViewOptions = getLineChartOptions(
-        viewArray.reverse(),
+        viewArray,
         "播放数",
         "#2b821d"
       );
       this.historyLikeOptions = getLineChartOptions(
-        likeArray.reverse(),
+        likeArray,
         "获赞数",
         "#c12e34"
       );
+
+      this.historyDataOptions = getMultiLineChartOptions([
+        [fansArray, "粉丝数", "#1e88e5"],
+        [viewArray, "播放数", "#2b821d"],
+        [likeArray, "获赞数", "#c12e34"]
+      ]);
+      console.log(this.historyDataOptions);
 
       if (this.authorData.forceFocus != true) {
         this.authorData.forceFocus == false;

@@ -3,7 +3,7 @@
     <Chart
       slot="header"
       theme="card"
-      :auto-resize="true"
+      :autoresize="true"
       :options="options"
       style="width:100%; max-height:200px"
     />
