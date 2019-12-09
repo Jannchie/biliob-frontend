@@ -30,6 +30,7 @@ const TracerSchedule = () => import("@/views/admin/Schedule.vue");
 const TracerUser = () => import("@/components/Tracer/User.vue");
 const TracerNoRole = () => import("@/components/Tracer/NoRole.vue");
 const TracerUpload = () => import("@/components/Tracer/Upload.vue");
+const UserInfo = () => import("@/views/master/user/Info.vue");
 
 Vue.use(Router);
 export default new Router({
@@ -48,7 +49,23 @@ export default new Router({
         {
           name: "个人中心",
           path: "/user",
-          component: User
+          component: User,
+          children: [
+            {
+              path: "",
+              component: UserInfo
+            },
+            {
+              name: "我的个人信息",
+              path: "info",
+              component: UserInfo
+            },
+            {
+              path: "/user/record",
+              name: "我的操作记录",
+              component: UserRecord
+            }
+          ]
         },
         {
           path: "/",
@@ -130,11 +147,7 @@ export default new Router({
           name: "观测者排行",
           component: UserRank
         },
-        {
-          path: "/user/record",
-          name: "我的操作记录",
-          component: UserRecord
-        },
+
         {
           path: "/test",
           name: "测试",

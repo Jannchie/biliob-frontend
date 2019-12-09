@@ -30,8 +30,8 @@
             :class="`caption ${getColor(eachItem.info)}`"
           >
             <VIcon left small>{{ getIcon(eachItem.info) }}</VIcon>
-            {{ eachItem.info }}</VChip
-          >
+            {{ eachItem.info }}
+          </VChip>
         </VCol>
       </VRow>
       <span
