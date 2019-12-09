@@ -37,7 +37,6 @@
           style="margin:auto"
           ><VIcon>mdi-chevron-right</VIcon> 更多..</VBtn
         >
-        <div style="min-width: 100px"></div>
       </div>
     </div>
   </BiliobCard>
