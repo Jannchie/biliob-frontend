@@ -379,7 +379,7 @@
       "color": "#333333"
     },
     "borderColor": "#FFF",
-    "borderWidth": 1
+    "borderWidth": 2
   },
   "tooltip": {
     "axisPointer": {
