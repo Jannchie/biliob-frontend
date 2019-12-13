@@ -14,13 +14,6 @@
         />
       </VCol>
     </VRow>
-    <VRow dense>
-      <VCol>
-        <BiliobCard border="bottom" title="作者简介" light>
-          {{ briefInfo }}
-        </BiliobCard>
-      </VCol>
-    </VRow>
 
     <VRow dense>
       <VCol>
@@ -49,16 +42,32 @@
             />
             <DetailCharts
               class="mb-2"
+              title="日历"
+              :options="authorDataDiffOptions"
+            />
+            <DetailCharts
+              class="mb-2"
               title="粉丝数变化速率"
               :options="authorFansRateOptions"
             />
           </div>
           <div v-if="cPage == 0">
-            <!-- <AuthorDetailChannel slot="channel" :channels="authorData.channels"></AuthorDetailChannel> -->
-            <BiliobAuthorRank
-              v-bind="authorData.rank"
-              class="mb-2"
-            ></BiliobAuthorRank>
+            <VRow dense>
+              <VCol>
+                <BiliobCard border="bottom" title="作者简介" light>
+                  {{ briefInfo }}
+                </BiliobCard>
+              </VCol>
+            </VRow>
+            <VRow dense>
+              <VCol>
+                <BiliobAuthorRank
+                  v-bind="authorData.rank"
+                  class="mb-2"
+                ></BiliobAuthorRank>
+              </VCol>
+            </VRow>
+
             <!-- <DetailCharts
               class="mb-2"
               title="粉丝、播放量变化趋势"
@@ -194,6 +203,7 @@ import getLineChartOptions from "@/charts/biliob-line-chart.js";
 import getMultiLineChartOptions from "@/charts/biliob-multi-line-chart.js";
 import getAuthorFansEfficiencyOptions from "@/charts/author-fans-efficiency.js";
 import getAuthorTagCloudOptions from "@/charts/author-tag-cloud.js";
+import getAuthorDataDiffOptions from "@/charts/author-data-diff.js";
 var deepCopy = function(o) {
   if (o instanceof Array) {
     var n = [];
@@ -231,6 +241,7 @@ export default {
       historyViewOptions: Object(),
       historyLikeOptions: Object(),
       historyDataOptions: Object(),
+      authorDataDiffOptions: Object(),
       mid: Number(),
       cPage: 0
     };
@@ -284,7 +295,7 @@ export default {
       this.authorFansEfficiencyOptions = getAuthorFansEfficiencyOptions(
         deepCopy(this.authorData)
       );
-      console.log(this.authorData);
+
       let fansArray = [];
       let likeArray = [];
       let viewArray = [];
@@ -317,7 +328,11 @@ export default {
         "获赞数",
         "#c12e34"
       );
-
+      this.authorDataDiffOptions = getAuthorDataDiffOptions([
+        [fansArray, "粉丝数", "#1e88e5"],
+        [viewArray, "播放数", "#2b821d"],
+        [likeArray, "获赞数", "#c12e34"]
+      ]);
       this.historyDataOptions = getMultiLineChartOptions([
         [fansArray, "粉丝数", "#1e88e5"],
         [viewArray, "播放数", "#2b821d"],
