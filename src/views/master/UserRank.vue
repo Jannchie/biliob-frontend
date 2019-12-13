@@ -2,76 +2,93 @@
   <div>
     <VRow>
       <VCol cols="12">
-        <BiliobCard>
-          <div class="title mb-2 px-2 pt-2 pb-1 grey darken-3 white--text">
-            用户等级排行
-          </div>
-          <p>2019年11月22日更新了排名计算方式。</p>
-          <div>
-            目前设
-            <VChip
-              style="vertical-align: baseline"
-              label
-              small
-              class="mx-1"
-              color="red"
-              outlined
+        <VExpansionPanels>
+          <VExpansionPanel>
+            <VExpansionPanelHeader>
+              <div class="title">
+                用户等级排行简介
+              </div></VExpansionPanelHeader
             >
-              管理者
-            </VChip>
-            三名、
-            <VChip
-              style="vertical-align: baseline"
-              label
-              small
-              class="mx-1"
-              color="orange"
-              outlined
-            >
-              观测者 </VChip
-            >十六名、
-            <VChip
-              style="vertical-align: baseline"
-              label
-              small
-              class="mx-1"
-              color="purple"
-              outlined
-            >
-              观想者 </VChip
-            >三十二名。
-          </div>
-          <div>
-            积分前50%的观测者头衔为<VChip
-              style="vertical-align: baseline"
-              label
-              small
-              class="ma-2"
-              color="blue"
-              outlined
-            >
-              追寻者 </VChip
-            >，其余观测者的头衔<VChip
-              style="vertical-align: baseline"
-              label
-              small
-              class="ma-2"
-              color="green"
-              outlined
-            >
-              彷徨者 </VChip
-            >,经验值小于100为<VChip
-              style="vertical-align: baseline"
-              label
-              small
-              class="ma-2"
-              color="grey"
-              outlined
-            >
-              初心者 </VChip
-            >。
-          </div>
-        </BiliobCard>
+            <VExpansionPanelContent>
+              <p>2019年11月22日更新了排名计算方式。</p>
+              <div>
+                目前设有:
+                <li>
+                  <VChip
+                    style="vertical-align: baseline"
+                    label
+                    small
+                    class="mr-1 my-1"
+                    color="red"
+                    outlined
+                  >
+                    管理者 </VChip
+                  >3名
+                </li>
+                <li>
+                  <VChip
+                    style="vertical-align: baseline"
+                    label
+                    small
+                    class="mr-1 my-1"
+                    color="orange"
+                    outlined
+                  >
+                    观测者 </VChip
+                  >16名
+                </li>
+                <li>
+                  <VChip
+                    style="vertical-align: baseline"
+                    label
+                    small
+                    class="mr-1 my-1"
+                    color="purple"
+                    outlined
+                  >
+                    观想者 </VChip
+                  >32名
+                </li>
+                <li>
+                  <VChip
+                    style="vertical-align: baseline"
+                    label
+                    small
+                    class="mr-1 my-1"
+                    color="blue"
+                    outlined
+                  >
+                    追寻者 </VChip
+                  >积分前50%
+                </li>
+                <li>
+                  <VChip
+                    style="vertical-align: baseline"
+                    label
+                    small
+                    class="mr-1 my-1"
+                    color="green"
+                    outlined
+                  >
+                    彷徨者 </VChip
+                  >积分后50%
+                </li>
+                <li>
+                  <VChip
+                    style="vertical-align: baseline"
+                    label
+                    small
+                    class="mr-1 my-1"
+                    color="grey"
+                    outlined
+                  >
+                    初心者 </VChip
+                  >经验值小于100
+                </li>
+              </div>
+            </VExpansionPanelContent>
+          </VExpansionPanel>
+        </VExpansionPanels>
       </VCol>
     </VRow>
     <BiliobUserRankTitle
@@ -140,6 +157,32 @@
         <BiliobCard>
           <div class="grey--text" style="position: absolute; right: 8px">
             #{{ 16 + index }}
+          </div>
+          <VCardTitle class="body-1 text-truncate">
+            {{ eachUser.nickName }}
+          </VCardTitle>
+          <VCardText class="caption">
+            EXP {{ eachUser.exp }}
+            <br />
+            {{ formatDate(eachUser.id.date, "YYYY-MM-DD") }}
+          </VCardText>
+        </BiliobCard>
+      </VCol>
+    </VRow>
+    <BiliobUserRankTitle
+      title="追寻者"
+      icon="mdi-chess-rook"
+    ></BiliobUserRankTitle>
+    <VRow>
+      <VCol
+        v-for="(eachUser, index) of userData.slice(51, 100)"
+        :key="index"
+        cols="12"
+        lg="2"
+      >
+        <BiliobCard>
+          <div class="grey--text" style="position: absolute; right: 8px">
+            #{{ 52 + index }}
           </div>
           <VCardTitle class="body-1 text-truncate">
             {{ eachUser.nickName }}
