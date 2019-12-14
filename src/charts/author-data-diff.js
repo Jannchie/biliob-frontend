@@ -1,20 +1,25 @@
+import interpolation from "./util/interpolation";
 function drawChart(data) {
+  data.forEach(e => {
+    e[0] = interpolation(e[0]);
+  });
   let series = data.map((e, i) => {
     return {
-      name: e[1],
-      //   color: e[2],
+      name: e[1] + "变化率",
+      color: e[2],
       type: "heatmap",
       coordinateSystem: "calendar",
       calendarIndex: i,
       data: e[0]
     };
   });
+
   let cals = data.map(() => {
     let now = new Date();
-    let front = new Date(now.setFullYear(now.getFullYear() - 1));
+    let front = new Date(now - 86400 * 363 * 1000);
     now = new Date();
     return {
-      right: "25",
+      right: "35",
       left: "10",
       splitLine: {
         show: false
@@ -32,6 +37,12 @@ function drawChart(data) {
     };
   });
   let vms = data.map((e, i) => {
+    let max = Math.max.apply(
+      Math,
+      e[0].map(item => {
+        return item[1];
+      })
+    );
     return {
       min: Math.min.apply(
         Math,
@@ -39,12 +50,17 @@ function drawChart(data) {
           return item[1];
         })
       ),
-      max: Math.max.apply(
-        Math,
-        e[0].map(item => {
-          return item[1];
-        })
-      ),
+      max: max,
+      range: [0, max],
+      outOfRange: {
+        color: "#111",
+        colorAlpha: [1, 0.2]
+      },
+      inRange: {
+        color: e[2],
+        colorAlpha: [0.2, 10]
+      },
+
       orient: "horizontal",
       seriesIndex: i,
       left: "center",
@@ -61,7 +77,6 @@ function drawChart(data) {
     tooltip: {},
     visualMap: vms,
     calendar: cals,
-
     series: series
   };
 
