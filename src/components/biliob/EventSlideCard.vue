@@ -26,12 +26,12 @@
           <VChip
             style="vertical-align: middle"
             small
-            dark
+            outlined
             :class="`caption ${getColor(eachItem.info)}`"
           >
             <VIcon left small>{{ getIcon(eachItem.info) }}</VIcon>
-            {{ eachItem.info }}</VChip
-          >
+            {{ eachItem.info }}
+          </VChip>
         </VCol>
       </VRow>
       <span
@@ -57,21 +57,21 @@ export default {
     getColor(info) {
       switch (info) {
         case "大量涨粉":
-          return "red darken-4";
+          return "blue darken-2 blue--text text--darken-2";
         case "史诗级涨粉":
-          return "red darken-2";
+          return "purple darken-2 purple--text  text--darken-2";
         case "传说级涨粉":
-          return "red";
+          return "orange orange--text  text--darken-2";
         case "新星爆发":
           return "primary";
         case "急转直下":
-          return "green";
+          return "green green--text  text--darken-2";
         case "大量掉粉":
-          return "green darken-1";
+          return "green darken-1 green--text  text--darken-2";
         case "雪崩级掉粉":
-          return "green darken-2";
+          return "green darken-2  green--text  text--darken-2";
         case "末日级掉粉":
-          return "green darken-4";
+          return "green darken-2  green--text  text--darken-2";
         default:
           break;
       }

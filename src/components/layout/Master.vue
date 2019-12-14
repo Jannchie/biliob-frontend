@@ -84,8 +84,8 @@
                     </VBtn>
                   </div>
                 </VCardActions>
-                <!-- <BiliobCard to="/user"> -->
-                <BiliobCard>
+                <BiliobCard to="/user">
+                  <!-- <BiliobCard> -->
                   <VCardTitle primary-title>{{
                     $store.state.nickName
                   }}</VCardTitle>

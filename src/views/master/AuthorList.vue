@@ -9,15 +9,30 @@
               hint="请输入UP主名称，或者uid"
               @getSearchValue="getSearchValue"
             />
-            <VChip
-              v-for="(author, index) in $store.getters.getHotSearchAuthor"
-              :key="index"
-              small
-              outlined
-              :to="`/author/${author._id}`"
-              class="mx-2 mb-2"
-              >{{ author.name }}</VChip
-            >
+            <BiliobSlide>
+              <VCol
+                v-for="(author, index) in $store.getters.getHotSearchAuthor"
+                :key="index"
+                cols="auto"
+                class="px-1"
+              >
+                <VChip
+                  class="pl-1"
+                  outlined
+                  color="blue "
+                  :to="`/author/${author._id}`"
+                >
+                  <!-- <VIcon>mdi-fire</VIcon> -->
+                  <VChip
+                    small
+                    text-color="white font-weight-bold"
+                    color="blue"
+                    class="mr-2 "
+                    >{{ author.count }}</VChip
+                  >{{ author.name }}</VChip
+                >
+              </VCol>
+            </BiliobSlide>
           </VCardText>
         </VCard>
       </VCol>
