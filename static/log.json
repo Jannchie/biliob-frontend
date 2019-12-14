@@ -1789,11 +1789,19 @@
         "type": "feature"
       },
       {
+        "text": "添加了个人信息的页面",
+        "type": "feature"
+      },
+      {
         "text": "增多了用户排行榜的显示",
         "type": "feature"
       },
       {
         "text": "美化了用户排行榜的说明",
+        "type": "beautify"
+      },
+      {
+        "text": "美化了热门作者的显示",
         "type": "beautify"
       }
     ],
