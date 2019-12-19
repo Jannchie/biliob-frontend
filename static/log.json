@@ -1799,6 +1799,18 @@
       {
         "text": "美化了日志显示",
         "type": "beautify"
+      },
+      {
+        "text": "美化了观测者排行",
+        "type": "beautify"
+      },
+      {
+        "text": "更新了作者个人信息的显示",
+        "type": "feature"
+      },
+      {
+        "text": "修复了部分图表显示异常的问题",
+        "type": "fix"
       }
     ],
     "type": "unimportant"
