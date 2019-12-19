@@ -1786,7 +1786,7 @@
       }
     ],
     "type": "important"
-  }
+  },
   {
     "title": "添加功能",
     "version": "ver.7.4.0",
@@ -1838,5 +1838,5 @@
       }
     ],
     "type": "unimportant"
-  },
+  }
 ]
