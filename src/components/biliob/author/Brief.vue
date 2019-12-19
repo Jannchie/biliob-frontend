@@ -23,9 +23,9 @@ export default {
     authorBrief() {
       if (this.authorData != undefined && this.authorData.name != undefined) {
         if (this.authorData.official == "") {
-          return `${this.authorData.name} 还未经过认证。`;
+          return `「${this.authorData.name}」还未经过认证。`;
         } else {
-          return `${this.authorData.name} 是经过认证的「${
+          return `「${this.authorData.name}」是经过认证的「${
             this.authorData.official
           }」。`;
         }
@@ -54,10 +54,11 @@ export default {
         let latestRateChannel = latestSortedChannel[0];
         const TEMPLATE_1 = `TA是主要活跃在「${mostArchive}区」的UP主，在该分区共存活「${mostChannelCount} 个稿件」，`;
         let TEMPLATE_2 = ``;
+
         if (topViewChannel != mostArchive) {
-          TEMPLATE_2 = `然而TA在「${topRateChannel}区」似乎更有建树，`;
+          TEMPLATE_2 = `然而TA在「${topViewChannel}区」拥有着表现最好的作品，`;
         }
-        let TEMPLATE_3 = `代表作有《 ${mostArchiveName}》。`;
+        let TEMPLATE_3 = `代表作是《 ${mostArchiveName}》。`;
         let TEMPLATE_4 = ``;
 
         if (
