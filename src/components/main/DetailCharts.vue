@@ -13,7 +13,10 @@
           {{ title }}
         </div>
       </BiliobDarkInfo>
-      <VResponsive :aspect-ratio="aspectRatio" :style="`height:${height}px`">
+      <VResponsive
+        :aspect-ratio="aspectRatio"
+        :style="`max-height:${height}px`"
+      >
         <Chart :autoresize="true" :theme="theme" :options="options" />
         <VProgressCircular
           v-show="loading"

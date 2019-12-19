@@ -1761,8 +1761,8 @@
   },
   {
     "title": "修复与美化",
-    "version": "ver.7.3.3",
-    "date": "2019-11-27",
+    "version": "ver.7.4.0",
+    "date": "2019-12-11",
     "list": [
       {
         "text": "修复了作者排名变更错误",
@@ -1775,6 +1775,42 @@
       {
         "text": "美化了图表样式",
         "type": "beautify"
+      },
+      {
+        "text": "添加了个人中心页面",
+        "type": "feature"
+      },
+      {
+        "text": "添加了修改昵称功能",
+        "type": "feature"
+      }
+    ],
+    "type": "important"
+  },
+  {
+    "title": "美化",
+    "version": "ver.7.4.1",
+    "date": "2019-12-19",
+    "list": [
+      {
+        "text": "美化了页脚显示",
+        "type": "beautify"
+      },
+      {
+        "text": "美化了日志显示",
+        "type": "beautify"
+      },
+      {
+        "text": "美化了观测者排行",
+        "type": "beautify"
+      },
+      {
+        "text": "更新了作者个人信息的显示",
+        "type": "feature"
+      },
+      {
+        "text": "修复了部分图表显示异常的问题",
+        "type": "fix"
       }
     ],
     "type": "unimportant"

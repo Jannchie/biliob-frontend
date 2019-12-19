@@ -12,7 +12,7 @@
           <span
             class="grey white--text darken-2"
             style="padding:1px 5px;margin-right:10px"
-            >{{ log.version }}</span
+            >{{ latestPost.version }}</span
           >
         </span>
         <span display="flex">
@@ -22,7 +22,7 @@
           <span
             class="grey white--text darken-2"
             style="padding:1px 5px;margin-right:10px;"
-            >{{ log.date }}</span
+            >{{ latestPost.date }}</span
           >
         </span>
         <div
@@ -32,9 +32,26 @@
           近期更新内容
         </div>
         <div class="caption mb-2">
-          <div v-for="eachLine in log.list" :key="eachLine.text" type="circle">
-            <VIcon small>{{ getListIcon(eachLine.type) }}</VIcon>
-            {{ eachLine.text }}
+          <div
+            v-for="eachType in ['stone', 'cloud', 'feature', 'fix', 'beautify']"
+            :key="eachType"
+          >
+            <div v-if="latestPost.list[eachType] != undefined">
+              <div class="body-2 font-weight-bold">
+                <VIcon left small>{{ getListIcon(eachType) }} </VIcon
+                ><span style="vertical-align: middle">{{
+                  getTypeName(eachType)
+                }}</span>
+              </div>
+              <li
+                v-for="eachItem in latestPost.list[eachType]"
+                :key="eachItem"
+                class="ml-2"
+                style="list-style-type:circle"
+              >
+                {{ eachItem }}
+              </li>
+            </div>
           </div>
         </div>
       </VCardText>
@@ -52,18 +69,26 @@
 </template>
 <script>
 import log from "../../../static/log.json";
+let latestPost = log[log.length - 1];
+let temp = {};
+latestPost.list.forEach(item => {
+  if (temp[item.type] == undefined) {
+    temp[item.type] = [item.text];
+  } else {
+    temp[item.type].push(item.text);
+  }
+});
+latestPost.list = temp;
 
 export default {
   data() {
-    return { show: Boolean(), log: Object() };
+    return { show: Boolean(), log: Object(), latestPost: latestPost };
   },
   mounted() {
     this.show = false;
-    this.log = log[log.length - 1];
-
-    if (this.$cookies.get("ver") != this.log.version) {
+    if (this.$cookies.get("ver") != this.latestPost.version) {
       this.show = true;
-      this.$cookies.set("ver", this.log.version, Infinity);
+      this.$cookies.set("ver", this.latestPost.version, Infinity);
     }
   },
   methods: {
@@ -79,6 +104,22 @@ export default {
           return "mdi-chess-pawn";
         default:
           break;
+      }
+    },
+    getTypeName(name) {
+      switch (name) {
+        case "stone":
+          return "里程碑";
+        case "feature":
+          return "特性";
+        case "fix":
+          return "修复";
+        case "beautify":
+          return "美化";
+        case "cloud":
+          return "架构";
+        default:
+          return "其他";
       }
     },
     getListIcon: function(type) {

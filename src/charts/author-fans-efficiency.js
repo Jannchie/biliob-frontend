@@ -4,17 +4,11 @@ var { convertDateToUTC } = require("./util/convertDateToUTC");
 function drawChart(data) {
   data = data.data;
 
-  data = data
-    .filter(function(item) {
-      return (
-        item.fans != null &&
-        item.articleView != null &&
-        item.archiveView != null
-      );
-    })
-    .sort((a, b) => {
-      return a.datetime - b.datetime;
-    });
+  data = data.filter(function(item) {
+    return (
+      item.fans != null && item.articleView != null && item.archiveView != null
+    );
+  });
 
   let fansEfficiency = [];
   var step = 7;

@@ -42,21 +42,24 @@
             />
             <DetailCharts
               class="mb-2"
-              title="日历"
-              :options="authorDataDiffOptions"
+              title="粉丝数变化速率"
+              :options="authorFansRateOptions"
             />
             <DetailCharts
               class="mb-2"
-              title="粉丝数变化速率"
-              :options="authorFansRateOptions"
+              title="变化日历"
+              :height="220"
+              :options="authorDataDiffOptions"
             />
           </div>
           <div v-if="cPage == 0">
             <VRow dense>
               <VCol>
-                <BiliobCard border="bottom" title="作者简介" light>
-                  {{ briefInfo }}
-                </BiliobCard>
+                <BiliobAuthorBrief
+                  :author-data="authorData"
+                  :author-top-video="authorTopVideo"
+                  :author-latest-video="authorLatestVideo"
+                ></BiliobAuthorBrief>
               </VCol>
             </VRow>
             <VRow dense>

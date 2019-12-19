@@ -29,14 +29,31 @@
           </div>
           <div class="caption mb-2">
             <div
-              v-for="eachLine in eachPost.list"
-              :key="eachLine.text"
-              type="circle"
+              v-for="eachType in [
+                'stone',
+                'cloud',
+                'feature',
+                'fix',
+                'beautify'
+              ]"
+              :key="eachType"
             >
-              <VIcon small>{{ getListIcon(eachLine.type) }}</VIcon
-              ><span style="vertical-align: middle">
-                {{ eachLine.text }}
-              </span>
+              <div v-if="eachPost.list[eachType] != undefined">
+                <div class="body-2 font-weight-bold">
+                  <VIcon left small>{{ getListIcon(eachType) }} </VIcon
+                  ><span style="vertical-align: middle">{{
+                    getTypeName(eachType)
+                  }}</span>
+                </div>
+                <li
+                  v-for="eachItem in eachPost.list[eachType]"
+                  :key="eachItem"
+                  class="ml-2"
+                  style="list-style-type:circle"
+                >
+                  {{ eachItem }}
+                </li>
+              </div>
             </div>
           </div>
         </BiliobCard>
@@ -46,6 +63,17 @@
 </template>
 <script>
 import log from "@/../static/log.json";
+log.forEach(e => {
+  let temp = {};
+  e.list.forEach(item => {
+    if (temp[item.type] == undefined) {
+      temp[item.type] = [item.text];
+    } else {
+      temp[item.type].push(item.text);
+    }
+  });
+  e.list = temp;
+});
 
 export default {
   data() {
@@ -58,6 +86,22 @@ export default {
     this.timelinePost.reverse();
   },
   methods: {
+    getTypeName(name) {
+      switch (name) {
+        case "stone":
+          return "里程碑";
+        case "feature":
+          return "特性";
+        case "fix":
+          return "修复";
+        case "beautify":
+          return "美化";
+        case "cloud":
+          return "架构";
+        default:
+          return "其他";
+      }
+    },
     isLarge: function(type) {
       let isLarge;
       type === "holyshit" ? (isLarge = true) : (isLarge = false);

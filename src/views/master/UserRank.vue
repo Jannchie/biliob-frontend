@@ -133,7 +133,11 @@
             #{{ 4 + index }}
           </div>
           <VCardTitle>
-            {{ eachUser.nickName }}
+            <div
+              style="overflow: hidden;text-overflow:ellipsis;white-space: nowrap;"
+            >
+              {{ eachUser.nickName }}
+            </div>
           </VCardTitle>
           <VCardText>
             EXP {{ eachUser.exp }}
