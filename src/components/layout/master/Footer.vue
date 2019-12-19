@@ -31,18 +31,17 @@
         <span class="caption">
           &copy;
           {{ new Date().getFullYear() }}
-          <a
-            class="tertiary--text"
-            href="https://www.github.com/jannchie"
-            target="_blank"
-            >Jannchie</a
+          <a href="https://www.github.com/jannchie" target="_blank"
+            >Jannchie见齐</a
           >, made with
-          <VIcon color="tertiary" size="17">mdi-heart</VIcon>
+          <VIcon color="red" size="14">mdi-heart</VIcon>
           for BILIBILI
         </span>
         <div>
           <span class="grey--text caption"
-            >互联网ICP备案：浙ICP备17035172号-2</span
+            >互联网ICP备案：<a href="http://www.beian.miit.gov.cn/"
+              >浙ICP备17035172号-2</a
+            ></span
           >
         </div>
       </VFlex>
