@@ -5,7 +5,7 @@ function drawChart(data) {
   });
   let series = data.map((e, i) => {
     return {
-      name: e[1] + "变化率",
+      name: e[1] + "变化",
       color: e[2],
       type: "heatmap",
       coordinateSystem: "calendar",
@@ -32,8 +32,8 @@ function drawChart(data) {
       cellSize: ["auto", "20"],
       range: [front, now],
       yearLabel: { show: false },
-      dayLabel: { nameMap: "cn", position: "end", color: "#888" },
-      monthLabel: { nameMap: "cn", color: "#888" }
+      dayLabel: { nameMap: "cn", position: "end", color: "#888", fontSize: 10 },
+      monthLabel: { nameMap: "cn", color: "#888", fontSize: 10 }
     };
   });
   let vms = data.map((e, i) => {
@@ -53,8 +53,8 @@ function drawChart(data) {
       max: max,
       range: [0, max],
       outOfRange: {
-        color: "#111",
-        colorAlpha: [1, 0.2]
+        color: "#333",
+        colorAlpha: [1, 0]
       },
       inRange: {
         color: e[2],
