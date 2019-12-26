@@ -1,4 +1,18 @@
 function drawChart(data, maxSize) {
+  console.log(maxSize);
+  let max = Math.max.apply(null, data.map(e => e.value));
+  let min = Math.min.apply(null, data.map(e => e.value));
+  function scale(a, b) {
+    return function(c, d) {
+      let delta = b - a;
+      return function(e) {
+        let r = (e - a) / delta;
+        let d2 = d - c;
+        return r * d2 + c;
+      };
+    };
+  }
+  let f = scale(min, max)(0, 1);
   let options = {
     title: [{}],
     tooltip: {
@@ -25,7 +39,7 @@ function drawChart(data, maxSize) {
         height: "90%",
         right: null,
         bottom: null,
-        sizeRange: [16, maxSize],
+        sizeRange: [16, 60],
         rotationRange: [0, 0],
         rotationStep: 45,
         gridSize: 8,
@@ -33,6 +47,10 @@ function drawChart(data, maxSize) {
 
         textStyle: {
           normal: {
+            color: function(e) {
+              // Random color
+              return "rgba(" + [30, 136, 229, f(e.value)].join(",") + ")";
+            },
             fontWeight: "bold"
           }
         },

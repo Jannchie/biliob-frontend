@@ -39,9 +39,20 @@ function drawChart(data) {
         drawOutOfBound: false,
 
         textStyle: {
-          normal: {
-            fontWeight: "bold"
-          }
+          color: function() {
+            // Random color
+            return (
+              "rgba(" +
+              [
+                Math.round(Math.random() * 160),
+                Math.round(Math.random() * 160),
+                Math.round(Math.random() * 160),
+                Math.round(Math.random() * 160)
+              ].join(",") +
+              ")"
+            );
+          },
+          fontWeight: "bold"
         },
 
         data: d
