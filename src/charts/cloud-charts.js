@@ -1,5 +1,6 @@
 function drawChart(data, maxSize) {
   console.log(maxSize);
+  let textSize = (window.innerWidth + 1000) / 40;
   let max = Math.max.apply(null, data.map(e => e.value));
   let min = Math.min.apply(null, data.map(e => e.value));
   function scale(a, b) {
@@ -12,7 +13,7 @@ function drawChart(data, maxSize) {
       };
     };
   }
-  let f = scale(min, max)(0, 1);
+  let f = scale(min, max)(0.2, 1);
   let options = {
     title: [{}],
     tooltip: {
@@ -39,7 +40,7 @@ function drawChart(data, maxSize) {
         height: "90%",
         right: null,
         bottom: null,
-        sizeRange: [16, 60],
+        sizeRange: [textSize / 2, textSize],
         rotationRange: [0, 0],
         rotationStep: 45,
         gridSize: 8,
