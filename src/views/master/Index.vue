@@ -28,6 +28,13 @@
         </VSlideYTransition>
       </VCol>
     </VRow>
+    <VRow dense>
+      <VCol>
+        <VSlideYTransition>
+          <HomePopularTag></HomePopularTag>
+        </VSlideYTransition>
+      </VCol>
+    </VRow>
   </VContainer>
 </template>
 <script>
