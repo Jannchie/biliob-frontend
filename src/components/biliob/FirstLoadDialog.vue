@@ -69,16 +69,20 @@
 </template>
 <script>
 import log from "../../../static/log.json";
-let latestPost = log[log.length - 1];
-let temp = {};
-latestPost.list.forEach(item => {
-  if (temp[item.type] == undefined) {
-    temp[item.type] = [item.text];
-  } else {
-    temp[item.type].push(item.text);
-  }
+
+log.forEach(e => {
+  let temp = {};
+  e.list.forEach(item => {
+    if (temp[item.type] == undefined) {
+      temp[item.type] = [item.text];
+    } else {
+      temp[item.type].push(item.text);
+    }
+  });
+  e.list = temp;
 });
-latestPost.list = temp;
+
+let latestPost = log[log.length - 1];
 
 export default {
   data() {

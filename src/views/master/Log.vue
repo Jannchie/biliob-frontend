@@ -63,17 +63,6 @@
 </template>
 <script>
 import log from "@/../static/log.json";
-log.forEach(e => {
-  let temp = {};
-  e.list.forEach(item => {
-    if (temp[item.type] == undefined) {
-      temp[item.type] = [item.text];
-    } else {
-      temp[item.type].push(item.text);
-    }
-  });
-  e.list = temp;
-});
 
 export default {
   data() {
