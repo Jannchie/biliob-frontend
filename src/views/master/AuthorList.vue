@@ -20,7 +20,7 @@
                   class="pl-1"
                   outlined
                   color="blue "
-                  :to="`/author/${author._id}`"
+                  :to="`/author/${author.mid}`"
                 >
                   <!-- <VIcon>mdi-fire</VIcon> -->
                   <VChip
