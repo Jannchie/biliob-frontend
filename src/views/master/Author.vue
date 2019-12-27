@@ -288,7 +288,9 @@ export default {
     }
     this.$store.commit("toAuthor");
     this.axios.get("/author/" + this.mid).then(response => {
-      response.data.channels.sort((a, b) => b.count - a.count);
+      if (response.data.channels != undefined) {
+        response.data.channels.sort((a, b) => b.count - a.count);
+      }
       this.authorData = response.data;
       document.title = `${
         this.authorData.name
