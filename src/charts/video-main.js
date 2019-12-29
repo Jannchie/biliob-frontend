@@ -24,7 +24,6 @@ function drawChart(data) {
       new Date(b.datetime.replace("+0000", ""))
     );
   });
-  console.log(data.data);
 
   let Chart = {
     title: {

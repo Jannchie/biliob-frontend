@@ -1,6 +1,5 @@
 var format = require("date-fns/format");
-var { convertDateToUTC } = require("./util/convertDateToUTC");
-function drawChart(data) {
+function drawChart(data, type = "line") {
   let series = data.map(e => {
     return {
       name: e[1],
@@ -8,7 +7,7 @@ function drawChart(data) {
       smooth: true,
       showSymbol: false,
       color: e[2],
-      type: "line"
+      type: type
     };
   });
   let Chart = {
@@ -49,11 +48,7 @@ function drawChart(data) {
         label: {
           formatter: function(params) {
             return (
-              "日期：" +
-              format(
-                convertDateToUTC(new Date(params.value)),
-                "YYYY-MM-DD HH:mm"
-              )
+              "日期：" + format(new Date(params.value), "YYYY-MM-DD HH:mm")
             );
           }
         }

@@ -42,7 +42,7 @@
             />
             <DetailCharts
               class="mb-2"
-              title="粉丝数变化速率"
+              title="历史变化速率"
               :options="authorFansRateOptions"
             />
             <DetailCharts
@@ -60,6 +60,17 @@
                   :author-top-video="authorTopVideo"
                   :author-latest-video="authorLatestVideo"
                 ></BiliobAuthorBrief>
+              </VCol>
+            </VRow>
+            <VRow dense>
+              <VCol>
+                <BiliobCard light border="bottom" title="UP主最新数据">
+                  <div class="d-flex justify-between">
+                    <div v-for="i in [1, 2, 3]" :key="i">
+                      <div>粉丝数</div>
+                    </div>
+                  </div>
+                </BiliobCard>
               </VCol>
             </VRow>
             <VRow dense>
@@ -197,13 +208,11 @@
 
 <script>
 var format = require("date-fns/format");
-
+import interpolation from "../../charts/util/interpolation";
 import AuthorInfo from "@/components/aside/AuthorInfo.vue";
 import DetailCharts from "@/components/main/DetailCharts.vue";
 import drawFansChart from "@/charts/author-fans.js";
-import drawFansRateChart from "@/charts/author-fans-rate.js";
-import getLineChartOptions from "@/charts/biliob-line-chart.js";
-import getMultiLineChartOptions from "@/charts/biliob-multi-line-chart.js";
+import getMultiChartOptions from "@/charts/biliob-multi-line-chart.js";
 import getAuthorFansEfficiencyOptions from "@/charts/author-fans-efficiency.js";
 import getAuthorTagCloudOptions from "@/charts/author-tag-cloud.js";
 import getAuthorDataDiffOptions from "@/charts/author-data-diff.js";
@@ -240,10 +249,6 @@ export default {
       authorFansRateOptions: Object(),
       authorFansEfficiencyOptions: Object(),
       authorTagCloudOptions: Object(),
-      historyFansOptions: Object(),
-      historyViewOptions: Object(),
-      historyLikeOptions: Object(),
-      historyDataOptions: Object(),
       authorDataDiffOptions: Object(),
       mid: Number(),
       cPage: 0
@@ -296,7 +301,6 @@ export default {
         this.authorData.name
       } - UP主数据详情 - BiliOB观测者 - B站历史数据统计分析站点`;
       this.authorFansOptions = drawFansChart(deepCopy(this.authorData));
-      this.authorFansRateOptions = drawFansRateChart(deepCopy(this.authorData));
       this.authorFansEfficiencyOptions = getAuthorFansEfficiencyOptions(
         deepCopy(this.authorData)
       );
@@ -318,32 +322,25 @@ export default {
       fansArray = fansArray.reverse();
       viewArray = viewArray.reverse();
       likeArray = likeArray.reverse();
-      this.historyFansOptions = getLineChartOptions(
-        fansArray,
-        "粉丝数",
-        "#1e88e5"
-      );
-      this.historyViewOptions = getLineChartOptions(
-        viewArray,
-        "播放数",
-        "#2b821d"
-      );
-      this.historyLikeOptions = getLineChartOptions(
-        likeArray,
-        "获赞数",
-        "#c12e34"
-      );
       this.authorDataDiffOptions = getAuthorDataDiffOptions([
         [fansArray, "粉丝数", "#1e88e5"],
         [viewArray, "播放数", "#2b821d"],
         [likeArray, "获赞数", "#c12e34"]
       ]);
-      this.historyDataOptions = getMultiLineChartOptions([
+      this.authorFansRateOptions = getMultiChartOptions(
+        [
+          [interpolation(fansArray), "粉丝数", "#1e88e5"],
+          [interpolation(viewArray), "播放数", "#2b821d"],
+          [interpolation(likeArray), "获赞数", "#c12e34"]
+        ],
+        "bar"
+      );
+
+      this.historyDataOptions = getMultiChartOptions([
         [fansArray, "粉丝数", "#1e88e5"],
         [viewArray, "播放数", "#2b821d"],
         [likeArray, "获赞数", "#c12e34"]
       ]);
-      console.log(this.historyDataOptions);
 
       if (this.authorData.forceFocus != true) {
         this.authorData.forceFocus == false;

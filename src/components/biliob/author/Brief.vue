@@ -47,8 +47,6 @@ export default {
         );
         let topSortedChannel = this.getSortedChannel(topChannelObject);
         let latestSortedChannel = this.getSortedChannel(latestChannelObject);
-        console.log(latestSortedChannel);
-        console.log(topSortedChannel);
 
         let topRateChannel = topSortedChannel[0];
         let latestRateChannel = latestSortedChannel[0];

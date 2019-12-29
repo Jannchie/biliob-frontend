@@ -10,7 +10,14 @@ function drawChart(data) {
       type: "heatmap",
       coordinateSystem: "calendar",
       calendarIndex: i,
-      data: e[0]
+      data: e[0],
+      tooltip: {
+        formatter: params => {
+          return `${params.seriesName} <br />
+          日期：${params.value[0]}  <br />
+          数值：${params.value[1]}`;
+        }
+      }
     };
   });
 

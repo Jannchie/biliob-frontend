@@ -27,8 +27,6 @@ export default {
       }
     },
     color() {
-      console.log(this.$store.state.notificationColor);
-
       return this.$store.state.notificationColor;
     }
   }

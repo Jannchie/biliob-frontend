@@ -107,7 +107,6 @@ export default {
       } else {
         this.progressTask = data.lastRunningProgressTask;
       }
-      console.log(this.progressTask);
     },
     getLatestTaskInfo() {
       this.axios.get(`/tracer/latest-progress`).then(r => {

@@ -1,18 +1,12 @@
 <template>
   <div>
-    <BiliobCard :text="subTitle" :color="color">
-      <BiliobDarkInfo
-        slot="offset"
-        light
-        :elevation="0"
-        border="bottom"
-        class="title"
-      >
-        <slot v-if="$slots.header" name="header"></slot>
-        <div v-else class="px-5 py-1">
-          {{ title }}
-        </div>
-      </BiliobDarkInfo>
+    <BiliobCard
+      :title="title"
+      light
+      border="bottom"
+      :text="subTitle"
+      :color="color"
+    >
       <VResponsive
         :aspect-ratio="aspectRatio"
         :style="`max-height:${height}px`"

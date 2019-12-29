@@ -53,8 +53,6 @@ function drawChart(aData, bData, aName, bName) {
     let deltaA = data[0][keys[idx]] - data[0][keys[idx + 10]];
     let deltaB = data[1][keys[idx]] - data[1][keys[idx + 10]];
     if (deltaB - deltaA) {
-      console.log(e, deltaA, deltaB, deltaA - deltaB);
-
       ds.unshift([e, deltaA - deltaB]);
     }
   });
