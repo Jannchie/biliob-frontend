@@ -85,7 +85,7 @@ export default {
         case "传说级涨粉":
           return "mdi-chevron-triple-up";
         case "新星爆发":
-          return "primary";
+          return "mdi-new-box";
         case "急转直下":
           return "mdi-trending-down";
         case "大量掉粉":
