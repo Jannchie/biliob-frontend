@@ -1,5 +1,4 @@
 var format = require("date-fns/format");
-var { convertDateToUTC } = require("./util/convertDateToUTC");
 function drawChart(data, name, color = "#1e88e5") {
   let Chart = {
     grid: {
@@ -35,13 +34,7 @@ function drawChart(data, name, color = "#1e88e5") {
       axisPointer: {
         label: {
           formatter: function(params) {
-            return (
-              "日期：" +
-              format(
-                convertDateToUTC(new Date(params.value)),
-                "YYYY-MM-DD HH:mm"
-              )
-            );
+            return "日期：" + format(params.value, "YYYY-MM-DD HH:mm");
           }
         }
       }

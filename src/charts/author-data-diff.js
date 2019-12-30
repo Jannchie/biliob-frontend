@@ -1,4 +1,5 @@
 import interpolation from "./util/interpolation";
+import formatNumber from "@/util/format-number";
 function drawChart(data) {
   data.forEach(e => {
     e[0] = interpolation(e[0]);
@@ -15,7 +16,7 @@ function drawChart(data) {
         formatter: params => {
           return `${params.seriesName} <br />
           日期：${params.value[0]}  <br />
-          数值：${params.value[1]}`;
+          数值：${formatNumber(params.value[1])}`;
         }
       }
     };
