@@ -77,7 +77,7 @@ import AuthorVersusCard from "../components/main/AuthorVersusCard.vue";
 import DetailCharts from "../components/main/DetailCharts.vue";
 import drawSitePlay from "../charts/site_play.js";
 // import getOnlineOptions from "../charts/online.js";
-import drawKeywordCloud from "../charts/keyword-cloud.js";
+import drawKeywordCloud from "../charts/cloud-charts.js";
 
 export default {
   components: { AuthorVersusCard, DetailCharts },
