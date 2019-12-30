@@ -3,7 +3,7 @@
     <div class="rank-container">
       <div style="flex-grow: 1;text-align:center">
         <div class="rank-title subheading  grey--text text--darken-2">
-          粉丝总数
+          粉丝排名
         </div>
         <div
           class="rank-value py-1  subtitle-1 font-weight-black blue--text text--darken-3"
@@ -14,7 +14,7 @@
       </div>
       <div style="flex-grow: 1;text-align:center">
         <div class="rank-title subheading  grey--text text--darken-2">
-          播放总量
+          播放排名
         </div>
         <div
           class="rank-value py-1  subtitle-1 font-weight-black blue--text text--darken-3"
@@ -25,7 +25,7 @@
       </div>
       <div style="flex-grow: 1;text-align:center">
         <div class="rank-title subheading  grey--text text--darken-2">
-          获赞总量
+          获赞排名
         </div>
         <div
           class="rank-value py-1  subtitle-1 font-weight-black blue--text text--darken-3"

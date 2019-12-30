@@ -65,11 +65,30 @@
             <VRow dense>
               <VCol>
                 <BiliobCard light border="bottom" title="UP主最新数据">
-                  <div class="d-flex justify-between">
-                    <div v-for="i in [1, 2, 3]" :key="i">
-                      <div>粉丝数</div>
-                    </div>
-                  </div>
+                  <VRow>
+                    <VCol
+                      v-for="each in [
+                        { name: '粉丝总数', value: formatedFans },
+                        { name: '播放总数', value: formatedView },
+                        { name: '获赞总数', value: formatedLike },
+                        { name: '专栏阅读', value: formatedArticle }
+                      ]"
+                      :key="each.name"
+                    >
+                      <div style="flex-grow: 1; text-align:center">
+                        <div
+                          class="rank-title subheading  grey--text text--darken-2"
+                        >
+                          {{ each.name }}
+                        </div>
+                        <div
+                          class="rank-value subtitle-1 font-weight-black blue--text text--darken-3"
+                        >
+                          {{ each.value }}
+                        </div>
+                      </div>
+                    </VCol>
+                  </VRow>
                 </BiliobCard>
               </VCol>
             </VRow>
@@ -83,47 +102,52 @@
             </VRow>
 
             <!-- <DetailCharts
-              class="mb-2"
-              title="粉丝、播放量变化趋势"
-              :options="authorFansOptions"
-            /> -->
-
-            <!-- <DetailCharts
           id="relationship"
           title="UP主作品相关度"
           :options="relationshipOptions"
             />-->
           </div>
           <div v-else-if="cPage == 1">
-            <DetailCharts
-              title="粉丝变化效率"
-              sub-title="每一万播放量增长造成的粉丝变动数"
-              :options="authorFansEfficiencyOptions"
-            />
-            <DetailCharts :options="authorTagCloudOptions">
-              <VFlex slot="header">
-                <VTabs background-color="transparent" slider-color="primary">
-                  <span
-                    class="subheading font-weight-light mr-3"
-                    style="align-self: center"
-                  >
-                    <VIcon left right>mdi-format-list-bulleted-type</VIcon>
-                  </span>
-                  <VTab @click="tagSort(0)">
-                    <VIcon style="margin-right:10px;">
-                      mdi-video
-                    </VIcon>
-                    投稿量
-                  </VTab>
-                  <VTab @click="tagSort(1)">
-                    <VIcon style="margin-right:10px;">
-                      mdi-play-circle-outline
-                    </VIcon>
-                    播放量
-                  </VTab>
-                </VTabs>
-              </VFlex>
-            </DetailCharts>
+            <VRow dense>
+              <VCol>
+                <DetailCharts
+                  title="粉丝变化效率"
+                  sub-title="每一万播放量增长造成的粉丝变动数"
+                  :options="authorFansEfficiencyOptions"
+                />
+              </VCol>
+            </VRow>
+            <VRow dense>
+              <VCol>
+                <DetailCharts :options="authorTagCloudOptions">
+                  <VFlex slot="header">
+                    <VTabs
+                      background-color="transparent"
+                      slider-color="primary"
+                    >
+                      <span
+                        class="subheading font-weight-light mr-3"
+                        style="align-self: center"
+                      >
+                        <VIcon left right>mdi-format-list-bulleted-type</VIcon>
+                      </span>
+                      <VTab @click="tagSort('totalView')">
+                        <VIcon style="margin-right:10px;">
+                          mdi-video
+                        </VIcon>
+                        投稿量
+                      </VTab>
+                      <VTab @click="tagSort('count')">
+                        <VIcon style="margin-right:10px;">
+                          mdi-play-circle-outline
+                        </VIcon>
+                        播放量
+                      </VTab>
+                    </VTabs>
+                  </VFlex>
+                </DetailCharts>
+              </VCol>
+            </VRow>
           </div>
         </VSlideYTransition>
       </VCol>
@@ -207,15 +231,16 @@
 </template>
 
 <script>
+import formatNumber from "@/util/format-number";
 var format = require("date-fns/format");
 import interpolation from "../../charts/util/interpolation";
 import AuthorInfo from "@/components/aside/AuthorInfo.vue";
 import DetailCharts from "@/components/main/DetailCharts.vue";
-import drawFansChart from "@/charts/author-fans.js";
 import getMultiChartOptions from "@/charts/biliob-multi-line-chart.js";
 import getAuthorFansEfficiencyOptions from "@/charts/author-fans-efficiency.js";
-import getAuthorTagCloudOptions from "@/charts/author-tag-cloud.js";
+import getAuthorTagCloudOptions from "@/charts/cloud-charts.js";
 import getAuthorDataDiffOptions from "@/charts/author-data-diff.js";
+
 var deepCopy = function(o) {
   if (o instanceof Array) {
     var n = [];
@@ -244,7 +269,6 @@ export default {
       authorData: Object(),
       authorTopVideo: Object(),
       authorLatestVideo: Object(),
-      authorFansOptions: Object(),
       relationshipOptions: Object(),
       authorFansRateOptions: Object(),
       authorFansEfficiencyOptions: Object(),
@@ -262,6 +286,34 @@ export default {
     };
   },
   computed: {
+    formatedFans() {
+      if (this.authorData.cFans == undefined) {
+        return "-";
+      } else {
+        return formatNumber(this.authorData.cFans);
+      }
+    },
+    formatedView() {
+      if (this.authorData.cArchiveView == undefined) {
+        return "-";
+      } else {
+        return formatNumber(this.authorData.cArchiveView);
+      }
+    },
+    formatedLike() {
+      if (this.authorData.cLike == undefined) {
+        return "-";
+      } else {
+        return formatNumber(this.authorData.cLike);
+      }
+    },
+    formatedArticle() {
+      if (this.authorData.cLike == undefined) {
+        return "-";
+      } else {
+        return formatNumber(this.authorData.cArticleView);
+      }
+    },
     authorChannelInfo() {
       if (this.authorData.channels == undefined) return [" ", " "];
       return [
@@ -300,7 +352,6 @@ export default {
       document.title = `${
         this.authorData.name
       } - UP主数据详情 - BiliOB观测者 - B站历史数据统计分析站点`;
-      this.authorFansOptions = drawFansChart(deepCopy(this.authorData));
       this.authorFansEfficiencyOptions = getAuthorFansEfficiencyOptions(
         deepCopy(this.authorData)
       );
@@ -359,7 +410,9 @@ export default {
     this.axios.get(`/author/tag?mid=${this.mid}&limit=${50}`).then(r => {
       this.authorTagCloudData = r.data;
       this.authorTagCloudOptions = getAuthorTagCloudOptions(
-        this.authorTagCloudData
+        this.authorTagCloudData.map(e => {
+          return { name: e._id, value: e.totalView };
+        })
       );
     });
   },
@@ -372,8 +425,9 @@ export default {
     },
     tagSort(type) {
       this.authorTagCloudOptions = getAuthorTagCloudOptions(
-        this.authorTagCloudData,
-        type
+        this.authorTagCloudData.map(e => {
+          return { name: e._id, value: e[type] };
+        })
       );
     }
   }

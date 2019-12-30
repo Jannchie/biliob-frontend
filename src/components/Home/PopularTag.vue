@@ -18,11 +18,7 @@ export default {
       let data = r.data.map(e => {
         return { name: e._id, value: e.value };
       });
-      let size = window.innerWidth / 15;
-      if (size <= 60) {
-        size = 60;
-      }
-      this.tagOptions = getOptions(data, size);
+      this.tagOptions = getOptions(data);
     });
   }
 };
