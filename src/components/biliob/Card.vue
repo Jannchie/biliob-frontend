@@ -50,7 +50,7 @@ export default {
     },
     border: {
       type: String,
-      default: "None"
+      default: "bottom"
     },
     offset: {
       type: [Number, String],
@@ -80,11 +80,11 @@ export default {
     },
     dark: {
       type: Boolean,
-      default: true
+      default: false
     },
     light: {
       type: Boolean,
-      default: false
+      default: true
     }
   },
 
