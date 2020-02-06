@@ -55,11 +55,19 @@
           </div>
         </div>
       </VCardText>
-
+      <VDivider></VDivider>
+      <VCardActions class="caption">
+        该网站使用cookies个性化内容来分析我们的流量。该网站我们还根据我们的
+        隐私政策，与分析合作伙伴共享关于您使用该网站的信息。
+      </VCardActions>
       <VDivider></VDivider>
 
       <VCardActions>
         <VSpacer></VSpacer>
+
+        <VBtn to="/privacy" text @click="show = false"
+          ><VIcon left>mdi-page-layout-sidebar-left</VIcon>隐私权政策</VBtn
+        >
         <VBtn color="primary" text @click="show = false">
           I got it
         </VBtn>

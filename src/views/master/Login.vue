@@ -54,6 +54,9 @@
               </Center>
             </VForm>
           </VCardActions>
+          <VCardActions>
+            <VBtn small to="/privacy" text>隐私权政策</VBtn>
+          </VCardActions>
         </BiliobCard>
       </VCol>
     </VRow>
