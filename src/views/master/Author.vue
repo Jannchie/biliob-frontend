@@ -35,6 +35,17 @@
       <VCol :cols="12">
         <VSlideYTransition>
           <div v-if="cPage == 3">
+            <VRow dense>
+              <VCol cols="12">
+                <BiliobCard title="告知">
+                  <VIcon color="warning">mdi-alert</VIcon>
+                  <span class="body-1" style="vertical-align: middle;">
+                    您还没有登陆观测者账号！目前只有登陆且经验值>100的观测者才能看到30日之前的UP主数据！
+                  </span>
+                  <VBtn small to="/login" color="primary">前往登陆</VBtn>
+                </BiliobCard>
+              </VCol>
+            </VRow>
             <DetailCharts
               class="mb-2"
               title="UP主历史数据"
