@@ -162,6 +162,11 @@ export default new Router({
           path: "/donate",
           name: "捐助",
           component: Donate
+        },
+        {
+          path: "/privacy",
+          name: "隐私权政策",
+          component: () => import("@/views/master/Privacy.vue")
         }
       ]
     },

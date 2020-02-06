@@ -25,6 +25,9 @@ function drawChart(data) {
   let cals = data.map(() => {
     let now = new Date();
     let front = new Date(now - 86400 * 363 * 1000);
+    if (document.body.offsetWidth < 768) {
+      front = new Date(now - 86400 * 30 * 1000);
+    }
     now = new Date();
     return {
       right: "35",
