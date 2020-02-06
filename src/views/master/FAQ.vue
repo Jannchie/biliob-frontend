@@ -4,9 +4,8 @@
       slot="aside-cards"
       :class="$vuetify.breakpoint.mdAndDown ? 'mx-0' : 'mx-2'"
     >
-      <BiliobDarkInfo border="bottom" class="title mb-2">
-        <div class="mx-5">目录</div>
-        <div slot="body">
+      <BiliobCard border="bottom" title="目录" class="title mb-2">
+        <div>
           <ol
             v-for="(eachCatalog, catalogIndex) in questionCards"
             slot="body"
@@ -30,17 +29,17 @@
             <VDivider></VDivider>
           </ol>
         </div>
-      </BiliobDarkInfo>
+      </BiliobCard>
     </div>
     <div slot="main-cards">
-      <BiliobDarkInfo
+      <BiliobCard
         v-for="(eachCatalog, catalogIndex) in questionCards"
         :key="catalogIndex"
         border="bottom"
         class="mb-1 title"
+        :title="eachCatalog.catalogName"
       >
-        <div class="mx-5">{{ eachCatalog.catalogName }}</div>
-        <div slot="body">
+        <div>
           <div
             v-for="(eachQuestion,
             questionIndex) in eachCatalog.catalogQuestions"
@@ -61,7 +60,7 @@
             </div>
           </div>
         </div>
-      </BiliobDarkInfo>
+      </BiliobCard>
     </div>
   </CommonMainLayout>
 </template>
