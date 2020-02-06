@@ -207,6 +207,18 @@ import { format } from "date-fns";
 var cnLocale = require("date-fns/locale/zh_cn");
 export default {
   name: "UserRank",
+  metaInfo() {
+    return {
+      meta: [
+        {
+          vmid: "description",
+          name: "description",
+          content:
+            "BiliOB观测者的用户排行榜，在这里可以看到所有观测者的积分排名。积分最高的用户将显示在榜首。"
+        }
+      ]
+    };
+  },
   data() {
     return {
       userData: Object()

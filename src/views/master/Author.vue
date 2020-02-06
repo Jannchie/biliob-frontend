@@ -281,11 +281,30 @@ export default {
   metaInfo() {
     return {
       meta: [
-        { vmid: "description", name: "description", content: this.briefInfo }
+        {
+          vmid: "description",
+          name: "description",
+          content: this.briefInfo
+        },
+        {
+          vmid: "keywords",
+          name: "keywords",
+          content: this.authorKeywords
+        }
       ]
     };
   },
   computed: {
+    authorKeywords() {
+      let n = "";
+      if (this.authorTagCloudData != undefined) {
+        n = this.authorTagCloudData.reduce(
+          (total, e) => total + e._id + ",",
+          ""
+        );
+      }
+      return this.authorData.name + "," + n + this.$baseKeywords;
+    },
     formatedFans() {
       if (this.authorData.cFans == undefined) {
         return "-";

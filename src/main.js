@@ -58,7 +58,8 @@ router.afterEach(function(to) {
   }
 });
 Vue.use(VueRouter);
-
+Vue.prototype.$baseKeywords =
+  "B站,数据,观测者,视频,见齐,biliob,bilibili,UP主,粉丝数,粉丝数排行榜,数据可视化,哔哩哔哩,哔哩哔哩观测者,哔哩哔哩ob,bilibiliob";
 // 使用axios
 axios.defaults.withCredentials = true;
 axios.defaults.baseURL = process.env.VUE_APP_API_ROOT;

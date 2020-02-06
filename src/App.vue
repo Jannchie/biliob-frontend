@@ -7,6 +7,23 @@
 <script>
 export default {
   name: "App",
+  metaInfo() {
+    return {
+      meta: [
+        {
+          vmid: "description",
+          name: "description",
+          content:
+            "欢迎来到BiliOB观测者。我们将为您持续观测B站UP主和其作品的数据变化。在这里可以查询到UP主的排名等信息，并能够对视频各个指标的情报进行分析。该网站的数据具有很大的研究价值，能够帮助UP主制作更加好的作品，也能帮助用户了解B站的热点和近期要闻。这是一个由Jannchie见齐维护的网站。"
+        },
+        {
+          vmid: "keywords",
+          name: "keywords",
+          content: this.$baseKeywords
+        }
+      ]
+    };
+  },
   computed: {
     dark() {
       return this.$store.state.dark;
