@@ -98,9 +98,9 @@ export default {
   },
   mounted() {
     this.show = false;
-    if (this.$cookies.get("ver") != this.latestPost.version) {
+    if (localStorage.getItem("ver") != this.latestPost.version) {
       this.show = true;
-      this.$cookies.set("ver", this.latestPost.version, Infinity);
+      localStorage.setItem("ver", this.latestPost.version);
     }
   },
   methods: {
