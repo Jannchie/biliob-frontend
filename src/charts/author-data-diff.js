@@ -23,10 +23,11 @@ function drawChart(data) {
   });
 
   let cals = data.map(() => {
+    let week = new Date().getDay();
     let now = new Date();
-    let front = new Date(now - 86400 * 363 * 1000);
+    let front = new Date(now - 86400 * 366 * 1000 - (6 - week) * 86400 * 1000);
     if (document.body.offsetWidth < 768) {
-      front = new Date(now - 86400 * 30 * 1000);
+      front = new Date(now - 86400 * 58 * 1000 - (6 - week) * 86400 * 1000);
     }
     now = new Date();
     return {

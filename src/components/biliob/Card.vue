@@ -14,9 +14,9 @@
         :light="light"
       >
         <slot v-if="!title && !text" name="header" />
-        <div v-else class="font-weight-light px-5 py-1">
+        <h3 v-else class="font-weight-light px-5 py-1">
           {{ title }}
-        </div>
+        </h3>
       </BiliobDarkInfo>
       <slot v-else name="offset" />
     </div>

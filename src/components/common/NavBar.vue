@@ -20,7 +20,9 @@
             class="logo"
             src="../../../public/img/icons/android-chrome-192x192.png"
           />
-          BiliOB观测者
+          <h1>
+            BiliOB观测者
+          </h1>
         </VToolbarTitle>
       </VBtn>
       <VToolbarItems class="hidden-md-and-down">
@@ -433,7 +435,15 @@ export default {
     },
     darkMode() {
       this.$store.commit("setDark");
-      this.$cookies.set("dark", this.$store.getters.getDark);
+      this.$cookies.set(
+        "dark",
+        this.$store.getters.getDark,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        "lax"
+      );
     },
     checkIn() {
       this.checkInLoading = true;

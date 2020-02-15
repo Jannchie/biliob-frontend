@@ -7,7 +7,7 @@
         </VListItemAvatar>
         <VListItemContent>
           <VListItemTitle class="white--text">
-            BiliOB观测者
+            <h1 class="title">BiliOB观测者</h1>
           </VListItemTitle>
           <VListItemSubtitle :v-model="drawer">
             管理系统

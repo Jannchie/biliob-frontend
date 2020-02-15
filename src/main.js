@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV != "development") {
+  window.location = "https://www.biliob.com";
+}
+
 import "babel-polyfill";
 // import "@fortawesome/fontawesome-free/css/all.css";
 import "@mdi/font/css/materialdesignicons.css"; // Ensure you are using css-loader
@@ -59,7 +63,7 @@ router.afterEach(function(to) {
 });
 Vue.use(VueRouter);
 Vue.prototype.$baseKeywords =
-  "B站,数据,观测者,视频,见齐,biliob,bilibili,UP主,粉丝数,粉丝数排行榜,数据可视化,哔哩哔哩,哔哩哔哩观测者,哔哩哔哩ob,bilibiliob";
+  "B站,b站数据统计,b站数据分析,哔哩哔哩up主,up主排行,数据,观测者,视频,见齐,biliob,bilibili,UP主,粉丝数,粉丝数排行榜,数据可视化,哔哩哔哩,哔哩哔哩观测者,哔哩哔哩ob,bilibiliob";
 // 使用axios
 axios.defaults.withCredentials = true;
 axios.defaults.baseURL = process.env.VUE_APP_API_ROOT;

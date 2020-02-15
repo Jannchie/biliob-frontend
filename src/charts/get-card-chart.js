@@ -18,7 +18,10 @@ function getBarChart(x, y, type) {
     ],
     yAxis: [
       {
-        type: "value"
+        type: "value",
+        min(val) {
+          return val.min;
+        }
       }
     ],
     series: [
@@ -29,7 +32,6 @@ function getBarChart(x, y, type) {
             width: "5"
           }
         },
-        barWidth: "2px",
         data: y
       }
     ]

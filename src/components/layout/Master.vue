@@ -17,7 +17,7 @@
       </template>
       <VAppBarNavIcon @click.stop="showNav = !showNav"></VAppBarNavIcon>
 
-      <VToolbarTitle>BiliOB观测者</VToolbarTitle>
+      <VToolbarTitle> <h1 class="title">BiliOB观测者</h1></VToolbarTitle>
 
       <VSpacer></VSpacer>
 

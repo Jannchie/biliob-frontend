@@ -10,7 +10,7 @@
           ripple
         >
           <VListItemAvatar :key="eachVideo.title" tile>
-            <VImg :src="zipPic(eachVideo.pic)" />
+            <VImg :alt="eachVideo.title" :src="zipPic(eachVideo.pic)" />
           </VListItemAvatar>
           <VListItemContent>
             <VListItemTitle>

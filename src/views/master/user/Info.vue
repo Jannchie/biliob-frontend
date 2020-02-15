@@ -8,7 +8,7 @@
 
         <VCardText>
           <VRow>
-            <VCol> 注：修改一次昵称需要消耗60点积分 </VCol>
+            <VCol> 注：修改一次昵称需要消耗50点积分 </VCol>
             <VCol cols="12">
               <VTextField
                 v-model="newNickName"
@@ -151,7 +151,7 @@ export default {
           .post(`/user/nickname`, this.newNickName)
           .then(response => {
             this.msg = response.data.msg;
-            this.$store.commit("setNickName", response.data.data.nickName);
+            this.$store.commit("setNickName", this.newNickName);
             this.$store.commit("showMessage", {
               msg: response.data.msg,
               color: "info"

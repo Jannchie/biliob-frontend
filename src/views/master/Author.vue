@@ -165,77 +165,83 @@
     </VRow>
     <VRow dense>
       <VCol>
-        <BiliobCard light title="UP主播放最高视频" border="bottom">
-          <VSlideGroup :value="authorTopVideo.content" multiple show-arrows>
-            <VSlideItem
-              v-for="(eachVideo, index) in authorTopVideo.content"
-              :key="index"
-              class="ma-1"
+        <BiliobSlideCard
+          title="UP主播放最高视频"
+          :value="authorTopVideo.content"
+          multiple
+          show-arrows
+        >
+          <div
+            v-for="(eachVideo, index) in authorTopVideo.content"
+            :key="index"
+            class="ma-1"
+          >
+            <VCard
+              :to="`/author/${eachVideo.mid}/video/${eachVideo.aid}`"
+              max-width="160"
+              width="160px"
             >
-              <VCard
-                :to="`/author/${eachVideo.mid}/video/${eachVideo.aid}`"
-                max-width="160"
-                width="160px"
+              <VImg
+                class="white--text"
+                height="100px"
+                :src="zipPic(eachVideo.pic)"
               >
-                <VImg
-                  class="white--text"
-                  height="100px"
-                  :src="zipPic(eachVideo.pic)"
-                >
-                </VImg>
+              </VImg>
 
-                <VCardText style="overflow: hidden; text-overflow: ellipsis;">
-                  <span class=" cards-title text--primary caption">
-                    <span>{{ eachVideo.title }}</span
-                    ><br />
-                  </span>
-                  <span class="caption">{{
-                    formatDate(eachVideo.datetime, "YYYY-MM-DD HH:MM:SS")
-                  }}</span
+              <VCardText style="overflow: hidden; text-overflow: ellipsis;">
+                <span class=" cards-title text--primary caption">
+                  <span>{{ eachVideo.title }}</span
                   ><br />
-                </VCardText>
-              </VCard>
-            </VSlideItem>
-          </VSlideGroup>
-        </BiliobCard>
+                </span>
+                <span class="caption">{{
+                  formatDate(eachVideo.datetime, "YYYY-MM-DD HH:MM:SS")
+                }}</span
+                ><br />
+              </VCardText>
+            </VCard>
+          </div>
+        </BiliobSlideCard>
       </VCol>
     </VRow>
     <VRow dense>
       <VCol>
-        <BiliobCard light title="UP主最新上传视频" border="bottom">
-          <VSlideGroup :value="authorLatestVideo.content" multiple show-arrows>
-            <VSlideItem
-              v-for="(eachVideo, index) in authorLatestVideo.content"
-              :key="index"
-              class="ma-1"
+        <BiliobSlideCard
+          title="UP主最新上传视频"
+          :value="authorLatestVideo.content"
+          multiple
+          show-arrows
+        >
+          <div
+            v-for="(eachVideo, index) in authorLatestVideo.content"
+            :key="index"
+            class="ma-1"
+          >
+            <VCard
+              class="elevation-3"
+              :to="`/author/${eachVideo.mid}/video/${eachVideo.aid}`"
+              max-width="160"
+              width="160px"
             >
-              <VCard
-                class="elevation-3"
-                :to="`/author/${eachVideo.mid}/video/${eachVideo.aid}`"
-                max-width="160"
-                width="160px"
+              <VImg
+                class="white--text"
+                height="100px"
+                :src="zipPic(eachVideo.pic)"
               >
-                <VImg
-                  class="white--text"
-                  height="100px"
-                  :src="zipPic(eachVideo.pic)"
-                >
-                </VImg>
+              </VImg>
 
-                <VCardText>
-                  <span class="text--primary caption cards-title">
-                    <span>{{ eachVideo.title }}</span
-                    ><br />
-                  </span>
-                  <span class="caption">{{
-                    formatDate(eachVideo.datetime, "YYYY-MM-DD HH:MM:SS")
-                  }}</span
+              <VCardText>
+                <span class="text--primary caption cards-title">
+                  <span>{{ eachVideo.title }}</span
                   ><br />
-                </VCardText>
-              </VCard>
-            </VSlideItem>
-          </VSlideGroup>
-        </BiliobCard>
+                </span>
+                <span class="caption">{{
+                  formatDate(eachVideo.datetime, "YYYY-MM-DD HH:MM:SS")
+                }}</span
+                ><br />
+              </VCardText>
+            </VCard>
+          </div>
+        </BiliobSlideCard>
       </VCol>
     </VRow>
   </VContainer>
@@ -285,12 +291,18 @@ export default {
       authorFansEfficiencyOptions: Object(),
       authorTagCloudOptions: Object(),
       authorDataDiffOptions: Object(),
+      historyDataOptions: Object(),
       mid: Number(),
       cPage: 0
     };
   },
   metaInfo() {
     return {
+      title: `${
+        this.authorData.name == undefined
+          ? "载入UP主信息中"
+          : this.authorData.name
+      } - UP主数据详情 - BiliOB观测者 - B站历史数据统计分析站点`,
       meta: [
         {
           vmid: "description",
@@ -379,9 +391,7 @@ export default {
         response.data.channels.sort((a, b) => b.count - a.count);
       }
       this.authorData = response.data;
-      document.title = `${
-        this.authorData.name
-      } - UP主数据详情 - BiliOB观测者 - B站历史数据统计分析站点`;
+
       this.authorFansEfficiencyOptions = getAuthorFansEfficiencyOptions(
         deepCopy(this.authorData)
       );
@@ -414,7 +424,8 @@ export default {
           [interpolation(viewArray), "播放数", "#2b821d"],
           [interpolation(likeArray), "获赞数", "#c12e34"]
         ],
-        "bar"
+        "bar",
+        "YYYY-MM-DD"
       );
 
       this.historyDataOptions = getMultiChartOptions([

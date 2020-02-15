@@ -1,10 +1,18 @@
-var format = require("date-fns/format");
 import formatNumber from "../util/format-number";
-function drawChart(data, type = "line") {
+import fmt from "date-fns/format";
+function drawChart(data, type = "line", format = "YYYY-MM-DD HH:mm") {
+  if (type == "bar") {
+    console.log(data);
+  }
   let series = data.map(e => {
-    e[0].map(item => {
-      return [format(item[0]), item[1]];
+    let localOffset = new Date().getTimezoneOffset() / 60;
+    let offset = -8 - localOffset;
+    e[0] = e[0].map(item => {
+      let date = new Date(item[0]);
+      date.setHours(date.getHours() + offset);
+      return [date, item[1]];
     });
+
     return {
       name: e[1],
       data: e[0],
@@ -41,7 +49,7 @@ function drawChart(data, type = "line") {
       axisPointer: {
         label: {
           formatter: function(params) {
-            return Math.round(params.value);
+            return fmt(params.value, format);
           }
         }
       }
@@ -51,7 +59,7 @@ function drawChart(data, type = "line") {
       axisPointer: {
         label: {
           formatter: function(params) {
-            return "日期：" + format(params.value, "YYYY-MM-DD HH:mm");
+            return "日期：" + fmt(params.value, format);
           }
         }
       }
