@@ -1,13 +1,10 @@
 <template>
-  <div>
+  <VApp>
     <VAppBar
-      fixed
       app
       hide-on-scroll
       color="#333"
       dark
-      shrink-on-scroll
-      prominent
       src="https://picsum.photos/1920/1080?random"
       fade-img-on-scroll
       dense
@@ -32,7 +29,6 @@
         </VTabs>
       </template>
     </VAppBar>
-    <div style="height:192px"></div>
     <!-- <VParallax src="https://cdn.vuetifyjs.com/images/parallax/material.jpg">
       <div style="text-align:center" class="display-4"></div>
     </VParallax> -->
@@ -153,20 +149,22 @@
         </div>
       </VContainer>
     </div>
-    <VContainer class="pa-0">
-      <VLayout justify-center>
-        <VFlex lg8 md12>
-          <VSlideYTransition mode="out-in">
-            <RouterView key="master" style="min-height:800px" />
-          </VSlideYTransition>
-        </VFlex>
-      </VLayout>
-    </VContainer>
+    <VContent>
+      <VContainer class="pa-0">
+        <VLayout justify-center>
+          <VFlex lg8 md12>
+            <VSlideYTransition mode="out-in">
+              <RouterView key="master" />
+            </VSlideYTransition>
+          </VFlex>
+        </VLayout>
+      </VContainer>
+    </VContent>
     <BiliobFirstLoadDialog />
     <BiliobInfoDialog />
     <BiliobNotification />
     <LayoutMasterFooter />
-  </div>
+  </VApp>
 </template>
 <script>
 export default {

@@ -1,5 +1,4 @@
-function drawChart(data, maxSize) {
-  console.log(maxSize);
+function drawChart(data) {
   let textSize = (window.innerWidth + 1000) / 40;
   let max = Math.max.apply(null, data.map(e => e.value));
   let min = Math.min.apply(null, data.map(e => e.value));

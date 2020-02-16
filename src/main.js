@@ -1,7 +1,3 @@
-if (process.env.NODE_ENV != "development") {
-  window.location = "https://www.biliob.com";
-}
-
 import "babel-polyfill";
 // import "@fortawesome/fontawesome-free/css/all.css";
 import "@mdi/font/css/materialdesignicons.css"; // Ensure you are using css-loader
