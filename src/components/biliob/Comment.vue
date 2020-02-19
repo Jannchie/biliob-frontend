@@ -31,35 +31,51 @@
 
       <VCol v-for="comment in comments" :key="comment.commentId" cols="12">
         <VCard tile>
-          <VCardTitle class="body-1"> {{ comment.user.nickName }}: </VCardTitle>
-          <VCardText class="body-2">
-            {{ getEmoji(comment.content) }}
-          </VCardText>
-          <VCardActions>
-            <VChip label class="ma-2" color="red" outlined>
+          <VCardTitle>
+            <h5>{{ comment.user.nickName }}:</h5>
+            <VSpacer></VSpacer>
+            <VChip
+              v-if="comment.liked == false"
+              pill
+              label
+              class="ma-2"
+              color="red"
+              outlined
+              @click.stop="postLike(comment.commentId)"
+            >
               <VIcon left>mdi-heart-multiple-outline</VIcon>
               {{ comment.like }}
             </VChip>
-            <VBtn outlined>
-              <VIcon left>mdi-delete</VIcon>
-              删除
-            </VBtn>
-          </VCardActions>
+            <VChip v-else pill outlined label class="ma-2" color="red">
+              <VIcon color="red" left>mdi-heart-multiple</VIcon>
+              {{ comment.like }}
+            </VChip>
+          </VCardTitle>
+          <VCardText
+            style="white-space: pre;"
+            class="body-2"
+            v-text="getEmoji(comment.content)"
+          >
+          </VCardText>
         </VCard>
       </VCol>
       <VCol cols="12">
-        <BiliobCard v-if="$store.getters.getLoginState" title="发表评论">
-          <p>{{ $store.state.nickName }}：</p>
-          <BiliobTextarea @getText="updateCommentContent"></BiliobTextarea>
-          <VBtn block color="primary" @click.stop="postComment"
-            ><VIcon>mdi-send</VIcon></VBtn
-          >
-        </BiliobCard>
+        <VCard v-if="$store.getters.getLoginState">
+          <VCardTitle>
+            <h5>{{ $store.state.nickName }}：</h5>
+          </VCardTitle>
+          <VCardText>
+            <BiliobTextarea @getText="updateCommentContent"></BiliobTextarea>
+            <VBtn block color="primary" @click.stop="postComment"
+              ><VIcon>mdi-send</VIcon></VBtn
+            >
+          </VCardText>
+        </VCard>
         <VCard v-else tile>
-          <VCardText> 登陆后才能发表评论!</VCardText>
+          <VCardText> 登陆后，且经验值大于100才能发表评论!</VCardText>
           <VCardActions>
             <VSpacer></VSpacer>
-            <VBtn color="primary" outlined>
+            <VBtn color="primary" to="/login" outlined>
               <VIcon left>mdi-login</VIcon> 前往登陆页面</VBtn
             >
           </VCardActions>
@@ -104,6 +120,16 @@ export default {
           this.comments = res.data;
         });
     },
+    postLike(commentId) {
+      this.axios.put(`/user/comment/${commentId}/like`).then(() => {
+        this.comments.forEach(comment => {
+          if (comment.commentId == commentId) {
+            comment.like += 1;
+            comment.liked = true;
+          }
+        });
+      });
+    },
     getEmoji(val) {
       var patt = /&#\d+;/g;
       var H, L, code;
@@ -117,7 +143,7 @@ export default {
         var s = String.fromCharCode(H, L);
         val = val.replace(code, s);
       }
-      return val;
+      return val.trim();
     },
     updateCommentContent(text) {
       this.commentContent = text;

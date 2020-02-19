@@ -78,14 +78,15 @@ Vue.prototype.$alert = function(res) {
     data.alert.display = true;
   }
 };
-Vue.prototype.$data = data;
+
+Vue.prototype.$db = data;
 
 axios.interceptors.response.use(
   function(response) {
-    let path = router.app.$route.path;
-    if (["/recite", "/wordList"].indexOf(path) != -1) {
-      Vue.prototype.$alert(response);
-    }
+    // let path = router.app.$route.path;
+    // if (response.config.method != "get") {
+    Vue.prototype.$alert(response);
+    // }
     return response;
   },
   function(error) {
@@ -95,7 +96,7 @@ axios.interceptors.response.use(
 );
 
 // 环境的切换
-if (process.env.NODE_ENV == "development") {
+if (process.env.NODE_ENV == "development====") {
   axios.defaults.baseURL = "//localhost:8081/api";
 } else {
   axios.defaults.baseURL = "https://www.biliob.com/api";
@@ -124,3 +125,4 @@ caches.open("biliob-precache-https://www.biliob.com/").then(c => {
     });
   });
 });
+window.$db = data;

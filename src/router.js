@@ -52,16 +52,12 @@ export default new Router({
           component: User,
           children: [
             {
-              path: "",
-              component: UserInfo
-            },
-            {
               name: "我的个人信息",
               path: "info",
               component: UserInfo
             },
             {
-              path: "/user/record",
+              path: "record",
               name: "我的操作记录",
               component: UserRecord
             }

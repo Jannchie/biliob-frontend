@@ -15,6 +15,7 @@
         <VProgressCircular
           v-show="loading"
           :size="50"
+          width="2"
           color="primary"
           indeterminate
           class="progress-circular"

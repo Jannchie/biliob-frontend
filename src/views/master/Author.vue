@@ -17,7 +17,7 @@
 
     <VRow dense>
       <VCol>
-        <VTabs class="py-0 my-2" show-arrows>
+        <VTabs class="py-0 my-2 elevation-3" show-arrows>
           <VIcon left right>mdi-finance</VIcon>
           <VTab @click="getPage(0)">
             <VIcon left>mdi-database</VIcon>基本统计
@@ -166,6 +166,7 @@
     <VRow dense>
       <VCol>
         <BiliobSlideCard
+          name="top-video-slide"
           title="UP主播放最高视频"
           :value="authorTopVideo.content"
           multiple
@@ -206,6 +207,7 @@
     <VRow dense>
       <VCol>
         <BiliobSlideCard
+          name="latest-video-slide"
           title="UP主最新上传视频"
           :value="authorLatestVideo.content"
           multiple

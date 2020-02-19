@@ -80,7 +80,7 @@
                     </VBtn>
                   </div>
                 </VCardActions>
-                <BiliobCard to="/user">
+                <BiliobCard to="/user/info">
                   <VCardTitle primary-title>{{
                     $store.state.nickName
                   }}</VCardTitle>
@@ -160,7 +160,10 @@
           <VCol lg="3" cols="12">
             <VSlideYTransition mode="out-in">
               <BiliobComment
-                v-if="-1 == ['/login', '/sign'].indexOf(this.$route.path)"
+                v-if="
+                  -1 == ['/login', '/sign'].indexOf(this.$route.path) &&
+                    this.$route.path.indexOf('user') == -1
+                "
                 id="comment-container"
               >
               </BiliobComment>
