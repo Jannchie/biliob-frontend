@@ -18,15 +18,14 @@
     <VRow dense>
       <VCol>
         <VTabs class="py-0 my-2 elevation-3" show-arrows>
-          <VIcon left right>mdi-finance</VIcon>
           <VTab @click="getPage(0)">
-            <VIcon left>mdi-database</VIcon>基本统计
+            <VIcon left>mdi-database</VIcon>基本 / BASIC
           </VTab>
           <VTab @click="getPage(3)">
-            <VIcon left>mdi-history</VIcon>历史数据
+            <VIcon left>mdi-history</VIcon>历史 / HISTORY
           </VTab>
           <VTab @click="getPage(1)">
-            <VIcon left>mdi-brain</VIcon>高级统计
+            <VIcon left>mdi-brain</VIcon>高级 / ADVENCED
           </VTab>
         </VTabs>
       </VCol>

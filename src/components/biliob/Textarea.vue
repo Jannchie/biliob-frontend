@@ -156,6 +156,9 @@ export default {
   methods: {
     append(emoji) {
       this.input += emoji;
+    },
+    clean() {
+      this.input = "";
     }
   }
 };

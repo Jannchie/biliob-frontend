@@ -14,44 +14,34 @@
       </VFlex>
       <VFlex lg4 md12>
         <div tile height="100%" class="pa-5">
-          <BiliobDarkInfo class="subtitle inline" border="left">
-            <div class="py-0 px-3 caption">
-              24小时内最高在线观看
-            </div>
-          </BiliobDarkInfo>
-          <p class="title site-aside-value font-weight-bold">
+          <div class="py-0 px-3 caption primary--text">
+            一日内最高观看 / MAX VIEW 24H
+          </div>
+          <p class="title site-aside-value font-weight-black">
             {{ bigestWatching }}
           </p>
-          <BiliobDarkInfo class="subtitle inline" border="left">
-            <div class="py-0 px-3 caption ">
-              24小时内最高在线人数
-            </div>
-          </BiliobDarkInfo>
-          <p class="title site-aside-value font-weight-bold">
+          <div class="py-0 px-3 caption primary--text ">
+            一日内最高在线 / MAX ONLINE 24H
+          </div>
+          <p class="title site-aside-value font-weight-black">
             {{ bigestOnline }}
           </p>
-          <BiliobDarkInfo class="subtitle inline" border="left">
-            <div class="py-0 px-3 caption ">
-              本月最值
-            </div>
-          </BiliobDarkInfo>
-          <p class="title site-aside-value font-weight-bold">
+          <div class="py-0 px-3 caption primary--text ">
+            本月最值 / MONTHLY MAX
+          </div>
+          <p class="title site-aside-value font-weight-black">
             {{ currentMonthTop }}
           </p>
-          <BiliobDarkInfo class="subtitle inline" border="left">
-            <div class="py-0 px-3 caption ">
-              环比上月
-            </div>
-          </BiliobDarkInfo>
-          <p class="title site-aside-value font-weight-bold">
+          <div class="py-0 px-3 caption primary--text ">
+            环比上月 / FROM PREV. MONTH
+          </div>
+          <p class="title site-aside-value font-weight-black">
             {{ compareWithLastMonth }}
           </p>
-          <BiliobDarkInfo class="subtitle inline" border="left">
-            <div class="py-0 px-3 caption ">
-              环比去年
-            </div>
-          </BiliobDarkInfo>
-          <p class="title site-aside-value font-weight-bold">
+          <div class="py-0 px-3 caption primary--text ">
+            环比去年 / FROM PREV. YEAR
+          </div>
+          <p class="title site-aside-value font-weight-black">
             {{ compareWithLastYear }}
           </p>
         </div>

@@ -1898,5 +1898,49 @@
             }
         ],
         "type": "important"
+    },
+    {
+        "title": "评论系统",
+        "version": "ver.8.0.0",
+        "date": "2019-12-27",
+        "list": [
+            {
+                "text": "修复了UP主页面视频列表滚动绑定错误的问题",
+                "type": "fix"
+            },
+            {
+                "text": "修复了Safari、IE下粉丝数图表无法显示的问题",
+                "type": "fix"
+            },
+            {
+                "text": "修复了Safari、IE下实时粉丝差距图表无法显示的问题",
+                "type": "fix"
+            },
+            {
+                "text": "修复了部分图表的时区显示",
+                "type": "fix"
+            },
+            {
+                "text": "优化了关键词的显示",
+                "type": "beautify"
+            },
+            {
+                "text": "去除了失效的数据源",
+                "type": "beautify"
+            },
+            {
+                "text": "添加了评论系统",
+                "type": "stone"
+            },
+            {
+                "text": "提高了逼格",
+                "type": "beautify"
+            },
+            {
+                "text": "添加了邮箱的改绑",
+                "type": "feature"
+            }
+        ],
+        "type": "holyshit"
     }
 ]

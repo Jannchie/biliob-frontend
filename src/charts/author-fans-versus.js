@@ -1,26 +1,29 @@
 var format = require("date-fns/format");
-var { convertDateToUTC } = require("./util/convertDateToUTC");
 function getTimeStamp(date) {
   return new Date(date).getTime();
 }
 function drawChart(aData, bData, aName, bName) {
   var data = [{}, {}];
-  [[aData, aName], [bData, bName]].forEach(element => {
+  [
+    [aData, aName],
+    [bData, bName]
+  ].forEach(element => {
     var eachData = element[0];
     var name = element[1];
     var i = 1;
     if (name == aName) {
       i = 0;
     }
-    let endDate = new Date(eachData[0].datetime).getTime();
+
+    let endDate = new Date(format(eachData[0].datetime)).getTime();
     endDate -= endDate % 60000;
     for (let index = 1; index < eachData.length - 1; index++) {
       const element = eachData[index];
       const lastElement = eachData[index - 1];
       const nextElement = eachData[index + 1];
-      let lTimestamp = getTimeStamp(lastElement.datetime);
-      let cTimestamp = getTimeStamp(element.datetime);
-      let nTimestamp = getTimeStamp(nextElement.datetime);
+      let lTimestamp = getTimeStamp(format(lastElement.datetime));
+      let cTimestamp = getTimeStamp(format(element.datetime));
+      let nTimestamp = getTimeStamp(format(nextElement.datetime));
       let lFans = getTimeStamp(lastElement.fans);
       let cFans = element.fans;
       let nFans = nextElement.fans;
@@ -30,19 +33,17 @@ function drawChart(aData, bData, aName, bName) {
             (endDate - cTimestamp) +
           cFans;
 
-        data[i][
-          format(convertDateToUTC(new Date(endDate)), "HH:mm")
-        ] = Math.round(value);
+        data[i][format(endDate, "HH:mm")] = Math.round(value);
         endDate -= 60000;
       }
+
       while (cTimestamp > endDate && nTimestamp < endDate - 60000) {
         let value =
           ((cFans - nFans) / (cTimestamp - nTimestamp)) *
             (endDate - nTimestamp) +
           nFans;
-        data[i][
-          format(convertDateToUTC(new Date(endDate)), "HH:mm")
-        ] = Math.round(value);
+
+        data[i][format(endDate, "HH:mm")] = Math.round(value);
         endDate -= 60000;
       }
     }
@@ -57,6 +58,7 @@ function drawChart(aData, bData, aName, bName) {
     }
   });
   ds.unshift(["date", "da", "db", "d"]);
+
   let Chart = {
     dataset: {
       source: ds

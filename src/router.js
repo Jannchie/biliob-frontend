@@ -71,7 +71,19 @@ export default new Router({
         {
           path: "/rank",
           name: "排行榜",
-          component: Rank
+          component: Rank,
+          children: [
+            {
+              name: "UP主涨粉排行榜",
+              path: "fans-increase",
+              component: () => import("./views/master/rank/Up.vue")
+            },
+            {
+              name: "UP主掉粉排行榜",
+              path: "fans-decrease",
+              component: () => import("./views/master/rank/Up.vue")
+            }
+          ]
         },
         {
           name: "粉丝变动率",

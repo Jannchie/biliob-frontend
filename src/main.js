@@ -79,6 +79,9 @@ Vue.prototype.$alert = function(res) {
   }
 };
 
+import { format } from "date-fns";
+Vue.prototype.$timeFormat = format;
+
 Vue.prototype.$db = data;
 
 axios.interceptors.response.use(

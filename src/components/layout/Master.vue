@@ -161,7 +161,7 @@
             <VSlideYTransition mode="out-in">
               <BiliobComment
                 v-if="
-                  -1 == ['/login', '/sign'].indexOf(this.$route.path) &&
+                  -1 == ['/login', '/signin'].indexOf(this.$route.path) &&
                     this.$route.path.indexOf('user') == -1
                 "
                 id="comment-container"
