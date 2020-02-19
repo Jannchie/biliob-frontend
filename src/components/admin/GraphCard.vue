@@ -1,5 +1,5 @@
 <template>
-  <VCard class="elevation-3 admin-card">
+  <VCard class="admin-card">
     <VCard
       max-width="calc(100% - 32px)"
       dark

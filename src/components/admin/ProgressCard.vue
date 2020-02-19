@@ -1,5 +1,5 @@
 <template>
-  <VCard class="elevation-3 admin-card">
+  <VCard class="admin-card">
     <VCard
       max-width="calc(100% - 32px)"
       dark
@@ -48,7 +48,7 @@ export default {
     },
     elevation: {
       type: [Number, String],
-      default: 3
+      default: 1
     },
     inline: {
       type: Boolean,

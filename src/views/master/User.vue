@@ -2,7 +2,7 @@
   <VContainer>
     <VRow dense>
       <VCol>
-        <VTabs class="elevation-3 py-0 my-2" show-arrows>
+        <VTabs class="py-0 my-2" show-arrows>
           <VTab to="/user/info">
             <VIcon left>mdi-account-card-details</VIcon>个人信息
           </VTab>

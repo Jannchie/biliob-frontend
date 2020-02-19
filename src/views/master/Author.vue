@@ -17,7 +17,7 @@
 
     <VRow dense>
       <VCol>
-        <VTabs class="elevation-3 py-0 my-2" show-arrows>
+        <VTabs class="py-0 my-2" show-arrows>
           <VIcon left right>mdi-finance</VIcon>
           <VTab @click="getPage(0)">
             <VIcon left>mdi-database</VIcon>基本统计

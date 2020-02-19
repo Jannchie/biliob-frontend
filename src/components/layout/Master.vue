@@ -81,7 +81,6 @@
                   </div>
                 </VCardActions>
                 <BiliobCard to="/user">
-                  <!-- <BiliobCard> -->
                   <VCardTitle primary-title>{{
                     $store.state.nickName
                   }}</VCardTitle>
@@ -151,13 +150,23 @@
     </div>
     <VContent>
       <VContainer class="pa-0">
-        <VLayout justify-center>
-          <VFlex lg8 md12>
+        <VRow justify="center" dense style="position: relative;">
+          <VSpacer lg="2" cols="0"></VSpacer>
+          <VCol lg="7" cols="12">
             <VSlideYTransition mode="out-in">
-              <RouterView key="master" />
+              <RouterView id="main-view" key="master" />
             </VSlideYTransition>
-          </VFlex>
-        </VLayout>
+          </VCol>
+          <VCol lg="3" cols="12">
+            <VSlideYTransition mode="out-in">
+              <BiliobComment
+                v-if="-1 == ['/login', '/sign'].indexOf(this.$route.path)"
+                id="comment-container"
+              >
+              </BiliobComment>
+            </VSlideYTransition>
+          </VCol>
+        </VRow>
       </VContainer>
     </VContent>
     <BiliobFirstLoadDialog />
@@ -265,6 +274,10 @@ export default {
           this.$store.commit("error");
         }
       });
+    // 如果在大屏下，则定时同步大小变化
+    if (this.$vuetify.breakpoint.lgAndUp) {
+      setInterval(this.resize, 1000);
+    }
   },
   methods: {
     getUserItemValue(type) {
@@ -274,6 +287,14 @@ export default {
         default:
           return this.$store.state.favoriteAid.length;
       }
+    },
+    // 同步高度变化
+    resize() {
+      let comment = document.getElementById("comment-container");
+      let mainView = document.getElementById("main-view");
+      if (comment && mainView) {
+        comment.style.maxHeight = mainView.offsetHeight + "px";
+      }
     }
   }
 };
@@ -282,9 +303,7 @@ export default {
 .naVBtn {
   justify-content: left;
 }
-@media only screen and (min-width: 960px) {
-  .container {
-    max-width: 1600px;
-  }
+#comment-container {
+  overflow-y: auto;
 }
 </style>

@@ -5,7 +5,7 @@
         v-for="(eachData, index) in fansVariationData"
         :key="index"
         ripple
-        class="event-card mb-1 elevation-3"
+        class="event-card mb-1"
       >
         <div @click.stop="toAuthor(eachData.mid)">
           <VRow style="margin-left: 0px;margin-right: 0px;">

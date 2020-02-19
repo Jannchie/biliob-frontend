@@ -8,7 +8,6 @@
           x-small
           class="biliob-slide-card-btn left"
           fab
-          elevation="3"
           @click.stop="scroll(-1)"
         >
           <VIcon>mdi-arrow-left-bold</VIcon>
@@ -19,7 +18,6 @@
           x-small
           class="biliob-slide-card-btn right"
           fab
-          elevation="3"
           @click.stop="scroll(1)"
         >
           <VIcon>mdi-arrow-right-bold</VIcon>
@@ -33,7 +31,7 @@
           color="primary"
           large
           :to="moreLink"
-          class="mx-5 elevation-3"
+          class="mx-5"
           style="margin:auto"
           ><VIcon>mdi-chevron-right</VIcon> 更多..</VBtn
         >

@@ -1,5 +1,5 @@
 <template>
-  <VCard class="elevation-3 admin-card">
+  <VCard class="admin-card">
     <VCard dark :color="color" class="offset-stats">
       <VIcon size="44px" class="ma-4">{{ icon }}</VIcon>
     </VCard>

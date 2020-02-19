@@ -23,9 +23,7 @@
       </VListItem>
       <VListItem
         :href="
-          `https://connect.qq.com/widget/shareqq/index.html?url=https://www.biliob.com${
-            this.$route.path
-          }&sharesource=qzone&title=biliob观测者:${name}的历史数据&pics=https:${pic}&summary=快来围观这个UP主的数据变化吧~&desc=这个UP主牛逼坏了`
+          `https://connect.qq.com/widget/shareqq/index.html?url=https://www.biliob.com${this.$route.path}&sharesource=qzone&title=biliob观测者:${name}的历史数据&pics=https:${pic}&summary=快来围观这个UP主的数据变化吧~&desc=这个UP主牛逼坏了`
         "
         target="_blank"
         class="light-blue--text lighten-2 text--lighten-2"
@@ -108,6 +106,7 @@ export default {
       return `https://space.bilibili.com/${this.mid}`;
     }
   },
+
   methods: {
     toAuthorSpace() {
       this.sheet = false;

@@ -12,7 +12,7 @@
         <BiliobCard>
           <VChip
             style="position: absolute; top: -10px"
-            class="mr-2 elevation-3"
+            class="mr-2"
             small
             dark
             :color="getColor(eachPost.type)"

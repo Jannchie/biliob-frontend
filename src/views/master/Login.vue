@@ -3,7 +3,6 @@
     <VRow justify="center">
       <VCol cols="12" lg="6">
         <BiliobCard
-          elevation="20"
           title="登录 - BiliOB"
           light
           border="bottom"

@@ -8,7 +8,7 @@
       >{{ title }}</BiliobDarkInfo
     >
     <slot v-if="$slots.header" style="padding:0px" name="header" />
-    <VSheet :class="`${px} body-2 elevation-3`">
+    <VSheet :class="`${px} body-2`">
       <slot></slot>
     </VSheet>
   </div>
