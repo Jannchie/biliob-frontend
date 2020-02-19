@@ -1,7 +1,20 @@
 function drawChart(data) {
-  let textSize = (window.innerWidth + 1000) / 40;
-  let max = Math.max.apply(null, data.map(e => e.value));
-  let min = Math.min.apply(null, data.map(e => e.value));
+  let textSize = (window.innerWidth + 1000) / 50;
+  data.forEach(e => {
+    if (e.value < 0) {
+      e.value = 0;
+    } else {
+      e.value = Math.pow(e.value, 0.3);
+    }
+  });
+  let max = Math.max.apply(
+    null,
+    data.map(e => e.value)
+  );
+  let min = Math.min.apply(
+    null,
+    data.map(e => e.value)
+  );
   function scale(a, b) {
     return function(c, d) {
       let delta = b - a;
@@ -39,10 +52,10 @@ function drawChart(data) {
         height: "90%",
         right: null,
         bottom: null,
-        sizeRange: [textSize / 2, textSize],
+        sizeRange: [textSize / 3, textSize],
         rotationRange: [0, 0],
         rotationStep: 45,
-        gridSize: 8,
+        gridSize: 4,
         drawOutOfBound: false,
 
         textStyle: {

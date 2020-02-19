@@ -93,7 +93,7 @@ export default new Router({
           component: Author
         },
         {
-          path: "/authorlist",
+          path: "/authorlist/",
           name: "UP主数据列表",
           component: AuthorList
         },

@@ -37,23 +37,12 @@ export default {
 
 <style lang="scss">
 @import "@/styles/index.scss";
-$low-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.05),
-  0px 3px 4px 0px rgba(0, 0, 0, 0.05), 0px 1px 8px 0px rgba(0, 0, 0, 0.05) !important;
+.theme--light.v-application {
+  background-color: #f8f8f8;
+}
 .v-application {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif !important;
-}
-.v-application {
-  .elevation-3,
-  .elevation-2,
-  .elevation-1 {
-    box-shadow: $low-shadow;
-    -webkit-box-shadow: $low-shadow;
-  }
-}
-.v-expansion-panel::before {
-  box-shadow: $low-shadow;
-  -webkit-box-shadow: $low-shadow;
 }
 
 .container {

@@ -11,9 +11,9 @@ import axios from "axios";
 import VueAxios from "vue-axios";
 import VueRouter from "vue-router";
 import Vuex from "vuex";
-
+import data from "./data";
 import "./components";
-
+import EmojiPicker from "vue-emoji-picker";
 Vue.config.productionTip = false;
 
 // 使用vue-cookies
@@ -57,12 +57,49 @@ router.afterEach(function(to) {
     addAuthor(list[2]);
   }
 });
+Vue.use(EmojiPicker);
 Vue.use(VueRouter);
 Vue.prototype.$baseKeywords =
   "B站,b站数据统计,b站数据分析,哔哩哔哩up主,up主排行,数据,观测者,视频,见齐,biliob,bilibili,UP主,粉丝数,粉丝数排行榜,数据可视化,哔哩哔哩,哔哩哔哩观测者,哔哩哔哩ob,bilibiliob";
 // 使用axios
 axios.defaults.withCredentials = true;
-axios.defaults.baseURL = process.env.VUE_APP_API_ROOT;
+
+Vue.prototype.$alert = function(res) {
+  let msg = res.data.msg;
+  if (msg != undefined) {
+    data.alert.message = res.data.msg;
+    if (res.data.msg.indexOf("成功") != -1) {
+      data.alert.type = "success";
+    } else if (res.status < 300) {
+      data.alert.type = "info";
+    } else {
+      data.alert.type = "error";
+    }
+    data.alert.display = true;
+  }
+};
+Vue.prototype.$data = data;
+
+axios.interceptors.response.use(
+  function(response) {
+    let path = router.app.$route.path;
+    if (["/recite", "/wordList"].indexOf(path) != -1) {
+      Vue.prototype.$alert(response);
+    }
+    return response;
+  },
+  function(error) {
+    Vue.prototype.$alert(error.response);
+    return Promise.reject(error);
+  }
+);
+
+// 环境的切换
+if (process.env.NODE_ENV == "development") {
+  axios.defaults.baseURL = "//localhost:8081/api";
+} else {
+  axios.defaults.baseURL = "https://www.biliob.com/api";
+}
 axios.defaults.headers = {
   "Content-Type": "application/json"
 };
