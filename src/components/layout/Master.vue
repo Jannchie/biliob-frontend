@@ -151,13 +151,17 @@
     <VContent>
       <VContainer class="pa-0">
         <VRow justify="center" dense style="position: relative;">
-          <VSpacer lg="2" cols="0"></VSpacer>
+          <VSpacer
+            v-if="$store.getters.getLoginState"
+            lg="2"
+            cols="0"
+          ></VSpacer>
           <VCol lg="7" cols="12">
             <VSlideYTransition mode="out-in">
               <RouterView id="main-view" key="master" />
             </VSlideYTransition>
           </VCol>
-          <VCol lg="3" cols="12">
+          <VCol v-if="$store.getters.getLoginState" lg="3" cols="12">
             <VSlideYTransition mode="out-in">
               <BiliobComment
                 v-if="
