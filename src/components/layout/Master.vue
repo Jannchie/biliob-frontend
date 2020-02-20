@@ -229,7 +229,7 @@ export default {
       ],
       appBarTabs: [
         { name: "首页", path: "/" },
-        { name: "排行榜", path: "/rank/fans-increase" },
+        { name: "排行榜", path: "/rank" },
         { name: "UP主查询", path: "/authorlist" },
         { name: "视频查询", path: "/videolist" }
         // { name: "个人中心", path: "/user" }

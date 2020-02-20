@@ -151,7 +151,7 @@ export default new Router({
           component: About
         },
         {
-          path: "/user/rank/fans-increase",
+          path: "/user/rank",
           name: "观测者排行",
           component: UserRank
         },
