@@ -63,7 +63,7 @@
               </VChip>
             </VCardTitle>
             <VCardText
-              style="white-space: pre;"
+              style="white-space: pre-line;"
               class="body-2"
               v-text="getEmoji(comment.content)"
             >
