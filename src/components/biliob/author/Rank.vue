@@ -85,7 +85,7 @@ export default {
       if (this.updateTime != undefined) {
         return format(
           convertDateToUTC(new Date(this.updateTime.replace("+0000", ""))),
-          "YYYY-MM-DD HH:MM:SS"
+          "YYYY-MM-DD HH:mm:ss"
         );
       } else {
         return "载入更新时间中";

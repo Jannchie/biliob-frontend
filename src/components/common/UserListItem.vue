@@ -58,7 +58,7 @@ export default {
       }
     },
     formatedDate() {
-      return format(this.createTime, "注册时间 YYYY-MM-DD HH:MM:SS");
+      return format(this.createTime, "注册时间 YYYY-MM-DD HH:mm:ss");
     },
     formatedIndex() {
       return (Array(2).join(0) + (this.index + 1)).slice(-2);

@@ -79,9 +79,9 @@ function drawChart(aData, bData, aName, bName) {
       containLabel: true
     },
     axisLabel: {
-      //   formatter: function(params) {
-      //     return params.slice(11);
-      //   }
+      // formatter: function(params) {
+      //   return params.slice(11);
+      // }
     },
     tooltip: {
       trigger: "axis",

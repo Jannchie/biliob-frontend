@@ -194,7 +194,7 @@
                   ><br />
                 </span>
                 <span class="caption">{{
-                  formatDate(eachVideo.datetime, "YYYY-MM-DD HH:MM:SS")
+                  formatDate(eachVideo.datetime, "YYYY-MM-DD HH:mm:ss")
                 }}</span
                 ><br />
               </VCardText>
@@ -236,7 +236,7 @@
                   ><br />
                 </span>
                 <span class="caption">{{
-                  formatDate(eachVideo.datetime, "YYYY-MM-DD HH:MM:SS")
+                  formatDate(eachVideo.datetime, "YYYY-MM-DD HH:mm:ss")
                 }}</span
                 ><br />
               </VCardText>
@@ -460,7 +460,7 @@ export default {
   },
   methods: {
     formatDate(date) {
-      return format(date, "YYYY-MM-DD HH:MM:SS");
+      return format(date, "YYYY-MM-DD HH:mm:ss");
     },
     getPage(page) {
       this.cPage = page;

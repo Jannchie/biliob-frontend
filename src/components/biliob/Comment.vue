@@ -69,7 +69,7 @@
             >
             </VCardText>
             <VCardText class="caption">
-              发布时间: {{ $timeFormat(comment.date, "YYYY-MM-DD HH:mm:SS") }}
+              发布时间: {{ $timeFormat(comment.date, "YYYY-MM-DD HH:mm:ss") }}
             </VCardText>
           </VCard>
         </VCol>
