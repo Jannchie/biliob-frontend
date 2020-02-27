@@ -27,14 +27,10 @@
             class="white--text px-1 "
             style="background-color:#1188CC;border-radius:2px;margin-right:5px"
           >
-            强行观测
+            提高频率
           </span>
-          消耗200积分，可以强行每日更新UP主的数据，即使它本已进入保守观测组。
+          消耗200积分，可以将观测间隔锁定在1小时以内。
         </li>
-        <VDivider class="my-2"></VDivider>
-        <div>
-          目前，如果UP主的视频<span>同时在线人数达到全站前20</span>，那么该UP主的数据更新频率会强行加快到<span>每10分钟采集一次</span>。以此获取更加精密实时的数据。
-        </div>
       </div>
     </BiliobCard>
     <MaterialChartCard :options="options" class="body-1">

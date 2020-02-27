@@ -8,21 +8,21 @@
               ><h3>
                 <VIcon color="primary" left>
                   mdi-comment-multiple-outline </VIcon
-                >评论系统 / COMMENTS SYS
+                >观测记录系统 / COMMENTS SYS
               </h3></VExpansionPanelHeader
             >
             <VExpansionPanelContent>
-              <h4>评论系统规则</h4>
+              <h4>观测记录系统规则</h4>
               <div class="body-2">
                 <li>
-                  只有登陆观测者能够发表评论。
+                  只有登陆观测者能够发表观测记录。
                 </li>
                 <li>
                   请发表你觉得能够发表的言论。
                 </li>
-                <li>发表评论将 消耗1积分</li>
-                <li>点赞评论将 消耗0.1积分</li>
-                <li>评论被点赞将 获得0.1积分</li>
+                <li>发表观测记录将 消耗1积分</li>
+                <li>点赞观测记录将 消耗0.1积分</li>
+                <li>观测记录被点赞将 获得0.1积分</li>
               </div>
             </VExpansionPanelContent>
           </VExpansionPanel>
@@ -41,9 +41,9 @@
           style="padding: 4px"
           cols="12"
         >
-          <VCard tile>
-            <VCardTitle>
-              <h5>{{ comment.user.title }} {{ comment.user.nickName }}:</h5>
+          <VCard dense tile>
+            <VCardTitle class="py-0">
+              <h6>{{ comment.user.title }} {{ comment.user.nickName }}:</h6>
               <VSpacer></VSpacer>
               <VChip
                 v-if="comment.liked == false"
@@ -64,11 +64,11 @@
             </VCardTitle>
             <VCardText
               style="white-space: pre-line;"
-              class="body-2"
+              class="subheading py-0"
               v-text="getEmoji(comment.content)"
             >
             </VCardText>
-            <VCardText class="caption">
+            <VCardText class="caption pt-0">
               发布时间: {{ $timeFormat(comment.date, "YYYY-MM-DD HH:mm:ss") }}
             </VCardText>
           </VCard>
@@ -103,7 +103,7 @@
           </VCardText>
         </VCard>
         <VCard v-else tile>
-          <VCardText> 登陆后，且经验值大于100才能发表评论!</VCardText>
+          <VCardText> 登陆后，且经验值大于100才能发表观测记录!</VCardText>
           <VCardActions>
             <VSpacer></VSpacer>
             <VBtn color="primary" to="/login" outlined>

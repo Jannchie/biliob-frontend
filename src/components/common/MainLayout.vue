@@ -26,9 +26,4 @@ export default {
     padding: 16px 0;
   }
 }
-@media only screen and (min-width: 960px) {
-  .container {
-    max-width: 1600px;
-  }
-}
 </style>

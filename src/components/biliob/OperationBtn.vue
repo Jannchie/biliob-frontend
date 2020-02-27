@@ -1,55 +1,54 @@
 <template>
-  <VDialog v-model="dialog" style="position: absolute" width="500px">
-    <template v-slot:activator="{ on }">
-      <VBtn
-        large
-        block
-        :color="color"
-        outlined
-        :disabled="disabled"
-        tile
-        v-on="on"
-        @click="dialog = true"
-      >
-        <VIcon left>
-          {{ icon }}
-        </VIcon>
-        {{ tileTitle }}</VBtn
-      >
-    </template>
-    <VCard>
-      <VAlert
-        :value="showAlert"
-        :type="alertType"
-        transition="slide-y-transition"
-      >
-        {{ alertMsg }}
-      </VAlert>
-      <VCardTitle
-        :class="
-          'headline ' + color + ' lighten-1 font-weight-black white--text'
-        "
-        primary-title
-      >
-        {{ tileTitle }}?
-      </VCardTitle>
-      <slot name="card-text"></slot>
-      <VDivider></VDivider>
-      <VCardActions :value="!showAlert">
-        <VSpacer></VSpacer>
-        <VBtn
-          color="primary"
-          text
-          outlined
-          style="border-width:1px"
-          :disabled="showAlert"
-          @click="refresh"
+  <VBtn
+    style="width: 100%"
+    large
+    block
+    :color="color"
+    outlined
+    :disabled="disabled"
+    tile
+    v-on="on"
+    @click="dialog = true"
+  >
+    <VDialog v-model="dialog" style="position: absolute" width="400px">
+      <VCard>
+        <VAlert
+          :value="showAlert"
+          :type="alertType"
+          transition="slide-y-transition"
         >
-          LET's DO IT!
-        </VBtn>
-      </VCardActions>
-    </VCard>
-  </VDialog>
+          {{ alertMsg }}
+        </VAlert>
+        <VCardTitle
+          :class="
+            'headline ' + color + ' lighten-1 font-weight-black white--text'
+          "
+          primary-title
+        >
+          {{ tileTitle }}?
+        </VCardTitle>
+        <slot name="card-text"></slot>
+        <VDivider></VDivider>
+        <VCardActions :value="!showAlert">
+          <VSpacer></VSpacer>
+          <VBtn
+            color="primary"
+            text
+            outlined
+            style="border-width:1px"
+            :disabled="showAlert"
+            @click="refresh"
+          >
+            LET's DO IT!
+          </VBtn>
+        </VCardActions>
+      </VCard>
+    </VDialog>
+    <VIcon left>
+      {{ icon }}
+    </VIcon>
+    {{ tileTitle }}</VBtn
+  >
 </template>
 <script>
 export default {

@@ -106,6 +106,7 @@ export default {
           });
           this.$store.commit("login");
           this.$store.commit("setUserName", response.data.data.name);
+          this.$store.commit("setNickName", response.data.data.nickName);
           this.$store.commit("setRole", response.data.data.role);
           this.$store.commit("setCredit", response.data.data.credit);
           this.$store.commit(
@@ -117,7 +118,7 @@ export default {
             response.data.data.favoriteMid
           );
           setTimeout(() => {
-            window.location.href = "https://www.biliob.com";
+            //window.location.href = "https://www.biliob.com";
           }, 2000);
         })
         .catch(error => {

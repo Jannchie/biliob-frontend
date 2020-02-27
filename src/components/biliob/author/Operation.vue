@@ -8,18 +8,18 @@
           :pic="pic"
           :name="name"
           icon="mdi-eye"
-          :tile-title="'强行观测'"
+          :tile-title="'锁定频率'"
           tile-sub-title="需要消耗积分：200"
           :request-url="
             `/user/author/${$route.params.mid}/status?forceFocus=true`
           "
         >
           <VCardText slot="card-text">
-            强行观测需要<span class="font-weight-black red--text"
+            锁定频率需要<span class="font-weight-black red--text"
               >消耗200积分</span
             >。
             <br />
-            打破取消爬取机制，保持数据每日更新。
+            打破取消爬取机制，保持数据每小时更新。
             <br />
             目前强行观测后只有管理员能取消操作。
           </VCardText>

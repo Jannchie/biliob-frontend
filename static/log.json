@@ -1900,7 +1900,7 @@
         "type": "important"
     },
     {
-        "title": "评论系统",
+        "title": "观测记录系统",
         "version": "ver.8.0.0",
         "date": "2020-02-20",
         "list": [
@@ -1929,7 +1929,7 @@
                 "type": "beautify"
             },
             {
-                "text": "添加了评论系统",
+                "text": "添加了观测记录系统",
                 "type": "stone"
             },
             {

@@ -66,7 +66,7 @@
                           追番 <span>{{ eachData.currentWatch }}</span>
                         </VFlex>
                         <VFlex xs-2>
-                          评论 <span>{{ eachData.currentReview }}</span>
+                          观测记录 <span>{{ eachData.currentReview }}</span>
                         </VFlex>
                         <VFlex xs-4>
                           弹幕 <span>{{ eachData.currentDanmaku }}</span>

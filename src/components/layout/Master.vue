@@ -151,26 +151,22 @@
     <VContent>
       <VContainer class="pa-0">
         <VRow justify="center" dense style="position: relative;">
-          <VSpacer
-            v-if="$store.getters.getLoginState"
-            lg="2"
-            cols="0"
-          ></VSpacer>
-          <VCol lg="7" cols="12">
+          <VCol lg="9" cols="12" class="main-col">
             <VSlideYTransition mode="out-in">
               <RouterView id="main-view" key="master" />
             </VSlideYTransition>
           </VCol>
-          <VCol v-if="$store.getters.getLoginState" lg="3" cols="12">
+          <VCol
+            v-if="
+              $store.getters.getLoginState &&
+                -1 == ['/login', '/signin'].indexOf(this.$route.path) &&
+                this.$route.path.indexOf('user') == -1
+            "
+            lg="3"
+            cols="12"
+          >
             <VSlideYTransition mode="out-in">
-              <BiliobComment
-                v-if="
-                  -1 == ['/login', '/signin'].indexOf(this.$route.path) &&
-                    this.$route.path.indexOf('user') == -1
-                "
-                id="comment-container"
-              >
-              </BiliobComment>
+              <BiliobComment id="comment-container"> </BiliobComment>
             </VSlideYTransition>
           </VCol>
         </VRow>
@@ -312,5 +308,13 @@ export default {
 }
 #comment-container {
   overflow-y: auto;
+}
+.main-col {
+  max-width: 1000px;
+}
+@media (min-width: 1264px) {
+  .container {
+    max-width: 1785px;
+  }
 }
 </style>
