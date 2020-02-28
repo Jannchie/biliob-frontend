@@ -1,39 +1,55 @@
 <template>
   <div>
-    <div
-      v-if="object.forceFocus === true"
-      style="color:#1188CC"
-      class="caption subtext"
-    >
-      <VIcon color="#1188CC" small>
-        mdi-eye
+    <div :class="`${color}--text caption subtext`">
+      <VIcon :color="color" small>
+        {{ icon }}
       </VIcon>
-      强行观测
-    </div>
-    <div
-      v-else-if="object.focus === true"
-      style="color:#22AA77"
-      class="caption subtext"
-    >
-      <VIcon color="#22AA77" small>
-        mdi-eye
-      </VIcon>
-      观测中
-    </div>
-    <div
-      v-else-if="object.focus === false"
-      style="color:#FF5722"
-      class="caption subtext"
-    >
-      <VIcon color="#FF5722" small>
-        mdi-eye-off
-      </VIcon>
-      保守观测
+      {{ text }}
     </div>
   </div>
 </template>
 <script>
 export default {
-  props: { object: Object() }
+  props: { object: Object() },
+  data: function() {
+    return {
+      color: "",
+      icon: "",
+      text: ""
+    };
+  },
+  mounted() {
+    console.log(this.object);
+    let interval = this.object.obInterval;
+    if (interval != undefined) {
+      console.log(interval);
+      if (interval < 3600) {
+        this.text = `${interval / 60} Min`;
+      } else {
+        this.text = `${interval / 3600} Hour`;
+      }
+      if (interval < 3600) {
+        this.color = "orange";
+        this.icon = "mdi-eye-outline";
+        this.icon = "mdi-eye";
+      } else if (interval < 86400) {
+        this.color = "purple";
+        this.icon = "mdi-eye-outline";
+      } else {
+        this.color = "blue";
+        this.icon = "mdi-eye-outline";
+      }
+    } else {
+      if (this.object.forceFocus) {
+        this.text = "正在观测";
+        this.color = "blue";
+        this.icon = "mdi-eye-outline";
+      } else {
+        this.text = "观测离线";
+        this.color = "red";
+        this.icon = "mdi-eye-off-outline";
+      }
+    }
+  }
 };
 </script>

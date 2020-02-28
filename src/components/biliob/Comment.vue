@@ -29,65 +29,6 @@
         </VExpansionPanels>
       </VCol>
       <VCol cols="12">
-        <VTabs class="elevation-3">
-          <VTab @click="sort = 0">喜欢序 / LIKE</VTab>
-          <VTab @click="sort = 1">时间序 / Latest</VTab>
-        </VTabs>
-      </VCol>
-      <VFadeTransition style="width: 100%" group>
-        <VCol
-          v-for="comment in comments"
-          :key="comment.commentId"
-          style="padding: 4px"
-          cols="12"
-        >
-          <VCard dense tile>
-            <VCardTitle class="py-0">
-              <h6>{{ comment.user.title }} {{ comment.user.nickName }}:</h6>
-              <VSpacer></VSpacer>
-              <VChip
-                v-if="comment.liked == false"
-                pill
-                label
-                class="ma-2"
-                color="red"
-                outlined
-                @click.stop="postLike(comment.commentId)"
-              >
-                <VIcon left>mdi-heart-multiple-outline</VIcon>
-                {{ comment.like }}
-              </VChip>
-              <VChip v-else pill outlined label class="ma-2" color="red">
-                <VIcon color="red" left>mdi-heart-multiple</VIcon>
-                {{ comment.like }}
-              </VChip>
-            </VCardTitle>
-            <VCardText
-              style="white-space: pre-line;"
-              class="subheading py-0"
-              v-text="getEmoji(comment.content)"
-            >
-            </VCardText>
-            <VCardText class="caption pt-0">
-              发布时间: {{ $timeFormat(comment.date, "YYYY-MM-DD HH:mm:ss") }}
-            </VCardText>
-          </VCard>
-        </VCol>
-      </VFadeTransition>
-      <VCol
-        v-if="comments.length % pageSize == 0 && comments.length != 0"
-        cols="12"
-      >
-        <VBtn
-          color="primary"
-          block
-          outlined
-          @click="getData($route.path, true)"
-        >
-          下一页 / NEXT</VBtn
-        >
-      </VCol>
-      <VCol cols="12">
         <VCard v-if="$store.getters.getLoginState">
           <VCardTitle>
             <h5>{{ $store.state.nickName }}：</h5>
@@ -112,6 +53,67 @@
           </VCardActions>
         </VCard>
       </VCol>
+      <VCol cols="12">
+        <VTabs class="elevation-3">
+          <VTab icon="mdi-timeline" @click="sort = 1">时间序 / Latest</VTab>
+          <VTab @click="sort = 0">喜欢序 / LIKE</VTab>
+        </VTabs>
+      </VCol>
+      <VFadeTransition style="width: 100%" group>
+        <VCol
+          v-for="comment in comments"
+          :key="comment.commentId"
+          style="padding: 4px"
+          cols="12"
+        >
+          <VCard dense tile>
+            <VCardTitle class="py-0">
+              <h6>{{ comment.user.title }} {{ comment.user.nickName }}:</h6>
+            </VCardTitle>
+            <VCardText
+              style="white-space: pre-line;"
+              class="subheading py-0"
+              v-text="getEmoji(comment.content)"
+            >
+            </VCardText>
+            <VCardText class="caption py-1">
+              发布时间: {{ $timeFormat(comment.date, "YYYY-MM-DD HH:mm:ss") }}
+            </VCardText>
+            <VCardActions class="caption pt-0">
+              <VChip
+                v-if="comment.liked == false"
+                small
+                pill
+                label
+                class="ma-2"
+                color="grey"
+                outlined
+                @click.stop="postLike(comment.commentId)"
+              >
+                <VIcon small left>mdi-heart-multiple-outline</VIcon>
+                {{ comment.like }}
+              </VChip>
+              <VChip v-else small pill outlined label class="ma-2" color="red">
+                <VIcon small color="red" left>mdi-heart-multiple</VIcon>
+                {{ comment.like }}
+              </VChip>
+            </VCardActions>
+          </VCard>
+        </VCol>
+      </VFadeTransition>
+      <VCol
+        v-if="comments.length % pageSize == 0 && comments.length != 0"
+        cols="12"
+      >
+        <VBtn
+          color="primary"
+          block
+          outlined
+          @click="getData($route.path, true)"
+        >
+          下一页 / NEXT</VBtn
+        >
+      </VCol>
     </VRow>
   </VContainer>
 </template>
@@ -126,7 +128,7 @@ export default {
       pageSize: 20,
       comments: [],
       commentContent: "",
-      sort: 0
+      sort: 1
     };
   },
   watch: {

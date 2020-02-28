@@ -78,42 +78,12 @@
           </VLayout>
 
           <VSlideYTransition group>
-            <VCard
-              v-for="(eachAuthor, index) in authorList.content"
+            <BiliobAuthorListItem
+              v-for="eachAuthor in authorList.content"
               :key="eachAuthor.mid"
-              v-ripple="true"
-              style="position: relative"
-              :to="`/author/${eachAuthor.mid}`"
-              class="mx-0  elevation-0"
-              @click.stop="toAuthorDetail(eachAuthor.mid)"
+              :author="eachAuthor"
             >
-              <div style="padding:5px;display:flex">
-                <div>
-                  <VImg
-                    class="author-face"
-                    :src="zipPic(eachAuthor.face.replace('http:', ''))"
-                    :lazy-src="zipPic(eachAuthor.face.replace('http:', ''))"
-                  />
-                </div>
-                <div style="margin-left:10px;width:100%;overflow:hidden">
-                  <div class="font-weight-bold author-title">
-                    {{ eachAuthor.name }}
-                    <SexIcon :sex="eachAuthor.sex" />
-                  </div>
-                  <div
-                    v-if="eachAuthor.official !== ''"
-                    class="caption author-info d-block text-truncate"
-                  >
-                    <VIcon color="#FBC02D" small> mdi-flash-circle </VIcon
-                    ><span style="vertical-align: middle">
-                      {{ eachAuthor.official }}</span
-                    >
-                  </div>
-                  <ObserveStatus class="observe-status" :object="eachAuthor" />
-                </div>
-              </div>
-              <VDivider v-if="index != authorList.length - 1"></VDivider>
-            </VCard>
+            </BiliobAuthorListItem>
           </VSlideYTransition>
           <VBtn
             v-if="!notFound"
@@ -146,14 +116,10 @@
 
 <script>
 import VSearchForm from "@/components/common/VSearchForm.vue";
-import ObserveStatus from "@/components/common/ObserveStatus.vue";
-import SexIcon from "@/components/common/SexIcon.vue";
 export default {
   name: "AuthorList",
   components: {
-    VSearchForm,
-    SexIcon,
-    ObserveStatus
+    VSearchForm
   },
   data() {
     return {
@@ -193,9 +159,7 @@ export default {
     currentPage: function changePage(page) {
       this.axios
         .get(
-          `${this.currentApiurl}?page=${page}&text=${this.text}&sort=${
-            this.sort
-          }`
+          `${this.currentApiurl}?page=${page}&text=${this.text}&sort=${this.sort}`
         )
         .then(response => {
           // 判断是否为最后一页
@@ -256,16 +220,11 @@ export default {
       this.currentPage = 0;
       this.axios
         .get(
-          `${this.currentApiurl}?page=${this.currentPage}&text=${
-            this.text
-          }&sort=${this.sort}`
+          `${this.currentApiurl}?page=${this.currentPage}&text=${this.text}&sort=${this.sort}`
         )
         .then(response => {
           this.refreshList(response);
         });
-    },
-    toAuthorDetail(mid) {
-      this.$router.push("/author/" + mid);
     }
   }
 };
