@@ -19,7 +19,6 @@ export default {
     };
   },
   mounted() {
-    console.log(this.object);
     let interval = this.object.obInterval;
     if (interval != undefined) {
       if (interval < 3600) {
