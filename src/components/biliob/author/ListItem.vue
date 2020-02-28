@@ -6,7 +6,7 @@
     class="mx-0  elevation-0"
     @click.stop="toAuthorDetail(author.mid)"
   >
-    <VRow>
+    <VRow style="flex-wrap: nowrap">
       <VCol cols="auto">
         <VImg
           class="author-face"
@@ -14,19 +14,37 @@
           :lazy-src="zipPic(author.face)"
         />
       </VCol>
-      <VCol>
+      <VCol style="overflow-y: hidden;">
         <h4>
           {{ author.name }}
           <CommonSexIcon :sex="author.sex" />
         </h4>
-        <div
-          v-if="author.official !== ''"
-          class="caption author-info d-block text-truncate"
-        >
+        <div v-if="author.official !== ''" class="text-truncate">
           <VIcon color="#FBC02D" small> mdi-flash-circle </VIcon
-          ><span style="vertical-align: middle"> {{ author.official }}</span>
+          ><span
+            class="caption"
+            style="vertical-align: middle; overflow: hidden"
+          >
+            {{ author.official }}</span
+          >
         </div>
-        <CommonObserveStatus class="observe-status" :object="author" />
+        <div class="caption text-truncate" style="overflow: hidden">
+          <VIcon x-small left> mdi-account-multiple </VIcon
+          >{{ $numberFormat(author.cFans) }}({{
+            Number($numberFormat(author.cRate)[0]) != "-"
+              ? "+" + $numberFormat(author.cRate)
+              : $numberFormat(author.cRate)
+          }}) <VIcon x-small left> mdi-thumb-up </VIcon
+          >{{ $numberFormat(author.cLike) }}
+          <VIcon x-small left> mdi-play </VIcon
+          >{{ $numberFormat(author.cArchiveView) }}
+        </div>
+        <VRow no-gutters>
+          <VSpacer></VSpacer>
+          <VCol cols="auto" class="px-1">
+            <CommonObserveStatus :object="author" />
+          </VCol>
+        </VRow>
       </VCol>
     </VRow>
   </VSheet>
@@ -35,6 +53,9 @@
 export default {
   props: {
     author: Object()
+  },
+  mounted() {
+    console.log(this.author);
   },
   methods: {
     toAuthorDetail(mid) {

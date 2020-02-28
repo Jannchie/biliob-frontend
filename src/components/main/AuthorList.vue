@@ -259,18 +259,9 @@ export default {
   margin-top: 5px;
 }
 
-@media only screen and (max-width: 1029px) {
-  .author-face {
-    border-radius: 30px;
-    width: 60px;
-    height: 60px;
-  }
-}
-@media only screen and (min-width: 1029px) {
-  .author-face {
-    border-radius: 40px;
-    width: 80px;
-    height: 80px;
-  }
+.author-face {
+  border-radius: 40px;
+  width: 80px;
+  height: 80px;
 }
 </style>

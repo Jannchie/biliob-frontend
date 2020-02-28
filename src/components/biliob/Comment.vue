@@ -8,7 +8,7 @@
               ><h3>
                 <VIcon color="primary" left>
                   mdi-comment-multiple-outline </VIcon
-                >观测记录系统 / COMMENTS SYS
+                >观测记录 / COMMENTS SYS
               </h3></VExpansionPanelHeader
             >
             <VExpansionPanelContent>

@@ -103,7 +103,6 @@
               :to="'/author/' + eachVideo.mid + '/video/' + eachVideo.aid"
               class="video-cards elevation-0"
             >
-              <ObserveStatus class="observe-status" :object="eachVideo" />
               <div style="padding:5px;display:flex">
                 <div>
                   <VImg
@@ -125,6 +124,7 @@
                     >{{ eachVideo.channel }}
                   </div>
                 </div>
+                <ObserveStatus :object="eachVideo" />
               </div>
               <VDivider></VDivider>
             </VCard>
