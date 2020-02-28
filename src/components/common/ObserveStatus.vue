@@ -22,7 +22,6 @@ export default {
     console.log(this.object);
     let interval = this.object.obInterval;
     if (interval != undefined) {
-      console.log(interval);
       if (interval < 3600) {
         this.text = `${interval / 60} Min`;
       } else {
@@ -41,6 +40,10 @@ export default {
       }
     } else {
       if (this.object.forceFocus) {
+        this.text = "强行观测";
+        this.color = "orange";
+        this.icon = "mdi-eye";
+      } else if (this.object.focus) {
         this.text = "正在观测";
         this.color = "blue";
         this.icon = "mdi-eye-outline";

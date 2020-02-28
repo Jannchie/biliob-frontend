@@ -1942,5 +1942,41 @@
             }
         ],
         "type": "holyshit"
+    },
+    {
+        "title": "修复问题",
+        "version": "ver.8.1.0",
+        "date": "2020-02-28",
+        "list": [
+            {
+                "text": "修复了验证码会被QQ邮箱扔到垃圾箱的问题",
+                "type": "fix"
+            },
+            {
+                "text": "修复了作者页面操作按钮显示异常的问题",
+                "type": "fix"
+            },
+            {
+                "text": "美化了部分分辨率下的布局",
+                "type": "beautify"
+            },
+            {
+                "text": "美化了观测记录的显示",
+                "type": "beautify"
+            },
+            {
+                "text": "优先显示最近的观测记录",
+                "type": "feature"
+            },
+            {
+                "text": "UP主显示实际观测频率",
+                "type": "feature"
+            },
+            {
+                "text": "调整了发表评论的位置",
+                "type": "feature"
+            }
+        ],
+        "type": "important"
     }
 ]
