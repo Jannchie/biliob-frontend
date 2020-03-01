@@ -3,7 +3,6 @@
     <div>
       <VBtn
         v-if="!isMobile()"
-        color="white"
         x-small
         class="biliob-slide-card-btn left"
         fab
@@ -13,7 +12,6 @@
       </VBtn>
       <VBtn
         v-if="!isMobile()"
-        color="white"
         x-small
         class="biliob-slide-card-btn right"
         fab

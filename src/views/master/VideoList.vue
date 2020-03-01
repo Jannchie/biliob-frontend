@@ -123,8 +123,16 @@
                     <VIcon small> mdi-bookmark-outline </VIcon
                     >{{ eachVideo.channel }}
                   </div>
+                  <VRow no-gutters>
+                    <VSpacer></VSpacer>
+                    <VCol cols="auto">
+                      <ObserveStatus
+                        class="observe-status"
+                        :object="eachVideo"
+                      />
+                    </VCol>
+                  </VRow>
                 </div>
-                <ObserveStatus :object="eachVideo" />
               </div>
               <VDivider></VDivider>
             </VCard>

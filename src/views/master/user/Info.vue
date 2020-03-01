@@ -31,8 +31,12 @@
                 :counter="20"
                 required
                 :rules="[rules.required, rules.max]"
-                @keyup.enter="submit"
               ></VTextField>
+
+              <BiliobActiveCodeTextField
+                v-model="activationCode"
+                :mail="newMail"
+              ></BiliobActiveCodeTextField>
             </VCol>
           </VRow>
         </VCardText>
@@ -113,6 +117,7 @@ export default {
     dialog: false,
     newNickName: "",
     newMail: "",
+    activationCode: "",
     type: "",
     mailRules: [
       value => !!value || "邮箱不得为空",
@@ -167,14 +172,17 @@ export default {
         var lastValue = this.nickName;
         var newValue = this.newNickName;
         var postData = this.newNickName;
+        var method = "post";
         var set = "setNickName";
       } else if (this.type == "修改邮箱") {
         url = `/user/mail`;
         sameMsg = `新邮箱和原邮箱相同`;
+        method = "put";
         lastValue = this.mail;
         newValue = this.newMail;
-        postData = { mail: this.newMail };
+        postData = { mail: this.newMail, activationCode: this.activationCode };
         set = "setMail";
+        console.log(lastValue, newValue);
       }
       if (lastValue == newValue) {
         this.$store.commit("showMessage", {
@@ -182,8 +190,13 @@ export default {
           color: "error"
         });
       } else {
-        this.axios
-          .post(url, postData)
+        this.axios({
+          method: method,
+          url: url,
+          data: {
+            ...postData
+          }
+        })
           .then(response => {
             this.msg = response.data.msg;
             this.$store.commit(set, newValue);

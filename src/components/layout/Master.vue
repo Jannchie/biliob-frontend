@@ -150,8 +150,8 @@
     </div>
     <VContent>
       <VContainer class="pa-0">
-        <VRow justify="center" dense style="position: relative;">
-          <VCol lg="9" cols="12" class="main-col">
+        <VRow justify="center" dense>
+          <VCol lg="8" cols="12" class="main-col">
             <VSlideYTransition mode="out-in">
               <RouterView id="main-view" key="master" />
             </VSlideYTransition>
@@ -309,12 +309,10 @@ export default {
 #comment-container {
   overflow-y: auto;
 }
-.main-col {
-  max-width: 1000px;
-}
+
 @media (min-width: 1264px) {
   .container {
-    max-width: 1785px;
+    max-width: 1625px;
   }
 }
 </style>

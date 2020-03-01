@@ -55,6 +55,7 @@
           </VCardActions>
           <VCardActions>
             <VBtn small to="/privacy" text>隐私权政策</VBtn>
+            <VBtn small to="/password" text>忘记密码？</VBtn>
           </VCardActions>
         </BiliobCard>
       </VCol>

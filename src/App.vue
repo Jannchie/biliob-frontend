@@ -1,5 +1,5 @@
 <template>
-  <VApp id="app" :dark="dark">
+  <VApp id="app">
     <RouterView key="main" />
   </VApp>
 </template>

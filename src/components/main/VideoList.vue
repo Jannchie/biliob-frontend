@@ -93,7 +93,6 @@
           class="video-cards"
           @click.stop="toVideoDetail(eachVideo.mid, eachVideo.aid)"
         >
-          <ObserveStatus class="observe-status" :object="eachVideo" />
           <div style="padding:5px;display:flex">
             <div>
               <VImg
@@ -114,6 +113,12 @@
                 <VIcon small> mdi-bookmark-outline </VIcon
                 >{{ eachVideo.channel }}
               </div>
+              <VRow no-gutters>
+                <VSpacer></VSpacer>
+                <VCol cols="auto">
+                  <ObserveStatus class="observe-status" :object="eachVideo" />
+                </VCol>
+              </VRow>
             </div>
           </div>
           <VDivider></VDivider>
@@ -173,9 +178,7 @@ export default {
       this.currentPage = 0;
       this.axios
         .get(
-          `${this.currentApiurl}?page=${this.currentPage}&pagesize=20&text=${
-            this.text
-          }&sort=${this.sort}&days=${this.days}`
+          `${this.currentApiurl}?page=${this.currentPage}&pagesize=20&text=${this.text}&sort=${this.sort}&days=${this.days}`
         )
         .then(response => {
           this.videoList.content = response.data.content;
@@ -189,9 +192,7 @@ export default {
     currentPage: function changePage(page) {
       this.axios
         .get(
-          `${this.currentApiurl}?page=${page}&pagesize=20&text=${
-            this.text
-          }&sort=${this.sort}&days=${this.days}`
+          `${this.currentApiurl}?page=${page}&pagesize=20&text=${this.text}&sort=${this.sort}&days=${this.days}`
         )
         .then(response => {
           // 判断是否为最后一页
@@ -208,9 +209,7 @@ export default {
   created() {
     this.axios
       .get(
-        `${this.currentApiurl}?page=${this.currentPage}&pagesize=20&text=${
-          this.text
-        }&sort=${this.sort}&days=${this.days}`
+        `${this.currentApiurl}?page=${this.currentPage}&pagesize=20&text=${this.text}&sort=${this.sort}&days=${this.days}`
       )
       .then(response => {
         this.refreshList(response);
@@ -252,9 +251,7 @@ export default {
       this.currentPage = 0;
       this.axios
         .get(
-          `${this.currentApiurl}?page=${this.currentPage}&pagesize=20&text=${
-            this.text
-          }&sort=${this.sort}&days=${this.days}`
+          `${this.currentApiurl}?page=${this.currentPage}&pagesize=20&text=${this.text}&sort=${this.sort}&days=${this.days}`
         )
         .then(response => {
           this.refreshList(response);
@@ -265,9 +262,7 @@ export default {
       this.currentPage = 0;
       this.axios
         .get(
-          `${this.currentApiurl}?page=${this.currentPage}&pagesize=20&text=${
-            this.text
-          }&sort=${this.sort}&days=${this.days}`
+          `${this.currentApiurl}?page=${this.currentPage}&pagesize=20&text=${this.text}&sort=${this.sort}&days=${this.days}`
         )
         .then(response => {
           this.refreshList(response);
