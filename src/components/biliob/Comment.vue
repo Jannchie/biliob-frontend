@@ -68,7 +68,10 @@
         >
           <VCard dense tile>
             <VCardTitle class="py-0">
-              <h6>{{ comment.user.title }} {{ comment.user.nickName }}:</h6>
+              <h6>
+                {{ comment.user.title }} (#{{ comment.user.rank }}) /
+                {{ comment.user.nickName }}:
+              </h6>
             </VCardTitle>
             <VCardText
               style="white-space: pre-line;"

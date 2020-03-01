@@ -100,27 +100,9 @@ export default {
           name: this.name,
           password: this.password
         })
-        .then(response => {
-          this.$store.commit("showMessage", {
-            msg: response.data.msg,
-            color: "success"
-          });
-          this.$store.commit("login");
-          this.$store.commit("setUserName", response.data.data.name);
-          this.$store.commit("setNickName", response.data.data.nickName);
-          this.$store.commit("setRole", response.data.data.role);
-          this.$store.commit("setCredit", response.data.data.credit);
-          this.$store.commit(
-            "setFavoriteVideo",
-            response.data.data.favoriteAid
-          );
-          this.$store.commit(
-            "setFavoriteAuthor",
-            response.data.data.favoriteMid
-          );
-          setTimeout(() => {
-            //window.location.href = "https://www.biliob.com";
-          }, 2000);
+        .then(() => {
+          this.$store.dispatch("login");
+          this.$router.push("/");
         })
         .catch(error => {
           this.$store.commit("showMessage", {

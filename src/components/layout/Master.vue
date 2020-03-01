@@ -227,9 +227,9 @@ export default {
         { name: "首页", path: "/" },
         { name: "排行榜", path: "/rank" },
         { name: "UP主查询", path: "/authorlist" },
-        { name: "视频查询", path: "/videolist" }
+        { name: "视频查询", path: "/videolist" },
         // { name: "个人中心", path: "/user" }
-        // { name: "话题指数", path: "/index" }
+        { name: "见齐指数", path: "/index" }
       ]
     };
   },

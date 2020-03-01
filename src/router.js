@@ -52,6 +52,11 @@ export default new Router({
           component: () => import("@/views/master/user/Password.vue")
         },
         {
+          name: "修改密码",
+          path: "/index",
+          component: () => import("@/views/master/index/Index.vue")
+        },
+        {
           name: "个人中心",
           path: "/user",
           component: User,

@@ -1982,5 +1982,25 @@
             }
         ],
         "type": "important"
+    },
+    {
+        "title": "修复问题",
+        "version": "ver.8.1.1",
+        "date": "2020-03-01",
+        "list": [
+            {
+                "text": "修复了登陆不跳转的问题",
+                "type": "fix"
+            },
+            {
+                "text": "添加了找回密码功能",
+                "type": "feature"
+            },
+            {
+                "text": "评论显示头衔",
+                "type": "feature"
+            }
+        ],
+        "type": "unimportant"
     }
 ]
