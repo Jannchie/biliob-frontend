@@ -7,7 +7,6 @@
     outlined
     :disabled="disabled"
     tile
-    v-on="on"
     @click="dialog = true"
   >
     <VDialog v-model="dialog" style="position: absolute" width="400px">

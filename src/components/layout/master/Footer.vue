@@ -73,7 +73,10 @@ export default {
         {
           name: "友情链接",
           links: [
-            { name: "激情赞助 蔚文印刷", link: "http://www.i-mp.cn/" },
+            {
+              name: "激情赞助 上海蔚文印务科技有限公司",
+              link: "http://21yinshua.cn/"
+            },
             {
               name: "数据合作 Kanbilibili",
               link: "https://www.kanbilibili.com/"

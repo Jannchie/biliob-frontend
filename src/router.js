@@ -52,9 +52,16 @@ export default new Router({
           component: () => import("@/views/master/user/Password.vue")
         },
         {
-          name: "修改密码",
+          name: "见齐指数",
           path: "/index",
-          component: () => import("@/views/master/index/Index.vue")
+          component: () => import("@/views/master/index/Index.vue"),
+          children: [
+            {
+              path: ":keyword",
+              name: "关键词",
+              component: () => import("@/views/master/index/Keyword.vue")
+            }
+          ]
         },
         {
           name: "个人中心",

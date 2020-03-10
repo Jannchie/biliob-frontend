@@ -16,6 +16,7 @@ export default {
   mounted() {
     this.axios.get(`/video/popular-keyword`).then(r => {
       let data = r.data.map(e => {
+        if (e._id == "搞笑") e.value = 0;
         return { name: e._id, value: e.value };
       });
       this.tagOptions = getOptions(data);

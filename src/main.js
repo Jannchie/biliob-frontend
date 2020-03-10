@@ -59,12 +59,14 @@ router.afterEach(function(to) {
 });
 Vue.use(EmojiPicker);
 Vue.use(VueRouter);
+
 Vue.prototype.$baseKeywords =
   "B站,b站数据统计,b站数据分析,哔哩哔哩up主,up主排行,数据,观测者,视频,见齐,biliob,bilibili,UP主,粉丝数,粉丝数排行榜,数据可视化,哔哩哔哩,哔哩哔哩观测者,哔哩哔哩ob,bilibiliob";
 // 使用axios
 axios.defaults.withCredentials = true;
 
 Vue.prototype.$alert = function(res) {
+  if (res == undefined) return;
   let msg = res.data.msg;
   if (msg != undefined) {
     data.alert.message = res.data.msg;
@@ -83,6 +85,8 @@ import { format } from "date-fns";
 Vue.prototype.$timeFormat = format;
 
 Vue.prototype.$db = data;
+Vue.prototype.$dateParse = require("date-fns/parse");
+Vue.dat;
 Vue.prototype.$numberFormat = function(num) {
   if (num == undefined) {
     return "0";

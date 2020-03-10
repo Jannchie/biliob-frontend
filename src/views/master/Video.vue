@@ -24,7 +24,7 @@
     </VRow>
     <VRow dense>
       <VCol cols="12">
-        <BiliobVideoRank class="mb-2" v-bind="rank"></BiliobVideoRank>
+        <!-- <BiliobVideoRank class="mb-2" v-bind="rank"></BiliobVideoRank> -->
         <DetailCharts
           class="mb-2"
           title="视频详细历史数据"
@@ -158,9 +158,7 @@ export default {
             continue;
           }
           this.pageItems.push({
-            text: `P${eachPage}: ${
-              response.data.danmakuAggregate[eachPage]["p_name"]
-            }`,
+            text: `P${eachPage}: ${response.data.danmakuAggregate[eachPage]["p_name"]}`,
             value: eachPage
           });
           this.defaultPage = this.pageItems[0];

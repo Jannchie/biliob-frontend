@@ -3,5 +3,9 @@ export default {
     message: undefined,
     type: undefined,
     display: false
+  },
+  index: {
+    recentlyRank: undefined,
+    keyword: {}
   }
 };

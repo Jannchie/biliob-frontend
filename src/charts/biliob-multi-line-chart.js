@@ -5,9 +5,13 @@ function drawChart(data, type = "line", format = "YYYY-MM-DD HH:mm") {
     let localOffset = new Date().getTimezoneOffset() / 60;
     let offset = -8 - localOffset;
     e[0] = e[0].map(item => {
-      let date = new Date(item[0].replace(new RegExp(/-/gm), "/"));
-
-      date.setHours(date.getHours() + offset);
+      let date;
+      if (typeof item[0] == "string") {
+        date = new Date(item[0].replace(new RegExp(/-/gm), "/"));
+        date.setHours(date.getHours() + offset);
+      } else {
+        date = item[0];
+      }
       return [date, item[1]];
     });
     return {

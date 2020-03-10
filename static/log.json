@@ -2002,5 +2002,29 @@
             }
         ],
         "type": "unimportant"
+    },
+    {
+        "title": "见齐指数",
+        "version": "ver.8.2.0",
+        "date": "2020-03-11",
+        "list": [
+            {
+                "text": "见齐指数的功能开始测试，能够查询关键词的历史热度",
+                "type": "feature"
+            },
+            {
+                "text": "添加了对于部分热门关键词的见齐指数推荐系统",
+                "type": "feature"
+            },
+            {
+                "text": "更新了激情赞助友情链接",
+                "type": "feature"
+            },
+            {
+                "text": "首页关键词词云的「搞笑」论外处理",
+                "type": "feature"
+            }
+        ],
+        "type": "important"
     }
 ]
