@@ -4,13 +4,13 @@
       <VCol cols="12">
         <VExpansionPanels tile>
           <VExpansionPanel>
-            <VExpansionPanelHeader class="primary--text"
+            <VExpansionPanelHeader class="primary--text px-4"
               ><h3>
                 <VIcon color="primary" left> mdi-chart-bell-curve </VIcon
                 >见齐指数 / JANNCHIE IDX ver.0.0.1 beta
               </h3></VExpansionPanelHeader
             >
-            <VExpansionPanelContent>
+            <VExpansionPanelContent class="px-1">
               <h4>见齐指数简介</h4>
               <div class="body-2">
                 <li>
@@ -28,7 +28,7 @@
 
     <VRow dense>
       <VCol cols="12">
-        <BiliobCard color="warning">
+        <VCard>
           <VCardTitle class="warning--text">
             <VIcon style="vertical-align: text-bottom;" color="warning" left
               >mdi-alert</VIcon
@@ -36,7 +36,7 @@
             <h4>该系统当前为测试版本</h4>
           </VCardTitle>
 
-          <VCardText>
+          <VCardText class="body-2">
             因此该系统目前具备以下三个特点：
             <li>
               <b>缓慢</b> /
@@ -52,7 +52,7 @@
             </li>
             以上。欢迎各位观测者测试该系统，并提出意见或建议。
           </VCardText>
-        </BiliobCard>
+        </VCard>
       </VCol>
     </VRow>
     <VRow align="center" dense>
@@ -90,7 +90,7 @@
       >
         <BiliobCard @click="$router.push(`/index/${eachTag.tag}`)">
           <VCardTitle class="primary--text">
-            <h2>{{ eachTag.tag }}</h2>
+            <h4>{{ eachTag.tag }}</h4>
           </VCardTitle>
           <VCardText>
             <VRow no-gutters>

@@ -14,7 +14,7 @@
         :light="light"
       >
         <slot v-if="!title && !text" name="header" />
-        <h3 v-else class="font-weight-light px-5 py-1">
+        <h3 v-else class="px-5 py-1">
           {{ title }}
         </h3>
       </BiliobDarkInfo>

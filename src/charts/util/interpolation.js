@@ -1,12 +1,11 @@
 var parse = require("date-fns/parse");
 var format = require("date-fns/format");
-var isBefore = require("date-fns/is_before");
-var isAfter = require("date-fns/is_after");
 var addDays = require("date-fns/add_days");
 var getTime = require("date-fns/get_time");
 
 function interpolation(data) {
   let out = [];
+
   data = data
     .map(e => {
       return [parse(e[0], new Date()), e[1]];
@@ -21,6 +20,10 @@ function interpolation(data) {
   if (data.length <= 1) {
     return data;
   }
+  if (data.length > 500) {
+    console.log(data);
+  }
+
   let start_date = data[0][0];
   let c_str_date = format(start_date, "YYYY-MM-DD");
   let c_date = parse(c_str_date, "YYYY-MM-DD", new Date());
@@ -31,22 +34,14 @@ function interpolation(data) {
     c_date = addDays(c_date, 1);
     c_str_date = format(c_date, "YYYY-MM-DD");
     while (
-      last_index + 1 < data.length &&
-      !(
-        isBefore(data[last_index][0], c_date) &&
-        isAfter(data[last_index + 1][0], c_date)
-      )
-    ) {
-      last_index++;
-    }
-    while (
       next_index + 1 < data.length &&
-      !(
-        isAfter(data[next_index][0], c_date) &&
-        isBefore(data[next_index - 1][0], c_date)
-      )
+      data[next_index][0] > c_date &&
+      data[next_index - 1][0] < c_date
     ) {
       next_index++;
+    }
+    while (last_index + 2 < data.length && data[last_index + 1][0] < c_date) {
+      last_index++;
     }
     let next_val = data[next_index][1];
     let next_date = data[next_index][0];

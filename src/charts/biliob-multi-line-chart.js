@@ -14,14 +14,20 @@ function drawChart(data, type = "line", format = "YYYY-MM-DD HH:mm") {
       }
       return [date, item[1]];
     });
-    return {
+    let result = {
       name: e[1],
       data: e[0],
       smooth: true,
       showSymbol: false,
-      color: e[2],
-      type: type
+      color: e[2]
     };
+    if (type == "area") {
+      result.type = "line";
+      result.areaStyle = {};
+    } else {
+      result.type = type;
+    }
+    return result;
   });
   let Chart = {
     legend: {

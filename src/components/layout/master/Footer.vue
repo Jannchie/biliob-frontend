@@ -82,6 +82,10 @@ export default {
               link: "https://www.kanbilibili.com/"
             },
             {
+              name: "数据合作 科技号",
+              link: "https://space.bilibili.com/14220823"
+            },
+            {
               name: "服务器提供商 阿里云",
               link:
                 "https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=z82eczgc"
@@ -91,7 +95,6 @@ export default {
               link:
                 "https://cloud.tencent.com/redirect.php?redirect=1005&cps_key=7db3d9f0ef080a24be84d44938108742&from=console"
             },
-
             {
               name: "服务器提供商 Vultr",
               link: "https://www.vultr.com/?ref=7540103"

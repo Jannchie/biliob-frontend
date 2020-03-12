@@ -400,6 +400,7 @@ export default {
       let fansArray = [];
       let likeArray = [];
       let viewArray = [];
+
       this.authorData.data.forEach(e => {
         if (e.fans != undefined && e.fans != 0) {
           fansArray.push([e.datetime, e.fans]);
@@ -412,22 +413,25 @@ export default {
         }
       });
       fansArray = fansArray.reverse();
+      console.log(interpolation(fansArray));
+
       viewArray = viewArray.reverse();
       likeArray = likeArray.reverse();
-      this.authorDataDiffOptions = getAuthorDataDiffOptions([
-        [fansArray, "粉丝数", "#1e88e5"],
-        [viewArray, "播放数", "#2b821d"],
-        [likeArray, "获赞数", "#c12e34"]
-      ]);
+
       this.authorFansRateOptions = getMultiChartOptions(
         [
           [interpolation(fansArray), "粉丝数", "#1e88e5"],
           [interpolation(viewArray), "播放数", "#2b821d"],
           [interpolation(likeArray), "获赞数", "#c12e34"]
         ],
-        "bar",
+        "area",
         "YYYY-MM-DD"
       );
+      this.authorDataDiffOptions = getAuthorDataDiffOptions([
+        [fansArray, "粉丝数", "#1e88e5"],
+        [viewArray, "播放数", "#2b821d"],
+        [likeArray, "获赞数", "#c12e34"]
+      ]);
 
       this.historyDataOptions = getMultiChartOptions([
         [fansArray, "粉丝数", "#1e88e5"],

@@ -2026,5 +2026,49 @@
             }
         ],
         "type": "important"
+    },
+    {
+        "title": "见齐指数",
+        "version": "ver.8.2.0",
+        "date": "2020-03-11",
+        "list": [
+            {
+                "text": "见齐指数的功能开始测试，能够查询关键词的历史热度",
+                "type": "feature"
+            },
+            {
+                "text": "添加了对于部分热门关键词的见齐指数推荐系统",
+                "type": "feature"
+            },
+            {
+                "text": "更新了激情赞助友情链接",
+                "type": "feature"
+            }
+        ],
+        "type": "important"
+    },
+    {
+        "title": "添加远古数据",
+        "version": "ver.8.2.1",
+        "date": "2020-03-11",
+        "list": [
+            {
+                "text": "追加了部分UP主的远古数据",
+                "type": "feature"
+            },
+            {
+                "text": "添加了数据提供者的友情链接",
+                "type": "feature"
+            },
+            {
+                "text": "修正了粉丝变化的展示",
+                "type": "fix"
+            },
+            {
+                "text": "美化了某些文字和图表的样式",
+                "type": "beautify"
+            }
+        ],
+        "type": "unimportant"
     }
 ]

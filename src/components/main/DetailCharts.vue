@@ -3,9 +3,9 @@
     <BiliobCard :text="subTitle" :color="color">
       <BiliobDarkInfo slot="offset" light :elevation="0" border="bottom">
         <slot v-if="$slots.header" name="header"></slot>
-        <div v-else class="px-5 py-1">
+        <h3 v-else class="px-5 py-1">
           {{ title }}
-        </div>
+        </h3>
       </BiliobDarkInfo>
       <VResponsive
         :aspect-ratio="aspectRatio"
