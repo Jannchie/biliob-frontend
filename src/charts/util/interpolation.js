@@ -31,8 +31,8 @@ function interpolation(data) {
   let last_index = 0;
   let next_index = 1;
   while (c_date < end_date) {
-    c_date = addDays(c_date, 1);
     c_str_date = format(c_date, "YYYY-MM-DD");
+    c_date = addDays(c_date, 1);
     while (
       next_index + 1 < data.length &&
       data[next_index][0] > c_date &&

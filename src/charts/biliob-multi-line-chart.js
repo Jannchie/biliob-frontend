@@ -17,13 +17,16 @@ function drawChart(data, type = "line", format = "YYYY-MM-DD HH:mm") {
     let result = {
       name: e[1],
       data: e[0],
-      smooth: true,
+      smooth: false,
       showSymbol: false,
       color: e[2]
     };
     if (type == "area") {
       result.type = "line";
-      result.areaStyle = {};
+      result.name += "日增";
+      result.areaStyle = {
+        color: e[2] + "33"
+      };
     } else {
       result.type = type;
     }
@@ -74,7 +77,9 @@ function drawChart(data, type = "line", format = "YYYY-MM-DD HH:mm") {
     yAxis: [
       {
         type: "value",
-        min: "dataMin",
+        min: function(value) {
+          return value.min > 0 && type == "area" ? 0 : value.min;
+        },
         axisLabel: {
           formatter: formatNumber
         }

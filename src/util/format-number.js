@@ -20,6 +20,10 @@ function formatNumber(num) {
     inter = int.slice(-3) + "," + inter;
     int = int.slice(0, -3);
   }
-  return `${inter.slice(0, -1)}.${dec}${postfix}`;
+  if (dec == "0") {
+    return `${inter.slice(0, -1)}${postfix}`;
+  } else {
+    return `${inter.slice(0, -1)}.${dec}${postfix}`;
+  }
 }
 export default formatNumber;

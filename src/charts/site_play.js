@@ -1,5 +1,5 @@
 var format = require("date-fns/format");
-
+import formatNumber from "../util/format-number";
 function drawChart(data) {
   var xData = [];
   var playOninleData = [];
@@ -33,7 +33,11 @@ function drawChart(data) {
     },
     yAxis: {
       type: "value",
-      axisLabel: { formatter: "{value}万" }
+      axisLabel: {
+        formatter: val => {
+          return formatNumber(val * 10000);
+        }
+      }
     },
     series: [
       {
