@@ -28,11 +28,12 @@ function interpolation(data) {
   let c_str_date = format(start_date, "YYYY-MM-DD");
   let c_date = parse(c_str_date, "YYYY-MM-DD", new Date());
   let end_date = data[data.length - 1][0];
+  let e_str_date = format(end_date, "YYYY-MM-DD");
   let last_index = 0;
   let next_index = 1;
-  while (c_date < end_date) {
-    c_str_date = format(c_date, "YYYY-MM-DD");
+  while (e_str_date != c_str_date) {
     c_date = addDays(c_date, 1);
+    c_str_date = format(c_date, "YYYY-MM-DD");
     while (
       next_index + 1 < data.length &&
       data[next_index][0] > c_date &&
