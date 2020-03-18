@@ -1,6 +1,7 @@
 var format = require("date-fns/format");
+var parse = require("date-fns/parse");
 function getTimeStamp(date) {
-  return new Date(date).getTime();
+  return parse(date).getTime();
 }
 function drawChart(aData, bData, aName, bName) {
   var data = [{}, {}];
@@ -9,13 +10,23 @@ function drawChart(aData, bData, aName, bName) {
     [bData, bName]
   ].forEach(element => {
     var eachData = element[0];
+    let offset = 8;
+    eachData.map(e => {
+      if (typeof e.datetime == "string") {
+        let date;
+        date = parse(e.datetime);
+        date.setHours(date.getHours() - offset);
+        e.datetime = date;
+      }
+      return e;
+    });
     var name = element[1];
     var i = 1;
     if (name == aName) {
       i = 0;
     }
 
-    let endDate = new Date(format(eachData[0].datetime)).getTime();
+    let endDate = parse(eachData[0].datetime).getTime();
     endDate -= endDate % 60000;
     for (let index = 1; index < eachData.length - 1; index++) {
       const element = eachData[index];
@@ -42,7 +53,6 @@ function drawChart(aData, bData, aName, bName) {
           ((cFans - nFans) / (cTimestamp - nTimestamp)) *
             (endDate - nTimestamp) +
           nFans;
-
         data[i][format(endDate, "HH:mm")] = Math.round(value);
         endDate -= 60000;
       }

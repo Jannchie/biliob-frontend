@@ -1,6 +1,7 @@
 import formatNumber from "../util/format-number";
 import fmt from "date-fns/format";
 function drawChart(data, type = "line", format = "YYYY-MM-DD HH:mm") {
+  if (data.length == 0) return undefined;
   let series = data.map(e => {
     let localOffset = new Date().getTimezoneOffset() / 60;
     let offset = -8 - localOffset;
@@ -23,7 +24,7 @@ function drawChart(data, type = "line", format = "YYYY-MM-DD HH:mm") {
     };
     if (type == "area") {
       result.type = "line";
-      result.name += "日增";
+      result.name += "增长";
       result.areaStyle = {
         color: e[2] + "33"
       };

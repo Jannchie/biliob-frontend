@@ -70,7 +70,7 @@ function drawChart(data) {
       },
       inRange: {
         color: e[2],
-        colorAlpha: [0.2, 10]
+        colorAlpha: [0.2, 1]
       },
 
       orient: "horizontal",

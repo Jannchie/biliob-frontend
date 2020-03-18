@@ -64,6 +64,16 @@ export default new Router({
           ]
         },
         {
+          name: "番剧查询",
+          path: "/bangumi",
+          component: () => import("@/views/master/bangumi/BangumiList.vue")
+        },
+        {
+          name: "番剧详情",
+          path: "/bangumi/:sid",
+          component: () => import("@/views/master/bangumi/BangumiDetail.vue")
+        },
+        {
           name: "个人中心",
           path: "/user",
           component: User,

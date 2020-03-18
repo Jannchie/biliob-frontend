@@ -7,5 +7,8 @@ export default {
   index: {
     recentlyRank: undefined,
     keyword: {}
+  },
+  bangumi: {
+    detail: {}
   }
 };

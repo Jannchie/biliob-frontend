@@ -79,7 +79,7 @@ export default {
       }
     },
     loading() {
-      if (this.options.series == undefined) {
+      if (this.options.series == undefined || this.options == undefined) {
         return true;
       } else {
         return false;
