@@ -117,7 +117,7 @@
       ></VCol>
       <VCol cols="12"
         ><MainDetailCharts
-          title="系列周增数据"
+          title="专题周增数据"
           :options="rateOptions"
         ></MainDetailCharts
       ></VCol>

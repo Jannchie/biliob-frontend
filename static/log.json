@@ -2070,5 +2070,29 @@
             }
         ],
         "type": "unimportant"
+    },
+    {
+        "title": "番剧数据",
+        "version": "ver.9.0.0",
+        "date": "2020-03-18",
+        "list": [
+            {
+                "text": "添加了番剧数据的查询，数据来自于@Damn☆You",
+                "type": "feature"
+            },
+            {
+                "text": "更新了友情链接",
+                "type": "feature"
+            },
+            {
+                "text": "修正了变化率插值算法的公式",
+                "type": "fix"
+            },
+            {
+                "text": "美化了面积图的展示",
+                "type": "beautify"
+            }
+        ],
+        "type": "holyshit"
     }
 ]

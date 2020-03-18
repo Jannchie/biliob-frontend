@@ -82,7 +82,11 @@ export default {
               link: "https://www.kanbilibili.com/"
             },
             {
-              name: "数据合作 科技号",
+              name: "数据合作 @Damn☆You",
+              link: "https://space.bilibili.com/735882"
+            },
+            {
+              name: "数据合作 @科技号",
               link: "https://space.bilibili.com/14220823"
             },
             {

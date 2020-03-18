@@ -230,7 +230,7 @@ export default {
         { name: "视频查询", path: "/videolist" },
         // { name: "个人中心", path: "/user" }
         { name: "见齐指数", path: "/index" },
-        { name: "番剧查询", path: "/bangumi" }
+        { name: "专题查询", path: "/bangumi" }
       ]
     };
   },

@@ -64,12 +64,12 @@ export default new Router({
           ]
         },
         {
-          name: "番剧查询",
+          name: "专题查询",
           path: "/bangumi",
           component: () => import("@/views/master/bangumi/BangumiList.vue")
         },
         {
-          name: "番剧详情",
+          name: "专题详情",
           path: "/bangumi/:sid",
           component: () => import("@/views/master/bangumi/BangumiDetail.vue")
         },
