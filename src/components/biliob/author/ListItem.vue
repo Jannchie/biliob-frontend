@@ -31,7 +31,7 @@
         <div class="caption text-truncate" style="overflow: hidden">
           <VIcon x-small left> mdi-account-multiple </VIcon
           >{{ $numberFormat(author.cFans) }}({{
-            Number($numberFormat(author.cRate)[0]) != "-"
+            author.cRate > 0
               ? "+" + $numberFormat(author.cRate)
               : $numberFormat(author.cRate)
           }}) <VIcon x-small left> mdi-thumb-up </VIcon
