@@ -2094,5 +2094,33 @@
             }
         ],
         "type": "holyshit"
+    },
+    {
+        "title": "添加了每日最大在观看周线",
+        "version": "ver.9.1.0",
+        "date": "2020-03-18",
+        "list": [
+            {
+                "text": "再次优化了变化率插值算法",
+                "type": "fix"
+            },
+            {
+                "text": "添加了剧集类型的显示",
+                "type": "feature"
+            },
+            {
+                "text": "剧集分数保留一位小数",
+                "type": "fix"
+            },
+            {
+                "text": "美化了UP主变化日历的展示",
+                "type": "beautify"
+            },
+            {
+                "text": "修复了作者列表增速下降时的显示异常",
+                "type": "fix"
+            }
+        ],
+        "type": "important"
     }
 ]
