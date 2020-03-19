@@ -35,6 +35,7 @@
       </VRow>
     </VCardText>
     <VCardText class="caption">
+      <BiliobBangumiType :type="bangumiInfo.type"></BiliobBangumiType>
       <BiliobBangumiCopyright
         :copyright="bangumiInfo.copyright"
         :charge="bangumiInfo.charge"

@@ -42,6 +42,9 @@
                 </h2>
                 <br />
                 <div class="caption">
+                  <BiliobBangumiType
+                    :type="bangumiDetail.type"
+                  ></BiliobBangumiType>
                   <BiliobBangumiCopyright
                     :copyright="bangumiDetail.copyright"
                     :charge="bangumiDetail.charge"
@@ -169,10 +172,11 @@ export default {
       this.bangumiDetail.bangumiHistoryData.forEach(e => {
         for (let index = 0; index < keys.length; index++) {
           let key = keys[index][0];
-          datus[index][0].push([
-            this.$timeFormat(e.datetime, "YYYY-MM-DD HH:mm:ss"),
-            e[key]
-          ]);
+          if (e[key] != 0)
+            datus[index][0].push([
+              this.$timeFormat(e.datetime, "YYYY-MM-DD HH:mm:ss"),
+              e[key]
+            ]);
         }
       });
       return datus;
