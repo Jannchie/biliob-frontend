@@ -26,7 +26,7 @@
         <VSpacer></VSpacer>
         <VCol cols="auto">
           <h3 :class="`display-1 ${scoreColor} font-weight-black`">
-            {{ bangumiInfo.score }}
+            {{ bangumiInfo.score.toFixed(1) }}
           </h3>
           <div class="caption">
             {{ $numberFormat(bangumiInfo.scoreCount) }}人评分
