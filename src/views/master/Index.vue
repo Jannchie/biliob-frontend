@@ -17,6 +17,7 @@
         </VSlideYTransition>
       </VCol>
     </VRow>
+
     <VRow dense>
       <VCol>
         <VSlideYTransition>
@@ -25,6 +26,18 @@
             :options="siteInfo"
             title="B站全站信息"
           ></BiliobSiteChart>
+        </VSlideYTransition>
+      </VCol>
+    </VRow>
+
+    <VRow dense>
+      <VCol>
+        <VSlideYTransition>
+          <MainDetailCharts
+            :options="stockOption"
+            title="B站每日最大在线观看周线"
+            sub-title="趋势图"
+          />
         </VSlideYTransition>
       </VCol>
     </VRow>
@@ -38,9 +51,10 @@
   </VContainer>
 </template>
 <script>
+import getStockOption from "@/charts/biliob-candlestick.js";
 export default {
   data() {
-    return {};
+    return { stockOption: {} };
   },
   computed: {
     siteInfo() {
@@ -60,6 +74,9 @@ export default {
     if (this.$store.state.site.siteGroupInfo == undefined) {
       this.$store.dispatch("getSiteGroupInfo");
     }
+    this.axios.get("/site/history-play?days=365").then(res => {
+      this.stockOption = getStockOption(res.data);
+    });
   }
 };
 </script>

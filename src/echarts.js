@@ -9,6 +9,7 @@ import "echarts/lib/component/radar";
 import "echarts/lib/component/calendar";
 import "echarts/lib/component/legend";
 import "echarts/lib/component/visualMap";
+import "echarts/lib/chart/candlestick";
 import "echarts/lib/chart/radar";
 import "echarts/lib/chart/line";
 import "echarts/lib/chart/pie";
