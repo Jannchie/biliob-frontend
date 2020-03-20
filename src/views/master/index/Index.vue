@@ -124,7 +124,6 @@ export default {
     if (this.index.recentlyRank == undefined) {
       this.axios.get("/index/recently-rank").then(res => {
         this.index.recentlyRank = res.data;
-        console.log(res.data);
       });
     }
   },

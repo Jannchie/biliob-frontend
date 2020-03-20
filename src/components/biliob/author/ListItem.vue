@@ -54,9 +54,7 @@ export default {
   props: {
     author: Object()
   },
-  mounted() {
-    console.log(this.author);
-  },
+  mounted() {},
   methods: {
     toAuthorDetail(mid) {
       this.$router.push("/author/" + mid);

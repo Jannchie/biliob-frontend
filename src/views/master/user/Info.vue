@@ -182,7 +182,6 @@ export default {
         newValue = this.newMail;
         postData = { mail: this.newMail, activationCode: this.activationCode };
         set = "setMail";
-        console.log(lastValue, newValue);
       }
       if (lastValue == newValue) {
         this.$store.commit("showMessage", {

@@ -39,8 +39,6 @@ export default {
   },
   methods: {
     sendActivationCode() {
-      console.log(this.value, this.mail);
-
       setTimeout(() => {
         this.loading = false;
       }, 60 * 1000);

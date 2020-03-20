@@ -413,7 +413,6 @@ export default {
         }
       });
       fansArray = fansArray.reverse();
-      console.log(interpolation(fansArray));
 
       viewArray = viewArray.reverse();
       likeArray = likeArray.reverse();

@@ -233,11 +233,6 @@ export default {
       searchMethods: []
     };
   },
-  watch: {
-    matchField(value) {
-      console.log(value);
-    }
-  },
   mounted() {
     this.getSearchMethods();
     this.submitSearchMethod();

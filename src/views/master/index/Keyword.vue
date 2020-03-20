@@ -41,7 +41,6 @@ export default {
     }
   },
   mounted() {
-    console.log(this.$route.params.keyword);
     this.updateData();
   },
   methods: {

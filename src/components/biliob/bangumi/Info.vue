@@ -17,23 +17,7 @@
         <div class="caption">{{ bangumiInfo.foreignName }}</div>
       </VCardTitle>
     </VImg>
-    <VCardText
-      v-if="bangumiInfo.score"
-      style="position: absolute;left: 0"
-      class="text-center"
-    >
-      <VRow no-gutters>
-        <VSpacer></VSpacer>
-        <VCol cols="auto">
-          <h3 :class="`display-1 ${scoreColor} font-weight-black`">
-            {{ bangumiInfo.score.toFixed(1) }}
-          </h3>
-          <div class="caption">
-            {{ $numberFormat(bangumiInfo.scoreCount) }}人评分
-          </div>
-        </VCol>
-      </VRow>
-    </VCardText>
+
     <VCardText class="caption">
       <BiliobBangumiType :type="bangumiInfo.type"></BiliobBangumiType>
       <BiliobBangumiCopyright
@@ -55,6 +39,23 @@
         :finished="bangumiInfo.finished"
         :serializing="bangumiInfo.serializing"
       ></BiliobBangumiStatus>
+      <VCardText
+        v-if="bangumiInfo.score"
+        style="position: absolute;left: 0"
+        class="text-center"
+      >
+        <VRow no-gutters>
+          <VSpacer></VSpacer>
+          <VCol cols="auto">
+            <h3 :class="`display-1 ${scoreColor} font-weight-black`">
+              {{ bangumiInfo.score.toFixed(1) }}
+            </h3>
+            <div class="caption">
+              {{ $numberFormat(bangumiInfo.scoreCount) }}人评分
+            </div>
+          </VCol>
+        </VRow>
+      </VCardText>
       <div>发布时间: {{ formatDate(bangumiInfo.pubDate) }}</div>
 
       <div>
