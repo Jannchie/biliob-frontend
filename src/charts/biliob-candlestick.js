@@ -59,14 +59,13 @@ function getOption(data) {
         },
         tooltip: {
           formatter: params => {
-            console.log(params);
             return `${params.name} <br />首天最值：
             ${formatNumber(params.value[1])}
             <br />末天最值：
             ${formatNumber(params.value[2])}
-            <br />周最大值：
-            ${formatNumber(params.value[3])}
             <br />周最小值：
+            ${formatNumber(params.value[3])}
+            <br />周最大值：
             ${formatNumber(params.value[4])}<br />`;
           }
         }

@@ -172,7 +172,7 @@ export default {
       this.bangumiDetail.bangumiHistoryData.forEach(e => {
         for (let index = 0; index < keys.length; index++) {
           let key = keys[index][0];
-          if (e[key] != 0)
+          if (e[key] > 0)
             datus[index][0].push([
               this.$timeFormat(e.datetime, "YYYY-MM-DD HH:mm:ss"),
               e[key]

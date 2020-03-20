@@ -23,13 +23,14 @@
                 <li>发表观测记录将 消耗1积分</li>
                 <li>点赞观测记录将 消耗0.1积分</li>
                 <li>观测记录被点赞将 获得0.1积分</li>
+                <li>自赞不会获得积分</li>
               </div>
             </VExpansionPanelContent>
           </VExpansionPanel>
         </VExpansionPanels>
       </VCol>
       <VCol cols="12">
-        <VCard v-if="$store.getters.getLoginState">
+        <VCard v-if="$store.getters.getLoginState || $store.state.exp >= 100">
           <VCardTitle>
             <h5>{{ $store.state.nickName }}：</h5>
           </VCardTitle>
@@ -59,6 +60,26 @@
           <VTab @click="sort = 0">喜欢序 / LIKE</VTab>
         </VTabs>
       </VCol>
+
+      <VFadeTransition v-if="comments == undefined" style="width: 100%">
+        <VCol cols="12">
+          <VSkeletonLoader
+            style="width: 100%"
+            elevation="3"
+            type="card-heading, list-item-two-line, list-item"
+          ></VSkeletonLoader>
+        </VCol>
+      </VFadeTransition>
+
+      <VFadeTransition v-else-if="comments.length == 0" style="width: 100%">
+        <VCol cols="12">
+          <VCard>
+            <VCardTitle>本页没有观测记录！ </VCardTitle>
+            <VCardText>现在撰写，成为第一个记录的观测者吧~ ↑</VCardText>
+          </VCard>
+        </VCol>
+      </VFadeTransition>
+
       <VFadeTransition style="width: 100%" group>
         <VCol
           v-for="comment in comments"
@@ -105,7 +126,11 @@
         </VCol>
       </VFadeTransition>
       <VCol
-        v-if="comments.length % pageSize == 0 && comments.length != 0"
+        v-if="
+          comments != undefined &&
+            comments.length % pageSize == 0 &&
+            comments.length != 0
+        "
         cols="12"
       >
         <VBtn
@@ -129,7 +154,7 @@ export default {
     return {
       page: 0,
       pageSize: 20,
-      comments: [],
+      comments: undefined,
       commentContent: "",
       sort: 1
     };
@@ -139,17 +164,15 @@ export default {
       this.getData(to.path);
     },
     sort() {
-      this.comments = [];
       this.getData(this.$route.path);
     }
   },
   mounted() {
-    console.log(this.$refs);
-
     this.getData(this.$route.path);
   },
   methods: {
-    getData(path, append) {
+    getData(path, append, refresh = false) {
+      if (refresh == false) this.comments = undefined;
       if (!append) {
         this.page = 0;
       } else {
@@ -158,13 +181,20 @@ export default {
       if (path == "") {
         path = "-";
       }
-      this.axios
-        .get(
-          `/comment?path=${path}&p=${this.page}&ps=${this.pageSize}&s=${this.sort}`
-        )
-        .then(res => {
-          this.comments = res.data;
+      console.log(this.comments);
+
+      let url = `/comment?path=${path}&p=${this.page}&ps=${this.pageSize}&s=${this.sort}`;
+      if (this.$db.comments[url] == undefined || refresh == true) {
+        this.axios.get(url).then(res => {
+          if (this.$route.path == path) {
+            this.comments = res.data;
+          }
+          console.log(path);
+          this.$db.comments[url] = res.data;
         });
+      } else {
+        this.comments = this.$db.comments[url];
+      }
     },
     postLike(commentId) {
       this.axios.put(`/user/comment/${commentId}/like`).then(() => {
@@ -201,7 +231,7 @@ export default {
           content: this.commentContent
         })
         .then(() => {
-          this.getData(this.$route.path);
+          this.getData(this.$route.path, false, true);
           this.$refs.CommentTextArea.clean();
         });
     }
