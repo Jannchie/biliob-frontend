@@ -33,7 +33,11 @@
         <BiliobBangumiInfo :bangumi-info="eachBangumi"></BiliobBangumiInfo>
       </VCol>
       <VCol v-if="loading == true" cols="12" lg="4">
-        <VSkeletonLoader class="mx-auto" type="card"></VSkeletonLoader>
+        <VSkeletonLoader
+          elevation="3"
+          class="mx-auto"
+          type="card"
+        ></VSkeletonLoader>
       </VCol>
     </VRow>
     <VRow dense>

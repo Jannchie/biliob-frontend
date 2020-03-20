@@ -151,17 +151,38 @@
     <VContent>
       <VContainer class="pa-0">
         <VRow justify="center" dense>
-          <VCol lg="8" cols="12" class="main-col">
+          <VCol
+            v-if="
+              (-1 == ['/login', '/signin'].indexOf(this.$route.path) &&
+                this.$route.path.indexOf('user') == -1) ||
+                this.$route.path == '/user/rank'
+            "
+            :style="
+              `${
+                $vuetify.breakpoint.lgAndDown
+                  ? 'max-height: 245px;overflow-y: auto;'
+                  : ''
+              }`
+            "
+            lg="1"
+            cols="12"
+            class="order-3"
+          >
+            <BiliobSponsor id="sponsor-container"></BiliobSponsor>
+          </VCol>
+          <VCol lg="8" cols="12" class="main-col order-1">
             <VSlideYTransition mode="out-in">
               <RouterView id="main-view" key="master" />
             </VSlideYTransition>
           </VCol>
           <VCol
             v-if="
-              $store.getters.getLoginState &&
+              ($store.getters.getLoginState &&
                 -1 == ['/login', '/signin'].indexOf(this.$route.path) &&
-                this.$route.path.indexOf('user') == -1
+                this.$route.path.indexOf('user') == -1) ||
+                this.$route.path == '/user/rank'
             "
+            class="order-2"
             lg="3"
             cols="12"
           >
@@ -231,7 +252,10 @@ export default {
         // { name: "个人中心", path: "/user" }
         { name: "见齐指数", path: "/index" },
         { name: "专题查询", path: "/bangumi" }
-      ]
+      ],
+      commentDom: undefined,
+      sponsorDom: undefined,
+      mainDom: undefined
     };
   },
   computed: {
@@ -278,8 +302,11 @@ export default {
           this.$store.commit("error");
         }
       });
+    this.commentDom = document.getElementById("comment-container");
+    this.sponsorDom = document.getElementById("sponsor-container");
+    this.mainDom = document.getElementById("main-view");
     // 如果在大屏下，则定时同步大小变化
-    if (this.$vuetify.breakpoint.lgAndUp) {
+    if (!this.$vuetify.breakpoint.mdAndDown) {
       setInterval(this.resize, 1000);
     }
   },
@@ -295,9 +322,11 @@ export default {
     // 同步高度变化
     resize() {
       let comment = document.getElementById("comment-container");
+      let sponsor = document.getElementById("sponsor-container");
       let mainView = document.getElementById("main-view");
-      if (comment && mainView) {
-        comment.style.maxHeight = mainView.offsetHeight + "px";
+      if (comment) {
+        comment.style.maxHeight =
+          Math.max(sponsor.offsetHeight, mainView.offsetHeight) + "px";
       }
     }
   }

@@ -2122,5 +2122,37 @@
             }
         ],
         "type": "important"
+    },
+    {
+        "title": "赞助者列表",
+        "version": "ver.9.2.0",
+        "date": "2020-03-20",
+        "list": [
+            {
+                "text": "修复了数个文案错误",
+                "type": "fix"
+            },
+            {
+                "text": "添加了赞助者列表",
+                "type": "feature"
+            },
+            {
+                "text": "添加了console彩蛋",
+                "type": "feature"
+            },
+            {
+                "text": "优化了观测记录的展示",
+                "type": "beautify"
+            },
+            {
+                "text": "优化了数个页面的骨架组件",
+                "type": "beautify"
+            },
+            {
+                "text": "允许观测者排行页面添加观测记录",
+                "type": "feature"
+            }
+        ],
+        "type": "important"
     }
 ]

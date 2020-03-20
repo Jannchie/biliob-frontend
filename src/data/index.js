@@ -10,5 +10,10 @@ export default {
   },
   bangumi: {
     detail: {}
-  }
+  },
+  sponsor: {
+    latest: [],
+    most: []
+  },
+  comments: {}
 };

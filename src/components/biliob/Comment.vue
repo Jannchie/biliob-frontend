@@ -181,7 +181,6 @@ export default {
       if (path == "") {
         path = "-";
       }
-      console.log(this.comments);
 
       let url = `/comment?path=${path}&p=${this.page}&ps=${this.pageSize}&s=${this.sort}`;
       if (this.$db.comments[url] == undefined || refresh == true) {
@@ -189,7 +188,6 @@ export default {
           if (this.$route.path == path) {
             this.comments = res.data;
           }
-          console.log(path);
           this.$db.comments[url] = res.data;
         });
       } else {
