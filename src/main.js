@@ -155,4 +155,24 @@ caches.open("biliob-precache-https://www.biliob.com/").then(c => {
     });
   });
 });
+
+function text() {
+  /*
+%c 
+|                                       ________   ___   ___        ___   ________   ________
+| License: MIT License (MIT License)   |\   __  \ |\  \ |\  \      |\  \ |\   __  \ |\   __  \
+| Author: Jannchie                     \ \  \|\ /_\ \  \\ \  \     \ \  \\ \  \|\  \\ \  \|\ /_
+| Maintainer: Jannchie                  \ \   __  \\ \  \\ \  \     \ \  \\ \  \\\  \\ \   __  \
+|                                        \ \  \|\  \\ \  \\ \  \____ \ \  \\ \  \\\  \\ \  \|\  \
+| Made with love for Bilibili             \ \_______\\ \__\\ \_______\\ \__\\ \_______\\ \_______\
+| I hope this website can help you         \|_______| \|__| \|_______| \|__| \|_______| \|_______|
+|                                                                                   
+   */
+}
+
+function getMultiLine(f) {
+  var lines = f.toString();
+  return lines.substring(lines.indexOf("/*") + 3, lines.lastIndexOf("*/"));
+}
+console.log(getMultiLine(text), "color:#337ab7;");
 window.$db = data;
