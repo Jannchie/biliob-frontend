@@ -19,9 +19,9 @@ export default {
   computed: {
     displayCopyright() {
       if (this.copyright == "dujia") {
-        return "独家";
+        return "B站独家";
       } else if (this.copyright == "bilibili") {
-        return "B站";
+        return "B站正版";
       } else if (this.copyright == "ugc") {
         return "UGC";
       }
