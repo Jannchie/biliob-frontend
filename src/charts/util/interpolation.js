@@ -18,9 +18,6 @@ function interpolation(data, day = 1) {
   if (data.length <= 1) {
     return data;
   }
-  if (data.length > 500) {
-    console.log(data);
-  }
 
   let start_date = data[0][0];
   let c_str_date = format(start_date, "YYYY-MM-DD");
@@ -43,22 +40,27 @@ function interpolation(data, day = 1) {
     ) {
       last_index++;
     }
-    console.log(last_index, next_index);
 
     let nv = data[next_index][1];
     let nd = data[next_index][0];
     let lv = data[last_index][1];
     let ld = data[last_index][0];
-    let c_val = Math.round(lv + ((c_date - ld) / (nd - ld)) * (nv - lv));
+    let c_val = lv + ((c_date - ld) / (nd - ld)) * (nv - lv);
+
     if (!isNaN(c_val)) formated.push([c_str_date, c_val]);
   }
   let out = [];
   let i = day;
   while (i < formated.length) {
-    out.push([formated[i][0], formated[i][1] - formated[i - day][1]]);
+    let val = formated[i][1] - formated[i - day][1];
+    if (val > 1 || val < -1) {
+      val = Math.round(val);
+    } else {
+      val = val.toFixed(2);
+    }
+    out.push([formated[i][0], val]);
     i++;
   }
-  console.log(formated);
 
   return out;
 }

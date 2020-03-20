@@ -86,8 +86,11 @@ function drawChart(data, type = "line", format = "YYYY-MM-DD HH:mm") {
         }
       }
     ],
-    series: series
+    series: series.filter(s => {
+      return s.data.length == 0 ? false : true;
+    })
   };
+
   return Chart;
 }
 export default drawChart;
