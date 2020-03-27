@@ -61,25 +61,6 @@
         </VTabs>
       </VCol>
 
-      <VFadeTransition v-if="comments == undefined" style="width: 100%">
-        <VCol cols="12">
-          <VSkeletonLoader
-            style="width: 100%"
-            elevation="3"
-            type="card-heading, list-item-two-line, list-item"
-          ></VSkeletonLoader>
-        </VCol>
-      </VFadeTransition>
-
-      <VFadeTransition v-else-if="comments.length == 0" style="width: 100%">
-        <VCol cols="12">
-          <VCard>
-            <VCardTitle>本页没有观测记录！ </VCardTitle>
-            <VCardText>现在撰写，成为第一个记录的观测者吧~ ↑</VCardText>
-          </VCard>
-        </VCol>
-      </VFadeTransition>
-
       <VFadeTransition style="width: 100%" group>
         <VCol
           v-for="comment in comments"
@@ -125,11 +106,34 @@
           </VCard>
         </VCol>
       </VFadeTransition>
+
+      <VFadeTransition
+        v-if="comments == undefined || loading == true"
+        style="width: 100%"
+      >
+        <VCol cols="12">
+          <VSkeletonLoader
+            style="width: 100%"
+            elevation="3"
+            type="card-heading, list-item-two-line, list-item"
+          ></VSkeletonLoader>
+        </VCol>
+      </VFadeTransition>
+      <VFadeTransition v-else-if="comments.length == 0" style="width: 100%">
+        <VCol cols="12">
+          <VCard>
+            <VCardTitle>本页没有观测记录！ </VCardTitle>
+            <VCardText>现在撰写，成为第一个记录的观测者吧~ ↑</VCardText>
+          </VCard>
+        </VCol>
+      </VFadeTransition>
+
       <VCol
         v-if="
           comments != undefined &&
             comments.length % pageSize == 0 &&
-            comments.length != 0
+            comments.length != 0 &&
+            loading == false
         "
         cols="12"
       >
@@ -139,7 +143,7 @@
           outlined
           @click="getData($route.path, true)"
         >
-          下一页 / NEXT</VBtn
+          载入更多 / MORE</VBtn
         >
       </VCol>
     </VRow>
@@ -156,25 +160,26 @@ export default {
       pageSize: 20,
       comments: undefined,
       commentContent: "",
+      loading: false,
       sort: 1
     };
   },
   watch: {
     $route(to) {
-      this.getData(to.path);
+      this.getData(to.path, false);
     },
     sort() {
-      this.getData(this.$route.path);
+      this.getData(this.$route.path, false);
     }
   },
   mounted() {
-    this.getData(this.$route.path);
+    this.getData(this.$route.path, false);
   },
   methods: {
-    getData(path, append, refresh = false) {
-      if (refresh == false) this.comments = undefined;
+    getData(path, append) {
       if (!append) {
         this.page = 0;
+        this.comments = undefined;
       } else {
         this.page += 1;
       }
@@ -183,15 +188,37 @@ export default {
       }
 
       let url = `/comment?path=${path}&p=${this.page}&ps=${this.pageSize}&s=${this.sort}`;
-      if (this.$db.comments[url] == undefined || refresh == true) {
+      if (this.$db.comments[`${this.path}`] == undefined) {
+        this.$db.comments[`${this.path}`] = {};
+      }
+      if (this.$db.comments[`${this.path}`][`${this.sort}`] == undefined) {
+        this.$db.comments[`${this.path}`][`${this.sort}`] = {};
+      }
+      if (
+        this.$db.comments[`${this.path}`][`${this.sort}`][`${this.page}`] ==
+        undefined
+      ) {
+        this.loading = true;
         this.axios.get(url).then(res => {
           if (this.$route.path == path) {
-            this.comments = res.data;
+            if (this.comments == undefined) {
+              this.comments = [];
+            }
+            this.comments.push(...res.data);
           }
-          this.$db.comments[url] = res.data;
+          this.$db.comments[`${this.path}`][`${this.sort}`][
+            `${this.page}`
+          ] = this.comments;
+          this.loading = false;
         });
       } else {
-        this.comments = this.$db.comments[url];
+        // 如果查詢到緩存
+        if (this.comments == undefined) {
+          this.comments = [];
+        }
+        this.comments.push(
+          ...this.$db.comments[`${this.path}`][`${this.sort}`][`${this.page}`]
+        );
       }
     },
     postLike(commentId) {

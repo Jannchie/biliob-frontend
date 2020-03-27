@@ -171,7 +171,7 @@ export default {
         var sameMsg = `新昵称和原昵称相同`;
         var lastValue = this.nickName;
         var newValue = this.newNickName;
-        var postData = this.newNickName;
+        var postData = { nickName: this.newNickName };
         var method = "post";
         var set = "setNickName";
       } else if (this.type == "修改邮箱") {

@@ -29,7 +29,7 @@
             <VTextField
               v-model="name"
               :rules="[rules.required, rules.max]"
-              :counter="20"
+              :counter="50"
               label="请输入用户名"
             />
             <VTextField
@@ -109,7 +109,7 @@ export default {
       rules: {
         required: value => !!value || "我必须知道这一项！求求你告诉我吧~",
         min: v => v.length >= 6 || "这么短小的话，也太不安全了吧",
-        max: v => v.length <= 20 || "太长了！",
+        max: v => v.length <= 50 || "太长了！",
         passwdMatch: v => {
           return v === this.password || "貌似两次输入不一致..手速太快了？";
         },

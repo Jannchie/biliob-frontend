@@ -59,7 +59,6 @@
     </VRow>
   </VContainer>
 </template>
-
 <script>
 export default {
   data() {
