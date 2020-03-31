@@ -2154,5 +2154,45 @@
             }
         ],
         "type": "important"
+    },
+    {
+        "title": "修复",
+        "version": "ver.9.3.0",
+        "date": "2020-03-31",
+        "list": [
+            {
+                "text": "优化了评论逻辑",
+                "type": "fix"
+            },
+            {
+                "text": "优化了用户信息显示",
+                "type": "fix"
+            },
+            {
+                "text": "使榜首粉丝对比对称",
+                "type": "fix"
+            },
+            {
+                "text": "修复了昵称修改错误的问题",
+                "type": "fix"
+            },
+            {
+                "text": "添加通知告示的积分显示",
+                "type": "feature"
+            },
+            {
+                "text": "优化了榜首粉丝数据获取逻辑",
+                "type": "feature"
+            },
+            {
+                "text": "修复了排行榜计算逻辑",
+                "type": "fix"
+            },
+            {
+                "text": "视频页面添加BV的显示",
+                "type": "feature"
+            }
+        ],
+        "type": "unimportant"
     }
 ]

@@ -6,6 +6,7 @@
           :title="videoData.title"
           :aid="videoData.aid"
           :pic="videoData.pic"
+          :bv="videoData.bvid"
       /></VCol>
       <VCol cols="12" md="5">
         <AuthorInfo style="height:100%" :author-data="authorData"

@@ -26,6 +26,12 @@
                 ><span class="text--lighten-3 pink--text">{{
                   $route.params.aid
                 }}</span>
+
+                <span
+                  class="ml-1 px-1 blue lighten-1 white--text mr-1 font-weight-black"
+                  style="border-radius:3px"
+                  >BV</span
+                ><span class="text--lighten-1 blue--text">{{ bv }}</span>
               </div>
             </div>
           </div>
@@ -39,7 +45,7 @@
 import FavoriteBtn from "../common/FavoriteBtn.vue";
 export default {
   components: { FavoriteBtn },
-  props: { title: String(), pic: String(), aid: Number() },
+  props: { title: String(), pic: String(), aid: Number(), bv: String() },
   data() {
     return {
       name: {}
