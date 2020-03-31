@@ -142,10 +142,10 @@ export default {
     userName: function() {
       return this.$store.getters.getUserName;
     },
-    nickName: function() {
+    newNickName: function() {
       return this.$store.getters.getNickName;
     },
-    email: function() {
+    newMail: function() {
       return this.$store.getters.getMail;
     },
     title: function() {

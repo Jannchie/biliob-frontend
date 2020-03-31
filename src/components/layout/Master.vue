@@ -81,21 +81,17 @@
                   </div>
                 </VCardActions>
                 <BiliobCard to="/user/info">
-                  <VCardTitle primary-title>{{
-                    $store.state.nickName
-                  }}</VCardTitle>
+                  <VCardTitle primary-title>{{ $db.user.nickName }}</VCardTitle>
                   <VCardText
                     ><div>
-                      {{ $store.state.role }}
+                      {{ $db.user.role }}
                     </div>
                     <div>
-                      {{ $store.state.title }}
+                      {{ $db.user.title }}
                     </div>
-                    <div>积分：{{ $store.state.credit }}</div>
+                    <div>积分：{{ $db.user.credit }}</div>
                     <div>
-                      经验：{{ $store.state.exp }} (#{{
-                        $store.state.userRank
-                      }})
+                      经验：{{ $db.user.exp }} (#{{ $store.state.userRank }})
                     </div>
                   </VCardText>
                 </BiliobCard>

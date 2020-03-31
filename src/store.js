@@ -6,7 +6,7 @@ import rankModule from "./store/rank.js";
 import adminModule from "./store/admin.js";
 import authorModule from "./store/author.js";
 import eventModule from "./store/event.js";
-
+import data from "./data";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -183,6 +183,7 @@ export default new Vuex.Store({
           if (response.data.favoriteMid) {
             context.commit("setFavoriteAuthor", response.data.favoriteMid);
           }
+          data.user = response.data;
         })
         .catch(() => {
           context.commit("logout");
@@ -197,11 +198,10 @@ export default new Vuex.Store({
             context.commit("setCredit", response.data.data.credit);
             context.commit("setExp", response.data.data.exp);
             context.commit("setMail", response.data.data.mail);
+
             context.commit("checkIn", true);
             context.commit("showMessage", {
-              msg: `签到成功！当前积分：${
-                response.data.data.credit
-              }，当前经验：${response.data.data.exp}`,
+              msg: `签到成功！当前积分：${response.data.data.credit}，当前经验：${response.data.data.exp}`,
               color: "info"
             });
           } else {
