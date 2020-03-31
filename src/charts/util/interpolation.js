@@ -58,7 +58,7 @@ function interpolation(data, day = 1) {
     } else {
       val = val.toFixed(2);
     }
-    out.push([formated[i][0], val]);
+    out.push([formated[i - day][0], val]);
     i++;
   }
 
