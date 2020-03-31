@@ -3,13 +3,14 @@
     <VRow dense>
       <VCol cols="6" lg="3"
         ><BiliobOperationBtn
+          disabled
           :pic="pic"
           :name="title"
           color="green"
           icon="mdi-refresh"
           tile-title="刷新数据"
           tile-sub-title="需要消耗积分：1"
-          :request-url="`/user/video/${$route.params.aid}/data`"
+          :request-url="`/user/video/BV${$route.params.aid}/data`"
         >
           <VCardText slot="card-text" class="mt-2">
             立即刷新视频数据<span class="font-weight-black green--text"
@@ -24,6 +25,7 @@
       >
       <VCol cols="6" lg="3"
         ><BiliobOperationBtn
+          disabled
           :pic="pic"
           :name="title"
           color="red"
@@ -52,9 +54,7 @@
           large
           tile
           :href="
-            `https://connect.qq.com/widget/shareqq/index.html?url=www.biliob.com${
-              $route.path
-            }&sharesource=qzone&title=biliob观测者:视频《${title}》的历史数据&pics=https:${pic}&summary=快来围观这个视频的数据变化吧~&desc=`
+            `https://connect.qq.com/widget/shareqq/index.html?url=www.biliob.com${$route.path}&sharesource=qzone&title=biliob观测者:视频《${title}》的历史数据&pics=https:${pic}&summary=快来围观这个视频的数据变化吧~&desc=`
           "
         >
           <VIcon left>
