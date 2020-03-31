@@ -30,7 +30,7 @@
         </VExpansionPanels>
       </VCol>
       <VCol cols="12">
-        <VCard v-if="$store.getters.getLoginState || $store.state.exp >= 100">
+        <VCard v-if="$store.getters.getLoginState && $store.state.exp >= 100">
           <VCardTitle>
             <h5>{{ $store.state.nickName }}：</h5>
           </VCardTitle>
@@ -48,7 +48,12 @@
           <VCardText> 登陆后，且经验值大于100才能发表观测记录!</VCardText>
           <VCardActions>
             <VSpacer></VSpacer>
-            <VBtn color="primary" to="/login" outlined>
+            <VBtn
+              v-if="!$store.getters.getLoginState"
+              color="primary"
+              to="/login"
+              outlined
+            >
               <VIcon left>mdi-login</VIcon> 前往登陆页面</VBtn
             >
           </VCardActions>
@@ -127,13 +132,11 @@
           </VCard>
         </VCol>
       </VFadeTransition>
-
       <VCol
-        v-if="
+        v-else-if="
           comments != undefined &&
             comments.length % pageSize == 0 &&
-            comments.length != 0 &&
-            loading == false
+            comments.length != 0
         "
         cols="12"
       >
@@ -144,6 +147,11 @@
           @click="getData($route.path, true)"
         >
           载入更多 / MORE</VBtn
+        >
+      </VCol>
+      <VCol v-else-if="loading == false">
+        <VBtn color="primary" block outlined disabled>
+          没有更多了 / NO MORE</VBtn
         >
       </VCol>
     </VRow>
@@ -166,17 +174,19 @@ export default {
   },
   watch: {
     $route(to) {
-      this.getData(to.path, false);
+      this.loading = false;
+      this.getData(to.path, this.sort, false);
     },
     sort() {
-      this.getData(this.$route.path, false);
+      this.loading = false;
+      this.getData(this.$route.path, this.sort, false);
     }
   },
   mounted() {
-    this.getData(this.$route.path, false);
+    this.getData(this.$route.path, this.sort, false);
   },
   methods: {
-    getData(path, append) {
+    getData(path, sort, append) {
       if (!append) {
         this.page = 0;
         this.comments = undefined;
@@ -186,29 +196,24 @@ export default {
       if (path == "") {
         path = "-";
       }
-
-      let url = `/comment?path=${path}&p=${this.page}&ps=${this.pageSize}&s=${this.sort}`;
-      if (this.$db.comments[`${this.path}`] == undefined) {
-        this.$db.comments[`${this.path}`] = {};
+      let page = this.page;
+      let url = `/comment?path=${path}&p=${page}&ps=${this.pageSize}&s=${sort}`;
+      if (this.$db.comments[`${path}`] == undefined) {
+        this.$db.comments[`${path}`] = {};
       }
-      if (this.$db.comments[`${this.path}`][`${this.sort}`] == undefined) {
-        this.$db.comments[`${this.path}`][`${this.sort}`] = {};
+      if (this.$db.comments[`${path}`][`${sort}`] == undefined) {
+        this.$db.comments[`${path}`][`${sort}`] = {};
       }
-      if (
-        this.$db.comments[`${this.path}`][`${this.sort}`][`${this.page}`] ==
-        undefined
-      ) {
+      if (this.$db.comments[`${path}`][`${sort}`][`${page}`] == undefined) {
         this.loading = true;
         this.axios.get(url).then(res => {
-          if (this.$route.path == path) {
+          if (this.$route.path == path && this.sort == sort) {
             if (this.comments == undefined) {
               this.comments = [];
             }
             this.comments.push(...res.data);
           }
-          this.$db.comments[`${this.path}`][`${this.sort}`][
-            `${this.page}`
-          ] = this.comments;
+          this.$db.comments[`${path}`][`${sort}`][`${page}`] = res.data;
           this.loading = false;
         });
       } else {
@@ -217,18 +222,17 @@ export default {
           this.comments = [];
         }
         this.comments.push(
-          ...this.$db.comments[`${this.path}`][`${this.sort}`][`${this.page}`]
+          ...this.$db.comments[`${path}`][`${sort}`][`${page}`]
         );
       }
     },
     postLike(commentId) {
-      this.axios.put(`/user/comment/${commentId}/like`).then(() => {
-        this.comments.forEach(comment => {
-          if (comment.commentId == commentId) {
-            comment.like += 1;
-            comment.liked = true;
-          }
-        });
+      this.comments.forEach(comment => {
+        if (comment.commentId == commentId) {
+          comment.liked = true;
+          comment.like += 1;
+        }
+        this.axios.put(`/user/comment/${commentId}/like`);
       });
     },
     getEmoji(val) {
@@ -255,8 +259,12 @@ export default {
           path: this.$route.path,
           content: this.commentContent
         })
-        .then(() => {
-          this.getData(this.$route.path, false, true);
+        .then(res => {
+          this.$db.user.credit = res.data.user.credit;
+          this.$db.user.exp = res.data.user.exp;
+          res.data.data.like = 0;
+          res.data.data.user = this.$db.user;
+          this.comments.unshift(res.data.data);
           this.$refs.CommentTextArea.clean();
         });
     }

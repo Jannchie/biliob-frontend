@@ -4,6 +4,9 @@
       v-model="input"
       counter="100"
       solo
+      style="font-size: 0.875rem;"
+      auto-grow
+      rows="1"
       class="regular-input"
     ></VTextarea>
     <EmojiPicker :search="search" @emoji="append">
@@ -56,11 +59,6 @@
 /* Tailwind CSS-styled demo is available here: https://codepen.io/DCzajkowski/pen/Brxvzj */
 .wrapper {
   position: relative;
-}
-.regular-input {
-  outline: none;
-  width: 100%;
-  min-height: 100px;
 }
 
 .regular-input:focus {
