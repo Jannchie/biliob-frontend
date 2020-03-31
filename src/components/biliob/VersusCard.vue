@@ -18,7 +18,7 @@
           ></VOdometer>
         </div>
       </VCol>
-      <VCol v-if="!$vuetify.breakpoint.lgAndDown" cols="auto">
+      <VCol v-if="!$vuetify.breakpoint.lgAndDown">
         <div style="text-align:end">
           <div class="competitor-title">
             {{ aTitle }}
@@ -56,7 +56,7 @@
           <VImg :src="zipPic(bFace)" :lazy-src="zipPic(bFace)" />
         </VAvatar>
       </VCol>
-      <VCol v-if="!$vuetify.breakpoint.lgAndDown" cols="auto">
+      <VCol v-if="!$vuetify.breakpoint.lgAndDown">
         <div>
           <div class="competitor-title">
             {{ bTitle }}
@@ -120,38 +120,40 @@ export default {
       }
     }
   },
-  watch: {
-    aMid() {
-      this.refresh();
-      const timer = setInterval(this.refresh, 10000);
-      this.$once("hook:beforeDestroy", () => {
-        clearInterval(timer);
-      });
-    }
-  },
   mounted() {
-    this.axios.get("/author?page=0&pageSize=3&sort=0").then(r => {
-      this.aMid = r.data.content[0].mid;
-      this.bMid = r.data.content[1].mid;
+    this.getData();
+    const timer = setInterval(this.refresh, 1000);
+    this.$once("hook:beforeDestroy", () => {
+      clearInterval(timer);
     });
   },
   methods: {
+    getData() {
+      this.axios.get("/author/compare/top-fans?type=0").then(r => {
+        this.aMid = r.data[0].mid;
+        this.aName = r.data[0].name;
+        this.bMid = r.data[1].mid;
+        this.bName = r.data[1].name;
+        this.aFans = r.data[0].cFans;
+        this.bFans = r.data[1].cFans;
+        this.aFace = r.data[0].face;
+        this.bFace = r.data[1].face;
+        this.aOfficial = r.data[0].official;
+        this.bOfficial = r.data[1].official;
+        this.aRate = r.data[0].cRate;
+        this.bRate = r.data[1].cRate;
+      });
+    },
     refresh() {
-      if (this.aMid != 0) {
-        this.axios.get(`/author/${this.aMid}/info`).then(response => {
-          this.aName = response.data.name;
-          this.aOfficial = response.data.official;
-          this.aFans = response.data.cFans;
-          this.aFace = response.data.face;
-        });
-      }
-      if (this.bMid != 0) {
-        this.axios.get(`/author/${this.bMid}/info`).then(response => {
-          this.bName = response.data.name;
-          this.bOfficial = response.data.official;
-          this.bFans = response.data.cFans;
-          this.bFace = response.data.face;
-        });
+      if (Math.random() < 0.05) {
+        this.getData();
+      } else {
+        if (Math.random() < this.aRate / 86400) {
+          this.aFans += 1;
+        }
+        if (Math.random() < this.bRate / 86400) {
+          this.bFans += 1;
+        }
       }
     },
     jumpToAuthorPage(mid) {

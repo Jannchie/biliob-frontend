@@ -15,5 +15,6 @@ export default {
     latest: [],
     most: []
   },
+  user: {},
   comments: {}
 };
