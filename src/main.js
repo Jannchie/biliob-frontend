@@ -67,16 +67,22 @@ axios.defaults.withCredentials = true;
 
 Vue.prototype.$alert = function(res) {
   if (res == undefined) return;
+
   let msg = res.data.msg;
   if (msg != undefined) {
     data.alert.message = res.data.msg;
-    if (res.data.msg.indexOf("成功") != -1) {
+
+    if (res.data.user != undefined) {
+      Vue.prototype.$db.user.credit = res.data.user.credit;
+      Vue.prototype.$db.user.exp = res.data.user.exp;
+      msg = `${res.data.msg}！剩余积分：${res.data.user.credit} 当前经验：${res.data.user.exp}`;
+    }
+    if (res.data.code > 0) {
       data.alert.type = "success";
-    } else if (res.status < 300) {
-      data.alert.type = "info";
     } else {
       data.alert.type = "error";
     }
+    data.alert.message = msg;
     data.alert.display = true;
   }
 };
