@@ -53,12 +53,14 @@ function interpolation(data, day = 1) {
   let i = day;
   while (i < formated.length) {
     let val = formated[i][1] - formated[i - day][1];
+
     if (val > 1 || val < -1) {
       val = Math.round(val);
     } else {
       val = val.toFixed(2);
     }
-    out.push([formated[i - day][0], val]);
+
+    out.push([formated[i - 1][0], val]);
     i++;
   }
 
