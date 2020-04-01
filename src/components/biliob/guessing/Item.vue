@@ -1,26 +1,39 @@
 <template>
-  <VCard class="mx-3" width="300px">
+  <VCard class="mx-1" min-width="220px">
     <VCardTitle class="caption">{{ guessing.title }}</VCardTitle>
-    <VCardText class="caption">
-      已经有{{ guessing.totalUser }}人进行预测; <br />平均预测达成时间为{{
-        guessing.avageTime
-      }};
+
+    <VCardText class="caption pb-0">
+      已经有
+      <span class="primary--text">{{ guessing.totalUser }}</span>
+      人进行预测;
       <br />
-      {{ state }}
+      累计积分
+      <span class="primary--text">{{ guessing.totalCredit }}</span>
+      ;
+      <br />
+      <br />平均预测达成时间为:
+      <br />
+      <span color="primary">{{ formatedAvageTime }} </span>
+      <br />
+      <span :class="`${stateColor}`"> ● {{ state }} </span>
     </VCardText>
-    <VCardActions>
+    <VCardActions class="pt-0">
       <VDialog v-model="dialog" ext width="500">
         <template v-slot:activator="{ on }">
           <VBtn color="primary" block text dark v-on="on">
-            进行预测
+            加入预测
           </VBtn>
         </template>
 
         <VCard>
-          <VCardTitle class="headline grey lighten-2" primary-title>
+          <VCardTitle class="title grey lighten-2" primary-title>
             {{ guessing.title }}
           </VCardTitle>
-          <VCardText>
+          <VCardText class="mt-4">
+            赌上积分进行预测吧！
+            <br />
+            根据预测的偏差程度，将会进行一定的积分返还。(还未做好)
+            <br />时间以北京时间为准。
             <VTextField
               v-model="time"
               :hint="formatedTime"
@@ -58,10 +71,10 @@ export default {
       type: Object,
       default() {
         return {
-          title: "老番茄何时能破千万粉丝?",
-          avageTime: "2020-04-03 09:00",
-          totalCredit: 20613,
-          totalUser: 32,
+          title: "载入中",
+          avageTime: "载入中",
+          totalCredit: 0,
+          totalUser: 0,
           guessingId: "",
           state: 1
         };
@@ -79,6 +92,14 @@ export default {
           if (isNaN(date.getTime())) {
             return "无法识别输入的日期";
           } else {
+            let localOffset = new Date().getTimezoneOffset() / 60;
+            let offset = -8 - localOffset;
+            console.log(offset);
+            let now = new Date();
+            now.setHours(now.getHours() - offset);
+            if (date.getTime() - now < 0) {
+              return "该时间小于当前时间";
+            }
             return true;
           }
         }
@@ -86,8 +107,23 @@ export default {
     };
   },
   computed: {
+    formatedAvageTime() {
+      if (this.guessing.averageTime == null) {
+        return "未知";
+      }
+      return this.$timeFormat(this.guessing.averageTime, "YYYY-MM-DD HH:mm");
+    },
     formatedTime() {
       return this.$timeFormat(this.time, "YYYY-MM-DD HH:mm");
+    },
+    stateColor() {
+      if (this.guessing.state == 1) {
+        return "green--text";
+      } else if (this.guessing.state == 2) {
+        return "orange--text";
+      } else {
+        return "blue--text";
+      }
     },
     state() {
       if (this.guessing.state == 1) {
@@ -103,8 +139,8 @@ export default {
   methods: {
     submit() {
       this.dialog = false;
-      this.axios.post(`user/guessing/${this.guessing.guessingId}`, {
-        time: this.time,
+      this.axios.post(`/author/fans-guessing/${this.guessing.guessingId}`, {
+        guessingDate: this.formatedTime,
         credit: this.credit
       });
     }

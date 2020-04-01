@@ -20,8 +20,15 @@
     <VRow dense>
       <VCol>
         <VSlideYTransition>
-          <BiliobSlideCard title="观测者预测">
-            <BiliobGuessingItem></BiliobGuessingItem>
+          <BiliobSlideCard
+            v-if="$db.fansGuessing.length != 0"
+            title="观测者预测"
+          >
+            <BiliobGuessingItem
+              v-for="guessing in $db.fansGuessing"
+              :key="guessing.guessingId"
+              :guessing="guessing"
+            ></BiliobGuessingItem>
           </BiliobSlideCard>
         </VSlideYTransition>
       </VCol>
@@ -73,6 +80,11 @@ export default {
     }
   },
   mounted() {
+    if (this.$db.fansGuessing.length == 0) {
+      this.axios.get(`/author/fans-guessing?p=${0}`).then(res => {
+        this.$db.fansGuessing = res.data;
+      });
+    }
     if (this.$store.state.site.siteInfo == undefined) {
       this.$store.dispatch("getSiteInfo");
     }

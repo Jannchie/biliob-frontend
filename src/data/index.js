@@ -16,5 +16,6 @@ export default {
     most: []
   },
   user: {},
-  comments: {}
+  comments: {},
+  fansGuessing: []
 };

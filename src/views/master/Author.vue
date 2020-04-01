@@ -419,7 +419,7 @@ export default {
 
       this.authorFansRateOptions = getMultiChartOptions(
         [
-          [interpolation(fansArray), "粉丝数", "primary"],
+          [interpolation(fansArray), "粉丝数", "#1e88e5"],
           [interpolation(viewArray), "播放数", "#2b821d"],
           [interpolation(likeArray), "获赞数", "#c12e34"]
         ],
@@ -427,13 +427,13 @@ export default {
         "YYYY-MM-DD"
       );
       this.authorDataDiffOptions = getAuthorDataDiffOptions([
-        [fansArray, "粉丝数", "primary"],
+        [fansArray, "粉丝数", "#1e88e5"],
         [viewArray, "播放数", "#2b821d"],
         [likeArray, "获赞数", "#c12e34"]
       ]);
 
       this.historyDataOptions = getMultiChartOptions([
-        [fansArray, "粉丝数", "primary"],
+        [fansArray, "粉丝数", "#1e88e5"],
         [viewArray, "播放数", "#2b821d"],
         [likeArray, "获赞数", "#c12e34"]
       ]);
