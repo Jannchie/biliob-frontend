@@ -89,7 +89,7 @@
         <VDataTable :headers="headers" :items="userItems" hide-actions>
           <template slot="headerCell" slot-scope="{ header }" color="primary">
             <span
-              class="subheading font-weight-light text--deepblue text--darken-3"
+              class="subheading font-weight-light text--primary text--darken-3"
               v-text="header.text"
             />
           </template>

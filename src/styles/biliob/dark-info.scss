@@ -4,41 +4,6 @@
 .inline {
   display: inline-block;
 }
-.dark-info {
-  background-color: #333;
-  font-weight: 400;
-}
-
-.light-info {
-  font-weight: 400;
-  color: $blue-600;
-}
-
-.dark-info.left {
-  border-left: 2px solid $blue-600;
-}
-.dark-info.right {
-  border-right: 2px solid $blue-600;
-}
-.dark-info.top {
-  border-top: 2px solid $blue-600;
-}
-.dark-info.bottom {
-  border-bottom: 2px solid $blue-600;
-}
-.light-info.left {
-  border-left: 2px solid $blue-600;
-}
-.light-info.right {
-  border-right: 2px solid $blue-600;
-}
-.light-info.top {
-  border-top: 2px solid $blue-600;
-}
-.light-info.bottom {
-  border-bottom: 2px solid $blue-600;
-}
-
 .v-expansion-panels {
   border-radius: 0px !important;
 }

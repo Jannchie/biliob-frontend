@@ -31,7 +31,7 @@
             style="align-items: center;"
           >
             <div class="caption">粉丝数</div>
-            <div class="font-weight-black body-2 blue--text text--darken-1">
+            <div class="font-weight-black body-2 primary--text text--darken-1">
               {{ (aFans / 10000).toFixed(2) }}
             </div>
             <div class="caption">万</div>
@@ -73,7 +73,7 @@
             style="align-items: center;"
           >
             <div class="caption">粉丝数</div>
-            <div class="font-weight-black body-2 blue--text text--darken-1">
+            <div class="font-weight-black body-2 primary--text text--darken-1">
               {{ (bFans / 10000).toFixed(2) }}
             </div>
             <div class="caption">万</div>
@@ -155,9 +155,7 @@ export default {
     toAuthorVersus() {
       if (this.aMid != 0 && this.bMid != 0)
         this.$router.push(
-          `/author/versus?aMid=${this.aMid}&bMid=${this.bMid}&freq=${
-            this.frequently
-          }`
+          `/author/versus?aMid=${this.aMid}&bMid=${this.bMid}&freq=${this.frequently}`
         );
     }
   }

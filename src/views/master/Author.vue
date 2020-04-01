@@ -92,7 +92,7 @@
                           {{ each.name }}
                         </div>
                         <div
-                          class="rank-value subtitle-1 font-weight-black blue--text text--darken-3"
+                          class="rank-value subtitle-1 font-weight-black primary--text text--darken-3"
                         >
                           {{ each.value }}
                         </div>
@@ -419,7 +419,7 @@ export default {
 
       this.authorFansRateOptions = getMultiChartOptions(
         [
-          [interpolation(fansArray), "粉丝数", "#1e88e5"],
+          [interpolation(fansArray), "粉丝数", "primary"],
           [interpolation(viewArray), "播放数", "#2b821d"],
           [interpolation(likeArray), "获赞数", "#c12e34"]
         ],
@@ -427,13 +427,13 @@ export default {
         "YYYY-MM-DD"
       );
       this.authorDataDiffOptions = getAuthorDataDiffOptions([
-        [fansArray, "粉丝数", "#1e88e5"],
+        [fansArray, "粉丝数", "primary"],
         [viewArray, "播放数", "#2b821d"],
         [likeArray, "获赞数", "#c12e34"]
       ]);
 
       this.historyDataOptions = getMultiChartOptions([
-        [fansArray, "粉丝数", "#1e88e5"],
+        [fansArray, "粉丝数", "primary"],
         [viewArray, "播放数", "#2b821d"],
         [likeArray, "获赞数", "#c12e34"]
       ]);

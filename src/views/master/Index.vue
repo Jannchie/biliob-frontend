@@ -17,7 +17,15 @@
         </VSlideYTransition>
       </VCol>
     </VRow>
-
+    <VRow dense>
+      <VCol>
+        <VSlideYTransition>
+          <BiliobSlideCard title="观测者预测">
+            <BiliobGuessingItem></BiliobGuessingItem>
+          </BiliobSlideCard>
+        </VSlideYTransition>
+      </VCol>
+    </VRow>
     <VRow dense>
       <VCol>
         <VSlideYTransition>

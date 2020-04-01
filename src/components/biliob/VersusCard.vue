@@ -4,7 +4,7 @@
       <VCol style="text-align: center;" class="px-0">
         <div class="hidden-md-and-up">
           <div class="caption">粉丝数</div>
-          <div class="font-weight-black body-2 blue--text text--darken-1">
+          <div class="font-weight-black body-2 primary--text text--darken-1">
             {{ (aFans / 10000).toFixed(2) }}
           </div>
           <div class="caption">万</div>
@@ -12,7 +12,7 @@
         <div class="title hidden-sm-and-down" style="align-items: center;">
           <div class="caption">粉丝数</div>
           <VOdometer
-            class="font-weight-bold blue--text text--darken-1"
+            class="font-weight-bold primary--text text--darken-1"
             :value="aFans"
             format="(,ddd).d"
           ></VOdometer>
@@ -43,10 +43,10 @@
       >
         <div>
           <div class="caption font-weight-black">榜首粉丝争夺</div>
-          <div class="title font-weight-black red--text text--darken-2">
+          <div class="headline font-weight-black red--text text--darken-2">
             VS
           </div>
-          <div>
+          <div class="caption">
             <VOdometer :value="deltaFans"></VOdometer>
           </div>
         </div>
@@ -70,7 +70,7 @@
       <VCol style="text-align: center;" class="px-0">
         <div class="hidden-md-and-up px-0">
           <div class="caption">粉丝数</div>
-          <div class="font-weight-black body-2 blue--text text--darken-1">
+          <div class="font-weight-black body-2 primary--text text--darken-1">
             {{ (bFans / 10000).toFixed(2) }}
           </div>
           <div class="caption">万</div>
@@ -78,7 +78,7 @@
         <div class="title hidden-sm-and-down" style="align-items: center;">
           <div class="caption">粉丝数</div>
           <VOdometer
-            class="font-weight-bold blue--text text--darken-1"
+            class="font-weight-bold primary--text text--darken-1"
             :value="bFans"
             format="(,ddd).d"
           ></VOdometer>

@@ -6,7 +6,7 @@
           粉丝排名
         </div>
         <div
-          class="rank-value py-1  subtitle-1 font-weight-black blue--text text--darken-3"
+          class="rank-value py-1  subtitle-1 font-weight-black primary--text text--darken-3"
         >
           {{ fansInfo }}
         </div>
@@ -17,7 +17,7 @@
           播放排名
         </div>
         <div
-          class="rank-value py-1  subtitle-1 font-weight-black blue--text text--darken-3"
+          class="rank-value py-1  subtitle-1 font-weight-black primary--text text--darken-3"
         >
           {{ archiveInfo }}
         </div>
@@ -28,7 +28,7 @@
           获赞排名
         </div>
         <div
-          class="rank-value py-1  subtitle-1 font-weight-black blue--text text--darken-3"
+          class="rank-value py-1  subtitle-1 font-weight-black primary--text text--darken-3"
         >
           {{ likeInfo }}
         </div>
@@ -39,7 +39,7 @@
           专栏阅读
         </div>
         <div
-          class="rank-value py-1  subtitle-1 font-weight-black blue--text text--darken-3"
+          class="rank-value py-1  subtitle-1 font-weight-black primary--text text--darken-3"
         >
           {{ articleInfo }}
         </div>

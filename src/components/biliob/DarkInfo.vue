@@ -2,13 +2,15 @@
   <div :dark="dark">
     <div
       :class="
-        `elevation-${elevation} ${light ? 'light' : 'dark'}-info ${border}`
+        `primary--text elevation-${elevation} ${
+          light ? 'light' : 'dark'
+        }-info ${border}`
       "
     >
       <slot v-if="title == ''"></slot>
       <div v-else class="px-5 py-2">{{ title }}</div>
     </div>
-    <slot name="body" style="background-color:white"></slot>
+    <slot name="body"></slot>
   </div>
 </template>
 <script>
@@ -37,3 +39,38 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+.dark-info {
+  background-color: #333;
+  font-weight: 400;
+}
+
+.light-info {
+  font-weight: 400;
+}
+
+.dark-info.left {
+  border-left: 2px solid;
+}
+.dark-info.right {
+  border-right: 2px solid;
+}
+.dark-info.top {
+  border-top: 2px solid;
+}
+.dark-info.bottom {
+  border-bottom: 2px solid;
+}
+.light-info.left {
+  border-left: 2px solid;
+}
+.light-info.right {
+  border-right: 2px solid;
+}
+.light-info.top {
+  border-top: 2px solid;
+}
+.light-info.bottom {
+  border-bottom: 2px solid;
+}
+</style>

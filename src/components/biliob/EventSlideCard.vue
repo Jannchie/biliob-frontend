@@ -57,7 +57,7 @@ export default {
     getColor(info) {
       switch (info) {
         case "大量涨粉":
-          return "blue darken-2 blue--text text--darken-2";
+          return "primary darken-2 primary--text text--darken-2";
         case "史诗级涨粉":
           return "purple darken-2 purple--text  text--darken-2";
         case "传说级涨粉":

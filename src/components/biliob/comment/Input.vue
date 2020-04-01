@@ -67,8 +67,8 @@ export default {
             this.$db.comments[`${this.$route.path}`][`${this.sort}`][0].unshift(
               res.data.data
             );
-            this.$emit("post", res.data.data);
           }
+          this.$emit("post", res.data.data);
           this.$refs.CommentTextArea.clean();
         });
     }

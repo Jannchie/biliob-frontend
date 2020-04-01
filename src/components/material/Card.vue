@@ -49,7 +49,7 @@ export default {
   props: {
     color: {
       type: String,
-      default: "deepblue"
+      default: "primary"
     },
     elevation: {
       type: [Number, String],

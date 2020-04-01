@@ -44,7 +44,7 @@
           block
           outlined
           style="border-width:1px"
-          color="blue darken-2"
+          color="primary darken-2"
           :disabled="nextBtnDisabled"
           tile
           @click.stop="next"

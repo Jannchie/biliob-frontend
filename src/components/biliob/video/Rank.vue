@@ -9,7 +9,7 @@
             播放数排名
           </div>
           <div
-            class="rank-value subtitle-1 font-weight-black blue--text text--darken-3"
+            class="rank-value subtitle-1 font-weight-black primary--text text--darken-3"
           >
             {{ viewInfo }}
           </div>
@@ -22,7 +22,7 @@
             点赞数排名
           </div>
           <div
-            class="rank-value subtitle-1 font-weight-black blue--text text--darken-3"
+            class="rank-value subtitle-1 font-weight-black primary--text text--darken-3"
           >
             {{ likeInfo }}
           </div>
@@ -35,7 +35,7 @@
             硬币数排名
           </div>
           <div
-            class="rank-value subtitle-1 font-weight-black blue--text text--darken-3"
+            class="rank-value subtitle-1 font-weight-black primary--text text--darken-3"
           >
             {{ coinInfo }}
           </div>
@@ -48,7 +48,7 @@
             弹幕数排名
           </div>
           <div
-            class="rank-value subtitle-1 font-weight-black blue--text text--darken-3"
+            class="rank-value subtitle-1 font-weight-black primary--text text--darken-3"
           >
             {{ danmakuInfo }}
           </div>
@@ -61,7 +61,7 @@
             收藏数排名
           </div>
           <div
-            class="rank-value subtitle-1 font-weight-black blue--text text--darken-3"
+            class="rank-value subtitle-1 font-weight-black primary--text text--darken-3"
           >
             {{ favoriteInfo }}
           </div>
@@ -74,7 +74,7 @@
             分享数排名
           </div>
           <div
-            class="rank-value subtitle-1 font-weight-black blue--text text--darken-3"
+            class="rank-value subtitle-1 font-weight-black primary--text text--darken-3"
           >
             {{ shareInfo }}
           </div>

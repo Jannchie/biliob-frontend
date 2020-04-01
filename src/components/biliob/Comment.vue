@@ -203,7 +203,7 @@ export default {
       this.showReplies = true;
     },
     addComment(comment) {
-      if (comment.parentId == null) {
+      if (comment.parentId == undefined) {
         this.comments.unshift(comment);
       } else {
         this.comments.forEach(c => {

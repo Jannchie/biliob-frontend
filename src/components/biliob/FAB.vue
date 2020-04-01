@@ -2,7 +2,7 @@
   <div>
     <VSpeedDial v-model="fab" fixed bottom right>
       <template v-slot:activator>
-        <VBtn v-model="fab" color="blue darken-2" dark fab>
+        <VBtn v-model="fab" color="primary darken-2" dark fab>
           <VIcon v-if="fab">mdi-close</VIcon>
           <VIcon v-else>mdi-plus</VIcon>
         </VBtn>

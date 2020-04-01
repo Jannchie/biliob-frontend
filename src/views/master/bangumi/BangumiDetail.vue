@@ -157,7 +157,7 @@ export default {
         ["play", "播放", "#2b821d"],
         ["danmaku", "弹幕", "#005eaa"],
         ["coin", "硬币", "#32a487"],
-        ["followSeries", "追番", "#1e88e5"],
+        ["followSeries", "追番", "primary"],
         ["undertake", "承包", "#449"],
         ["rate", "评分", "#c12e34"],
         ["rateCount", "评分人数", "#f6dd00"]

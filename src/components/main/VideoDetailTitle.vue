@@ -31,7 +31,7 @@
                   class="ml-1 px-1 blue lighten-1 white--text mr-1 font-weight-black"
                   style="border-radius:3px"
                   >BV</span
-                ><span class="text--lighten-1 blue--text">{{ bv }}</span>
+                ><span class="text--lighten-1 primary--text">{{ bv }}</span>
               </div>
             </div>
           </div>

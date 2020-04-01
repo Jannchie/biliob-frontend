@@ -16,15 +16,16 @@
     <VCardText class="caption py-1">
       发布时间: {{ $timeFormat(comment.date, "YYYY-MM-DD HH:mm:ss") }}
     </VCardText>
-    <VCardActions v-if="showAction" class="caption pt-0">
+    <VCardActions class="caption pt-0">
       <VRow no-gutters>
         <VCol cols="auto">
           <VBtn
+            v-if="showAction"
             small
             text
             label
             class="ma-2"
-            color="primary"
+            color="grey"
             @click.stop="openReplies"
           >
             <VIcon small left>mdi-message-reply-text</VIcon>
@@ -88,7 +89,9 @@ export default {
     };
   },
   mounted() {
-    console.log(this.comment);
+    if (this.comment.like == undefined) {
+      this.comment.like = 0;
+    }
   },
   methods: {
     getEmoji(val) {
