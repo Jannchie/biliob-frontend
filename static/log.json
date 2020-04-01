@@ -2161,7 +2161,7 @@
         "date": "2020-03-31",
         "list": [
             {
-                "text": "优化了评论逻辑",
+                "text": "优化了观测记录逻辑",
                 "type": "fix"
             },
             {
@@ -2193,6 +2193,30 @@
                 "type": "feature"
             }
         ],
-        "type": "unimportant"
+        "type": "important"
+    },
+    {
+        "title": "观测记录升级",
+        "version": "ver.9.4.0",
+        "date": "2020-03-31",
+        "list": [
+            {
+                "text": "优化了观测记录逻辑",
+                "type": "fix"
+            },
+            {
+                "text": "添加了观测记录删除",
+                "type": "feature"
+            },
+            {
+                "text": "添加了观测记录回复",
+                "type": "feature"
+            },
+            {
+                "text": "修复了一处文案错误",
+                "type": "fix"
+            }
+        ],
+        "type": "important"
     }
 ]

@@ -30,34 +30,10 @@
         </VExpansionPanels>
       </VCol>
       <VCol cols="12">
-        <VCard v-if="$store.getters.getLoginState && $store.state.exp >= 100">
-          <VCardTitle>
-            <h5>{{ $store.state.nickName }}：</h5>
-          </VCardTitle>
-          <VCardText>
-            <CommentTextArea
-              ref="CommentTextArea"
-              @getText="updateCommentContent"
-            ></CommentTextArea>
-            <VBtn block color="primary" @click.stop="postComment"
-              ><VIcon>mdi-send</VIcon></VBtn
-            >
-          </VCardText>
-        </VCard>
-        <VCard v-else tile>
-          <VCardText> 登陆后，且经验值大于100才能发表观测记录!</VCardText>
-          <VCardActions>
-            <VSpacer></VSpacer>
-            <VBtn
-              v-if="!$store.getters.getLoginState"
-              color="primary"
-              to="/login"
-              outlined
-            >
-              <VIcon left>mdi-login</VIcon> 前往登陆页面</VBtn
-            >
-          </VCardActions>
-        </VCard>
+        <BiliobCommentInput
+          :sort="sort"
+          @post="addComment"
+        ></BiliobCommentInput>
       </VCol>
       <VCol cols="12">
         <VTabs class="elevation-3">
@@ -73,42 +49,11 @@
           style="padding: 4px"
           cols="12"
         >
-          <VCard dense tile>
-            <VCardTitle class="py-0">
-              <h6>
-                {{ comment.user.title }} (#{{ comment.user.rank }}) /
-                {{ comment.user.nickName }}:
-              </h6>
-            </VCardTitle>
-            <VCardText
-              style="white-space: pre-line;"
-              class="subheading py-0"
-              v-text="getEmoji(comment.content)"
-            >
-            </VCardText>
-            <VCardText class="caption py-1">
-              发布时间: {{ $timeFormat(comment.date, "YYYY-MM-DD HH:mm:ss") }}
-            </VCardText>
-            <VCardActions class="caption pt-0">
-              <VChip
-                v-if="comment.liked == false"
-                small
-                pill
-                label
-                class="ma-2"
-                color="grey"
-                outlined
-                @click.stop="postLike(comment.commentId)"
-              >
-                <VIcon small left>mdi-heart-multiple-outline</VIcon>
-                {{ comment.like }}
-              </VChip>
-              <VChip v-else small pill outlined label class="ma-2" color="red">
-                <VIcon small color="red" left>mdi-heart-multiple</VIcon>
-                {{ comment.like }}
-              </VChip>
-            </VCardActions>
-          </VCard>
+          <BiliobCommentItem
+            :comment="comment"
+            :show-action="true"
+            @openReplies="openReplies"
+          ></BiliobCommentItem>
         </VCol>
       </VFadeTransition>
 
@@ -144,7 +89,7 @@
           color="primary"
           block
           outlined
-          @click="getData($route.path, true)"
+          @click="getData($route.path, sort, true)"
         >
           载入更多 / MORE</VBtn
         >
@@ -155,21 +100,41 @@
         >
       </VCol>
     </VRow>
+    <VDialog v-model="showReplies" max-width="500">
+      <div v-if="replyDialog != undefined && replyDialog.comment != undefined">
+        <BiliobCommentItem
+          :show-action="false"
+          class="mb-2"
+          :comment="replyDialog.comment"
+        ></BiliobCommentItem>
+        <BiliobCommentItem
+          v-for="(reply, i) in replyDialog.comment.replies"
+          :key="i"
+          class="mb-2"
+          :show-action="false"
+          :comment="reply"
+        ></BiliobCommentItem>
+        <BiliobCommentInput
+          :parent="replyDialog.comment.commentId"
+          :sort="sort"
+          @post="addComment"
+        ></BiliobCommentInput>
+      </div>
+    </VDialog>
   </VContainer>
 </template>
 <script>
 export default {
-  components: {
-    CommentTextArea: () => import("../biliob/Textarea.vue")
-  },
   data() {
     return {
       page: 0,
       pageSize: 20,
       comments: undefined,
-      commentContent: "",
       loading: false,
-      sort: 1
+      sort: 1,
+      showReplies: false,
+      replies: [],
+      replyDialog: {}
     };
   },
   watch: {
@@ -226,47 +191,27 @@ export default {
         );
       }
     },
-    postLike(commentId) {
-      this.comments.forEach(comment => {
-        if (comment.commentId == commentId) {
-          comment.liked = true;
-          comment.like += 1;
+
+    openReplies(commentId) {
+      this.comments.forEach(c => {
+        if (c.commentId == commentId) {
+          this.replyDialog.comment = c;
         }
-        this.axios.put(`/user/comment/${commentId}/like`);
       });
+      console.log(this.replyDialog.comment.replies);
+
+      this.showReplies = true;
     },
-    getEmoji(val) {
-      var patt = /&#\d+;/g;
-      var H, L, code;
-      var arr = val.match(patt) || [];
-      for (var i = 0; i < arr.length; i++) {
-        code = arr[i];
-        code = code.replace("&#", "").replace(";", "");
-        H = Math.floor((code - 0x10000) / 0x400) + 0xd800;
-        L = ((code - 0x10000) % 0x400) + 0xdc00;
-        code = "&#" + code + ";";
-        var s = String.fromCharCode(H, L);
-        val = val.replace(code, s);
-      }
-      return val.trim();
-    },
-    updateCommentContent(text) {
-      this.commentContent = text;
-    },
-    postComment() {
-      this.axios
-        .post(`/user/comment`, {
-          path: this.$route.path,
-          content: this.commentContent
-        })
-        .then(res => {
-          this.$db.user.credit = res.data.user.credit;
-          this.$db.user.exp = res.data.user.exp;
-          res.data.data.like = 0;
-          res.data.data.user = this.$db.user;
-          this.comments.unshift(res.data.data);
-          this.$refs.CommentTextArea.clean();
+    addComment(comment) {
+      if (comment.parentId == null) {
+        this.comments.unshift(comment);
+      } else {
+        this.comments.forEach(c => {
+          if (c.commentId == comment.parentId) {
+            c.replies.unshift(comment);
+          }
         });
+      }
     }
   }
 };
