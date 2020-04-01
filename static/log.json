@@ -2218,5 +2218,25 @@
             }
         ],
         "type": "important"
+    },
+    {
+        "title": "添加观测者预测功能",
+        "version": "ver.9.5.0",
+        "date": "2020-04-02",
+        "list": [
+            {
+                "text": "添加了评论回复的点赞和删除",
+                "type": "feature"
+            },
+            {
+                "text": "埋入了一些彩蛋",
+                "type": "feature"
+            },
+            {
+                "text": "添加了观测者预测功能",
+                "type": "feature"
+            }
+        ],
+        "type": "important"
     }
 ]
