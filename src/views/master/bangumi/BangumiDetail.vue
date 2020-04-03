@@ -1,7 +1,7 @@
 <template>
   <VContainer>
-    <VRow dense>
-      <VCol cols="12">
+    <VRow v-if="bangumiDetail != undefined" cols="12" dense>
+      <VCol>
         <BiliobBangumiInfo
           v-if="$vuetify.breakpoint.mdAndDown"
           :bangumi-info="bangumiDetail"
@@ -81,21 +81,44 @@
                     }}
                   </div>
                   <VRow>
-                    <VCol cols="auto"
-                      ><VIcon> mdi-play-circle-outline </VIcon>
+                    <VCol cols="auto">
+                      <VTooltip bottom>
+                        <template v-slot:activator="{ on }">
+                          <VIcon v-on="on"> mdi-play-circle-outline </VIcon>
+                        </template>
+                        <span>{{ bangumiDetail.cView }}</span>
+                      </VTooltip>
                       <span style="vertical-align: middle">
                         {{ $numberFormat(bangumiDetail.cView) }}
                       </span>
                     </VCol>
                     <VCol cols="auto">
-                      <VIcon> mdi-coin </VIcon>
+                      <VTooltip bottom>
+                        <template v-slot:activator="{ on }">
+                          <VIcon v-on="on"> mdi-coin </VIcon>
+                        </template>
+                        <span>{{ bangumiDetail.cCoin }}</span>
+                      </VTooltip>
                       <span style="vertical-align: middle">
                         {{ $numberFormat(bangumiDetail.cCoin) }}
                       </span>
                     </VCol>
                     <VCol cols="auto">
-                      <VIcon> mdi-heart </VIcon>
-                      <span style="vertical-align: middle">
+                      <VTooltip bottom>
+                        <template v-slot:activator="{ on }">
+                          <VIcon v-on="on"> mdi-heart </VIcon>
+                        </template>
+                        <span
+                          >新版：{{ bangumiDetail.newFollow }}，旧版：{{
+                            bangumiDetail.oldFollow
+                          }}，系列：{{
+                            bangumiDetail.bangumiHistoryData[
+                              bangumiDetail.bangumiHistoryData.length - 1
+                            ].followSeries
+                          }}</span
+                        >
+                      </VTooltip>
+                      <span alt="123" style="vertical-align: middle">
                         {{
                           $numberFormat(
                             bangumiDetail.oldFollow > bangumiDetail.newFollow
@@ -157,8 +180,10 @@ export default {
         ["play", "播放", "#2b821d"],
         ["danmaku", "弹幕", "#005eaa"],
         ["coin", "硬币", "#32a487"],
-        ["followSeries", "追番", "primary"],
-        ["undertake", "承包", "#449"],
+        ["followSeries", "系列追番", "#884422"],
+        ["followOld", "旧版追番", "#DD77aa"],
+        ["followNew", "新版追番", "#2288cc"],
+        ["undertake", "承包", "#444499"],
         ["rate", "评分", "#c12e34"],
         ["rateCount", "评分人数", "#f6dd00"]
       ];

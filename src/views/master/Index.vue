@@ -20,10 +20,7 @@
     <VRow dense>
       <VCol>
         <VSlideYTransition>
-          <BiliobSlideCard
-            v-if="$db.fansGuessing.length != 0"
-            title="观测者预测"
-          >
+          <BiliobSlideCard v-show="forecastCard" title="观测者预测">
             <BiliobGuessingItem
               v-for="guessing in $db.fansGuessing"
               :key="guessing.guessingId"
@@ -69,7 +66,7 @@
 import getStockOption from "@/charts/biliob-candlestick.js";
 export default {
   data() {
-    return { stockOption: {} };
+    return { stockOption: {}, forecastCard: false };
   },
   computed: {
     siteInfo() {
@@ -83,6 +80,7 @@ export default {
     if (this.$db.fansGuessing.length == 0) {
       this.axios.get(`/author/fans-guessing?p=${0}`).then(res => {
         this.$db.fansGuessing = res.data;
+        this.forecastCard = true;
       });
     }
     if (this.$store.state.site.siteInfo == undefined) {

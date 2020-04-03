@@ -20,7 +20,14 @@
     <VCardActions class="pt-0">
       <VDialog v-model="dialog" ext width="500">
         <template v-slot:activator="{ on }">
-          <VBtn color="primary" block text dark v-on="on">
+          <VBtn
+            color="primary"
+            :disabled="guessing.state != 1"
+            block
+            text
+            dark
+            v-on="on"
+          >
             加入预测
           </VBtn>
         </template>

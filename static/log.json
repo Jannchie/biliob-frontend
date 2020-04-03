@@ -2238,5 +2238,21 @@
             }
         ],
         "type": "important"
+    },
+    {
+        "title": "修复错误",
+        "version": "ver.9.5.1",
+        "date": "2020-04-03",
+        "list": [
+            {
+                "text": "修复了在某些情况下无法显示预测的问题",
+                "type": "fix"
+            },
+            {
+                "text": "添加了新旧系列番剧追番的显示",
+                "type": "feature"
+            }
+        ],
+        "type": "important"
     }
 ]
