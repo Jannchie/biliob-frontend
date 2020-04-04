@@ -18,6 +18,60 @@
       <span :class="`${stateColor}`"> ● {{ state }} </span>
     </VCardText>
     <VCardActions class="pt-0">
+      <VDialog v-if="guessing.state == 4" v-model="resultDialog">
+        <template v-slot:activator="{ on }">
+          <VBtn color="primary" block text dark v-on="on">
+            查看结果
+          </VBtn>
+        </template>
+
+        <VCard>
+          <VCardTitle> 观测者预测结果 </VCardTitle>
+          <VCardText
+            >公式：预测分数 = 总消耗积分 × （(实际到达时间小时数 -
+            创建预测时间小时数) ÷ | 实际到达时间分钟数 - 预测时间分钟数 | × 10)
+            <br />
+            根据预测分数等比例分配总积分池。
+          </VCardText>
+          <VDataTable
+            :headers="[
+              {
+                text: '名称',
+                align: 'start',
+                sortable: false,
+                value: 'name'
+              },
+              {
+                text: '平均发布预测时间',
+                align: 'start',
+                value: 'averageCreateTime'
+              },
+              {
+                text: '平均预测时间',
+                align: 'start',
+                value: 'averageDate'
+              },
+              {
+                text: '总下注积分',
+                align: 'start',
+                value: 'credit'
+              },
+              {
+                text: '收益',
+                align: 'start',
+                value: 'revenue'
+              },
+              {
+                text: '净收益',
+                align: 'start',
+                value: 'summary'
+              }
+            ]"
+            :items="guessing.result"
+          >
+          </VDataTable>
+        </VCard>
+      </VDialog>
       <VDialog v-model="dialog" ext width="500">
         <template v-slot:activator="{ on }">
           <VBtn
@@ -128,21 +182,34 @@ export default {
         return "green--text";
       } else if (this.guessing.state == 2) {
         return "orange--text";
+      } else if (this.guessing.state == 3) {
+        return "primary--text";
       } else {
-        return "blue--text";
+        return "red--text";
       }
     },
     state() {
       if (this.guessing.state == 1) {
         return "进行中";
       } else if (this.guessing.state == 2) {
+        return "已闭盘";
+      } else if (this.guessing.state == 3) {
         return "结算中";
       } else {
         return "已结束";
       }
     }
   },
-  mounted() {},
+  mounted() {
+    this.guessing.result.forEach(e => {
+      e.summary = (e.revenue - e.credit).toFixed(2);
+      e.averageDate = this.$timeFormat(e.averageDate, "YYYY-MM-DD HH:mm");
+      e.averageCreateTime = this.$timeFormat(
+        e.averageCreateTime,
+        "YYYY-MM-DD HH:mm"
+      );
+    });
+  },
   methods: {
     submit() {
       this.dialog = false;
