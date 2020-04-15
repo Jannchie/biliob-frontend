@@ -7,7 +7,7 @@
         </VSlideYTransition>
       </VCol>
     </VRow>
-    <VRow dense>
+    <VRow v-if="recentAchievement" dense>
       <VCol>
         <VSlideYTransition>
           <BiliobAuthorAchievementSlideCard />
@@ -63,7 +63,7 @@
 import getStockOption from "@/charts/biliob-candlestick.js";
 export default {
   data() {
-    return { stockOption: {}, forecastCard: false };
+    return { stockOption: {}, forecastCard: false, recentAchievement: false };
   },
   computed: {
     siteInfo() {
@@ -86,7 +86,10 @@ export default {
     if (this.$db.recentAchievement == undefined) {
       this.axios.get(`/author/achievement?lv=${5}`).then(res => {
         this.$db.recentAchievement = res.data;
+        this.recentAchievement = true;
       });
+    } else {
+      this.recentAchievement = true;
     }
     if (this.$store.state.site.siteInfo == undefined) {
       this.$store.dispatch("getSiteInfo");
