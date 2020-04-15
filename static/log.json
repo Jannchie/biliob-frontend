@@ -2270,5 +2270,17 @@
             }
         ],
         "type": "unimportant"
+    },
+    {
+        "title": "B站近期事件",
+        "version": "ver.9.5.3",
+        "date": "2020-04-15",
+        "list": [
+            {
+                "text": "首页近期粉丝波动改为B站近期事件",
+                "type": "feature"
+            }
+        ],
+        "type": "unimportant"
     }
 ]

@@ -10,17 +10,14 @@
     <VRow dense>
       <VCol>
         <VSlideYTransition>
-          <BiliobEventSlideCard
-            v-if="this.$store.state.event.recentEvent != undefined"
-          >
-          </BiliobEventSlideCard>
+          <BiliobAuthorAchievementSlideCard />
         </VSlideYTransition>
       </VCol>
     </VRow>
-    <VRow dense>
+    <VRow v-if="forecastCard" dense>
       <VCol>
         <VSlideYTransition>
-          <BiliobSlideCard v-show="forecastCard" title="观测者预测">
+          <BiliobSlideCard title="观测者预测">
             <BiliobGuessingItem
               v-for="guessing in $db.fansGuessing"
               :key="guessing.guessingId"
@@ -81,6 +78,14 @@ export default {
       this.axios.get(`/author/fans-guessing?p=${0}`).then(res => {
         this.$db.fansGuessing = res.data;
         this.forecastCard = true;
+      });
+    } else {
+      this.forecastCard = true;
+    }
+
+    if (this.$db.recentAchievement == undefined) {
+      this.axios.get(`/author/achievement?lv=${5}`).then(res => {
+        this.$db.recentAchievement = res.data;
       });
     }
     if (this.$store.state.site.siteInfo == undefined) {

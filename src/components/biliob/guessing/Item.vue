@@ -201,14 +201,15 @@ export default {
     }
   },
   mounted() {
-    this.guessing.result.forEach(e => {
-      e.summary = (e.revenue - e.credit).toFixed(2);
-      e.averageDate = this.$timeFormat(e.averageDate, "YYYY-MM-DD HH:mm");
-      e.averageCreateTime = this.$timeFormat(
-        e.averageCreateTime,
-        "YYYY-MM-DD HH:mm"
-      );
-    });
+    if (this.guessing.result != null)
+      this.guessing.result.forEach(e => {
+        e.summary = (e.revenue - e.credit).toFixed(2);
+        e.averageDate = this.$timeFormat(e.averageDate, "YYYY-MM-DD HH:mm");
+        e.averageCreateTime = this.$timeFormat(
+          e.averageCreateTime,
+          "YYYY-MM-DD HH:mm"
+        );
+      });
   },
   methods: {
     submit() {
