@@ -5,13 +5,11 @@
       :key="i"
       class="mx-1 px-2"
       min-width="300px"
+      @click.stop="$router.push(`/author/${achievement.author.mid}`)"
     >
       <VRow>
         <VCol class="pr-0" cols="auto">
-          <VAvatar
-            size="60px"
-            @click.stop="$router.push(`/author/${achievement.author.mid}`)"
-          >
+          <VAvatar size="60px">
             <VImg :alt="achievement.author.name" :src="achievement.author.face">
             </VImg>
           </VAvatar>
