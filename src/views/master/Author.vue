@@ -14,7 +14,6 @@
         />
       </VCol>
     </VRow>
-
     <VRow dense>
       <VCol>
         <VTabs class="py-0 my-2 elevation-3" show-arrows>
@@ -36,7 +35,10 @@
           <div v-if="cPage == 3">
             <VRow dense>
               <VCol cols="12">
-                <BiliobCard v-if="!$store.state.logined" title="告知">
+                <BiliobCard
+                  v-if="!$store.state.logined || $db.user.exp < 100"
+                  title="数据访问制限"
+                >
                   <VIcon color="warning">mdi-alert</VIcon>
                   <span class="body-1" style="vertical-align: middle;">
                     您还没有登陆观测者账号！目前只有登陆且经验值>100的观测者才能看到30日之前的UP主数据！
@@ -110,7 +112,11 @@
                 ></BiliobAuthorRank>
               </VCol>
             </VRow>
-
+            <VRow v-if="authorData.achievements != undefined" dense>
+              <VCol>
+                <BiliobAuthorAchievements :author-data="authorData" />
+              </VCol>
+            </VRow>
             <!-- <DetailCharts
           id="relationship"
           title="UP主作品相关度"
@@ -413,9 +419,8 @@ export default {
         }
       });
       fansArray = fansArray.reverse();
-
-      viewArray = viewArray.reverse();
       likeArray = likeArray.reverse();
+      viewArray = viewArray.reverse();
 
       this.authorFansRateOptions = getMultiChartOptions(
         [

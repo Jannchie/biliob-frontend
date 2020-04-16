@@ -1,5 +1,5 @@
 <template>
-  <BiliobSlideCard title="最近发生事件">
+  <BiliobSlideCard name="biliob-achievemnet" title="最近发生事件">
     <VCard
       v-for="(achievement, i) in $db.recentAchievement"
       :key="i"
@@ -17,7 +17,7 @@
         <VCol class="caption text-truncate">
           <div>
             <h4
-              :class="`${getColor(achievement.level)}--text`"
+              :class="`${getColor(achievement)}--text`"
               style="overflow:hidden; text-overflow: ellipsis;"
             >
               {{ achievement.author.name }} / {{ achievement.name }}
@@ -43,8 +43,11 @@
 <script>
 export default {
   methods: {
-    getColor(level) {
-      switch (level) {
+    getColor(achievement) {
+      if (achievement.code >= 4000 && achievement.code < 5000) {
+        return "green";
+      }
+      switch (achievement.level) {
         case 10:
           return "red";
         case 9:
@@ -54,8 +57,12 @@ export default {
         case 7:
           return "blue";
         case 6:
-          return "light-blue";
+          return "blue";
         case 5:
+          return "blue";
+        case 4:
+          return "blue";
+        default:
           return "cyan";
       }
     }

@@ -93,28 +93,25 @@ Vue.prototype.$timeFormat = format;
 Vue.prototype.$db = data;
 Vue.prototype.$dateParse = require("date-fns/parse");
 Vue.dat;
-Vue.prototype.$numberFormat = function(num) {
+Vue.prototype.$numberFormat = function(num, sim = true, fix = 2) {
   if (num == undefined) {
     return "0";
   }
   let postfix = "";
-  if (num > 100000000) {
-    postfix = "亿";
-    num /= 100000000;
-  } else if (num > 10000) {
-    postfix = "万";
-    num /= 10000;
-  } else {
-    return num;
+  if (sim) {
+    if (num > 100000000) {
+      postfix = "亿";
+      num /= 100000000;
+    } else if (num > 10000) {
+      postfix = "万";
+      num /= 10000;
+    }
   }
-  num = num.toFixed(2);
-  let [int, dec] = num.split(".");
-  let inter = "";
-  while (int != "") {
-    inter = int.slice(-3) + "," + inter;
-    int = int.slice(0, -3);
-  }
-  return `${inter.slice(0, -1)}.${dec}${postfix}`;
+
+  num = num.toFixed(fix);
+  var parts = num.split(".");
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return parts.join(".") + postfix;
 };
 
 axios.interceptors.response.use(

@@ -17,7 +17,7 @@
     <VRow v-if="forecastCard" dense>
       <VCol>
         <VSlideYTransition>
-          <BiliobSlideCard title="观测者预测">
+          <BiliobSlideCard name="biliob-preview" title="观测者预测">
             <BiliobGuessingItem
               v-for="guessing in $db.fansGuessing"
               :key="guessing.guessingId"
