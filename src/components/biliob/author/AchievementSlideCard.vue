@@ -10,7 +10,10 @@
       <VRow>
         <VCol class="pr-0" cols="auto">
           <VAvatar size="60px">
-            <VImg :alt="achievement.author.name" :src="achievement.author.face">
+            <VImg
+              :alt="achievement.author.name"
+              :src="zipPic(achievement.author.face)"
+            >
             </VImg>
           </VAvatar>
         </VCol>

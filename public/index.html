@@ -1,242 +1,265 @@
 <!DOCTYPE html>
 <html lang="zh-cmn-Hans">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
 
-    <meta name="referrer" content="no-referrer" />
-    <meta name="fragment" content="!" />
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <meta http-equiv="Expires" content="0" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Cache-control" content="no-cache" />
-    <meta http-equiv="Cache" content="no-cache" />
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport"
+    content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
 
-    <title>BiliOB观测者 - 哔哩哔哩数据统计分析网站</title>
+  <meta name="referrer" content="no-referrer" />
+  <meta name="fragment" content="!" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Expires" content="0" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Cache-control" content="no-cache" />
+  <meta http-equiv="Cache" content="no-cache" />
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=UA-131246130-1"
-    ></script>
-    <!-- Google Analytics -->
-    <script
-      data-ad-client="ca-pub-1946074628147893"
-      async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-    ></script>
-    <script>
-      (function (i, s, o, g, r, a, m) {
-        i["GoogleAnalyticsObject"] = r;
-        (i[r] =
-          i[r] ||
-          function () {
-            (i[r].q = i[r].q || []).push(arguments);
-          }),
-          (i[r].l = 1 * new Date());
-        (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m);
-      })(
-        window,
-        document,
-        "script",
-        "https://www.google-analytics.com/analytics.js",
-        "ga"
-      );
+  <title>BiliOB观测者 - 哔哩哔哩数据统计分析网站</title>
 
-      ga("create", "UA-131246130-1", "auto");
-      ga("send", "pageview");
-    </script>
-    <script>
-      (function () {
-        var bp = document.createElement("script");
-        var curProtocol = window.location.protocol.split(":")[0];
-        if (curProtocol === "https") {
-          bp.src = "https://zz.bdstatic.com/linksubmit/push.js";
-        } else {
-          bp.src = "http://push.zhanzhang.baidu.com/push.js";
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-      })();
-    </script>
-  </head>
-  <body>
-    <noscript>
-      <strong>很抱歉，这个网站必须开启JavaScript才能访问</strong>
-    </noscript>
-    <div id="app">
-      <div style="text-align: center;">
-        <div class="loading">
-          <div class="spinner">
-            <div class="spinner-container container1">
-              <div class="circle1"></div>
-              <div class="circle2"></div>
-              <div class="circle3"></div>
-              <div class="circle4"></div>
-            </div>
-            <div class="spinner-container container2">
-              <div class="circle1"></div>
-              <div class="circle2"></div>
-              <div class="circle3"></div>
-              <div class="circle4"></div>
-            </div>
-            <div class="spinner-container container3">
-              <div class="circle1"></div>
-              <div class="circle2"></div>
-              <div class="circle3"></div>
-              <div class="circle4"></div>
-            </div>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131246130-1"></script>
+  <!-- Google Analytics -->
+  <script data-ad-client="ca-pub-1946074628147893" async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i["GoogleAnalyticsObject"] = r;
+      (i[r] =
+        i[r] ||
+        function () {
+          (i[r].q = i[r].q || []).push(arguments);
+        }),
+        (i[r].l = 1 * new Date());
+      (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m);
+    })(
+      window,
+      document,
+      "script",
+      "https://www.google-analytics.com/analytics.js",
+      "ga"
+    );
+
+    ga("create", "UA-131246130-1", "auto");
+    ga("send", "pageview");
+  </script>
+  <script>
+    (function () {
+      var bp = document.createElement("script");
+      var curProtocol = window.location.protocol.split(":")[0];
+      if (curProtocol === "https") {
+        bp.src = "https://zz.bdstatic.com/linksubmit/push.js";
+      } else {
+        bp.src = "http://push.zhanzhang.baidu.com/push.js";
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+    function text() {
+      /*
+    %c 
+    |                                       ________   ___   ___        ___   ________   ________
+    | License: MIT License (MIT License)   |\   __  \ |\  \ |\  \      |\  \ |\   __  \ |\   __  \
+    | Author: Jannchie                     \ \  \|\ /_\ \  \\ \  \     \ \  \\ \  \|\  \\ \  \|\ /_
+    | Maintainer: Jannchie                  \ \   __  \\ \  \\ \  \     \ \  \\ \  \\\  \\ \   __  \
+    |                                        \ \  \|\  \\ \  \\ \  \____ \ \  \\ \  \\\  \\ \  \|\  \
+    | Made with love for Bilibili             \ \_______\\ \__\\ \_______\\ \__\\ \_______\\ \_______\
+    | I hope this website can help you         \|_______| \|__| \|_______| \|__| \|_______| \|_______|
+    |                                                                                   
+       */
+    }
+
+    function getMultiLine(f) {
+      var lines = f.toString();
+      return lines.substring(lines.indexOf("/*") + 3, lines.lastIndexOf("*/"));
+    }
+    console.log(getMultiLine(text), "color:#337ab7;");
+  </script>
+</head>
+
+<body>
+  <noscript>
+    <strong>很抱歉，这个网站必须开启JavaScript才能访问</strong>
+  </noscript>
+  <div id="app">
+    <div style="text-align: center;">
+      <div style="font-size: 12px;">欢迎来到BiliOB观测者。在这里可以查询到UP主的排名等信息，我们将为您持续观测B站UP主和其作品的数据变化，并对视频各个指标的情报进行分析。
+      </div>
+      <div class="loading">
+        <div class="spinner">
+          <div class="spinner-container container1">
+            <div class="circle1"></div>
+            <div class="circle2"></div>
+            <div class="circle3"></div>
+            <div class="circle4"></div>
+          </div>
+          <div class="spinner-container container2">
+            <div class="circle1"></div>
+            <div class="circle2"></div>
+            <div class="circle3"></div>
+            <div class="circle4"></div>
+          </div>
+          <div class="spinner-container container3">
+            <div class="circle1"></div>
+            <div class="circle2"></div>
+            <div class="circle3"></div>
+            <div class="circle4"></div>
           </div>
         </div>
-        <h6>载入中...</h6>
-        <div style="font-size: 12px;">
-          首次加载以及版本更新后需要数秒钟时间下载数据，请稍后...
-        </div>
+      </div>
+      <h6>载入中...</h6>
+      <div style="font-size: 12px;">
+        首次加载以及版本更新后需要数秒钟时间下载数据，请稍后...
       </div>
     </div>
-    <!-- built files will be auto injected -->
-    <style type="text/css">
-      .spinner {
-        margin: 100px auto;
-        width: 20px;
-        height: 20px;
-        position: relative;
+  </div>
+  <!-- built files will be auto injected -->
+  <style type="text/css">
+    .spinner {
+      margin: 100px auto;
+      width: 20px;
+      height: 20px;
+      position: relative;
+    }
+
+    .container1>div,
+    .container2>div,
+    .container3>div {
+      width: 6px;
+      height: 6px;
+      background-color: #1e88e5;
+
+      border-radius: 100%;
+      position: absolute;
+      -webkit-animation: bouncedelay 1.2s infinite ease-in-out;
+      animation: bouncedelay 1.2s infinite ease-in-out;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+    }
+
+    .spinner .spinner-container {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    .container2 {
+      -webkit-transform: rotateZ(45deg);
+      transform: rotateZ(45deg);
+    }
+
+    .container3 {
+      -webkit-transform: rotateZ(90deg);
+      transform: rotateZ(90deg);
+    }
+
+    .circle1 {
+      top: 0;
+      left: 0;
+    }
+
+    .circle2 {
+      top: 0;
+      right: 0;
+    }
+
+    .circle3 {
+      right: 0;
+      bottom: 0;
+    }
+
+    .circle4 {
+      left: 0;
+      bottom: 0;
+    }
+
+    .container2 .circle1 {
+      -webkit-animation-delay: -1.1s;
+      animation-delay: -1.1s;
+    }
+
+    .container3 .circle1 {
+      -webkit-animation-delay: -1s;
+      animation-delay: -1s;
+    }
+
+    .container1 .circle2 {
+      -webkit-animation-delay: -0.9s;
+      animation-delay: -0.9s;
+    }
+
+    .container2 .circle2 {
+      -webkit-animation-delay: -0.8s;
+      animation-delay: -0.8s;
+    }
+
+    .container3 .circle2 {
+      -webkit-animation-delay: -0.7s;
+      animation-delay: -0.7s;
+    }
+
+    .container1 .circle3 {
+      -webkit-animation-delay: -0.6s;
+      animation-delay: -0.6s;
+    }
+
+    .container2 .circle3 {
+      -webkit-animation-delay: -0.5s;
+      animation-delay: -0.5s;
+    }
+
+    .container3 .circle3 {
+      -webkit-animation-delay: -0.4s;
+      animation-delay: -0.4s;
+    }
+
+    .container1 .circle4 {
+      -webkit-animation-delay: -0.3s;
+      animation-delay: -0.3s;
+    }
+
+    .container2 .circle4 {
+      -webkit-animation-delay: -0.2s;
+      animation-delay: -0.2s;
+    }
+
+    .container3 .circle4 {
+      -webkit-animation-delay: -0.1s;
+      animation-delay: -0.1s;
+    }
+
+    @-webkit-keyframes bouncedelay {
+
+      0%,
+      80%,
+      100% {
+        -webkit-transform: scale(0);
       }
 
-      .container1 > div,
-      .container2 > div,
-      .container3 > div {
-        width: 6px;
-        height: 6px;
-        background-color: #1e88e5;
-
-        border-radius: 100%;
-        position: absolute;
-        -webkit-animation: bouncedelay 1.2s infinite ease-in-out;
-        animation: bouncedelay 1.2s infinite ease-in-out;
-        -webkit-animation-fill-mode: both;
-        animation-fill-mode: both;
+      40% {
+        -webkit-transform: scale(1);
       }
+    }
 
-      .spinner .spinner-container {
-        position: absolute;
-        width: 100%;
-        height: 100%;
+    @keyframes bouncedelay {
+
+      0%,
+      80%,
+      100% {
+        transform: scale(0);
+        -webkit-transform: scale(0);
       }
 
-      .container2 {
-        -webkit-transform: rotateZ(45deg);
-        transform: rotateZ(45deg);
+      40% {
+        transform: scale(1);
+        -webkit-transform: scale(1);
       }
+    }
+  </style>
+</body>
 
-      .container3 {
-        -webkit-transform: rotateZ(90deg);
-        transform: rotateZ(90deg);
-      }
-
-      .circle1 {
-        top: 0;
-        left: 0;
-      }
-      .circle2 {
-        top: 0;
-        right: 0;
-      }
-      .circle3 {
-        right: 0;
-        bottom: 0;
-      }
-      .circle4 {
-        left: 0;
-        bottom: 0;
-      }
-
-      .container2 .circle1 {
-        -webkit-animation-delay: -1.1s;
-        animation-delay: -1.1s;
-      }
-
-      .container3 .circle1 {
-        -webkit-animation-delay: -1s;
-        animation-delay: -1s;
-      }
-
-      .container1 .circle2 {
-        -webkit-animation-delay: -0.9s;
-        animation-delay: -0.9s;
-      }
-
-      .container2 .circle2 {
-        -webkit-animation-delay: -0.8s;
-        animation-delay: -0.8s;
-      }
-
-      .container3 .circle2 {
-        -webkit-animation-delay: -0.7s;
-        animation-delay: -0.7s;
-      }
-
-      .container1 .circle3 {
-        -webkit-animation-delay: -0.6s;
-        animation-delay: -0.6s;
-      }
-
-      .container2 .circle3 {
-        -webkit-animation-delay: -0.5s;
-        animation-delay: -0.5s;
-      }
-
-      .container3 .circle3 {
-        -webkit-animation-delay: -0.4s;
-        animation-delay: -0.4s;
-      }
-
-      .container1 .circle4 {
-        -webkit-animation-delay: -0.3s;
-        animation-delay: -0.3s;
-      }
-
-      .container2 .circle4 {
-        -webkit-animation-delay: -0.2s;
-        animation-delay: -0.2s;
-      }
-
-      .container3 .circle4 {
-        -webkit-animation-delay: -0.1s;
-        animation-delay: -0.1s;
-      }
-
-      @-webkit-keyframes bouncedelay {
-        0%,
-        80%,
-        100% {
-          -webkit-transform: scale(0);
-        }
-        40% {
-          -webkit-transform: scale(1);
-        }
-      }
-
-      @keyframes bouncedelay {
-        0%,
-        80%,
-        100% {
-          transform: scale(0);
-          -webkit-transform: scale(0);
-        }
-        40% {
-          transform: scale(1);
-          -webkit-transform: scale(1);
-        }
-      }
-    </style>
-  </body>
 </html>

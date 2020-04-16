@@ -106,6 +106,7 @@
               <VCol>
                 <BiliobAuthorRank
                   v-bind="authorData.rank"
+                  :author-data="authorData"
                   class="mb-2"
                 ></BiliobAuthorRank>
               </VCol>
@@ -253,7 +254,6 @@
 </template>
 
 <script>
-import formatNumber from "@/util/format-number";
 var format = require("date-fns/format");
 import interpolation from "../../charts/util/interpolation";
 import AuthorInfo from "@/components/aside/AuthorInfo.vue";
@@ -337,28 +337,28 @@ export default {
       if (this.authorData.cFans == undefined) {
         return "-";
       } else {
-        return formatNumber(this.authorData.cFans);
+        return this.$numberFormat(this.authorData.cFans);
       }
     },
     formatedView() {
       if (this.authorData.cArchiveView == undefined) {
         return "-";
       } else {
-        return formatNumber(this.authorData.cArchiveView);
+        return this.$numberFormat(this.authorData.cArchiveView);
       }
     },
     formatedLike() {
       if (this.authorData.cLike == undefined) {
         return "-";
       } else {
-        return formatNumber(this.authorData.cLike);
+        return this.$numberFormat(this.authorData.cLike);
       }
     },
     formatedArticle() {
       if (this.authorData.cLike == undefined) {
         return "-";
       } else {
-        return formatNumber(this.authorData.cArticleView);
+        return this.$numberFormat(this.authorData.cArticleView);
       }
     },
     authorChannelInfo() {

@@ -2282,5 +2282,33 @@
             }
         ],
         "type": "unimportant"
+    },
+    {
+        "title": "B站近期事件",
+        "version": "ver.9.5.4",
+        "date": "2020-04-16",
+        "list": [
+            {
+                "text": "添加了UP主的历史成就",
+                "type": "feature"
+            },
+            {
+                "text": "修正了观测者预测的自动开盘逻辑",
+                "type": "fix"
+            },
+            {
+                "text": "更加节省流量了",
+                "type": "feature"
+            },
+            {
+                "text": "美化了一些颜色样式",
+                "type": "beautify"
+            },
+            {
+                "text": "美化了一些数字显示",
+                "type": "beautify"
+            }
+        ],
+        "type": "unimportant"
     }
-]   
+]

@@ -2,7 +2,7 @@ const CompressionWebpackPlugin = require("compression-webpack-plugin");
 const productionGzipExtensions = ["js", "css"];
 module.exports = {
   // 是否为生产环境构建生成 source map？
-  productionSourceMap: true,
+  productionSourceMap: false,
 
   // 简单Gzip
   lintOnSave: false,

@@ -2,15 +2,13 @@
   <BiliobCard title="UP主历史成就">
     <VTimeline dense>
       <VTimelineItem
-        v-for="(achievement, i) in authorData.achievements.sort((a, b) => {
-          if (a.date == b.date) {
-            return b.level - a.level;
-          } else {
-            return a.date - b.date;
-          }
-        })"
+        v-for="(achievement, i) in sortedAchievements"
         :key="i"
-        :icon="`mdi-numeric-${achievement.level}`"
+        :icon="
+          achievement.level == 10
+            ? 'mdi-nuke'
+            : `mdi-numeric-${achievement.level}`
+        "
         :small="achievement.level < 5 ? true : false"
         :color="getColor(achievement)"
       >
@@ -58,6 +56,20 @@ export default {
         return {};
       }
     }
+  },
+  data() {
+    return {
+      sortedAchievements: []
+    };
+  },
+  mounted() {
+    this.sortedAchievements = this.authorData.achievements.sort((a, b) => {
+      if (a.date == b.date) {
+        return b.level - a.level;
+      } else {
+        return a.date - b.date;
+      }
+    });
   },
   methods: {
     getColor(achievement) {

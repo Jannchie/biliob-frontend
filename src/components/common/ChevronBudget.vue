@@ -1,8 +1,8 @@
 <template>
-  <div class="caption font-weight-bold grey--text">
+  <span class="caption font-weight-bold grey--text">
     <VIcon :class="color" small>{{ icon }}</VIcon
     ><span :class="color">{{ displayValue }}</span>
-  </div>
+  </span>
 </template>
 <script>
 export default {

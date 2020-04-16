@@ -3,10 +3,10 @@
     <div class="rank-container">
       <div style="flex-grow: 1;text-align:center">
         <div class="rank-title subheading  grey--text">
-          粉丝排名
+          粉丝数
         </div>
         <div
-          class="rank-value py-1  subtitle-1 font-weight-black primary--text "
+          class="rank-value py-1  subtitle-1  font-weight-black primary--text "
         >
           {{ fansInfo }}
         </div>
@@ -67,6 +67,7 @@ import ChevronBudget from "@/components/common/ChevronBudget.vue";
 export default {
   components: { ChevronBudget },
   props: {
+    authorData: Object(),
     fansRank: Number(),
     articleViewRank: Number(),
     archiveViewRank: Number(),
