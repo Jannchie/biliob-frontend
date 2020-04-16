@@ -47,7 +47,7 @@
           >
             <div
               :id="eachQuestion.question"
-              class="body-2 font-weight-regular primary--text text--darken-3"
+              class="body-2 font-weight-regular primary--text "
             >
               问题{{ questionIndex + 1 }}：{{ eachQuestion.question }}
             </div>

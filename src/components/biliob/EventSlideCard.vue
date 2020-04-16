@@ -57,21 +57,21 @@ export default {
     getColor(info) {
       switch (info) {
         case "大量涨粉":
-          return "primary darken-2 primary--text text--darken-2";
+          return "primary primary--text";
         case "史诗级涨粉":
-          return "purple darken-2 purple--text  text--darken-2";
+          return "purple darken-2 purple--text ";
         case "传说级涨粉":
-          return "orange orange--text  text--darken-2";
+          return "orange orange--text ";
         case "新星爆发":
           return "primary";
         case "急转直下":
-          return "green green--text  text--darken-2";
+          return "green green--text ";
         case "大量掉粉":
-          return "green darken-1 green--text  text--darken-2";
+          return "green darken-1 green--text ";
         case "雪崩级掉粉":
-          return "green darken-2  green--text  text--darken-2";
+          return "green darken-2  green--text ";
         case "末日级掉粉":
-          return "green darken-2  green--text  text--darken-2";
+          return "green darken-2  green--text ";
         default:
           break;
       }

@@ -165,11 +165,11 @@ export default {
       } else if (this.bangumiDetail.score > 8) {
         return "red--text text--lighten-2";
       } else if (this.bangumiDetail.score > 7) {
-        return "yellow--text  text--darken-2";
+        return "yellow--text ";
       } else if (this.bangumiDetail.score > 4) {
         return "green--text";
       } else {
-        return "green--text text--darken-2";
+        return "green--text";
       }
     },
     datus() {

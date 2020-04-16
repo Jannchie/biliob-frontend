@@ -6,7 +6,7 @@
           <VIcon color="#424242" style="vertical-align: sub" left>{{
             icon
           }}</VIcon
-          ><span class="grey--text text--darken-3">{{ title }}</span>
+          ><span class="grey--text ">{{ title }}</span>
         </div>
       </BiliobCard>
     </VCol>

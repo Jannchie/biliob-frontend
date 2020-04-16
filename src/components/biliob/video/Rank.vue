@@ -3,79 +3,55 @@
     <VContainer class="text-center" grid-list-md text-xs-center>
       <VRow dense>
         <VCol cols="4">
-          <div
-            class="rank-title subheading font-weight-bold grey--text text--darken-2"
-          >
+          <div class="rank-title subheading font-weight-bold grey--text">
             播放数排名
           </div>
-          <div
-            class="rank-value subtitle-1 font-weight-black primary--text text--darken-3"
-          >
+          <div class="rank-value subtitle-1 font-weight-black primary--text ">
             {{ viewInfo }}
           </div>
           <!-- <ChevronBudget :value="rank.dViewRank"></ChevronBudget> -->
         </VCol>
         <VCol cols="4">
-          <div
-            class="rank-title subheading font-weight-bold grey--text text--darken-2"
-          >
+          <div class="rank-title subheading font-weight-bold grey--text">
             点赞数排名
           </div>
-          <div
-            class="rank-value subtitle-1 font-weight-black primary--text text--darken-3"
-          >
+          <div class="rank-value subtitle-1 font-weight-black primary--text ">
             {{ likeInfo }}
           </div>
           <!-- <ChevronBudget :value="rank.dLikeRank"></ChevronBudget> -->
         </VCol>
         <VCol cols="4">
-          <div
-            class="rank-title subheading font-weight-bold grey--text text--darken-2"
-          >
+          <div class="rank-title subheading font-weight-bold grey--text">
             硬币数排名
           </div>
-          <div
-            class="rank-value subtitle-1 font-weight-black primary--text text--darken-3"
-          >
+          <div class="rank-value subtitle-1 font-weight-black primary--text ">
             {{ coinInfo }}
           </div>
           <!-- <ChevronBudget :value="rank.dCoinRank"></ChevronBudget> -->
         </VCol>
         <VCol cols="4">
-          <div
-            class="rank-title subheading font-weight-bold grey--text text--darken-2"
-          >
+          <div class="rank-title subheading font-weight-bold grey--text">
             弹幕数排名
           </div>
-          <div
-            class="rank-value subtitle-1 font-weight-black primary--text text--darken-3"
-          >
+          <div class="rank-value subtitle-1 font-weight-black primary--text ">
             {{ danmakuInfo }}
           </div>
           <!-- <ChevronBudget :value="rank.dDanmakuRank"></ChevronBudget> -->
         </VCol>
         <VCol cols="4">
-          <div
-            class="rank-title subheading font-weight-bold grey--text text--darken-2"
-          >
+          <div class="rank-title subheading font-weight-bold grey--text">
             收藏数排名
           </div>
-          <div
-            class="rank-value subtitle-1 font-weight-black primary--text text--darken-3"
-          >
+          <div class="rank-value subtitle-1 font-weight-black primary--text ">
             {{ favoriteInfo }}
           </div>
           <!-- <ChevronBudget :value="rank.dFavoriteRank"></ChevronBudget> -->
         </VCol>
         <VCol cols="4">
-          <div
-            class="rank-title subheading font-weight-bold grey--text text--darken-2"
-          >
+          <div class="rank-title subheading font-weight-bold grey--text">
             分享数排名
           </div>
-          <div
-            class="rank-value subtitle-1 font-weight-black primary--text text--darken-3"
-          >
+          <div class="rank-value subtitle-1 font-weight-black primary--text ">
             {{ shareInfo }}
           </div>
           <!-- <ChevronBudget :value="rank.dShareRank"></ChevronBudget> -->

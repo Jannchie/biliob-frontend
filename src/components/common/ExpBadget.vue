@@ -53,7 +53,7 @@ export default {
       return this.color + " darken-1";
     },
     lightColor() {
-      return this.color + " lighten-4 " + this.color + "--text text--darken-2";
+      return this.color + " lighten-4 " + this.color + "--text";
     }
   }
 };

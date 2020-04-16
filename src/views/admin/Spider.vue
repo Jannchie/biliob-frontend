@@ -37,7 +37,7 @@
           <VDataTable :headers="headers" :items="spiderTasks">
             <template slot="headerCell" slot-scope="{ header }">
               <span
-                class="subheading font-weight-light text-success text--darken-3"
+                class="subheading font-weight-light text-success "
                 v-text="header.text"
               />
             </template>

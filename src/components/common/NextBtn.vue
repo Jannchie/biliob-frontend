@@ -4,7 +4,7 @@
     outlined
     style="border-width:1px"
     tile
-    color="primary darken-2"
+    color="primary"
     :disabled="nextBtnDisabled"
     @click.stop="getData"
     >{{ nextBtnText }}</VBtn

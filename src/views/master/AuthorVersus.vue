@@ -20,7 +20,7 @@
                 </VAvatar>
               </div>
               <div
-                :class="`title grey--text text--darken-3`"
+                :class="`title grey--text `"
                 style="text-align: center; margin-top: 10px"
               >
                 {{ aName }}
@@ -68,7 +68,7 @@
                 </VAvatar>
               </div>
               <div
-                :class="`title grey--text text--darken-3`"
+                :class="`title grey--text `"
                 style="text-align: center; margin-top: 10px"
               >
                 {{ bName }}

@@ -1,9 +1,7 @@
 <template>
   <VDialog persistent :value="show" width="500">
     <VCard>
-      <VCardTitle
-        class="headline primary darken-2 white--text font-weight-black"
-      >
+      <VCardTitle class="headline primary white--text font-weight-black">
         这里是BiliOB观测者
       </VCardTitle>
       <VCardText class="mt-5">

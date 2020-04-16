@@ -17,10 +17,7 @@
             <div>{{ eachData.name }}</div>
             <div v-if="eachData.official != ''">
               <VIcon color="#FBC02D" x-small>mdi-flash-circle</VIcon
-              ><span
-                class="caption grey--text text--darken-2"
-                style="vertical-align: middle"
-              >
+              ><span class="caption grey--text" style="vertical-align: middle">
                 {{ eachData.official }}
               </span>
             </div>

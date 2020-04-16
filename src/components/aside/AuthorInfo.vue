@@ -10,7 +10,7 @@
         <img height="40px" width="40px" :src="zipPic(authorData.face)" />
       </VAvatar>
       <div class="ml-2">
-        <h4 class="subtitle-1 grey--text font-weight-bold text--darken-3">
+        <h4 class="subtitle-1 grey--text font-weight-bold ">
           <span>
             {{ authorData.name }}
           </span>

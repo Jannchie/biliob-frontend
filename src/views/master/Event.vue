@@ -22,7 +22,7 @@
                 <div class="subtitle-2">
                   {{ eachData.author }}
                 </div>
-                <div class="caption grey--text text--darken-2">
+                <div class="caption grey--text">
                   <VIcon small>mdi-calendar-blank</VIcon>
                   {{ eachData.datetime }}
                 </div>
@@ -116,7 +116,7 @@
               <div class=" text-truncate">
                 {{ eachData.cause.title }}
               </div>
-              <div class="caption grey--text text--darken-2">
+              <div class="caption grey--text">
                 <VIcon small>mdi-bookmark-outline</VIcon>
                 {{ eachData.cause.channel
                 }}<span>

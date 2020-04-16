@@ -43,7 +43,7 @@
       >
         <div>
           <div class="caption font-weight-black">榜首粉丝争夺</div>
-          <div class="headline font-weight-black red--text text--darken-2">
+          <div class="headline font-weight-black red--text">
             VS
           </div>
           <div class="caption">

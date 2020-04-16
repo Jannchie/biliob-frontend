@@ -1,5 +1,5 @@
 <template>
-  <div class="caption font-weight-bold grey--text text--darken-2">
+  <div class="caption font-weight-bold grey--text">
     <VIcon :class="color" small>{{ icon }}</VIcon
     ><span :class="color">{{ displayValue }}</span>
   </div>
