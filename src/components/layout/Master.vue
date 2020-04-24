@@ -1,5 +1,5 @@
 <template>
-  <VApp>
+  <VApp @touchstart.native="touchstart" @touchmove.native="touchmove">
     <VAppBar
       app
       hide-on-scroll
@@ -199,6 +199,7 @@
 export default {
   data() {
     return {
+      touchStartX: 99999,
       snackbar: false,
       collapseOnScroll: true,
       checkInLoading: true,
@@ -307,6 +308,19 @@ export default {
     }
   },
   methods: {
+    touchstart(e) {
+      this.touchStartX = e.targetTouches[0].clientX;
+    },
+    touchmove(e) {
+      if (
+        this.touchStartX < 20 &&
+        e.targetTouches[0].clientX > this.touchStartX + 10
+      ) {
+        this.showNav = true;
+      } else if (e.targetTouches[0].clientX < this.touchStartX - 10) {
+        this.showNav = false;
+      }
+    },
     getUserItemValue(type) {
       switch (type) {
         case "关注":
