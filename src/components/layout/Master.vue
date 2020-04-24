@@ -1,17 +1,7 @@
 <template>
   <VApp @touchstart.native="touchstart" @touchmove.native="touchmove">
-    <VAppBar
-      app
-      hide-on-scroll
-      color="#333"
-      dark
-      src="https://picsum.photos/1920/1080?random"
-      fade-img-on-scroll
-      dense
-    >
-      <template v-slot:img="{ props }">
-        <VImg v-bind="props" gradient="to top right, #222222CC, #333333"></VImg>
-      </template>
+    <VAppBar app hide-on-scroll fade-img-on-scroll dense>
+      <template> </template>
       <VAppBarNavIcon @click.stop="showNav = !showNav"></VAppBarNavIcon>
 
       <VToolbarTitle> <h1 class="title">BiliOB观测者</h1></VToolbarTitle>
@@ -29,9 +19,6 @@
         </VTabs>
       </template>
     </VAppBar>
-    <!-- <VParallax src="https://cdn.vuetifyjs.com/images/parallax/material.jpg">
-      <div style="text-align:center" class="display-4"></div>
-    </VParallax> -->
 
     <div>
       <VContainer class="py-0">

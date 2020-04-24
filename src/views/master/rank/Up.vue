@@ -28,7 +28,7 @@
             <VIcon class="ml-0" color="white" left>
               {{ getIcon() }}
             </VIcon>
-            {{ Math.abs(eachData.cRate) }}
+            {{ $numberFormat(Math.abs(eachData.cRate), false) }}
           </VChip></VCol
         >
       </VRow>

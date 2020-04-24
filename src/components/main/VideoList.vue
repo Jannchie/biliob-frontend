@@ -109,7 +109,7 @@
               </div>
               <div class="caption subtext video-info">
                 <VIcon small> mdi-account-box-outline </VIcon
-                >{{ eachVideo.author }}
+                >{{ eachVideo.authorName }}
                 <VIcon small> mdi-bookmark-outline </VIcon
                 >{{ eachVideo.channel }}
               </div>
@@ -190,6 +190,11 @@ export default {
         });
     },
     currentPage: function changePage(page) {
+      if (this.page >= 20) {
+        this.nextBtnText = "不能显示更多了";
+        this.nextBtnDisabled = true;
+        return;
+      }
       this.axios
         .get(
           `${this.currentApiurl}?page=${page}&pagesize=20&text=${this.text}&sort=${this.sort}&days=${this.days}`
@@ -200,6 +205,7 @@ export default {
             this.nextBtnText = "没有更多了";
             this.nextBtnDisabled = true;
           }
+
           response.data.content.forEach(e => {
             this.videoList.content.push(e);
           });

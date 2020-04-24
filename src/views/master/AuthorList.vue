@@ -9,12 +9,13 @@
               hint="请输入UP主名称，或者uid"
               @getSearchValue="getSearchValue"
             />
+            <span class="overline">OB热搜 / HOT SEARCH</span>
             <BiliobSlide>
               <VCol
                 v-for="(author, index) in $store.getters.getHotSearchAuthor"
                 :key="index"
                 cols="auto"
-                class="px-1"
+                class="px-1 py-0"
               >
                 <VChip
                   class="pl-1"
@@ -28,7 +29,7 @@
                     text-color="white font-weight-bold"
                     color="primary"
                     class="mr-2 "
-                    >{{ author.count }}</VChip
+                    >{{ $numberFormat(author.count, false) }}</VChip
                   >{{ author.name }}</VChip
                 >
               </VCol>

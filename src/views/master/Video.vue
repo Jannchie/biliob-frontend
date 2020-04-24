@@ -1,6 +1,6 @@
 <template>
   <VContainer>
-    <VRow dense>
+    <VRow v-if="videoData != undefined" dense>
       <VCol cols="12" md="7">
         <VideoDetailTitle
           :title="videoData.title"
@@ -9,10 +9,10 @@
           :bv="videoData.bvid"
       /></VCol>
       <VCol cols="12" md="5">
-        <AuthorInfo style="height:100%" :author-data="authorData"
+        <AuthorInfo style="height:100%" :author-data="videoData.author"
       /></VCol>
     </VRow>
-    <VRow dense>
+    <VRow v-if="videoData != undefined" dense>
       <VCol cols="12">
         <BiliobVideoOperation
           slot="video-to-bilibili"
@@ -112,12 +112,12 @@ export default {
   },
   data() {
     return {
-      videoData: Object(),
+      videoData: undefined,
       authorData: Object(),
       mainChart: Object(),
       likeRateChart: Object(),
       wordCloudOptions: Object(),
-      otherVideo: Object(),
+      otherVideo: undefined,
       danmakuDensityOptions: Object(),
       hasDanmakuAggregate: false,
       pageItems: Array(),
@@ -171,23 +171,23 @@ export default {
     },
     getDataFromAid() {
       this.$store.commit("toVideo");
-      this.axios
-        .get("/author/" + this.$route.params.mid + "/info")
-        .then(response => {
-          this.authorData = response.data;
-        });
-      this.axios.get("/video/" + this.$route.params.aid).then(response => {
+      if (this.$route.params.bvid != undefined) {
+        var url = "/video/v2/BV" + this.$route.params.bvid;
+      } else {
+        url = "/video/v2/av" + this.$route.params.aid;
+      }
+      this.axios.get(url).then(response => {
         this.getVideoData(response);
+        // this.axios
+        //   .get(
+        //     `/author/${response.data.author.mid}/video/${
+        //       response.data.aid
+        //     }?pagesize=${10}`
+        //   )
+        //   .then(response => {
+        //     this.otherVideo = response.data;
+        //   });
       });
-      this.axios
-        .get(
-          `/author/${this.$route.params.mid}/video/${
-            this.$route.params.aid
-          }?pagesize=${10}`
-        )
-        .then(response => {
-          this.otherVideo = response.data;
-        });
     },
     redrawDanmakuCharts(page) {
       if (

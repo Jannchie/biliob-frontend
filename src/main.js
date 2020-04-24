@@ -65,7 +65,7 @@ Vue.prototype.$baseKeywords =
 // 使用axios
 axios.defaults.withCredentials = true;
 
-Vue.prototype.$alert = function(res) {
+Vue.prototype.$alert = res => {
   if (res == undefined) return;
 
   let msg = res.data.msg;
@@ -93,7 +93,7 @@ Vue.prototype.$timeFormat = format;
 Vue.prototype.$db = data;
 Vue.prototype.$dateParse = require("date-fns/parse");
 Vue.dat;
-Vue.prototype.$numberFormat = function(num, sim = true, fix = 2) {
+Vue.prototype.$numberFormat = function(num, sim = true, fix = 0) {
   if (num == undefined) {
     return "0";
   }
@@ -107,7 +107,9 @@ Vue.prototype.$numberFormat = function(num, sim = true, fix = 2) {
       num /= 10000;
     }
   }
-
+  if (sim == true && postfix != "") {
+    fix = 2;
+  }
   num = num.toFixed(fix);
   var parts = num.split(".");
   parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -129,7 +131,7 @@ axios.interceptors.response.use(
 );
 
 // 环境的切换
-if (process.env.NODE_ENV == "development1") {
+if (process.env.NODE_ENV == "development") {
   axios.defaults.baseURL = "//localhost:8081/api";
 } else {
   axios.defaults.baseURL = "https://www.biliob.com/api";

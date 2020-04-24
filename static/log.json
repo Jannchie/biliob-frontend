@@ -2310,5 +2310,33 @@
             }
         ],
         "type": "unimportant"
+    },
+    {
+        "title": "日常维护",
+        "version": "ver.9.5.5",
+        "date": "2020-04-25",
+        "list": [
+            {
+                "text": "修复了数字小数的问题",
+                "type": "fix"
+            },
+            {
+                "text": "添加了触摸滑动弹出侧边栏的功能",
+                "type": "feature"
+            },
+            {
+                "text": "优化了视频页面逻辑",
+                "type": "feature"
+            },
+            {
+                "text": "添加了一些提示性文字",
+                "type": "feature"
+            },
+            {
+                "text": "开灯",
+                "type": "beautify"
+            }
+        ],
+        "type": "unimportant"
     }
 ]

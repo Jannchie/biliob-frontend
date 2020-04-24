@@ -100,7 +100,7 @@
             <VCard
               v-for="eachVideo in videoList.content"
               :key="eachVideo.aid"
-              :to="'/author/' + eachVideo.mid + '/video/' + eachVideo.aid"
+              :to="`/video/av${eachVideo.aid}`"
               class="video-cards elevation-0"
             >
               <div style="padding:5px;display:flex">

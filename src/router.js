@@ -138,6 +138,16 @@ export default new Router({
           component: Video
         },
         {
+          path: "/video/BV:bvid",
+          name: "视频详细数据",
+          component: Video
+        },
+        {
+          path: "/video/av:aid",
+          name: "视频详细数据",
+          component: Video
+        },
+        {
           path: "/login",
           name: "观测者登录",
           component: Login
