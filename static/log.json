@@ -2338,5 +2338,29 @@
             }
         ],
         "type": "unimportant"
+    },
+    {
+        "title": "UP主群组",
+        "version": "ver.10.0.0",
+        "date": "2020-04-29",
+        "list": [
+            {
+                "text": "添加了UP主群组功能，该功能能够更好地对比显示各大UP主",
+                "type": "feature"
+            },
+            {
+                "text": "增强了关注UP主名单",
+                "type": "feature"
+            },
+            {
+                "text": "微调了导航栏顺序",
+                "type": "feature"
+            },
+            {
+                "text": "通过BV号也可以添加视频观测了",
+                "type": "feature"
+            }
+        ],
+        "type": "important"
     }
 ]

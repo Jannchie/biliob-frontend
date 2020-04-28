@@ -147,6 +147,7 @@ export default {
       time: this.guessing.avageTime,
       credit: undefined,
       dialog: false,
+      resultDialog: false,
       timeRules: [
         () => {
           let date = new Date(this.time);

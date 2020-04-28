@@ -30,7 +30,7 @@
             v-model="ID"
             :label="label"
             required
-            :rules="[rules.required, rules.isNumber]"
+            :rules="[rules.required]"
           ></VTextField>
           <small class="grey--text">{{ hint }}</small>
         </VCardText>
@@ -55,20 +55,25 @@ export default {
       hint: "小字的提示",
       msg: "小字的提示",
       label: "",
+      type: 1,
       url: "",
       rules: {
-        required: value => !!value || "告诉我要观测什么吧=（づ￣3￣）づ╭❤～",
-        isNumber: value => {
-          if (!isNaN(value)) {
-            return true;
-          } else {
-            return "请输入一串数字嘛Ծ‸Ծ";
-          }
-        }
+        required: value => value != "" || "告诉我要观测什么吧"
       }
     };
   },
   methods: {
+    getVideoUrl() {
+      console.log(this.ID);
+      var re = /^[0-9]+$/;
+      this.ID = this.ID.replace(/^av/i, "");
+      this.ID = this.ID.replace(/^BV/i, "");
+      if (re.test(this.ID)) {
+        return `/video/v2/av${this.ID}`;
+      } else {
+        return `/video/v2/BV${this.ID}`;
+      }
+    },
     getDialog(index) {
       switch (index) {
         case 1:
@@ -76,35 +81,25 @@ export default {
           this.label = "请输入UP主ID(数字)";
           this.hint = "UP主的ID可以从UP主个人空间找到~";
           this.url = `/author`;
+          this.type = 1;
           break;
         case 2:
           this.title = "观测新的视频";
-          this.label = "请输入AV号(数字)";
-          this.hint = "视频的AV号可以在视频播放页面找到~";
-          this.url = `/video`;
+          this.label = "请输入AV号或者BV号";
+          this.hint = "视频的BV号可以在视频播放页面找到~";
+          this.url = this.videoUrl;
+          this.type = 2;
           break;
       }
       this.dialog = !this.dialog;
     },
     submit() {
-      this.axios
-        .post(this.url, Number(this.ID))
-        .then(response => {
-          this.msg = response.data.msg;
-          this.alertType = "success";
-          this.showAlert = true;
-          setTimeout(() => {
-            this.showAlert = false;
-          }, 1500);
-        })
-        .catch(error => {
-          this.msg = error.response.data.msg;
-          this.alertType = "error";
-          this.showAlert = true;
-          setTimeout(() => {
-            this.showAlert = false;
-          }, 1500);
-        });
+      if (this.type == 1) {
+        this.axios.post(this.url, Number(this.ID));
+      } else {
+        this.axios.post(this.getVideoUrl());
+      }
+      this.dialog = false;
     }
   }
 };

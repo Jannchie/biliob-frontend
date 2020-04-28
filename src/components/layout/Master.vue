@@ -231,15 +231,17 @@ export default {
       appBarTabs: [
         { name: "首页", path: "/" },
         { name: "排行榜", path: "/rank" },
+        { name: "UP主群组", path: "/authorgroup" },
         { name: "UP主查询", path: "/authorlist" },
+        { name: "专题查询", path: "/bangumi" },
         { name: "视频查询", path: "/videolist" },
         // { name: "个人中心", path: "/user" }
-        { name: "见齐指数", path: "/index" },
-        { name: "专题查询", path: "/bangumi" }
+        { name: "见齐指数", path: "/index" }
       ],
       commentDom: undefined,
       sponsorDom: undefined,
-      mainDom: undefined
+      mainDom: undefined,
+      searchMenu: false
     };
   },
   computed: {

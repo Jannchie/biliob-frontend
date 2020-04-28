@@ -6,8 +6,10 @@ const Rank = () => import("./views/master/Rank.vue");
 const Author = () => import("./views/master/Author.vue");
 const Video = () => import("./views/master/Video.vue");
 const AuthorList = () => import("./views/master/AuthorList.vue");
-const FavoriteAuthorList = () => import("./views/FavoriteAuthorList.vue");
-const FavoriteVideoList = () => import("./views/FavoriteVideoList.vue");
+const FavoriteAuthorList = () =>
+  import("./views/master/user/FavoriteAuthorList.vue");
+const FavoriteVideoList = () =>
+  import("./views/master/user/FavoriteVideoList.vue");
 const VideoList = () => import("./views/master/VideoList.vue");
 const Log = () => import("./views/master/Log.vue");
 const Login = () => import("./views/master/Login.vue");
@@ -50,6 +52,21 @@ export default new Router({
           name: "修改密码",
           path: "/password",
           component: () => import("@/views/master/user/Password.vue")
+        },
+        {
+          name: "UP主群组",
+          path: "/authorgroup",
+          component: () => import("@/views/master/author/group/Index.vue")
+        },
+        {
+          path: "/authorgroup/:gid/manage",
+          name: "管理群组",
+          component: () => import("@/views/master/author/group/Manage.vue")
+        },
+        {
+          path: "/authorgroup/:gid/detail",
+          name: "群组详情",
+          component: () => import("@/views/master/author/group/Detail.vue")
         },
         {
           name: "见齐指数",

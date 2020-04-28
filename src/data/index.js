@@ -16,6 +16,13 @@ export default {
     most: []
   },
   user: {},
+  favoriteAuthor: {},
   comments: {},
-  fansGuessing: []
+  fansGuessing: [],
+  author: {
+    group: {
+      list: {},
+      detail: {}
+    }
+  }
 };

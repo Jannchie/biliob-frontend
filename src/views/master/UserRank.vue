@@ -47,7 +47,7 @@
                     outlined
                   >
                     观想者 </VChip
-                  >32名
+                  >50名
                 </li>
                 <li>
                   <VChip
@@ -59,7 +59,7 @@
                     outlined
                   >
                     追寻者 </VChip
-                  >积分前50%
+                  >经验前5%
                 </li>
                 <li>
                   <VChip
@@ -71,7 +71,7 @@
                     outlined
                   >
                     彷徨者 </VChip
-                  >积分后50%
+                  >经验后95%
                 </li>
                 <li>
                   <VChip
@@ -123,7 +123,7 @@
     ></BiliobUserRankTitle>
     <VRow>
       <VCol
-        v-for="(eachUser, index) of userData.slice(3, 15)"
+        v-for="(eachUser, index) of userData.slice(3, 3 + 16)"
         :key="index"
         cols="12"
         lg="3"
@@ -153,14 +153,14 @@
     ></BiliobUserRankTitle>
     <VRow>
       <VCol
-        v-for="(eachUser, index) of userData.slice(15, 51)"
+        v-for="(eachUser, index) of userData.slice(3 + 16, 3 + 16 + 50)"
         :key="index"
         cols="12"
         lg="2"
       >
         <BiliobCard>
           <div class="grey--text" style="position: absolute; right: 8px">
-            #{{ 16 + index }}
+            #{{ 20 + index }}
           </div>
           <VCardTitle class="body-1 text-truncate">
             {{ eachUser.nickName }}
@@ -179,14 +179,14 @@
     ></BiliobUserRankTitle>
     <VRow>
       <VCol
-        v-for="(eachUser, index) of userData.slice(51, 100)"
+        v-for="(eachUser, index) of userData.slice(3 + 16 + 50, 100)"
         :key="index"
         cols="12"
         lg="2"
       >
         <BiliobCard>
           <div class="grey--text" style="position: absolute; right: 8px">
-            #{{ 52 + index }}
+            #{{ 70 + index }}
           </div>
           <VCardTitle class="body-1 text-truncate">
             {{ eachUser.nickName }}

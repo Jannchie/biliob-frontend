@@ -22,9 +22,9 @@ export default {
     let interval = this.object.obInterval;
     if (interval != undefined) {
       if (interval < 3600) {
-        this.text = `${this.$numberFormat(interval / 60).toFixed(1)} Min`;
+        this.text = `${this.$numberFormat(interval / 60)} Min`;
       } else {
-        this.text = `${this.$numberFormat(interval / 3600).toFixed(1)} Hour`;
+        this.text = `${this.$numberFormat(interval / 3600)} Hour`;
       }
       if (interval < 3600) {
         this.color = "orange";
