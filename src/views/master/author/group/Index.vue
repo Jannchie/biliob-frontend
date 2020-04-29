@@ -108,6 +108,7 @@
           lg="6"
         >
           <BiliobAuthorGroupInfoCard
+            style="height: 100%"
             :author-group="authorGroup"
           ></BiliobAuthorGroupInfoCard>
         </VCol>

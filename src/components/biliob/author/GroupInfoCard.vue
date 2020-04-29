@@ -1,6 +1,6 @@
 <template>
   <VCard>
-    <VCardText>
+    <VCardText style="height:calc(100% - 52px)">
       <h3 class=" text--primary">
         {{ authorGroup.name }} /
         <span
@@ -10,7 +10,9 @@
           >{{ tag }}/
         </span>
       </h3>
-      <h4 class="caption">{{ authorGroup.desc }}</h4>
+      <h4 class="caption">
+        {{ authorGroup.desc }}
+      </h4>
       <h4 class="caption">
         创建者：{{ authorGroup.creator.nickName }}<br />
         维护者：{{ authorGroup.maintainer.nickName }}
@@ -29,6 +31,7 @@
         </span>
       </div>
     </VCardText>
+
     <VDivider></VDivider>
     <VCardActions>
       <VBtn v-if="!stared" color="orange" text @click="star(authorGroup.id)">
@@ -77,8 +80,13 @@ export default {
   },
   data() {
     return {
-      stared: this.authorGroup.stars
+      stared: false
     };
+  },
+  mounted() {
+    if (this.authorGroup.stared) {
+      this.stared = true;
+    }
   },
   methods: {
     star(gid) {

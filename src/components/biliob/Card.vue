@@ -20,7 +20,7 @@
       </BiliobDarkInfo>
       <slot v-else name="offset" />
     </div>
-    <VCardText style="height: 100%" :class="cardPadding">
+    <VCardText style="height: 100%">
       <slot />
     </VCardText>
     <VDivider v-if="$slots.actions" class="mx-3" />
