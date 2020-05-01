@@ -6,7 +6,7 @@
           <VTab to="/user/info">
             <VIcon left>mdi-account-card-details</VIcon>个人信息
           </VTab>
-          <VTab to="/user/authorgroup/star">
+          <VTab to="/user/authorgroup">
             <VIcon left>mdi-account-group</VIcon>UP主群组
           </VTab>
           <VTab to="/user/record">

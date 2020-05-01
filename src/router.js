@@ -169,7 +169,7 @@ export default new Router({
         },
         {
           path: "/video/BV:bvid",
-          name: "视频详细数据",
+          name: "视频详细数据 - ",
           component: Video
         },
         {
