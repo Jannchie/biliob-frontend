@@ -142,19 +142,14 @@ export default {
     userName: function() {
       return this.$store.getters.getUserName;
     },
-    newNickName: function() {
-      return this.$store.getters.getNickName;
-    },
-    newMail: function() {
-      return this.$store.getters.getMail;
-    },
     title: function() {
       return this.$store.getters.getTitle;
     }
   },
+
   mounted() {
-    this.newNickName = this.$store.getters.getNickName;
-    this.newMail = this.$store.getters.getMail;
+    this.newNickName = this.$db.user.nickName;
+    this.newMail = this.$db.user.mail;
   },
   methods: {
     changeEmail() {

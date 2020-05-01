@@ -7,7 +7,6 @@
       })
     "
   >
-    <!--  :to="" -->
     <VImg class="white--text align-end" height="200px" :src="bangumiInfo.cover">
       <VCardTitle style="background: linear-gradient(0deg, #222F, #2220)">
         <h3>

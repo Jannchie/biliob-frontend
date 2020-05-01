@@ -1,5 +1,5 @@
 <template>
-  <VCard @click.stop="$router.push(`/author/${author.mid}`)">
+  <VCard :to="`/author/${author.mid}`">
     <VCardText>
       <VRow no-gutters>
         <VCol cols="auto" class="mr-3">
@@ -8,7 +8,7 @@
           </VAvatar>
         </VCol>
         <VCol>
-          <h3>{{ author.name }}</h3>
+          <h3>{{ author.name }} <CommonSexIcon :sex="author.sex" /></h3>
           <div class="caption">uid: {{ author.mid }}</div>
           <div class="caption">{{ author.official }}</div>
         </VCol>
@@ -51,6 +51,14 @@
           <div class="caption">
             #{{ $numberFormat(author.rank.likeRank, false) }}
           </div>
+        </VCol>
+        <VCol style="position: absolute;right:16px; top:16px">
+          <VRow no-gutters>
+            <VSpacer></VSpacer>
+            <VCol cols="auto">
+              <CommonObserveStatus :object="author" />
+            </VCol>
+          </VRow>
         </VCol>
       </VRow>
     </VCardText>

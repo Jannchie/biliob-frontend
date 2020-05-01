@@ -1,10 +1,8 @@
 <template>
-  <VSheet
-    v-ripple="true"
+  <VCard
     style="position: relative"
     :to="`/author/${author.mid}`"
-    class="mx-0  elevation-0"
-    @click.stop="toAuthorDetail(author.mid)"
+    class="mx-0 elevation-0"
   >
     <VRow style="flex-wrap: nowrap">
       <VCol cols="auto">
@@ -47,7 +45,7 @@
         </VRow>
       </VCol>
     </VRow>
-  </VSheet>
+  </VCard>
 </template>
 <script>
 export default {

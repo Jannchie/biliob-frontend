@@ -22,7 +22,7 @@
           v-for="author in authorGroup.authorList"
           :key="author.mid"
           class="mr-2"
-          @click="$router.push(`/author/${author.mid}`)"
+          :to="`/author/${author.mid}`"
         >
           <VImg :src="zipPic(author.face)"></VImg>
         </VAvatar>
@@ -49,18 +49,18 @@
       <VSpacer></VSpacer>
       <VBtn
         v-if="!sim"
-        :to="`/authorgroup/${authorGroup.id}/detail`"
         color="primary"
         text
+        :to="`/authorgroup/${authorGroup.id}/detail`"
       >
         <VIcon left>mdi-view-list</VIcon>
         详情
       </VBtn>
       <VBtn
         v-if="authorGroup.maintainer.nickName == $db.user.nickName"
-        :to="`/authorgroup/${authorGroup.id}/manage`"
         color="red"
         text
+        :to="`/authorgroup/${authorGroup.id}/manage`"
       >
         <VIcon left>mdi-settings</VIcon>
         管理

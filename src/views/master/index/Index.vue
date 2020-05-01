@@ -88,7 +88,7 @@
         cols="12"
         lg="3"
       >
-        <BiliobCard @click="$router.push(`/index/${eachTag.tag}`)">
+        <BiliobCard :to="`/index/${eachTag.tag}`">
           <VCardTitle class="primary--text">
             <h4>{{ eachTag.tag }}</h4>
           </VCardTitle>

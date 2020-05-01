@@ -20,7 +20,7 @@ const Occurrence = () => import("./views/master/Event.vue");
 const FAQ = () => import("./views/master/FAQ.vue");
 const User = () => import("./views/master/User.vue");
 const UserRank = () => import("./views/master/UserRank.vue");
-const UserRecord = () => import("./views/UserRecord.vue");
+const UserRecord = () => import("./views/master/user/Record.vue");
 const Test = () => import("./views/Test.vue");
 const Android = () => import("./views/Android.vue");
 const AuthorVersus = () => import("./views/master/AuthorVersus.vue");
@@ -104,6 +104,19 @@ export default new Router({
               path: "record",
               name: "我的操作记录",
               component: UserRecord
+            },
+            {
+              name: "我的UP主群组",
+              path: "authorgroup",
+              component: () => import("@/views/master/user/AuthorGroup.vue"),
+              children: [
+                {
+                  path: ":catalog",
+                  name: "我的UP主群组列表",
+                  component: () =>
+                    import("@/views/master/user/AuthorGroupList.vue")
+                }
+              ]
             }
           ]
         },

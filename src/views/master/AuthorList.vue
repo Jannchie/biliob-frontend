@@ -40,76 +40,81 @@
     </VRow>
     <VRow dense>
       <VCol>
-        <BiliobCard light border="bottom">
-          <VLayout slot="header">
-            <VTabs background-color="transparent" slider-color="primary">
-              <VTab @click="sortChange(0)">
-                <VIcon>
-                  mdi-account-heart
-                </VIcon>
-                <div style="margin-left:10px">
-                  粉丝总数
-                </div>
-              </VTab>
-              <VTab @click="sortChange(1)">
-                <VIcon>
-                  mdi-play-circle-outline
-                </VIcon>
-                <div style="margin-left:10px">
-                  播放总量
-                </div>
-              </VTab>
-              <VTab @click="sortChange(3)">
-                <VIcon>
-                  mdi-thumb-up-outline
-                </VIcon>
-                <div style="margin-left:10px">
-                  获赞总量
-                </div>
-              </VTab>
-              <VTab @click="sortChange(2)">
-                <VIcon>
-                  mdi-script-text-outline
-                </VIcon>
-                <div style="margin-left:10px">
-                  专栏阅读
-                </div>
-              </VTab>
-            </VTabs>
-          </VLayout>
-
-          <VSlideYTransition group>
-            <BiliobAuthorListItem
-              v-for="eachAuthor in authorList.content"
-              :key="eachAuthor.mid"
-              :author="eachAuthor"
-            >
-            </BiliobAuthorListItem>
-          </VSlideYTransition>
-          <VBtn
-            v-if="!notFound"
-            block
-            outlined
-            style="border-width:1px"
-            color="primary"
-            :disabled="nextBtnDisabled"
-            tile
-            @click.stop="next"
-            >{{ nextBtnText }}</VBtn
+        <VCard>
+          <VTabs background-color="transparent" slider-color="primary">
+            <VTab @click="sortChange(0)">
+              <VIcon>
+                mdi-account-heart
+              </VIcon>
+              <div style="margin-left:10px">
+                粉丝总数
+              </div>
+            </VTab>
+            <VTab @click="sortChange(1)">
+              <VIcon>
+                mdi-play-circle-outline
+              </VIcon>
+              <div style="margin-left:10px">
+                播放总量
+              </div>
+            </VTab>
+            <VTab @click="sortChange(3)">
+              <VIcon>
+                mdi-thumb-up-outline
+              </VIcon>
+              <div style="margin-left:10px">
+                获赞总量
+              </div>
+            </VTab>
+            <VTab @click="sortChange(2)">
+              <VIcon>
+                mdi-script-text-outline
+              </VIcon>
+              <div style="margin-left:10px">
+                专栏阅读
+              </div>
+            </VTab>
+          </VTabs>
+        </VCard>
+      </VCol>
+      <VCol cols="12">
+        <VSlideYTransition group>
+          <VRow
+            v-for="eachAuthor in authorList.content"
+            :key="eachAuthor.mid"
+            dense
           >
-          <div v-else>
-            <h4 class="primary--text">
-              <VIcon class="primary--text">mdi-ship-wheel</VIcon
-              >抱歉！什么都没有找到QwQ
-            </h4>
-            <p>
-              搜索功能可能并不完善，为了精确搜索请在上方输入相关UP主的ID！
-            </p>
-            <p>
-              如果搜索ID仍然没有结果，可能是因为该UP主并未被本站观测。你可以点击页面右下角的圆形按钮进行添加！
-            </p>
-          </div>
-        </BiliobCard>
+            <VCol cols="12">
+              <BiliobAuthorInfoCard :author="eachAuthor">
+              </BiliobAuthorInfoCard>
+            </VCol>
+          </VRow>
+        </VSlideYTransition>
+      </VCol>
+      <VCol v-if="!notFound" cols="12">
+        <VBtn
+          block
+          outlined
+          style="border-width:1px"
+          color="primary"
+          :disabled="nextBtnDisabled"
+          tile
+          @click.stop="next"
+          >{{ nextBtnText }}</VBtn
+        >
+      </VCol>
+
+      <VCol v-else cols="12">
+        <h4 class="primary--text">
+          <VIcon class="primary--text">mdi-ship-wheel</VIcon
+          >抱歉！什么都没有找到QwQ
+        </h4>
+        <p>
+          搜索功能可能并不完善，为了精确搜索请在上方输入相关UP主的ID！
+        </p>
+        <p>
+          如果搜索ID仍然没有结果，可能是因为该UP主并未被本站观测。你可以点击页面右下角的圆形按钮进行添加！
+        </p>
       </VCol>
     </VRow>
   </VContainer>

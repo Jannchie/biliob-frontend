@@ -194,7 +194,7 @@ export default {
       );
     },
     sortChange(i) {
-      let index = ["cFans", "cArchieveView", "cLike", "cArticleView"];
+      let index = ["cFans", "cArchiveView", "cLike", "cArticleView"];
       this.$db.author.group.detail[this.$route.params.gid].authorList.sort(
         (a, b) => {
           return b[index[i]] - a[index[i]];

@@ -17,6 +17,8 @@ export default {
   },
   user: {},
   favoriteAuthor: {},
+  // maintainAuthorGroup: [],
+  // starAuthorGroup: [],
   comments: {},
   fansGuessing: [],
   author: {

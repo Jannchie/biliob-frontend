@@ -6,6 +6,9 @@
           <VTab to="/user/info">
             <VIcon left>mdi-account-card-details</VIcon>个人信息
           </VTab>
+          <VTab to="/user/authorgroup/star">
+            <VIcon left>mdi-account-group</VIcon>UP主群组
+          </VTab>
           <VTab to="/user/record">
             <VIcon left>mdi-timetable</VIcon>操作记录
           </VTab>
@@ -15,6 +18,10 @@
         </VTabs>
       </VCol>
     </VRow>
-    <RouterView></RouterView>
+    <VRow dense>
+      <VCol cols="12">
+        <RouterView></RouterView>
+      </VCol>
+    </VRow>
   </VContainer>
 </template>

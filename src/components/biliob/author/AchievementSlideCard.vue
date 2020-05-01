@@ -5,7 +5,7 @@
       :key="i"
       class="mx-1 px-2"
       min-width="300px"
-      @click.stop="$router.push(`/author/${achievement.author.mid}`)"
+      :to="`/author/${achievement.author.mid}`"
     >
       <VRow>
         <VCol class="pr-0" cols="auto">

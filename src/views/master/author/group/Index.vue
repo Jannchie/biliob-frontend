@@ -124,16 +124,28 @@
     <VRow v-if="loaded && !none" dense>
       <VCol cols="6">
         <VBtn
-          :disabled="page != 1"
+          :disabled="page == 1"
           outlined
           color="primary"
           block
-          @click.stop="page--"
+          @click.stop="
+            page--;
+            $router.push({ query: { page: page } });
+          "
           >上一页</VBtn
         >
       </VCol>
       <VCol cols="6">
-        <VBtn outlined color="primary" block @click.stop="page++">下一页</VBtn>
+        <VBtn
+          outlined
+          color="primary"
+          block
+          @click.stop="
+            page++;
+            $router.push({ query: { page: page } });
+          "
+          >下一页</VBtn
+        >
       </VCol>
     </VRow>
   </VContainer>
@@ -142,7 +154,7 @@
 export default {
   data() {
     return {
-      page: 1,
+      page: this.$route.query.page == undefined ? 1 : this.$route.query.page,
       searchWord: "",
       loaded: false,
       createDialog: false,
@@ -152,6 +164,11 @@ export default {
   watch: {
     page() {
       this.getData();
+    },
+    "this.$route.query.page": function() {
+      if (this.$route.query.page != undefined) {
+        this.page = this.$route.query.page;
+      }
     }
   },
   mounted() {
@@ -168,15 +185,22 @@ export default {
     getData() {
       this.loaded = false;
       this.none = false;
+      if (this.$route.query.page == undefined) {
+        this.$router.push({ query: { page: 1 } });
+      }
       if (
-        this.$db.author.group.list[`${this.page}${this.searchWord}`] ==
-        undefined
+        this.$db.author.group.list[
+          `${this.$route.query.page}${this.searchWord}`
+        ] == undefined
       ) {
         this.axios
-          .get(`/author/group?p=${this.page}&kw=${this.searchWord}`)
+          .get(
+            `/author/group?p=${this.$route.query.page}&kw=${this.searchWord}`
+          )
           .then(response => {
-            this.$db.author.group.list[`${this.page}${this.searchWord}`] =
-              response.data;
+            this.$db.author.group.list[
+              `${this.$route.query.page}${this.searchWord}`
+            ] = response.data;
             this.loaded = true;
             if (response.data.length == 0) {
               this.none = true;

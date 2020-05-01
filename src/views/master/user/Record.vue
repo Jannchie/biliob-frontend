@@ -1,15 +1,11 @@
 <template>
-  <VRow>
-    <VCol cols="12">
-      <BiliobCard>
-        <VDataTable
-          :items-per-page="30"
-          :headers="headers"
-          :items="userRecords"
-        ></VDataTable>
-      </BiliobCard>
-    </VCol>
-  </VRow>
+  <BiliobCard>
+    <VDataTable
+      :items-per-page="30"
+      :headers="headers"
+      :items="userRecords"
+    ></VDataTable>
+  </BiliobCard>
 </template>
 
 <script>

@@ -9,7 +9,7 @@
       :key="item.aid"
       :src="item.pic"
       gradient="to top , rgba(0,0,0,1), rgba(25,32,72,.0), rgba(25,32,72,.0)"
-      @click.stop="$router.push(`/author/${item.mid}/video/${item.aid}`)"
+      :to="`/author/${item.mid}/video/${item.aid}`"
     >
       <div
         style="position:absolute;bottom:0;width:95%"
