@@ -2,45 +2,37 @@
   <BiliobCard light border="bottom" title="UP主排名数据">
     <div class="rank-container">
       <div style="flex-grow: 1;text-align:center">
-        <div class="rank-title subheading  grey--text">
+        <div class="rank-title caption  grey--text">
           粉丝数
         </div>
-        <div
-          class="rank-value py-1  subtitle-1  font-weight-black primary--text "
-        >
+        <div class="rank-value py-1 caption  font-weight-black primary--text ">
           {{ fansInfo }}
         </div>
         <ChevronBudget :value="dFansRank"></ChevronBudget>
       </div>
       <div style="flex-grow: 1;text-align:center">
-        <div class="rank-title subheading  grey--text">
+        <div class="rank-title caption  grey--text">
           播放排名
         </div>
-        <div
-          class="rank-value py-1  subtitle-1 font-weight-black primary--text "
-        >
+        <div class="rank-value py-1 caption font-weight-black primary--text ">
           {{ archiveInfo }}
         </div>
         <ChevronBudget :value="dArchiveViewRank"></ChevronBudget>
       </div>
       <div style="flex-grow: 1;text-align:center">
-        <div class="rank-title subheading  grey--text">
+        <div class="rank-title caption  grey--text">
           获赞排名
         </div>
-        <div
-          class="rank-value py-1  subtitle-1 font-weight-black primary--text "
-        >
+        <div class="rank-value py-1 caption font-weight-black primary--text ">
           {{ likeInfo }}
         </div>
         <ChevronBudget :value="dLikeRank"></ChevronBudget>
       </div>
       <div style="flex-grow: 1;text-align:center">
-        <div class="rank-title subheading  grey--text">
+        <div class="rank-title caption  grey--text">
           专栏阅读
         </div>
-        <div
-          class="rank-value py-1  subtitle-1 font-weight-black primary--text "
-        >
+        <div class="rank-value py-1 caption font-weight-black primary--text ">
           {{ articleInfo }}
         </div>
         <ChevronBudget :value="dArticleViewRank"></ChevronBudget>

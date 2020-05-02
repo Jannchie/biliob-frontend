@@ -11,10 +11,26 @@
       <span class="primary--text">{{ guessing.totalCredit }}</span>
       ;
       <br />
-      <br />平均预测达成时间为:
       <br />
-      <span color="primary">{{ formatedAvageTime }} </span>
-      <br />
+      <div v-if="guessing.state == 4">
+        观测到的达成时间为:
+        <br />
+        <span color="primary"
+          >{{
+            $timeFormat(
+              guessing.reachDate.replace("+0000", ""),
+              "YYYY-MM-DD HH:mm"
+            )
+          }}
+        </span>
+        <br />
+      </div>
+      <div v-else>
+        平均预测达成时间为:
+        <br />
+        <span color="primary">{{ formatedAvageTime }} </span>
+        <br />
+      </div>
       <span :class="`${stateColor}`"> ● {{ state }} </span>
     </VCardText>
     <VCardActions class="pt-0">

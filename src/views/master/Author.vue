@@ -88,11 +88,11 @@
                       :key="each.name"
                     >
                       <div style="flex-grow: 1; text-align:center">
-                        <div class="rank-title subheading  grey--text">
+                        <div class="rank-title caption  grey--text">
                           {{ each.name }}
                         </div>
                         <div
-                          class="rank-value subtitle-1 font-weight-black primary--text "
+                          class="rank-value caption font-weight-black primary--text "
                         >
                           {{ each.value }}
                         </div>

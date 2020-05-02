@@ -95,7 +95,7 @@ Vue.prototype.$dateParse = require("date-fns/parse");
 Vue.dat;
 Vue.prototype.$numberFormat = function(num, sim = true, fix = 0) {
   if (num == undefined) {
-    return "0";
+    return "-";
   }
   let postfix = "";
   if (sim) {

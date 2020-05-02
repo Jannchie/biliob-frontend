@@ -17,11 +17,9 @@
           <VCardText slot="card-text">
             锁定频率需要<span class="font-weight-black red--text"
               >消耗200积分</span
-            >。
+            >。 可以将观测间隔锁定在3小时。
             <br />
-            打破取消爬取机制，保持数据每小时更新。
-            <br />
-            目前强行观测后只有管理员能取消操作。
+            注意，该观测频率为理论最大值，实际观测频率与爬虫队列长度有关。
           </VCardText>
         </BiliobOperationBtn>
       </VCol>

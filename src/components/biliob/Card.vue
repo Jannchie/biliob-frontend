@@ -20,7 +20,7 @@
       </BiliobDarkInfo>
       <slot v-else name="offset" />
     </div>
-    <VCardText style="height: 100%">
+    <VCardText style="height: 100%" :class="cardPadding">
       <slot />
     </VCardText>
     <VDivider v-if="$slots.actions" class="mx-3" />
@@ -72,7 +72,7 @@ export default {
       type: String,
       default: function() {
         if (this.$vuetify.breakpoint.mdAndUp) {
-          return "pa-2";
+          return "";
         } else {
           return "pa-1";
         }

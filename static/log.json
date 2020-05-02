@@ -2410,5 +2410,25 @@
             }
         ],
         "type": "important"
+    },
+    {
+        "title": "UP主群组",
+        "version": "ver.10.1.1",
+        "date": "2020-05-02",
+        "list": [
+            {
+                "text": "下调了爬取频率",
+                "type": "feature"
+            },
+            {
+                "text": "修复了部分场合下群组数据无法显示的问题",
+                "type": "fix"
+            },
+            {
+                "text": "优化手机端体验",
+                "type": "beautify"
+            }
+        ],
+        "type": "unimportant"
     }
 ]

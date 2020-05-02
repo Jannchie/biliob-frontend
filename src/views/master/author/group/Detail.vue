@@ -184,6 +184,9 @@ export default {
           maxValue = result[index];
         }
       });
+      if (result == null) {
+        result = { name: "" };
+      }
       return result;
     },
     sumData(index) {
