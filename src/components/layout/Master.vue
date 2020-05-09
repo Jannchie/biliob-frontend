@@ -144,6 +144,9 @@
                 href="https://azz.net/jannchie"
                 ><VIcon left>mdi-currency-cny</VIcon> 援助</VBtn
               >
+              <VBtn large class="naVBtn" text block to="/download/app"
+                ><VIcon left>mdi-application</VIcon> APP下载</VBtn
+              >
             </VContainer>
           </VNavigationDrawer>
         </div>
@@ -151,7 +154,7 @@
     </div>
     <VContent>
       <VContainer class="pa-0">
-        <VRow justify="center" dense>
+        <VRow style="width: 100%" justify="center" dense>
           <VCol
             v-if="
               (-1 == ['/login', '/signin'].indexOf(this.$route.path) &&
@@ -171,7 +174,7 @@
           >
             <BiliobSponsor id="sponsor-container"></BiliobSponsor>
           </VCol>
-          <VCol lg="8" cols="12" class="main-col order-1">
+          <VCol lg="8" cols="12" class="pa-0 order-1">
             <VSlideYTransition mode="out-in">
               <RouterView id="main-view" key="master" />
             </VSlideYTransition>

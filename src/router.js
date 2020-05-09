@@ -22,7 +22,6 @@ const User = () => import("./views/master/User.vue");
 const UserRank = () => import("./views/master/UserRank.vue");
 const UserRecord = () => import("./views/master/user/Record.vue");
 const Test = () => import("./views/Test.vue");
-const Android = () => import("./views/Android.vue");
 const AuthorVersus = () => import("./views/master/AuthorVersus.vue");
 const Donate = () => import("./views/Donate.vue");
 const Tracer = () => import("./views/admin/Layout.vue");
@@ -229,9 +228,9 @@ export default new Router({
           component: Test
         },
         {
-          path: "/download/android",
-          name: "下载安卓客户端",
-          component: Android
+          path: "/download/app",
+          name: "下载APP",
+          component: () => import("@/views/master/download/App.vue")
         },
         {
           path: "/donate",

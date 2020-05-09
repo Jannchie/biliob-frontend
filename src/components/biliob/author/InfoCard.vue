@@ -34,19 +34,19 @@
           <div class="caption">获赞数</div>
           <div class="caption">{{ $numberFormat(author.cLike, false) }}</div>
         </VCol>
-        <VCol lg="2" cols="4">
+        <VCol v-if="author.rank != undefined" lg="2" cols="4">
           <div class="caption">粉丝排名</div>
           <div class="caption">
             # {{ $numberFormat(author.rank.fansRank, false) }}
           </div>
         </VCol>
-        <VCol lg="2" cols="4">
+        <VCol v-if="author.rank != undefined" lg="2" cols="4">
           <div class="caption">播放排名</div>
           <div class="caption">
             #{{ $numberFormat(author.rank.archiveViewRank, false) }}
           </div>
         </VCol>
-        <VCol lg="2" cols="4">
+        <VCol v-if="author.rank != undefined" lg="2" cols="4">
           <div class="caption">获赞排名</div>
           <div class="caption">
             #{{ $numberFormat(author.rank.likeRank, false) }}

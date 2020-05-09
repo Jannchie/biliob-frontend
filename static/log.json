@@ -2430,5 +2430,17 @@
             }
         ],
         "type": "unimportant"
+    },
+    {
+        "title": "APP",
+        "version": "ver.10.2.0",
+        "date": "2020-05-09",
+        "list": [
+            {
+                "text": "在侧边菜单中添加了下载APP的选项",
+                "type": "feature"
+            }
+        ],
+        "type": "important"
     }
 ]
