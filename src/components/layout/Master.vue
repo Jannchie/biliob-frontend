@@ -114,16 +114,7 @@
                 text
                 block
                 :to="`/user/authorgroup/star`"
-                ><VIcon left>mdi-star</VIcon>我收藏的UP主群组</VBtn
-              >
-              <VBtn
-                v-if="$store.state.logined"
-                large
-                class="naVBtn"
-                text
-                block
-                :to="`/user/authorgroup/maintain`"
-                ><VIcon left>mdi-pencil</VIcon>我维护的UP主群组</VBtn
+                ><VIcon left>mdi-star</VIcon>我的UP主群组</VBtn
               >
               <VBtn
                 v-for="(eachNavItem, navItemIndex) in navItems"
@@ -154,7 +145,7 @@
     </div>
     <VContent>
       <VContainer class="pa-0">
-        <VRow style="width: 100%" justify="center" dense>
+        <VRow justify="center" dense>
           <VCol
             v-if="
               (-1 == ['/login', '/signin'].indexOf(this.$route.path) &&

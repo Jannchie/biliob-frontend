@@ -60,7 +60,11 @@
             </template>
             <VList dense>
               <VListItem
-                :disabled="$db.user.name != comment.user.name"
+                :disabled="
+                  $db.user.name != comment.user.name ||
+                    $db.user.title != '管理者' ||
+                    $db.user.role != '管理员'
+                "
                 @click="deleteComment"
               >
                 <VListItemIcon>
