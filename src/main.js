@@ -91,6 +91,9 @@ import { format } from "date-fns";
 Vue.prototype.$timeFormat = format;
 
 Vue.prototype.$db = data;
+Vue.prototype.$keywordFilter = txt => {
+  return txt.replace(/赌博|博彩/g, "预测");
+};
 Vue.prototype.$dateParse = require("date-fns/parse");
 Vue.dat;
 Vue.prototype.$numberFormat = function(num, sim = true, fix = 0) {
@@ -116,6 +119,15 @@ Vue.prototype.$numberFormat = function(num, sim = true, fix = 0) {
   return parts.join(".") + postfix;
 };
 
+axios.interceptors.request.use(
+  config => {
+    return config;
+  },
+  error => {
+    return Promise.error(error);
+  }
+);
+
 axios.interceptors.response.use(
   function(response) {
     // let path = router.app.$route.path;
@@ -131,7 +143,7 @@ axios.interceptors.response.use(
 );
 
 // 环境的切换
-if (process.env.NODE_ENV == "development1") {
+if (process.env.NODE_ENV == "development") {
   axios.defaults.baseURL = "//localhost:8081/api";
 } else {
   axios.defaults.baseURL = "https://www.biliob.com/api";

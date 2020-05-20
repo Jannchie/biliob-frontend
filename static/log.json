@@ -2442,5 +2442,29 @@
             }
         ],
         "type": "important"
+    },
+    {
+        "title": "观测记录系统",
+        "version": "ver.10.2.1",
+        "date": "2020-05-20",
+        "list": [
+            {
+                "text": "修复了无法删除观测记录的问题",
+                "type": "fix"
+            },
+            {
+                "text": "授予特权研究员删除他人观测记录的权限",
+                "type": "feature"
+            },
+            {
+                "text": "优化观测记录的显示",
+                "type": "beautify"
+            },
+            {
+                "text": "增强了求生欲",
+                "type": "feature"
+            }
+        ],
+        "type": "unimportant"
     }
 ]

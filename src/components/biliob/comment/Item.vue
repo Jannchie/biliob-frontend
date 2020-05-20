@@ -1,21 +1,20 @@
 <template>
   <VCard dense tile>
     <VCardTitle class="py-0">
-      <h6 v-if="comment.user != undefined">
-        {{ comment.user.title }} (#{{ comment.user.rank }}) /
-        {{ comment.user.nickName }}:
-      </h6>
+      <BiliobUserInfo v-if="comment.user != undefined" :user="comment.user">
+      </BiliobUserInfo>
       <h6 v-else>{{ comment.user }}:</h6>
     </VCardTitle>
+    <VCardText class="caption pb-1">
+      {{ $timeFormat(comment.date, "YYYY-MM-DD HH:mm:ss") }}
+    </VCardText>
     <VCardText
       style="white-space: pre-line;"
       class="subheading py-0"
-      v-text="getEmoji(comment.content)"
+      v-text="getEmoji($keywordFilter(comment.content))"
     >
     </VCardText>
-    <VCardText class="caption py-1">
-      发布时间: {{ $timeFormat(comment.date, "YYYY-MM-DD HH:mm:ss") }}
-    </VCardText>
+
     <VCardActions class="caption pt-0">
       <VRow no-gutters>
         <VCol cols="auto">
@@ -61,18 +60,21 @@
             <VList dense>
               <VListItem
                 :disabled="
-                  $db.user.name != comment.user.name ||
-                    $db.user.title != '管理者' ||
-                    $db.user.role != '管理员'
+                  $db.user.name != comment.user.name &&
+                    $db.user.title != '管理者' &&
+                    $db.user.role != '管理员' &&
+                    $db.user.role != '系统测试员' &&
+                    $db.user.role != '站长' &&
+                    $db.user.role != '特权研究员'
                 "
                 @click="deleteComment"
               >
                 <VListItemIcon>
-                  <VIcon small>
+                  <VIcon small color="red">
                     mdi-close
                   </VIcon>
                 </VListItemIcon>
-                <VListItemTitle class="text--secondary">删除</VListItemTitle>
+                <VListItemTitle class="red--text">删除</VListItemTitle>
               </VListItem>
             </VList>
           </VMenu>
@@ -120,8 +122,7 @@ export default {
     },
     deleteComment() {
       this.axios.delete(`/user/comment/${this.comment.commentId}`).then(() => {
-        this.comment.content =
-          "[ 该█████已被删除 ]\n█████ ██████████████████ ████████████";
+        this.comment.content = "[ 该█████已被删除 ]";
       });
       this.$emit("deleted", this.comment.commentId);
     },
