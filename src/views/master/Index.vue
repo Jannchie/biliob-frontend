@@ -27,7 +27,7 @@
         </VSlideYTransition>
       </VCol>
     </VRow>
-    <VRow dense>
+    <!-- <VRow dense>
       <VCol>
         <VSlideYTransition>
           <BiliobSiteChart
@@ -37,9 +37,9 @@
           ></BiliobSiteChart>
         </VSlideYTransition>
       </VCol>
-    </VRow>
+    </VRow> -->
 
-    <VRow dense>
+    <!-- <VRow dense>
       <VCol>
         <VSlideYTransition>
           <MainDetailCharts
@@ -49,7 +49,7 @@
           />
         </VSlideYTransition>
       </VCol>
-    </VRow>
+    </VRow> -->
     <VRow dense>
       <VCol>
         <VSlideYTransition>
@@ -60,7 +60,7 @@
   </VContainer>
 </template>
 <script>
-import getStockOption from "@/charts/biliob-candlestick.js";
+// import getStockOption from "@/charts/biliob-candlestick.js";
 export default {
   data() {
     return { stockOption: {}, forecastCard: false, recentAchievement: false };
@@ -91,18 +91,18 @@ export default {
     } else {
       this.recentAchievement = true;
     }
-    if (this.$store.state.site.siteInfo == undefined) {
-      this.$store.dispatch("getSiteInfo");
-    }
-    if (this.$store.state.event.recentEvent == undefined) {
-      this.$store.dispatch("getRecentEvent");
-    }
-    if (this.$store.state.site.siteGroupInfo == undefined) {
-      this.$store.dispatch("getSiteGroupInfo");
-    }
-    this.axios.get("/site/history-play?days=365").then(res => {
-      this.stockOption = getStockOption(res.data);
-    });
+    // if (this.$store.state.site.siteInfo == undefined) {
+    //   this.$store.dispatch("getSiteInfo");
+    // }
+    // if (this.$store.state.event.recentEvent == undefined) {
+    //   this.$store.dispatch("getRecentEvent");
+    // }
+    // if (this.$store.state.site.siteGroupInfo == undefined) {
+    //   this.$store.dispatch("getSiteGroupInfo");
+    // }
+    // this.axios.get("/site/history-play?days=365").then(res => {
+    //   this.stockOption = getStockOption(res.data);
+    // });
   }
 };
 </script>
