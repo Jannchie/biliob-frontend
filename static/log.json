@@ -2466,5 +2466,21 @@
             }
         ],
         "type": "unimportant"
+    },
+    {
+        "title": "观测记录系统",
+        "version": "ver.10.2.2",
+        "date": "2020-05-29",
+        "list": [
+            {
+                "text": "统一了观测者操作记录的时间显示",
+                "type": "fix"
+            },
+            {
+                "text": "移除了不再公开的数据",
+                "type": "beautify"
+            }
+        ],
+        "type": "unimportant"
     }
 ]
