@@ -39,6 +39,12 @@ export default {
     this.axios.get(`/user/record`).then(response => {
       this.userRecords = response.data;
       this.userRecords.forEach(element => {
+        if (element.createTime != undefined) {
+          element.datetime = this.$timeFormat(
+            element.createTime,
+            "YYYY-MM-DD HH:mm:ss"
+          );
+        }
         let state = "未执行";
         if (element.executed == true) {
           state = "已执行";
