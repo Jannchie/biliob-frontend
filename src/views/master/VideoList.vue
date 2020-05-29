@@ -21,7 +21,7 @@
               <VTabs slider-color="primary" background-color="transparent">
                 <VIcon left right>mdi-sort</VIcon>
                 <VTab @click="sortChange(0)">
-                  <VIcon>
+                  <VIcon left>
                     mdi-play-circle-outline
                   </VIcon>
                   <span v-if="$vuetify.breakpoint.mdAndUp">
@@ -29,7 +29,7 @@
                   </span>
                 </VTab>
                 <VTab @click="sortChange(1)">
-                  <VIcon>
+                  <VIcon left>
                     mdi-thumb-up-outline
                   </VIcon>
                   <span v-if="$vuetify.breakpoint.mdAndUp">
@@ -37,7 +37,7 @@
                   </span>
                 </VTab>
                 <VTab @click="sortChange(2)">
-                  <VIcon>
+                  <VIcon left>
                     mdi-coin
                   </VIcon>
                   <span v-if="$vuetify.breakpoint.mdAndUp">
@@ -45,7 +45,7 @@
                   </span>
                 </VTab>
                 <VTab @click="sortChange(3)">
-                  <VIcon>
+                  <VIcon left>
                     mdi-message-bulleted
                   </VIcon>
                   <span v-if="$vuetify.breakpoint.mdAndUp">
@@ -53,7 +53,7 @@
                   </span>
                 </VTab>
                 <VTab @click="sortChange(4)">
-                  <VIcon>
+                  <VIcon left>
                     mdi-folder-star
                   </VIcon>
                   <span v-if="$vuetify.breakpoint.mdAndUp">
@@ -66,6 +66,14 @@
                   </VIcon>
                   <span v-if="$vuetify.breakpoint.mdAndUp">
                     分享
+                  </span>
+                </VTab>
+                <VTab @click="sortChange(6)">
+                  <VIcon hidden-md-and-down>
+                    mdi-alpha-j
+                  </VIcon>
+                  <span v-if="$vuetify.breakpoint.mdAndUp">
+                    指数
                   </span>
                 </VTab>
               </VTabs>
@@ -99,7 +107,7 @@
           <VSlideYTransition group>
             <VCard
               v-for="eachVideo in videoList.content"
-              :key="eachVideo.aid"
+              :key="eachVideo.bvid"
               :to="`/video/av${eachVideo.aid}`"
               class="video-cards elevation-0"
             >
@@ -112,18 +120,39 @@
                   />
                 </div>
                 <div style="margin-left:10px;overflow:hidden">
-                  <div
-                    class="font-weight-bold video-title text-no-wrap text-truncate"
-                  >
+                  <div class="text-no-wrap text-truncate">
                     {{ eachVideo.title }}
                   </div>
-                  <div class="caption subtext video-info">
-                    <VIcon small> mdi-account-box-outline </VIcon
-                    >{{ eachVideo.author }}
-                    <VIcon small> mdi-bookmark-outline </VIcon
-                    >{{ eachVideo.channel }}
+                  <div>
+                    <span color="primary" small label outlined>
+                      <VIcon small> mdi-account </VIcon>
+                      <span class="caption">
+                        {{ eachVideo.authorName }}
+                      </span>
+                    </span>
+                    <span color="primary" small label outlined>
+                      <VIcon small> mdi-book </VIcon>
+                      <span class="caption">
+                        {{
+                          eachVideo.channel == "" ? "未知" : eachVideo.channel
+                        }}
+                      </span>
+                    </span>
                   </div>
-                  <VRow no-gutters>
+                  <VChipGroup>
+                    <VChip
+                      v-for="tag in eachVideo.tag"
+                      :key="tag"
+                      color="primary"
+                      class="px-1 mr-2 caption"
+                      label
+                      outlined
+                      x-small
+                    >
+                      {{ tag }}
+                    </VChip>
+                  </VChipGroup>
+                  <!-- <VRow no-gutters>
                     <VSpacer></VSpacer>
                     <VCol cols="auto">
                       <ObserveStatus
@@ -131,10 +160,9 @@
                         :object="eachVideo"
                       />
                     </VCol>
-                  </VRow>
+                  </VRow> -->
                 </div>
               </div>
-              <VDivider></VDivider>
             </VCard>
           </VSlideYTransition>
           <VBtn
@@ -168,12 +196,10 @@
 
 <script>
 import VSearchForm from "@/components/common/VSearchForm.vue";
-import ObserveStatus from "@/components/common/ObserveStatus.vue";
 export default {
   name: "VideoList",
   components: {
-    VSearchForm,
-    ObserveStatus
+    VSearchForm
   },
   data() {
     return {
@@ -339,5 +365,8 @@ export default {
     width: 120px;
     height: 75px;
   }
+}
+.v-icon {
+  vertical-align: text-bottom;
 }
 </style>

@@ -177,6 +177,7 @@ export default {
   methods: {
     search() {
       this.page = 1;
+      this.$route.query.page = 1;
       this.getData();
     },
     groupCreated() {

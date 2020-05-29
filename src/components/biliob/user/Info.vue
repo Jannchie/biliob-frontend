@@ -22,6 +22,18 @@ export default {
   },
   computed: {
     color() {
+      switch (this.user.name) {
+        case "cake":
+          return "pink";
+        default:
+          break;
+      }
+      switch (this.user.role) {
+        case "系统测试员":
+          return "pink";
+        case "站长":
+          return "pink";
+      }
       switch (this.user.title) {
         case "管理者":
           return "red";

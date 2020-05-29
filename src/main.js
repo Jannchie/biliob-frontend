@@ -26,7 +26,8 @@ import Meta from "vue-meta";
 Vue.use(Meta);
 
 router.afterEach(function(to) {
-  let baseTitle = " - BiliOB观测者 - B站历史数据统计分析站点";
+  let baseTitle =
+    " - BiliOB观测者 - B站历史数据统计分析站点 - 哔哩哔哩数据查询";
   if (to.name == undefined) {
     to.name = "404";
   }
@@ -61,7 +62,7 @@ Vue.use(EmojiPicker);
 Vue.use(VueRouter);
 
 Vue.prototype.$baseKeywords =
-  "B站,b站数据统计,b站数据分析,哔哩哔哩up主,up主排行,数据,观测者,视频,见齐,biliob,bilibili,UP主,粉丝数,粉丝数排行榜,数据可视化,哔哩哔哩,哔哩哔哩观测者,哔哩哔哩ob,bilibiliob";
+  "B站,b站数据统计,b站数据分析,bilibili排行榜,哔哩哔哩up主,up主排行,数据,观测者,视频,见齐,biliob,bilibili,UP主,粉丝数,粉丝数排行榜,数据可视化,哔哩哔哩,哔哩哔哩观测者,哔哩哔哩ob,bilibiliob";
 // 使用axios
 axios.defaults.withCredentials = true;
 
