@@ -129,7 +129,7 @@ export default {
         case "beautify":
           return "美化";
         case "cloud":
-          return "架构";
+          return "服务";
         default:
           return "其他";
       }

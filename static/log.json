@@ -2482,5 +2482,53 @@
             }
         ],
         "type": "unimportant"
+    },
+    {
+        "title": "修复问题",
+        "version": "ver.10.3.0",
+        "date": "2020-05-30",
+        "list": [
+            {
+                "text": "修复了UP主群组在非第一页时无法搜索出结果的问题",
+                "type": "fix"
+            },
+            {
+                "text": "修复了视频列表作者名的显示",
+                "type": "fix"
+            },
+            {
+                "text": "添加了视频列表Tag的显示",
+                "type": "feature"
+            },
+            {
+                "text": "添加了视频列表按照见齐指数的排序方式",
+                "type": "feature"
+            },
+            {
+                "text": "UP主群组的搜索不再区分大小写",
+                "type": "cloud"
+            },
+            {
+                "text": "优化了使用关键词搜索视频的速度",
+                "type": "cloud"
+            },
+            {
+                "text": "增多了观测者预测的显示个数",
+                "type": "cloud"
+            },
+            {
+                "text": "优化了见齐指数查询的速度",
+                "type": "cloud"
+            },
+            {
+                "text": "美化了视频列表的显示",
+                "type": "beautify"
+            },
+            {
+                "text": "对部分特殊观测者的观测记录设定特殊颜色",
+                "type": "beautify"
+            }
+        ],
+        "type": "important"
     }
 ]
