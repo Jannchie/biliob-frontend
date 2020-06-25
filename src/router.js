@@ -125,6 +125,16 @@ export default new Router({
           component: MasterIndex
         },
         {
+          path: "/tools",
+          name: "小工具",
+          component: () => import("./views/master/tools/Index.vue")
+        },
+        {
+          path: "/tools/BV2av",
+          name: "小工具",
+          component: () => import("./views/master/tools/DecodeBV.vue")
+        },
+        {
           path: "/rank",
           name: "排行榜",
           component: Rank,

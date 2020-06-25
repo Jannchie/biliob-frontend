@@ -144,7 +144,7 @@ axios.interceptors.response.use(
 );
 
 // 环境的切换
-if (process.env.NODE_ENV == "development") {
+if (process.env.NODE_ENV == "development1") {
   axios.defaults.baseURL = "//localhost:8081/api";
 } else {
   axios.defaults.baseURL = "https://www.biliob.com/api";

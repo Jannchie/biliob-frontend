@@ -25,15 +25,18 @@ export default {
         if (this.authorData.official == "") {
           return `「${this.authorData.name}」还未经过认证。`;
         } else {
-          return `「${this.authorData.name}」是经过认证的「${
-            this.authorData.official
-          }」。`;
+          return `「${this.authorData.name}」是经过认证的「${this.authorData.official}」。`;
         }
       }
       return "";
     },
     channelsBrief() {
-      if (this.authorData != undefined && this.authorData.name != undefined) {
+      if (
+        this.authorData != undefined &&
+        this.authorData.name != undefined &&
+        this.authorData.channels != undefined &&
+        this.authorData.channels[0] != undefined
+      ) {
         // const TEMPLATE_2 = `TA是专精于${0}区的UP主，在该分区的投稿比例为${100}%`;
         let mostArchive = this.authorData.channels[0].name;
         let mostArchiveName = this.authorTopVideo.content[0].title;
@@ -64,9 +67,7 @@ export default {
           topChannelObject[topSortedChannel[0]] >
             latestChannelObject[topSortedChannel[0]]
         ) {
-          TEMPLATE_4 = `虽然TA的投稿仍然大多在「${latestRateChannel}区」,不过TA有向「${
-            latestSortedChannel[1]
-          }区」转型的可能性。`;
+          TEMPLATE_4 = `虽然TA的投稿仍然大多在「${latestRateChannel}区」,不过TA有向「${latestSortedChannel[1]}区」转型的可能性。`;
         } else if (topRateChannel == latestRateChannel) {
           TEMPLATE_4 = `近期，TA的投稿仍然大多在「${latestRateChannel}区」。`;
         } else {
@@ -83,9 +84,7 @@ export default {
       return "";
     },
     briefInfo() {
-      let briefInfo = `${this.authorBrief}${this.channelsBrief}${
-        this.archiveBrief
-      }`;
+      let briefInfo = `${this.authorBrief}${this.channelsBrief}${this.archiveBrief}`;
       return briefInfo;
     }
   },

@@ -288,7 +288,7 @@ export default {
   },
   data() {
     return {
-      authorData: Object(),
+      authorData: {},
       authorTopVideo: Object(),
       authorLatestVideo: Object(),
       relationshipOptions: Object(),
@@ -304,9 +304,7 @@ export default {
   metaInfo() {
     return {
       title: `${
-        this.authorData.name == undefined
-          ? "载入UP主信息中"
-          : this.authorData.name
+        this.authorName == undefined ? "载入UP主信息中" : this.authorName
       } - UP主数据详情 - BiliOB观测者 - B站历史数据统计分析站点`,
       meta: [
         {
@@ -332,6 +330,12 @@ export default {
         );
       }
       return this.authorData.name + "," + n + this.$baseKeywords;
+    },
+    authorName() {
+      if (this.authorData == undefined) {
+        return undefined;
+      }
+      return this.authorData.name;
     },
     formatedFans() {
       if (this.authorData.cFans == undefined) {
@@ -362,7 +366,11 @@ export default {
       }
     },
     authorChannelInfo() {
-      if (this.authorData.channels == undefined) return [" ", " "];
+      if (
+        this.authorData.channels == undefined ||
+        this.authorData.channels.length == 0
+      )
+        return [" ", " "];
       return [
         this.authorData.channels[0].name,
         this.authorData.channels[0].count
@@ -393,6 +401,7 @@ export default {
     this.$store.commit("toAuthor");
     this.axios.get("/author/" + this.mid).then(response => {
       if (response.data.channels != undefined) {
+        response.data.channels = Object.values(response.data.channels);
         response.data.channels.sort((a, b) => b.count - a.count);
       }
       this.authorData = response.data;
