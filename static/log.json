@@ -2530,5 +2530,21 @@
             }
         ],
         "type": "important"
+    },
+    {
+        "title": "小工具更新",
+        "version": "ver.10.3.1",
+        "date": "2020-08-09",
+        "list": [
+            {
+                "text": "添加了BV、av互转的小工具",
+                "type": "feature"
+            },
+            {
+                "text": "首页不再展示榜首粉丝对比，而是涨粉最快与其前一名的对比",
+                "type": "feature"
+            }
+        ],
+        "type": "unimportant"
     }
 ]

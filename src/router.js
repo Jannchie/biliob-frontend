@@ -131,8 +131,13 @@ export default new Router({
         },
         {
           path: "/tools/BV2av",
-          name: "小工具",
+          name: "BV号转av号",
           component: () => import("./views/master/tools/DecodeBV.vue")
+        },
+        {
+          path: "/tools/av2BV",
+          name: "av号转BV号",
+          component: () => import("./views/master/tools/EncodeAV.vue")
         },
         {
           path: "/rank",

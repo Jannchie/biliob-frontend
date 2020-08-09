@@ -42,7 +42,7 @@
         class="center-info mx-0 px-0"
       >
         <div>
-          <div class="caption font-weight-black">榜首粉丝争夺</div>
+          <div class="caption font-weight-black">焦点粉丝数对比</div>
           <div class="headline font-weight-black red--text">
             VS
           </div>
