@@ -41,7 +41,7 @@
                 </VFlex>
               </VLayout>
               <div v-if="$store.state.logined">
-                <VCardActions style="justify-content:flex-end">
+                <VCardActions style="justify-content: flex-end;">
                   <div v-if="$store.state.logined" class="check-in">
                     <VBtn
                       v-if="$store.state.checked"
@@ -84,13 +84,13 @@
                 </BiliobCard>
                 <VCardActions>
                   <VBtn width="50%" to="/user/author" large text>
-                    <div style="display:block; text-align:center;">
+                    <div style="display: block; text-align: center;">
                       <div>{{ getUserItemValue("关注") }}</div>
                       <div class="caption">关注</div>
                     </div>
                   </VBtn>
                   <VBtn width="50%" to="/user/video" large text>
-                    <div style="display:block; text-align:center;">
+                    <div style="display: block; text-align: center;">
                       <div>{{ getUserItemValue("收藏") }}</div>
                       <div class="caption">收藏</div>
                     </div>
@@ -143,7 +143,7 @@
         </div>
       </VContainer>
     </div>
-    <VContent>
+    <VMain>
       <VContainer class="pa-0">
         <VRow justify="center" dense>
           <VCol
@@ -187,7 +187,7 @@
           </VCol>
         </VRow>
       </VContainer>
-    </VContent>
+    </VMain>
     <BiliobFirstLoadDialog />
     <BiliobInfoDialog />
     <BiliobNotification />

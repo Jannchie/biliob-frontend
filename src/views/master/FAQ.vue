@@ -10,7 +10,7 @@
             v-for="(eachCatalog, catalogIndex) in questionCards"
             slot="body"
             :key="catalogIndex"
-            class="body-2  mb-2"
+            class="body-2 mb-2"
           >
             <a :href="`#${eachCatalog.catalogName}`">{{
               eachCatalog.catalogName
@@ -47,14 +47,14 @@
           >
             <div
               :id="eachQuestion.question"
-              class="body-2 font-weight-regular primary--text "
+              class="body-2 font-weight-regular primary--text"
             >
               问题{{ questionIndex + 1 }}：{{ eachQuestion.question }}
             </div>
             <div
               v-for="(eachParagraph, pIndex) in eachQuestion.answer"
               :key="pIndex"
-              class="body-2 "
+              class="body-2"
             >
               {{ eachParagraph }}
             </div>
@@ -62,12 +62,19 @@
         </div>
       </BiliobCard>
     </div>
+    <BiliobCard>
+      <Faq class="markdown-body" />
+    </BiliobCard>
   </CommonMainLayout>
 </template>
 <script>
+import Faq from "@/../static/doc/faq.md";
 export default {
   data() {
     return {
+      components: {
+        Faq
+      },
       questionCards: [
         {
           catalogName: "BiliOB观测者哲学三问",

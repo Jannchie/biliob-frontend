@@ -1,9 +1,12 @@
 <template>
-  <VSnackbar v-model="display" top :color="color" style="z-index:10">
+  <VSnackbar v-model="display" top :color="color" style="z-index: 10;">
     {{ message }}
-    <VBtn color="write" text @click.stop="display = false">
-      close
-    </VBtn>
+
+    <template v-slot:action="{ attrs }">
+      <VBtn color="write" v-bind="attrs" text @click.stop="display = false">
+        Close
+      </VBtn>
+    </template>
   </VSnackbar>
 </template>
 <script>
@@ -20,7 +23,7 @@ export default {
 };
 </script>
 <style>
-.v-snack__content {
+.v-snack__wrapper {
   background: linear-gradient(60deg, #ffffff44, #ffffff11) !important;
 }
 </style>

@@ -1,12 +1,12 @@
 <template>
-  <VContent>
+  <VMain>
     <div id="core-view">
       <VFadeTransition mode="out-in">
         <RouterView />
       </VFadeTransition>
     </div>
     <TracerLayoutFooter />
-  </VContent>
+  </VMain>
 </template>
 
 <script>
