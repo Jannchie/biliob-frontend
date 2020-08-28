@@ -3,9 +3,15 @@
     tile
     v-bind="$attrs"
     :class="`elevation-${elevation}`"
+    style="line-height: normal;"
     v-on="$listeners"
   >
-    <div v-if="hasOffset" :inline="inline" :offset="offset" :icon="icon">
+    <div
+      v-if="hasOffset"
+      :inline="inline"
+      :offset="offset"
+      :icon="icon"
+    >
       <BiliobDarkInfo
         v-if="!$slots.offset"
         :elevation="0"
@@ -13,17 +19,32 @@
         :dark="dark"
         :light="light"
       >
-        <slot v-if="!title && !text" name="header" />
-        <h3 v-else class="px-5 py-1">
+        <slot
+          v-if="!title && !text"
+          name="header"
+        />
+        <h3
+          v-else
+          class="px-5 py-1"
+        >
           {{ title }}
         </h3>
       </BiliobDarkInfo>
-      <slot v-else name="offset" />
+      <slot
+        v-else
+        name="offset"
+      />
     </div>
-    <VCardText style="height: 100%" :class="cardPadding">
+    <VCardText
+      style="height: 100%;"
+      :class="cardPadding"
+    >
       <slot />
     </VCardText>
-    <VDivider v-if="$slots.actions" class="mx-3" />
+    <VDivider
+      v-if="$slots.actions"
+      class="mx-3"
+    />
 
     <VCardActions v-if="$slots.actions">
       <slot name="actions" />
@@ -70,7 +91,7 @@ export default {
     },
     cardPadding: {
       type: String,
-      default: function() {
+      default: function () {
         if (this.$vuetify.breakpoint.mdAndUp) {
           return "";
         } else {

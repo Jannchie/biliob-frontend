@@ -1,10 +1,19 @@
 <template>
   <VContainer>
     <VRow dense>
-      <VCol :md="6" :cols="12">
-        <AuthorInfo slot="author-operation" :author-data="authorData" />
+      <VCol
+        :md="6"
+        :cols="12"
+      >
+        <AuthorInfo
+          slot="author-operation"
+          :author-data="authorData"
+        />
       </VCol>
-      <VCol :md="6" :cols="12">
+      <VCol
+        :md="6"
+        :cols="12"
+      >
         <BiliobAuthorOperation
           style="height: 100%"
           :mid="authorData.mid"
@@ -16,15 +25,24 @@
     </VRow>
     <VRow dense>
       <VCol>
-        <VTabs class="py-0 my-2 elevation-3" show-arrows>
+        <VTabs
+          class="py-0 my-2 elevation-3"
+          show-arrows
+        >
           <VTab @click="getPage(0)">
-            <VIcon left>mdi-database</VIcon>基本 / BASIC
+            <VIcon left>
+              mdi-database
+            </VIcon>基本 / BASIC
           </VTab>
           <VTab @click="getPage(3)">
-            <VIcon left>mdi-history</VIcon>历史 / HISTORY
+            <VIcon left>
+              mdi-history
+            </VIcon>历史 / HISTORY
           </VTab>
           <VTab @click="getPage(1)">
-            <VIcon left>mdi-brain</VIcon>高级 / ADVENCED
+            <VIcon left>
+              mdi-brain
+            </VIcon>高级 / ADVENCED
           </VTab>
         </VTabs>
       </VCol>
@@ -39,11 +57,22 @@
                   v-if="!$store.state.logined || $db.user.exp < 100"
                   title="数据访问制限"
                 >
-                  <VIcon color="warning">mdi-alert</VIcon>
-                  <span class="body-1" style="vertical-align: middle;">
+                  <VIcon color="warning">
+                    mdi-alert
+                  </VIcon>
+                  <span
+                    class="body-1"
+                    style="vertical-align: middle;"
+                  >
                     您还没有登陆观测者账号！目前只有登陆且经验值>100的观测者才能看到30日之前的UP主数据！
                   </span>
-                  <VBtn small to="/login" color="primary">前往登陆</VBtn>
+                  <VBtn
+                    small
+                    to="/login"
+                    color="primary"
+                  >
+                    前往登陆
+                  </VBtn>
                 </BiliobCard>
               </VCol>
             </VRow>
@@ -71,12 +100,16 @@
                   :author-data="authorData"
                   :author-top-video="authorTopVideo"
                   :author-latest-video="authorLatestVideo"
-                ></BiliobAuthorBrief>
+                />
               </VCol>
             </VRow>
             <VRow dense>
               <VCol>
-                <BiliobCard light border="bottom" title="UP主最新数据">
+                <BiliobCard
+                  light
+                  border="bottom"
+                  title="UP主最新数据"
+                >
                   <VRow>
                     <VCol
                       v-for="each in [
@@ -91,9 +124,7 @@
                         <div class="rank-title caption  grey--text">
                           {{ each.name }}
                         </div>
-                        <div
-                          class="rank-value caption font-weight-black primary--text "
-                        >
+                        <div class="rank-value caption font-weight-black primary--text ">
                           {{ each.value }}
                         </div>
                       </div>
@@ -108,10 +139,13 @@
                   v-bind="authorData.rank"
                   :author-data="authorData"
                   class="mb-2"
-                ></BiliobAuthorRank>
+                />
               </VCol>
             </VRow>
-            <VRow v-if="authorData.achievements != undefined" dense>
+            <VRow
+              v-if="authorData.achievements != undefined"
+              dense
+            >
               <VCol>
                 <BiliobAuthorAchievements :author-data="authorData" />
               </VCol>
@@ -144,7 +178,10 @@
                         class="subheading font-weight-light mr-3"
                         style="align-self: center"
                       >
-                        <VIcon left right>mdi-format-list-bulleted-type</VIcon>
+                        <VIcon
+                          left
+                          right
+                        >mdi-format-list-bulleted-type</VIcon>
                       </span>
                       <VTab @click="tagSort('totalView')">
                         <VIcon style="margin-right:10px;">
@@ -190,18 +227,15 @@
                 class="white--text"
                 height="100px"
                 :src="zipPic(eachVideo.pic)"
-              >
-              </VImg>
+              />
 
               <VCardText style="overflow: hidden; text-overflow: ellipsis;">
                 <span class=" cards-title text--primary caption">
-                  <span>{{ eachVideo.title }}</span
-                  ><br />
+                  <span>{{ eachVideo.title }}</span><br>
                 </span>
                 <span class="caption">{{
                   formatDate(eachVideo.datetime, "YYYY-MM-DD HH:mm:ss")
-                }}</span
-                ><br />
+                }}</span><br>
               </VCardText>
             </VCard>
           </div>
@@ -232,18 +266,15 @@
                 class="white--text"
                 height="100px"
                 :src="zipPic(eachVideo.pic)"
-              >
-              </VImg>
+              />
 
               <VCardText>
                 <span class="text--primary caption cards-title">
-                  <span>{{ eachVideo.title }}</span
-                  ><br />
+                  <span>{{ eachVideo.title }}</span><br>
                 </span>
                 <span class="caption">{{
                   formatDate(eachVideo.datetime, "YYYY-MM-DD HH:mm:ss")
-                }}</span
-                ><br />
+                }}</span><br>
               </VCardText>
             </VCard>
           </div>
@@ -263,7 +294,7 @@ import getAuthorFansEfficiencyOptions from "@/charts/author-fans-efficiency.js";
 import getAuthorTagCloudOptions from "@/charts/cloud-charts.js";
 import getAuthorDataDiffOptions from "@/charts/author-data-diff.js";
 
-var deepCopy = function(o) {
+var deepCopy = function (o) {
   if (o instanceof Array) {
     var n = [];
     for (let i = 0; i < o.length; ++i) {
@@ -399,7 +430,7 @@ export default {
       this.mid = this.$route.params.mid;
     }
     this.$store.commit("toAuthor");
-    this.axios.get("/author/" + this.mid).then(response => {
+    this.axios.get("/author/" + this.mid).then((response) => {
       if (response.data.channels != undefined) {
         response.data.channels = Object.values(response.data.channels);
         response.data.channels.sort((a, b) => b.count - a.count);
@@ -414,7 +445,7 @@ export default {
       let likeArray = [];
       let viewArray = [];
 
-      this.authorData.data.forEach(e => {
+      this.authorData.data.forEach((e) => {
         if (e.fans != undefined && e.fans != 0) {
           fansArray.push([e.datetime, e.fans]);
         }
@@ -456,18 +487,18 @@ export default {
     });
     this.axios
       .get(`/author/${this.mid}/video?pagesize=${10}`)
-      .then(response => {
+      .then((response) => {
         this.authorTopVideo = response.data;
       });
     this.axios
       .get(`/author/${this.mid}/video?sort=1&pagesize=${10}`)
-      .then(response => {
+      .then((response) => {
         this.authorLatestVideo = response.data;
       });
-    this.axios.get(`/author/tag?mid=${this.mid}&limit=${50}`).then(r => {
+    this.axios.get(`/author/tag?mid=${this.mid}&limit=${50}`).then((r) => {
       this.authorTagCloudData = r.data;
       this.authorTagCloudOptions = getAuthorTagCloudOptions(
-        this.authorTagCloudData.map(e => {
+        this.authorTagCloudData.map((e) => {
           return { name: e._id, value: e.totalView };
         })
       );
@@ -482,7 +513,7 @@ export default {
     },
     tagSort(type) {
       this.authorTagCloudOptions = getAuthorTagCloudOptions(
-        this.authorTagCloudData.map(e => {
+        this.authorTagCloudData.map((e) => {
           return { name: e._id, value: e[type] };
         })
       );

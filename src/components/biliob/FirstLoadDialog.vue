@@ -1,29 +1,33 @@
 <template>
-  <VDialog persistent :value="show" width="500">
+  <VDialog
+    persistent
+    :value="show"
+    width="500"
+  >
     <VCard>
       <VCardTitle class="headline primary white--text font-weight-black">
         这里是BiliOB观测者
       </VCardTitle>
       <VCardText class="mt-5">
         <span>
-          <span class="blue white--text darken-2" style="padding:1px 5px;"
-            >版本</span
-          >
+          <span
+            class="blue white--text darken-2"
+            style="padding:1px 5px;"
+          >版本</span>
           <span
             class="grey white--text darken-2"
             style="padding:1px 5px;margin-right:10px"
-            >{{ latestPost.version }}</span
-          >
+          >{{ latestPost.version }}</span>
         </span>
         <span display="flex">
-          <span class="green white--text darken-2" style="padding:1px 5px;"
-            >日期</span
-          >
+          <span
+            class="green white--text darken-2"
+            style="padding:1px 5px;"
+          >日期</span>
           <span
             class="grey white--text darken-2"
             style="padding:1px 5px;margin-right:10px;"
-            >{{ latestPost.date }}</span
-          >
+          >{{ latestPost.date }}</span>
         </span>
         <div
           class="subheading font-weight-black"
@@ -38,8 +42,12 @@
           >
             <div v-if="latestPost.list[eachType] != undefined">
               <div class="body-2 font-weight-bold">
-                <VIcon left small>{{ getListIcon(eachType) }} </VIcon
-                ><span style="vertical-align: middle">{{
+                <VIcon
+                  left
+                  small
+                >
+                  {{ getListIcon(eachType) }}
+                </VIcon><span style="vertical-align: middle">{{
                   getTypeName(eachType)
                 }}</span>
               </div>
@@ -55,20 +63,30 @@
           </div>
         </div>
       </VCardText>
-      <VDivider></VDivider>
+      <VDivider />
       <VCardActions class="caption">
         该网站使用cookies个性化内容来分析我们的流量。该网站我们还根据我们的
         隐私政策，与分析合作伙伴共享关于您使用该网站的信息。
       </VCardActions>
-      <VDivider></VDivider>
+      <VDivider />
 
       <VCardActions>
-        <VSpacer></VSpacer>
+        <VSpacer />
 
-        <VBtn to="/privacy" text @click="show = false"
-          ><VIcon left>mdi-page-layout-sidebar-left</VIcon>隐私权政策</VBtn
+        <VBtn
+          to="/privacy"
+          text
+          @click="show = false"
         >
-        <VBtn color="primary" text @click="show = false">
+          <VIcon left>
+            mdi-page-layout-sidebar-left
+          </VIcon>隐私权政策
+        </VBtn>
+        <VBtn
+          color="primary"
+          text
+          @click="show = false"
+        >
           I got it
         </VBtn>
       </VCardActions>
@@ -76,11 +94,11 @@
   </VDialog>
 </template>
 <script>
-import log from "../../../static/log.json";
+import log from "@/../public/docs/log.json";
 
-log.forEach(e => {
+log.forEach((e) => {
   let temp = {};
-  e.list.forEach(item => {
+  e.list.forEach((item) => {
     if (temp[item.type] == undefined) {
       temp[item.type] = [item.text];
     } else {
@@ -104,7 +122,7 @@ export default {
     }
   },
   methods: {
-    getIcon: function(type) {
+    getIcon: function (type) {
       switch (type) {
         case "holyshit":
           return "mdi-nuke";
@@ -134,7 +152,7 @@ export default {
           return "其他";
       }
     },
-    getListIcon: function(type) {
+    getListIcon: function (type) {
       switch (type) {
         case "feature":
           return "mdi-lightbulb-on";

@@ -3,7 +3,7 @@
     <VRow dense>
       <VCol cols="12">
         <VSheet>
-          <h3 class="overline primary--text">
+          <h3 class="caption primary--text">
             赞助者 / sponsors
           </h3>
           <VChip
@@ -11,7 +11,7 @@
             text
             small
             class="px-1"
-            style="vertical-align: sub"
+            style="vertical-align: sub;"
             color="#0000"
             href="https://azz.net/jannchie"
           >
@@ -25,7 +25,7 @@
             text
             small
             class="px-1 mb-2 caption"
-            style="vertical-align: sub"
+            style="vertical-align: sub;"
             color="#0000"
             @click="sort == 0 ? (sort = 1) : (sort = 0)"
           >
@@ -35,14 +35,21 @@
             {{ sort == 0 ? "时间" : "总额" }}顺序
           </VChip>
         </VSheet>
-        <VDivider></VDivider>
-        <VFadeTransition group mode="out-in">
+        <VDivider />
+        <VFadeTransition
+          group
+          mode="out-in"
+        >
           <VSheet
             v-for="(eachSponsor, i) in sponsor"
             :key="`${i}${eachSponsor.user.name}`"
           >
             <h4
-              style="white-space: nowrap; overflow: hidden; text-overflow:ellipsis;"
+              style="
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+              "
             >
               {{ eachSponsor.user.name }}
             </h4>
@@ -52,7 +59,7 @@
             <h5 class="caption">
               {{ $timeFormat(eachSponsor.createDate, "MM-DD HH:mm") }}
             </h5>
-            <VDivider></VDivider>
+            <VDivider />
           </VSheet>
         </VFadeTransition>
       </VCol>
@@ -84,7 +91,7 @@ export default {
       if (this.$db.sponsor[key].length == 0) {
         this.axios
           .get(`/site/sponsor?p=${1}&ps=${20}&sort=${sort}`)
-          .then(res => {
+          .then((res) => {
             this.$db.sponsor[key] = res.data;
             this.sponsor = this.$db.sponsor[key];
           });

@@ -1,9 +1,20 @@
 <template>
-  <VSnackbar v-model="display" top :color="color" style="z-index: 10;">
+  <VSnackbar
+    v-model="display"
+    absolute
+    top
+    :color="color"
+    style="z-index: 10;"
+  >
     {{ message }}
 
     <template v-slot:action="{ attrs }">
-      <VBtn color="write" v-bind="attrs" text @click.stop="display = false">
+      <VBtn
+        color="write"
+        v-bind="attrs"
+        text
+        @click.stop="display = false"
+      >
         Close
       </VBtn>
     </template>

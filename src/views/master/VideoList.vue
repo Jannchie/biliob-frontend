@@ -15,11 +15,28 @@
     </VRow>
     <VRow dense>
       <VCol>
-        <BiliobCard light border="bottom">
-          <VLayout slot="header" class="flex-column flex-lg-row">
-            <VFlex style="padding:0" lg8>
-              <VTabs slider-color="primary" background-color="transparent">
-                <VIcon left right>mdi-sort</VIcon>
+        <BiliobCard
+          light
+          border="bottom"
+        >
+          <VLayout
+            slot="header"
+            class="flex-column flex-lg-row"
+          >
+            <VFlex
+              style="padding:0"
+              lg8
+            >
+              <VTabs
+                slider-color="primary"
+                background-color="transparent"
+              >
+                <VIcon
+                  left
+                  right
+                >
+                  mdi-sort
+                </VIcon>
                 <VTab @click="sortChange(0)">
                   <VIcon left>
                     mdi-play-circle-outline
@@ -78,14 +95,22 @@
                 </VTab>
               </VTabs>
             </VFlex>
-            <VFlex class="py-0" lg4>
+            <VFlex
+              class="py-0"
+              lg4
+            >
               <VTabs
                 grow
                 right
                 slider-color="primary"
                 background-color="transparent"
               >
-                <VIcon left right>mdi-calendar-blank-outline</VIcon>
+                <VIcon
+                  left
+                  right
+                >
+                  mdi-calendar-blank-outline
+                </VIcon>
                 <VTab @click="daysChange(1)">
                   <VIcon>
                     mdi-numeric-1-box
@@ -124,13 +149,23 @@
                     {{ eachVideo.title }}
                   </div>
                   <div>
-                    <span color="primary" small label outlined>
+                    <span
+                      color="primary"
+                      small
+                      label
+                      outlined
+                    >
                       <VIcon small> mdi-account </VIcon>
                       <span class="caption">
                         {{ eachVideo.authorName }}
                       </span>
                     </span>
-                    <span color="primary" small label outlined>
+                    <span
+                      color="primary"
+                      small
+                      label
+                      outlined
+                    >
                       <VIcon small> mdi-book </VIcon>
                       <span class="caption">
                         {{
@@ -174,12 +209,14 @@
             :disabled="nextBtnDisabled"
             tile
             @click.stop="next"
-            >{{ nextBtnText }}</VBtn
           >
+            {{ nextBtnText }}
+          </VBtn>
           <div v-else>
             <h4 class="primary--text">
-              <VIcon class="primary--text">mdi-ship-wheel</VIcon
-              >抱歉！什么都没有找到QwQ
+              <VIcon class="primary--text">
+                mdi-ship-wheel
+              </VIcon>抱歉！什么都没有找到QwQ
             </h4>
             <p>
               搜索功能可能并不完善，为了精确搜索请在上方输入相关视频的AV号！
@@ -215,13 +252,13 @@ export default {
     };
   },
   watch: {
-    text: function() {
+    text: function () {
       this.currentPage = 0;
       this.axios
         .get(
           `${this.currentApiurl}?page=${this.currentPage}&pagesize=20&text=${this.text}&sort=${this.sort}&days=${this.days}`
         )
-        .then(response => {
+        .then((response) => {
           this.videoList.content = response.data.content;
           if (this.videoList.content.length == 0) {
             this.notFound = true;
@@ -235,13 +272,13 @@ export default {
         .get(
           `${this.currentApiurl}?page=${page}&pagesize=20&text=${this.text}&sort=${this.sort}&days=${this.days}`
         )
-        .then(response => {
+        .then((response) => {
           // 判断是否为最后一页
           if (response.data.last) {
             this.nextBtnText = "没有更多了";
             this.nextBtnDisabled = true;
           }
-          response.data.content.forEach(e => {
+          response.data.content.forEach((e) => {
             this.videoList.content.push(e);
           });
         });
@@ -252,7 +289,7 @@ export default {
       .get(
         `${this.currentApiurl}?page=${this.currentPage}&pagesize=20&text=${this.text}&sort=${this.sort}&days=${this.days}`
       )
-      .then(response => {
+      .then((response) => {
         this.refreshList(response);
       });
   },
@@ -294,7 +331,7 @@ export default {
         .get(
           `${this.currentApiurl}?page=${this.currentPage}&pagesize=20&text=${this.text}&sort=${this.sort}&days=${this.days}`
         )
-        .then(response => {
+        .then((response) => {
           this.refreshList(response);
         });
     },
@@ -305,7 +342,7 @@ export default {
         .get(
           `${this.currentApiurl}?page=${this.currentPage}&pagesize=20&text=${this.text}&sort=${this.sort}&days=${this.days}`
         )
-        .then(response => {
+        .then((response) => {
           this.refreshList(response);
         });
     },
