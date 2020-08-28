@@ -25,7 +25,7 @@ Vue.use(VueCookies);
 import Meta from "vue-meta";
 Vue.use(Meta);
 
-router.afterEach(function(to) {
+router.afterEach(function (to) {
   let baseTitle =
     " - BiliOB观测者 - B站历史数据统计分析站点 - 哔哩哔哩数据查询";
   if (to.name == undefined) {
@@ -93,11 +93,10 @@ Vue.prototype.$timeFormat = format;
 
 Vue.prototype.$db = data;
 Vue.prototype.$keywordFilter = txt => {
-  return txt.replace(/赌博|博彩/g, "预测");
+  return txt.replace(/赌|赌博|博彩/g, "预测");
 };
 Vue.prototype.$dateParse = require("date-fns/parse");
-Vue.dat;
-Vue.prototype.$numberFormat = function(num, sim = true, fix = 0) {
+Vue.prototype.$numberFormat = function (num, sim = true, fix = 0) {
   if (num == undefined) {
     return "-";
   }
@@ -130,14 +129,14 @@ axios.interceptors.request.use(
 );
 
 axios.interceptors.response.use(
-  function(response) {
+  function (response) {
     // let path = router.app.$route.path;
     // if (response.config.method != "get") {
     Vue.prototype.$alert(response);
     // }
     return response;
   },
-  function(error) {
+  function (error) {
     Vue.prototype.$alert(error.response);
     return Promise.reject(error);
   }
@@ -152,6 +151,7 @@ if (process.env.NODE_ENV == "1development") {
 axios.defaults.headers = {
   "Content-Type": "application/json"
 };
+
 Vue.use(VueAxios, axios);
 Vue.use(Vuex);
 new Vue({
@@ -173,5 +173,9 @@ caches.open("biliob-precache-https://www.biliob.com/").then(c => {
     });
   });
 });
+console.log(Vuex);
+
+console.log(EmojiPicker);
+Vue.use(VueMarkdown, "VueMarkdown");
 
 window.$db = data;

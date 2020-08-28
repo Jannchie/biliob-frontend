@@ -1,5 +1,8 @@
 <template>
-  <VTimeline class="timeline" dense>
+  <VTimeline
+    class="timeline"
+    dense
+  >
     <VSlideYTransition group>
       <VTimelineItem
         v-for="(eachPost, index) in timelinePost"
@@ -17,8 +20,8 @@
             dark
             :color="getColor(eachPost.type)"
           >
-            {{ eachPost.title }}</VChip
-          >
+            {{ eachPost.title }}
+          </VChip>
           <div class="subheading mt-2">
             <span class="px-1">
               {{ eachPost.version }}
@@ -40,8 +43,12 @@
             >
               <div v-if="eachPost.list[eachType] != undefined">
                 <div class="body-2 font-weight-bold">
-                  <VIcon left small>{{ getListIcon(eachType) }} </VIcon
-                  ><span style="vertical-align: middle">{{
+                  <VIcon
+                    left
+                    small
+                  >
+                    {{ getListIcon(eachType) }}
+                  </VIcon><span style="vertical-align: middle">{{
                     getTypeName(eachType)
                   }}</span>
                 </div>
@@ -62,7 +69,7 @@
   </VTimeline>
 </template>
 <script>
-import log from "@/../static/log.json";
+import log from "@/../public/docs/log.json";
 
 export default {
   data() {

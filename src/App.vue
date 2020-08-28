@@ -40,10 +40,6 @@ export default {
 .theme--light.v-application {
   background-color: #f8f8f8;
 }
-.v-application {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif !important;
-}
 
 .container {
   padding: 8px;
