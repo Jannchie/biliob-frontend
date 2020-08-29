@@ -90,6 +90,11 @@ export default new Router({
           component: () => import("@/views/master/bangumi/BangumiDetail.vue")
         },
         {
+          name: "观测者议会",
+          path: "/agenda",
+          component: () => import("@/views/master/agenda/Index.vue")
+        },
+        {
           name: "个人中心",
           path: "/user",
           component: User,

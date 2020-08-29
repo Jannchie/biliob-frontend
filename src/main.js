@@ -70,9 +70,12 @@ Vue.prototype.$alert = res => {
   if (res == undefined) return;
 
   let msg = res.data.msg;
+  if (res.status == 403) {
+    data.alert.message = "拒绝访问";
+    data.alert.display = true;
+  }
   if (msg != undefined) {
     data.alert.message = res.data.msg;
-
     if (res.data.user != undefined) {
       Vue.prototype.$db.user.credit = res.data.user.credit;
       Vue.prototype.$db.user.exp = res.data.user.exp;
@@ -102,10 +105,10 @@ Vue.prototype.$numberFormat = function (num, sim = true, fix = 0) {
   }
   let postfix = "";
   if (sim) {
-    if (num > 100000000) {
+    if (Math.abs(num) > 100000000) {
       postfix = "亿";
       num /= 100000000;
-    } else if (num > 10000) {
+    } else if (Math.abs(num) > 10000) {
       postfix = "万";
       num /= 10000;
     }
@@ -143,7 +146,7 @@ axios.interceptors.response.use(
 );
 
 // 环境的切换
-if (process.env.NODE_ENV == "1development") {
+if (process.env.NODE_ENV == "development") {
   axios.defaults.baseURL = "//localhost:8081/api";
 } else {
   axios.defaults.baseURL = "https://www.biliob.com/api";
@@ -173,9 +176,6 @@ caches.open("biliob-precache-https://www.biliob.com/").then(c => {
     });
   });
 });
-console.log(Vuex);
-
-console.log(EmojiPicker);
 Vue.use(VueMarkdown, "VueMarkdown");
 
 window.$db = data;
