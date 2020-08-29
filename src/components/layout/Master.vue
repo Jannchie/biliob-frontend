@@ -1,48 +1,86 @@
 <template>
-  <VApp @touchstart.native="touchstart" @touchmove.native="touchmove">
-    <VAppBar app hide-on-scroll fade-img-on-scroll dense>
-      <template> </template>
-      <VAppBarNavIcon @click.stop="showNav = !showNav"></VAppBarNavIcon>
+  <VApp
+    @touchstart.native="touchstart"
+    @touchmove.native="touchmove"
+  >
+    <VAppBar
+      app
+      hide-on-scroll
+      fade-img-on-scroll
+      dense
+    >
+      <template />
+      <VAppBarNavIcon @click.stop="showNav = !showNav" />
 
-      <VToolbarTitle> <h1 class="title">BiliOB观测者</h1></VToolbarTitle>
+      <VToolbarTitle>
+        <h1 class="title">
+          BiliOB观测者
+        </h1>
+      </VToolbarTitle>
 
-      <VSpacer></VSpacer>
+      <VSpacer />
 
       <template v-slot:extension>
-        <VTabs id="app-bar-tabs" background-color="transparent">
+        <VTabs
+          id="app-bar-tabs"
+          background-color="transparent"
+        >
           <VTab
             v-for="(eachTabItem, idx) in appBarTabs"
             :key="idx"
             :to="eachTabItem.path"
-            >{{ eachTabItem.name }}</VTab
           >
+            {{ eachTabItem.name }}
+          </VTab>
         </VTabs>
       </template>
     </VAppBar>
 
     <div>
       <VContainer class="py-0">
+        <BiliobNotification />
         <VRow dense>
           <BiliobFab />
         </VRow>
         <div>
-          <VNavigationDrawer v-model="showNav" fixed temporary>
+          <VNavigationDrawer
+            v-model="showNav"
+            fixed
+            temporary
+          >
             <VContainer grid-list-md>
               <VLayout v-if="!$store.state.logined">
                 <VFlex lg7>
-                  <VBtn width="100%" large dark to="/login"
-                    ><VIcon left> mdi-login-variant </VIcon>登录</VBtn
+                  <VBtn
+                    width="100%"
+                    large
+                    dark
+                    to="/login"
                   >
+                    <VIcon left>
+                      mdi-login-variant
+                    </VIcon>登录
+                  </VBtn>
                 </VFlex>
                 <VFlex lg7>
-                  <VBtn width="100%" large text to="/signin"
-                    ><VIcon left> mdi-login-variant </VIcon>注册</VBtn
+                  <VBtn
+                    width="100%"
+                    large
+                    text
+                    to="/signin"
                   >
+                    <VIcon left>
+                      mdi-login-variant
+                    </VIcon>注册
+                  </VBtn>
                 </VFlex>
               </VLayout>
               <div v-if="$store.state.logined">
                 <VCardActions style="justify-content: flex-end;">
-                  <div v-if="$store.state.logined" class="check-in">
+                  <div
+                    v-if="$store.state.logined"
+                    class="check-in"
+                  >
                     <VBtn
                       v-if="$store.state.checked"
                       ripple
@@ -51,7 +89,9 @@
                       small
                       :loading="getCheckStatus"
                     >
-                      <VIcon left> mdi-check-circle-outline </VIcon>已签到
+                      <VIcon left>
+                        mdi-check-circle-outline
+                      </VIcon>已签到
                     </VBtn>
                     <VBtn
                       v-else
@@ -62,41 +102,52 @@
                       :loading="getCheckStatus"
                       @click.stop="$store.dispatch('checkIn')"
                     >
-                      <VIcon left> mdi-checkbox-blank-circle-outline </VIcon
-                      >签到
+                      <VIcon left>
+                        mdi-checkbox-blank-circle-outline
+                      </VIcon>签到
                     </VBtn>
                   </div>
                 </VCardActions>
                 <BiliobCard to="/user/info">
-                  <VCardTitle primary-title>{{ $db.user.nickName }}</VCardTitle>
-                  <VCardText
-                    ><div>
-                      {{ $db.user.role }}
-                    </div>
-                    <div>
-                      {{ $db.user.title }}
-                    </div>
+                  <VCardTitle primary-title>
+                    {{ $db.user.nickName }}
+                  </VCardTitle>
+                  <VCardText>
+                    <div>{{ $db.user.role }}</div>
+                    <div>{{ $db.user.title }}</div>
                     <div>积分：{{ $db.user.credit }}</div>
-                    <div>
-                      经验：{{ $db.user.exp }} (#{{ $store.state.userRank }})
-                    </div>
+                    <div>经验：{{ $db.user.exp }} (#{{ $store.state.userRank }})</div>
                   </VCardText>
                 </BiliobCard>
                 <VCardActions>
-                  <VBtn width="50%" to="/user/author" large text>
+                  <VBtn
+                    width="50%"
+                    to="/user/author"
+                    large
+                    text
+                  >
                     <div style="display: block; text-align: center;">
                       <div>{{ getUserItemValue("关注") }}</div>
-                      <div class="caption">关注</div>
+                      <div class="caption">
+                        关注
+                      </div>
                     </div>
                   </VBtn>
-                  <VBtn width="50%" to="/user/video" large text>
+                  <VBtn
+                    width="50%"
+                    to="/user/video"
+                    large
+                    text
+                  >
                     <div style="display: block; text-align: center;">
                       <div>{{ getUserItemValue("收藏") }}</div>
-                      <div class="caption">收藏</div>
+                      <div class="caption">
+                        收藏
+                      </div>
                     </div>
                   </VBtn>
                 </VCardActions>
-                <VDivider></VDivider>
+                <VDivider />
               </div>
               <VBtn
                 v-if="$store.state.logined"
@@ -105,8 +156,11 @@
                 text
                 block
                 :to="`/user/record`"
-                ><VIcon left>mdi-timetable</VIcon>操作记录</VBtn
               >
+                <VIcon left>
+                  mdi-timetable
+                </VIcon>操作记录
+              </VBtn>
               <VBtn
                 v-if="$store.state.logined"
                 large
@@ -114,8 +168,11 @@
                 text
                 block
                 :to="`/user/authorgroup/star`"
-                ><VIcon left>mdi-star</VIcon>我的UP主群组</VBtn
               >
+                <VIcon left>
+                  mdi-star
+                </VIcon>我的UP主群组
+              </VBtn>
               <VBtn
                 v-for="(eachNavItem, navItemIndex) in navItems"
                 :key="navItemIndex"
@@ -124,20 +181,34 @@
                 text
                 block
                 :to="eachNavItem.url"
-                ><VIcon left>{{ eachNavItem.icon }}</VIcon
-                >{{ eachNavItem.name }}</VBtn
               >
+                <VIcon left>
+                  {{ eachNavItem.icon }}
+                </VIcon>
+                {{ eachNavItem.name }}
+              </VBtn>
               <VBtn
                 large
                 class="naVBtn"
                 text
                 block
                 href="https://azz.net/jannchie"
-                ><VIcon left>mdi-currency-cny</VIcon> 援助</VBtn
               >
-              <VBtn large class="naVBtn" text block to="/download/app"
-                ><VIcon left>mdi-application</VIcon> APP下载</VBtn
+                <VIcon left>
+                  mdi-currency-cny
+                </VIcon>援助
+              </VBtn>
+              <VBtn
+                large
+                class="naVBtn"
+                text
+                block
+                to="/download/app"
               >
+                <VIcon left>
+                  mdi-application
+                </VIcon>APP下载
+              </VBtn>
             </VContainer>
           </VNavigationDrawer>
         </div>
@@ -145,44 +216,52 @@
     </div>
     <VMain>
       <VContainer class="pa-0">
-        <VRow justify="center" dense>
+        <VRow
+          justify="center"
+          dense
+        >
           <VCol
             v-if="
               (-1 == ['/login', '/signin'].indexOf(this.$route.path) &&
                 this.$route.path.indexOf('user') == -1) ||
                 this.$route.path == '/user/rank'
             "
-            :style="
-              `${
-                $vuetify.breakpoint.lgAndDown
-                  ? 'max-height: 245px;overflow-y: auto;'
-                  : ''
-              }`
-            "
+            :style="`${
+              $vuetify.breakpoint.lgAndDown
+                ? 'max-height: 245px;overflow-y: auto;'
+                : ''
+            }`"
             lg="1"
             cols="12"
             class="order-3"
           >
-            <BiliobSponsor id="sponsor-container"></BiliobSponsor>
+            <BiliobSponsor id="sponsor-container" />
           </VCol>
-          <VCol lg="8" cols="12" class="pa-0 order-1">
+          <VCol
+            lg="8"
+            cols="12"
+            class="pa-0 order-1"
+          >
             <VSlideYTransition mode="out-in">
-              <RouterView id="main-view" key="master" />
+              <RouterView
+                id="main-view"
+                key="master"
+              />
             </VSlideYTransition>
           </VCol>
           <VCol
             v-if="
-              ($store.getters.getLoginState &&
+              ($store.getters.getLoginState &&(
                 -1 == ['/login', '/signin'].indexOf(this.$route.path) &&
-                this.$route.path.indexOf('user') == -1) ||
-                this.$route.path == '/user/rank'
+                this.$route.path.indexOf('user') == -1 ||
+                this.$route.path == '/user/rank'))
             "
             class="order-2"
             lg="3"
             cols="12"
           >
             <VSlideYTransition mode="out-in">
-              <BiliobComment id="comment-container"> </BiliobComment>
+              <BiliobComment id="comment-container" />
             </VSlideYTransition>
           </VCol>
         </VRow>
@@ -190,7 +269,6 @@
     </VMain>
     <BiliobFirstLoadDialog />
     <BiliobInfoDialog />
-    <BiliobNotification />
     <LayoutMasterFooter />
   </VApp>
 </template>
@@ -213,6 +291,11 @@ export default {
           name: "观测者排行",
           icon: "mdi-view-list",
           url: "/user/rank"
+        },
+        {
+          name: "观测者议会",
+          icon: "mdi-view-agenda",
+          url: "/agenda"
         },
         {
           name: "FAQ",
@@ -293,10 +376,10 @@ export default {
   mounted() {
     this.axios
       .get(`/user/check-in`)
-      .then(response => {
+      .then((response) => {
         this.$store.commit("checkIn", response.data.status);
       })
-      .catch(e => {
+      .catch((e) => {
         if (e.response.status != 401 && e.response.status != 403) {
           this.$store.commit("error");
         }

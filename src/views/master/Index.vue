@@ -3,26 +3,35 @@
     <VRow dense>
       <VCol>
         <VSlideYTransition>
-          <BiliobVersusCard></BiliobVersusCard>
+          <BiliobVersusCard />
         </VSlideYTransition>
       </VCol>
     </VRow>
-    <VRow v-if="recentAchievement" dense>
+    <VRow
+      v-if="recentAchievement"
+      dense
+    >
       <VCol>
         <VSlideYTransition>
           <BiliobAuthorAchievementSlideCard />
         </VSlideYTransition>
       </VCol>
     </VRow>
-    <VRow v-if="forecastCard" dense>
+    <VRow
+      v-if="forecastCard"
+      dense
+    >
       <VCol>
         <VSlideYTransition>
-          <BiliobSlideCard name="biliob-preview" title="观测者预测">
+          <BiliobSlideCard
+            name="biliob-preview"
+            title="观测者预测"
+          >
             <BiliobGuessingItem
               v-for="guessing in $db.fansGuessing"
               :key="guessing.guessingId"
               :guessing="guessing"
-            ></BiliobGuessingItem>
+            />
           </BiliobSlideCard>
         </VSlideYTransition>
       </VCol>
@@ -53,7 +62,7 @@
     <VRow dense>
       <VCol>
         <VSlideYTransition>
-          <HomePopularTag></HomePopularTag>
+          <HomePopularTag />
         </VSlideYTransition>
       </VCol>
     </VRow>
@@ -75,7 +84,7 @@ export default {
   },
   mounted() {
     if (this.$db.fansGuessing.length == 0) {
-      this.axios.get(`/author/fans-guessing?p=${0}`).then(res => {
+      this.axios.get(`/author/fans-guessing?p=${0}`).then((res) => {
         this.$db.fansGuessing = res.data;
         this.forecastCard = true;
       });
@@ -84,7 +93,7 @@ export default {
     }
 
     if (this.$db.recentAchievement == undefined) {
-      this.axios.get(`/author/achievement?lv=${5}`).then(res => {
+      this.axios.get(`/author/achievement?lv=${5}`).then((res) => {
         this.$db.recentAchievement = res.data;
         this.recentAchievement = true;
       });

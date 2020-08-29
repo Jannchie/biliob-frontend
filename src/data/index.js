@@ -1,4 +1,5 @@
 export default {
+  agenda: {},
   alert: {
     message: undefined,
     type: undefined,
