@@ -4,13 +4,16 @@
       <VCol cols="12">
         <VExpansionPanels tile>
           <VExpansionPanel>
-            <VExpansionPanelHeader class="primary--text"
-              ><h3>
-                <VIcon color="primary" left>
-                  mdi-comment-multiple-outline </VIcon
-                >观测记录 / COMMENTS SYS
-              </h3></VExpansionPanelHeader
-            >
+            <VExpansionPanelHeader class="primary--text">
+              <h3>
+                <VIcon
+                  color="primary"
+                  left
+                >
+                  mdi-comment-multiple-outline
+                </VIcon>观测记录 / COMMENTS SYS
+              </h3>
+            </VExpansionPanelHeader>
             <VExpansionPanelContent>
               <h4>观测记录系统规则</h4>
               <div class="body-2">
@@ -33,16 +36,26 @@
         <BiliobCommentInput
           :sort="sort"
           @post="addComment"
-        ></BiliobCommentInput>
+        />
       </VCol>
       <VCol cols="12">
         <VTabs class="elevation-3">
-          <VTab icon="mdi-timeline" @click="sort = 1">时间序 / Latest</VTab>
-          <VTab @click="sort = 0">喜欢序 / LIKE</VTab>
+          <VTab
+            icon="mdi-timeline"
+            @click="sort = 1"
+          >
+            时间序 / Latest
+          </VTab>
+          <VTab @click="sort = 0">
+            喜欢序 / LIKE
+          </VTab>
         </VTabs>
       </VCol>
 
-      <VFadeTransition style="width: 100%" group>
+      <VFadeTransition
+        style="width: 100%"
+        group
+      >
         <VCol
           v-for="comment in comments"
           :key="comment.commentId"
@@ -53,7 +66,7 @@
             :comment="comment"
             :show-action="true"
             @openReplies="openReplies"
-          ></BiliobCommentItem>
+          />
         </VCol>
       </VFadeTransition>
 
@@ -66,10 +79,13 @@
             style="width: 100%"
             elevation="3"
             type="card-heading, list-item-two-line, list-item"
-          ></VSkeletonLoader>
+          />
         </VCol>
       </VFadeTransition>
-      <VFadeTransition v-else-if="comments.length == 0" style="width: 100%">
+      <VFadeTransition
+        v-else-if="comments.length == 0"
+        style="width: 100%"
+      >
         <VCol cols="12">
           <VCard>
             <VCardTitle>本页没有观测记录！ </VCardTitle>
@@ -91,34 +107,42 @@
           outlined
           @click="getData($route.path, sort, true)"
         >
-          载入更多 / MORE</VBtn
-        >
+          载入更多 / MORE
+        </VBtn>
       </VCol>
       <VCol v-else-if="loading == false">
-        <VBtn color="primary" block outlined disabled>
-          没有更多了 / NO MORE</VBtn
+        <VBtn
+          color="primary"
+          block
+          outlined
+          disabled
         >
+          没有更多了 / NO MORE
+        </VBtn>
       </VCol>
     </VRow>
-    <VDialog v-model="showReplies" max-width="500">
+    <VDialog
+      v-model="showReplies"
+      max-width="500"
+    >
       <div v-if="replyDialog != undefined && replyDialog.comment != undefined">
         <BiliobCommentItem
           :show-action="false"
           class="mb-2"
           :comment="replyDialog.comment"
-        ></BiliobCommentItem>
+        />
         <BiliobCommentItem
           v-for="(reply, i) in replyDialog.comment.replies"
           :key="i"
           class="mb-2"
           :show-action="false"
           :comment="reply"
-        ></BiliobCommentItem>
+        />
         <BiliobCommentInput
           :parent="replyDialog.comment.commentId"
           :sort="sort"
           @post="addComment"
-        ></BiliobCommentInput>
+        />
       </div>
     </VDialog>
   </VContainer>
@@ -171,7 +195,7 @@ export default {
       }
       if (this.$db.comments[`${path}`][`${sort}`][`${page}`] == undefined) {
         this.loading = true;
-        this.axios.get(url).then(res => {
+        this.axios.get(url).then((res) => {
           if (this.$route.path == path && this.sort == sort) {
             if (this.comments == undefined) {
               this.comments = [];
@@ -193,12 +217,11 @@ export default {
     },
 
     openReplies(commentId) {
-      this.comments.forEach(c => {
+      this.comments.forEach((c) => {
         if (c.commentId == commentId) {
           this.replyDialog.comment = c;
         }
       });
-      console.log(this.replyDialog.comment.replies);
 
       this.showReplies = true;
     },
@@ -206,7 +229,7 @@ export default {
       if (comment.parentId == undefined) {
         this.comments.unshift(comment);
       } else {
-        this.comments.forEach(c => {
+        this.comments.forEach((c) => {
           if (c.commentId == comment.parentId) {
             c.replies.unshift(comment);
           }

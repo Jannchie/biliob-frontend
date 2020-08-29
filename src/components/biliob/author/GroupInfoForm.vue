@@ -7,7 +7,7 @@
           outlined
           label="名称"
           hide-details
-        ></VTextField>
+        />
       </VCol>
       <VCol cols="12">
         <VTextField
@@ -15,11 +15,14 @@
           hide-details
           outlined
           label="描述"
-        ></VTextField>
+        />
       </VCol>
       <VCol cols="auto">
         标签：
-        <VChipGroup multiple active-class="primary--text">
+        <VChipGroup
+          multiple
+          active-class="primary--text"
+        >
           <VFadeTransition group>
             <VChip
               v-for="tag in tags"
@@ -30,8 +33,9 @@
               outlined
               label
               @click:close="removeTag(tag)"
-              >{{ tag }}</VChip
             >
+              {{ tag }}
+            </VChip>
           </VFadeTransition>
         </VChipGroup>
       </VCol>
@@ -42,11 +46,11 @@
           outlined
           label="添加标签"
           @keyup.enter="addNewTag(newTag)"
-        ></VTextField>
+        />
       </VCol>
     </VRow>
     <VRow dense>
-      <VSpacer></VSpacer>
+      <VSpacer />
       <VCol cols="auto">
         <VBtn
           large
@@ -54,8 +58,10 @@
           :loading="infoLoading"
           @click="submitInfoEdit"
         >
-          <VIcon left>mdi-content-save</VIcon> 提交</VBtn
-        >
+          <VIcon left>
+            mdi-content-save
+          </VIcon> 提交
+        </VBtn>
       </VCol>
     </VRow>
   </div>
@@ -85,8 +91,6 @@ export default {
   },
   methods: {
     removeTag(tag) {
-      console.log(tag);
-
       this.tags.splice(this.tags.indexOf(tag), 1);
     },
     addNewTag(tag) {

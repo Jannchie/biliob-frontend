@@ -1,55 +1,63 @@
 <template>
-  <VCard
-    tile
-    v-bind="$attrs"
-    :class="`elevation-${elevation}`"
-    style="line-height: normal;"
-    v-on="$listeners"
-  >
-    <div
-      v-if="hasOffset"
-      :inline="inline"
-      :offset="offset"
-      :icon="icon"
-    >
-      <BiliobDarkInfo
-        v-if="!$slots.offset"
-        :elevation="0"
-        :border="border"
-        :dark="dark"
-        :light="light"
-      >
-        <slot
-          v-if="!title && !text"
-          name="header"
-        />
-        <h3
-          v-else
-          class="px-5 py-1"
-        >
-          {{ title }}
-        </h3>
-      </BiliobDarkInfo>
-      <slot
-        v-else
-        name="offset"
-      />
-    </div>
-    <VCardText
-      style="height: 100%;"
-      :class="cardPadding"
-    >
-      <slot />
-    </VCardText>
-    <VDivider
-      v-if="$slots.actions"
-      class="mx-3"
+  <VSlideYTransition>
+    <VSkeletonLoader
+      v-if="loading"
+      :class="`elevation-${elevation}`"
+      type="card"
     />
+    <VCard
+      v-else
+      tile
+      v-bind="$attrs"
+      :class="`elevation-${elevation}`"
+      v-on="$listeners"
+    >
+      <div
+        v-if="hasOffset"
+        :inline="inline"
+        :offset="offset"
+        :icon="icon"
+      >
+        <BiliobDarkInfo
+          v-if="!$slots.offset"
+          :elevation="0"
+          :border="border"
+          :dark="dark"
+          :color="color"
+          :light="light"
+        >
+          <slot
+            v-if="!title && !text"
+            name="header"
+          />
+          <h3
+            v-else
+            class="px-5 py-1"
+          >
+            {{ title }}
+          </h3>
+        </BiliobDarkInfo>
+        <slot
+          v-else
+          name="offset"
+        />
+      </div>
+      <VCardText
+        style="height: 100%;"
+        :class="cardPadding"
+      >
+        <slot />
+      </VCardText>
+      <VDivider
+        v-if="$slots.actions"
+        class="mx-3"
+      />
 
-    <VCardActions v-if="$slots.actions">
-      <slot name="actions" />
-    </VCardActions>
-  </VCard>
+      <VCardActions v-if="$slots.actions">
+        <slot name="actions" />
+      </VCardActions>
+    </VCard>
+  </VSlideYTransition>
 </template>
 
 <script>
@@ -57,6 +65,10 @@ export default {
   inheritAttrs: false,
 
   props: {
+    loading: {
+      type: Boolean,
+      default: false
+    },
     color: {
       type: String,
       default: "primary"

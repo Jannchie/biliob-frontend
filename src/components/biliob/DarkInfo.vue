@@ -2,15 +2,20 @@
   <div :dark="dark">
     <div
       :class="
-        `primary--text elevation-${elevation} ${
+        `${color}--text elevation-${elevation} ${
           light ? 'light' : 'dark'
         }-info ${border}`
       "
     >
-      <slot v-if="title == ''"></slot>
-      <div v-else class="px-5 py-2">{{ title }}</div>
+      <slot v-if="title == ''" />
+      <div
+        v-else
+        class="px-5 py-2"
+      >
+        {{ title }}
+      </div>
     </div>
-    <slot name="body"></slot>
+    <slot name="body" />
   </div>
 </template>
 <script>
@@ -19,6 +24,10 @@ export default {
     light: {
       default: false,
       type: Boolean
+    },
+    color: {
+      default: "primary",
+      type: String
     },
     border: {
       default: "",

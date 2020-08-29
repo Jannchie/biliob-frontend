@@ -1,52 +1,65 @@
 <template>
-  <VCard class="mx-1" min-width="220px">
-    <VCardTitle class="caption">{{ guessing.title }}</VCardTitle>
+  <VCard
+    class="mx-1"
+    min-width="220px"
+  >
+    <VCardTitle class="caption">
+      {{ guessing.title }}
+    </VCardTitle>
 
     <VCardText class="caption pb-0">
       已经有
       <span class="primary--text">{{ guessing.totalUser }}</span>
       人进行预测;
-      <br />
+      <br>
       累计积分
       <span class="primary--text">{{ guessing.totalCredit }}</span>
       ;
-      <br />
-      <br />
+      <br>
+      <br>
       <div v-if="guessing.state == 4">
         观测到的达成时间为:
-        <br />
-        <span color="primary"
-          >{{
-            $timeFormat(
-              guessing.reachDate.replace("+0000", ""),
-              "YYYY-MM-DD HH:mm"
-            )
-          }}
+        <br>
+        <span color="primary">{{
+          $timeFormat(
+            guessing.reachDate.replace("+0000", ""),
+            "YYYY-MM-DD HH:mm"
+          )
+        }}
         </span>
-        <br />
+        <br>
       </div>
       <div v-else>
         平均预测达成时间为:
-        <br />
+        <br>
         <span color="primary">{{ formatedAvageTime }} </span>
-        <br />
+        <br>
       </div>
       <span :class="`${stateColor}`"> ● {{ state }} </span>
     </VCardText>
     <VCardActions class="pt-0">
-      <VDialog v-if="guessing.state == 4" v-model="resultDialog">
+      <VDialog
+        v-if="guessing.state == 4"
+        v-model="resultDialog"
+      >
         <template v-slot:activator="{ on }">
-          <VBtn color="primary" block text dark v-on="on">
+          <VBtn
+            color="primary"
+            block
+            text
+            dark
+            v-on="on"
+          >
             查看结果
           </VBtn>
         </template>
 
         <VCard>
           <VCardTitle> 观测者预测结果 </VCardTitle>
-          <VCardText
-            >公式：预测分数 = 总消耗积分 × （(实际到达时间小时数 -
+          <VCardText>
+            公式：预测分数 = 总消耗积分 × （(实际到达时间小时数 -
             创建预测时间小时数) ÷ | 实际到达时间分钟数 - 预测时间分钟数 | × 10)
-            <br />
+            <br>
             根据预测分数等比例分配总积分池。
           </VCardText>
           <VDataTable
@@ -81,14 +94,22 @@
                 text: '净收益',
                 align: 'start',
                 value: 'summary'
+              },
+              {
+                text: '收益率',
+                align: 'start',
+                value: 'rate'
               }
             ]"
             :items="guessing.result"
-          >
-          </VDataTable>
+          />
         </VCard>
       </VDialog>
-      <VDialog v-model="dialog" ext width="500">
+      <VDialog
+        v-model="dialog"
+        ext
+        width="500"
+      >
         <template v-slot:activator="{ on }">
           <VBtn
             color="primary"
@@ -103,35 +124,40 @@
         </template>
 
         <VCard>
-          <VCardTitle class="title grey lighten-2" primary-title>
+          <VCardTitle
+            class="title grey lighten-2"
+            primary-title
+          >
             {{ guessing.title }}
           </VCardTitle>
           <VCardText class="mt-4">
             赌上积分进行预测吧！
-            <br />
+            <br>
             根据预测的偏差程度，将会进行一定的积分返还。(还未做好)
-            <br />时间以北京时间为准。
+            <br>时间以北京时间为准。
             <VTextField
               v-model="time"
               :hint="formatedTime"
               persistent-hint
               label="预测到达时间"
               :rules="timeRules"
-            >
-            </VTextField>
+            />
             <VSlider
               v-model="credit"
               label="使用积分"
               min="1"
               max="100"
               thumb-label
-            >
-            </VSlider>
+            />
           </VCardText>
-          <VDivider></VDivider>
+          <VDivider />
           <VCardActions>
-            <VSpacer></VSpacer>
-            <VBtn color="primary" text @click="submit">
+            <VSpacer />
+            <VBtn
+              color="primary"
+              text
+              @click="submit"
+            >
               提交
             </VBtn>
           </VCardActions>
@@ -172,7 +198,6 @@ export default {
           } else {
             let localOffset = new Date().getTimezoneOffset() / 60;
             let offset = -8 - localOffset;
-            console.log(offset);
             let now = new Date();
             now.setHours(now.getHours() - offset);
             if (date.getTime() - now < 0) {
@@ -219,8 +244,9 @@ export default {
   },
   mounted() {
     if (this.guessing.result != null)
-      this.guessing.result.forEach(e => {
+      this.guessing.result.forEach((e) => {
         e.summary = (e.revenue - e.credit).toFixed(2);
+        e.rate = (e.revenue / e.credit).toFixed(2);
         e.averageDate = this.$timeFormat(e.averageDate, "YYYY-MM-DD HH:mm");
         e.averageCreateTime = this.$timeFormat(
           e.averageCreateTime,

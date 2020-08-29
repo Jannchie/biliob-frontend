@@ -1,10 +1,9 @@
 <template>
   <VSnackbar
     v-model="display"
-    absolute
     top
     :color="color"
-    style="z-index: 10;"
+    style="z-index: 99;"
   >
     {{ message }}
 

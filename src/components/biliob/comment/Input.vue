@@ -11,24 +11,33 @@
       <BiliobTextarea
         ref="CommentTextArea"
         @getText="updateCommentContent"
-      ></BiliobTextarea>
-      <VBtn block color="primary" @click.stop="postComment"
-        ><VIcon>mdi-send</VIcon></VBtn
+      />
+      <VBtn
+        block
+        color="primary"
+        @click.stop="postComment"
       >
+        <VIcon>mdi-send</VIcon>
+      </VBtn>
     </VCardText>
   </VCard>
-  <VCard v-else tile>
+  <VCard
+    v-else
+    tile
+  >
     <VCardText> 登陆后，且经验值大于100才能发表观测记录!</VCardText>
     <VCardActions>
-      <VSpacer></VSpacer>
+      <VSpacer />
       <VBtn
         v-if="!$store.getters.getLoginState"
         color="primary"
         to="/login"
         outlined
       >
-        <VIcon left>mdi-login</VIcon> 前往登陆页面</VBtn
-      >
+        <VIcon left>
+          mdi-login
+        </VIcon> 前往登陆页面
+      </VBtn>
     </VCardActions>
   </VCard>
 </template>
@@ -41,9 +50,7 @@ export default {
     };
   },
   watch: {
-    parent() {
-      console.log(this.parent);
-    }
+    parent() {}
   },
   methods: {
     updateCommentContent(text) {
@@ -57,7 +64,7 @@ export default {
           content: this.commentContent,
           parentId: this.parent
         })
-        .then(res => {
+        .then((res) => {
           this.$db.user.credit = res.data.user.credit;
           this.$db.user.exp = res.data.user.exp;
           res.data.data.like = 0;

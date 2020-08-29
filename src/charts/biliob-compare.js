@@ -30,7 +30,6 @@ function drawChart(
     };
     return result;
   });
-  console.log(series);
 
   let Chart = {
     grid: {
@@ -55,7 +54,7 @@ function drawChart(
       confine: true,
       axisPointer: {
         label: {
-          formatter: function(params) {
+          formatter: function (params) {
             return fmt(params.value, format);
           }
         }
@@ -66,7 +65,7 @@ function drawChart(
       data: authors[0].data.map(e => e.datetime),
       axisPointer: {
         label: {
-          formatter: function(params) {
+          formatter: function (params) {
             return "日期：" + fmt(params.value, format);
           }
         }
@@ -75,7 +74,7 @@ function drawChart(
     yAxis: [
       {
         type: "value",
-        min: function(value) {
+        min: function (value) {
           return value.min > 0 && type == "area" ? 0 : value.min;
         },
         axisLabel: {
