@@ -1,75 +1,74 @@
 <template>
-  <CommonMainLayout reverse>
-    <div
-      slot="aside-cards"
-      :class="$vuetify.breakpoint.mdAndDown ? 'mx-0' : 'mx-2'"
-    >
-      <BiliobCard
-        border="bottom"
-        title="目录"
-        class="title mb-2"
-      >
-        <div>
-          <ol
-            v-for="(eachCatalog, catalogIndex) in faqData"
-            slot="body"
-            :key="catalogIndex"
-            class="body-2 mb-2"
-          >
-            <a :href="`#${eachCatalog['catalogName']}`">
-              {{ eachCatalog["catalogName"] }}
-            </a>
-            <li
-              v-for="(eachQuestion,
-                      questionIndex) in eachCatalog.catalogQuestions"
-              :id="eachQuestion.question"
-              :key="questionIndex"
-              class="caption mb-1"
+  <VContainer>
+    <VRow dense>
+      <VCol cols="12">
+        <BiliobCard
+          border="bottom"
+          title="目录"
+          class="title mb-2"
+        >
+          <div>
+            <ol
+              v-for="(eachCatalog, catalogIndex) in faqData"
+              slot="body"
+              :key="catalogIndex"
+              class="body-2 mb-2"
             >
-              <a :href="`#${eachQuestion.question}`">
-                {{ eachQuestion.question }}
+              <a :href="`#${eachCatalog['catalogName']}`">
+                {{ eachCatalog["catalogName"] }}
               </a>
-            </li>
-            <VDivider />
-          </ol>
-        </div>
-      </BiliobCard>
-    </div>
-    <div slot="main-cards">
-      <BiliobCard
+              <li
+                v-for="(eachQuestion,
+                        questionIndex) in eachCatalog.catalogQuestions"
+                :id="eachQuestion.question"
+                :key="questionIndex"
+                class="caption mb-1"
+              >
+                <a :href="`#${eachQuestion.question}`"> {{ eachQuestion.question }}
+                </a>
+              </li>
+              <VDivider />
+            </ol>
+          </div>
+        </BiliobCard>
+      </VCol>
+      <VCol
         v-for="(eachCatalog, catalogIndex) in faqData"
+        :id="`${eachCatalog['catalogName']}`"
         :key="catalogIndex"
-        border="bottom"
-        class="mb-1 title"
-        :title="eachCatalog['catalogName']"
+        cols="12"
       >
-        <div class="mb-5">
-          <div
-            v-for="(eachQuestion, questionIndex) in eachCatalog[
-              'catalogQuestions'
-            ]"
-            :key="questionIndex"
-            class="mb-4"
-          >
+        <BiliobCard
+          border="bottom"
+          class="mb-1 title"
+          :title="eachCatalog['catalogName']"
+        >
+          <div class="mb-5">
             <div
+              v-for="(eachQuestion, questionIndex) in eachCatalog[
+                'catalogQuestions'
+              ]"
               :id="eachQuestion['question']"
-              class="body-2 font-weight-regular primary--text mb-4"
+              :key="questionIndex"
+              class="mb-4"
             >
-              问题{{ questionIndex + 1 }}：{{ eachQuestion.question }}
-            </div>
-            <div class="mb-5">
-              <VueMarkdown
-                v-for="(eachParagraph, pIndex) in eachQuestion.answer"
-                :key="pIndex"
-                class="body-2"
-                :source="eachParagraph"
-              />
+              <div class="body-2 font-weight-regular primary--text mb-4">
+                问题{{ questionIndex + 1 }}：{{ eachQuestion.question }}
+              </div>
+              <div class="mb-5">
+                <VueMarkdown
+                  v-for="(eachParagraph, pIndex) in eachQuestion.answer"
+                  :key="pIndex"
+                  class="body-2"
+                  :source="eachParagraph"
+                />
+              </div>
             </div>
           </div>
-        </div>
-      </BiliobCard>
-    </div>
-  </CommonMainLayout>
+        </BiliobCard>
+      </VCol>
+    </VRow>
+  </VContainer>
 </template>
 <script>
 var data = require("@/../public/docs/faq.json");
