@@ -2594,5 +2594,25 @@
             }
         ],
         "type": "holyshit"
+    },
+    {
+        "title": "修复错误",
+        "version": "ver.11.0.1",
+        "date": "2020-09-01",
+        "list": [
+            {
+                "text": "修复了FAQ跳转的错误",
+                "type": "fix"
+            },
+            {
+                "text": "修复了观测者排名时间显示的错误",
+                "type": "fix"
+            },
+            {
+                "text": "更换了观测者议会的图标",
+                "type": "beautify"
+            },
+        ],
+        "type": "unimportant"
     }
 ]
