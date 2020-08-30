@@ -1,7 +1,10 @@
 <template>
   <VContainer>
     <VRow justify="center">
-      <VCol cols="12" lg="6">
+      <VCol
+        cols="12"
+        lg="6"
+      >
         <BiliobCard
           title="登录 - BiliOB"
           light
@@ -14,13 +17,16 @@
               contain
               lazy-src="./img/icons/android-chrome-192x192.png"
               src="./img/icons/android-chrome-192x192.png"
-            ></VImg>
+            />
             这是一个由Jannchie见齐维护的第三方网站，
-            <br />BiliOB观测者的账号信息和B站并不互通，
-            <br />新用户请点击注册按钮注册一个账号。
+            <br>BiliOB观测者的账号信息和B站并不互通，
+            <br>新用户请点击注册按钮注册一个账号。
           </VCardText>
           <VCardActions>
-            <VForm v-model="valid" style="width:100%">
+            <VForm
+              v-model="valid"
+              style="width:100%"
+            >
               <VTextField
                 v-model="name"
                 prepend-icon="mdi-clipboard-account"
@@ -44,7 +50,11 @@
                 @click:append="show = !show"
               />
               <Center>
-                <VBtn color="primary" :disabled="!valid" @click="submit">
+                <VBtn
+                  color="primary"
+                  :disabled="!valid"
+                  @click="submit"
+                >
                   登录
                 </VBtn>
                 <VBtn to="/signin">
@@ -54,8 +64,20 @@
             </VForm>
           </VCardActions>
           <VCardActions>
-            <VBtn small to="/privacy" text>隐私权政策</VBtn>
-            <VBtn small to="/password" text>忘记密码？</VBtn>
+            <VBtn
+              small
+              to="/privacy"
+              text
+            >
+              隐私权政策
+            </VBtn>
+            <VBtn
+              small
+              to="/password"
+              text
+            >
+              忘记密码？
+            </VBtn>
           </VCardActions>
         </BiliobCard>
       </VCol>
@@ -74,13 +96,13 @@ export default {
       showAlert: false,
       type: "success",
       rules: {
-        required: value => !!value || "我感受到了虚无！",
-        min: v => v.length >= 6 || "长度..并不够..."
+        required: (value) => !!value || "我感受到了虚无！",
+        min: (v) => v.length >= 6 || "长度..并不够..."
       }
     };
   },
   created() {
-    document.onkeydown = function() {
+    document.onkeydown = function () {
       var key = window.event.keyCode;
       if (key == 13) {
         this.submit();
@@ -104,7 +126,7 @@ export default {
           this.$store.dispatch("login");
           this.$router.push("/");
         })
-        .catch(error => {
+        .catch((error) => {
           this.$store.commit("showMessage", {
             msg: error.response.data.msg,
             color: "error"

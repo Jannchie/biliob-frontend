@@ -116,7 +116,7 @@
             <VCardText>
               EXP {{ eachUser.exp }}
               <br>
-              注册时间：{{ formatDate(eachUser.id.date) }}
+              注册时间：{{ $timeFormat(eachUser.id.date) }}
             </VCardText>
           </BiliobCard>
         </VCol>
@@ -147,7 +147,7 @@
             <VCardText>
               EXP {{ eachUser.exp }}
               <br>
-              注册时间：{{ formatDate(eachUser.id.date) }}
+              注册时间：{{ $timeFormat(eachUser.id.date) }}
             </VCardText>
           </BiliobCard>
         </VCol>
@@ -176,7 +176,7 @@
             <VCardText class="caption">
               EXP {{ eachUser.exp }}
               <br>
-              {{ formatDate(eachUser.id.date, "YYYY-MM-DD") }}
+              {{ $timeFormat(eachUser.id.date, "YYYY-MM-DD") }}
             </VCardText>
           </BiliobCard>
         </VCol>
@@ -205,7 +205,7 @@
             <VCardText class="caption">
               EXP {{ eachUser.exp }}
               <br>
-              {{ formatDate(eachUser.id.date, "YYYY-MM-DD") }}
+              {{ $timeFormat(eachUser.id.date, "YYYY-MM-DD") }}
             </VCardText>
           </BiliobCard>
         </VCol>

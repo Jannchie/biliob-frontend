@@ -35,8 +35,6 @@ const UserInfo = () => import("@/views/master/user/Info.vue");
 
 Vue.use(Router);
 export default new Router({
-  mode: "history",
-  base: process.env.BASE_URL,
   routes: [
     {
       path: "/",
@@ -310,7 +308,15 @@ export default new Router({
       component: NotFound
     }
   ],
+  mode: "history",
+  base: process.env.BASE_URL,
   scrollBehavior(to, from, savedPosition) {
+    if (to.hash) {
+      console.log(to.hash);
+      return {
+        selector: to.hash
+      }
+    }
     if (savedPosition) {
       return savedPosition;
     }
