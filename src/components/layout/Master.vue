@@ -95,6 +95,7 @@
                     </VBtn>
                     <VBtn
                       v-else
+                      id="check-in"
                       small
                       ripple
                       text

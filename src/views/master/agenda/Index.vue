@@ -5,7 +5,7 @@
         <BiliobCard title="观测者议会">
           <VRow dense>
             <VCol cols="12">
-              观测者议会是了解观测者需求的平台。具备一定权限的观测者能够在此提出议程，所有观测者都能够决定支持或是反对某项议程。
+              观测者议会是了解观测者需求的平台。具备一定权限的观测者能够在此提出议程，所有观测者都能够决定支持或是反对某项议程。目前只有特权研究员以上才能够提出议程，提出议程需要消耗50点积分。
             </VCol>
             <VCol>
               <RouterLink to="/faq#观测者议会相关问题">
@@ -54,7 +54,7 @@
             :loading="agendas.length == 0"
           >
             <VSlideYTransition
-              mode="out-in"
+              leave-absolute
               group
             >
               <div
@@ -63,7 +63,7 @@
               >
                 <BiliobCard class="mb-2">
                   <VMenu
-                    v-if="$db.user.uid == agenda.creator.uid"
+                    v-if="$db.user != undefined && $db.user.id != undefined && $db.user.id.counter == agenda.creator.id.counter"
                     offset-y
                   >
                     <template v-slot:activator="{ on, attrs }">
@@ -99,7 +99,7 @@
                     no-gutters
                     class="title text--primary"
                   >
-                    <VCol>
+                    <VCol cols="auto">
                       {{ agenda.title }}
                       <BiliobAgendaTypeChip
                         class="ml-2 align-self-center"
@@ -136,7 +136,7 @@
                     </VCol>
                   </VRow>
                   <div class="caption">
-                    {{ agenda.creator.nickName }} /
+                    {{ agenda.creator.nickName != undefined? agenda.creator.nickName: $db.user.nickName }} /
                     {{ $timeFormat(agenda.createTime,"YYYY-MM-DD HH:mm:ss") }}
                   </div>
                   <div>
@@ -195,6 +195,30 @@
                 </BiliobCard>
               </div>
             </VSlideYTransition>
+            <VRow dense>
+              <VCol cols="6">
+                <VBtn
+                  color="primary"
+                  block
+                  outlined
+                  :disabled="page==0"
+                  @click="$vuetify.goTo(0);page--;"
+                >
+                  上一页
+                </VBtn>
+              </VCol>
+              <VCol cols="6">
+                <VBtn
+                  block
+                  color="primary"
+                  outlined
+                  :disabled="agendas.length<20"
+                  @click="$vuetify.goTo(0);page++;"
+                >
+                  下一页
+                </VBtn>
+              </VCol>
+            </VRow>
           </BiliobCard>
         </VSlideYTransition>
       </VCol>
@@ -214,12 +238,6 @@ export default {
     };
   },
   watch: {
-    "$db.agenda": function () {
-      this.agendas = this.$db.agenda[this.filter][this.sort].slice(
-        20 * this.page,
-        20
-      );
-    },
     sort() {
       this.page = 0;
       this.loadData();
@@ -230,6 +248,16 @@ export default {
     },
     page() {
       this.loadData();
+    },
+    "$db.agenda": {
+      //深度监听，可监听到对象、数组的变化
+      handler(val, oldVal) {
+        this.agendas = this.$db.agenda[this.filter][this.sort].slice(
+          20 * this.page,
+          20 + 20 * this.page
+        );
+      },
+      deep: true
     }
   },
   mounted() {
@@ -242,26 +270,36 @@ export default {
         this.$db.agenda == undefined ||
         this.$db.agenda[this.filter] == undefined ||
         this.$db.agenda[this.filter][this.sort] == undefined ||
-        this.$db.agenda[this.filter][this.sort].length < this.page * 20
+        this.$db.agenda[this.filter][this.sort].length <= this.page * 20
       ) {
+        this.agenda = [];
+        let page = this.page;
+        let sort = this.sort;
+        let filter = this.filter;
         this.axios
           .get(`/agenda`, {
             params: {
-              p: this.page,
-              sort: this.sort,
-              filter: this.filter
+              p: page,
+              sort: sort,
+              filter: filter
             }
           })
           .then((r) => {
             if (this.$db.agenda == undefined) this.$db.agenda = {};
-            if (this.$db.agenda[this.filter] == undefined)
-              this.$db.agenda[this.filter] = {};
-            this.$db.agenda[this.filter][this.sort] = r.data;
-            if (this.$db.agenda[this.filter][this.sort].length == 0) {
+            if (this.$db.agenda[filter] == undefined)
+              this.$db.agenda[filter] = {};
+            if (this.$db.agenda[filter][sort] == undefined) {
+              this.$db.agenda[filter][sort] = [];
+            }
+            this.$db.agenda[filter][sort].push(...r.data);
+            if (this.$db.agenda[filter][sort].length == 0) {
               this.empty = true;
               return;
             }
-            this.agendas = r.data;
+            this.agendas = this.$db.agenda[this.filter][this.sort].slice(
+              20 * this.page,
+              20 + 20 * this.page
+            );
           });
       } else {
         if (this.$db.agenda[this.filter][this.sort].length == 0) {
@@ -271,7 +309,7 @@ export default {
         }
         this.agendas = this.$db.agenda[this.filter][this.sort].slice(
           20 * this.page,
-          20
+          20 + 20 * this.page
         );
       }
     },
@@ -305,10 +343,10 @@ export default {
           }
         }
 
-        this.agendas = this.$db.agenda[this.filter][this.sort].slice(
-          20 * this.page,
-          20
-        );
+        // this.agendas = this.$db.agenda[this.filter][this.sort].slice(
+        //   20 * this.page,
+        //   20
+        // );
       });
     },
     postOpinion(opinion, id) {
@@ -337,10 +375,10 @@ export default {
               sorts[i]
             ].sort((a, b) => -a.score + b.score);
           }
-          this.agendas = this.$db.agenda[this.filter][this.sort].slice(
-            20 * this.page,
-            20
-          );
+          // this.agendas = this.$db.agenda[this.filter][this.sort].slice(
+          //   20 * this.page,
+          //   20
+          // );
         }
       });
     }

@@ -95,6 +95,7 @@ export default {
             if (this.$db.agenda[0][sort] == undefined) {
               return;
             }
+            r.data.data.creator.nickName = this.$db.user.nickName;
             this.$db.agenda[0][sort].unshift(r.data.data);
           });
         });

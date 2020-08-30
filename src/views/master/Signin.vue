@@ -1,31 +1,39 @@
 <template>
   <VLayout justify-center>
-    <VFlex lg5 md12>
+    <VFlex
+      lg5
+      md12
+    >
       <BiliobCard title="注册">
         <div style="position: absolute;left:15px;right:15px;">
           <MaterialNotification
             :value="alertSuccess"
             type="success"
             transition="scale-transition"
-            >恭喜！操作成功！</MaterialNotification
           >
+            恭喜！操作成功！
+          </MaterialNotification>
           <MaterialNotification
             :value="alertError"
             type="error"
             transition="scale-transition"
-            >抱歉！{{ errorMsg }}!</MaterialNotification
           >
+            抱歉！{{ errorMsg }}!
+          </MaterialNotification>
         </div>
 
         <div>
           <div class="body-1">
             这是一个第三方网站，账号信息和B站并不通用。
-            <br />登录后可以自主添加视频追踪，还能够实现关注UP主和收藏视频的功能。
-            <br />登录后还能签到获取积分，消耗积分获取更多数据情报。
+            <br>登录后可以自主添加视频追踪，还能够实现关注UP主和收藏视频的功能。
+            <br>登录后还能签到获取积分，消耗积分获取更多数据情报。
           </div>
         </div>
         <VCardActions>
-          <VForm v-model="valid" style="width:100%">
+          <VForm
+            v-model="valid"
+            style="width:100%"
+          >
             <VTextField
               v-model="name"
               :rules="[rules.required, rules.max]"
@@ -46,14 +54,18 @@
                   label="请输入验证激活码"
                 />
               </VFlex>
-              <VFlex md4 class="align-self-center">
+              <VFlex
+                md4
+                class="align-self-center"
+              >
                 <VBtn
                   text
                   :loading="loading"
                   color="primary"
                   :disabled="!mailVerification(mail)"
                   @click.stop="sendActivationCode"
-                  >向邮箱发送验证码
+                >
+                  向邮箱发送验证码
                 </VBtn>
               </VFlex>
             </VLayout>
@@ -80,8 +92,12 @@
               @click:append="show = !show"
             />
             <Center>
-              <VBtn color="primary" :disabled="!valid" @click="submit"
-                >注册
+              <VBtn
+                color="primary"
+                :disabled="!valid"
+                @click="submit"
+              >
+                注册
               </VBtn>
             </Center>
           </VForm>
@@ -107,13 +123,13 @@ export default {
       loader: "",
       activationCode: "",
       rules: {
-        required: value => !!value || "我必须知道这一项！求求你告诉我吧~",
-        min: v => v.length >= 6 || "这么短小的话，也太不安全了吧",
-        max: v => v.length <= 50 || "太长了！",
-        passwdMatch: v => {
+        required: (value) => !!value || "我必须知道这一项！求求你告诉我吧~",
+        min: (v) => v.length >= 6 || "这么短小的话，也太不安全了吧",
+        max: (v) => v.length <= 50 || "太长了！",
+        passwdMatch: (v) => {
           return v === this.password || "貌似两次输入不一致..手速太快了？";
         },
-        email: v => {
+        email: (v) => {
           return this.mailVerification(v) || "据我所知，邮箱好像不长这样啊！";
         }
       }
@@ -144,7 +160,7 @@ export default {
             this.$router.push("/login");
           }, 2000);
         })
-        .catch(error => {
+        .catch((error) => {
           this.alertError = true;
           this.errorMsg = error.response.data.msg;
           setTimeout(() => {
@@ -166,7 +182,7 @@ export default {
             color: "success"
           });
         })
-        .catch(error => {
+        .catch((error) => {
           this.errorMsg = error.response.data.msg;
           this.$store.commit("showMessage", {
             msg: this.errorMsg,

@@ -2550,5 +2550,49 @@
             }
         ],
         "type": "unimportant"
+    },
+    {
+        "title": "观测者议会",
+        "version": "ver.11.0.0",
+        "date": "2020-08-31",
+        "list": [
+            {
+                "text": "添加了观测者议会系统。这个系统能够让观测者们表达对观测站的建议。",
+                "type": "feature"
+            },
+            {
+                "text": "修改了右下角按钮的逻辑",
+                "type": "feature"
+            },
+            {
+                "text": "添加了回到顶部的功能",
+                "type": "feature"
+            },
+            {
+                "text": "添加了观测者预测的收益率表示",
+                "type": "feature"
+            },
+            {
+                "text": "美化了右下角按钮",
+                "type": "beautify"
+            },
+            {
+                "text": "美化了一些动画效果",
+                "type": "beautify"
+            },
+            {
+                "text": "修正了首页逻辑",
+                "type": "fix"
+            },
+            {
+                "text": "修正了观测者创建日期的显示",
+                "type": "fix"
+            },
+            {
+                "text": "修正了观测者排行的一个BUG",
+                "type": "fix"
+            }
+        ],
+        "type": "holyshit"
     }
 ]
