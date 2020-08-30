@@ -8,11 +8,22 @@
           @getSearchValue="getSearchValue"
         />
       </div>
-      <VLayout slot="header" row>
-        <VFlex style="width: 70%" grow>
+      <VLayout
+        slot="header"
+        row
+      >
+        <VFlex
+          style="width: 70%"
+          grow
+        >
           <div>
-            <VTabs color="transparent" slider-color="white">
-              <VIcon right>mdi-sort</VIcon>
+            <VTabs
+              color="transparent"
+              slider-color="white"
+            >
+              <VIcon right>
+                mdi-sort
+              </VIcon>
               <VTab @click="sortChange(0)">
                 <VIcon>
                   mdi-play-circle-outline
@@ -64,10 +75,22 @@
             </VTabs>
           </div>
         </VFlex>
-        <VDivider vertical style="margin: 2px 2px !important" />
-        <VFlex style="width:30%" align-content-end>
-          <VTabs right color="transparent" slider-color="white">
-            <VIcon left>mdi-calendar-blank-outline</VIcon>
+        <VDivider
+          vertical
+          style="margin: 2px 2px !important"
+        />
+        <VFlex
+          style="width:30%"
+          align-content-end
+        >
+          <VTabs
+            right
+            color="transparent"
+            slider-color="white"
+          >
+            <VIcon left>
+              mdi-calendar-blank-outline
+            </VIcon>
             <VTab @click="daysChange(1)">
               <VIcon>
                 mdi-numeric-1-box
@@ -86,7 +109,10 @@
           </VTabs>
         </VFlex>
       </VLayout>
-      <VSlideYTransition group>
+      <VSlideYTransition
+        mode="out-in"
+        group
+      >
         <div
           v-for="eachVideo in videoList.content"
           :key="eachVideo.aid"
@@ -102,26 +128,29 @@
               />
             </div>
             <div style="margin-left:10px;overflow:hidden">
-              <div
-                class="font-weight-bold video-title text-no-wrap text-truncate"
-              >
+              <div class="font-weight-bold video-title text-no-wrap text-truncate">
                 {{ eachVideo.title }}
               </div>
               <div class="caption subtext video-info">
-                <VIcon small> mdi-account-box-outline </VIcon
-                >{{ eachVideo.authorName }}
-                <VIcon small> mdi-bookmark-outline </VIcon
-                >{{ eachVideo.channel }}
+                <VIcon small>
+                  mdi-account-box-outline
+                </VIcon>{{ eachVideo.authorName }}
+                <VIcon small>
+                  mdi-bookmark-outline
+                </VIcon>{{ eachVideo.channel }}
               </div>
               <VRow no-gutters>
-                <VSpacer></VSpacer>
+                <VSpacer />
                 <VCol cols="auto">
-                  <ObserveStatus class="observe-status" :object="eachVideo" />
+                  <ObserveStatus
+                    class="observe-status"
+                    :object="eachVideo"
+                  />
                 </VCol>
               </VRow>
             </div>
           </div>
-          <VDivider></VDivider>
+          <VDivider />
         </div>
       </VSlideYTransition>
       <VBtn
@@ -133,12 +162,14 @@
         :disabled="nextBtnDisabled"
         tile
         @click.stop="next"
-        >{{ nextBtnText }}</VBtn
       >
+        {{ nextBtnText }}
+      </VBtn>
       <div v-else>
         <h4 class="primary--text">
-          <VIcon class="primary--text">mdi-ship-wheel</VIcon
-          >抱歉！什么都没有找到QwQ
+          <VIcon class="primary--text">
+            mdi-ship-wheel
+          </VIcon>抱歉！什么都没有找到QwQ
         </h4>
         <p>
           搜索功能可能并不完善，为了精确搜索请在上方输入相关视频的AV号！
@@ -174,13 +205,13 @@ export default {
     };
   },
   watch: {
-    text: function() {
+    text: function () {
       this.currentPage = 0;
       this.axios
         .get(
           `${this.currentApiurl}?page=${this.currentPage}&pagesize=20&text=${this.text}&sort=${this.sort}&days=${this.days}`
         )
-        .then(response => {
+        .then((response) => {
           this.videoList.content = response.data.content;
           if (this.videoList.content.length == 0) {
             this.notFound = true;
@@ -199,14 +230,14 @@ export default {
         .get(
           `${this.currentApiurl}?page=${page}&pagesize=20&text=${this.text}&sort=${this.sort}&days=${this.days}`
         )
-        .then(response => {
+        .then((response) => {
           // 判断是否为最后一页
           if (response.data.last) {
             this.nextBtnText = "没有更多了";
             this.nextBtnDisabled = true;
           }
 
-          response.data.content.forEach(e => {
+          response.data.content.forEach((e) => {
             this.videoList.content.push(e);
           });
         });
@@ -217,7 +248,7 @@ export default {
       .get(
         `${this.currentApiurl}?page=${this.currentPage}&pagesize=20&text=${this.text}&sort=${this.sort}&days=${this.days}`
       )
-      .then(response => {
+      .then((response) => {
         this.refreshList(response);
       });
   },
@@ -259,7 +290,7 @@ export default {
         .get(
           `${this.currentApiurl}?page=${this.currentPage}&pagesize=20&text=${this.text}&sort=${this.sort}&days=${this.days}`
         )
-        .then(response => {
+        .then((response) => {
           this.refreshList(response);
         });
     },
@@ -270,7 +301,7 @@ export default {
         .get(
           `${this.currentApiurl}?page=${this.currentPage}&pagesize=20&text=${this.text}&sort=${this.sort}&days=${this.days}`
         )
-        .then(response => {
+        .then((response) => {
           this.refreshList(response);
         });
     },

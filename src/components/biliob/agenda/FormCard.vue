@@ -79,11 +79,25 @@ export default {
       } else {
         typeCode = 4;
       }
-      this.axios.post(`/agenda`, {
-        title: this.title,
-        desc: this.desc,
-        type: typeCode
-      });
+      this.axios
+        .post(`/agenda`, {
+          title: this.title,
+          desc: this.desc,
+          type: typeCode
+        })
+        .then((r) => {
+          if (this.$db.agenda == undefined) this.$db.agenda[0] = {};
+          if (this.$db.agenda[0] == undefined) {
+            this.$db.agenda[0][sort] = [r.data.data];
+          }
+          let sorts = Object.keys(this.$db.agenda[0]);
+          sorts.forEach((sort) => {
+            if (this.$db.agenda[0][sort] == undefined) {
+              return;
+            }
+            this.$db.agenda[0][sort].unshift(r.data.data);
+          });
+        });
       this.$emit("close");
     }
   }
