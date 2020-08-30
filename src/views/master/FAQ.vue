@@ -14,17 +14,17 @@
               :key="catalogIndex"
               class="body-2 mb-2"
             >
-              <a :href="`#${eachCatalog['catalogName']}`">
+              <a @click="$vuetify.goTo(`#${eachCatalog['catalogName']}`,{offset:30})">
+
                 {{ eachCatalog["catalogName"] }}
               </a>
               <li
                 v-for="(eachQuestion,
                         questionIndex) in eachCatalog.catalogQuestions"
-                :id="eachQuestion.question"
                 :key="questionIndex"
                 class="caption mb-1"
               >
-                <a :href="`#${eachQuestion.question}`"> {{ eachQuestion.question }}
+                <a @click="$vuetify.goTo(`#${eachQuestion.question}`,{offset:30})"> {{ eachQuestion.question }}
                 </a>
               </li>
               <VDivider />
@@ -76,7 +76,9 @@ export default {
   data() {
     return data;
   },
-  mounted() {}
+  mounted() {
+    console.log(this.faqData);
+  }
 };
 </script>
 <style scoped>
