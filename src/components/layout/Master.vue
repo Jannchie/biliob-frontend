@@ -295,7 +295,7 @@ export default {
         },
         {
           name: "观测者议会",
-          icon: "mdi-view-agenda",
+          icon: "mdi-bank",
           url: "/agenda"
         },
         {
