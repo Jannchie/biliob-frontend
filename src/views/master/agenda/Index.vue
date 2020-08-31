@@ -36,6 +36,23 @@
         </VCard>
       </VCol>
     </VRow>
+    <VSlideYTransition
+      leave-absolute
+      mode="out-in"
+    >
+      <VRow
+        v-if="loading"
+        dense
+      >
+        <VCol cols="12">
+          <VSkeletonLoader
+            elevation="3"
+            style="width:'100%'"
+            type="card"
+          />
+        </VCol>
+      </VRow>
+    </VSlideYTransition>
     <VRow dense>
       <VCol>
         <VSlideYTransition mode="out-in">
@@ -46,181 +63,209 @@
           >
             该列表当前为空。
           </BiliobCard>
-
-          <BiliobCard
-            v-else
-            key="list"
-            title="议程列表"
-            :loading="agendas.length == 0"
+          <VSlideYTransition
+            group
+            mode="out-in"
           >
-            <VSlideYTransition
-              leave-absolute
-              group
+            <div
+              v-for="agenda in agendas"
+              :key="agenda.id"
+              class="test"
             >
-              <div
-                v-for="agenda in agendas"
+              <BiliobCard
                 :key="agenda.id"
+                class="mb-2"
               >
-                <BiliobCard class="mb-2">
-                  <VMenu
-                    v-if="$db.user != undefined && $db.user.id != undefined && $db.user.id.counter == agenda.creator.id.counter"
-                    offset-y
-                  >
-                    <template v-slot:activator="{ on, attrs }">
-                      <VBtn
-                        absolute
-                        icon
-                        style="right: 10px"
-                        v-bind="attrs"
-                        v-on="on"
-                      >
-                        <VIcon>
-                          mdi-dots-horizontal
-                        </VIcon>
-                      </VBtn>
-                    </template>
-                    <VList>
-                      <VListItem
-                        color="error"
-                        @click="deleteAgenda(agenda.id)"
-                      >
-                        <VListItemIcon>
-                          <VIcon>mdi-delete</VIcon>
-                        </VListItemIcon>
-                        <VListItemTitle>删除</VListItemTitle>
-                      </VListItem>
-                    </VList>
-                  </VMenu>
-                  <div class="text--disabled overline">
-                    {{ agenda.id }}
-                  </div>
-                  <VRow
+                <VMenu
+                  v-if="$db.user != undefined && $db.user.id != undefined && $db.user.id.counter == agenda.creator.id.counter"
+                  offset-y
+                >
+                  <template v-slot:activator="{ on, attrs }">
+                    <VBtn
+                      absolute
+                      icon
+                      style="right: 10px"
+                      v-bind="attrs"
+                      v-on="on"
+                    >
+                      <VIcon>
+                        mdi-dots-horizontal
+                      </VIcon>
+                    </VBtn>
+                  </template>
+                  <VList>
+                    <VListItem
+                      color="error"
+                      @click="deleteAgenda(agenda.id)"
+                    >
+                      <VListItemIcon>
+                        <VIcon>mdi-delete</VIcon>
+                      </VListItemIcon>
+                      <VListItemTitle>删除</VListItemTitle>
+                    </VListItem>
+                  </VList>
+                </VMenu>
+                <div class="text--disabled overline">
+                  {{ agenda.id }}
+                </div>
+                <VRow
+                  v-if="$vuetify.breakpoint.lgAndUp"
+                  no-gutters
+                  class="title text--primary"
+                >
+                  <VCol cols="auto">
+                    {{ agenda.title }}
+                    <BiliobAgendaTypeChip
+                      class="ml-2 align-self-center"
+                      :value="agenda.type"
+                    />
+                    <BiliobAgendaStateChip
+                      class="align-self-center"
+                      :value="agenda.state"
+                    />
+                  </VCol>
+                  <VSpacer />
+                  <span class="font-weight-black primary--text"> {{ $numberFormat(agenda.score ) }}</span>
+                </VRow>
+                <VRow
+                  v-else
+                  dense
+                  class="title text--primary"
+                >
+                  <VCol cols="auto">
+                    {{ agenda.title }}
+                  </VCol>
+                  <VCol
                     v-if="$vuetify.breakpoint.lgAndUp"
-                    no-gutters
-                    class="title text--primary"
+                    cols="auto"
                   >
-                    <VCol cols="auto">
-                      {{ agenda.title }}
-                      <BiliobAgendaTypeChip
-                        class="ml-2 align-self-center"
-                        :value="agenda.type"
-                      />
-                      <BiliobAgendaStateChip
-                        class="align-self-center"
-                        :value="agenda.state"
-                      />
-                    </VCol>
-                    <VSpacer />
+                    <BiliobAgendaTypeChip
+                      class="align-self-center"
+                      :value="agenda.type"
+                    />
+                    <BiliobAgendaStateChip
+                      class="align-self-center"
+                      :value="agenda.state"
+                    />
+                  </VCol>
+                  <VCol
+                    v-if="$vuetify.breakpoint.lgAndUp"
+                    cols="auto"
+                  >
                     <span class="font-weight-black primary--text"> {{ $numberFormat(agenda.score ) }}</span>
-                  </VRow>
+                  </VCol>
+                </VRow>
+                <VRow>
+                  <VCol>
+                    <div class="caption">
+                      {{ agenda.creator.nickName != undefined? agenda.creator.nickName: $db.user.nickName }} /
+                      {{ $timeFormat(agenda.createTime,"YYYY-MM-DD HH:mm:ss") }}
+                    </div>
+                    <div>
+                      {{ agenda.desc }}
+                    </div>
+                  </VCol>
+                </VRow>
+                <div>
                   <VRow
-                    v-else
                     no-gutters
-                    class="title text--primary"
+                    class="caption"
                   >
-                    <VCol cols="auto">
-                      {{ agenda.title }}
+                    <VCol
+                      class="success--text"
+                      cols="6"
+                    >
+                      支持：{{ $numberFormat(agenda.favorScore) }}({{ agenda.favorCount }}人)
                     </VCol>
-                    <VCol cols="auto">
-                      <BiliobAgendaTypeChip
-                        class="align-self-center"
-                        :value="agenda.type"
-                      />
-                      <BiliobAgendaStateChip
-                        class="align-self-center"
-                        :value="agenda.state"
-                      />
-                    </VCol>
-                    <VCol cols="auto">
-                      <span class="font-weight-black primary--text"> {{ $numberFormat(agenda.score ) }}</span>
+                    <VCol
+                      class="text-right error--text"
+                      cols="6"
+                    >
+                      反对：{{ $numberFormat(agenda.againstScore) }}({{ agenda.againstCount }}人)
                     </VCol>
                   </VRow>
-                  <div class="caption">
-                    {{ agenda.creator.nickName != undefined? agenda.creator.nickName: $db.user.nickName }} /
-                    {{ $timeFormat(agenda.createTime,"YYYY-MM-DD HH:mm:ss") }}
-                  </div>
-                  <div>
-                    {{ agenda.desc }}
-                  </div>
-                  <div>
-                    <VRow dense>
-                      <VSpacer />
-                      <VCol cols="auto">
-                        <VBtn
-                          color="success"
-                          depressed
-                          @click="postOpinion('support',agenda.id)"
-                        >
-                          <VIcon left>
-                            mdi-thumb-up
-                          </VIcon>
-                          <span v-if="$vuetify.breakpoint.lgAndUp">
-                            支持
-                          </span>
-                          {{ $numberFormat( agenda.favorScore) }}
-                        </VBtn>
-                      </VCol>
-                      <VCol cols="auto">
-                        <VBtn
-                          color="warning"
-                          depressed
-                          @click="postOpinion('abstain',agenda.id)"
-                        >
-                          <VIcon left>
-                            mdi-thumbs-up-down
-                          </VIcon>
-                          <span v-if="$vuetify.breakpoint.lgAndUp">
-                            中立
-                          </span>
-                        </VBtn>
-                      </VCol>
-                      <VCol cols="auto">
-                        <VBtn
-                          color="error"
-                          depressed
-                          @click="postOpinion('against',agenda.id)"
-                        >
-                          <VIcon left>
-                            mdi-thumb-down
-                          </VIcon>
-                          <span v-if="$vuetify.breakpoint.lgAndUp">
-                            反对
-                          </span>
-                          {{ $numberFormat( agenda.againstScore) }}
-                        </VBtn>
-                      </VCol>
-                      <VSpacer />
-                    </VRow>
-                  </div>
-                </BiliobCard>
-              </div>
-            </VSlideYTransition>
-            <VRow dense>
-              <VCol cols="6">
-                <VBtn
-                  color="primary"
-                  block
-                  outlined
-                  :disabled="page==0"
-                  @click="$vuetify.goTo(0);page--;"
-                >
-                  上一页
-                </VBtn>
-              </VCol>
-              <VCol cols="6">
-                <VBtn
-                  block
-                  color="primary"
-                  outlined
-                  :disabled="agendas.length<20"
-                  @click="$vuetify.goTo(0);page++;"
-                >
-                  下一页
-                </VBtn>
-              </VCol>
-            </VRow>
-          </BiliobCard>
+                  <VRow dense>
+                    <VCol :cols="( agenda.favorCount / (agenda.againstCount +agenda.favorCount) * 6).toFixed(0)">
+                      <VBtn
+                        block
+                        color="success"
+                        tile
+                        depressed
+                        @click="postOpinion('support',agenda.id)"
+                      >
+                        <VIcon :left="$vuetify.breakpoint.lgAndUp">
+                          mdi-thumb-up
+                        </VIcon>
+                        <span v-if="$vuetify.breakpoint.lgAndUp">
+                          支持
+                        </span>
+                      </VBtn>
+                    </VCol>
+                    <VCol cols="3">
+                      <VBtn
+                        color="warning"
+                        tile
+                        depressed
+                        block
+                        @click="postOpinion('abstain',agenda.id)"
+                      >
+                        <VIcon :left="$vuetify.breakpoint.lgAndUp">
+                          mdi-thumbs-up-down
+                        </VIcon>
+                        <span v-if="$vuetify.breakpoint.lgAndUp">
+                          中立
+                        </span>
+                      </VBtn>
+                    </VCol>
+                    <VCol :cols="(9 - agenda.favorCount / (agenda.againstCount + agenda.favorCount) * 6).toFixed(0)">
+                      <VBtn
+                        color="error"
+                        block
+                        tile
+                        depressed
+                        @click="postOpinion('against',agenda.id)"
+                      >
+                        <VIcon :left="$vuetify.breakpoint.lgAndUp">
+                          mdi-thumb-down
+                        </VIcon>
+                        <span v-if="$vuetify.breakpoint.lgAndUp">
+                          反对
+                        </span>
+                      </VBtn>
+                    </VCol>
+                  </VRow>
+                </div>
+              </BiliobCard>
+            </div>
+          </VSlideYTransition>
         </VSlideYTransition>
+        <VRow
+          v-if="!loading && !empty"
+          dense
+        >
+          <VCol cols="6">
+            <VBtn
+              color="primary"
+              block
+              outlined
+              :disabled="page==0"
+              @click="$vuetify.goTo(0);page--;"
+            >
+              上一页
+            </VBtn>
+          </VCol>
+          <VCol cols="6">
+            <VBtn
+              block
+              color="primary"
+              outlined
+              :disabled="agendas.length<20"
+              @click="$vuetify.goTo(0);page++;"
+            >
+              下一页
+            </VBtn>
+          </VCol>
+        </VRow>
       </VCol>
     </VRow>
   </VContainer>
@@ -234,7 +279,8 @@ export default {
       page: 0,
       sort: 1,
       filter: 0,
-      empty: false
+      empty: false,
+      loading: true
     };
   },
   watch: {
@@ -270,9 +316,11 @@ export default {
         this.$db.agenda == undefined ||
         this.$db.agenda[this.filter] == undefined ||
         this.$db.agenda[this.filter][this.sort] == undefined ||
-        this.$db.agenda[this.filter][this.sort].length <= this.page * 20
+        (this.$db.agenda[this.filter][this.sort].length <= this.page * 20 &&
+          this.$db.agenda[this.filter][this.sort].length != 0)
       ) {
-        this.agenda = [];
+        this.loading = true;
+        this.agendas = [];
         let page = this.page;
         let sort = this.sort;
         let filter = this.filter;
@@ -292,16 +340,20 @@ export default {
               this.$db.agenda[filter][sort] = [];
             }
             this.$db.agenda[filter][sort].push(...r.data);
+            this.loading = false;
             if (this.$db.agenda[filter][sort].length == 0) {
               this.empty = true;
               return;
             }
-            this.agendas = this.$db.agenda[this.filter][this.sort].slice(
-              20 * this.page,
-              20 + 20 * this.page
-            );
+            if (this.filter == filter) {
+              this.agendas = this.$db.agenda[filter][sort].slice(
+                20 * this.page,
+                20 + 20 * this.page
+              );
+            }
           });
       } else {
+        this.loading = false;
         if (this.$db.agenda[this.filter][this.sort].length == 0) {
           this.empty = true;
         } else {

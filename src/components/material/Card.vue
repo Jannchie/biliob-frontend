@@ -19,22 +19,38 @@
         class="v-card--material__header"
         dark
       >
-        <slot v-if="!title && !text" style="padding:0px" name="header" />
+        <slot
+          v-if="!title && !text"
+          style="padding:0px"
+          name="header"
+        />
         <span v-else>
-          <div class="pa-1">
-            <p class="title font-weight-light mb-2" v-text="title" />
-            <p class="category font-weight-thin" v-text="text" />
+          <div class="">
+            <p
+              class="title font-weight-light mb-2"
+              v-text="title"
+            />
+            <p
+              class="category font-weight-thin"
+              v-text="text"
+            />
           </div>
         </span>
       </VCard>
-      <slot v-else name="offset" />
+      <slot
+        v-else
+        name="offset"
+      />
     </HelperOffset>
 
     <VCardText :class="cardPadding + ' material-card-content'">
       <slot />
     </VCardText>
 
-    <VDivider v-if="$slots.actions" class="mx-3" />
+    <VDivider
+      v-if="$slots.actions"
+      class="mx-3"
+    />
 
     <VCardActions v-if="$slots.actions">
       <slot name="actions" />

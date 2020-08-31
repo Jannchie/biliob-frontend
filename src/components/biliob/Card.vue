@@ -107,7 +107,7 @@ export default {
         if (this.$vuetify.breakpoint.mdAndUp) {
           return "";
         } else {
-          return "pa-1";
+          return "pa-2";
         }
       }
     },

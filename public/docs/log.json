@@ -2612,6 +2612,10 @@
                 "text": "更换了观测者议会的图标",
                 "type": "beautify"
             },
+            {
+                "text": "优化了观测者议会的显示",
+                "type": "beautify"
+            }
         ],
         "type": "unimportant"
     }
