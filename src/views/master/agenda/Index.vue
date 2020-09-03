@@ -21,16 +21,36 @@
         <VCard elevation="3">
           <VTabs>
             <VTab @click.stop="filter= 0">
-              未处理
+              <VBadge
+                inline
+                :content="waiting.toString()"
+              >
+                未处理
+              </VBadge>
             </VTab>
             <VTab @click.stop="filter= 1">
-              进行中
+              <VBadge
+                inline
+                :content="pending.toString()"
+              >
+                进行中
+              </VBadge>
             </VTab>
             <VTab @click.stop="filter= 2">
-              已处理
+              <VBadge
+                inline
+                :content="finished.toString()"
+              >
+                已处理
+              </VBadge>
             </VTab>
             <VTab @click.stop="filter= 3">
-              已丢弃
+              <VBadge
+                inline
+                :content="closed.toString()"
+              >
+                已丢弃
+              </VBadge>
             </VTab>
           </VTabs>
         </VCard>
@@ -55,7 +75,10 @@
     </VSlideYTransition>
     <VRow dense>
       <VCol>
-        <VSlideYTransition mode="out-in">
+        <VSlideYTransition
+          group
+          mode="out-in"
+        >
           <BiliobCard
             v-if="empty"
             key="hint"
@@ -64,6 +87,7 @@
             该列表当前为空。
           </BiliobCard>
           <VSlideYTransition
+            key="test"
             group
             mode="out-in"
           >
@@ -280,7 +304,11 @@ export default {
       sort: 1,
       filter: 0,
       empty: false,
-      loading: true
+      loading: true,
+      waiting: 0,
+      pending: 0,
+      finished: 0,
+      closed: 0
     };
   },
   watch: {
@@ -307,6 +335,12 @@ export default {
     }
   },
   mounted() {
+    this.axios(`/agenda/state`).then((r) => {
+      this.waiting = null != r.data.waiting ? r.data.waiting : 0;
+      this.pending = null != r.data.pending ? r.data.pending : 0;
+      this.finished = null != r.data.finished ? r.data.finished : 0;
+      this.closed = null != r.data.closed ? r.data.closed : 0;
+    });
     this.page = 0;
     this.loadData();
   },
