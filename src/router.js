@@ -23,7 +23,6 @@ const UserRank = () => import("./views/master/UserRank.vue");
 const UserRecord = () => import("./views/master/user/Record.vue");
 const Test = () => import("./views/Test.vue");
 const AuthorVersus = () => import("./views/master/AuthorVersus.vue");
-const Donate = () => import("./views/Donate.vue");
 const Tracer = () => import("./views/admin/Layout.vue");
 const TracerDashboard = () => import("@/views/admin/Index.vue");
 const TracerSpider = () => import("@/views/admin/Spider.vue");
@@ -249,11 +248,6 @@ export default new Router({
           path: "/download/app",
           name: "下载APP",
           component: () => import("@/views/master/download/App.vue")
-        },
-        {
-          path: "/donate",
-          name: "捐助",
-          component: Donate
         },
         {
           path: "/privacy",
