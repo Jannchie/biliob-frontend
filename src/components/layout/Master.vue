@@ -4,12 +4,18 @@
     @touchmove.native="touchmove"
   >
     <VAppBar
+      src="../../../img/06-app-bar.gif"
       app
       hide-on-scroll
       fade-img-on-scroll
       dense
     >
-      <template />
+      <template v-slot:img="{ props }">
+        <VImg
+          v-bind="props"
+          gradient="to top right, rgba(255,255,255,0.47), rgba(255,255,255,0.8)"
+        />
+      </template>
       <VAppBarNavIcon @click.stop="showNav = !showNav" />
 
       <VToolbarTitle>
@@ -35,9 +41,12 @@
         </VTabs>
       </template>
     </VAppBar>
-
     <div>
-      <VContainer class="py-0">
+      <VContainer
+        class="py-0"
+        style="z-index: 2"
+      >
+        <BiliobKanban />
         <BiliobNotification />
         <VRow dense>
           <BiliobFab />
