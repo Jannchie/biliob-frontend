@@ -20,9 +20,15 @@
         <VIcon>mdi-arrow-right-bold</VIcon>
       </VBtn>
     </div>
-    <div :id="name" class="py-2 biliob-slide-card-content">
-      <VSpacer v-if="!isMobile()" style="min-width: 12px;"></VSpacer>
-      <slot></slot>
+    <div
+      :id="name"
+      class="py-2 biliob-slide-card-content"
+    >
+      <VSpacer
+        v-if="!isMobile()"
+        style="min-width: 12px;"
+      />
+      <slot />
       <VBtn
         v-if="moreLink"
         rounded
@@ -31,9 +37,13 @@
         :to="moreLink"
         class="mx-5"
         style="margin:auto"
-        ><VIcon>mdi-chevron-right</VIcon> 更多..</VBtn
       >
-      <VSpacer v-if="!isMobile()" style="min-width: 12px;"></VSpacer>
+        <VIcon>mdi-chevron-right</VIcon> 更多..
+      </VBtn>
+      <VSpacer
+        v-if="!isMobile()"
+        style="min-width: 12px;"
+      />
     </div>
   </div>
 </template>

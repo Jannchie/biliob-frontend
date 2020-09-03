@@ -1,5 +1,9 @@
 <template>
-  <BiliobSlideCard more-link="/event" title="近期粉丝数波动" name="event-bar">
+  <BiliobSlideCard
+    more-link="/event"
+    title="近期粉丝数波动"
+    name="event-bar"
+  >
     <BiliobCard
       v-for="(eachItem, i) in $store.getters.recentEventList"
       :key="i"
@@ -13,7 +17,7 @@
             <VImg
               :lazy-src="zipPic(eachItem.face)"
               :src="zipPic(eachItem.face)"
-            ></VImg>
+            />
           </VAvatar>
         </VCol>
         <VCol cols="auto">
@@ -29,7 +33,12 @@
             outlined
             :class="`caption ${getColor(eachItem.info)}`"
           >
-            <VIcon left small>{{ getIcon(eachItem.info) }}</VIcon>
+            <VIcon
+              left
+              small
+            >
+              {{ getIcon(eachItem.info) }}
+            </VIcon>
             {{ eachItem.info }}
           </VChip>
         </VCol>

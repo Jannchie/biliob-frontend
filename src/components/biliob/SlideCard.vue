@@ -1,5 +1,9 @@
 <template>
-  <BiliobCard :title="title" border="bottom" light>
+  <BiliobCard
+    :title="title"
+    border="bottom"
+    light
+  >
     <div style="position: relative">
       <div>
         <VBtn
@@ -21,8 +25,11 @@
           <VIcon>mdi-arrow-right-bold</VIcon>
         </VBtn>
       </div>
-      <div :id="name" class="py-2 biliob-slide-card-content">
-        <slot></slot>
+      <div
+        :id="name"
+        class="py-2 biliob-slide-card-content"
+      >
+        <slot />
         <VBtn
           v-if="moreLink"
           rounded
@@ -31,8 +38,9 @@
           :to="moreLink"
           class="mx-5"
           style="margin:auto"
-          ><VIcon>mdi-chevron-right</VIcon> 更多..</VBtn
         >
+          <VIcon>mdi-chevron-right</VIcon> 更多..
+        </VBtn>
       </div>
     </div>
   </BiliobCard>
