@@ -159,9 +159,9 @@ export default {
   },
   mounted() {
     this.updateOptions(this.$route.path);
-    window.onscroll = () => {
+    this.$addEvent(window, "scroll", () => {
       this.offset = window.pageYOffset;
-    };
+    });
   },
   methods: {
     updateOptions(val) {
