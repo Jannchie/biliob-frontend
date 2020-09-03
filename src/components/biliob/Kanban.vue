@@ -47,7 +47,6 @@ export default {
       } else {
         wap = "desktop-wapper";
       }
-      console.log(wap);
       return wap;
     }
   },

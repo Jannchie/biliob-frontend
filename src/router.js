@@ -306,7 +306,6 @@ export default new Router({
   base: process.env.BASE_URL,
   scrollBehavior(to, from, savedPosition) {
     if (to.hash) {
-      console.log(to.hash);
       return {
         selector: to.hash
       }

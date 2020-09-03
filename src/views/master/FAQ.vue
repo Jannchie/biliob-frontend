@@ -76,9 +76,7 @@ export default {
   data() {
     return data;
   },
-  mounted() {
-    console.log(this.faqData);
-  }
+  mounted() {}
 };
 </script>
 <style scoped>

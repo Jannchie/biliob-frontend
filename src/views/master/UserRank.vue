@@ -1,6 +1,6 @@
 <template>
   <div>
-    <VRow>
+    <VRow dense>
       <VCol cols="12">
         <VExpansionPanels>
           <VExpansionPanel>
@@ -10,82 +10,9 @@
               </div>
             </VExpansionPanelHeader>
             <VExpansionPanelContent>
-              <p>2019年11月22日更新了排名计算方式。</p>
-              <div>
-                目前设有:
-                <li>
-                  <VChip
-                    style="vertical-align: baseline"
-                    label
-                    small
-                    class="mr-1 my-1"
-                    color="red"
-                    outlined
-                  >
-                    管理者
-                  </VChip>3名
-                </li>
-                <li>
-                  <VChip
-                    style="vertical-align: baseline"
-                    label
-                    small
-                    class="mr-1 my-1"
-                    color="orange"
-                    outlined
-                  >
-                    观测者
-                  </VChip>16名
-                </li>
-                <li>
-                  <VChip
-                    style="vertical-align: baseline"
-                    label
-                    small
-                    class="mr-1 my-1"
-                    color="purple"
-                    outlined
-                  >
-                    观想者
-                  </VChip>50名
-                </li>
-                <li>
-                  <VChip
-                    style="vertical-align: baseline"
-                    label
-                    small
-                    class="mr-1 my-1"
-                    color="blue"
-                    outlined
-                  >
-                    追寻者
-                  </VChip>经验前5%
-                </li>
-                <li>
-                  <VChip
-                    style="vertical-align: baseline"
-                    label
-                    small
-                    class="mr-1 my-1"
-                    color="green"
-                    outlined
-                  >
-                    彷徨者
-                  </VChip>经验后95%
-                </li>
-                <li>
-                  <VChip
-                    style="vertical-align: baseline"
-                    label
-                    small
-                    class="mr-1 my-1"
-                    color="grey"
-                    outlined
-                  >
-                    初心者
-                  </VChip>经验值小于100
-                </li>
-              </div>
+              详情见<RouterLink to="/faq">
+                FAQ
+              </RouterLink>
             </VExpansionPanelContent>
           </VExpansionPanel>
         </VExpansionPanels>
@@ -96,7 +23,7 @@
         title="管理者"
         icon="mdi-chess-queen"
       />
-      <VRow>
+      <VRow dense>
         <VCol
           v-for="(eachUser, index) of userData.slice(0, 3)"
           :key="index"
@@ -113,10 +40,12 @@
             <VCardTitle>
               {{ eachUser.nickName }}
             </VCardTitle>
-            <VCardText>
+            <VCardText class="overline">
               EXP {{ eachUser.exp }}
               <br>
-              注册时间：{{ $timeFormat(eachUser.id.date,"YYYY-MM-DD HH:mm:ss") }}
+              <span class="caption">
+                注册时间：{{ $timeFormat(eachUser.id.date,"YYYY-MM-DD HH:mm:ss") }}
+              </span>
             </VCardText>
           </BiliobCard>
         </VCol>
@@ -125,7 +54,7 @@
         title="观测者"
         icon="mdi-chess-king"
       />
-      <VRow>
+      <VRow dense>
         <VCol
           v-for="(eachUser, index) of userData.slice(3, 3 + 16)"
           :key="index"
@@ -144,10 +73,12 @@
                 {{ eachUser.nickName }}
               </div>
             </VCardTitle>
-            <VCardText>
+            <VCardText class="overline">
               EXP {{ eachUser.exp }}
               <br>
-              注册时间：{{ $timeFormat(eachUser.id.date,"YYYY-MM-DD HH:mm:ss") }}
+              <span class="caption">
+                注册时间：{{ $timeFormat(eachUser.id.date,"YYYY-MM-DD HH:mm:ss") }}
+              </span>
             </VCardText>
           </BiliobCard>
         </VCol>
@@ -156,7 +87,7 @@
         title="观想者"
         icon="mdi-chess-bishop"
       />
-      <VRow>
+      <VRow dense>
         <VCol
           v-for="(eachUser, index) of userData.slice(3 + 16, 3 + 16 + 50)"
           :key="index"
@@ -173,7 +104,7 @@
             <VCardTitle class="body-1 text-truncate">
               {{ eachUser.nickName }}
             </VCardTitle>
-            <VCardText class="caption">
+            <VCardText class="overline">
               EXP {{ eachUser.exp }}
               <br>
               {{ $timeFormat(eachUser.id.date, "YYYY-MM-DD") }}
@@ -185,7 +116,7 @@
         title="追寻者"
         icon="mdi-chess-rook"
       />
-      <VRow>
+      <VRow dense>
         <VCol
           v-for="(eachUser, index) of userData.slice(3 + 16 + 50, 100)"
           :key="index"
@@ -202,7 +133,7 @@
             <VCardTitle class="body-1 text-truncate">
               {{ eachUser.nickName }}
             </VCardTitle>
-            <VCardText class="caption">
+            <VCardText class="overline">
               EXP {{ eachUser.exp }}
               <br>
               {{ $timeFormat(eachUser.id.date, "YYYY-MM-DD") }}

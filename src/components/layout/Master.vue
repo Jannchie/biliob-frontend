@@ -347,7 +347,8 @@ export default {
       commentDom: undefined,
       sponsorDom: undefined,
       mainDom: undefined,
-      searchMenu: false
+      searchMenu: false,
+      user: this.$db.user
     };
   },
   computed: {
@@ -359,8 +360,14 @@ export default {
       }
     }
   },
-
   watch: {
+    user: {
+      deep: true,
+      handler(val, oldVal) {
+        this.credit = this.$db.user.credit;
+        this.exp = this.$db.user.exp;
+      }
+    },
     $route() {
       setTimeout(() => {
         let appTabSelect =
