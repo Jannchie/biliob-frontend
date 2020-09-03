@@ -40,7 +40,6 @@ export default {
 .theme--light.v-application {
   background-color: #f8f8f8;
 }
-
 .container {
   padding: 8px;
 }

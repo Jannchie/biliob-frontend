@@ -26,8 +26,7 @@
             {{ achievement.desc }}
             <span v-if="achievement.value != 0">
               （ 观测检定值
-              {{ $numberFormat(achievement.value, false, 0) }}）</span
-            >
+              {{ $numberFormat(achievement.value, false, 0) }}）</span>
           </div>
           <div
             class="text--disabled"
@@ -37,9 +36,9 @@
               achievement.date == undefined
                 ? "遥远的过去"
                 : $timeFormat(
-                    achievement.date.replace("+0000", ""),
-                    "YYYY-MM-DD HH:mm:ss"
-                  )
+                  achievement.date.replace("+0000", "+0800"),
+                  "YYYY-MM-DD HH:mm:ss"
+                )
             }}
           </div>
         </div>

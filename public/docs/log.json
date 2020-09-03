@@ -2618,5 +2618,41 @@
             }
         ],
         "type": "unimportant"
+    },
+    {
+        "title": "站娘",
+        "version": "ver.11.1.0",
+        "date": "2020-09-03",
+        "list": [
+            {
+                "text": "修复了FAQ的一个叙述错误",
+                "type": "fix"
+            },
+            {
+                "text": "修复了一个观测者议会的显示异常",
+                "type": "fix"
+            },
+            {
+                "text": "修复了UP主成就日期的显示异常",
+                "type": "fix"
+            },
+            {
+                "text": "改进了观测者排行的显示",
+                "type": "beautify"
+            },
+            {
+                "text": "添加了站娘",
+                "type": "beautify"
+            },
+            {
+                "text": "添加了观测者议会对各状态议题数量的展示",
+                "type": "feature"
+            },
+            {
+                "text": "优化了性能",
+                "type": "feature"
+            }
+        ],
+        "type": "important"
     }
 ]

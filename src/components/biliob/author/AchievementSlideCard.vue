@@ -1,5 +1,8 @@
 <template>
-  <BiliobSlideCard name="biliob-achievemnet" title="最近发生事件">
+  <BiliobSlideCard
+    name="biliob-achievemnet"
+    title="最近发生事件"
+  >
     <VCard
       v-for="(achievement, i) in $db.recentAchievement"
       :key="i"
@@ -8,13 +11,15 @@
       :to="`/author/${achievement.author.mid}`"
     >
       <VRow>
-        <VCol class="pr-0" cols="auto">
+        <VCol
+          class="pr-0"
+          cols="auto"
+        >
           <VAvatar size="60px">
             <VImg
               :alt="achievement.author.name"
               :src="zipPic(achievement.author.face)"
-            >
-            </VImg>
+            />
           </VAvatar>
         </VCol>
         <VCol class="caption text-truncate">
@@ -35,7 +40,7 @@
               class="text--disabled"
               style="overflow:hidden; text-overflow: ellipsis;"
             >
-              {{ $timeFormat(achievement.date, "YYYY-MM-DD") }}
+              {{ $timeFormat(achievement.date.replace("+0000","+0800"), "YYYY-MM-DD") }}
             </div>
           </div>
         </VCol>
