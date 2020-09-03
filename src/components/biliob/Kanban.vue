@@ -6,8 +6,8 @@
           v-if="show"
           key="kanban"
           style="position: fixed; min-width:600px; max-width:600px; opacity: 0.37"
-          lazy-src="../../../img/06-01.gif"
-          src="../../../img/06-01.gif"
+          lazy-src="../../../img/06-01.png"
+          src="../../../img/06-01.png"
           @click="click"
         />
       </VFadeTransition>
