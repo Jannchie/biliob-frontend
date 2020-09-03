@@ -208,6 +208,55 @@
                       反对：{{ $numberFormat(agenda.againstScore) }}({{ agenda.againstCount }}人)
                     </VCol>
                   </VRow>
+                  <VRow
+                    v-if="$db.user.role == '站长'"
+                    dense
+                  >
+                    <VCol cols="3">
+                      <VBtn
+                        block
+                        color="primary"
+                        tile
+                        outlined
+                        @click="modifyState(agenda.id,0)"
+                      >
+                        等待
+                      </VBtn>
+                    </VCol>
+                    <VCol cols="3">
+                      <VBtn
+                        block
+                        color="primary"
+                        tile
+                        outlined
+                        @click="modifyState(agenda.id,3)"
+                      >
+                        处理
+                      </VBtn>
+                    </VCol>
+                    <VCol cols="3">
+                      <VBtn
+                        block
+                        color="primary"
+                        tile
+                        outlined
+                        @click="modifyState(agenda.id,1)"
+                      >
+                        完成
+                      </VBtn>
+                    </VCol>
+                    <VCol cols="3">
+                      <VBtn
+                        block
+                        color="primary"
+                        tile
+                        outlined
+                        @click="modifyState(agenda.id,2)"
+                      >
+                        丢弃
+                      </VBtn>
+                    </VCol>
+                  </VRow>
                   <VRow dense>
                     <VCol :cols="Math.round( agenda.favorCount / (agenda.againstCount +agenda.favorCount) * 6)">
                       <VBtn
@@ -434,6 +483,9 @@ export default {
         //   20
         // );
       });
+    },
+    modifyState(id, state) {
+      this.axios.put(`/agenda/${id}/state/${state}`);
     },
     postOpinion(opinion, id) {
       this.axios.post(`/agenda/${id}/${opinion}`).then((r) => {
