@@ -185,7 +185,7 @@
                     </VCol>
                   </VRow>
                   <VRow dense>
-                    <VCol :cols="( agenda.favorCount / (agenda.againstCount +agenda.favorCount) * 6).toFixed(0)">
+                    <VCol :cols="Math.round( agenda.favorCount / (agenda.againstCount +agenda.favorCount) * 6)">
                       <VBtn
                         block
                         color="success"
@@ -217,7 +217,7 @@
                         </span>
                       </VBtn>
                     </VCol>
-                    <VCol :cols="(9 - agenda.favorCount / (agenda.againstCount + agenda.favorCount) * 6).toFixed(0)">
+                    <VCol :cols="Math.round(9 - agenda.favorCount / (agenda.againstCount + agenda.favorCount) * 6)">
                       <VBtn
                         color="error"
                         block
