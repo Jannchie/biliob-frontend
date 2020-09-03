@@ -40,7 +40,7 @@
             <VCardTitle>
               {{ eachUser.nickName }}
             </VCardTitle>
-            <VCardText class="overline">
+            <VCardText class="caption">
               EXP {{ eachUser.exp }}
               <br>
               <span class="caption">
@@ -73,7 +73,7 @@
                 {{ eachUser.nickName }}
               </div>
             </VCardTitle>
-            <VCardText class="overline">
+            <VCardText class="caption">
               EXP {{ eachUser.exp }}
               <br>
               <span class="caption">
@@ -104,7 +104,7 @@
             <VCardTitle class="body-1 text-truncate">
               {{ eachUser.nickName }}
             </VCardTitle>
-            <VCardText class="overline">
+            <VCardText class="caption">
               EXP {{ eachUser.exp }}
               <br>
               {{ $timeFormat(eachUser.id.date, "YYYY-MM-DD") }}
@@ -133,7 +133,7 @@
             <VCardTitle class="body-1 text-truncate">
               {{ eachUser.nickName }}
             </VCardTitle>
-            <VCardText class="overline">
+            <VCardText class="caption">
               EXP {{ eachUser.exp }}
               <br>
               {{ $timeFormat(eachUser.id.date, "YYYY-MM-DD") }}
