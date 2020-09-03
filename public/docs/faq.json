@@ -64,8 +64,8 @@
                         "<span class='red--text'>管理者</span>：Exp全站前3名",
                         "<span class='orange--text'>观测者</span>：Exp全站前4-19名",
                         "<span class='purple--text'>观想者</span>：Exp全站前20-70名",
-                        "<span class='blue--text'>追寻者</span>：Exp全站前20%，且名次在70名之后",
-                        "<span class='green--text'>彷徨者</span>：Exp全站后80%，且Exp > 100",
+                        "<span class='blue--text'>追寻者</span>：Exp全站前5%，且名次在70名之后",
+                        "<span class='green--text'>彷徨者</span>：Exp全站后95%，且Exp > 100",
                         "<span class='grey--text'>初心者</span>：Exp小于等于100"
                     ]
                 }
