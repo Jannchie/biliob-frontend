@@ -2,9 +2,9 @@
   <VContainer>
     <VRow dense>
       <VCol cols="12">
-        <VSheet>
+        <div>
           <h3 class="caption primary--text">
-            赞助者 / sponsors
+            赞助 / SPONSORS
           </h3>
           <VChip
             label
@@ -34,33 +34,32 @@
             </VIcon>
             {{ sort == 0 ? "时间" : "总额" }}顺序
           </VChip>
-        </VSheet>
+        </div>
         <VDivider />
         <VFadeTransition
           group
           mode="out-in"
         >
-          <VSheet
+          <div
             v-for="(eachSponsor, i) in sponsor"
             :key="`${i}${eachSponsor.user.name}`"
           >
             <h4
+              class="text--secondary"
               style="
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
+                white-space: nowrap;overflow: hidden;text-overflow: ellipsis;
               "
             >
               {{ eachSponsor.user.name }}
             </h4>
-            <h5 class="caption">
+            <h5 class="text--disabled caption">
               累计支援 {{ eachSponsor.orderPrice / 100 }} ￥
             </h5>
-            <h5 class="caption">
+            <h5 class="text--disabled caption">
               {{ $timeFormat(eachSponsor.createDate, "MM-DD HH:mm") }}
             </h5>
             <VDivider />
-          </VSheet>
+          </div>
         </VFadeTransition>
       </VCol>
     </VRow>
