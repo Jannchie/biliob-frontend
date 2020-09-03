@@ -17,8 +17,8 @@ function scrollAnimation(value, targetID) {
   let count = 0;
   let int = setInterval(() => {
     let delta = Math.abs(document.getElementById(targetID).scrollLeft - target);
-    if (delta > Math.abs(value / 100) && count++ < 100) {
-      document.getElementById(targetID).scrollLeft += value / 100;
+    if (delta > Math.abs(value / 10) && count++ < 10) {
+      document.getElementById(targetID).scrollLeft += value / 10;
     } else {
       document.getElementById(targetID).scrollLeft = target;
       clearInterval(int);

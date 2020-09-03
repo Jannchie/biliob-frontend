@@ -3,6 +3,7 @@ import "babel-polyfill";
 import "@mdi/font/css/materialdesignicons.css"; // Ensure you are using css-loader
 import Vue from "vue";
 import "./echarts";
+import addEvent from "./util/add-event";
 const App = () => import("./App.vue");
 import router from "./router";
 import store from "./store";
@@ -60,7 +61,7 @@ router.afterEach(function (to) {
 });
 Vue.use(EmojiPicker);
 Vue.use(VueRouter);
-
+Vue.prototype.$addEvent = addEvent
 Vue.prototype.$baseKeywords =
   "B站,b站数据统计,b站数据分析,bilibili排行榜,哔哩哔哩up主,up主排行,数据,观测者,视频,见齐,biliob,bilibili,UP主,粉丝数,粉丝数排行榜,数据可视化,哔哩哔哩,哔哩哔哩观测者,哔哩哔哩ob,bilibiliob";
 // 使用axios
