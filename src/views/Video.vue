@@ -7,8 +7,15 @@
         :aid="videoData.aid"
         :pic="videoData.pic"
       />
-      <VideoDetailRank slot="rank" v-bind="rank"></VideoDetailRank>
-      <DetailCharts slot="main" title="视频详细历史数据" :options="mainChart" />
+      <VideoDetailRank
+        slot="rank"
+        v-bind="rank"
+      />
+      <DetailCharts
+        slot="main"
+        title="视频详细历史数据"
+        :options="mainChart"
+      />
       <DetailCharts
         v-if="hasDanmakuAggregate"
         slot="danmaku-density"
@@ -41,12 +48,15 @@
               `<span>选择分P</span><span style='float: right'>更新时间: ${danmakuUpdateTime}</span>`
             "
             @change="pageChange"
-          ></VSelect>
+          />
         </div>
       </MaterialCard>
     </VideoMain>
     <VideoAside slot="aside-cards">
-      <AuthorInfo slot="author-operation" :author-data="authorData" />
+      <AuthorInfo
+        slot="author-operation"
+        :author-data="authorData"
+      />
       <AuthorVideo
         slot="other-video"
         title="UP主其他已追踪视频"

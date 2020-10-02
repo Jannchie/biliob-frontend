@@ -1,9 +1,16 @@
 <template>
-  <VCard dense tile>
+  <VCard
+    dense
+    tile
+  >
     <VCardTitle class="py-0">
-      <BiliobUserInfo v-if="comment.user != undefined" :user="comment.user">
-      </BiliobUserInfo>
-      <h6 v-else>{{ comment.user }}:</h6>
+      <BiliobUserInfo
+        v-if="comment.user != undefined"
+        :user="comment.user"
+      />
+      <h6 v-else>
+        {{ comment.user }}:
+      </h6>
     </VCardTitle>
     <VCardText class="caption pb-1">
       {{ $timeFormat(comment.date, "YYYY-MM-DD HH:mm:ss") }}
@@ -12,8 +19,7 @@
       style="white-space: pre-line;"
       class="subheading py-0"
       v-text="getEmoji($keywordFilter(comment.content))"
-    >
-    </VCardText>
+    />
 
     <VCardActions class="caption pt-0">
       <VRow no-gutters>
@@ -27,7 +33,12 @@
             color="grey"
             @click.stop="openReplies"
           >
-            <VIcon small left>mdi-message-reply-text</VIcon>
+            <VIcon
+              small
+              left
+            >
+              mdi-message-reply-text
+            </VIcon>
             {{ comment.replies == undefined ? 0 : comment.replies.length }}
           </VBtn>
           <VBtn
@@ -39,19 +50,44 @@
             color="grey"
             @click.stop="postLike(comment.commentId)"
           >
-            <VIcon small left>mdi-heart-multiple-outline</VIcon>
+            <VIcon
+              small
+              left
+            >
+              mdi-heart-multiple-outline
+            </VIcon>
             {{ comment.like }}
           </VBtn>
-          <VBtn v-else small text label class="ma-2" color="red">
-            <VIcon small color="alert" left>mdi-heart-multiple</VIcon>
+          <VBtn
+            v-else
+            small
+            text
+            label
+            class="ma-2"
+            color="red"
+          >
+            <VIcon
+              small
+              color="alert"
+              left
+            >
+              mdi-heart-multiple
+            </VIcon>
             {{ comment.like }}
           </VBtn>
         </VCol>
-        <VSpacer></VSpacer>
+        <VSpacer />
         <VCol cols="auto">
           <VMenu offset-y>
             <template v-slot:activator="{ on }">
-              <VBtn class="ma-2" small text color="primary" dark v-on="on">
+              <VBtn
+                class="ma-2"
+                small
+                text
+                color="primary"
+                dark
+                v-on="on"
+              >
                 <VIcon>
                   mdi-dots-horizontal-circle-outline
                 </VIcon>
@@ -70,11 +106,16 @@
                 @click="deleteComment"
               >
                 <VListItemIcon>
-                  <VIcon small color="red">
+                  <VIcon
+                    small
+                    color="red"
+                  >
                     mdi-close
                   </VIcon>
                 </VListItemIcon>
-                <VListItemTitle class="red--text">删除</VListItemTitle>
+                <VListItemTitle class="red--text">
+                  删除
+                </VListItemTitle>
               </VListItem>
             </VList>
           </VMenu>

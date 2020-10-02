@@ -6,8 +6,9 @@
     label
     outlined
     :color="`${showColor} lighten-2`"
-    >{{ displayText }}</VChip
   >
+    {{ displayText }}
+  </VChip>
 </template>
 
 <script>

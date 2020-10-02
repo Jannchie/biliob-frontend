@@ -1,19 +1,34 @@
 <template>
   <VFadeTransition mode="out-in">
-    <VLayout v-if="loaded" wrap>
-      <VFlex lg4 md12 xs12>
+    <VLayout
+      v-if="loaded"
+      wrap
+    >
+      <VFlex
+        lg4
+        md12
+        xs12
+      >
         <MaterialTracerCrawlCard
           title="作者爬虫运行状况"
           :value="authorCrawlLength"
-        ></MaterialTracerCrawlCard>
+        />
       </VFlex>
-      <VFlex lg4 xs12 md12>
+      <VFlex
+        lg4
+        xs12
+        md12
+      >
         <MaterialTracerCrawlCard
           title="视频爬虫运行状况"
           :value="videoCrawlLength"
-        ></MaterialTracerCrawlCard>
+        />
       </VFlex>
-      <VFlex lg4 xs12 md12>
+      <VFlex
+        lg4
+        xs12
+        md12
+      >
         <MaterialProgressCard
           :hidden="progressColor == ''"
           :title="`${progressTask.task_name}`"
@@ -23,9 +38,13 @@
           sub-icon="mdi-calendar"
           :sub-text-color="progressColor"
           :color="progressColor"
-        ></MaterialProgressCard>
+        />
       </VFlex>
-      <VFlex lg3 xs12 md12>
+      <VFlex
+        lg3
+        xs12
+        md12
+      >
         <MaterialStatsCard
           :value="userCount"
           title="观测者总数"
@@ -34,9 +53,13 @@
           small-value="人"
           color="info"
           :sub-text="currentDate"
-        ></MaterialStatsCard>
+        />
       </VFlex>
-      <VFlex lg3 xs12 md12>
+      <VFlex
+        lg3
+        xs12
+        md12
+      >
         <MaterialStatsCard
           :value="checkedInCount"
           title="8小时内签到用户数"
@@ -45,9 +68,13 @@
           small-value="人"
           sub-icon="mdi-calendar-blank"
           :sub-text="currentDate"
-        ></MaterialStatsCard>
+        />
       </VFlex>
-      <VFlex lg3 md12 xs12>
+      <VFlex
+        lg3
+        md12
+        xs12
+      >
         <MaterialStatsCard
           :value="recordCount"
           title="观测者有效操作数"
@@ -56,9 +83,13 @@
           small-value="次"
           sub-icon="mdi-calendar-blank"
           :sub-text="currentDate"
-        ></MaterialStatsCard>
+        />
       </VFlex>
-      <VFlex lg3 md12 xs12>
+      <VFlex
+        lg3
+        md12
+        xs12
+      >
         <MaterialStatsCard
           value="计划任务系统"
           title="存在检测"
@@ -68,19 +99,31 @@
           sub-icon="mdi-check-circle"
           sub-text="正常运行中..."
           sub-text-color="green"
-        ></MaterialStatsCard>
+        />
       </VFlex>
-      <VFlex lg4 md12 xs12>
+      <VFlex
+        lg4
+        md12
+        xs12
+      >
         <MaterialChartCard :options="userOptions">
           <h4>用户经验值分布</h4>
         </MaterialChartCard>
       </VFlex>
-      <VFlex lg4 md12 xs12>
+      <VFlex
+        lg4
+        md12
+        xs12
+      >
         <MaterialChartCard :options="signInOptions">
           <h4>每月注册用户增量</h4>
         </MaterialChartCard>
       </VFlex>
-      <VFlex lg4 md12 xs12>
+      <VFlex
+        lg4
+        md12
+        xs12
+      >
         <MaterialChartCard :options="checkInOptions">
           <h4>每周活跃注册用户数</h4>
         </MaterialChartCard>

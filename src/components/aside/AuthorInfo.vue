@@ -6,8 +6,15 @@
         :author-data="authorData"
         class="focus-btn"
       />
-      <VAvatar size="70" @click.stop="toAuthor()">
-        <img height="40px" width="40px" :src="zipPic(authorData.face)" />
+      <VAvatar
+        size="70"
+        @click.stop="toAuthor()"
+      >
+        <img
+          height="40px"
+          width="40px"
+          :src="zipPic(authorData.face)"
+        >
       </VAvatar>
       <div class="ml-2">
         <h4 class="subtitle-1 grey--text font-weight-bold ">
@@ -18,9 +25,14 @@
             style="vertical-align: text-bottom;"
             :level="authorData.level"
           />
-          <SexIcon style="vertical-align: text-bottom;" :sex="authorData.sex" />
+          <SexIcon
+            style="vertical-align: text-bottom;"
+            :sex="authorData.sex"
+          />
         </h4>
-        <h6 class="caption text--grey">粉丝数:{{ authorData.cFans }}</h6>
+        <h6 class="caption text--grey">
+          粉丝数:{{ authorData.cFans }}
+        </h6>
         <div>
           {{ authorData.official }}
         </div>

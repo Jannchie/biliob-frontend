@@ -1,19 +1,34 @@
 <template>
   <VCard class="admin-card">
-    <VCard dark :color="color" class="offset-stats">
-      <VIcon size="44px" class="ma-4">{{ icon }}</VIcon>
+    <VCard
+      dark
+      :color="color"
+      class="offset-stats"
+    >
+      <VIcon
+        size="44px"
+        class="ma-4"
+      >
+        {{ icon }}
+      </VIcon>
     </VCard>
     <div class="ma-4 text-right caption grey--text stats-card-aside">
       {{ title }}
       <div>
-        <span class="black--text headline mx-1">{{ value }}</span
-        >{{ smallValue }}
+        <span class="black--text headline mx-1">{{ value }}</span>{{ smallValue }}
       </div>
     </div>
-    <div style="padding-top:76px" class="px-4 pb-4">
+    <div
+      style="padding-top:76px"
+      class="px-4 pb-4"
+    >
       <VDivider class="pb-2" />
-      <VIcon color="grey" small>{{ subIcon }}</VIcon
-      ><span class="grey--text caption mx-2">{{ subText }}</span>
+      <VIcon
+        color="grey"
+        small
+      >
+        {{ subIcon }}
+      </VIcon><span class="grey--text caption mx-2">{{ subText }}</span>
     </div>
   </VCard>
 </template>

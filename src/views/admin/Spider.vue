@@ -1,7 +1,10 @@
 <template>
   <VContainer>
     <VRow>
-      <VCol cols="12" lg="4">
+      <VCol
+        cols="12"
+        lg="4"
+      >
         <AdminStatsCard
           :value="spiderTasks.length"
           title="正在爬取爬虫数"
@@ -11,37 +14,52 @@
           sub-text="正常运行中..."
           sub-text-color="green"
           color="green"
-        ></AdminStatsCard>
+        />
       </VCol>
-      <VCol cols="12" lg="4">
+      <VCol
+        cols="12"
+        lg="4"
+      >
         <AdminCrawlCard
           title="作者爬虫运行状况"
           :value="authorListLength"
-        ></AdminCrawlCard>
+        />
       </VCol>
-      <VCol cols="12" lg="4">
+      <VCol
+        cols="12"
+        lg="4"
+      >
         <AdminCrawlCard
           title="视频爬虫运行状况"
           :value="videoListLength"
-        ></AdminCrawlCard
-      ></VCol>
+        />
+      </VCol>
     </VRow>
-    <VRow
-      ><VCol>
+    <VRow>
+      <VCol>
         <BiliobCard
           title="运行中爬虫详细信息"
           text="此处显示的是目前正在运行中的爬虫状态"
           border="bottom"
           light
         >
-          <VDataTable :headers="headers" :items="spiderTasks">
-            <template slot="headerCell" slot-scope="{ header }">
+          <VDataTable
+            :headers="headers"
+            :items="spiderTasks"
+          >
+            <template
+              slot="headerCell"
+              slot-scope="{ header }"
+            >
               <span
                 class="subheading font-weight-light text-success "
                 v-text="header.text"
               />
             </template>
-            <template slot="items" slot-scope="{ item }">
+            <template
+              slot="items"
+              slot-scope="{ item }"
+            >
               <td>{{ item.taskName }}</td>
               <td>{{ item.computerName }}</td>
               <td>{{ item.crawlCount }}</td>

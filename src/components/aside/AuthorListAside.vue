@@ -18,8 +18,7 @@
           <span
             class="white--text px-1 "
             style="background-color:#FF5722;border-radius:2px;margin-right:5px"
-            >保守观测</span
-          >
+          >保守观测</span>
           变化幅度太小的UP主数据将停止更新，但可以手动刷新。
         </li>
         <li>
@@ -30,12 +29,15 @@
             提高频率
           </span>
           消耗200积分，可以将观测间隔锁定在3小时以内。
-          <br />
+          <br>
           注意，该观测频率为理论最大值，实际观测频率与爬虫队列长度有关。
         </li>
       </div>
     </BiliobCard>
-    <MaterialChartCard :options="options" class="body-1">
+    <MaterialChartCard
+      :options="options"
+      class="body-1"
+    >
       <p>收录UP主总数 {{ count }}</p>
       <p>正在观测UP主总数 {{ focusCount }}</p>
       <p>强行观测UP主总数 {{ forceFocusCount }}</p>

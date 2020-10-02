@@ -1,5 +1,9 @@
 <template>
-  <BiliobCard v-bind="$attrs" class="v-card--material-stats" v-on="$listeners">
+  <BiliobCard
+    v-bind="$attrs"
+    class="v-card--material-stats"
+    v-on="$listeners"
+  >
     <VCard
       slot="offset"
       :class="`elevation-${elevation}`"
@@ -12,7 +16,10 @@
       </VIcon>
     </VCard>
     <div class="text-xs-right">
-      <p class="category grey--text font-weight-light" v-text="title" />
+      <p
+        class="category grey--text font-weight-light"
+        v-text="title"
+      />
       <h3 class="title display-1 font-weight-light">
         {{ value }} <small>{{ smallValue }}</small>
       </h3>
@@ -23,7 +30,11 @@
     </VCardText>
 
     <template slot="actions">
-      <VIcon :color="subIconColor" size="20" class="mr-2">
+      <VIcon
+        :color="subIconColor"
+        size="20"
+        class="mr-2"
+      >
         {{ subIcon }}
       </VIcon>
       <span

@@ -1,8 +1,14 @@
 <template>
   <VContainer>
-    <VRow v-if="loading" dense>
+    <VRow
+      v-if="loading"
+      dense
+    >
       <VCol>
-        <VSkeletonLoader class="elevation-1" type="card"></VSkeletonLoader>
+        <VSkeletonLoader
+          class="elevation-1"
+          type="card"
+        />
       </VCol>
     </VRow>
     <VRow dense>
@@ -11,28 +17,34 @@
         :key="author.mid"
         cols="12"
       >
-        <BiliobAuthorInfoCard :author="author"></BiliobAuthorInfoCard>
+        <BiliobAuthorInfoCard :author="author" />
       </VCol>
-      <VCol cols="6"
-        ><VBtn
+      <VCol
+        cols="6"
+      >
+        <VBtn
           :disabled="page == 0"
           color="primary"
           block
           outlined
           @click.stop="page--"
-          >上一页</VBtn
-        ></VCol
+        >
+          上一页
+        </VBtn>
+      </VCol>
+      <VCol
+        cols="6"
       >
-      <VCol cols="6"
-        ><VBtn
+        <VBtn
           :disabled="last"
           color="primary"
           block
           outlined
           @click.stop="page++"
-          >下一页</VBtn
-        ></VCol
-      >
+        >
+          下一页
+        </VBtn>
+      </VCol>
     </VRow>
   </VContainer>
 </template>

@@ -1,7 +1,10 @@
 <template>
   <VLayout wrap>
     <VFlex lg9>
-      <BiliobCard title="查询条件" subtitle="高级查询可能会消耗较多时间">
+      <BiliobCard
+        title="查询条件"
+        subtitle="高级查询可能会消耗较多时间"
+      >
         <VForm>
           <VLayout wrap>
             <VFlex lg4>
@@ -9,19 +12,20 @@
                 v-model="matchField"
                 label="根据字段筛选"
                 :items="matchFields"
-              >
-              </VSelect>
+              />
             </VFlex>
             <VFlex lg4>
               <VSelect
                 v-model="matchMethod"
                 label="筛选方式"
                 :items="matchMethods"
-              >
-              </VSelect>
+              />
             </VFlex>
             <VFlex lg4>
-              <VTextField v-model="matchValue" label="筛选值"></VTextField>
+              <VTextField
+                v-model="matchValue"
+                label="筛选值"
+              />
             </VFlex>
 
             <VFlex lg3>
@@ -29,16 +33,14 @@
                 v-model="groupByField"
                 label="根据日期聚合"
                 :items="groupByFields"
-              >
-              </VSelect>
+              />
             </VFlex>
             <VFlex lg3>
               <VSelect
                 v-model="groupReference"
                 label="聚合查询字段"
                 :items="groupReferences"
-              >
-              </VSelect>
+              />
             </VFlex>
 
             <VFlex lg3>
@@ -46,28 +48,48 @@
                 v-model="groupKeyword"
                 label="聚合方式"
                 :items="groupKeywords"
-              >
-              </VSelect>
+              />
             </VFlex>
 
             <VFlex lg3>
-              <VSelect v-model="bucket" label="分桶统计" :items="buckets">
-              </VSelect>
+              <VSelect
+                v-model="bucket"
+                label="分桶统计"
+                :items="buckets"
+              />
             </VFlex>
             <VFlex lg10>
-              <VSelect v-model="orderBy" label="根据字段排序" :items="orderBys">
-              </VSelect>
+              <VSelect
+                v-model="orderBy"
+                label="根据字段排序"
+                :items="orderBys"
+              />
             </VFlex>
 
             <VFlex lg2>
-              <VRadioGroup v-model="sort" :column="false">
-                <VRadio :key="1" :label="`升序`" :value="1"></VRadio>
-                <VRadio :key="2" :label="`降序`" :value="-1"></VRadio>
+              <VRadioGroup
+                v-model="sort"
+                :column="false"
+              >
+                <VRadio
+                  :key="1"
+                  :label="`升序`"
+                  :value="1"
+                />
+                <VRadio
+                  :key="2"
+                  :label="`降序`"
+                  :value="-1"
+                />
               </VRadioGroup>
             </VFlex>
 
             <VFlex lg6>
-              <VBtn dark color="primary" @click.stop="submit">
+              <VBtn
+                dark
+                color="primary"
+                @click.stop="submit"
+              >
                 <VIcon>mdi-account-search-outline</VIcon>提交查询
               </VBtn>
             </VFlex>
@@ -75,31 +97,60 @@
               <VTextField
                 v-model="searchMethodName"
                 label="查询命名"
-              ></VTextField>
+              />
             </VFlex>
             <VFlex lg2>
-              <VBtn :disabled="searchMethodName == ''" @click.stop="save">
+              <VBtn
+                :disabled="searchMethodName == ''"
+                @click.stop="save"
+              >
                 <VIcon>mdi-content-save</VIcon>保存查询
               </VBtn>
             </VFlex>
           </VLayout>
         </VForm>
       </BiliobCard>
-      <BiliobCard title="用户检索" text="此处显示全部用户信息">
-        <VDataTable :headers="headers" :items="userItems" hide-actions>
-          <template slot="headerCell" slot-scope="{ header }" color="primary">
+      <BiliobCard
+        title="用户检索"
+        text="此处显示全部用户信息"
+      >
+        <VDataTable
+          :headers="headers"
+          :items="userItems"
+          hide-actions
+        >
+          <template
+            slot="headerCell"
+            slot-scope="{ header }"
+            color="primary"
+          >
             <span
               class="subheading font-weight-light text--primary "
               v-text="header.text"
             />
           </template>
-          <template slot="items" slot-scope="{ item }">
-            <td v-if="!group && !isBucket">{{ check(item.name) }}</td>
-            <td v-if="!group && !isBucket">{{ check(item.credit) }}</td>
-            <td v-if="!group && !isBucket">{{ check(item.exp) }}</td>
-            <td v-if="!group && !isBucket">{{ check(item.mail) }}</td>
-            <td v-if="!group && !isBucket">{{ check(item._id.date) }}</td>
-            <td v-if="!group && !isBucket">{{ check(item.role) }}</td>
+          <template
+            slot="items"
+            slot-scope="{ item }"
+          >
+            <td v-if="!group && !isBucket">
+              {{ check(item.name) }}
+            </td>
+            <td v-if="!group && !isBucket">
+              {{ check(item.credit) }}
+            </td>
+            <td v-if="!group && !isBucket">
+              {{ check(item.exp) }}
+            </td>
+            <td v-if="!group && !isBucket">
+              {{ check(item.mail) }}
+            </td>
+            <td v-if="!group && !isBucket">
+              {{ check(item._id.date) }}
+            </td>
+            <td v-if="!group && !isBucket">
+              {{ check(item.role) }}
+            </td>
             <td v-if="!group && !isBucket">
               <VBtn
                 v-if="item.role != '管理员'"
@@ -118,17 +169,27 @@
                 取消管理员权限
               </VBtn>
             </td>
-            <td v-if="group && !isBucket">{{ check(item._id) }}</td>
+            <td v-if="group && !isBucket">
+              {{ check(item._id) }}
+            </td>
             <td v-if="group && !isBucket && groupKeyword == 'sum'">
               {{ check(item.sum) }}
             </td>
             <td v-if="group && !isBucket && groupKeyword == 'avg'">
               {{ check(item.avg) }}
             </td>
-            <td v-if="isBucket">{{ check(item.min) }}</td>
-            <td v-if="isBucket">{{ check(item.max) }}</td>
-            <td v-if="group || isBucket">{{ check(item.count) }}</td>
-            <td v-if="group && groupKeyword == 'avg'">{{ check(item.avg) }}</td>
+            <td v-if="isBucket">
+              {{ check(item.min) }}
+            </td>
+            <td v-if="isBucket">
+              {{ check(item.max) }}
+            </td>
+            <td v-if="group || isBucket">
+              {{ check(item.count) }}
+            </td>
+            <td v-if="group && groupKeyword == 'avg'">
+              {{ check(item.avg) }}
+            </td>
           </template>
         </VDataTable>
       </BiliobCard>
@@ -150,12 +211,16 @@
               </VListItemSubtitle>
             </VListItemContent>
             <VListItemAction>
-              <VBtn icon ripple>
+              <VBtn
+                icon
+                ripple
+              >
                 <VIcon
                   color="red darken-1"
                   @click="removeMethod(eachSearchMethod)"
-                  >mdi-delete-circle</VIcon
                 >
+                  mdi-delete-circle
+                </VIcon>
               </VBtn>
             </VListItemAction>
           </VListItem>

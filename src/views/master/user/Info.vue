@@ -1,8 +1,19 @@
 <template>
-  <BiliobCard title="个人信息" light border="bottom ">
-    <VDialog v-model="dialog" persistent max-width="500">
+  <BiliobCard
+    title="个人信息"
+    light
+    border="bottom "
+  >
+    <VDialog
+      v-model="dialog"
+      persistent
+      max-width="500"
+    >
       <VCard>
-        <VCardTitle class="headline grey lighten-2" primary-title>
+        <VCardTitle
+          class="headline grey lighten-2"
+          primary-title
+        >
           {{ type }}
         </VCardTitle>
 
@@ -17,7 +28,7 @@
                 required
                 :rules="[rules.required, rules.max]"
                 @keyup.enter="submit"
-              ></VTextField>
+              />
             </VCol>
           </VRow>
         </VCardText>
@@ -31,22 +42,30 @@
                 :counter="20"
                 required
                 :rules="[rules.required, rules.max]"
-              ></VTextField>
+              />
 
               <BiliobActiveCodeTextField
                 v-model="activationCode"
                 :mail="newMail"
-              ></BiliobActiveCodeTextField>
+              />
             </VCol>
           </VRow>
         </VCardText>
-        <VDivider></VDivider>
+        <VDivider />
         <VCardActions>
-          <div class="flex-grow-1"></div>
-          <VBtn color="primary" text @click.native.prevent="dialog = false">
+          <div class="flex-grow-1" />
+          <VBtn
+            color="primary"
+            text
+            @click.native.prevent="dialog = false"
+          >
             取消操作
           </VBtn>
-          <VBtn color="primary" dark @click.native.prevent="submit()">
+          <VBtn
+            color="primary"
+            dark
+            @click.native.prevent="submit()"
+          >
             确认修改
           </VBtn>
         </VCardActions>
@@ -63,7 +82,7 @@
             label="头衔"
             messages="根据观测者经验值计算得出"
             required
-          ></VTextField>
+          />
         </VCol>
       </VRow>
       <VRow>
@@ -76,7 +95,7 @@
             label="用户名"
             messages="登陆凭证之一，不可修改。"
             required
-          ></VTextField>
+          />
         </VCol>
       </VRow>
       <VRow>
@@ -90,7 +109,7 @@
             required
             append-outer-icon="mdi-rename-box"
             @click:append-outer="changeNickName"
-          ></VTextField>
+          />
         </VCol>
       </VRow>
       <VRow>
@@ -104,8 +123,7 @@
             required
             append-outer-icon="mdi-rename-box"
             @click:append-outer="changeEmail"
-          >
-          </VTextField>
+          />
         </VCol>
       </VRow>
     </VContainer>

@@ -29,9 +29,10 @@
                     text-color="white font-weight-bold"
                     color="primary"
                     class="mr-2 "
-                    >{{ $numberFormat(author.count, false) }}</VChip
-                  >{{ author.name }}</VChip
-                >
+                  >
+                    {{ $numberFormat(author.count, false) }}
+                  </VChip>{{ author.name }}
+                </VChip>
               </VCol>
             </BiliobSlide>
           </VCardText>
@@ -41,7 +42,10 @@
     <VRow dense>
       <VCol>
         <VCard>
-          <VTabs background-color="transparent" slider-color="primary">
+          <VTabs
+            background-color="transparent"
+            slider-color="primary"
+          >
             <VTab @click="sortChange(0)">
               <VIcon>
                 mdi-account-heart
@@ -85,13 +89,15 @@
             dense
           >
             <VCol cols="12">
-              <BiliobAuthorInfoCard :author="eachAuthor">
-              </BiliobAuthorInfoCard>
+              <BiliobAuthorInfoCard :author="eachAuthor" />
             </VCol>
           </VRow>
         </VSlideYTransition>
       </VCol>
-      <VCol v-if="!notFound" cols="12">
+      <VCol
+        v-if="!notFound"
+        cols="12"
+      >
         <VBtn
           block
           outlined
@@ -100,14 +106,19 @@
           :disabled="nextBtnDisabled"
           tile
           @click.stop="next"
-          >{{ nextBtnText }}</VBtn
         >
+          {{ nextBtnText }}
+        </VBtn>
       </VCol>
 
-      <VCol v-else cols="12">
+      <VCol
+        v-else
+        cols="12"
+      >
         <h4 class="primary--text">
-          <VIcon class="primary--text">mdi-ship-wheel</VIcon
-          >抱歉！什么都没有找到QwQ
+          <VIcon class="primary--text">
+            mdi-ship-wheel
+          </VIcon>抱歉！什么都没有找到QwQ
         </h4>
         <p>
           搜索功能可能并不完善，为了精确搜索请在上方输入相关UP主的ID！

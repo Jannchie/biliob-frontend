@@ -1,5 +1,9 @@
 <template>
-  <BiliobCard light border="bottom" title="UP主排名数据">
+  <BiliobCard
+    light
+    border="bottom"
+    title="UP主排名数据"
+  >
     <div class="rank-container">
       <div style="flex-grow: 1;text-align:center">
         <div class="rank-title caption  grey--text">
@@ -8,7 +12,7 @@
         <div class="rank-value py-1 caption  font-weight-black primary--text ">
           {{ fansInfo }}
         </div>
-        <ChevronBudget :value="dFansRank"></ChevronBudget>
+        <ChevronBudget :value="dFansRank" />
       </div>
       <div style="flex-grow: 1;text-align:center">
         <div class="rank-title caption  grey--text">
@@ -17,7 +21,7 @@
         <div class="rank-value py-1 caption font-weight-black primary--text ">
           {{ archiveInfo }}
         </div>
-        <ChevronBudget :value="dArchiveViewRank"></ChevronBudget>
+        <ChevronBudget :value="dArchiveViewRank" />
       </div>
       <div style="flex-grow: 1;text-align:center">
         <div class="rank-title caption  grey--text">
@@ -26,7 +30,7 @@
         <div class="rank-value py-1 caption font-weight-black primary--text ">
           {{ likeInfo }}
         </div>
-        <ChevronBudget :value="dLikeRank"></ChevronBudget>
+        <ChevronBudget :value="dLikeRank" />
       </div>
       <div style="flex-grow: 1;text-align:center">
         <div class="rank-title caption  grey--text">
@@ -35,7 +39,7 @@
         <div class="rank-value py-1 caption font-weight-black primary--text ">
           {{ articleInfo }}
         </div>
-        <ChevronBudget :value="dArticleViewRank"></ChevronBudget>
+        <ChevronBudget :value="dArticleViewRank" />
       </div>
     </div>
     <div

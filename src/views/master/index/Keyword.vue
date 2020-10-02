@@ -8,14 +8,16 @@
         :height="300"
         :options="options"
       />
-      <BiliobCard v-else title="提示">
+      <BiliobCard
+        v-else
+        title="提示"
+      >
         <VCardTitle>
           <h2 class="primary--text">
             未能找到关键词为「
-            <span class="error--text">{{ $route.params.keyword }}</span
-            >」的指数
-          </h2></VCardTitle
-        >
+            <span class="error--text">{{ $route.params.keyword }}</span>」的指数
+          </h2>
+        </VCardTitle>
         <VCardText>
           这可能是因为该关键词的出现频率过低，或是未完全抓取到相关视频条目。
         </VCardText>

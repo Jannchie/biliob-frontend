@@ -1,9 +1,23 @@
 <template>
   <div>
-    <BiliobCard :text="subTitle" :color="color">
-      <BiliobDarkInfo slot="offset" light :elevation="0" border="bottom">
-        <slot v-if="$slots.header" name="header"></slot>
-        <h3 v-else class="px-5 py-1">
+    <BiliobCard
+      :text="subTitle"
+      :color="color"
+    >
+      <BiliobDarkInfo
+        slot="offset"
+        light
+        :elevation="0"
+        border="bottom"
+      >
+        <slot
+          v-if="$slots.header"
+          name="header"
+        />
+        <h3
+          v-else
+          class="px-5 py-1"
+        >
           {{ title }}
         </h3>
       </BiliobDarkInfo>
@@ -11,7 +25,11 @@
         :aspect-ratio="aspectRatio"
         :style="`max-height:${height}px`"
       >
-        <Chart :autoresize="true" :theme="theme" :options="options" />
+        <Chart
+          :autoresize="true"
+          :theme="theme"
+          :options="options"
+        />
         <VProgressCircular
           v-show="loading"
           :size="50"
@@ -19,7 +37,7 @@
           color="primary"
           indeterminate
           class="progress-circular"
-        ></VProgressCircular>
+        />
       </VResponsive>
     </BiliobCard>
   </div>

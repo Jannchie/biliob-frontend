@@ -1,5 +1,9 @@
 <template>
-  <VForm v-model="valid" class="mt-4" @submit.native.prevent="submit">
+  <VForm
+    v-model="valid"
+    class="mt-4"
+    @submit.native.prevent="submit"
+  >
     <VTextField
       v-model="searchText"
       outlined

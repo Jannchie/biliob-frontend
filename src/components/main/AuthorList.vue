@@ -4,9 +4,15 @@
       <div>
         <BiliobCard class="card-tabs">
           <VLayout slot="header">
-            <VIcon right>mdi-sort</VIcon>
+            <VIcon right>
+              mdi-sort
+            </VIcon>
             <VFlex>
-              <VTabs show-arrows color="transparent" slider-color="white">
+              <VTabs
+                show-arrows
+                color="transparent"
+                slider-color="white"
+              >
                 <VTab @click="sortChange(0)">
                   <VIcon>
                     mdi-account-heart
@@ -66,15 +72,21 @@
                     v-if="eachAuthor.official !== ''"
                     class="caption  author-info"
                   >
-                    <VIcon color="#FBC02D" small> mdi-flash-circle </VIcon
-                    ><span style="vertical-align: middle">
-                      {{ eachAuthor.official }}</span
+                    <VIcon
+                      color="#FBC02D"
+                      small
                     >
+                      mdi-flash-circle
+                    </VIcon><span style="vertical-align: middle">
+                      {{ eachAuthor.official }}</span>
                   </div>
-                  <ObserveStatus class="observe-status" :object="eachAuthor" />
+                  <ObserveStatus
+                    class="observe-status"
+                    :object="eachAuthor"
+                  />
                 </div>
               </div>
-              <VDivider></VDivider>
+              <VDivider />
             </VCard>
           </VSlideYTransition>
           <VBtn
@@ -86,12 +98,14 @@
             :disabled="nextBtnDisabled"
             tile
             @click.stop="next"
-            >{{ nextBtnText }}</VBtn
           >
+            {{ nextBtnText }}
+          </VBtn>
           <div v-else>
             <h4 class="primary--text">
-              <VIcon class="primary--text">mdi-ship-wheel</VIcon
-              >抱歉！什么都没有找到QwQ
+              <VIcon class="primary--text">
+                mdi-ship-wheel
+              </VIcon>抱歉！什么都没有找到QwQ
             </h4>
             <p>
               搜索功能可能并不完善，为了精确搜索请在上方输入相关UP主的ID！

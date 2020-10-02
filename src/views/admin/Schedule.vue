@@ -11,7 +11,7 @@
           sub-icon="mdi-calendar"
           :sub-text-color="progressColor"
           :color="progressColor"
-        ></AdminProgressCard>
+        />
       </VCol>
     </VRow>
     <VRow>
@@ -21,7 +21,7 @@
           :items="progressTasks"
           :items-per-page="20"
           class="elevation-1"
-        ></VDataTable>
+        />
       </VCol>
     </VRow>
   </VContainer>

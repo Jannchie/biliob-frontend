@@ -1,13 +1,21 @@
 <template>
   <div>
     <VRow dense>
-      <VCol style="margin: auto;" :order="right ? 3 : 1" cols="auto">
+      <VCol
+        style="margin: auto;"
+        :order="right ? 3 : 1"
+        cols="auto"
+      >
         <VAvatar>
-          <VImg :src="author.face"></VImg>
+          <VImg :src="author.face" />
         </VAvatar>
       </VCol>
 
-      <VCol style="margin: auto;" :order="2" :class="right ? `text-right` : ``">
+      <VCol
+        style="margin: auto;"
+        :order="2"
+        :class="right ? `text-right` : ``"
+      >
         <h3>{{ author.name }}</h3>
         <h4 class="caption ">
           {{ author.official }}
@@ -19,15 +27,17 @@
         class="text-center title"
         style="margin: auto;"
       >
-        <div class="caption">粉丝数</div>
+        <div class="caption">
+          粉丝数
+        </div>
         <CommonVOdometer
           class="font-weight-black primary--text body-1"
           :value="author.cFans"
           format="(,ddd).d"
-        ></CommonVOdometer>
+        />
       </VCol>
     </VRow>
-    <VRow dense> </VRow>
+    <VRow dense />
   </div>
 </template>
 

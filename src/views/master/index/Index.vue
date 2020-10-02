@@ -4,12 +4,18 @@
       <VCol cols="12">
         <VExpansionPanels tile>
           <VExpansionPanel>
-            <VExpansionPanelHeader class="primary--text px-4"
-              ><h3>
-                <VIcon color="primary" left> mdi-chart-bell-curve </VIcon
-                >见齐指数 / JANNCHIE IDX ver.0.0.1 beta
-              </h3></VExpansionPanelHeader
+            <VExpansionPanelHeader
+              class="primary--text px-4"
             >
+              <h3>
+                <VIcon
+                  color="primary"
+                  left
+                >
+                  mdi-chart-bell-curve
+                </VIcon>见齐指数 / JANNCHIE IDX ver.0.0.1 beta
+              </h3>
+            </VExpansionPanelHeader>
             <VExpansionPanelContent class="px-1">
               <h4>见齐指数简介</h4>
               <div class="body-2">
@@ -30,9 +36,13 @@
       <VCol cols="12">
         <VCard>
           <VCardTitle class="warning--text">
-            <VIcon style="vertical-align: text-bottom;" color="warning" left
-              >mdi-alert</VIcon
+            <VIcon
+              style="vertical-align: text-bottom;"
+              color="warning"
+              left
             >
+              mdi-alert
+            </VIcon>
             <h4>该系统当前为测试版本</h4>
           </VCardTitle>
 
@@ -55,7 +65,10 @@
         </VCard>
       </VCol>
     </VRow>
-    <VRow align="center" dense>
+    <VRow
+      align="center"
+      dense
+    >
       <VCol>
         <VTextField
           v-model="keyword"
@@ -63,21 +76,25 @@
           label="输入关键词开始探索"
           hide-details
           @keyup.enter="search"
-        ></VTextField>
+        />
       </VCol>
       <VCol cols="auto">
-        <VBtn color="primary" large @click="search">
+        <VBtn
+          color="primary"
+          large
+          @click="search"
+        >
           <VIcon left>
             mdi-send
           </VIcon>
-          搜索</VBtn
-        >
+          搜索
+        </VBtn>
       </VCol>
     </VRow>
     <VRow dense>
       <VCol>
         <VFadeTransition>
-          <RouterView></RouterView>
+          <RouterView />
         </VFadeTransition>
       </VCol>
     </VRow>
@@ -97,10 +114,11 @@
               <VCol style="text-align: end;">
                 7日累计热度
                 <h3>
-                  <VIcon style="vertical-align: text-bottom;">mdi-fire</VIcon>
+                  <VIcon style="vertical-align: text-bottom;">
+                    mdi-fire
+                  </VIcon>
                   <span class="primary--text">
-                    {{ $numberFormat(eachTag.jannchie) }}</span
-                  >
+                    {{ $numberFormat(eachTag.jannchie) }}</span>
                 </h3>
               </VCol>
             </VRow>

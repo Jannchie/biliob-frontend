@@ -1,7 +1,9 @@
 <template>
   <span class="caption font-weight-bold grey--text">
-    <VIcon :class="color" small>{{ icon }}</VIcon
-    ><span :class="color">{{ displayValue }}</span>
+    <VIcon
+      :class="color"
+      small
+    >{{ icon }}</VIcon><span :class="color">{{ displayValue }}</span>
   </span>
 </template>
 <script>

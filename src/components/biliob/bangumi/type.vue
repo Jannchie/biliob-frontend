@@ -6,7 +6,8 @@
     label
     outlined
     :color="`${color}`"
-    >{{ displayType }}
+  >
+    {{ displayType }}
   </VChip>
 </template>
 

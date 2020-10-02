@@ -18,7 +18,9 @@
         <div class="ml-2 body-1 video-title">
           {{ item.title }}
           <div class="caption">
-            <VIcon small>mdi-account</VIcon>
+            <VIcon small>
+              mdi-account
+            </VIcon>
             {{ item.author }}
           </div>
         </div>

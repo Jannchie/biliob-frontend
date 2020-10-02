@@ -9,8 +9,10 @@
               :rules="[rules.required, rules.email]"
               label="请输入邮箱"
             />
-            <BiliobActiveCodeTextField v-model="activeCode" :mail="mail">
-            </BiliobActiveCodeTextField>
+            <BiliobActiveCodeTextField
+              v-model="activeCode"
+              :mail="mail"
+            />
             <VTextField
               v-model="newPassword"
               :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
@@ -35,10 +37,16 @@
             />
           </VForm>
           <VCardActions>
-            <VSpacer></VSpacer>
-            <VBtn color="primary" :disabled="!valid" @click="submit">
-              <VIcon left> mdi-send </VIcon>提交 / submit</VBtn
+            <VSpacer />
+            <VBtn
+              color="primary"
+              :disabled="!valid"
+              @click="submit"
             >
+              <VIcon left>
+                mdi-send
+              </VIcon>提交 / submit
+            </VBtn>
           </VCardActions>
         </BiliobCard>
       </VCol>

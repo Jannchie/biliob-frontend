@@ -1,7 +1,10 @@
 <template>
   <span>
     <span :class="`${color}--text caption subtext`">
-      <VIcon :color="color" small>
+      <VIcon
+        :color="color"
+        small
+      >
         {{ icon }}
       </VIcon>
       {{ text }}

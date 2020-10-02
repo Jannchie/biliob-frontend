@@ -1,5 +1,8 @@
 <template>
-  <VDialog v-model="dialog" width="500px">
+  <VDialog
+    v-model="dialog"
+    width="500px"
+  >
     <VListItem
       slot="activator"
       style="width:100%"
@@ -8,9 +11,11 @@
     >
       <VListItemAvatar>
         <VAvatar size="32px">
-          <VIcon :class="color + ' white--text lighten-2 text--lighten-2'">{{
-            icon
-          }}</VIcon>
+          <VIcon :class="color + ' white--text lighten-2 text--lighten-2'">
+            {{
+              icon
+            }}
+          </VIcon>
         </VAvatar>
       </VListItemAvatar>
       <VListItemContent>
@@ -34,10 +39,10 @@
       >
         {{ tileTitle }}?
       </VCardTitle>
-      <slot name="card-text"></slot>
-      <VDivider></VDivider>
+      <slot name="card-text" />
+      <VDivider />
       <VCardActions :value="!showAlert">
-        <VSpacer></VSpacer>
+        <VSpacer />
         <VBtn
           color="primary"
           text

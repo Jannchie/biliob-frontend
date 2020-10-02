@@ -4,12 +4,14 @@
       <VCol cols="12">
         <VCard elevation-3>
           <VCardTitle>
-            <VIcon left>mdi-code-equal</VIcon>
+            <VIcon left>
+              mdi-code-equal
+            </VIcon>
             BV号转AV号
           </VCardTitle>
-          <VCardText
-            >将BV号解码为av号
-            <br />
+          <VCardText>
+            将BV号解码为av号
+            <br>
             Powered By
             <a
               target="_blank"
@@ -31,7 +33,7 @@
                   hide-details
                   solo
                   prefix="BV"
-                ></VTextField>
+                />
               </VCol>
             </VRow>
             <VRow>
@@ -43,7 +45,7 @@
                   solo
                   readonly
                   prefix="av"
-                ></VTextField>
+                />
               </VCol>
             </VRow>
           </VCardText>

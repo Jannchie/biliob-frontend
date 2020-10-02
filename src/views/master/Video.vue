@@ -1,18 +1,34 @@
 <template>
   <VContainer>
-    <VRow v-if="videoData != undefined" dense>
-      <VCol cols="12" md="7">
+    <VRow
+      v-if="videoData != undefined"
+      dense
+    >
+      <VCol
+        cols="12"
+        md="7"
+      >
         <VideoDetailTitle
           :title="videoData.title"
           :aid="videoData.aid"
           :pic="videoData.pic"
           :bv="videoData.bvid"
-      /></VCol>
-      <VCol cols="12" md="5">
-        <AuthorInfo style="height:100%" :author-data="videoData.author"
-      /></VCol>
+        />
+      </VCol>
+      <VCol
+        cols="12"
+        md="5"
+      >
+        <AuthorInfo
+          style="height:100%"
+          :author-data="videoData.author"
+        />
+      </VCol>
     </VRow>
-    <VRow v-if="videoData != undefined" dense>
+    <VRow
+      v-if="videoData != undefined"
+      dense
+    >
       <VCol cols="12">
         <BiliobVideoOperation
           slot="video-to-bilibili"
@@ -57,7 +73,7 @@
                 `<span>选择分P</span><span style='float: right'>更新时间: ${danmakuUpdateTime}</span>`
               "
               @change="pageChange"
-            ></VSelect>
+            />
           </div>
         </BiliobCard>
         <DetailCharts

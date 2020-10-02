@@ -2,7 +2,11 @@
   <VContainer>
     <VRow>
       <VCol>
-        <BiliobCard light border="bottom" title="榜首粉丝实时差距">
+        <BiliobCard
+          light
+          border="bottom"
+          title="榜首粉丝实时差距"
+        >
           <VRow>
             <VCol class="text-center">
               <div>粉丝数</div>
@@ -10,9 +14,12 @@
                 class="font-weight-black blue--text text--darken-1 sub-title"
                 :value="aFans"
                 format="(,ddd).d"
-              ></VOdometer>
+              />
               <div style="text-align: center">
-                <VAvatar :size="100" @click.stop="jumpToAuthorPage(aMid)">
+                <VAvatar
+                  :size="100"
+                  @click.stop="jumpToAuthorPage(aMid)"
+                >
                   <VImg
                     :src="zipPic(aFace.replace('http:', ''))"
                     :lazy-src="zipPic(aFace.replace('http:', ''))"
@@ -39,13 +46,15 @@
               >
                 VS
               </div>
-              <div class="title">实时差距</div>
+              <div class="title">
+                实时差距
+              </div>
               <div>
                 <CommonVOdometer
                   class="font-weight-black blue--text text--darken-1 title"
                   :value="deltaFans"
                   format="(,ddd).d"
-                ></CommonVOdometer>
+                />
               </div>
             </VCol>
             <VCol class="text-center">
@@ -54,7 +63,7 @@
                 class="font-weight-black blue--text text--darken-1 sub-title"
                 :value="bFans"
                 format="(,ddd).d"
-              ></VOdometer>
+              />
               <div style="text-align: center">
                 <VAvatar
                   size="100"

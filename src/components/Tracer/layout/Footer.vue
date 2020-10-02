@@ -1,8 +1,20 @@
 <template>
-  <VFooter id="core-footer" class="body-2" fixed absolute height="82">
+  <VFooter
+    id="core-footer"
+    class="body-2"
+    fixed
+    absolute
+    height="82"
+  >
     <div class="footer-items">
-      <span v-for="link in links" :key="link.name">
-        <a :href="link.Link" class=" tertiary--text footer-links">{{
+      <span
+        v-for="link in links"
+        :key="link.name"
+      >
+        <a
+          :href="link.Link"
+          class=" tertiary--text footer-links"
+        >{{
           link.name
         }}</a>
       </span>
@@ -11,9 +23,15 @@
     <span class="font-weight-light">
       &copy;
       {{ new Date().getFullYear() }}
-      <a href="https://www.github.com/jannchie" target="_blank">Jannchie</a>,
+      <a
+        href="https://www.github.com/jannchie"
+        target="_blank"
+      >Jannchie</a>,
       made with
-      <VIcon color="tertiary" size="17">mdi-heart</VIcon>
+      <VIcon
+        color="tertiary"
+        size="17"
+      >mdi-heart</VIcon>
       for the Bilibili
     </span>
   </VFooter>

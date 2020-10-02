@@ -1,9 +1,19 @@
 <template>
   <VLayout v-bind="binding">
-    <VFlex lg8 md12 order-lg1 :order-xs2="reverse">
+    <VFlex
+      lg8
+      md12
+      order-lg1
+      :order-xs2="reverse"
+    >
       <slot name="main-cards" />
     </VFlex>
-    <VFlex lg4 md12 order-lg2 :order-xs1="reverse">
+    <VFlex
+      lg4
+      md12
+      order-lg2
+      :order-xs1="reverse"
+    >
       <slot name="aside-cards" />
     </VFlex>
   </VLayout>

@@ -1,6 +1,9 @@
 <template>
   <div>
-    <BiliobCard class="card" title="数据说明">
+    <BiliobCard
+      class="card"
+      title="数据说明"
+    >
       <div class="body-1">
         <li>
           这里可以查询所有<span class="green--text">正在追踪</span>的视频数据。
@@ -18,8 +21,7 @@
           <span
             class="white--text px-1 "
             style="background-color:#FF5722;border-radius:2px;margin-right:5px"
-            >保守观测</span
-          >
+          >保守观测</span>
           变化幅度太小的视频数据将每周更新一次，但可以手动刷新。
         </li>
         <li>
@@ -31,7 +33,7 @@
           </span>
           消耗200积分，可以强行每日更新视频的数据，即使它本已进入保守观测组。
         </li>
-        <VDivider class="my-2"></VDivider>
+        <VDivider class="my-2" />
         <div>
           目前，如果视频<span>同时在线人数达到全站前20</span>，那么该视频的数据更新频率会强行加快到<span>每10分钟采集一次</span>。以此获取更加精密实时的数据。
         </div>

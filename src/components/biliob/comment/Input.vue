@@ -43,7 +43,16 @@
 </template>
 <script>
 export default {
-  props: ["sort", "parent"],
+  props: {
+    sort: {
+      type: Object,
+      default: undefined
+    },
+    parent: {
+      type: Object,
+      default: undefined
+    }
+  },
   data() {
     return {
       commentContent: ""

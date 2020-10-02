@@ -1,7 +1,7 @@
 <template>
   <div>
-    <TracerLayoutView></TracerLayoutView>
-    <TracerLayoutToolbar></TracerLayoutToolbar>
-    <TracerLayoutNav></TracerLayoutNav>
+    <TracerLayoutView />
+    <TracerLayoutToolbar />
+    <TracerLayoutNav />
   </div>
 </template>

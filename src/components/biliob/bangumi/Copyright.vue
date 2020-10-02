@@ -6,8 +6,9 @@
     label
     outlined
     color="pink lighten-2"
-    >{{ displayCopyright }} {{ charge }}</VChip
   >
+    {{ displayCopyright }} {{ charge }}
+  </VChip>
 </template>
 
 <script>

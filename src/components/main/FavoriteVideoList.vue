@@ -27,13 +27,18 @@
                   {{ eachVideo.title }}
                 </div>
                 <div class="caption subtext video-info">
-                  <VIcon small> mdi-account-box-outline </VIcon
-                  >{{ eachVideo.author }}
-                  <VIcon small> mdi-bookmark-outline </VIcon
-                  >{{ eachVideo.channel }}
+                  <VIcon small>
+                    mdi-account-box-outline
+                  </VIcon>{{ eachVideo.author }}
+                  <VIcon small>
+                    mdi-bookmark-outline
+                  </VIcon>{{ eachVideo.channel }}
                 </div>
               </div>
-              <ObserveStatus class="observe-status" :object="eachVideo" />
+              <ObserveStatus
+                class="observe-status"
+                :object="eachVideo"
+              />
             </div>
           </VCard>
         </VSlideYTransition>
@@ -46,8 +51,9 @@
           :disabled="nextBtnDisabled"
           tile
           @click.stop="next"
-          >{{ nextBtnText }}</VBtn
         >
+          {{ nextBtnText }}
+        </VBtn>
       </div>
     </div>
   </div>

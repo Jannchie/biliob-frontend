@@ -5,21 +5,42 @@
         <BiliobCard title="批量上传爬虫任务">
           <h5>选择计划任务的类型</h5>
           <VRadioGroup v-model="type">
-            <VRadio value="video" label="视频"></VRadio>
-            <VRadio value="author" label="作者"></VRadio>
+            <VRadio
+              value="video"
+              label="视频"
+            />
+            <VRadio
+              value="author"
+              label="作者"
+            />
           </VRadioGroup>
           <h5>此处输入计划任务的名称</h5>
-          <VTextField v-model="name" solo></VTextField>
+          <VTextField
+            v-model="name"
+            solo
+          />
           <h5>此处可以批量输入ID进行爬取</h5>
           <p class="caption">
             如果是作者，输入uid，如果是视频，输入av号。输入纯数字即可，以回车键分开。
           </p>
-          <VTextarea v-model="originData" solo></VTextarea>
+          <VTextarea
+            v-model="originData"
+            solo
+          />
           <h5>频率设置</h5>
           <VRadioGroup v-model="frequency">
-            <VRadio label="每6小时一次" :value="1"></VRadio>
-            <VRadio label="每1小时一次" :value="2"></VRadio>
-            <VRadio label="每5分钟一次" :value="3"></VRadio>
+            <VRadio
+              label="每6小时一次"
+              :value="1"
+            />
+            <VRadio
+              label="每1小时一次"
+              :value="2"
+            />
+            <VRadio
+              label="每5分钟一次"
+              :value="3"
+            />
           </VRadioGroup>
           <VBtn
             color="primary"
@@ -29,7 +50,9 @@
             "
             @click="upload"
           >
-            <VIcon left>mdi-upload</VIcon>上传
+            <VIcon left>
+              mdi-upload
+            </VIcon>上传
           </VBtn>
         </BiliobCard>
       </VForm>
@@ -37,17 +60,27 @@
     <VFlex lg4>
       <BiliobCard title="已设定任务">
         <VList three-line>
-          <VListItem v-for="(eachItem, index) in schedules" :key="index">
+          <VListItem
+            v-for="(eachItem, index) in schedules"
+            :key="index"
+          >
             <VListItemContent>
               <VListItemTitle>{{ eachItem.name }}</VListItemTitle>
-              <VListItemSubtitle>{{
-                frequencyText(eachItem.frequency)
-              }}</VListItemSubtitle>
+              <VListItemSubtitle>
+                {{
+                  frequencyText(eachItem.frequency)
+                }}
+              </VListItemSubtitle>
               <VListItemSubtitle>{{ eachItem.owner }}</VListItemSubtitle>
             </VListItemContent>
             <VListItemAction>
-              <VBtn icon @click="deleteSchedule(eachItem)">
-                <VIcon color="red darken-1">mdi-delete-circle</VIcon>
+              <VBtn
+                icon
+                @click="deleteSchedule(eachItem)"
+              >
+                <VIcon color="red darken-1">
+                  mdi-delete-circle
+                </VIcon>
               </VBtn>
             </VListItemAction>
           </VListItem>
@@ -59,8 +92,9 @@
       :value="alert"
       :type="alertType"
       transition="slide-y-transition"
-      >{{ alertMsg }}</MaterialNotification
     >
+      {{ alertMsg }}
+    </MaterialNotification>
   </VLayout>
 </template>
 <script>

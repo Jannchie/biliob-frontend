@@ -1,19 +1,31 @@
 <template>
   <VContainer>
-    <VRow v-if="!loaded" dense>
+    <VRow
+      v-if="!loaded"
+      dense
+    >
       <VCol>
-        <VSkeletonLoader class="elevation-3" type="card" />
+        <VSkeletonLoader
+          class="elevation-3"
+          type="card"
+        />
       </VCol>
     </VRow>
-    <VRow v-if="loaded" dense>
+    <VRow
+      v-if="loaded"
+      dense
+    >
       <VCol>
         <BiliobAuthorGroupInfoCard
           :sim="true"
           :author-group="$db.author.group.detail[this.$route.params.gid]"
-        ></BiliobAuthorGroupInfoCard>
+        />
       </VCol>
     </VRow>
-    <VRow v-if="loaded" dense>
+    <VRow
+      v-if="loaded"
+      dense
+    >
       <VCol>
         <BiliobCard title="聚合数据">
           <VRow dense>
@@ -82,10 +94,16 @@
         </BiliobCard>
       </VCol>
     </VRow>
-    <VRow v-if="loaded" dense>
+    <VRow
+      v-if="loaded"
+      dense
+    >
       <VCol cols="12">
         <VCard>
-          <VTabs background-color="transparent" slider-color="primary">
+          <VTabs
+            background-color="transparent"
+            slider-color="primary"
+          >
             <VTab @click="sortChange(0)">
               <VIcon>
                 mdi-account-heart
@@ -122,7 +140,10 @@
         </VCard>
       </VCol>
     </VRow>
-    <VFabTransition v-if="loaded" group>
+    <VFabTransition
+      v-if="loaded"
+      group
+    >
       <VRow
         v-for="author in $db.author.group.detail[this.$route.params.gid]
           .authorList"
@@ -130,7 +151,7 @@
         dense
       >
         <VCol cols="12">
-          <BiliobAuthorInfoCard :author="author"></BiliobAuthorInfoCard>
+          <BiliobAuthorInfoCard :author="author" />
         </VCol>
       </VRow>
     </VFabTransition>

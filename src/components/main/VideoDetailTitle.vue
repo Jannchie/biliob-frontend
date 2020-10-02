@@ -1,6 +1,9 @@
 <template>
   <BiliobCard>
-    <FavoriteBtn :aid="aid" class="favorite-btn" />
+    <FavoriteBtn
+      :aid="aid"
+      class="favorite-btn"
+    />
     <VLayout>
       <VRow dense>
         <VCol cols="auto">
@@ -12,26 +15,30 @@
             :lazy-src="zipPic(pic)"
           />
         </VCol>
-        <VCol cols="auto" style="width:calc(100% - 180px)">
+        <VCol
+          cols="auto"
+          style="width:calc(100% - 180px)"
+        >
           <div style="overflow:hidden; text-overflow: ellipsis;">
             <div>
               <div>
-                <div style="width:100%" class="font-weight-bold video-title ">
+                <div
+                  style="width:100%"
+                  class="font-weight-bold video-title "
+                >
                   {{ title }}
                 </div>
                 <span
                   class="px-1 pink lighten-3 white--text mr-1 font-weight-black"
                   style="border-radius:3px"
-                  >AV</span
-                ><span class="text--lighten-3 pink--text">{{
+                >AV</span><span class="text--lighten-3 pink--text">{{
                   $route.params.aid
                 }}</span>
 
                 <span
                   class="ml-1 px-1 blue lighten-1 white--text mr-1 font-weight-black"
                   style="border-radius:3px"
-                  >BV</span
-                ><span class="text--lighten-1 primary--text">{{ bv }}</span>
+                >BV</span><span class="text--lighten-1 primary--text">{{ bv }}</span>
               </div>
             </div>
           </div>

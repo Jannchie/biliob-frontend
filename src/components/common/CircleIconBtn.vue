@@ -1,7 +1,14 @@
 <template>
-  <VBtn icon :class="`grey ${brightness}-2`" small>
-    <VIcon :class="iconClass" small>
-      <slot></slot>
+  <VBtn
+    icon
+    :class="`grey ${brightness}-2`"
+    small
+  >
+    <VIcon
+      :class="iconClass"
+      small
+    >
+      <slot />
     </VIcon>
   </VBtn>
 </template>

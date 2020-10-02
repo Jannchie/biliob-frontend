@@ -4,7 +4,7 @@
       :items-per-page="30"
       :headers="headers"
       :items="userRecords"
-    ></VDataTable>
+    />
   </BiliobCard>
 </template>
 

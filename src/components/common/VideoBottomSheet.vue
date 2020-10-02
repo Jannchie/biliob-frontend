@@ -1,7 +1,15 @@
 .<template>
   <VBottomSheet v-model="sheet">
-    <VBtn slot="activator" color="pink lighten-2" text block dark>
-      <VIcon style="margin-right:20px">mdi-infinity</VIcon>更多操作
+    <VBtn
+      slot="activator"
+      color="pink lighten-2"
+      text
+      block
+      dark
+    >
+      <VIcon style="margin-right:20px">
+        mdi-infinity
+      </VIcon>更多操作
     </VBtn>
 
     <VList two-line>
@@ -14,9 +22,11 @@
       >
         <VListItemAvatar>
           <VAvatar size="32px">
-            <VIcon class="pink white--text lighten-2 text--lighten-2"
-              >mdi-video</VIcon
+            <VIcon
+              class="pink white--text lighten-2 text--lighten-2"
             >
+              mdi-video
+            </VIcon>
           </VAvatar>
         </VListItemAvatar>
         <VListItemTitle>前往视频播放页面</VListItemTitle>
@@ -32,17 +42,21 @@
         :request-url="`/user/video/${aid}/danmaku`"
       >
         <VCardText slot="card-text">
-          更新视频弹幕统计<span class="font-weight-black red--text"
-            >消耗10积分</span
-          >。
-          <br />
+          更新视频弹幕统计<span
+            class="font-weight-black red--text"
+          >消耗10积分</span>。
+          <br>
           能够根据关键词生成词云。
-          <br />
+          <br>
           能够分析弹幕密度。
         </VCardText>
       </BottomSheetTile>
 
-      <VDialog key="dialog" v-model="dialog" width="500px">
+      <VDialog
+        key="dialog"
+        v-model="dialog"
+        width="500px"
+      >
         <VListItem
           slot="activator"
           style="width:100%"
@@ -51,9 +65,11 @@
         >
           <VListItemAvatar>
             <VAvatar size="32px">
-              <VIcon class="blue white--text lighten-2 text--lighten-2"
-                >mdi-refresh</VIcon
+              <VIcon
+                class="blue white--text lighten-2 text--lighten-2"
               >
+                mdi-refresh
+              </VIcon>
             </VAvatar>
           </VListItemAvatar>
           <VListItemContent>
@@ -76,17 +92,17 @@
             立即刷新视频信息？
           </VCardTitle>
           <VCardText>
-            立即刷新需要<span class="font-weight-black red--text"
-              >消耗1积分</span
-            >。
-            <br />
+            立即刷新需要<span
+              class="font-weight-black red--text"
+            >消耗1积分</span>。
+            <br>
             立即刷新需要数秒至数分钟的操作时间
-            <br />
+            <br>
             请稍后刷新页面获取最新的数据！
           </VCardText>
-          <VDivider></VDivider>
+          <VDivider />
           <VCardActions>
-            <VSpacer></VSpacer>
+            <VSpacer />
             <VBtn
               color="primary"
               text
@@ -111,9 +127,11 @@
       >
         <VListItemAvatar>
           <VAvatar size="32px">
-            <VIcon class="light-blue white--text lighten-2 text--lighten-2"
-              >mdi-qqchat</VIcon
+            <VIcon
+              class="light-blue white--text lighten-2 text--lighten-2"
             >
+              mdi-qqchat
+            </VIcon>
           </VAvatar>
         </VListItemAvatar>
         <VListItemContent>

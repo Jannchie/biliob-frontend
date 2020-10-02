@@ -1,15 +1,23 @@
 <template>
   <VContainer>
     <VRow dense>
-      <VCol cols="6" lg="3">
-        <VCard to="/tools/BV2av" elevation-3>
+      <VCol
+        cols="6"
+        lg="3"
+      >
+        <VCard
+          to="/tools/BV2av"
+          elevation-3
+        >
           <VCardTitle>
-            <VIcon left>mdi-code-equal</VIcon>
+            <VIcon left>
+              mdi-code-equal
+            </VIcon>
             BV号转av号
           </VCardTitle>
-          <VCardText
-            >一个BV号的解码器
-            <br />
+          <VCardText>
+            一个BV号的解码器
+            <br>
             Powered By
             <a
               target="_blank"
@@ -20,15 +28,23 @@
           </VCardText>
         </VCard>
       </VCol>
-      <VCol cols="6" lg="3">
-        <VCard to="/tools/av2BV" elevation-3>
+      <VCol
+        cols="6"
+        lg="3"
+      >
+        <VCard
+          to="/tools/av2BV"
+          elevation-3
+        >
           <VCardTitle>
-            <VIcon left>mdi-code-equal</VIcon>
+            <VIcon left>
+              mdi-code-equal
+            </VIcon>
             av号转BV号
           </VCardTitle>
-          <VCardText
-            >一个av号的编码器
-            <br />
+          <VCardText>
+            一个av号的编码器
+            <br>
             Powered By
             <a
               target="_blank"

@@ -1,5 +1,9 @@
 <template>
-  <BiliobCard border="bottom" title="作者简介" light>
+  <BiliobCard
+    border="bottom"
+    title="作者简介"
+    light
+  >
     {{ briefInfo }}
     <!-- <p v-if="authorData != undefined && authorData.name != undefined">
       <span v-if="authorData.official == ''">

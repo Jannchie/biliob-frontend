@@ -9,7 +9,11 @@
     tile
     @click="dialog = true"
   >
-    <VDialog v-model="dialog" style="position: absolute" width="400px">
+    <VDialog
+      v-model="dialog"
+      style="position: absolute"
+      width="400px"
+    >
       <VCard>
         <VAlert
           :value="showAlert"
@@ -26,10 +30,10 @@
         >
           {{ tileTitle }}?
         </VCardTitle>
-        <slot name="card-text"></slot>
-        <VDivider></VDivider>
+        <slot name="card-text" />
+        <VDivider />
         <VCardActions :value="!showAlert">
-          <VSpacer></VSpacer>
+          <VSpacer />
           <VBtn
             color="primary"
             text
@@ -46,8 +50,8 @@
     <VIcon left>
       {{ icon }}
     </VIcon>
-    {{ tileTitle }}</VBtn
-  >
+    {{ tileTitle }}
+  </VBtn>
 </template>
 <script>
 export default {

@@ -17,29 +17,53 @@
           {{ author.name }}
           <CommonSexIcon :sex="author.sex" />
         </h4>
-        <div v-if="author.official !== ''" class="text-truncate">
-          <VIcon color="#FBC02D" small> mdi-flash-circle </VIcon
-          ><span
+        <div
+          v-if="author.official !== ''"
+          class="text-truncate"
+        >
+          <VIcon
+            color="#FBC02D"
+            small
+          >
+            mdi-flash-circle
+          </VIcon><span
             class="caption"
             style="vertical-align: middle; overflow: hidden"
           >
-            {{ author.official }}</span
-          >
+            {{ author.official }}</span>
         </div>
-        <div class="caption text-truncate" style="overflow: hidden">
-          <VIcon x-small left> mdi-account-multiple </VIcon
-          >{{ $numberFormat(author.cFans) }}({{
+        <div
+          class="caption text-truncate"
+          style="overflow: hidden"
+        >
+          <VIcon
+            x-small
+            left
+          >
+            mdi-account-multiple
+          </VIcon>{{ $numberFormat(author.cFans) }}({{
             author.cRate > 0
               ? "+" + $numberFormat(author.cRate)
               : $numberFormat(author.cRate)
-          }}) <VIcon x-small left> mdi-thumb-up </VIcon
-          >{{ $numberFormat(author.cLike) }}
-          <VIcon x-small left> mdi-play </VIcon
-          >{{ $numberFormat(author.cArchiveView) }}
+          }}) <VIcon
+            x-small
+            left
+          >
+            mdi-thumb-up
+          </VIcon>{{ $numberFormat(author.cLike) }}
+          <VIcon
+            x-small
+            left
+          >
+            mdi-play
+          </VIcon>{{ $numberFormat(author.cArchiveView) }}
         </div>
         <VRow no-gutters>
-          <VSpacer></VSpacer>
-          <VCol cols="auto" class="px-1">
+          <VSpacer />
+          <VCol
+            cols="auto"
+            class="px-1"
+          >
             <CommonObserveStatus :object="author" />
           </VCol>
         </VRow>

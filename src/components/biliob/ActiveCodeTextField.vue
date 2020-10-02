@@ -8,7 +8,7 @@
     :append-outer-icon="loading ? `mdi-loading` : `mdi-send`"
     @input="$emit('input', code)"
     @click:append-outer="sendActivationCode"
-  ></VTextField>
+  />
 </template>
 
 <script>

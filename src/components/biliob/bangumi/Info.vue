@@ -7,22 +7,28 @@
       })
     "
   >
-    <VImg class="white--text align-end" height="200px" :src="bangumiInfo.cover">
+    <VImg
+      class="white--text align-end"
+      height="200px"
+      :src="bangumiInfo.cover"
+    >
       <VCardTitle style="background: linear-gradient(0deg, #222F, #2220)">
         <h3>
           {{ bangumiInfo.name }}
         </h3>
-        <br />
-        <div class="caption">{{ bangumiInfo.foreignName }}</div>
+        <br>
+        <div class="caption">
+          {{ bangumiInfo.foreignName }}
+        </div>
       </VCardTitle>
     </VImg>
 
     <VCardText class="caption">
-      <BiliobBangumiType :type="bangumiInfo.type"></BiliobBangumiType>
+      <BiliobBangumiType :type="bangumiInfo.type" />
       <BiliobBangumiCopyright
         :copyright="bangumiInfo.copyright"
         :charge="bangumiInfo.charge"
-      ></BiliobBangumiCopyright>
+      />
       <VChip
         style="vertical-align: unset"
         color="primary"
@@ -31,20 +37,20 @@
         outlined
         x-small
       >
-        {{ bangumiInfo.area }}</VChip
-      >
+        {{ bangumiInfo.area }}
+      </VChip>
       <BiliobBangumiStatus
         :state="bangumiInfo.state"
         :finished="bangumiInfo.finished"
         :serializing="bangumiInfo.serializing"
-      ></BiliobBangumiStatus>
+      />
       <VCardText
         v-if="bangumiInfo.score"
         style="position: absolute;left: 0"
         class="text-center"
       >
         <VRow no-gutters>
-          <VSpacer></VSpacer>
+          <VSpacer />
           <VCol cols="auto">
             <h3 :class="`display-1 ${scoreColor} font-weight-black`">
               {{ bangumiInfo.score.toFixed(1) }}
@@ -64,20 +70,28 @@
     </VCardText>
     <VCardText>
       <VRow class="caption">
-        <VCol cols="auto"
-          ><VIcon x-small> mdi-play-circle</VIcon>
+        <VCol
+          cols="auto"
+        >
+          <VIcon x-small>
+            mdi-play-circle
+          </VIcon>
           <span style="vertical-align: middle">
             {{ $numberFormat(bangumiInfo.cView) }}
           </span>
         </VCol>
         <VCol cols="auto">
-          <VIcon x-small> mdi-coin </VIcon>
+          <VIcon x-small>
+            mdi-coin
+          </VIcon>
           <span style="vertical-align: middle">
             {{ $numberFormat(bangumiInfo.cCoin) }}
           </span>
         </VCol>
         <VCol cols="auto">
-          <VIcon x-small> mdi-heart </VIcon>
+          <VIcon x-small>
+            mdi-heart
+          </VIcon>
           <span style="vertical-align: middle">
             {{
               $numberFormat(

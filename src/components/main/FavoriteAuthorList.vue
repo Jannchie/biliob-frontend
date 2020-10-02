@@ -16,7 +16,7 @@
                   <img
                     style="border-radius:40px;width:80px;height:80px"
                     :src="zipPic(eachAuthor.face.slice(5))"
-                  />
+                  >
                 </VResponsive>
               </div>
               <div style="margin-left:10px;overflow:hidden">
@@ -30,13 +30,19 @@
                   v-if="eachAuthor.official !== ''"
                   class="caption subtext author-info"
                 >
-                  <VIcon color="#FBC02D" small> mdi-flash-circle </VIcon
-                  ><span style="vertical-align: middle">
-                    {{ eachAuthor.official }}</span
+                  <VIcon
+                    color="#FBC02D"
+                    small
                   >
+                    mdi-flash-circle
+                  </VIcon><span style="vertical-align: middle">
+                    {{ eachAuthor.official }}</span>
                 </div>
               </div>
-              <ObserveStatus class="observe-status" :object="eachAuthor" />
+              <ObserveStatus
+                class="observe-status"
+                :object="eachAuthor"
+              />
             </div>
           </VCard>
         </VSlideYTransition>

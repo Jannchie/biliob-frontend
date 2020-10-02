@@ -1,5 +1,9 @@
 <template>
-  <BiliobCard border="bottom" class="aside-card" :title="title">
+  <BiliobCard
+    border="bottom"
+    class="aside-card"
+    :title="title"
+  >
     <VList two-line>
       <template v-for="eachVideo in authorTopVideo.content">
         <VDivider :key="eachVideo.title" />
@@ -9,8 +13,14 @@
           :to="'/author/' + eachVideo.mid + '/video/' + eachVideo.aid"
           ripple
         >
-          <VListItemAvatar :key="eachVideo.title" tile>
-            <VImg :alt="eachVideo.title" :src="zipPic(eachVideo.pic)" />
+          <VListItemAvatar
+            :key="eachVideo.title"
+            tile
+          >
+            <VImg
+              :alt="eachVideo.title"
+              :src="zipPic(eachVideo.pic)"
+            />
           </VListItemAvatar>
           <VListItemContent>
             <VListItemTitle>

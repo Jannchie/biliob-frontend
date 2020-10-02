@@ -1,8 +1,22 @@
 <template>
-  <VFooter class="px-0 pt-5" dark background-color="grey darken-3">
-    <VLayout wrap justify-center style="text-align:center">
-      <VFlex md12 lg8>
-        <VLayout class="pb-5" wrap>
+  <VFooter
+    class="px-0 pt-5"
+    dark
+    background-color="grey darken-3"
+  >
+    <VLayout
+      wrap
+      justify-center
+      style="text-align:center"
+    >
+      <VFlex
+        md12
+        lg8
+      >
+        <VLayout
+          class="pb-5"
+          wrap
+        >
           <VFlex
             v-for="(eachBlock, index) in links"
             :key="index"
@@ -18,7 +32,10 @@
               v-for="(eachLink, indexLink) in eachBlock.links"
               :key="indexLink"
             >
-              <a class="caption" :href="eachLink.link">
+              <a
+                class="caption"
+                :href="eachLink.link"
+              >
                 {{ eachLink.name }}
               </a>
             </div>
@@ -31,18 +48,22 @@
         <span class="caption">
           &copy;
           {{ new Date().getFullYear() }}
-          <a href="https://www.github.com/jannchie" target="_blank"
-            >Jannchie见齐</a
-          >, made with
-          <VIcon color="red" size="14">mdi-heart</VIcon>
+          <a
+            href="https://www.github.com/jannchie"
+            target="_blank"
+          >Jannchie见齐</a>, made with
+          <VIcon
+            color="red"
+            size="14"
+          >mdi-heart</VIcon>
           for BILIBILI
         </span>
         <div>
-          <span class="grey--text caption"
-            >互联网ICP备案：<a href="http://www.beian.miit.gov.cn/"
-              >浙ICP备17035172号-2</a
-            ></span
-          >
+          <span
+            class="grey--text caption"
+          >互联网ICP备案：<a
+            href="http://www.beian.miit.gov.cn/"
+          >浙ICP备17035172号-2</a></span>
         </div>
       </VFlex>
     </VLayout>

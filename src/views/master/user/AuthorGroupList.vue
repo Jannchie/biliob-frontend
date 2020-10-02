@@ -1,14 +1,25 @@
 <template>
   <VRow v-if="loading">
     <VCol cols="12">
-      <VSkeletonLoader class="elevation-3" type="card"></VSkeletonLoader>
+      <VSkeletonLoader
+        class="elevation-3"
+        type="card"
+      />
     </VCol>
   </VRow>
-  <VRow v-else dense>
-    <VCol v-for="(group, i) in groupList" :key="i" cols="12" lg="6">
+  <VRow
+    v-else
+    dense
+  >
+    <VCol
+      v-for="(group, i) in groupList"
+      :key="i"
+      cols="12"
+      lg="6"
+    >
       <BiliobAuthorGroupInfoCard
         :author-group="group"
-      ></BiliobAuthorGroupInfoCard>
+      />
     </VCol>
   </VRow>
 </template>

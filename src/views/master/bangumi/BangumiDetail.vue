@@ -1,11 +1,15 @@
 <template>
   <VContainer>
-    <VRow v-if="bangumiDetail != undefined" cols="12" dense>
+    <VRow
+      v-if="bangumiDetail != undefined"
+      cols="12"
+      dense
+    >
       <VCol>
         <BiliobBangumiInfo
           v-if="$vuetify.breakpoint.mdAndDown"
           :bangumi-info="bangumiDetail"
-        ></BiliobBangumiInfo>
+        />
         <VCard v-else>
           <VCardText>
             <VRow class="pa-0">
@@ -15,8 +19,7 @@
                   :src="bangumiDetail.cover"
                   height="240px"
                   width="180px"
-                >
-                </VImg>
+                />
               </VCol>
               <VCol>
                 <div
@@ -25,7 +28,7 @@
                   class="text-center"
                 >
                   <VRow no-gutters>
-                    <VSpacer></VSpacer>
+                    <VSpacer />
                     <VCol cols="auto">
                       <h3 :class="`display-1 ${scoreColor} font-weight-black`">
                         {{ bangumiDetail.score }}
@@ -38,17 +41,19 @@
                 </div>
                 <h2>
                   {{ bangumiDetail.name }}
-                  <div class="caption">{{ bangumiDetail.foreignName }}</div>
+                  <div class="caption">
+                    {{ bangumiDetail.foreignName }}
+                  </div>
                 </h2>
-                <br />
+                <br>
                 <div class="caption">
                   <BiliobBangumiType
                     :type="bangumiDetail.type"
-                  ></BiliobBangumiType>
+                  />
                   <BiliobBangumiCopyright
                     :copyright="bangumiDetail.copyright"
                     :charge="bangumiDetail.charge"
-                  ></BiliobBangumiCopyright>
+                  />
                   <VChip
                     style="vertical-align: unset"
                     color="primary"
@@ -57,13 +62,13 @@
                     outlined
                     x-small
                   >
-                    {{ bangumiDetail.area }}</VChip
-                  >
+                    {{ bangumiDetail.area }}
+                  </VChip>
                   <BiliobBangumiStatus
                     :state="bangumiDetail.state"
                     :finished="bangumiDetail.finished"
                     :serializing="bangumiDetail.serializing"
-                  ></BiliobBangumiStatus>
+                  />
                   <div class="mt-2">
                     发布时间:
                     {{
@@ -84,7 +89,9 @@
                     <VCol cols="auto">
                       <VTooltip bottom>
                         <template v-slot:activator="{ on }">
-                          <VIcon v-on="on"> mdi-play-circle-outline </VIcon>
+                          <VIcon v-on="on">
+                            mdi-play-circle-outline
+                          </VIcon>
                         </template>
                         <span>{{ bangumiDetail.cView }}</span>
                       </VTooltip>
@@ -95,7 +102,9 @@
                     <VCol cols="auto">
                       <VTooltip bottom>
                         <template v-slot:activator="{ on }">
-                          <VIcon v-on="on"> mdi-coin </VIcon>
+                          <VIcon v-on="on">
+                            mdi-coin
+                          </VIcon>
                         </template>
                         <span>{{ bangumiDetail.cCoin }}</span>
                       </VTooltip>
@@ -106,19 +115,22 @@
                     <VCol cols="auto">
                       <VTooltip bottom>
                         <template v-slot:activator="{ on }">
-                          <VIcon v-on="on"> mdi-heart </VIcon>
+                          <VIcon v-on="on">
+                            mdi-heart
+                          </VIcon>
                         </template>
-                        <span
-                          >新版：{{ bangumiDetail.newFollow }}，旧版：{{
-                            bangumiDetail.oldFollow
-                          }}，系列：{{
-                            bangumiDetail.bangumiHistoryData[
-                              bangumiDetail.bangumiHistoryData.length - 1
-                            ].followSeries
-                          }}</span
-                        >
+                        <span>新版：{{ bangumiDetail.newFollow }}，旧版：{{
+                          bangumiDetail.oldFollow
+                        }}，系列：{{
+                          bangumiDetail.bangumiHistoryData[
+                            bangumiDetail.bangumiHistoryData.length - 1
+                          ].followSeries
+                        }}</span>
                       </VTooltip>
-                      <span alt="123" style="vertical-align: middle">
+                      <span
+                        alt="123"
+                        style="vertical-align: middle"
+                      >
                         {{
                           $numberFormat(
                             bangumiDetail.oldFollow > bangumiDetail.newFollow
@@ -133,20 +145,24 @@
               </VCol>
             </VRow>
           </VCardText>
-        </VCard></VCol
+        </VCard>
+      </VCol>
+      <VCol
+        cols="12"
       >
-      <VCol cols="12"
-        ><MainDetailCharts
+        <MainDetailCharts
           title="专题历史数据"
           :options="totalOptions"
-        ></MainDetailCharts
-      ></VCol>
-      <VCol cols="12"
-        ><MainDetailCharts
+        />
+      </VCol>
+      <VCol
+        cols="12"
+      >
+        <MainDetailCharts
           title="专题周增数据"
           :options="rateOptions"
-        ></MainDetailCharts
-      ></VCol>
+        />
+      </VCol>
     </VRow>
   </VContainer>
 </template>

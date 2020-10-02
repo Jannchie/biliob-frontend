@@ -8,7 +8,7 @@
           hide-details
           solo
           @keyup.enter="searchData"
-        ></VTextField>
+        />
       </VCol>
       <VCol cols="auto">
         <VBtn
@@ -30,19 +30,28 @@
         cols="12"
         lg="4"
       >
-        <BiliobBangumiInfo :bangumi-info="eachBangumi"></BiliobBangumiInfo>
+        <BiliobBangumiInfo :bangumi-info="eachBangumi" />
       </VCol>
-      <VCol v-if="loading == true" cols="12" lg="4">
+      <VCol
+        v-if="loading == true"
+        cols="12"
+        lg="4"
+      >
         <VSkeletonLoader
           elevation="3"
           class="mx-auto"
           type="card"
-        ></VSkeletonLoader>
+        />
       </VCol>
     </VRow>
     <VRow dense>
       <VCol cols="12">
-        <VBtn block outlined color="primary" @click.stop="getMore">
+        <VBtn
+          block
+          outlined
+          color="primary"
+          @click.stop="getMore"
+        >
           载入更多 / GET MORE
         </VBtn>
       </VCol>

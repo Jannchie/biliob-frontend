@@ -1,7 +1,16 @@
 <template>
   <VBottomSheet v-model="sheet">
-    <VBtn slot="activator" color="pink lighten-2" class="" text block dark>
-      <VIcon style="margin-right:20px">mdi-infinity</VIcon>更多操作
+    <VBtn
+      slot="activator"
+      color="pink lighten-2"
+      class=""
+      text
+      block
+      dark
+    >
+      <VIcon style="margin-right:20px">
+        mdi-infinity
+      </VIcon>更多操作
     </VBtn>
 
     <VList two-line>
@@ -14,9 +23,9 @@
       >
         <VListItemAvatar>
           <VAvatar size="32px">
-            <VIcon class="pink white--text lighten-2 text--lighten-2"
-              >mdi-home</VIcon
-            >
+            <VIcon class="pink white--text lighten-2 text--lighten-2">
+              mdi-home
+            </VIcon>
           </VAvatar>
         </VListItemAvatar>
         <VListItemTitle>前往UP主的个人空间</VListItemTitle>
@@ -31,9 +40,9 @@
       >
         <VListItemAvatar>
           <VAvatar size="32px">
-            <VIcon class="light-blue white--text lighten-2 text--lighten-2"
-              >mdi-qqchat</VIcon
-            >
+            <VIcon class="light-blue white--text lighten-2 text--lighten-2">
+              mdi-qqchat
+            </VIcon>
           </VAvatar>
         </VListItemAvatar>
         <VListItemContent>
@@ -52,11 +61,10 @@
         :request-url="`/user/author/${mid}/data`"
       >
         <VCardText slot="card-text">
-          立即刷新需要<span class="font-weight-black red--text">消耗5积分</span
-          >。
-          <br />
+          立即刷新需要<span class="font-weight-black red--text">消耗5积分</span>。
+          <br>
           立即刷新需要数秒至数分钟的操作时间
-          <br />
+          <br>
           请稍后刷新页面获取最新的数据！
         </VCardText>
       </BottomSheetTile>
@@ -72,12 +80,10 @@
         :request-url="`/user/author/${mid}/status?forceFocus=true`"
       >
         <VCardText slot="card-text">
-          强行观测需要<span class="font-weight-black red--text"
-            >消耗200积分</span
-          >。
-          <br />
+          强行观测需要<span class="font-weight-black red--text">消耗200积分</span>。
+          <br>
           打破取消爬取机制，保持数据每日更新。
-          <br />
+          <br>
           目前强行观测后只有管理员能取消操作。
         </VCardText>
       </BottomSheetTile>
@@ -102,7 +108,7 @@ export default {
     showAlert: false
   }),
   computed: {
-    url: function() {
+    url: function () {
       return `https://space.bilibili.com/${this.mid}`;
     }
   },

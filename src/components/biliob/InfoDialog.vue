@@ -1,26 +1,39 @@
 <template>
-  <VDialog persistent :value="show" width="500">
+  <VDialog
+    persistent
+    :value="show"
+    width="500"
+  >
     <VCard>
       <VCardTitle>
-        <VCard dark color="warning" class="info-offset">
-          <VIcon size="24px" class="ma-4"> mdi-power </VIcon>服务器临时维护中
+        <VCard
+          dark
+          color="warning"
+          class="info-offset"
+        >
+          <VIcon
+            size="24px"
+            class="ma-4"
+          >
+            mdi-power
+          </VIcon>服务器临时维护中
         </VCard>
       </VCardTitle>
       <VCardText>
         为了提供更好的服务，
-        <br />
+        <br>
         服务器正在升级。
-        <br />
+        <br>
         请稍后进行访问。
-        <br />
+        <br>
         你也可以通过邮件向我报告问题。
-        <br />
+        <br>
         <address>
           邮箱地址：jannchie@gmail.com
         </address>
-        <br />
-        <VDivider></VDivider>
-        <br />
+        <br>
+        <VDivider />
+        <br>
         很抱歉对您造成了不便。
       </VCardText>
       <!-- <VCardActions>

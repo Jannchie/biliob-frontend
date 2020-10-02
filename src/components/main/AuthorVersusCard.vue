@@ -7,7 +7,10 @@
       @click.stop="toAuthorVersus"
     >
       <div style="display: flex">
-        <VCardText class="competitor-div" style="flex-direction:row-reverse">
+        <VCardText
+          class="competitor-div"
+          style="flex-direction:row-reverse"
+        >
           <VAvatar
             style="margin-left: 10px"
             @click.stop="jumpToAuthorPage(aMid)"
@@ -17,36 +20,49 @@
               :lazy-src="zipPic(aFace.replace('http:', ''))"
             />
           </VAvatar>
-          <div style="text-align:end" class="hidden-md-and-down">
+          <div
+            style="text-align:end"
+            class="hidden-md-and-down"
+          >
             <div class="competitor-title">
               {{ aTitle }}
             </div>
             <div>
               {{ aName }}
             </div>
-            <div class="caption">{{ aOfficial }}</div>
+            <div class="caption">
+              {{ aOfficial }}
+            </div>
           </div>
           <div
             class="r-fans-counter-mobile hidden-lg-and-up"
             style="align-items: center;"
           >
-            <div class="caption">粉丝数</div>
+            <div class="caption">
+              粉丝数
+            </div>
             <div class="font-weight-black body-2 primary--text text--darken-1">
               {{ (aFans / 10000).toFixed(2) }}
             </div>
-            <div class="caption">万</div>
+            <div class="caption">
+              万
+            </div>
           </div>
           <div
             class="r-fans-counter title hidden-sm-and-down"
             style="align-items: center;"
-          ></div>
+          />
         </VCardText>
-        <div class="center-info" color="primary" dark>
+        <div
+          class="center-info"
+          color="primary"
+          dark
+        >
           <div class="title font-weight-black red--text">
             VS
           </div>
           <div>
-            <VOdometer :value="deltaFans"></VOdometer>
+            <VOdometer :value="deltaFans" />
           </div>
         </div>
         <VCardText class="competitor-div">
@@ -66,22 +82,28 @@
             <div>
               {{ bName }}
             </div>
-            <div class="caption">{{ bOfficial }}</div>
+            <div class="caption">
+              {{ bOfficial }}
+            </div>
           </div>
           <div
             class="l-fans-counter-mobile hidden-lg-and-up"
             style="align-items: center;"
           >
-            <div class="caption">粉丝数</div>
+            <div class="caption">
+              粉丝数
+            </div>
             <div class="font-weight-black body-2 primary--text text--darken-1">
               {{ (bFans / 10000).toFixed(2) }}
             </div>
-            <div class="caption">万</div>
+            <div class="caption">
+              万
+            </div>
           </div>
           <div
             class="l-fans-counter title hidden-sm-and-down"
             style="align-items: center;"
-          ></div>
+          />
         </VCardText>
       </div>
     </BiliobCard>

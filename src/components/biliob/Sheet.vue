@@ -5,11 +5,16 @@
       :elevation="0"
       :class="`subtitle `"
       border="top"
-      >{{ title }}</BiliobDarkInfo
     >
-    <slot v-if="$slots.header" style="padding:0px" name="header" />
+      {{ title }}
+    </BiliobDarkInfo>
+    <slot
+      v-if="$slots.header"
+      style="padding:0px"
+      name="header"
+    />
     <VSheet :class="`${px} body-2`">
-      <slot></slot>
+      <slot />
     </VSheet>
   </div>
 </template>

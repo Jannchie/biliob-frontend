@@ -1,7 +1,19 @@
 <template>
-  <BiliobCard light :title="title" border="bottom">
-    <VRow dense style="height: 100%; align-content: center;">
-      <VCol lg="3" md="3" sm="6" align="center">
+  <BiliobCard
+    light
+    :title="title"
+    border="bottom"
+  >
+    <VRow
+      dense
+      style="height: 100%; align-content: center;"
+    >
+      <VCol
+        lg="3"
+        md="3"
+        sm="6"
+        align="center"
+      >
         <BiliobOperationBtn
           :disabled="forceFocus"
           color="red"
@@ -15,16 +27,20 @@
           "
         >
           <VCardText slot="card-text">
-            锁定频率需要<span class="font-weight-black red--text"
-              >消耗200积分</span
-            >。 可以将观测间隔锁定在3小时。
-            <br />
+            锁定频率需要<span
+              class="font-weight-black red--text"
+            >消耗200积分</span>。 可以将观测间隔锁定在3小时。
+            <br>
             注意，该观测频率为理论最大值，实际观测频率与爬虫队列长度有关。
           </VCardText>
         </BiliobOperationBtn>
       </VCol>
 
-      <VCol lg="3" md="3" sm="6">
+      <VCol
+        lg="3"
+        md="3"
+        sm="6"
+      >
         <VBtn
           color="primary"
           :href="
@@ -39,10 +55,14 @@
           <VIcon left>
             mdi-qqchat
           </VIcon>
-          QQ分享</VBtn
-        ></VCol
+          QQ分享
+        </VBtn>
+      </VCol>
+      <VCol
+        lg="3"
+        md="3"
+        sm="6"
       >
-      <VCol lg="3" md="3" sm="6">
         <VBtn
           color="pink lighten-3"
           tile
@@ -55,10 +75,15 @@
           <VIcon left>
             mdi-home
           </VIcon>
-          UP主空间</VBtn
-        ></VCol
+          UP主空间
+        </VBtn>
+      </VCol>
+      <VCol
+        lg="3"
+        md="3"
+        sm="6"
+        align="center"
       >
-      <VCol lg="3" md="3" sm="6" align="center">
         <BiliobOperationBtn
           :pic="pic"
           :name="title"
@@ -69,12 +94,12 @@
           :request-url="`/user/author/${$route.params.mid}/data`"
         >
           <VCardText slot="card-text">
-            立即刷新作者数据<span class="font-weight-black red--text"
-              >消耗5积分</span
-            >。
-            <br />
+            立即刷新作者数据<span
+              class="font-weight-black red--text"
+            >消耗5积分</span>。
+            <br>
             立即刷新需要数秒至数分钟的操作时间
-            <br />
+            <br>
             请稍后刷新页面获取最新的数据！
           </VCardText>
         </BiliobOperationBtn>

@@ -9,7 +9,10 @@
     />
     <slot />
 
-    <slot slot="actions" name="actions" />
+    <slot
+      slot="actions"
+      name="actions"
+    />
   </BiliobCard>
 </template>
 

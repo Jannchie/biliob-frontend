@@ -1,5 +1,11 @@
 <template>
-  <VListItem class="mx-3" text large block @click.stop="to(path)">
+  <VListItem
+    class="mx-3"
+    text
+    large
+    block
+    @click.stop="to(path)"
+  >
     <VListItemAvatar class="my-0">
       <VIcon>{{ icon }}</VIcon>
     </VListItemAvatar>

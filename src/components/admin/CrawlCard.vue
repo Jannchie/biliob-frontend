@@ -9,8 +9,7 @@
     :sub-text-color="getColor(value)"
     :color="getColor(value)"
     indeterminate
-  >
-  </AdminProgressCard>
+  />
 </template>
 <script>
 export default {

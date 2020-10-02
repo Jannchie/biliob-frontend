@@ -1,8 +1,10 @@
 <template>
   <VCard>
     <VCardTitle class="title font-weight-bold primary--text">
-      <VIcon class="mr-2 primary--text">mdi-message-alert-outline</VIcon>
-      <slot></slot>
+      <VIcon class="mr-2 primary--text">
+        mdi-message-alert-outline
+      </VIcon>
+      <slot />
     </VCardTitle>
   </VCard>
 </template>

@@ -1,8 +1,14 @@
 <template>
-  <BiliobCard light border="bottom">
+  <BiliobCard
+    light
+    border="bottom"
+  >
     <VRow dense>
-      <VCol cols="6" lg="3"
-        ><BiliobOperationBtn
+      <VCol
+        cols="6"
+        lg="3"
+      >
+        <BiliobOperationBtn
           disabled
           :pic="pic"
           :name="title"
@@ -12,19 +18,25 @@
           tile-sub-title="需要消耗积分：1"
           :request-url="`/user/video/BV${$route.params.aid}/data`"
         >
-          <VCardText slot="card-text" class="mt-2">
-            立即刷新视频数据<span class="font-weight-black green--text"
-              >消耗1积分</span
-            >。
-            <br />
+          <VCardText
+            slot="card-text"
+            class="mt-2"
+          >
+            立即刷新视频数据<span
+              class="font-weight-black green--text"
+            >消耗1积分</span>。
+            <br>
             立即刷新需要数秒至数分钟的操作时间
-            <br />
+            <br>
             请稍后刷新页面获取最新的数据！
           </VCardText>
-        </BiliobOperationBtn></VCol
+        </BiliobOperationBtn>
+      </VCol>
+      <VCol
+        cols="6"
+        lg="3"
       >
-      <VCol cols="6" lg="3"
-        ><BiliobOperationBtn
+        <BiliobOperationBtn
           disabled
           :pic="pic"
           :name="title"
@@ -34,19 +46,25 @@
           tile-sub-title="需要消耗积分：10"
           :request-url="`/user/video/${$route.params.aid}/danmaku`"
         >
-          <VCardText slot="card-text" class="mt-2">
-            更新视频弹幕统计<span class="font-weight-black red--text"
-              >消耗10积分</span
-            >。
-            <br />
+          <VCardText
+            slot="card-text"
+            class="mt-2"
+          >
+            更新视频弹幕统计<span
+              class="font-weight-black red--text"
+            >消耗10积分</span>。
+            <br>
             能够根据关键词生成词云。
-            <br />
+            <br>
             能够分析弹幕密度。
           </VCardText>
-        </BiliobOperationBtn></VCol
+        </BiliobOperationBtn>
+      </VCol>
+      <VCol
+        cols="6"
+        lg="3"
       >
-      <VCol cols="6" lg="3"
-        ><VBtn
+        <VBtn
           color="primary"
           block
           outlined
@@ -60,10 +78,13 @@
           <VIcon left>
             mdi-qqchat
           </VIcon>
-          QQ分享</VBtn
-        ></VCol
+          QQ分享
+        </VBtn>
+      </VCol>
+      <VCol
+        cols="6"
+        lg="3"
       >
-      <VCol cols="6" lg="3">
         <VBtn
           color="pink"
           large
@@ -76,9 +97,9 @@
           <VIcon left>
             mdi-play-box-outline
           </VIcon>
-          前往播放页</VBtn
-        ></VCol
-      >
+          前往播放页
+        </VBtn>
+      </VCol>
     </VRow>
   </BiliobCard>
 </template>

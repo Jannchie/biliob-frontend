@@ -6,7 +6,10 @@
     >
       {{ name }}
     </div>
-    <div :class="lightColor" style="border-radius:0 3px 3px 0;padding:1px 5px;">
+    <div
+      :class="lightColor"
+      style="border-radius:0 3px 3px 0;padding:1px 5px;"
+    >
       {{ exp }}
     </div>
   </span>

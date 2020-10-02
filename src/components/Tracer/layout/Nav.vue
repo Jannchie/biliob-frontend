@@ -1,13 +1,19 @@
 <template>
-  <VNavigationDrawer v-model="drawer" app dark>
+  <VNavigationDrawer
+    v-model="drawer"
+    app
+    dark
+  >
     <VList two-line>
       <VListItem class="mx-3">
         <VListItemAvatar>
-          <img src="../../../../public/img/icons/favicon-32x32.png" />
+          <img src="../../../../public/img/icons/favicon-32x32.png">
         </VListItemAvatar>
         <VListItemContent>
           <VListItemTitle class="white--text">
-            <h1 class="title">BiliOB观测者</h1>
+            <h1 class="title">
+              BiliOB观测者
+            </h1>
           </VListItemTitle>
           <VListItemSubtitle :v-model="drawer">
             管理系统
@@ -21,7 +27,7 @@
       :name="eachItem.name"
       :icon="eachItem.icon"
       :path="eachItem.path"
-    ></TracerNavItem>
+    />
   </VNavigationDrawer>
 </template>
 <script>

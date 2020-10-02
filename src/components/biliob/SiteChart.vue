@@ -1,8 +1,18 @@
 <template>
-  <BiliobCard :title="title" light border="bottom">
+  <BiliobCard
+    :title="title"
+    light
+    border="bottom"
+  >
     <VLayout :column="this.$vuetify.breakpoint.mdAndDown">
-      <VFlex lg8 md12>
-        <div height="100%" class="pa-5">
+      <VFlex
+        lg8
+        md12
+      >
+        <div
+          height="100%"
+          class="pa-5"
+        >
           <Chart
             v-if="!loading"
             :theme="theme"
@@ -12,8 +22,15 @@
           />
         </div>
       </VFlex>
-      <VFlex lg4 md12>
-        <div tile height="100%" class="pa-5">
+      <VFlex
+        lg4
+        md12
+      >
+        <div
+          tile
+          height="100%"
+          class="pa-5"
+        >
           <div class="py-0 px-3 caption primary--text">
             一日内最高观看 / MAX VIEW 24H
           </div>

@@ -1,5 +1,8 @@
 <template>
-  <VFadeTransition mode="out-in" group>
+  <VFadeTransition
+    mode="out-in"
+    group
+  >
     <RouterLink
       v-for="eachData in data"
       :key="eachData.name"
@@ -10,27 +13,48 @@
     >
       <VRow dense>
         <VCol cols="auto">
-          <VAvatar size="60px"> <img :src="zipPic(eachData.face)" /> </VAvatar
-        ></VCol>
+          <VAvatar size="60px">
+            <img :src="zipPic(eachData.face)">
+          </VAvatar>
+        </VCol>
         <VCol>
           <div>
             <div>{{ eachData.name }}</div>
             <div v-if="eachData.official != ''">
-              <VIcon color="#FBC02D" x-small>mdi-flash-circle</VIcon
-              ><span class="caption grey--text" style="vertical-align: middle">
+              <VIcon
+                color="#FBC02D"
+                x-small
+              >
+                mdi-flash-circle
+              </VIcon><span
+                class="caption grey--text"
+                style="vertical-align: middle"
+              >
                 {{ eachData.official }}
               </span>
             </div>
-          </div></VCol
+          </div>
+        </VCol>
+        <VCol
+          cols="auto"
+          style="align-self: center;"
         >
-        <VCol cols="auto" style="align-self: center;">
-          <VChip :color="getColor()" small text-color="white" class="pl-0">
-            <VIcon class="ml-0" color="white" left>
+          <VChip
+            :color="getColor()"
+            small
+            text-color="white"
+            class="pl-0"
+          >
+            <VIcon
+              class="ml-0"
+              color="white"
+              left
+            >
               {{ getIcon() }}
             </VIcon>
             {{ $numberFormat(Math.abs(eachData.cRate), false) }}
-          </VChip></VCol
-        >
+          </VChip>
+        </VCol>
       </VRow>
     </RouterLink>
   </VFadeTransition>

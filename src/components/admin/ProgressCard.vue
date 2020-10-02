@@ -14,7 +14,7 @@
               color="white"
               :value="percent"
               :indeterminate="indeterminate && value != 0"
-            ></VProgressLinear>
+            />
           </VCol>
         </VRow>
         <VRow dense>
@@ -33,8 +33,12 @@
     </VCard>
     <div class="px-4 pb-4">
       <VDivider class="pb-2" />
-      <VIcon color="grey" small>{{ subIcon }}</VIcon
-      ><span class="grey--text caption mx-2">{{ subText }}</span>
+      <VIcon
+        color="grey"
+        small
+      >
+        {{ subIcon }}
+      </VIcon><span class="grey--text caption mx-2">{{ subText }}</span>
     </div>
   </VCard>
 </template>

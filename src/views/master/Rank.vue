@@ -2,14 +2,25 @@
   <VContainer>
     <VRow dense>
       <VCol cols="12">
-        <BiliobCard class="card-tabs" padding="px-0">
+        <BiliobCard
+          class="card-tabs"
+          padding="px-0"
+        >
           <VFlex slot="header">
-            <BiliobDarkInfo light border="bottom">
+            <BiliobDarkInfo
+              light
+              border="bottom"
+            >
               <div>
                 <VCardTitle>
-                  <h4 style="text-align: center">{{ title }}</h4>
+                  <h4 style="text-align: center">
+                    {{ title }}
+                  </h4>
                 </VCardTitle>
-                <VTabs slider-color="primary" background-color="transparent">
+                <VTabs
+                  slider-color="primary"
+                  background-color="transparent"
+                >
                   <VTab @click="getData(0)">
                     <VIcon style="margin-right:10px;">
                       mdi-heart
@@ -17,8 +28,9 @@
                     涨粉榜 / ASC
                   </VTab>
                   <VTab @click="getData(1)">
-                    <VIcon style="margin-right:10px;"> mdi-heart-broken </VIcon
-                    >掉粉榜 / DESC
+                    <VIcon style="margin-right:10px;">
+                      mdi-heart-broken
+                    </VIcon>掉粉榜 / DESC
                   </VTab>
                   <!-- <VTab @click="getData(2)">
                     <VIcon style="margin-right:10px;"> mdi-video-vintage </VIcon
@@ -33,10 +45,13 @@
             </BiliobDarkInfo>
           </VFlex>
           <div>
-            <RouterView key=""></RouterView>
-            <div v-if="index === 0 || index === 1"></div>
+            <RouterView key="" />
+            <div v-if="index === 0 || index === 1" />
             <div v-else>
-              <VFadeTransition mode="out-in" group>
+              <VFadeTransition
+                mode="out-in"
+                group
+              >
                 <div
                   v-for="(eachData, idx) in data"
                   :key="idx"
@@ -52,7 +67,9 @@
                     <VContainer class="pt-0 body-1">
                       <VLayout>
                         <VFlex xs-12>
-                          <h5 class="font-weight-bold">{{ eachData.title }}</h5>
+                          <h5 class="font-weight-bold">
+                            {{ eachData.title }}
+                          </h5>
                         </VFlex>
                       </VLayout>
                       <VLayout row>

@@ -1,11 +1,20 @@
 <template>
   <VContainer>
-    <VRow v-if="!loaded" dense>
+    <VRow
+      v-if="!loaded"
+      dense
+    >
       <VCol>
-        <VSkeletonLoader class="elevation-1" type="card" />
+        <VSkeletonLoader
+          class="elevation-1"
+          type="card"
+        />
       </VCol>
     </VRow>
-    <VRow v-else dense>
+    <VRow
+      v-else
+      dense
+    >
       <VCol>
         <BiliobCard title="群组基本信息">
           <BiliobAuthorGroupInfoForm
@@ -13,7 +22,7 @@
             :name="name"
             :desc="desc"
             :tag-list="tagList"
-          ></BiliobAuthorGroupInfoForm>
+          />
         </BiliobCard>
       </VCol>
       <VCol cols="12">
@@ -26,13 +35,16 @@
                 hide-details
                 label="UP主ID"
                 @keyup.enter="addNewTag(newTag)"
-              ></VTextField>
+              />
             </VCol>
           </VRow>
           <VRow>
-            <VSpacer></VSpacer>
+            <VSpacer />
             <VCol cols="auto">
-              <VRadioGroup v-model="operationType" row>
+              <VRadioGroup
+                v-model="operationType"
+                row
+              >
                 <VRadio
                   v-for="n in [
                     ['add', '添加'],
@@ -41,10 +53,13 @@
                   :key="n[1]"
                   :label="`${n[1]}`"
                   :value="n[0]"
-                ></VRadio>
+                />
               </VRadioGroup>
             </VCol>
-            <VCol cols="auto" class="align-self-center">
+            <VCol
+              cols="auto"
+              class="align-self-center"
+            >
               <VBtn
                 :disabled="uid == undefined || uid == ''"
                 large
@@ -52,7 +67,9 @@
                 :loading="authorLoading"
                 @click="authorSubmit"
               >
-                <VIcon left> mdi-pencil </VIcon> 提交
+                <VIcon left>
+                  mdi-pencil
+                </VIcon> 提交
               </VBtn>
             </VCol>
           </VRow>
@@ -62,15 +79,31 @@
         <BiliobCard title="危险操作">
           <VRow dense>
             <VCol cols="auto">
-              <VBtn color="error" large @click.stop="deleteGroup"
-                >删除群组</VBtn
+              <VBtn
+                color="error"
+                large
+                @click.stop="deleteGroup"
               >
+                删除群组
+              </VBtn>
             </VCol>
             <VCol cols="auto">
-              <VBtn disabled color="warning" large>TODO: 转交群组</VBtn>
+              <VBtn
+                disabled
+                color="warning"
+                large
+              >
+                TODO: 转交群组
+              </VBtn>
             </VCol>
             <VCol cols="auto">
-              <VBtn disabled color="green" large>TODO: 添加编辑者</VBtn>
+              <VBtn
+                disabled
+                color="green"
+                large
+              >
+                TODO: 添加编辑者
+              </VBtn>
             </VCol>
           </VRow>
         </BiliobCard>

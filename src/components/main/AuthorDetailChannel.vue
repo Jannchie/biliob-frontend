@@ -1,6 +1,9 @@
 <template>
   <VLayout>
-    <VFlex lg6 md12>
+    <VFlex
+      lg6
+      md12
+    >
       <VCard class="channel-card">
         <Chart
           id="channel-chart"

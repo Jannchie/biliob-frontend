@@ -1,5 +1,10 @@
 <template>
-  <VAppBar dark absolute app prominent>
+  <VAppBar
+    dark
+    absolute
+    app
+    prominent
+  >
     <VToolbarTitle> {{ title }}</VToolbarTitle>
   </VAppBar>
 </template>
