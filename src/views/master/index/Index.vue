@@ -4,9 +4,7 @@
       <VCol cols="12">
         <VExpansionPanels tile>
           <VExpansionPanel>
-            <VExpansionPanelHeader
-              class="primary--text px-4"
-            >
+            <VExpansionPanelHeader class="primary--text px-4">
               <h3>
                 <VIcon
                   color="primary"
@@ -93,9 +91,9 @@
     </VRow>
     <VRow dense>
       <VCol>
-        <VFadeTransition>
+        <VSlideYTransition>
           <RouterView />
-        </VFadeTransition>
+        </VSlideYTransition>
       </VCol>
     </VRow>
     <VRow dense>
@@ -140,7 +138,7 @@ export default {
   },
   mounted() {
     if (this.index.recentlyRank == undefined) {
-      this.axios.get("/index/recently-rank").then(res => {
+      this.axios.get("/index/recently-rank").then((res) => {
         this.index.recentlyRank = res.data;
       });
     }

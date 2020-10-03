@@ -52,7 +52,7 @@
         </VTabs>
       </VCol>
 
-      <VFadeTransition
+      <VSlideYTransition
         style="width: 100%"
         group
       >
@@ -68,9 +68,9 @@
             @openReplies="openReplies"
           />
         </VCol>
-      </VFadeTransition>
+      </VSlideYTransition>
 
-      <VFadeTransition
+      <VSlideYTransition
         v-if="comments == undefined || loading == true"
         style="width: 100%"
       >
@@ -81,8 +81,8 @@
             type="card-heading, list-item-two-line, list-item"
           />
         </VCol>
-      </VFadeTransition>
-      <VFadeTransition
+      </VSlideYTransition>
+      <VSlideYTransition
         v-else-if="comments.length == 0"
         style="width: 100%"
       >
@@ -92,7 +92,7 @@
             <VCardText>现在撰写，成为第一个记录的观测者吧~ ↑</VCardText>
           </VCard>
         </VCol>
-      </VFadeTransition>
+      </VSlideYTransition>
       <VCol
         v-else-if="
           comments != undefined &&

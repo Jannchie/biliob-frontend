@@ -36,7 +36,7 @@
           </VChip>
         </div>
         <VDivider />
-        <VFadeTransition
+        <VSlideYTransition
           group
           mode="out-in"
         >
@@ -60,7 +60,7 @@
             </h5>
             <VDivider />
           </div>
-        </VFadeTransition>
+        </VSlideYTransition>
       </VCol>
     </VRow>
   </VContainer>

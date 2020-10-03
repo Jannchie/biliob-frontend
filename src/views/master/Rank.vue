@@ -48,7 +48,7 @@
             <RouterView key="" />
             <div v-if="index === 0 || index === 1" />
             <div v-else>
-              <VFadeTransition
+              <VSlideYTransition
                 mode="out-in"
                 group
               >
@@ -92,7 +92,7 @@
                     </VContainer>
                   </div>
                 </div>
-              </VFadeTransition>
+              </VSlideYTransition>
             </div>
           </div>
         </BiliobCard>

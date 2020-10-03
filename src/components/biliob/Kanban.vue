@@ -1,7 +1,7 @@
 <template>
-  <VFadeTransition>
+  <VSlideYTransition>
     <div :class="wapper">
-      <VFadeTransition>
+      <VSlideYTransition>
         <VImg
           v-if="show"
           key="kanban"
@@ -10,9 +10,9 @@
           src="../../../img/06-01.png"
           @click="click"
         />
-      </VFadeTransition>
+      </VSlideYTransition>
     </div>
-  </VFadeTransition>
+  </VSlideYTransition>
 </template>
 
 <script>

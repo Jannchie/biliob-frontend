@@ -1,5 +1,5 @@
 <template>
-  <VFadeTransition
+  <VSlideYTransition
     mode="out-in"
     tag="div"
     class="row justify-center"
@@ -47,7 +47,7 @@
     >
       <BiliobSponsor id="sponsor-container" />
     </VCol>
-  </VFadeTransition>
+  </VSlideYTransition>
 </template>
 
 <script>

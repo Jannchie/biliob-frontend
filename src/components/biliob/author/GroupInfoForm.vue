@@ -23,7 +23,7 @@
           multiple
           active-class="primary--text"
         >
-          <VFadeTransition group>
+          <VSlideYTransition group>
             <VChip
               v-for="tag in tags"
               :key="tag"
@@ -36,7 +36,7 @@
             >
               {{ tag }}
             </VChip>
-          </VFadeTransition>
+          </VSlideYTransition>
         </VChipGroup>
       </VCol>
       <VCol>

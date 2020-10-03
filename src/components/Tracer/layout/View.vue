@@ -1,9 +1,9 @@
 <template>
   <VMain>
     <div id="core-view">
-      <VFadeTransition mode="out-in">
+      <VSlideYTransition mode="out-in">
         <RouterView />
-      </VFadeTransition>
+      </VSlideYTransition>
     </div>
     <TracerLayoutFooter />
   </VMain>

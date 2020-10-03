@@ -1,5 +1,5 @@
 <template>
-  <VFadeTransition
+  <VSlideYTransition
     mode="out-in"
     group
   >
@@ -57,7 +57,7 @@
         </VCol>
       </VRow>
     </RouterLink>
-  </VFadeTransition>
+  </VSlideYTransition>
 </template>
 <script>
 export default {

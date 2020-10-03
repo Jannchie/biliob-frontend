@@ -1,5 +1,5 @@
 <template>
-  <VFadeTransition mode="out-in">
+  <VSlideYTransition mode="out-in">
     <VLayout
       v-if="loaded"
       wrap
@@ -129,7 +129,7 @@
         </MaterialChartCard>
       </VFlex>
     </VLayout>
-  </VFadeTransition>
+  </VSlideYTransition>
 </template>
 
 <script>
@@ -169,11 +169,11 @@ export default {
   },
   mounted() {
     this.currentDate = format(new Date(), "YYYY-MM-DD HH:mm");
-    this.axios.get("/tracer/exists-tasks").then(r => {
+    this.axios.get("/tracer/exists-tasks").then((r) => {
       this.scheduleTask = r.data;
     });
 
-    this.axios.get(`/tracer/dashboard`).then(r => {
+    this.axios.get(`/tracer/dashboard`).then((r) => {
       this.sumSpiderCount = r.data.sumSpiderCount;
       this.checkedInCount = r.data.checkedInCount;
       this.recordCount = r.data.recordCount;
@@ -183,7 +183,7 @@ export default {
       this.updateTask(r.data);
 
       let data = r.data.userBucketResult;
-      let userX = data.map(x => {
+      let userX = data.map((x) => {
         if (x._id.min == null) {
           x._id.min = "未签到";
         } else {
@@ -191,24 +191,24 @@ export default {
         }
         return x._id.min;
       });
-      let userY = data.map(x => {
+      let userY = data.map((x) => {
         return x.count;
       });
       this.userOptions = getCardChart(userX, userY, "bar");
       this.signInOptions = getCardChart(
-        r.data.monthlySignIn.map(e => {
+        r.data.monthlySignIn.map((e) => {
           return e.month + "月";
         }),
-        r.data.monthlySignIn.map(e => {
+        r.data.monthlySignIn.map((e) => {
           return e.count;
         }),
         "line"
       );
       this.checkInOptions = getCardChart(
-        r.data.weeklyCheckIn.map(e => {
+        r.data.weeklyCheckIn.map((e) => {
           return "第" + e.week + "周";
         }),
-        r.data.weeklyCheckIn.map(e => {
+        r.data.weeklyCheckIn.map((e) => {
           return e.count;
         }),
         "bar"
@@ -253,10 +253,10 @@ export default {
       }
     },
     getLatestTaskInfo() {
-      this.axios.get(`/tracer/latest-progress`).then(r => {
+      this.axios.get(`/tracer/latest-progress`).then((r) => {
         this.updateTask(r.data);
       });
-      this.axios.get(`/tracer/latest-spider`).then(r => {
+      this.axios.get(`/tracer/latest-spider`).then((r) => {
         this.authorCrawlLength = r.data.authorCrawlLength;
         this.videoCrawlLength = r.data.videoCrawlLength;
       });

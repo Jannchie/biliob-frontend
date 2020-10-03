@@ -108,7 +108,7 @@
         </VBtn>
       </VCol>
     </VRow>
-    <VFadeTransition>
+    <VSlideYTransition>
       <VRow
         v-if="loaded == false"
         dense
@@ -138,7 +138,7 @@
           />
         </VCol>
       </VRow>
-    </VFadeTransition>
+    </VSlideYTransition>
     <VRow
       v-if="none"
       dense

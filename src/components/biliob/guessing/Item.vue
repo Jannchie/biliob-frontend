@@ -57,10 +57,11 @@
         <VCard>
           <VCardTitle> 观测者预测结果 </VCardTitle>
           <VCardText>
-            公式：预测分数 = 总消耗积分 × （(实际到达时间小时数 -
-            创建预测时间小时数) ÷ | 实际到达时间分钟数 - 预测时间分钟数 | × 10)
+            公式：预测分数 ∝ 总消耗积分 × （(提前预测时间) ÷ | 预测偏差时间 |)
             <br>
-            根据预测分数等比例分配总积分池。
+            根据预测分数按一定比例分配总积分池。
+            <br>
+            最多亏损47%的积分。
           </VCardText>
           <VDataTable
             :headers="[
@@ -133,8 +134,9 @@
           <VCardText class="mt-4">
             赌上积分进行预测吧！
             <br>
-            根据预测的偏差程度，将会进行一定的积分返还。(还未做好)
-            <br>时间以北京时间为准。
+            根据预测的偏差程度，将会进行一定的积分返还。
+            <br>
+            时间以北京时间为准。
             <VTextField
               v-model="time"
               :hint="formatedTime"
@@ -145,8 +147,8 @@
             <VSlider
               v-model="credit"
               label="使用积分"
-              min="1"
-              max="100"
+              :min="1"
+              :max="100"
               thumb-label
             />
           </VCardText>
