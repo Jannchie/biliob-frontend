@@ -69,7 +69,6 @@ axios.defaults.withCredentials = true;
 
 Vue.prototype.$alert = res => {
   if (res == undefined) return;
-
   let msg = res.data.msg;
   if (res.status == 403) {
     data.alert.message = "拒绝访问";
@@ -81,6 +80,10 @@ Vue.prototype.$alert = res => {
       Vue.prototype.$db.user.credit = res.data.user.credit;
       Vue.prototype.$db.user.exp = res.data.user.exp;
       msg = `${res.data.msg}！剩余积分：${res.data.user.credit} 当前经验：${res.data.user.exp}`;
+    } else {
+      if (res.status == 200) {
+        return;
+      }
     }
     if (res.data.code > 0) {
       data.alert.type = "success";

@@ -10,16 +10,16 @@
         <VRow>
           <VCol>
             <div class="caption text--secondary">
-              2020-02-02
+              {{ date }}
             </div>
             <div class="body-1 text--secondary">
-              这里是通知文字
+              <VueMarkdown :source="msg" />
             </div>
           </VCol>
           <VCol cols="auto">
             <VBtn
               icon
-              @click.stop="show = false"
+              @click.stop="close"
             >
               <VIcon>mdi-window-close</VIcon>
             </VBtn>
@@ -33,10 +33,25 @@
 <script>
 export default {
   data() {
-    return { show: true };
+    return { show: false, msg: "", type: 0, date: undefined };
   },
   mounted() {
-    this.axios.get(`/common/notice`);
+    this.axios.get(`/common/notice`).then((res) => {
+      let lastDate = window.localStorage.getItem(`notice`);
+      if (lastDate == this.$timeFormat(res.data.date, "YYYY-MM-DD HH:mm:ss")) {
+        return;
+      }
+      this.show = true;
+      this.msg = res.data.msg;
+      this.type = res.data.type;
+      this.date = this.$timeFormat(res.data.date, "YYYY-MM-DD HH:mm:ss");
+    });
+  },
+  methods: {
+    close() {
+      this.show = false;
+      window.localStorage.setItem("notice", this.date);
+    }
   }
 };
 </script>
