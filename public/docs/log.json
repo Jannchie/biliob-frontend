@@ -2654,5 +2654,33 @@
             }
         ],
         "type": "important"
+    },
+    {
+        "title": "小型更新",
+        "version": "ver.11.1.1",
+        "date": "2020-10-04",
+        "list": [
+            {
+                "text": "美化了一些动画",
+                "type": "beautify"
+            },
+            {
+                "text": "添加了站点通知",
+                "type": "feature"
+            },
+            {
+                "text": "现在到达过观想者（高级研究员）的用户也能新建议题了。",
+                "type": "feature"
+            },
+            {
+                "text": "修复了预测的一些过时文案描述",
+                "type": "fix"
+            },
+            {
+                "text": "现在只有首次收藏群组会进行积分变动",
+                "type": "feature"
+            }
+        ],
+        "type": "unimportant"
     }
 ]

@@ -18,10 +18,30 @@
       </template>
       <VAppBarNavIcon @click.stop="showNav = !showNav" />
 
-      <VToolbarTitle>
-        <h1 class="title">
-          BiliOB观测者
-        </h1>
+      <VToolbarTitle style="width: 100%">
+        <VRow>
+          <VCol>
+            <div class="title">
+              BiliOB观测者
+            </div>
+          </VCol>
+          <VSpacer />
+          <VCol
+            v-if="!$vuetify.breakpoint.lgAndUp"
+            cols="auto"
+          >
+            <VBtn
+              icon
+              small
+              style="margin-bottom: auto;"
+              @click.stop="$vuetify.goTo('#comment-container')"
+            >
+              <VIcon>
+                mdi-chat
+              </VIcon>
+            </VBtn>
+          </VCol>
+        </VRow>
       </VToolbarTitle>
 
       <VSpacer />
