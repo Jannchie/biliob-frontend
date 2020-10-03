@@ -51,6 +51,7 @@
         <VRow dense>
           <BiliobFab />
         </VRow>
+
         <div>
           <VNavigationDrawer
             v-model="showNav"
@@ -226,55 +227,8 @@
     </div>
     <VMain>
       <VContainer class="pa-0">
-        <VRow
-          justify="center"
-          dense
-        >
-          <VCol
-            v-if="
-              (-1 == ['/login', '/signin'].indexOf(this.$route.path) &&
-                this.$route.path.indexOf('user') == -1) ||
-                this.$route.path == '/user/rank'
-            "
-            :style="`${
-              $vuetify.breakpoint.lgAndDown
-                ? 'max-height: 245px;overflow-y: auto;'
-                : ''
-            }`"
-            lg="1"
-            cols="12"
-            class="order-3"
-          >
-            <BiliobSponsor id="sponsor-container" />
-          </VCol>
-          <VCol
-            lg="8"
-            cols="12"
-            class="pa-0 order-1"
-          >
-            <VSlideYTransition mode="out-in">
-              <RouterView
-                id="main-view"
-                key="master"
-              />
-            </VSlideYTransition>
-          </VCol>
-          <VCol
-            v-if="
-              ($store.getters.getLoginState &&(
-                -1 == ['/login', '/signin'].indexOf(this.$route.path) &&
-                this.$route.path.indexOf('user') == -1 ||
-                this.$route.path == '/user/rank'))
-            "
-            class="order-2"
-            lg="3"
-            cols="12"
-          >
-            <VSlideYTransition mode="out-in">
-              <BiliobComment id="comment-container" />
-            </VSlideYTransition>
-          </VCol>
-        </VRow>
+        <BiliobNotice />
+        <BiliobMain />
       </VContainer>
     </VMain>
     <BiliobFirstLoadDialog />

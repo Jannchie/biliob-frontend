@@ -45,7 +45,7 @@
 export default {
   props: {
     sort: {
-      type: Object,
+      type: Number,
       default: undefined
     },
     parent: {
