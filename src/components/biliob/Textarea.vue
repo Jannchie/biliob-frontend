@@ -8,6 +8,7 @@
       auto-grow
       rows="1"
       class="regular-input"
+      @keyup.ctrl.enter="$emit('submit')"
     />
     <EmojiPicker
       :search="search"

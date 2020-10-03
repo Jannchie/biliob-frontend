@@ -10,6 +10,7 @@
     <VCardText>
       <BiliobTextarea
         ref="CommentTextArea"
+        @submit="postComment"
         @getText="updateCommentContent"
       />
       <VBtn

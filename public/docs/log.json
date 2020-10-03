@@ -2679,6 +2679,14 @@
             {
                 "text": "现在只有首次收藏群组会进行积分变动",
                 "type": "feature"
+            },
+            {
+                "text": "小屏幕下添加了前往评论区的快捷键",
+                "type": "feature"
+            },
+            {
+                "text": "Ctrl + Enter = 发送评论",
+                "type": "feature"
             }
         ],
         "type": "unimportant"
