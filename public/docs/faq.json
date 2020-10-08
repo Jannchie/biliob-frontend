@@ -48,18 +48,18 @@
             ]
         },
         {
-            "catalogName": "等级相关问题",
+            "catalogName": "等级与头衔相关问题",
             "catalogQuestions": [
                 {
                     "question": "BiliOB观测者的等级有什么用？",
                     "answer": [
-                        "等级目前起到装饰作用（没什么用）。侧边栏中，观测者排行会按照积分顺序进行排序。在这里会公开显示用户的等级。"
+                        "等级目前起到装饰作用。侧边栏中，观测者排行会按照积分顺序进行排序。在这里会公开显示用户的等级。等级与头衔挂钩，不同头衔拥有不同的功能。"
                     ]
                 },
                 {
-                    "question": "BiliOB观测者的等级如何划分？",
+                    "question": "BiliOB的头衔等级如何划分？",
                     "answer": [
-                        "BILIOB观测者等级根据观测者的经验值进行划分。",
+                        "BiliOB的头衔等级根据观测者的经验值进行划分。",
                         "目前一共有六个等级：",
                         "<span class='red--text'>管理者</span>：Exp全站前3名",
                         "<span class='orange--text'>观测者</span>：Exp全站前4-19名",
@@ -67,6 +67,19 @@
                         "<span class='blue--text'>追寻者</span>：Exp全站前5%，且名次在70名之后",
                         "<span class='green--text'>彷徨者</span>：Exp全站后95%，且Exp > 100",
                         "<span class='grey--text'>初心者</span>：Exp小于等于100"
+                    ]
+                },
+                {
+                    "question": "BiliOB观测者的权限等级如何划分？",
+                    "answer": [
+                        "BiliOB的权限等级划分如下：",
+                        "目前一共有六个等级，",
+                        "<span class='red--text'>站长</span>：贡献超过50%的代码",
+                        "<span class='orange--text'>系统测试员</span>：内部测试账号",
+                        "<span class='purple--text'>特权研究员</span>：等级达到过管理者",
+                        "<span class='blue--text'>管理研究员</span>：等级达到过观测者",
+                        "<span class='green--text'>高级研究员</span>：等级达到过观想者",
+                        "<span class='grey--text'>普通研究员</span>：其他观测站成员"
                     ]
                 }
             ]

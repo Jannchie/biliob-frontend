@@ -2690,5 +2690,29 @@
             }
         ],
         "type": "unimportant"
+    },
+    {
+        "title": "修复错误",
+        "version": "ver.11.1.2",
+        "date": "2020-10-09",
+        "list": [
+            {
+                "text": "修复了布局没有对齐的错误",
+                "type": "fix"
+            },
+            {
+                "text": "修复了一处观测者议会的文案错误",
+                "type": "fix"
+            },
+            {
+                "text": "修复了一处FAQ的文案错误",
+                "type": "fix"
+            },
+            {
+                "text": "更新了FAQ关于权限等级的描述",
+                "type": "feature"
+            }
+        ],
+        "type": "unimportant"
     }
 ]
