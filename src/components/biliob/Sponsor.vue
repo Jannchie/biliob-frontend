@@ -1,69 +1,70 @@
 <template>
-  <VContainer>
-    <VRow dense>
-      <VCol cols="12">
-        <div>
-          <h3 class="caption primary--text">
-            赞助 / SPONSORS
-          </h3>
-          <VChip
-            label
-            text
-            small
-            class="px-1"
-            style="vertical-align: sub;"
-            color="#0000"
-            href="https://azz.net/jannchie"
-          >
-            <VIcon small>
-              mdi-currency-cny
-            </VIcon>
-            加入赞助
-          </VChip>
-          <VChip
-            label
-            text
-            small
-            class="px-1 mb-2 caption"
-            style="vertical-align: sub;"
-            color="#0000"
-            @click="sort == 0 ? (sort = 1) : (sort = 0)"
-          >
-            <VIcon small>
-              mdi-arrow-down
-            </VIcon>
-            {{ sort == 0 ? "时间" : "总额" }}顺序
-          </VChip>
-        </div>
-        <VDivider />
-        <VSlideYTransition
-          group
-          mode="out-in"
+  <VRow
+    class="pa-0"
+    dense
+  >
+    <VCol cols="12">
+      <div>
+        <h3 class="caption primary--text">
+          赞助 / SPONSORS
+        </h3>
+        <VChip
+          label
+          text
+          small
+          class="px-1"
+          style="vertical-align: sub;"
+          color="#0000"
+          href="https://azz.net/jannchie"
         >
-          <div
-            v-for="(eachSponsor, i) in sponsor"
-            :key="`${i}${eachSponsor.user.name}`"
-          >
-            <h4
-              class="text--secondary"
-              style="
+          <VIcon small>
+            mdi-currency-cny
+          </VIcon>
+          加入赞助
+        </VChip>
+        <VChip
+          label
+          text
+          small
+          class="px-1 mb-2 caption"
+          style="vertical-align: sub;"
+          color="#0000"
+          @click="sort == 0 ? (sort = 1) : (sort = 0)"
+        >
+          <VIcon small>
+            mdi-arrow-down
+          </VIcon>
+          {{ sort == 0 ? "时间" : "总额" }}顺序
+        </VChip>
+      </div>
+      <VDivider />
+      <VSlideYTransition
+        group
+        mode="out-in"
+      >
+        <div
+          v-for="(eachSponsor, i) in sponsor"
+          :key="`${i}${eachSponsor.user.name}`"
+        >
+          <h4
+            class="text--secondary"
+            style="
                 white-space: nowrap;overflow: hidden;text-overflow: ellipsis;
               "
-            >
-              {{ eachSponsor.user.name }}
-            </h4>
-            <h5 class="text--disabled caption">
-              累计支援 {{ eachSponsor.orderPrice / 100 }} ￥
-            </h5>
-            <h5 class="text--disabled caption">
-              {{ $timeFormat(eachSponsor.createDate, "MM-DD HH:mm") }}
-            </h5>
-            <VDivider />
-          </div>
-        </VSlideYTransition>
-      </VCol>
-    </VRow>
-  </VContainer>
+          >
+            {{ eachSponsor.user.name }}
+          </h4>
+          <h5 class="text--disabled caption">
+            累计支援 {{ eachSponsor.orderPrice / 100 }} ￥
+          </h5>
+          <h5 class="text--disabled caption">
+            {{ $timeFormat(eachSponsor.createDate, "MM-DD HH:mm") }}
+          </h5>
+          <VDivider />
+        </div>
+      </VSlideYTransition>
+    </VCol>
+  </VRow>
 </template>
 <script>
 export default {
