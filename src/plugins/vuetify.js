@@ -1,5 +1,5 @@
 import Vue from "vue";
-import Vuetify from "vuetify/lib";
+const Vuetify = require("vuetify/lib");
 import theme from "./theme";
 import zhHans from "vuetify/es5/locale/zh-Hans";
 Vue.use(Vuetify);

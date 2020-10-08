@@ -1,31 +1,27 @@
 const CompressionWebpackPlugin = require("compression-webpack-plugin");
 const productionGzipExtensions = ["js", "css"];
 module.exports = {
+
+  chainWebpack: config => {
+    config.optimization.minimize(true);//进行代码压缩
+  },
+
   // 是否为生产环境构建生成 source map？
   productionSourceMap: false,
 
-  // 简单Gzip
   lintOnSave: false,
+  // 简单Gzip 
   configureWebpack: {
     plugins: [
       new CompressionWebpackPlugin({
         algorithm: "gzip",
         test: new RegExp("\\.(" + productionGzipExtensions.join("|") + ")$"),
-        threshold: 10240,
+        threshold: 1024,
         minRatio: 0.8
       })
     ],
     entry: {
       app: ["babel-polyfill", "@/main.js"]
-    },
-    devServer: {
-      proxy: {
-        "/api": {
-          target: "https://biliob.com/",
-          changeOrigin: true, // target是域名的话，需要这个参数，
-          secure: false // 设置支持https协议的代理
-        }
-      }
     }
   },
   pwa: {
