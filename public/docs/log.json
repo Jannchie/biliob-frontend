@@ -1977,7 +1977,7 @@
                 "type": "feature"
             },
             {
-                "text": "调整了发表评论的位置",
+                "text": "调整了发表观测纪录的位置",
                 "type": "feature"
             }
         ],
@@ -1997,7 +1997,7 @@
                 "type": "feature"
             },
             {
-                "text": "评论显示头衔",
+                "text": "观测纪录显示头衔",
                 "type": "feature"
             }
         ],
@@ -2225,7 +2225,7 @@
         "date": "2020-04-02",
         "list": [
             {
-                "text": "添加了评论回复的点赞和删除",
+                "text": "添加了观测纪录回复的点赞和删除",
                 "type": "feature"
             },
             {
@@ -2681,11 +2681,11 @@
                 "type": "feature"
             },
             {
-                "text": "小屏幕下添加了前往评论区的快捷键",
+                "text": "小屏幕下添加了前往观测纪录区的快捷键",
                 "type": "feature"
             },
             {
-                "text": "Ctrl + Enter = 发送评论",
+                "text": "Ctrl + Enter = 发送观测纪录",
                 "type": "feature"
             }
         ],
