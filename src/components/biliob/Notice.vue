@@ -1,8 +1,10 @@
 <template>
   <VRow>
-    <VCol cols="12">
+    <VCol
+      v-show="show"
+      cols="12"
+    >
       <VBanner
-        v-show="show"
         icon-color="primary"
         icon="mdi-information"
         sticky

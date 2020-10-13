@@ -57,7 +57,7 @@
       </VCol>
     </VRow>
     <VSlideYTransition
-      leave-absolute
+      hide-on-leave
       mode="out-in"
     >
       <VRow

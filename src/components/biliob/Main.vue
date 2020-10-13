@@ -9,7 +9,6 @@
       key="main"
       lg="8"
       cols="12"
-      class="pa-0"
     >
       <VSlideYTransition mode="out-in">
         <RouterView id="main-view" />

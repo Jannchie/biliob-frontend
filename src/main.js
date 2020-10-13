@@ -26,7 +26,7 @@ Vue.use(VueCookies);
 import Meta from "vue-meta";
 Vue.use(Meta);
 
-router.afterEach(function (to) {
+router.afterEach(function(to) {
   let baseTitle =
     " - BiliOB观测者 - B站历史数据统计分析站点 - 哔哩哔哩数据查询";
   if (to.name == undefined) {
@@ -61,13 +61,13 @@ router.afterEach(function (to) {
 });
 Vue.use(EmojiPicker);
 Vue.use(VueRouter);
-Vue.prototype.$addEvent = addEvent
+Vue.prototype.$addEvent = addEvent;
 Vue.prototype.$baseKeywords =
   "B站,b站数据统计,b站数据分析,bilibili排行榜,哔哩哔哩up主,up主排行,数据,观测者,视频,见齐,biliob,bilibili,UP主,粉丝数,粉丝数排行榜,数据可视化,哔哩哔哩,哔哩哔哩观测者,哔哩哔哩ob,bilibiliob";
 // 使用axios
 axios.defaults.withCredentials = true;
 
-Vue.prototype.$alert = res => {
+Vue.prototype.$alert = (res) => {
   if (res == undefined) return;
   let msg = res.data.msg;
   if (res.status == 403) {
@@ -99,11 +99,11 @@ import { format } from "date-fns";
 Vue.prototype.$timeFormat = format;
 
 Vue.prototype.$db = data;
-Vue.prototype.$keywordFilter = txt => {
+Vue.prototype.$keywordFilter = (txt) => {
   return txt.replace(/赌|赌博|博彩/g, "预测");
 };
 Vue.prototype.$dateParse = require("date-fns/parse");
-Vue.prototype.$numberFormat = function (num, sim = true, fix = 0) {
+Vue.prototype.$numberFormat = function(num, sim = true, fix = 0) {
   if (num == undefined) {
     return "-";
   }
@@ -127,23 +127,23 @@ Vue.prototype.$numberFormat = function (num, sim = true, fix = 0) {
 };
 
 axios.interceptors.request.use(
-  config => {
+  (config) => {
     return config;
   },
-  error => {
+  (error) => {
     return Promise.error(error);
   }
 );
 
 axios.interceptors.response.use(
-  function (response) {
+  function(response) {
     // let path = router.app.$route.path;
     // if (response.config.method != "get") {
     Vue.prototype.$alert(response);
     // }
     return response;
   },
-  function (error) {
+  function(error) {
     Vue.prototype.$alert(error.response);
     return Promise.reject(error);
   }
@@ -156,7 +156,7 @@ if (process.env.NODE_ENV == "development1") {
   axios.defaults.baseURL = "https://api.biliob.com/";
 }
 axios.defaults.headers = {
-  "Content-Type": "application/json"
+  "Content-Type": "application/json",
 };
 
 Vue.use(VueAxios, axios);
@@ -165,13 +165,13 @@ new Vue({
   router,
   store,
   vuetify,
-  render: h => h(App)
+  render: (h) => h(App),
 }).$mount("#app");
 
 // refresh index.html
-caches.open("biliob-precache-https://www.biliob.com/").then(c => {
-  c.keys().then(k => {
-    k.forEach(e => {
+caches.open("biliob-precache-https://www.biliob.com/").then((c) => {
+  c.keys().then((k) => {
+    k.forEach((e) => {
       if (e.url === "https://www.biliob.com/index.html") {
         c.delete(e).then(() => {
           console.log("index.html缓存清除成功");

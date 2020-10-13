@@ -63,7 +63,7 @@
     </VAppBar>
     <div>
       <VContainer
-        class="py-0"
+        class="pa-0"
         style="z-index: 2"
       >
         <BiliobKanban />
