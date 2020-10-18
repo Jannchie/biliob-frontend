@@ -80,12 +80,18 @@ Vue.prototype.$alert = (res) => {
       Vue.prototype.$db.user.credit = res.data.user.credit;
       Vue.prototype.$db.user.exp = res.data.user.exp;
       msg = `${res.data.msg}！剩余积分：${res.data.user.credit} 当前经验：${res.data.user.exp}`;
+    } else if (res.data.data != undefined) {
+      if (res.data.data.credit != undefined) {
+        Vue.prototype.$db.user.credit = res.data.user.credit;
+        Vue.prototype.$db.user.exp = res.data.user.exp;
+        msg = `${res.data.msg}！剩余积分：${Vue.prototype.$db.user.credit} 当前经验：${Vue.prototype.$db.user.exp}`;
+      }
     } else {
       if (res.status == 200) {
         return;
       }
     }
-    if (res.data.code > 0) {
+    if (res.data.code > 0 || res.data.code == undefined) {
       data.alert.type = "success";
     } else {
       data.alert.type = "error";
@@ -126,6 +132,10 @@ Vue.prototype.$numberFormat = function(num, sim = true, fix = 0) {
   return parts.join(".") + postfix;
 };
 
+Vue.prototype.$numFormat = (n) => {
+  return new Intl.NumberFormat("zh-cn").format(n);
+};
+
 axios.interceptors.request.use(
   (config) => {
     return config;
@@ -150,7 +160,7 @@ axios.interceptors.response.use(
 );
 
 // 环境的切换
-if (process.env.NODE_ENV == "development1") {
+if (process.env.NODE_ENV == "development") {
   axios.defaults.baseURL = "//localhost:8081/api";
 } else {
   axios.defaults.baseURL = "https://api.biliob.com/";

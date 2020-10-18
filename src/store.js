@@ -29,7 +29,7 @@ export default new Vuex.Store({
     notificationColor: "primary",
     notificationMsg: "测试文字",
     favoriteAid: [],
-    favoriteMid: []
+    favoriteMid: [],
   },
   mutations: {
     showMessage(state, data) {
@@ -114,60 +114,60 @@ export default new Vuex.Store({
     },
     error(state) {
       state.error = true;
-    }
+    },
   },
   getters: {
-    isError: state => {
+    isError: (state) => {
       return state.error;
     },
-    notificationState: state => {
+    notificationState: (state) => {
       return state.notification;
     },
-    getUserName: state => {
+    getUserName: (state) => {
       return state.userName;
     },
-    getNickName: state => {
+    getNickName: (state) => {
       return state.nickName;
     },
-    getTitle: state => {
+    getTitle: (state) => {
       return state.title;
     },
-    getMail: state => {
+    getMail: (state) => {
       return state.mail;
     },
-    getRole: state => {
+    getRole: (state) => {
       return state.role;
     },
-    getCredit: state => {
+    getCredit: (state) => {
       return state.credit;
     },
-    getExp: state => {
+    getExp: (state) => {
       return state.exp;
     },
-    getLoginState: state => {
+    getLoginState: (state) => {
       return state.logined;
     },
-    getCurrentPage: state => {
+    getCurrentPage: (state) => {
       return state.currentPage;
     },
-    getFavoriteAuthor: state => {
+    getFavoriteAuthor: (state) => {
       return state.favoriteMid;
     },
-    getFavoriteVideo: state => {
+    getFavoriteVideo: (state) => {
       return state.favoriteAid;
     },
-    getDark: state => {
+    getDark: (state) => {
       return state.dark;
     },
-    getCheckStatus: state => {
+    getCheckStatus: (state) => {
       return state.checked;
-    }
+    },
   },
   actions: {
     login(context) {
       axios
         .get(`/user`)
-        .then(response => {
+        .then((response) => {
           context.commit("login");
           context.commit("setRole", response.data.role);
           context.commit("setCredit", response.data.credit);
@@ -193,33 +193,32 @@ export default new Vuex.Store({
       context.commit("checkIn", undefined);
       axios
         .post("/user/check-in")
-        .then(response => {
+        .then((response) => {
           if (response.data.code == 1) {
-            context.commit("setCredit", response.data.data.credit);
-            context.commit("setExp", response.data.data.exp);
-            context.commit("setMail", response.data.data.mail);
+            context.commit("setCredit", response.data.user.credit);
+            context.commit("setExp", response.data.user.exp);
             context.commit("checkIn", true);
             context.commit("showMessage", {
-              msg: `签到成功！当前积分：${response.data.data.credit}，当前经验：${response.data.data.exp}`,
-              color: "info"
+              msg: `签到成功！当前积分：${response.data.user.credit}，当前经验：${response.data.user.exp}`,
+              color: "info",
             });
           } else {
             context.commit("checkIn", false);
           }
         })
-        .catch(e => e.data.msg);
+        .catch((e) => console.log(e));
     },
     getAd(context) {
-      axios.get("/video/ads").then(response => {
+      axios.get("/video/ads").then((response) => {
         context.commit("setData", { name: "ad", data: response.data });
       });
-    }
+    },
   },
   modules: {
     site: siteInfoModule,
     admin: adminModule,
     event: eventModule,
     author: authorModule,
-    rank: rankModule
-  }
+    rank: rankModule,
+  },
 });

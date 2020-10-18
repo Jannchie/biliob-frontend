@@ -152,7 +152,7 @@ export default {
     };
   },
   watch: {
-    text: function() {
+    text: function () {
       this.currentPage = 0;
       this.axios
         .get(
@@ -164,7 +164,7 @@ export default {
             "&sort=" +
             this.sort
         )
-        .then(response => {
+        .then((response) => {
           this.authorList.content = response.data.content;
           if (this.authorList.content.length == 0) {
             this.notFound = true;
@@ -178,13 +178,13 @@ export default {
         .get(
           `${this.currentApiurl}?page=${page}&text=${this.text}&sort=${this.sort}`
         )
-        .then(response => {
+        .then((response) => {
           // 判断是否为最后一页
           if (response.data.last) {
             this.nextBtnText = "没有更多了";
             this.nextBtnDisabled = true;
           }
-          response.data.content.forEach(e => {
+          response.data.content.forEach((e) => {
             this.authorList.content.push(e);
           });
         });
@@ -192,7 +192,7 @@ export default {
   },
   created() {
     this.currentApiurl = "/author";
-    this.axios.get(this.currentApiurl).then(response => {
+    this.axios.get(this.currentApiurl).then((response) => {
       this.refreshList(response);
     });
   },
@@ -239,7 +239,7 @@ export default {
         .get(
           `${this.currentApiurl}?page=${this.currentPage}&text=${this.text}&sort=${this.sort}`
         )
-        .then(response => {
+        .then((response) => {
           this.refreshList(response);
         });
     }

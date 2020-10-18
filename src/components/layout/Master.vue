@@ -335,13 +335,6 @@ export default {
     }
   },
   watch: {
-    user: {
-      deep: true,
-      handler(val, oldVal) {
-        this.credit = this.$db.user.credit;
-        this.exp = this.$db.user.exp;
-      }
-    },
     $route() {
       setTimeout(() => {
         let appTabSelect =
