@@ -187,7 +187,7 @@ export default new Router({
           component: Video,
         },
         {
-          path: "/video/BV:bvid",
+          path: "/video/BV:bvid/:tab",
           name: "视频-BV",
           component: VideoIndex,
           children: [
@@ -204,7 +204,7 @@ export default new Router({
           ],
         },
         {
-          path: "/video/av:aid",
+          path: "/video/av:aid/:tab",
           name: "视频-av",
           component: VideoIndex,
           children: [
