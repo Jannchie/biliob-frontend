@@ -15,12 +15,12 @@
         >
           <VImg
             class="elevation-3"
-            style="border-radius: 2px; display: inline-block; height: 98px;width:170px"
-            :src="info.pic"
+            style="border-radius: 2px; display: inline-block; height: 80px;width:150px"
+            :src="zipPic(info.pic)"
           />
         </VCol>
         <VCol lg="6">
-          <BiliobCard style="height: 98px">
+          <BiliobCard style="height: 80px">
             <div>
               <div class="caption">
                 av{{ info.aid }} /
@@ -34,17 +34,13 @@
               >
                 {{ info.title }}
               </div>
-              <div>
-                {{ info.owner.name }}
-              </div>
             </div>
           </BiliobCard>
         </VCol>
         <VCol>
           <VList
-            three-line
             class="elevation-3"
-            style="height: 98px"
+            style="height: 80px"
           >
             <VListItem>
               <VListItemAvatar size="50px">
@@ -56,9 +52,6 @@
                 <VListItemTitle>{{ info.owner.name }}</VListItemTitle>
                 <VListItemSubtitle>
                   mid: {{ info.owner.mid }}
-                </VListItemSubtitle>
-                <VListItemSubtitle class="caption">
-                  {{ this.$timeFormat(new Date(info.ctime * 1000),"YYYY-MM-DD HH:mm:ss") }}
                 </VListItemSubtitle>
               </VListItemContent>
             </VListItem>
@@ -125,79 +118,12 @@
         </VCol>
       </VRow>
       <VRow
-        v-if="info != undefined && tab=='info'"
-        key="test"
+        v-if="info != undefined && info.attribute != 33570816 && info.attribute != 32768 && tab=='info'"
+        key="attr"
         dense
       >
         <VCol>
-          <BiliobCard title="最新数据">
-            <VRow>
-              <VCol>
-                <div>
-                  播放
-                </div>
-                <div class="caption">
-                  {{ $numFormat(info.stat.view) }}
-                </div>
-              </VCol>
-              <VCol>
-                <div>
-                  硬币
-                </div>
-                <div class="caption">
-                  {{ $numFormat(info.stat.coin) }}
-                </div>
-              </VCol>
-              <VCol>
-                <div>
-                  弹幕
-                </div>
-                <div class="caption">
-                  {{ $numFormat(info.stat.danmaku) }}
-                </div>
-              </VCol>
-              <VCol>
-                <div>
-                  评论
-                </div>
-                <div class="caption">
-                  {{ $numFormat(info.stat.reply) }}
-                </div>
-              </VCol>
-              <VCol>
-                <div>
-                  点赞
-                </div>
-                <div class="caption">
-                  {{ $numFormat(info.stat.like) }}
-                </div>
-              </VCol>
-              <VCol>
-                <div>
-                  收藏
-                </div>
-                <div class="caption">
-                  {{ $numFormat(info.stat.favorite) }}
-                </div>
-              </VCol>
-              <VCol>
-                <div>
-                  分享
-                </div>
-                <div class="caption">
-                  {{ $numFormat(info.stat.share) }}
-                </div>
-              </VCol>
-            </VRow>
-          </BiliobCard>
-        </VCol>
-      </VRow>
-      <VRow
-        v-if="info != undefined && info.attribute != 33570816 && tab=='info'"
-        key="attr"
-      >
-        <VCol>
-          <BiliobCard title="状态">
+          <BiliobCard title="标志位">
             <span
               v-for="(a,i) in attr"
               :key="i"
@@ -216,6 +142,45 @@
           </BiliobCard>
         </VCol>
       </VRow>
+      <VRow
+        v-if="info != undefined && tab=='info'"
+        key="new-data"
+        dense
+      >
+        <VCol>
+          <BiliobCard title="最新数据">
+            <VRow dense>
+              <VCol>
+                <div>
+                  播放
+                </div>
+                <div class="caption">
+                  {{ $numFormat(info.stat.view) }}
+                </div>
+              </VCol>
+            </VRow>
+          </BiliobCard>
+        </VCol>
+      </VRow>
+      <VRow
+        v-if="info != undefined"
+        key="stats"
+        dense
+      >
+        <VCol
+          v-for="key in ['danmaku','like','coin','favorite','reply','share']"
+          :key="key"
+        >
+          <BiliobCard>
+            <div>{{ statDict[key] }}</div>
+            <div class="caption">
+              {{ $numFormat(info.stat[key]) }}
+              <span>[{{ $numFormat(info.stat[key] / info.stat.view * 100) }}%]</span>
+            </div>
+          </BiliobCard>
+        </VCol>
+      </VRow>
+
       <VRow
         v-if="info != undefined && tab == 'info'"
         key="meta-info"
@@ -248,31 +213,14 @@
         </VCol>
       </VRow>
       <VRow
-        v-if="info != undefined"
-        key="test-attr"
-      >
-        <VCol>
-          {{ info.attribute }}
-          {{ attr }}
-        </VCol>
-      </VRow>
-      <VRow
-        v-if="info != undefined"
-        key="test1"
-        dense
-      >
-        <h1 class="caption">
-          {{ info }}
-        </h1>
-      </VRow>
-      <VRow
         v-if="tab == 'history'"
-        key="history"
+        key="history-chart"
+        dense
       >
         <VCol>
           <MainDetailCharts
             title="历史数据"
-            :options="his_options"
+            :options="hisOptions"
           />
         </VCol>
       </VRow>
@@ -314,7 +262,17 @@ export default {
         29: "互动"
       },
       history: undefined,
-      his_options: {}
+      hisOptions: {},
+      statDict: {
+        view: "播放",
+        danmaku: "弹幕",
+        like: "点赞",
+        coin: "硬币",
+        favorite: "收藏",
+        reply: "评论",
+        share: "分享",
+        jannchie: "指数"
+      }
     };
   },
   computed: {
@@ -331,6 +289,7 @@ export default {
       if (val == "history") {
         this.loadHistory();
       }
+      this.tab = val;
     }
   },
   async mounted() {
@@ -354,11 +313,15 @@ export default {
       }
       let res = await this.axios.get(`/video/v3/${this.id}/stat`);
       this.history = res.data;
-      this.his_options = {
+      this.hisOptions = {
         legend: {
           selectedMode: "single"
         },
-        tooltip: { axisPointer: "cross" },
+        tooltip: {
+          show: true,
+          axisPointer: { type: "cross" },
+          trigger: "axis"
+        },
         grid: {
           left: "10px",
           right: "50px",
@@ -379,40 +342,37 @@ export default {
         xAxis: {
           type: "time",
           axisPointer: {
-            show: true,
             label: {
-              formatter: function (params) {
-                return "日期：" + params.value;
-              }
+              formatter: (d) => this.$timeFormat(d.value, "YYYY-MM-DD HH:mm")
             }
           }
         },
         yAxis: {
           min: "dataMin",
-          type: "value",
           axisPointer: {
-            show: true,
             label: {
-              formatter: function (params) {
-                return "数值：" + params.value;
-              }
+              formatter: (d) => d.value.toFixed(0)
             }
+          },
+          axisLabel: {
+            formatter: (d) =>
+              new Intl.NumberFormat("zh-CN", {
+                notation: "compact",
+                maximumFractionDigits: 2
+              }).format(d.toFixed(0)),
+            type: "value"
           }
         },
         dataset: { source: this.history },
-        series: _.remove(
-          Object.keys(this.history[0]),
-          (d) => !(["datetime", "aid", "bvid"].indexOf(d) != -1)
-        ).map((k, i) => {
+        series: Object.keys(this.statDict).map((k, i) => {
           return {
             type: "line",
-            name: k,
+            name: this.statDict[k],
             showSymbol: false,
             encode: { x: "datetime", y: k }
           };
         })
       };
-      console.log(JSON.stringify(this.his_options));
     }
   }
 };
