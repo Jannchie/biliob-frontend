@@ -235,6 +235,7 @@ export default {
       tab: this.$route.params.tab,
       videoSrc: "",
       info: undefined,
+      authorAvg: undefined,
       attr: "",
       attrName: {
         0: "排名封锁",
@@ -289,6 +290,9 @@ export default {
       if (val == "history") {
         this.loadHistory();
       }
+      if (val == "info") {
+        this.loadAuthorAvg();
+      }
       this.tab = val;
     }
   },
@@ -305,8 +309,20 @@ export default {
     if (this.$route.params.tab == "history") {
       this.loadHistory();
     }
+    if (this.$route.params.tab == "info") {
+      this.loadAuthorAvg();
+    }
   },
   methods: {
+    async loadAuthorAvg() {
+      if (this.authorAvg != undefined) {
+        return;
+      }
+      let res = await this.axios.get(
+        `/video/v3/average?mid=${this.info.owner.mid}`
+      );
+      this.authorAvg = res.data;
+    },
     async loadHistory() {
       if (this.history != undefined) {
         return;
