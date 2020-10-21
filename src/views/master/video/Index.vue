@@ -105,18 +105,6 @@
           </VResponsive>
         </VCol>
       </VRow>
-
-      <VRow
-        v-if="info != undefined && tab=='video'"
-        key="desc"
-        dense
-      >
-        <VCol>
-          <BiliobCard>
-            <VueMarkdown :source="info.desc" />
-          </BiliobCard>
-        </VCol>
-      </VRow>
       <VRow
         v-if="info != undefined && info.attribute != 33570816 && info.attribute != 32768 && tab=='info'"
         key="attr"
@@ -157,13 +145,25 @@
                 <div class="caption">
                   {{ $numFormat(info.stat.view) }}
                 </div>
+                <div
+                  v-if="authorAvg !=undefined"
+                  class="caption"
+                >
+                  达到自身过往作品平均值的{{ viewSelfRate.toFixed(1) }}%
+                </div>
+                <div
+                  v-if="channelAvg !=undefined"
+                  class="caption"
+                >
+                  达到发布时分区内平均值的{{ ( info.stat.view/ channelAvg.view * 100).toFixed(1) }}%
+                </div>
               </VCol>
             </VRow>
           </BiliobCard>
         </VCol>
       </VRow>
       <VRow
-        v-if="info != undefined"
+        v-if="info != undefined && tab == 'info'"
         key="stats"
         dense
       >
@@ -176,6 +176,18 @@
             <div class="caption">
               {{ $numFormat(info.stat[key]) }}
               <span>[{{ $numFormat(info.stat[key] / info.stat.view * 100) }}%]</span>
+            </div>
+            <div
+              v-if="authorAvg != undefined"
+              class="caption"
+            >
+              个人表现：{{ ( info.stat[key] / authorAvg[key] * 100).toFixed(1) }}%
+            </div>
+            <div
+              v-if="channelAvg != undefined"
+              class="caption"
+            >
+              分区表现：{{ ( info.stat[key] / channelAvg[key] * 100).toFixed(1) }}%
             </div>
           </BiliobCard>
         </VCol>
@@ -213,6 +225,17 @@
         </VCol>
       </VRow>
       <VRow
+        v-if="info != undefined && (tab == 'video' || tab == 'info')"
+        key="desc"
+        dense
+      >
+        <VCol>
+          <BiliobCard>
+            <VueMarkdown :source="info.desc" />
+          </BiliobCard>
+        </VCol>
+      </VRow>
+      <VRow
         v-if="tab == 'history'"
         key="history-chart"
         dense
@@ -236,6 +259,7 @@ export default {
       videoSrc: "",
       info: undefined,
       authorAvg: undefined,
+      channelAvg: undefined,
       attr: "",
       attrName: {
         0: "排名封锁",
@@ -283,6 +307,12 @@ export default {
       } else {
         return `BV${this.$route.params.bvid}`;
       }
+    },
+    viewSelfRate() {
+      if (this.info == undefined || this.authorAvg == undefined) {
+        return 0;
+      }
+      return (this.info.stat.view / this.authorAvg.view) * 100;
     }
   },
   watch: {
@@ -292,6 +322,7 @@ export default {
       }
       if (val == "info") {
         this.loadAuthorAvg();
+        this.loadChannelAvg();
       }
       this.tab = val;
     }
@@ -299,6 +330,7 @@ export default {
   async mounted() {
     let res = await this.axios.get(`/video/v3/${this.id}/info`);
     this.info = res.data;
+    this.info.desc = this.info.desc.replaceAll("---", "");
     this.attr = parseInt(this.info.attribute)
       .toString(2)
       .padStart(30, "0")
@@ -311,6 +343,7 @@ export default {
     }
     if (this.$route.params.tab == "info") {
       this.loadAuthorAvg();
+      this.loadChannelAvg();
     }
   },
   methods: {
@@ -322,6 +355,15 @@ export default {
         `/video/v3/average?mid=${this.info.owner.mid}`
       );
       this.authorAvg = res.data;
+    },
+    async loadChannelAvg() {
+      if (this.channelAvg != undefined) {
+        return;
+      }
+      let res = await this.axios.get(
+        `/video/v3/average?tid=${this.info.tid}&pubdate=${this.info.pubdate}`
+      );
+      this.channelAvg = res.data;
     },
     async loadHistory() {
       if (this.history != undefined) {
