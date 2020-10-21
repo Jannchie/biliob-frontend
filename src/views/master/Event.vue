@@ -164,7 +164,7 @@ export default {
   },
   mounted() {
     this.$store.commit("toElse");
-    this.axios.get("/event/fans-variation").then(response => {
+    this.axios.get("/event/fans-variation").then((response) => {
       this.fansVariationData = response.data.content;
       this.last = response.data.last;
       this.page = response.data.number;
@@ -174,7 +174,7 @@ export default {
   methods: {
     getMoreData(content, number) {
       this.apiUrl = `/event/fans-variation?page=${number + 1}`;
-      content.forEach(e => {
+      content.forEach((e) => {
         this.fansVariationData.push(e);
       });
     },
@@ -182,7 +182,7 @@ export default {
       this.$router.push(`/author/${mid}`);
     },
     toVideo(mid, aid) {
-      this.$router.push(`/author/${mid}/video/${aid}`);
+      this.$router.push(`/video/av${aid}`);
     },
     getColor(info) {
       switch (info) {

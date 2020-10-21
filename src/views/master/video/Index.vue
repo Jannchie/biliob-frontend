@@ -235,7 +235,7 @@
         dense
       >
         <VCol>
-          <BiliobCard>
+          <BiliobCard title="简介">
             <VueMarkdown :source="info.desc" />
           </BiliobCard>
         </VCol>
@@ -321,7 +321,8 @@ export default {
     }
   },
   watch: {
-    "$route.params.tab": function (val) {
+    "$route.path": function (val) {
+      val = val.split("/")[3];
       if (val == "history") {
         this.loadHistory();
       }
@@ -333,6 +334,10 @@ export default {
     }
   },
   async mounted() {
+    if (this.tab == undefined) {
+      this.$router.push(`/video/${this.id}/video`);
+      this.tab = "video";
+    }
     let res = await this.axios.get(`/video/v3/${this.id}/info`);
     this.info = res.data;
     this.info.desc = this.info.desc.replaceAll("---", "");

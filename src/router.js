@@ -204,13 +204,17 @@ export default new Router({
           ],
         },
         {
-          path: "/video/av:aid/:tab",
+          path: "/video/av:aid",
           name: "视频-av",
           component: VideoIndex,
           children: [
             {
+              name: "视频-av-浏览",
+              path: "video",
+            },
+            {
               name: "视频-av-历史",
-              path: "stat",
+              path: "history",
             },
             {
               name: "视频-av-信息",
