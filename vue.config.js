@@ -7,7 +7,7 @@ module.exports = {
 
   // 是否为生产环境构建生成 source map？
   productionSourceMap: false,
-
+  runtimeCompiler: true,
   lintOnSave: false,
   // 简单Gzip
   configureWebpack: {
@@ -27,10 +27,11 @@ module.exports = {
     themeColor: "#333",
     name: "BiliOB观测者",
     msTileColor: "#333",
-    swSrc: "src/sw.js",
+    workboxPluginMode: "InjectManifest",
     importWorkboxFrom: "disabled",
     importScripts: "https://cdn.myun.info/workbox-v4.3.1/workbox-sw.js",
     workboxOptions: {
+      swSrc: "src/service-worker.js",
       exclude: ["index.html"],
     },
   },
