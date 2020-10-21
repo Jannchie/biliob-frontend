@@ -187,19 +187,21 @@ export default new Router({
           component: Video,
         },
         {
-          path: "/video/BV:bvid/:tab",
+          path: "/video/BV:bvid",
           name: "视频-BV",
           component: VideoIndex,
           children: [
             {
+              name: "视频-BV-浏览",
+              path: "video",
+            },
+            {
               name: "视频-BV-历史",
-              path: "stat",
-              component: () => import("./views/master/video/Stat.vue"),
+              path: "history",
             },
             {
               name: "视频-BV-信息",
               path: "info",
-              component: () => import("./views/master/video/Info.vue"),
             },
           ],
         },

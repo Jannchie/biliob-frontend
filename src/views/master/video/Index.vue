@@ -341,6 +341,7 @@ export default {
     }
   },
   async mounted() {
+    this.tab = this.$route.path.split("/")[3];
     if (this.tab == undefined) {
       this.$router.push(`/video/${this.id}/video`);
       this.tab = "video";
@@ -355,10 +356,10 @@ export default {
       .reverse()
       .join("");
     this.videoSrc = `https://player.bilibili.com/player.html?aid=${this.info.aid}&bvid=BV${this.info.bvid}&cid=${this.info.cid}&page=1&high_quality=0&t=1&autoplay=1%v=50`;
-    if (this.$route.params.tab == "history") {
+    if (this.tab == "history") {
       this.loadHistory();
     }
-    if (this.$route.params.tab == "info") {
+    if (this.tab == "info") {
       this.loadAuthorAvg();
       this.loadChannelAvg();
     }
