@@ -109,7 +109,7 @@
         </VCol>
       </VRow>
       <VRow
-        v-if="info != undefined && info.attribute != 33570816 && info.attribute != 32768 && tab=='info'"
+        v-if="info != undefined && info.attribute != 33570816 && info.attribute != 32768 && tab=='info' && $store.state.logined && $db.user.exp > 100"
         key="attr"
         dense
       >

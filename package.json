@@ -19,7 +19,7 @@
     "date-fns": "^1.30.1",
     "echarts": "^4.9.0",
     "odometer": "^0.4.8",
-    "register-service-worker": "^1.5.2",
+    "register-service-worker": "^1.7.1",
     "vue": "^2.6.12",
     "vue-axios": "^2.1.4",
     "vue-cookies": "^1.5.12",
