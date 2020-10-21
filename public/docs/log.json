@@ -2692,13 +2692,21 @@
         "type": "unimportant"
     },
     {
-        "title": "修复错误",
-        "version": "ver.11.1.2",
-        "date": "2020-10-09",
+        "title": "视频页重做",
+        "version": "ver.11.2.0",
+        "date": "2020-10-21",
         "list": [
             {
+                "text": "重做了视频页，展示的数据更加丰富了",
+                "type": "feature"
+            },
+            {
+                "text": "添加了在观测站直接浏览视频的功能",
+                "type": "feature"
+            },
+            {
                 "text": "修复了布局没有对齐的错误",
-                "type": "fix"
+                "type": "beautify"
             },
             {
                 "text": "修复了一处观测者议会的文案错误",
@@ -2711,8 +2719,24 @@
             {
                 "text": "更新了FAQ关于权限等级的描述",
                 "type": "feature"
+            },
+            {
+                "text": "添加了简单的视频数据横向对比功能",
+                "type": "feature"
+            },
+            {
+                "text": "修复了积分计算没有提示的问题",
+                "type": "fix"
+            },
+            {
+                "text": "修复了观测者数据没有及时更新的问题",
+                "type": "fix"
+            },
+            {
+                "text": "修复了签到转圈的问题",
+                "type": "fix"
             }
         ],
-        "type": "unimportant"
+        "type": "important"
     }
 ]
