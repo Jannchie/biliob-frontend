@@ -219,7 +219,7 @@
             class="ma-1"
           >
             <VCard
-              :to="`/author/${eachVideo.mid}/video/${eachVideo.aid}`"
+              :to="`/video/av${eachVideo.aid}/video`"
               max-width="160"
               width="160px"
             >
@@ -258,7 +258,7 @@
           >
             <VCard
               class="elevation-3"
-              :to="`/author/${eachVideo.mid}/video/${eachVideo.aid}`"
+              :to="`/video/av${eachVideo.aid}/video`"
               max-width="160"
               width="160px"
             >

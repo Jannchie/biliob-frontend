@@ -44,7 +44,10 @@
           >
             <VListItem>
               <VListItemAvatar size="50px">
-                <VAvatar size="50px">
+                <VAvatar
+                  size="50px"
+                  @click.stop="$router.push(`/author/${info.owner.mid}`)"
+                >
                   <VImg :src="info.owner.face" />
                 </VAvatar>
               </VListItemAvatar>
@@ -170,6 +173,8 @@
         <VCol
           v-for="key in ['danmaku','like','coin','favorite','reply','share']"
           :key="key"
+          md="2"
+          cols="6"
         >
           <BiliobCard>
             <div>{{ statDict[key] }}</div>
@@ -203,9 +208,9 @@
           lg="6"
         >
           <BiliobCard title="时间信息">
-            创建时间: {{ $timeFormat(info.ctime * 1000,"YYYY-MM-DD HH:mm:ss") }}
+            发布时间: {{ $timeFormat(info.ctime * 1000,"YYYY-MM-DD HH:mm:ss") }}
             <br>
-            发布时间: {{ $timeFormat(info.pubdate * 1000,"YYYY-MM-DD HH:mm:ss") }}
+            投稿时间: {{ $timeFormat(info.pubdate * 1000,"YYYY-MM-DD HH:mm:ss") }}
             <br>
             合计时长:
             <span v-if="info.duration >= 3600">{{ (info.duration / 3600).toFixed(0) }}小时 </span>{{ (info.duration % 3600 / 60).toFixed(0) }} 分 {{ info.duration % 60 }}秒
