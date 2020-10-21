@@ -258,6 +258,13 @@
 
 <script>
 export default {
+  metaInfo() {
+    return {
+      title: `${
+        this.info == undefined ? "载入信息中" : this.info.title
+      } - 视频数据 - BiliOB观测者 - B站历史数据统计分析站点 - UP主视频信息查询`
+    };
+  },
   data() {
     return {
       tab: this.$route.params.tab,
