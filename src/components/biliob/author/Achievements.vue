@@ -36,7 +36,7 @@
               achievement.date == undefined
                 ? "遥远的过去"
                 : $timeFormat(
-                  achievement.date.replace("+0000", "+0800"),
+                  achievement.date.replace("+00:00", "+0800"),
                   "YYYY-MM-DD HH:mm:ss"
                 )
             }}

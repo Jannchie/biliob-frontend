@@ -4,18 +4,18 @@ var { convertDateToUTC } = require("./util/convertDateToUTC");
 function interpolation(data) {
   data = data.sort((a, b) => {
     return (
-      new Date(a.datetime.replace("+0000", "")) -
-      new Date(b.datetime.replace("+0000", ""))
+      new Date(a.datetime.replace("+00:00", "")) -
+      new Date(b.datetime.replace("+00:00", ""))
     );
   });
   let new_data = [];
   // var l_date = "";
-  var c_datetime = new Date(data[0].datetime.replace("+0000", ""));
+  var c_datetime = new Date(data[0].datetime.replace("+00:00", ""));
   var c_fans = data[0].fans;
   for (let index = 1; index < data.length; index++) {
-    var n_datetime = new Date(data[index].datetime.replace("+0000", ""));
+    var n_datetime = new Date(data[index].datetime.replace("+00:00", ""));
     var n_fans = data[index].fans;
-    var linear_int = date => {
+    var linear_int = (date) => {
       return Math.round(
         ((n_fans - c_fans) / (n_datetime - c_datetime)) *
           (new Date(date).getTime() - c_datetime) +
@@ -28,7 +28,7 @@ function interpolation(data) {
         temp_date = new Date(temp_date.getTime() + 86400000);
         new_data.push({
           datetime: format(temp_date, "YYYY-MM-DD"),
-          fans: linear_int(format(temp_date, "YYYY-MM-DD"))
+          fans: linear_int(format(temp_date, "YYYY-MM-DD")),
         });
       }
       c_datetime = n_datetime;
@@ -82,26 +82,26 @@ function drawChart(data) {
         label: {
           formatter: function(params) {
             return Math.round(params.value);
-          }
-        }
-      }
+          },
+        },
+      },
     },
     grid: {
       left: "10px",
       right: "50px",
       top: "10px",
-      containLabel: true
+      containLabel: true,
     },
     dataZoom: [
       {
         type: "inside",
-        filterMode: "weakFilter"
+        filterMode: "weakFilter",
       },
       {
         handleSize: "100%",
         handleStyle: {},
-        bottom: "20px"
-      }
+        bottom: "20px",
+      },
     ],
     xAxis: {
       type: "time",
@@ -112,9 +112,9 @@ function drawChart(data) {
               "日期：" +
               format(convertDateToUTC(new Date(params.value)), "YYYY-MM-DD")
             );
-          }
-        }
-      }
+          },
+        },
+      },
     },
     yAxis: [
       {
@@ -127,9 +127,9 @@ function drawChart(data) {
           }
         },
         splitLine: {
-          show: true
-        }
-      }
+          show: true,
+        },
+      },
     ],
     series: [
       {
@@ -138,9 +138,9 @@ function drawChart(data) {
         smooth: false,
         showSymbol: false,
         type: "bar",
-        areaStyle: {}
-      }
-    ]
+        areaStyle: {},
+      },
+    ],
   };
   return Chart;
 }

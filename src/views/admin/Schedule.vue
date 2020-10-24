@@ -62,20 +62,20 @@ export default {
   },
   mounted() {
     this.getLatestTaskInfo();
-    this.axios(`/tracer/progress-task`).then(r => {
+    this.axios(`/tracer/progress-task`).then((r) => {
       this.progressTasks = r.data.content;
-      this.progressTasks.forEach(item => {
+      this.progressTasks.forEach((item) => {
         item["lastTime"] = this.lastTime(item.startTime, item.updateTime);
         item["distanceTime"] = this.lastTime(
-          item.startTime.replace("+0000", ""),
+          item.startTime.replace("+00:00", ""),
           new Date()
         );
       });
     });
-    this.axios(`/tracer/author-queue`).then(r => {
+    this.axios(`/tracer/author-queue`).then((r) => {
       this.authorListLength = String(r.data.length);
     });
-    this.axios(`/tracer/video-queue`).then(r => {
+    this.axios(`/tracer/video-queue`).then((r) => {
       this.videoListLength = String(r.data.length);
     });
     let timer = setInterval(this.getLatestTaskInfo, 5000);
@@ -109,7 +109,7 @@ export default {
       }
     },
     getLatestTaskInfo() {
-      this.axios.get(`/tracer/latest-progress`).then(r => {
+      this.axios.get(`/tracer/latest-progress`).then((r) => {
         this.updateTask(r.data);
       });
     },

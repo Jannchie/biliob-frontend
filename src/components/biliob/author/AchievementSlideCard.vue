@@ -40,7 +40,7 @@
               class="text--disabled"
               style="overflow:hidden; text-overflow: ellipsis;"
             >
-              {{ $timeFormat(achievement.date.replace("+0000","+0800"), "YYYY-MM-DD") }}
+              {{ $timeFormat(achievement.date.replace("+00:00","+0800"), "YYYY-MM-DD") }}
             </div>
           </div>
         </VCol>

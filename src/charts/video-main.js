@@ -14,35 +14,35 @@ function drawChart(data) {
       share: 0,
       favorite: 0,
       coin: 0,
-      datetime: data.datetime
+      datetime: data.datetime,
     });
   }
 
   data.data.sort((a, b) => {
     return (
-      new Date(a.datetime.replace("+0000", "")) -
-      new Date(b.datetime.replace("+0000", ""))
+      new Date(a.datetime.replace("+00:00", "")) -
+      new Date(b.datetime.replace("+00:00", ""))
     );
   });
 
   let Chart = {
     title: {
       left: "center",
-      top: "-5px"
+      top: "-5px",
     },
     dataset: {
-      source: data.data
+      source: data.data,
     },
     dataZoom: [
       {
         type: "inside",
-        filterMode: "weakFilter"
+        filterMode: "weakFilter",
       },
       {
         handleSize: "100%",
         handleStyle: {},
-        bottom: "10px"
-      }
+        bottom: "10px",
+      },
     ],
     tooltip: {
       confine: true,
@@ -51,20 +51,20 @@ function drawChart(data) {
         label: {
           formatter: function(params) {
             return Math.round(params.value);
-          }
-        }
+          },
+        },
       },
       formatter: function(params) {
         let o = params[0].axisValueLabel;
         let tempData = [];
 
-        params.forEach(e => {
+        params.forEach((e) => {
           if (null != e.data[e.seriesId])
             tempData.push([e.seriesName, e.color, e.data[e.seriesId]]);
         });
         tempData
           .sort((a, b) => b[2] - a[2])
-          .forEach(e => {
+          .forEach((e) => {
             o += `<div>
           <span style="color:${e[1]};width:10px;height:10px"> ● </span>
           <span">${e[0]}: ${e[2]}</span> 
@@ -72,13 +72,13 @@ function drawChart(data) {
           `;
           });
         return o;
-      }
+      },
     },
     grid: {
       left: "10px",
       right: "10px",
       top: "10px",
-      containLabel: true
+      containLabel: true,
     },
     xAxis: {
       type: "time",
@@ -93,9 +93,9 @@ function drawChart(data) {
                 "YYYY-MM-DD HH:mm"
               )
             );
-          }
-        }
-      }
+          },
+        },
+      },
     },
     yAxis: [
       {
@@ -103,7 +103,7 @@ function drawChart(data) {
         name: "其他指标",
         min: "dataMin",
         splitLine: {
-          show: false
+          show: false,
         },
         axisLabel: {
           formatter: function(params) {
@@ -112,14 +112,14 @@ function drawChart(data) {
             } else {
               return params;
             }
-          }
-        }
+          },
+        },
       },
       {
         type: "value",
         name: "播放量",
         splitLine: {
-          show: false
+          show: false,
         },
         min: "dataMin",
         axisLabel: {
@@ -129,9 +129,9 @@ function drawChart(data) {
             } else {
               return params;
             }
-          }
-        }
-      }
+          },
+        },
+      },
     ],
 
     series: [
@@ -142,7 +142,7 @@ function drawChart(data) {
         id: "view",
         smooth: false,
         showSymbol: false,
-        yAxisIndex: 1
+        yAxisIndex: 1,
       },
       {
         type: "line",
@@ -151,7 +151,7 @@ function drawChart(data) {
         id: "danmaku",
         smooth: false,
         showSymbol: false,
-        yAxisIndex: 0
+        yAxisIndex: 0,
       },
       {
         type: "line",
@@ -160,7 +160,7 @@ function drawChart(data) {
         id: "coin",
         smooth: false,
         showSymbol: false,
-        yAxisIndex: 0
+        yAxisIndex: 0,
       },
       {
         type: "line",
@@ -169,7 +169,7 @@ function drawChart(data) {
         id: "favorite",
         smooth: false,
         showSymbol: false,
-        yAxisIndex: 0
+        yAxisIndex: 0,
       },
       {
         type: "line",
@@ -178,7 +178,7 @@ function drawChart(data) {
         id: "share",
         smooth: false,
         showSymbol: false,
-        yAxisIndex: 0
+        yAxisIndex: 0,
       },
       {
         type: "line",
@@ -187,9 +187,9 @@ function drawChart(data) {
         id: "like",
         smooth: false,
         showSymbol: false,
-        yAxisIndex: 0
-      }
-    ]
+        yAxisIndex: 0,
+      },
+    ],
   };
   return Chart;
 }

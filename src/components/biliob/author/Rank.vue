@@ -81,7 +81,7 @@ export default {
     formatedDate() {
       if (this.updateTime != undefined) {
         return format(
-          convertDateToUTC(new Date(this.updateTime.replace("+0000", ""))),
+          convertDateToUTC(new Date(this.updateTime.replace("+00:00", ""))),
           "YYYY-MM-DD HH:mm:ss"
         );
       } else {

@@ -22,7 +22,7 @@
         <br>
         <span color="primary">{{
           $timeFormat(
-            guessing.reachDate.replace("+0000", ""),
+            guessing.reachDate.replace("+00:00", "+08:00"),
             "YYYY-MM-DD HH:mm"
           )
         }}

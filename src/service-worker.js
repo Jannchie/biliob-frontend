@@ -21,7 +21,7 @@ workbox.routing.registerRoute(
   // Cache CSS files
   /.*\.html/,
   // 使用缓存，但尽快在后台更新
-  workbox.strategies.staleWhileRevalidate({
+  new workbox.strategies.StaleWhileRevalidate({
     // 使用自定义缓存名称
     cacheName: "html-cache",
   })
@@ -31,7 +31,7 @@ workbox.routing.registerRoute(
   // Cache CSS files
   /.*\.css/,
   // 使用缓存，但尽快在后台更新
-  workbox.strategies.staleWhileRevalidate({
+  new workbox.strategies.StaleWhileRevalidate({
     // 使用自定义缓存名称
     cacheName: "css-cache",
   })
@@ -40,7 +40,7 @@ workbox.routing.registerRoute(
   // 缓存JS文件
   /.*\.js/,
   // 使用缓存，但尽快在后台更新
-  workbox.strategies.staleWhileRevalidate({
+  new workbox.strategies.StaleWhileRevalidate({
     // 使用自定义缓存名称
     cacheName: "js-cache",
   })
@@ -48,7 +48,7 @@ workbox.routing.registerRoute(
 
 workbox.routing.registerRoute(
   /\.(?:png|gif|jpg|jpeg|svg)$/,
-  workbox.strategies.staleWhileRevalidate({
+  new workbox.strategies.StaleWhileRevalidate({
     cacheName: "images",
     plugins: [
       new workbox.expiration.Plugin({
@@ -62,7 +62,7 @@ workbox.routing.registerRoute(
 // api缓存，优选从网络获取，网络异常时再使用缓存，请根据实际api url配置RegExp，只支持get请求
 workbox.routing.registerRoute(
   new RegExp("https://api.biliob.com"),
-  workbox.strategies.staleWhileRevalidate({
+  new workbox.strategies.NetworkFirst({
     plugins: [
       new workbox.cacheableResponse.Plugin({
         statuses: [0, 200],

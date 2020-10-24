@@ -3,9 +3,11 @@ var format = require("date-fns/format");
 function drawChart(data) {
   //TODO: get date min and max
   var dateSet = new Set();
-  data.forEach(e => {
-    e.data.forEach(ed => {
-      dateSet.add(format(ed.datetime.replace("+0000", ""), "YYYY-MM-DD HH:mm"));
+  data.forEach((e) => {
+    e.data.forEach((ed) => {
+      dateSet.add(
+        format(ed.datetime.replace("+00:00", ""), "YYYY-MM-DD HH:mm")
+      );
     });
   });
   let dateArray = Array.from(dateSet).sort((a, b) => {
@@ -14,18 +16,18 @@ function drawChart(data) {
   let dateMin = dateArray[0];
   let dateMax = dateArray[dateArray.length - 1];
 
-  let series = data.map(d => {
-    let dd = d.data.map(ed => {
+  let series = data.map((d) => {
+    let dd = d.data.map((ed) => {
       return [
-        format(ed.datetime.replace("+0000", ""), "YYYY-MM-DD HH:mm"),
-        ed.number
+        format(ed.datetime.replace("+00:00", ""), "YYYY-MM-DD HH:mm"),
+        ed.number,
       ];
     });
     return {
       name: d.title,
       type: "line",
       symbol: "none",
-      data: dd
+      data: dd,
     };
   });
 
@@ -40,18 +42,18 @@ function drawChart(data) {
     title: {
       left: "center",
       top: "-5px",
-      subtext: "各项指标总量"
+      subtext: "各项指标总量",
     },
     dataZoom: [
       {
         type: "inside",
-        filterMode: "weakFilter"
+        filterMode: "weakFilter",
       },
       {
         handleSize: "100%",
         handleStyle: {},
-        bottom: "10px"
-      }
+        bottom: "10px",
+      },
     ],
     tooltip: {
       confine: true,
@@ -60,12 +62,12 @@ function drawChart(data) {
         let o = `日期：${params[0].value[0]}`;
         let tempData = [];
 
-        params.forEach(e => {
+        params.forEach((e) => {
           tempData.push([e.seriesName, e.color, e.value[1]]);
         });
         tempData
           .sort((a, b) => b[2] - a[2])
-          .forEach(e => {
+          .forEach((e) => {
             o += `<div class="caption">
           <span style="color:${e[1]};width:10px;height:10px"> ● </span>
           <span">${e[0]}: ${e[2]}</span> 
@@ -73,13 +75,13 @@ function drawChart(data) {
           `;
           });
         return o;
-      }
+      },
     },
     xAxis: {
       type: "time",
 
       min: dateMin,
-      max: dateMax
+      max: dateMax,
     },
     yAxis: {
       type: "value",
@@ -91,10 +93,10 @@ function drawChart(data) {
           } else {
             return params;
           }
-        }
-      }
+        },
+      },
     },
-    series: series
+    series: series,
   };
   return Chart;
 }
