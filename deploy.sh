@@ -1,0 +1,1 @@
+scp -r dist/*  $username@$server_ip:/usr/share/nginx/html/

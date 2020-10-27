@@ -209,12 +209,12 @@
         <BiliobSlideCard
           name="top-video-slide"
           title="UP主播放最高视频"
-          :value="authorTopVideo.content"
+          :value="authorTopVideo"
           multiple
           show-arrows
         >
           <div
-            v-for="(eachVideo, index) in authorTopVideo.content"
+            v-for="(eachVideo, index) in authorTopVideo"
             :key="index"
             class="ma-1"
           >
@@ -229,13 +229,17 @@
                 :src="zipPic(eachVideo.pic)"
               />
 
-              <VCardText style="overflow: hidden; text-overflow: ellipsis;">
-                <span class=" cards-title text--primary caption">
-                  <span>{{ eachVideo.title }}</span><br>
-                </span>
-                <span class="caption">{{
-                  formatDate(eachVideo.datetime, "YYYY-MM-DD HH:mm:ss")
-                }}</span><br>
+              <VCardText>
+                <div class="text--primary caption cards-title">
+                  <div style="min-height: 40px">
+                    {{ eachVideo.title }}
+                  </div>
+                </div>
+                <div class="caption">
+                  {{
+                    formatDate(eachVideo.ctime * 1000, "YYYY-MM-DD HH:mm:ss")
+                  }}
+                </div>
               </VCardText>
             </VCard>
           </div>
@@ -247,12 +251,12 @@
         <BiliobSlideCard
           name="latest-video-slide"
           title="UP主最新上传视频"
-          :value="authorLatestVideo.content"
+          :value="authorLatestVideo"
           multiple
           show-arrows
         >
           <div
-            v-for="(eachVideo, index) in authorLatestVideo.content"
+            v-for="(eachVideo, index) in authorLatestVideo"
             :key="index"
             class="ma-1"
           >
@@ -269,12 +273,16 @@
               />
 
               <VCardText>
-                <span class="text--primary caption cards-title">
-                  <span>{{ eachVideo.title }}</span><br>
-                </span>
-                <span class="caption">{{
-                  formatDate(eachVideo.datetime, "YYYY-MM-DD HH:mm:ss")
-                }}</span><br>
+                <div class="text--primary caption cards-title">
+                  <div style="min-height: 40px">
+                    {{ eachVideo.title }}
+                  </div>
+                </div>
+                <div class="caption">
+                  {{
+                    formatDate(eachVideo.ctime * 1000, "YYYY-MM-DD HH:mm:ss")
+                  }}
+                </div>
               </VCardText>
             </VCard>
           </div>
@@ -421,7 +429,7 @@ export default {
           : this.authorData.official
       }。他是主要活跃在${this.authorChannelInfo[0]}区的UP主，在该分区共存活 ${
         this.authorChannelInfo[1]
-      } 个稿件。代表作有《 ${this.authorTopVideo.content[0].title}》。`;
+      } 个稿件。代表作有《 ${this.authorTopVideo[0].title}》。`;
       return briefInfo;
     }
   },
@@ -486,12 +494,12 @@ export default {
       }
     });
     this.axios
-      .get(`/author/${this.mid}/video?pagesize=${10}`)
+      .get(`/video/v3/author?mid=${this.mid}&sort=view`)
       .then((response) => {
         this.authorTopVideo = response.data;
       });
     this.axios
-      .get(`/author/${this.mid}/video?sort=1&pagesize=${10}`)
+      .get(`/video/v3/author?mid=${this.mid}&sort=ctime`)
       .then((response) => {
         this.authorLatestVideo = response.data;
       });
