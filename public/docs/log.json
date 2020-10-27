@@ -2771,6 +2771,14 @@
             {
                 "text": "改进了一些非负面标志位的颜色",
                 "type": "beautify"
+            },
+            {
+                "text": "美化了作者视频列表的对齐",
+                "type": "beautify"
+            },
+            {
+                "text": "修复了作者视频列表的显示",
+                "type": "feature"
             }
         ],
         "type": "unimportant"
