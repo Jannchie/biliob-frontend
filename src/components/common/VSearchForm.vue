@@ -12,6 +12,7 @@
       clearable
       label="搜索"
       :hint="hint"
+      @keyup.enter="submit"
     />
   </VForm>
 </template>
@@ -29,7 +30,7 @@ export default {
     };
   },
   watch: {
-    searchText: function() {
+    searchText: function () {
       if (!this.flag) {
         this.flag = true;
         setTimeout(() => {

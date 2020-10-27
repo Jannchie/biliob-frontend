@@ -2738,5 +2738,37 @@
             }
         ],
         "type": "important"
+    },
+    {
+        "title": "视频相关补丁",
+        "version": "ver.11.2.1",
+        "date": "2020-10-28",
+        "list": [
+            {
+                "text": "优化了视频搜索的日期范围",
+                "type": "feature"
+            },
+            {
+                "text": "优化了视频搜索的算法，提高准确性",
+                "type": "feature"
+            },
+            {
+                "text": "现在视频搜索关键词过滤和日期范围能同时作用了",
+                "type": "feature"
+            },
+            {
+                "text": "优化了视频数据百分比的显示",
+                "type": "beautify"
+            },
+            {
+                "text": "增强了标志位的求生欲",
+                "type": "feature"
+            },
+            {
+                "text": "修复了导致标志位在某些浏览器下无法显示的BUG",
+                "type": "fix"
+            }
+        ],
+        "type": "unimportant"
     }
 ]

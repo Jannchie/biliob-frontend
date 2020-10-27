@@ -115,6 +115,9 @@
       >
         <VCol>
           <BiliobCard title="标志位">
+            <div class="caption">
+              并不是所有人都能看到这个标志位(EXP > 100)。这些数据随时会被B站官方隐藏。且看且珍惜，低调勿宣传。
+            </div>
             <span
               v-for="(a,i) in attr"
               :key="i"
@@ -123,7 +126,7 @@
                 v-if="a=='1' && attrName[i] != undefined"
                 x-small
                 outlined
-                color="red"
+                :color="[7, 8, 9, 10, 11, 24, 29].indexOf(i) != -1 ? `blue` : `red`"
                 class="pa-1 mr-1"
                 label
               >
@@ -180,7 +183,7 @@
             <div>{{ statDict[key] }}</div>
             <div class="caption">
               {{ $numFormat(info.stat[key]) }}
-              <span>[{{ $numFormat(info.stat[key] / info.stat.view * 100) }}%]</span>
+              <span>[{{ (info.stat[key] / info.stat.view * 100).toFixed(1) }}%]</span>
             </div>
             <div
               v-if="authorAvg != undefined"
@@ -281,7 +284,7 @@ export default {
         4: "搜索封锁",
         5: "海外封锁",
         6: "推荐封锁",
-        7: "转载封锁",
+        7: "禁止转载",
         8: "HD高清",
         9: "PGC作品",
         10: "允许承包",
@@ -295,8 +298,8 @@ export default {
         19: "推送动态",
         20: "家长模式",
         21: "限制游客",
-        24: "合作",
-        29: "互动"
+        24: "合作视频",
+        29: "互动视频"
       },
       history: undefined,
       hisOptions: {},
@@ -348,7 +351,7 @@ export default {
     }
     let res = await this.axios.get(`/video/v3/${this.id}/info`);
     this.info = res.data;
-    this.info.desc = this.info.desc.replaceAll("---", "");
+
     this.attr = parseInt(this.info.attribute)
       .toString(2)
       .padStart(30, "0")

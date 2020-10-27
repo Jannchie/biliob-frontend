@@ -37,7 +37,7 @@
                 >
                   mdi-sort
                 </VIcon>
-                <VTab @click="sortChange(0)">
+                <VTab @click="sortChange('view')">
                   <VIcon left>
                     mdi-play-circle-outline
                   </VIcon>
@@ -45,7 +45,7 @@
                     播放
                   </span>
                 </VTab>
-                <VTab @click="sortChange(1)">
+                <VTab @click="sortChange('like')">
                   <VIcon left>
                     mdi-thumb-up-outline
                   </VIcon>
@@ -53,7 +53,7 @@
                     点赞
                   </span>
                 </VTab>
-                <VTab @click="sortChange(2)">
+                <VTab @click="sortChange('coin')">
                   <VIcon left>
                     mdi-coin
                   </VIcon>
@@ -61,7 +61,7 @@
                     硬币
                   </span>
                 </VTab>
-                <VTab @click="sortChange(3)">
+                <VTab @click="sortChange('danmaku')">
                   <VIcon left>
                     mdi-message-bulleted
                   </VIcon>
@@ -69,7 +69,7 @@
                     弹幕
                   </span>
                 </VTab>
-                <VTab @click="sortChange(4)">
+                <VTab @click="sortChange('favorite')">
                   <VIcon left>
                     mdi-folder-star
                   </VIcon>
@@ -77,7 +77,7 @@
                     收藏
                   </span>
                 </VTab>
-                <VTab @click="sortChange(5)">
+                <VTab @click="sortChange('share')">
                   <VIcon hidden-md-and-down>
                     mdi-share
                   </VIcon>
@@ -85,7 +85,7 @@
                     分享
                   </span>
                 </VTab>
-                <VTab @click="sortChange(6)">
+                <VTab @click="sortChange('jannchie')">
                   <VIcon hidden-md-and-down>
                     mdi-alpha-j
                   </VIcon>
@@ -111,17 +111,17 @@
                 >
                   mdi-calendar-blank-outline
                 </VIcon>
-                <VTab @click="daysChange(1)">
-                  <VIcon>
-                    mdi-numeric-1-box
-                  </VIcon>
-                </VTab>
                 <VTab @click="daysChange(3)">
                   <VIcon>
                     mdi-numeric-3-box
                   </VIcon>
                 </VTab>
-                <VTab @click="daysChange(31)">
+                <VTab @click="daysChange(7)">
+                  <VIcon>
+                    mdi-numeric-7-box
+                  </VIcon>
+                </VTab>
+                <VTab @click="daysChange(0)">
                   <VIcon>
                     mdi-alpha-a-box
                   </VIcon>
@@ -131,7 +131,7 @@
           </VLayout>
           <VSlideYTransition group>
             <VCard
-              v-for="eachVideo in videoList.content"
+              v-for="eachVideo in videoList"
               :key="eachVideo.bvid"
               :to="`/video/av${eachVideo.aid}`"
               class="video-cards elevation-0"
@@ -157,7 +157,7 @@
                     >
                       <VIcon small> mdi-account </VIcon>
                       <span class="caption">
-                        {{ eachVideo.authorName }}
+                        {{ eachVideo.owner.name }}
                       </span>
                     </span>
                     <span
@@ -169,7 +169,7 @@
                       <VIcon small> mdi-book </VIcon>
                       <span class="caption">
                         {{
-                          eachVideo.channel == "" ? "未知" : eachVideo.channel
+                          eachVideo.channel == "" ? "未知" : eachVideo.tname
                         }}
                       </span>
                     </span>
@@ -242,7 +242,7 @@ export default {
     return {
       sort: 0,
       videoList: [],
-      currentApiurl: "/video",
+      currentApiurl: "/video/v3/list",
       currentPage: 0,
       text: String(),
       nextBtnText: "请给我更多...",
@@ -251,47 +251,40 @@ export default {
       days: 1
     };
   },
+  computed: {
+    listUrl() {
+      return `${this.currentApiurl}?p=${this.currentPage}&ps=20&w=${this.text}&s=${this.sort}&d=${this.days}`;
+    }
+  },
   watch: {
     text: function () {
       this.currentPage = 0;
-      this.axios
-        .get(
-          `${this.currentApiurl}?page=${this.currentPage}&pagesize=20&text=${this.text}&sort=${this.sort}&days=${this.days}`
-        )
-        .then((response) => {
-          this.videoList.content = response.data.content;
-          if (this.videoList.content.length == 0) {
-            this.notFound = true;
-          } else {
-            this.notFound = false;
-          }
-        });
+      this.axios.get(this.listUrl).then((response) => {
+        this.videoList = response.data;
+        if (this.videoList.length == 0) {
+          this.notFound = true;
+        } else {
+          this.notFound = false;
+        }
+      });
     },
     currentPage: function changePage(page) {
-      this.axios
-        .get(
-          `${this.currentApiurl}?page=${page}&pagesize=20&text=${this.text}&sort=${this.sort}&days=${this.days}`
-        )
-        .then((response) => {
-          // 判断是否为最后一页
-          if (response.data.last) {
-            this.nextBtnText = "没有更多了";
-            this.nextBtnDisabled = true;
-          }
-          response.data.content.forEach((e) => {
-            this.videoList.content.push(e);
-          });
+      this.axios.get(this.listUrl).then((response) => {
+        // 判断是否为最后一页
+        if (response.data.last) {
+          this.nextBtnText = "没有更多了";
+          this.nextBtnDisabled = true;
+        }
+        response.data.forEach((e) => {
+          this.videoList.push(e);
         });
+      });
     }
   },
   created() {
-    this.axios
-      .get(
-        `${this.currentApiurl}?page=${this.currentPage}&pagesize=20&text=${this.text}&sort=${this.sort}&days=${this.days}`
-      )
-      .then((response) => {
-        this.refreshList(response);
-      });
+    this.axios.get(this.listUrl).then((response) => {
+      this.refreshList(response);
+    });
   },
   methods: {
     refreshList(response) {
@@ -327,24 +320,16 @@ export default {
     sortChange(sort) {
       this.sort = sort;
       this.currentPage = 0;
-      this.axios
-        .get(
-          `${this.currentApiurl}?page=${this.currentPage}&pagesize=20&text=${this.text}&sort=${this.sort}&days=${this.days}`
-        )
-        .then((response) => {
-          this.refreshList(response);
-        });
+      this.axios.get(this.listUrl).then((response) => {
+        this.refreshList(response);
+      });
     },
     daysChange(days) {
       this.days = days;
       this.currentPage = 0;
-      this.axios
-        .get(
-          `${this.currentApiurl}?page=${this.currentPage}&pagesize=20&text=${this.text}&sort=${this.sort}&days=${this.days}`
-        )
-        .then((response) => {
-          this.refreshList(response);
-        });
+      this.axios.get(this.listUrl).then((response) => {
+        this.refreshList(response);
+      });
     },
     toVideoDetail(mid, aid) {
       this.$router.push("/author/" + mid + "/video/" + aid);

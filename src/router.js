@@ -31,8 +31,6 @@ const TracerUser = () => import("@/components/Tracer/User.vue");
 const TracerNoRole = () => import("@/components/Tracer/NoRole.vue");
 const TracerUpload = () => import("@/components/Tracer/Upload.vue");
 const UserInfo = () => import("@/views/master/user/Info.vue");
-const VideoInfo = () => import("@/views/master/video/Info.vue");
-const VideoStat = () => import("@/views/master/video/Stat.vue");
 const VideoIndex = () => import("@/views/master/video/Index.vue");
 
 Vue.use(Router);
