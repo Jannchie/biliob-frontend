@@ -2767,6 +2767,10 @@
             {
                 "text": "修复了导致标志位在某些浏览器下无法显示的BUG",
                 "type": "fix"
+            },
+            {
+                "text": "改进了一些非负面标志位的颜色",
+                "type": "beautify"
             }
         ],
         "type": "unimportant"
