@@ -43,15 +43,11 @@ export default {
       ) {
         // const TEMPLATE_2 = `TA是专精于${0}区的UP主，在该分区的投稿比例为${100}%`;
         let mostArchive = this.authorData.channels[0].name;
-        let mostArchiveName = this.authorTopVideo.content[0].title;
+        let mostArchiveName = this.authorTopVideo[0].title;
         let mostChannelCount = this.authorData.channels[0].count;
-        let topViewChannel = this.authorTopVideo.content[0].channel;
-        let topChannelObject = this.getChannelCount(
-          this.authorTopVideo.content
-        );
-        let latestChannelObject = this.getChannelCount(
-          this.authorLatestVideo.content
-        );
+        let topViewChannel = this.authorTopVideo[0].tname;
+        let topChannelObject = this.getChannelCount(this.authorTopVideo);
+        let latestChannelObject = this.getChannelCount(this.authorLatestVideo);
         let topSortedChannel = this.getSortedChannel(topChannelObject);
         let latestSortedChannel = this.getSortedChannel(latestChannelObject);
 
@@ -82,7 +78,7 @@ export default {
       return "";
     },
     archiveBrief() {
-      if (this.authorTopVideo.content != undefined) {
+      if (this.authorTopVideo != undefined) {
         return ``;
       }
       return "";
@@ -95,9 +91,9 @@ export default {
   methods: {
     getChannelCount(videolist) {
       let temp = {};
-      videolist.forEach(video => {
-        temp[video.channel] =
-          temp[video.channel] != undefined ? temp[video.channel] + 1 : 1;
+      videolist.forEach((video) => {
+        temp[video.tname] =
+          temp[video.tname] != undefined ? temp[video.tname] + 1 : 1;
       });
       return temp;
     },

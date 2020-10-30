@@ -2782,5 +2782,33 @@
             }
         ],
         "type": "unimportant"
+    },
+    {
+        "title": "见齐指数更新",
+        "version": "ver.11.2.2",
+        "date": "2020-10-30",
+        "list": [
+            {
+                "text": "优化了见齐指数算法",
+                "type": "feature"
+            },
+            {
+                "text": "添加了见齐指数关键词相关作者的展示",
+                "type": "feature"
+            },
+            {
+                "text": "优化了全站热门TAG词云图的算法",
+                "type": "feature"
+            },
+            {
+                "text": "美化了日历图的展示",
+                "type": "beautify"
+            },
+            {
+                "text": "修改了标志位文案",
+                "type": "feature"
+            }
+        ],
+        "type": "unimportant"
     }
 ]

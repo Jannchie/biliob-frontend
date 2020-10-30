@@ -116,23 +116,34 @@
         <VCol>
           <BiliobCard title="标志位">
             <div class="caption">
-              并不是所有人都能看到这个标志位(EXP > 100)。这些数据随时会被B站官方隐藏。且看且珍惜，低调勿宣传。
+              并不是所有人都能看到这个标志位(EXP > 100)。
             </div>
-            <span
-              v-for="(a,i) in attr"
-              :key="i"
+            <div class="caption">
+              这些数据已经被B站隐藏，最新发布的视频现在无法查看标志位。
+            </div>
+            <div
+              v-if="$db.user.exp > 10000"
+              class="caption"
             >
-              <VChip
-                v-if="a=='1' && attrName[i] != undefined"
-                x-small
-                outlined
-                :color="[7, 8, 9, 10, 11, 24, 29].indexOf(i) != -1 ? `blue` : `red`"
-                class="pa-1 mr-1"
-                label
+              如果你看到这一条，说明你是骨灰级的观测者。也许目前还能够通过隐藏接口看到数据。且看且珍惜。
+            </div>
+            <div v-if=" $db.user.exp > 10000 || info.ctime > 1603897200">
+              <span
+                v-for="(a,i) in attr"
+                :key="i"
               >
-                {{ attrName[i] }}
-              </VChip>
-            </span>
+                <VChip
+                  v-if="a=='1' && attrName[i] != undefined"
+                  x-small
+                  outlined
+                  :color="[7, 8, 9, 10, 11, 24, 29].indexOf(i) != -1 ? `blue` : `red`"
+                  class="pa-1 mr-1"
+                  label
+                >
+                  {{ attrName[i] }}
+                </VChip>
+              </span>
+            </div>
           </BiliobCard>
         </VCol>
       </VRow>

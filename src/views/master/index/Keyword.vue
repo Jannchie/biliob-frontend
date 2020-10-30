@@ -23,18 +23,31 @@
         </VCardText>
       </BiliobCard>
     </VCol>
+    <VCol cols="12">
+      <BiliobTitle>领衔作者 </BiliobTitle>
+    </VCol>
+    <VCol
+      v-for="(a,i) in authors == undefined? [] :authors"
+      :key="i"
+      cols="12"
+      lg="6"
+    >
+      <BiliobAuthorInfoCard :author="a" />
+    </VCol>
   </VRow>
 </template>
 
 <script>
-import getMultiChartOptions from "@/charts/biliob-multi-line-chart.js";
-
+// import getMultiChartOptions from "@/charts/biliob-multi-line-chart.js";
+import getOptions from "@/charts/data-set-chart.js";
+// import getIndexOptions from "@/charts/data-with-ma.js";
 export default {
   data() {
     return {
       data: "",
       options: Object(),
-      notFound: false
+      notFound: false,
+      authors: undefined
     };
   },
   watch: {
@@ -51,55 +64,35 @@ export default {
       this.options = Object();
       this.notFound = false;
       this.axios
-        .get(`/index?keyword=${this.$route.params.keyword}`)
-        .then(res => {
+        .get(`/video/v3/topic-author?kw=${this.$route.params.keyword}`)
+        .then((res) => {
+          this.authors = res.data;
+        });
+
+      this.axios
+        .get(`/video/v3/index?kw=${this.$route.params.keyword}`)
+        .then((res) => {
+          for (let i = 0; i < res.data.length; i++) {
+            if (i < 7) {
+              res.data[i].week = "-";
+              continue;
+            }
+            res.data[i].week = (
+              _(res.data)
+                .slice(i - 7, i)
+                .sumBy((d) => d.val) / 7
+            ).toFixed(0);
+          }
           this.data = res.data;
-          if (this.data.data.length == 0) {
+          if (this.data.length == 0) {
             this.notFound = true;
             return;
           }
-          this.options = getMultiChartOptions(
-            [this.getData(this.data)],
-            "line",
-            "YYYY-MM-DD"
-          );
+          this.options = getOptions(this.data, "_id", {
+            week: "周均线",
+            val: "日均线"
+          });
         });
-    },
-    getDateRange(start, end, step = 1) {
-      let result = [];
-      while (start.getTime() <= end.getTime()) {
-        result.push(start);
-        start = new Date(start.getTime() + 86400000 * step);
-      }
-      return result;
-    },
-    getData(data) {
-      // let rate = (m, x) => (Math.pow(m, x) / fact(x)) * Math.pow(2.71, -m);
-      let dataList = [];
-      let dateRange = this.getDateRange(
-        this.$dateParse(data.data[0].datetime),
-        this.$dateParse(data.data[data.data.length - 1].datetime)
-      );
-      dataList = dateRange.map(e => [e, 0]);
-      data.data.forEach(d => {
-        // 发布时间
-        let datetime = this.$dateParse(d.datetime);
-        let value = d.jannchie;
-
-        dataList.forEach(item => {
-          let deltaTime = item[0].getTime() - datetime.getTime();
-          let deltaDay = deltaTime / 86400000;
-
-          if (deltaDay >= 0) {
-            // item[1] += Math.round(value * Math.pow(dailyDelta, deltaDay) * k);
-            item[1] += Math.round(
-              ((value * Math.pow(deltaDay / 7, 2)) / 2) *
-                Math.pow(2.71, -deltaDay / 7)
-            );
-          }
-        });
-      });
-      return [dataList, data.name, "#1e88e5"];
     }
   }
 };

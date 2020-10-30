@@ -6,12 +6,15 @@
           cols="auto"
           class="mr-3"
         >
-          <VAvatar size="62px">
+          <VAvatar :size="author.cFans != undefined?`62px`:`40px`">
             <VImg :src="zipPic(author.face)" />
           </VAvatar>
         </VCol>
         <VCol>
-          <h3>{{ author.name }} <CommonSexIcon :sex="author.sex" /></h3>
+          <h3>
+            {{ author.name }}
+            <CommonSexIcon :sex="author.sex" />
+          </h3>
           <div class="caption">
             uid: {{ author.mid }}
           </div>
@@ -21,6 +24,7 @@
         </VCol>
       </VRow>
       <VRow
+        v-if="author.cFans != undefined"
         no-gutters
         class="mt-2"
       >
