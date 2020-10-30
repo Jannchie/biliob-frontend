@@ -127,7 +127,7 @@
             >
               如果你看到这一条，说明你是骨灰级的观测者。也许目前还能够通过隐藏接口看到数据。且看且珍惜。
             </div>
-            <div v-if=" $db.user.exp > 10000 || info.ctime > 1603897200">
+            <div v-if=" $db.user.exp > 10000 || info.ctime < 1603897200">
               <span
                 v-for="(a,i) in attr"
                 :key="i"
