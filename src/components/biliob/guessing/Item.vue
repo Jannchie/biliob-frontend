@@ -1,10 +1,9 @@
 <template>
-  <VCard
-    class="mx-1"
-    min-width="220px"
-  >
+  <VCard class="mx-1">
     <VCardTitle class="caption">
-      {{ guessing.title }}
+      <div style="min-height: 40px">
+        {{ guessing.title }}
+      </div>
     </VCardTitle>
 
     <VCardText class="caption pb-0">
