@@ -77,7 +77,7 @@ function drawChart(data) {
       },
       outOfRange: {
         color: ["#333"],
-        opacity: [0.2, 1],
+        opacity: [0.8, 0.2],
       },
       orient: "horizontal",
       seriesIndex: i,
