@@ -1,19 +1,10 @@
 <template>
   <VContainer>
     <VRow dense>
-      <VCol
-        :md="6"
-        :cols="12"
-      >
-        <AuthorInfo
-          slot="author-operation"
-          :author-data="authorData"
-        />
+      <VCol :md="6" :cols="12">
+        <AuthorInfo slot="author-operation" :author-data="authorData" />
       </VCol>
-      <VCol
-        :md="6"
-        :cols="12"
-      >
+      <VCol :md="6" :cols="12">
         <BiliobAuthorOperation
           style="height: 100%"
           :mid="authorData.mid"
@@ -25,10 +16,7 @@
     </VRow>
     <VRow dense>
       <VCol>
-        <VTabs
-          class="py-0 my-2 elevation-3"
-          show-arrows
-        >
+        <VTabs class="py-0 my-2 elevation-3" show-arrows>
           <VTab @click="getPage(0)">
             <VIcon left>
               mdi-database
@@ -60,17 +48,10 @@
                   <VIcon color="warning">
                     mdi-alert
                   </VIcon>
-                  <span
-                    class="body-1"
-                    style="vertical-align: middle;"
-                  >
+                  <span class="body-1" style="vertical-align: middle">
                     您还没有登陆观测者账号！目前只有登陆且经验值>100的观测者才能看到30日之前的UP主数据！
                   </span>
-                  <VBtn
-                    small
-                    to="/login"
-                    color="primary"
-                  >
+                  <VBtn small to="/login" color="primary">
                     前往登陆
                   </VBtn>
                 </BiliobCard>
@@ -105,11 +86,7 @@
             </VRow>
             <VRow dense>
               <VCol>
-                <BiliobCard
-                  light
-                  border="bottom"
-                  title="UP主最新数据"
-                >
+                <BiliobCard light border="bottom" title="UP主最新数据">
                   <VRow>
                     <VCol
                       v-for="each in [
@@ -120,11 +97,13 @@
                       ]"
                       :key="each.name"
                     >
-                      <div style="flex-grow: 1; text-align:center">
-                        <div class="rank-title caption  grey--text">
+                      <div style="flex-grow: 1; text-align: center">
+                        <div class="rank-title caption grey--text">
                           {{ each.name }}
                         </div>
-                        <div class="rank-value caption font-weight-black primary--text ">
+                        <div
+                          class="rank-value caption font-weight-black primary--text"
+                        >
                           {{ each.value }}
                         </div>
                       </div>
@@ -142,10 +121,7 @@
                 />
               </VCol>
             </VRow>
-            <VRow
-              v-if="authorData.achievements != undefined"
-              dense
-            >
+            <VRow v-if="authorData.achievements != undefined" dense>
               <VCol>
                 <BiliobAuthorAchievements :author-data="authorData" />
               </VCol>
@@ -178,19 +154,16 @@
                         class="subheading font-weight-light mr-3"
                         style="align-self: center"
                       >
-                        <VIcon
-                          left
-                          right
-                        >mdi-format-list-bulleted-type</VIcon>
+                        <VIcon left right>mdi-format-list-bulleted-type</VIcon>
                       </span>
                       <VTab @click="tagSort('totalView')">
-                        <VIcon style="margin-right:10px;">
+                        <VIcon style="margin-right: 10px">
                           mdi-video
                         </VIcon>
                         投稿量
                       </VTab>
                       <VTab @click="tagSort('count')">
-                        <VIcon style="margin-right:10px;">
+                        <VIcon style="margin-right: 10px">
                           mdi-play-circle-outline
                         </VIcon>
                         播放量
@@ -207,6 +180,7 @@
     <VRow dense>
       <VCol>
         <BiliobSlideCard
+          v-if="authorTopVideo"
           name="top-video-slide"
           title="UP主播放最高视频"
           :value="authorTopVideo"
@@ -249,6 +223,7 @@
     <VRow dense>
       <VCol>
         <BiliobSlideCard
+          v-if="authorLatestVideo"
           name="latest-video-slide"
           title="UP主最新上传视频"
           :value="authorLatestVideo"
@@ -328,8 +303,8 @@ export default {
   data() {
     return {
       authorData: {},
-      authorTopVideo: Object(),
-      authorLatestVideo: Object(),
+      authorTopVideo: undefined,
+      authorLatestVideo: undefined,
       relationshipOptions: Object(),
       authorFansRateOptions: Object(),
       authorFansEfficiencyOptions: Object(),
