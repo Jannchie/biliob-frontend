@@ -2810,5 +2810,29 @@
             }
         ],
         "type": "unimportant"
+    },
+    {
+        "title": "优化",
+        "version": "ver.11.2.3",
+        "date": "2020-11-05",
+        "list": [
+            {
+                "text": "优化了滑动组件",
+                "type": "feature"
+            },
+            {
+                "text": "修复了一处作者数据的逻辑错误",
+                "type": "fix"
+            },
+            {
+                "text": "修复了日历图的展示异常",
+                "type": "fix"
+            },
+            {
+                "text": "修复了一处评论数据的展示异常",
+                "type": "fix"
+            }
+        ],
+        "type": "unimportant"
     }
 ]
