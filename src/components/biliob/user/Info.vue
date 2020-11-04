@@ -6,7 +6,7 @@
     <span v-else>
       {{ user.role }}
     </span>
-    (#{{ user.rank }}) / {{ user.nickName }}
+    (#{{ user.ban ? "-" : user.rank }}) / {{ user.nickName }}
   </h6>
 </template>
 
