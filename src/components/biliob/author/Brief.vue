@@ -1,9 +1,5 @@
 <template>
-  <BiliobCard
-    border="bottom"
-    title="作者简介"
-    light
-  >
+  <BiliobCard border="bottom" title="作者简介" light>
     {{ briefInfo }}
     <!-- <p v-if="authorData != undefined && authorData.name != undefined">
       <span v-if="authorData.official == ''">
@@ -91,6 +87,7 @@ export default {
   methods: {
     getChannelCount(videolist) {
       let temp = {};
+      if (videolist == undefined) return;
       videolist.forEach((video) => {
         temp[video.tname] =
           temp[video.tname] != undefined ? temp[video.tname] + 1 : 1;
