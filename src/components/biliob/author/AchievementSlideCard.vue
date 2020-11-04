@@ -1,20 +1,14 @@
 <template>
-  <BiliobSlideCard
-    name="biliob-achievemnet"
-    title="最近发生事件"
-  >
+  <BiliobSlideCard name="biliob-achievemnet" title="最近发生事件">
     <VCard
       v-for="(achievement, i) in $db.recentAchievement"
       :key="i"
-      class="mx-1 px-2"
-      min-width="300px"
-      :to="`/author/${achievement.author.mid}`"
+      class="mx-1 px-2 achievement-item"
+      style="width: 300px"
+      @click="$router.push(`/author/${achievement.author.mid}`)"
     >
       <VRow>
-        <VCol
-          class="pr-0"
-          cols="auto"
-        >
+        <VCol class="pr-0" cols="auto">
           <VAvatar size="60px">
             <VImg
               :alt="achievement.author.name"
@@ -26,21 +20,26 @@
           <div>
             <h4
               :class="`${getColor(achievement)}--text`"
-              style="overflow:hidden; text-overflow: ellipsis;"
+              style="overflow: hidden; text-overflow: ellipsis"
             >
               {{ achievement.author.name }} / {{ achievement.name }}
             </h4>
             <div
               class="text--secondary"
-              style="overflow:hidden; text-overflow: ellipsis;"
+              style="overflow: hidden; text-overflow: ellipsis"
             >
               {{ achievement.desc }}
             </div>
             <div
               class="text--disabled"
-              style="overflow:hidden; text-overflow: ellipsis;"
+              style="overflow: hidden; text-overflow: ellipsis"
             >
-              {{ $timeFormat(achievement.date.replace("+00:00","+0800"), "YYYY-MM-DD") }}
+              {{
+                $timeFormat(
+                  achievement.date.replace("+00:00", "+0800"),
+                  "YYYY-MM-DD"
+                )
+              }}
             </div>
           </div>
         </VCol>

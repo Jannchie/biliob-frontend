@@ -1,33 +1,10 @@
 <template>
-  <div style="position: relative">
-    <div>
-      <VBtn
-        v-if="!isMobile()"
-        x-small
-        class="biliob-slide-card-btn left"
-        fab
-        @click.stop="scroll(-1)"
-      >
-        <VIcon>mdi-arrow-left-bold</VIcon>
-      </VBtn>
-      <VBtn
-        v-if="!isMobile()"
-        x-small
-        class="biliob-slide-card-btn right"
-        fab
-        @click.stop="scroll(1)"
-      >
-        <VIcon>mdi-arrow-right-bold</VIcon>
-      </VBtn>
-    </div>
-    <div
-      :id="name"
-      class="py-2 biliob-slide-card-content"
-    >
-      <VSpacer
-        v-if="!isMobile()"
-        style="min-width: 12px;"
-      />
+  <div
+    ref="scroll"
+    :style="$vuetify.breakpoint.lgAndUp ? `overflow: hidden` : ``"
+    class="biliob-slide-wrapper"
+  >
+    <div :id="name" class="py-2 biliob-slide-content">
       <slot />
       <VBtn
         v-if="moreLink"
@@ -36,14 +13,10 @@
         large
         :to="moreLink"
         class="mx-5"
-        style="margin:auto"
+        style="margin: auto"
       >
         <VIcon>mdi-chevron-right</VIcon> 更多..
       </VBtn>
-      <VSpacer
-        v-if="!isMobile()"
-        style="min-width: 12px;"
-      />
     </div>
   </div>
 </template>
@@ -56,45 +29,31 @@ export default {
     name: { type: String, default: "biliob-scroller" },
     title: { type: String, default: undefined }
   },
+  mounted() {
+    this.init();
+  },
   methods: {
-    scroll(value) {
-      scrollAnimation(
-        value * document.getElementById(this.name).offsetWidth,
-        this.name
-      );
-    },
-    isMobile() {
-      return judgeMobile();
+    init() {
+      this.bs = BetterScroll.createBScroll(this.$refs.scroll, {
+        scrollX: true,
+        scrollbar: true
+      });
     }
   }
 };
 </script>
 <style>
-.biliob-slide-card-item {
-  flex-shrink: 0;
+.biliob-slide-item {
+  display: inline-block;
 }
-.biliob-slide-card-content {
-  flex-direction: row;
-  flex-wrap: nowrap;
-  display: flex;
-  overflow-x: scroll;
+.biliob-slide-wrapper {
+  white-space: nowrap;
+  /* overflow: hidden; */
 }
-
-.biliob-slide-card-content::-webkit-scrollbar {
-  display: none;
-  scroll-margin: 0;
+.biliob-slide-content {
+  display: inline-block;
 }
-.biliob-slide-card-btn {
-  position: absolute;
-  z-index: 2;
-  margin: auto;
-  top: 0px;
-  bottom: 0px;
-}
-.biliob-slide-card-btn.right {
-  right: -16px;
-}
-.biliob-slide-card-btn.left {
-  left: -16px;
+.biliob-slide-content > * {
+  display: inline-block;
 }
 </style>
