@@ -1,14 +1,20 @@
 <template>
-  <BiliobSlideCard name="biliob-achievemnet" title="最近发生事件">
+  <BiliobSlideCard
+    name="biliob-achievemnet"
+    title="最近发生事件"
+  >
     <VCard
       v-for="(achievement, i) in $db.recentAchievement"
       :key="i"
       class="mx-1 px-2 achievement-item"
       style="width: 300px"
-      @click="$router.push(`/author/${achievement.author.mid}`)"
+      @click="achievementClick(achievement)"
     >
       <VRow>
-        <VCol class="pr-0" cols="auto">
+        <VCol
+          class="pr-0"
+          cols="auto"
+        >
           <VAvatar size="60px">
             <VImg
               :alt="achievement.author.name"
@@ -50,6 +56,9 @@
 <script>
 export default {
   methods: {
+    achievementClick(achievement) {
+      this.$router.push(`/author/${achievement.author.mid}`);
+    },
     getColor(achievement) {
       if (achievement.code >= 4000 && achievement.code < 5000) {
         return "green";

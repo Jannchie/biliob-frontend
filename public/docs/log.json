@@ -2834,5 +2834,21 @@
             }
         ],
         "type": "unimportant"
+    },
+    {
+        "title": "修复",
+        "version": "ver.11.2.4",
+        "date": "2020-11-05",
+        "list": [
+            {
+                "text": "修复了滑动组件有时无法点击的问题",
+                "type": "fix"
+            },
+            {
+                "text": "修复了OB热搜首次加载无法滑动的问题",
+                "type": "fix"
+            }
+        ],
+        "type": "unimportant"
     }
 ]

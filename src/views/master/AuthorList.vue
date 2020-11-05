@@ -10,8 +10,8 @@
               @getSearchValue="getSearchValue"
             />
             <span class="overline">OB热搜 / HOT SEARCH</span>
-            <BiliobSlide>
-              <VCol
+            <BiliobSlide v-if="$store.getters.getHotSearchAuthor">
+              <div
                 v-for="(author, index) in $store.getters.getHotSearchAuthor"
                 :key="index"
                 cols="auto"
@@ -33,7 +33,7 @@
                     {{ $numberFormat(author.count, false) }}
                   </VChip>{{ author.name }}
                 </VChip>
-              </VCol>
+              </div>
             </BiliobSlide>
           </VCardText>
         </VCard>

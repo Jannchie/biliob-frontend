@@ -4,7 +4,10 @@
     :style="$vuetify.breakpoint.lgAndUp ? `overflow: hidden` : ``"
     class="biliob-slide-wrapper"
   >
-    <div :id="name" class="py-2 biliob-slide-content">
+    <div
+      :id="name"
+      class="py-2 biliob-slide-content"
+    >
       <slot />
       <VBtn
         v-if="moreLink"
@@ -36,7 +39,8 @@ export default {
     init() {
       this.bs = BetterScroll.createBScroll(this.$refs.scroll, {
         scrollX: true,
-        scrollbar: true
+        scrollbar: true,
+        click: true
       });
     }
   }

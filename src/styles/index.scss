@@ -22,3 +22,10 @@
 .v-application p {
   margin-bottom: auto;
 }
+
+.bscroll-horizontal-scrollbar{
+  z-index: 2 !important;
+}
+.bscroll-vertical-scrollbar{
+  z-index: 2 !important;
+}
