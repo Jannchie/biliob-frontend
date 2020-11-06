@@ -1,1 +1,2 @@
-scp -r dist/*  $username@$server_ip:/usr/share/nginx/html/
+source /etc/profile
+ssh -i ~/.ssh/login_rsa $M0_SERVER < remote.sh

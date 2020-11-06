@@ -11,12 +11,3 @@ script:
 branches:
   only:
     - master
-before_install:
-  - openssl aes-256-cbc -K $encrypted_b9878c0ec178_key -iv $encrypted_b9878c0ec178_iv
-    -in biliob_frontend.enc -out ~/.ssh/biliob_frontend -d
-  - chmod 600 ~/.ssh/biliob_frontend
-addons:
-  ssh_known_hosts: $server_ip
-after_script:
-  - pwd
-  - script -q /dev/stdout -c 'scp -i ~/.ssh/biliob_frontend -o StrictHostKeyChecking=no -r dist/*  $username@$server_ip:/usr/share/nginx/html/'
