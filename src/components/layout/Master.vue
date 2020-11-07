@@ -78,6 +78,7 @@
             v-model="showNav"
             fixed
             temporary
+            style="z-index: 30"
           >
             <VContainer grid-list-md>
               <VLayout v-if="!$store.state.logined">
