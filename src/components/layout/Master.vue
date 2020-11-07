@@ -65,7 +65,7 @@
     <div>
       <VContainer
         class="pa-0"
-        style="z-index: 2"
+        style="z-index: 20"
       >
         <BiliobKanban />
         <BiliobNotification />
