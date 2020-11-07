@@ -2850,5 +2850,29 @@
             }
         ],
         "type": "unimportant"
+    },
+    {
+        "title": "修复",
+        "version": "ver.11.2.5",
+        "date": "2020-11-07",
+        "list": [
+            {
+                "text": "修复了横向滑动组件中无法竖向滑动全局的问题",
+                "type": "fix"
+            },
+            {
+                "text": "修复了部分浏览器下的渲染层次错乱的问题",
+                "type": "fix"
+            },
+            {
+                "text": "移除了小屏幕下横向滑动组件可以穿透父组件的特性",
+                "type": "feature"
+            },
+            {
+                "text": "美化了移动端的布局",
+                "type": "beautify"
+            }
+        ],
+        "type": "unimportant"
     }
 ]

@@ -45,6 +45,7 @@
         <div
           v-for="(eachSponsor, i) in sponsor"
           :key="`${i}${eachSponsor.user.name}`"
+          :class="$vuetify.breakpoint.lgAndDown ? `px-1` : ``"
         >
           <h4
             class="text--secondary"

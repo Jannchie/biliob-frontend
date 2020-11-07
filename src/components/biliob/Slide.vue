@@ -1,7 +1,7 @@
 <template>
   <div
     ref="scroll"
-    :style="$vuetify.breakpoint.lgAndUp ? `overflow: hidden` : ``"
+    style="overflow: hidden"
     class="biliob-slide-wrapper"
   >
     <div
@@ -40,7 +40,9 @@ export default {
       this.bs = BetterScroll.createBScroll(this.$refs.scroll, {
         scrollX: true,
         scrollbar: true,
-        click: true
+        click: true,
+        // 解决竖划问题：https://better-scroll.github.io/docs/zh-CN/FAQ/diagnosis.html
+        eventPassthrough: "vertical"
       });
     }
   }

@@ -23,9 +23,13 @@
   margin-bottom: auto;
 }
 
-.bscroll-horizontal-scrollbar{
+.bscroll-horizontal-scrollbar {
   z-index: 2 !important;
 }
-.bscroll-vertical-scrollbar{
+.bscroll-vertical-scrollbar {
   z-index: 2 !important;
+}
+
+.container {
+  padding: 0px !important;
 }

@@ -8,6 +8,7 @@
       app
       hide-on-scroll
       fade-img-on-scroll
+      style="z-index: 10"
       dense
     >
       <template v-slot:img="{ props }">
