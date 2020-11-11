@@ -1,9 +1,3 @@
-if (workbox) {
-  console.log(`Yay! Workbox is loaded!`);
-} else {
-  console.log(`Boo! Workbox didn't load!`);
-}
-
 // 设置缓存前缀和后缀，请根据实际项目名修改
 workbox.core.setCacheNameDetails({
   prefix: "biliob",
