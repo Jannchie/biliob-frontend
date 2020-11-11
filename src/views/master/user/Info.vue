@@ -138,29 +138,29 @@ export default {
     activationCode: "",
     type: "",
     mailRules: [
-      value => !!value || "邮箱不得为空",
-      value => {
+      (value) => !!value || "邮箱不得为空",
+      (value) => {
         const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return pattern.test(value) || "这不是一个合法的邮箱！";
       }
     ],
     rules: {
-      required: value => !!value || "该项不可或缺！",
-      min: v => v.length >= 6 || "再长长长长长点",
-      max: v => v.length <= 20 || "太长了！",
-      passwdMatch: v => {
+      required: (value) => !!value || "该项不可或缺！",
+      min: (v) => v.length >= 6 || "再长长长长长点",
+      max: (v) => v.length <= 20 || "太长了！",
+      passwdMatch: (v) => {
         return v === this.password || "貌似两次输入不一致..手速太快了？";
       },
-      email: v => {
+      email: (v) => {
         return this.mailVerification(v) || "这不是一个合法的邮箱！";
       }
     }
   }),
   computed: {
-    userName: function() {
+    userName: function () {
       return this.$store.getters.getUserName;
     },
-    title: function() {
+    title: function () {
       return this.$store.getters.getTitle;
     }
   },
@@ -209,7 +209,7 @@ export default {
             ...postData
           }
         })
-          .then(response => {
+          .then((response) => {
             this.msg = response.data.msg;
             this.$store.commit(set, newValue);
             this.$store.commit("showMessage", {
@@ -217,7 +217,7 @@ export default {
               color: "info"
             });
           })
-          .catch(error => {
+          .catch((error) => {
             this.$store.commit("showMessage", {
               msg: error.response.data.msg,
               color: "error"

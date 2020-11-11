@@ -49,22 +49,16 @@
           &copy;
           {{ new Date().getFullYear() }}
           <a
-            href="https://www.github.com/jannchie"
+            href="https://www.github.com"
             target="_blank"
-          >Jannchie见齐</a>, made with
+          >贝午</a>, made with
           <VIcon
             color="red"
             size="14"
           >mdi-heart</VIcon>
           for BILIBILI
         </span>
-        <div>
-          <span
-            class="grey--text caption"
-          >互联网ICP备案：<a
-            href="http://www.beian.miit.gov.cn/"
-          >浙ICP备17035172号-2</a></span>
-        </div>
+        <div />
       </VFlex>
     </VLayout>
   </VFooter>
@@ -75,22 +69,6 @@ export default {
   data: () => {
     return {
       links: [
-        {
-          name: "联系站长",
-          links: [
-            {
-              name: "见齐的魔法后花园",
-              link: "https://jq.qq.com/?_wv=1027&k=593vDCo"
-            },
-            { name: "Jannchie@gmail.com", link: "Jannchie@gmail.com" },
-            { name: "见齐的GITHUB主页", link: "https://github.com/Jannchie" },
-            {
-              name: "见齐B站个人空间",
-              link: "https://space.bilibili.com/1850091"
-            },
-            { name: "见齐的技术博客", link: "http://jannchie.github.io" }
-          ]
-        },
         {
           name: "友情链接",
           links: [
@@ -103,26 +81,12 @@ export default {
               link: "https://www.kanbilibili.com/"
             },
             {
-              name: "数据合作 @Damn☆You",
-              link: "https://space.bilibili.com/735882"
+              name: "页面跳转 www.obilibili.com",
+              link: "https://www.obilibili.com/"
             },
             {
               name: "数据合作 @科技号",
               link: "https://space.bilibili.com/14220823"
-            },
-            {
-              name: "服务器提供商 阿里云",
-              link:
-                "https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=z82eczgc"
-            },
-            {
-              name: "服务器提供商 腾讯云",
-              link:
-                "https://cloud.tencent.com/redirect.php?redirect=1005&cps_key=7db3d9f0ef080a24be84d44938108742&from=console"
-            },
-            {
-              name: "服务器提供商 Vultr",
-              link: "https://www.vultr.com/?ref=7540103"
             }
           ]
         },

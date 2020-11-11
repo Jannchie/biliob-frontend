@@ -7,17 +7,26 @@
         </VSlideYTransition>
       </VCol>
     </VRow>
-    <VRow v-if="recentAchievement" dense>
+    <VRow
+      v-if="recentAchievement"
+      dense
+    >
       <VCol>
         <VSlideYTransition>
           <BiliobAuthorAchievementSlideCard />
         </VSlideYTransition>
       </VCol>
     </VRow>
-    <VRow v-if="forecastCard" dense>
+    <VRow
+      v-if="forecastCard"
+      dense
+    >
       <VCol>
         <VSlideYTransition>
-          <BiliobSlideCard name="biliob-preview" title="观测者预测">
+          <BiliobSlideCard
+            name="biliob-preview"
+            title="观测者预测"
+          >
             <BiliobGuessingItem
               v-for="guessing in $db.fansGuessing"
               :key="guessing.guessingId"

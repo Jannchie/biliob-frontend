@@ -31,7 +31,7 @@ export default {
       switch (this.user.role) {
         case "系统测试员":
           return "pink";
-        case "站长":
+        case "见齐":
           return "pink";
       }
       switch (this.user.title) {

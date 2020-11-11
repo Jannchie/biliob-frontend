@@ -165,9 +165,15 @@ if (process.env.NODE_ENV == "development ") {
 } else {
   axios.defaults.baseURL = "https://api.biliob.com/";
 }
-axios.defaults.headers = {
-  "Content-Type": "application/json",
-};
+axios.interceptors.request.use(req => { 
+  req.headers = {
+    "Content-Type": "application/json",
+  };
+  if (localStorage.getItem("token") != null) {
+    req.headers["token"] = `${localStorage.getItem("token")}`
+  }
+  return req;
+})
 
 Vue.use(VueAxios, axios);
 Vue.use(Vuex);

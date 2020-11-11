@@ -209,7 +209,7 @@
                     </VCol>
                   </VRow>
                   <VRow
-                    v-if="$db.user.role == '站长'"
+                    v-if="$db.user.role == '见齐'"
                     dense
                   >
                     <VCol cols="3">

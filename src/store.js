@@ -177,6 +177,7 @@ export default new Vuex.Store({
           context.commit("setUserName", response.data.name);
           context.commit("setUserRank", response.data.rank);
           context.commit("setTitle", response.data.title);
+          localStorage.setItem("token", response.data.token);
           if (response.data.favoriteAid) {
             context.commit("setFavoriteVideo", response.data.favoriteAid);
           }

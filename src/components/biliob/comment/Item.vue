@@ -100,7 +100,7 @@
                     $db.user.title != '管理者' &&
                     $db.user.role != '管理员' &&
                     $db.user.role != '系统测试员' &&
-                    $db.user.role != '站长' &&
+                    $db.user.role != '见齐' &&
                     $db.user.role != '特权研究员'
                 "
                 @click="deleteComment"

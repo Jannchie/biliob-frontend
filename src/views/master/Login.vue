@@ -122,9 +122,11 @@ export default {
           name: this.name,
           password: this.password
         })
-        .then(() => {
+        .then((res) => {
           this.$store.dispatch("login");
           this.$router.push("/");
+          console.log(res);
+          localStorage.setItem("token", res.data.data);
         })
         .catch((error) => {
           this.$store.commit("showMessage", {
