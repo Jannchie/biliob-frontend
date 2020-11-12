@@ -1,4 +1,5 @@
 cd ~/biliob-frontend;
+git checkout biliob
 git pull;
 yarn install;
 yarn build;
