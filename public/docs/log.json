@@ -2874,5 +2874,29 @@
             }
         ],
         "type": "unimportant"
+    },
+    {
+        "title": "End",
+        "version": "final",
+        "date": "2020-11-12",
+        "list": [
+            {
+                "text": "添加了最终致辞",
+                "type": "stone"
+            },
+            {
+                "text": "修复了观测记录的可以略微横向滑动的显示问题",
+                "type": "beautify"
+            },
+            {
+                "text": "美化了小屏幕下的卡片",
+                "type": "beautify"
+            },
+            {
+                "text": "修复了可以观测数据的问题",
+                "type": "fix"
+            }
+        ],
+        "type": "holyshit"
     }
 ]

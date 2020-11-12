@@ -58,6 +58,7 @@
     "lint-staged": "^9.2.0",
     "material-design-icons-iconfont": "^6.0.1",
     "node-sass": "^4.11.0",
+    "raw-loader": "^4.0.2",
     "sass": "^1.27.0",
     "sass-loader": "^10.0.2",
     "stylus": "^0.54.5",

@@ -4,7 +4,14 @@ module.exports = {
   // chainWebpack: config => {
   //   config.optimization.minimize(true);//进行代码压缩
   // },
-
+  chainWebpack: config => {
+    config.module
+      .rule('raw')
+      .test(/\.md$/)
+      .use('raw-loader')
+      .loader('raw-loader')
+      .end()
+  },
   // 是否为生产环境构建生成 source map？
   productionSourceMap: false,
   runtimeCompiler: true,
