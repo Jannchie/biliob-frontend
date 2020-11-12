@@ -104,11 +104,7 @@ export default {
     cardPadding: {
       type: String,
       default: function () {
-        if (this.$vuetify.breakpoint.mdAndUp) {
-          return "";
-        } else {
-          return "pa-2";
-        }
+        return "";
       }
     },
     dark: {

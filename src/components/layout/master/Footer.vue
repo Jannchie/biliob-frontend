@@ -51,7 +51,7 @@
           <a
             href="https://www.github.com"
             target="_blank"
-          >贝午</a>, made with
+          >Jannchie见齐</a>, made with
           <VIcon
             color="red"
             size="14"
