@@ -9,18 +9,18 @@
           >
         </VCardTitle>
         <VCardText
-          class="font-weight-black  primary--text caption"
-          style="text-align:center"
+          class="font-weight-black primary--text caption"
+          style="text-align: center"
         >
-          打开手机，扫描上方二维码即可下载安卓端BILIOB观测者APP~
+          打开手机，扫描上方二维码即可下载安卓端BiliOB233APP~
         </VCardText>
         <VCardText>
           <VBtn
             href="https://www.bslyun.com/tby4hpO8tLTI2MjY3OC0tMA%3D"
             block
             outlined
-            style="border-width:1px"
-            class="font-weight-black  primary--text title"
+            style="border-width: 1px"
+            class="font-weight-black primary--text title"
           >
             手机端网站点我跳转到下载链接
           </VBtn>

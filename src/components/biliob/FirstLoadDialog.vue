@@ -6,32 +6,32 @@
   >
     <VCard>
       <VCardTitle class="headline primary white--text font-weight-black">
-        这里是BiliOB观测者
+        这里是BiliOB233
       </VCardTitle>
       <VCardText class="mt-5">
         <span>
           <span
             class="blue white--text darken-2"
-            style="padding:1px 5px;"
+            style="padding: 1px 5px"
           >版本</span>
           <span
             class="grey white--text darken-2"
-            style="padding:1px 5px;margin-right:10px"
+            style="padding: 1px 5px; margin-right: 10px"
           >{{ latestPost.version }}</span>
         </span>
         <span display="flex">
           <span
             class="green white--text darken-2"
-            style="padding:1px 5px;"
+            style="padding: 1px 5px"
           >日期</span>
           <span
             class="grey white--text darken-2"
-            style="padding:1px 5px;margin-right:10px;"
+            style="padding: 1px 5px; margin-right: 10px"
           >{{ latestPost.date }}</span>
         </span>
         <div
           class="subheading font-weight-black"
-          style="margin-top:10px;margin-bottom:5px"
+          style="margin-top: 10px; margin-bottom: 5px"
         >
           近期更新内容
         </div>
@@ -55,7 +55,7 @@
                 v-for="eachItem in latestPost.list[eachType]"
                 :key="eachItem"
                 class="ml-2"
-                style="list-style-type:circle"
+                style="list-style-type: circle"
               >
                 {{ eachItem }}
               </li>

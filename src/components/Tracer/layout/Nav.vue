@@ -12,7 +12,7 @@
         <VListItemContent>
           <VListItemTitle class="white--text">
             <h1 class="title">
-              BiliOB观测者
+              BiliOB233
             </h1>
           </VListItemTitle>
           <VListItemSubtitle :v-model="drawer">
@@ -66,7 +66,7 @@ export default {
     };
   },
   mounted() {
-    window.onmousemove = event => {
+    window.onmousemove = (event) => {
       var posx = 0;
       if (event.pageX) {
         posx = event.pageX;

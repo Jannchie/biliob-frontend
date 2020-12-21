@@ -27,7 +27,7 @@
       <BiliobTitle>领衔作者 </BiliobTitle>
     </VCol>
     <VCol
-      v-for="(a,i) in authors == undefined? [] :authors"
+      v-for="(a, i) in authors == undefined ? [] : authors"
       :key="i"
       cols="12"
       lg="6"
@@ -60,7 +60,7 @@ export default {
   },
   methods: {
     updateData() {
-      window.document.title = `${this.$route.params.keyword} - 见齐指数 - BiliOB观测者 - B站历史数据统计分析站点`;
+      window.document.title = `${this.$route.params.keyword} - 见齐指数 - BiliOB233 - B站历史数据统计分析站点`;
       this.options = Object();
       this.notFound = false;
       this.axios

@@ -18,7 +18,7 @@
               <h4>见齐指数简介</h4>
               <div class="body-2">
                 <li>
-                  见齐指数是根据BiliOB观测者观测的视频数据统计出的B站关键词热度指数。
+                  见齐指数是根据BiliOB233观测的视频数据统计出的B站关键词热度指数。
                 </li>
                 <li>
                   见齐指数使用了视频的播放、收藏、点赞、投币、分享、弹幕共六个指标进行计算。
@@ -35,7 +35,7 @@
         <VCard>
           <VCardTitle class="warning--text">
             <VIcon
-              style="vertical-align: text-bottom;"
+              style="vertical-align: text-bottom"
               color="warning"
               left
             >
@@ -109,10 +109,10 @@
           </VCardTitle>
           <VCardText>
             <VRow no-gutters>
-              <VCol style="text-align: end;">
+              <VCol style="text-align: end">
                 7日累计热度
                 <h3>
-                  <VIcon style="vertical-align: text-bottom;">
+                  <VIcon style="vertical-align: text-bottom">
                     mdi-fire
                   </VIcon>
                   <span class="primary--text">

@@ -6,7 +6,7 @@
   >
     <VRow
       dense
-      style="height: 100%; align-content: center;"
+      style="height: 100%; align-content: center"
     >
       <VCol
         lg="3"
@@ -22,9 +22,7 @@
           icon="mdi-eye"
           :tile-title="'锁定频率'"
           tile-sub-title="需要消耗积分：200"
-          :request-url="
-            `/user/author/${$route.params.mid}/status?forceFocus=true`
-          "
+          :request-url="`/user/author/${$route.params.mid}/status?forceFocus=true`"
         >
           <VCardText slot="card-text">
             锁定频率需要<span
@@ -43,11 +41,9 @@
       >
         <VBtn
           color="primary"
-          :href="
-            `https://connect.qq.com/widget/shareqq/index.html?url=https://www.biliob.com${this.$route.path}&sharesource=qzone&title=biliob观测者:${name}的历史数据&pics=https:${pic}&summary=快来围观这个UP主的数据变化吧~&desc=这个UP主牛逼坏了`
-          "
+          :href="`https://connect.qq.com/widget/shareqq/index.html?url=https://www.biliob.com${this.$route.path}&sharesource=qzone&title=BiliOB233:${name}的历史数据&pics=https:${pic}&summary=快来围观这个UP主的数据变化吧~&desc=这个UP主牛逼坏了`"
           outlined
-          style="border-width:1px"
+          style="border-width: 1px"
           large
           block
           tile
@@ -67,7 +63,7 @@
           color="pink lighten-3"
           tile
           outlined
-          style="border-width:1px"
+          style="border-width: 1px"
           large
           block
           :href="`https://space.bilibili.com/${$route.params.mid}`"

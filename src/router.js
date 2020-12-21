@@ -291,7 +291,7 @@ export default new Router({
       children: [
         {
           path: "",
-          name: "BiliOB观测者-管理系统",
+          name: "BiliOB233-管理系统",
           component: TracerDashboard,
         },
         {

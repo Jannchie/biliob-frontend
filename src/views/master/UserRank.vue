@@ -44,7 +44,9 @@
               EXP {{ eachUser.exp }}
               <br>
               <span class="caption">
-                注册时间：{{ $timeFormat(eachUser.id.date,"YYYY-MM-DD HH:mm:ss") }}
+                注册时间：{{
+                  $timeFormat(eachUser.id.date, "YYYY-MM-DD HH:mm:ss")
+                }}
               </span>
             </VCardText>
           </BiliobCard>
@@ -69,7 +71,13 @@
               #{{ 4 + index }}
             </div>
             <VCardTitle>
-              <div style="overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">
+              <div
+                style="
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                "
+              >
                 {{ eachUser.nickName }}
               </div>
             </VCardTitle>
@@ -77,7 +85,9 @@
               EXP {{ eachUser.exp }}
               <br>
               <span class="caption">
-                注册时间：{{ $timeFormat(eachUser.id.date,"YYYY-MM-DD HH:mm:ss") }}
+                注册时间：{{
+                  $timeFormat(eachUser.id.date, "YYYY-MM-DD HH:mm:ss")
+                }}
               </span>
             </VCardText>
           </BiliobCard>
@@ -157,7 +167,7 @@ export default {
           vmid: "description",
           name: "description",
           content:
-            "BiliOB观测者的用户排行榜，在这里可以看到所有观测者的积分排名。积分最高的用户将显示在榜首。"
+            "BiliOB233的用户排行榜，在这里可以看到所有观测者的积分排名。积分最高的用户将显示在榜首。"
         }
       ]
     };

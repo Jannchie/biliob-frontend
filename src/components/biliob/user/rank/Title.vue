@@ -8,10 +8,8 @@
             style="vertical-align: sub"
             left
           >
-            {{
-              icon
-            }}
-          </VIcon><span class="grey--text ">{{ title }}</span>
+            {{ icon }}
+          </VIcon><span class="grey--text">{{ title }}</span>
         </div>
       </BiliobCard>
     </VCol>

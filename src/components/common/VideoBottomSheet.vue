@@ -7,7 +7,7 @@
       block
       dark
     >
-      <VIcon style="margin-right:20px">
+      <VIcon style="margin-right: 20px">
         mdi-infinity
       </VIcon>更多操作
     </VBtn>
@@ -22,9 +22,7 @@
       >
         <VListItemAvatar>
           <VAvatar size="32px">
-            <VIcon
-              class="pink white--text lighten-2 text--lighten-2"
-            >
+            <VIcon class="pink white--text lighten-2 text--lighten-2">
               mdi-video
             </VIcon>
           </VAvatar>
@@ -59,15 +57,13 @@
       >
         <VListItem
           slot="activator"
-          style="width:100%"
+          style="width: 100%"
           class="primary--text lighten-2 text--lighten-2"
           @click="dialog = true"
         >
           <VListItemAvatar>
             <VAvatar size="32px">
-              <VIcon
-                class="blue white--text lighten-2 text--lighten-2"
-              >
+              <VIcon class="blue white--text lighten-2 text--lighten-2">
                 mdi-refresh
               </VIcon>
             </VAvatar>
@@ -107,7 +103,7 @@
               color="primary"
               text
               outlined
-              style="border-width:1px"
+              style="border-width: 1px"
               :disabled="showAlert"
               @click="refresh"
             >
@@ -118,18 +114,14 @@
       </VDialog>
 
       <VListItem
-        :href="
-          `https://connect.qq.com/widget/shareqq/index.html?url=www.biliob.com${$route.path}&sharesource=qzone&title=biliob观测者:视频《${title}》的历史数据&pics=https:${pic}&summary=快来围观这个视频的数据变化吧~&desc=`
-        "
+        :href="`https://connect.qq.com/widget/shareqq/index.html?url=www.biliob.com${$route.path}&sharesource=qzone&title=BiliOB233:视频《${title}》的历史数据&pics=https:${pic}&summary=快来围观这个视频的数据变化吧~&desc=`"
         target="_blank"
         class="light-primary--text lighten-2 text--lighten-2"
         @click="sheet = false"
       >
         <VListItemAvatar>
           <VAvatar size="32px">
-            <VIcon
-              class="light-blue white--text lighten-2 text--lighten-2"
-            >
+            <VIcon class="light-blue white--text lighten-2 text--lighten-2">
               mdi-qqchat
             </VIcon>
           </VAvatar>
@@ -159,7 +151,7 @@ export default {
     showAlert: false
   }),
   computed: {
-    url: function() {
+    url: function () {
       return `https://www.bilibili.com/av${this.aid}`;
     }
   },
@@ -170,7 +162,7 @@ export default {
     refresh() {
       this.axios
         .put(`/user/video/${this.aid}/data`)
-        .then(response => {
+        .then((response) => {
           this.showAlert = true;
           this.alertType = "success";
           this.alertMsg = `操作成功！当前积分：${response.data.user.credit}，当前经验：${response.data.user.exp}`;

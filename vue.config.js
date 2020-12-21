@@ -25,7 +25,7 @@ module.exports = {
   },
   pwa: {
     themeColor: "#333",
-    name: "BiliOB观测者",
+    name: "BiliOB233",
     msTileColor: "#333",
     workboxPluginMode: "InjectManifest",
     importWorkboxFrom: "disabled",

@@ -7,7 +7,7 @@
     <VLayout
       wrap
       justify-center
-      style="text-align:center"
+      style="text-align: center"
     >
       <VFlex
         md12
@@ -23,7 +23,7 @@
             lg4
             md6
             class="pl-1"
-            style="text-align:left;border-left: 2px solid primary;"
+            style="text-align: left; border-left: 2px solid primary"
           >
             <div class="title font-weight-black grey--text">
               {{ eachBlock.name }}
@@ -51,7 +51,8 @@
           <a
             href="https://www.github.com"
             target="_blank"
-          >贝午</a>, made with
+          >开源社区</a>, made
+          with
           <VIcon
             color="red"
             size="14"

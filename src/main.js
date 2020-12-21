@@ -28,7 +28,7 @@ Vue.use(Meta);
 
 router.afterEach(function(to) {
   let baseTitle =
-    " - BiliOB观测者 - B站历史数据统计分析站点 - 哔哩哔哩数据查询";
+    " - BiliOB233 - B站历史数据统计分析站点 - 哔哩哔哩数据查询";
   if (to.name == undefined) {
     to.name = "404";
   }
@@ -163,7 +163,7 @@ axios.interceptors.response.use(
 if (process.env.NODE_ENV == "development ") {
   axios.defaults.baseURL = "//localhost:8081/api";
 } else {
-  axios.defaults.baseURL = "https://api.biliob.com/";
+  axios.defaults.baseURL = "https://www.biliob233.com/api";
 }
 axios.interceptors.request.use(req => { 
   req.headers = {
@@ -171,6 +171,9 @@ axios.interceptors.request.use(req => {
   };
   if (localStorage.getItem("token") != null) {
     req.headers["token"] = `${localStorage.getItem("token")}`
+  }
+  if (req.url.indexOf("user") != -1 || req.url.indexOf("comment") != -1 || req.url.indexOf("sponsor") != -1) {
+    req.baseURL = "https://api.biliob.com"
   }
   return req;
 })

@@ -23,7 +23,7 @@
         <VRow>
           <VCol>
             <div class="title">
-              BiliOB观测者
+              BiliOB233
             </div>
           </VCol>
           <VSpacer />
@@ -34,12 +34,10 @@
             <VBtn
               icon
               small
-              style="margin-bottom: auto;"
+              style="margin-bottom: auto"
               @click.stop="$vuetify.goTo('#comment-container')"
             >
-              <VIcon>
-                mdi-chat
-              </VIcon>
+              <VIcon> mdi-chat </VIcon>
             </VBtn>
           </VCol>
         </VRow>
@@ -108,7 +106,7 @@
                 </VFlex>
               </VLayout>
               <div v-if="$store.state.logined">
-                <VCardActions style="justify-content: flex-end;">
+                <VCardActions style="justify-content: flex-end">
                   <div
                     v-if="$store.state.logined"
                     class="check-in"
@@ -149,7 +147,9 @@
                     <div>{{ $db.user.role }}</div>
                     <div>{{ $db.user.title }}</div>
                     <div>积分：{{ $db.user.credit }}</div>
-                    <div>经验：{{ $db.user.exp }} (#{{ $store.state.userRank }})</div>
+                    <div>
+                      经验：{{ $db.user.exp }} (#{{ $store.state.userRank }})
+                    </div>
                   </VCardText>
                 </BiliobCard>
                 <VCardActions>
@@ -159,7 +159,7 @@
                     large
                     text
                   >
-                    <div style="display: block; text-align: center;">
+                    <div style="display: block; text-align: center">
                       <div>{{ getUserItemValue("关注") }}</div>
                       <div class="caption">
                         关注
@@ -172,7 +172,7 @@
                     large
                     text
                   >
-                    <div style="display: block; text-align: center;">
+                    <div style="display: block; text-align: center">
                       <div>{{ getUserItemValue("收藏") }}</div>
                       <div class="caption">
                         收藏
@@ -250,7 +250,15 @@
     <!-- <BiliobEnd /> -->
     <VMain>
       <VContainer class="pa-0">
-        <BiliobNotice />
+        <VRow dense>
+          <VCol>
+            <VCard>
+              <VCardText>
+                BiliOB233是一个社区项目。源代码由原站长见齐开源。数据、服务器均由匿名开源社区成员提供，观测者用户数据以及赞助信息方面，经过见齐授权，将与biliob观测者的数据保持同步。
+              </VCardText>
+            </VCard>
+          </VCol>
+        </VRow>
         <BiliobMain />
       </VContainer>
     </VMain>

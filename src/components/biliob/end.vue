@@ -2,7 +2,7 @@
   <VDialog
     persistent
     :value="true"
-    :width="$vuetify.breakpoint.lgAndDown ? `100%`: `1000px`"
+    :width="$vuetify.breakpoint.lgAndDown ? `100%` : `1000px`"
   >
     <VCard>
       <VCardTitle>END</VCardTitle>
@@ -27,7 +27,7 @@
           今天收到了<a
             download
             target="_blank"
-            href="/docs/Gmail - 【哔哩哔哩侵权告知函】关于立即停止搜集哔哩哔哩数据的函-BiliOB观测者-20201110.pdf"
+            href="/docs/Gmail - 【哔哩哔哩侵权告知函】关于立即停止搜集哔哩哔哩数据的函-BiliOB233-20201110.pdf"
           >哔哩哔哩侵权告知函</a>。老实说已有心里准备——爬虫项目本就游走在法律的边缘，如果B站想要小站关闭，那我这里确实应该无条件关站。
         </p>
         <p class="mb-1">

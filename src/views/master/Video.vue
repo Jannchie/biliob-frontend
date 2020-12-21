@@ -20,7 +20,7 @@
         md="5"
       >
         <AuthorInfo
-          style="height:100%"
+          style="height: 100%"
           :author-data="videoData.author"
         />
       </VCol>
@@ -69,9 +69,7 @@
               solo
               prepend-inner-icon="mdi-video-outline"
               :items="pageItems"
-              :messages="
-                `<span>选择分P</span><span style='float: right'>更新时间: ${danmakuUpdateTime}</span>`
-              "
+              :messages="`<span>选择分P</span><span style='float: right'>更新时间: ${danmakuUpdateTime}</span>`"
               @change="pageChange"
             />
           </div>
@@ -102,7 +100,7 @@ import drawMainChart from "@/charts/video-main.js";
 import drawVideoPieChart from "@/charts/video-pie.js";
 import drawDanmakuCloud from "@/charts/danmaku-cloud.js";
 import drawDanmakuDensity from "@/charts/danmaku-density.js";
-var deepCopy = function(o) {
+var deepCopy = function (o) {
   if (o instanceof Array) {
     var n = [];
     for (let i = 0; i < o.length; ++i) {
@@ -143,7 +141,7 @@ export default {
     };
   },
   watch: {
-    "$route.params.aid": function() {
+    "$route.params.aid": function () {
       this.getDataFromAid();
     }
   },
@@ -157,7 +155,7 @@ export default {
     getVideoData(response) {
       this.videoData = response.data;
       let title = this.videoData.title;
-      document.title = `${title} - 视频详细数据 - biliOB观测者 - B站历史数据统计分析站点`;
+      document.title = `${title} - 视频详细数据 - BiliOB233 - B站历史数据统计分析站点`;
       this.rank = this.videoData.rank;
       this.videoData.pic = this.videoData.pic.slice(5);
       this.mainChart = drawMainChart(deepCopy(response.data));
@@ -192,7 +190,7 @@ export default {
       } else {
         url = "/video/v2/av" + this.$route.params.aid;
       }
-      this.axios.get(url).then(response => {
+      this.axios.get(url).then((response) => {
         this.getVideoData(response);
         // this.axios
         //   .get(

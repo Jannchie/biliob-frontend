@@ -15,7 +15,12 @@
         >
           <VImg
             class="elevation-3"
-            style="border-radius: 2px; display: inline-block; height: 80px;width:150px"
+            style="
+              border-radius: 2px;
+              display: inline-block;
+              height: 80px;
+              width: 150px;
+            "
             :src="zipPic(info.pic)"
           />
         </VCol>
@@ -24,13 +29,15 @@
             <div>
               <div class="caption">
                 av{{ info.aid }} /
-                <span class="caption">
-                  BV{{ info.bvid }}
-                </span>
+                <span class="caption"> BV{{ info.bvid }} </span>
               </div>
               <div
                 class="body-1"
-                style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;"
+                style="
+                  white-space: nowrap;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                "
               >
                 {{ info.title }}
               </div>
@@ -84,7 +91,7 @@
         </VCol>
       </VRow>
       <VRow
-        v-if="tab=='video'"
+        v-if="tab == 'video'"
         key="video"
         dense
       >
@@ -109,7 +116,14 @@
         </VCol>
       </VRow>
       <VRow
-        v-if="info != undefined && info.attribute != 33570816 && info.attribute != 32768 && tab=='info' && $store.state.logined && $db.user.exp > 100"
+        v-if="
+          info != undefined &&
+            info.attribute != 33570816 &&
+            info.attribute != 32768 &&
+            tab == 'info' &&
+            $store.state.logined &&
+            $db.user.exp > 100
+        "
         key="attr"
         dense
       >
@@ -127,16 +141,18 @@
             >
               如果你看到这一条，说明你是骨灰级的观测者。也许目前还能够通过隐藏接口看到数据。且看且珍惜。
             </div>
-            <div v-if=" $db.user.exp > 10000 || info.ctime < 1603897200">
+            <div v-if="$db.user.exp > 10000 || info.ctime < 1603897200">
               <span
-                v-for="(a,i) in attr"
+                v-for="(a, i) in attr"
                 :key="i"
               >
                 <VChip
-                  v-if="a=='1' && attrName[i] != undefined"
+                  v-if="a == '1' && attrName[i] != undefined"
                   x-small
                   outlined
-                  :color="[7, 8, 9, 10, 11, 24, 29].indexOf(i) != -1 ? `blue` : `red`"
+                  :color="
+                    [7, 8, 9, 10, 11, 24, 29].indexOf(i) != -1 ? `blue` : `red`
+                  "
                   class="pa-1 mr-1"
                   label
                 >
@@ -148,7 +164,7 @@
         </VCol>
       </VRow>
       <VRow
-        v-if="info != undefined && tab=='info'"
+        v-if="info != undefined && tab == 'info'"
         key="new-data"
         dense
       >
@@ -156,23 +172,23 @@
           <BiliobCard title="最新数据">
             <VRow dense>
               <VCol>
-                <div>
-                  播放
-                </div>
+                <div>播放</div>
                 <div class="caption">
                   {{ $numFormat(info.stat.view) }}
                 </div>
                 <div
-                  v-if="authorAvg !=undefined"
+                  v-if="authorAvg != undefined"
                   class="caption"
                 >
                   达到自身过往作品平均值的{{ viewSelfRate.toFixed(1) }}%
                 </div>
                 <div
-                  v-if="channelAvg !=undefined"
+                  v-if="channelAvg != undefined"
                   class="caption"
                 >
-                  达到发布时分区内平均值的{{ ( info.stat.view/ channelAvg.view * 100).toFixed(1) }}%
+                  达到发布时分区内平均值的{{
+                    ((info.stat.view / channelAvg.view) * 100).toFixed(1)
+                  }}%
                 </div>
               </VCol>
             </VRow>
@@ -185,7 +201,14 @@
         dense
       >
         <VCol
-          v-for="key in ['danmaku','like','coin','favorite','reply','share']"
+          v-for="key in [
+            'danmaku',
+            'like',
+            'coin',
+            'favorite',
+            'reply',
+            'share'
+          ]"
           :key="key"
           md="2"
           cols="6"
@@ -194,19 +217,25 @@
             <div>{{ statDict[key] }}</div>
             <div class="caption">
               {{ $numFormat(info.stat[key]) }}
-              <span>[{{ (info.stat[key] / info.stat.view * 100).toFixed(1) }}%]</span>
+              <span>[{{
+                ((info.stat[key] / info.stat.view) * 100).toFixed(1)
+              }}%]</span>
             </div>
             <div
               v-if="authorAvg != undefined"
               class="caption"
             >
-              个人表现：{{ ( info.stat[key] / authorAvg[key] * 100).toFixed(1) }}%
+              个人表现：{{
+                ((info.stat[key] / authorAvg[key]) * 100).toFixed(1)
+              }}%
             </div>
             <div
               v-if="channelAvg != undefined"
               class="caption"
             >
-              分区表现：{{ ( info.stat[key] / channelAvg[key] * 100).toFixed(1) }}%
+              分区表现：{{
+                ((info.stat[key] / channelAvg[key]) * 100).toFixed(1)
+              }}%
             </div>
           </BiliobCard>
         </VCol>
@@ -222,12 +251,17 @@
           lg="6"
         >
           <BiliobCard title="时间信息">
-            发布时间: {{ $timeFormat(info.ctime * 1000,"YYYY-MM-DD HH:mm:ss") }}
+            发布时间:
+            {{ $timeFormat(info.ctime * 1000, "YYYY-MM-DD HH:mm:ss") }}
             <br>
-            投稿时间: {{ $timeFormat(info.pubdate * 1000,"YYYY-MM-DD HH:mm:ss") }}
+            投稿时间:
+            {{ $timeFormat(info.pubdate * 1000, "YYYY-MM-DD HH:mm:ss") }}
             <br>
             合计时长:
-            <span v-if="info.duration >= 3600">{{ (info.duration / 3600).toFixed(0) }}小时 </span>{{ (info.duration % 3600 / 60).toFixed(0) }} 分 {{ info.duration % 60 }}秒
+            <span
+              v-if="info.duration >= 3600"
+            >{{ (info.duration / 3600).toFixed(0) }}小时 </span>{{ ((info.duration % 3600) / 60).toFixed(0) }} 分
+            {{ info.duration % 60 }}秒
           </BiliobCard>
         </VCol>
         <VCol
@@ -276,7 +310,7 @@ export default {
     return {
       title: `${
         this.info == undefined ? "载入信息中" : this.info.title
-      } - 视频数据 - BiliOB观测者 - B站历史数据统计分析站点 - UP主视频信息查询`
+      } - 视频数据 - BiliOB233 - B站历史数据统计分析站点 - UP主视频信息查询`
     };
   },
   data() {

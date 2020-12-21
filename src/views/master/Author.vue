@@ -124,7 +124,9 @@
                         <div class="rank-title caption grey--text">
                           {{ each.name }}
                         </div>
-                        <div class="rank-value caption font-weight-black primary--text">
+                        <div
+                          class="rank-value caption font-weight-black primary--text"
+                        >
                           {{ each.value }}
                         </div>
                       </div>
@@ -346,7 +348,7 @@ export default {
     return {
       title: `${
         this.authorName == undefined ? "载入UP主信息中" : this.authorName
-      } - UP主数据详情 - BiliOB观测者 - B站历史数据统计分析站点`,
+      } - UP主数据详情 - BiliOB233 - B站历史数据统计分析站点`,
       meta: [
         {
           vmid: "description",
