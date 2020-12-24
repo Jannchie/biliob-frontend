@@ -172,9 +172,9 @@ axios.interceptors.request.use(req => {
   if (localStorage.getItem("token") != null) {
     req.headers["token"] = `${localStorage.getItem("token")}`
   }
-  if (req.url.indexOf("user") != -1 || req.url.indexOf("comment") != -1 || req.url.indexOf("sponsor") != -1) {
-    req.baseURL = "https://api.biliob.com"
-  }
+  // if (req.url.indexOf("user") != -1 || req.url.indexOf("comment") != -1 || req.url.indexOf("sponsor") != -1) {
+  //   req.baseURL = "https://api.biliob.com"
+  // }
   return req;
 })
 
