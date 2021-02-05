@@ -74,7 +74,7 @@
                     "answer": [
                         "BiliOB的权限等级划分如下：",
                         "目前一共有六个等级，",
-                        "<span class='red--text'>站长</span>：贡献超过50%的代码",
+                        "<span class='red--text'>原站长</span>：贡献超过50%的代码",
                         "<span class='orange--text'>系统测试员</span>：内部测试账号",
                         "<span class='purple--text'>特权研究员</span>：等级达到过管理者",
                         "<span class='blue--text'>管理研究员</span>：等级达到过观测者",

@@ -163,7 +163,7 @@ axios.interceptors.response.use(
 if (process.env.NODE_ENV == "development ") {
   axios.defaults.baseURL = "//localhost:8081/api";
 } else {
-  axios.defaults.baseURL = "https://api.biliob233.com";
+  axios.defaults.baseURL = "https://api.tokyo.biliob233.com";
 }
 axios.interceptors.request.use(req => { 
   req.headers = {
