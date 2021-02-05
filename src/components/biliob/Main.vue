@@ -17,10 +17,9 @@
 
     <VCol
       v-if="
-        ($store.getters.getLoginState &&(
-          -1 == ['/login', '/signin'].indexOf(this.$route.path) &&
-          this.$route.path.indexOf('user') == -1 ||
-          this.$route.path == '/user/rank'))
+        (-1 == ['/login', '/signin'].indexOf(this.$route.path) &&
+          this.$route.path.indexOf('user') == -1) ||
+          this.$route.path == '/user/rank'
       "
       key="comment"
       lg="3"
@@ -31,9 +30,10 @@
 
     <VCol
       v-if="
-        (-1 == ['/login', '/signin'].indexOf(this.$route.path) &&
-          this.$route.path.indexOf('user') == -1) ||
-          this.$route.path == '/user/rank'
+        -1 ==
+          ['/login', '/signin'].indexOf(
+            this.$route.path && this.$route.path.indexOf('user') == -1
+          ) || this.$route.path == '/user/rank'
       "
       key="sponsor"
       :style="`${
